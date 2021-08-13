@@ -1,0 +1,51 @@
+<div class="col s12 sinPadding">
+	{% if vista == 'listado' %}
+		<ul class="collection">
+			{% for tie in tiendas2 %}
+				<a class="enfasisA comoBoton"  href="http://{{tie.Tie_Subdominio}}.{{dominio}}">
+			    	<li class="collection-item avatar anchoTotal" style="border-radius:0px;border: 0.5px solid rgba(0,0,0,0.1)">
+			    		<div >
+					    	{% if tie.Tie_Logo %}
+		                    	<img src="{{ruta_img}}{{tie.Tie_Logo}}" alt="" class="circle" style="top:20px">
+		                    {% else %}
+		                        <img src="{{ruta_img}}sinlogo.webp" alt="" class="circle" style="top:20px">
+		                    {% endif %}
+	                    </div>
+				      	<span class="title"><b>{{tie.Tie_Nombre|title}}</b> </span><br>
+				      	<small style="font-size: 85%;">{{tie.Tie_ruc_dni}}</small>
+				      		{% if tie.Tie_FechaInscripcion is null %}
+				      			<p class="enfasisB">Antiguedad SUNAT - Sin fecha</p>
+				      		{% else %}
+				      			<p class="enfasisB">Antiguedad SUNAT  {{tie.Tie_FechaInscripcion|date("d-m-Y")}}</p>
+				      		{% endif %}
+			    	</li>
+			    </a>
+		    {% endfor %}
+		</ul>
+	{% elseif vista == 'cuadricula' %}
+{% for tie in tiendas2 %}
+<div class="col s6 m4 l3" itemscope itemtype="http://schema.org/Store">
+<div class="card cardFix hoverable tiendasAll">
+<a class="" href="http://{{tie.Tie_Subdominio}}.{{dominio}}" data-idproducto="{{pro.Pro_IdProducto}}">
+<div class="card-content center sinPadding valign-wrapper">
+{% if tie.Tie_Logo %}
+<img itemprop="image" alt="{{tie.Tie_Nombre}} - pormayor.pe" title="{{tie.Tie_Nombre}}" src="{{ruta_img}}{{tie.Tie_Logo}}" class="centrarForzado responsive-img fixImg3 redondeo" style="padding: 5px;">
+{% else %}
+<img itemprop="image" src="{{ruta_img}}sinlogo.webp" class="centrarForzado fixImg3 redondeo" style="padding: 5px;">
+{% endif %}
+</div>
+<div class="center tituloTienda valign-wrapper" >
+<span itemprop="name" class="fontB anchoTotal">{{tie.Tie_Nombre|upper}}</span>
+<img src="{{ruta_img}}holderTienda.webp" class="transition positionAbsolute bottom0">
+</div>
+<span class="hide" itemprop="description">{{tie.Tid_Descripcion|title}}</span>
+<address class="hide" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+<span itemprop="streetAddress">{{tie.Loc_Direccion|title}}</span>
+<span itemprop="addressCountry">Péru</span>
+</address>
+</a>
+</div>
+</div>
+{% endfor %}
+	{% endif %}
+</div>

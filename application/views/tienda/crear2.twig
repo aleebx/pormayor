@@ -1,0 +1,513 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %} 
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"   media="screen"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"  media="screen"/>
+<script>
+  fbq('track', 'Subscribe', {
+    value: {{ usuario.id_usuario|json_encode() }},
+    currency: 'PEN',
+  });
+  </script>
+  <style type="text/css">
+        .pg-loading-logo{
+            max-height: 150px;
+        }
+        [type="checkbox"].filled-in:checked + label:after {
+          border: 2px solid #21478F;
+          background-color: #21478F;
+        }
+        .error{
+          color: red;
+        }
+        .input-field:not(.notOpacity){
+            opacity: 0.5;
+        }
+        .opacidad8{
+            opacity: .8;
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+            .pg-loading-logo{
+                max-height: 80px;
+            }
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+<main class="container fixContainer">
+    <br class="hide-on-large-only"><br class="hide-on-large-only">
+    {{ form_open("", {role: 'form', id: 'registrar_cuenta', class:'form form-horizontal formValidate', method:'post', novalidate:'novalidate'}) }}
+        <div class="row ">
+            <div class="col s12 m6 l6">
+                <div class="card">
+                    <div class="card-content sinPadding" >
+                        <div class="row centrarForzado validarDatos" >
+                            <div clasS="hide">
+                                {% if form_error('nombre_tienda') %}
+                                    <span class="valError">El nombre de está tienda ya existe</span>
+                                {% endif %}
+                                {% if form_error('subdominio_tienda') %}
+                                    <span class="valError">Está página <b>pormayor.pe</b> ya está registrada</span>
+                                {% endif %}
+                                {% if form_error('ruc') %}
+                                    <span class="valError">Este RUC ya está asignado a una cuenta</span>
+                                {% endif %}
+                            </div>
+                            <div class="col s6 center hide" style="margin-top:15px;">
+                                <input type="radio" name="tipo_negocio" class="radioRUC" id="radio1" value="1" checked>
+                                <label for="radio1">Natural</label>
+                            </div>
+                             <div class="col s6 center hide" style="margin-top:15px;">
+                                <input type="radio" name="tipo_negocio" class="radioRUC" id="radio2" value="2" >
+                                <label for="radio2">Jurídica</label>
+                            </div> 
+                            <div class="col s12 center enfasisB fontA">
+                                <div class="dividerMargin"></div>
+                                INGRESA TU RUC
+                            </div>
+                            <div class="col s12 l12 input-field notOpacity">
+                                <i class="material-icons prefix transitionB">description</i>
+                                <input name="ruc" type="number" placeholder="Ingresa tu RUC" class=".form-group ruc {% if form_error('ruc') %}red-text{% endif %}" id="ruc" minlenght="11" placeholder="" required="" {% if (success) %} value="{{set_value('ruc')}}"{% endif %}>
+                                <label for="ruc" class="active">RUC</label>
+                            </div>
+                            <div class="col s12">
+                                <div class="divider dividerMargin"></div>
+                            </div>
+                            <div class="col s12 l12 input-field" style="display:none;">
+                                <input name="razon_social" type="text"  class=".form-group" id="razon_social"  required="" {% if (success) %} value="{{set_value('razon_social')}}"{% endif %} readonly="">
+                                <label for="razon_social" class="active">Razón Social de tienda</label>
+                            </div>
+                            <div class="input-field col s12 l12">
+                                <i class="material-icons prefix transitionB">store</i>
+                                <input type="text" name="nombre_tienda" class="nombre_tienda .form-group {% if form_error('nombre_tienda') %}red-text{% endif %}" disabled placeholder="Nombre de su tienda" id="nombre_tienda" required="required" {% if (success) %} value="{{set_value('nombre_tienda')}}" {% endif %}>
+                                <label for="icon_prefix" class="active">Nombre de la Tienda</label>
+                            </div>
+                            <div class="input-field col s12 l12 positionRelative">
+                                <i class="material-icons prefix transitionB">insert_link</i>
+                                <input type="hidden" name="fecha_inscripcion" id="fecha_inscripcion" value="{{ "now"|date("Y/m/d") }}">
+                                <input type="text" name="subdominio_tienda" id="subdominio_tienda" placeholder="" class=".form-group {% if form_error('subdominio_tienda') %}red-text{% endif %}" disabled required {% if (success) %} value="{{set_value('subdominio_tienda')}}"{% endif %}>
+                                <div class="valign-wrapper negrita positionAbsolute right0 enfasisB white" style="height:3rem;z-index: 5;padding: 0px 15px;">.PORMAYOR.PE</div>
+                                <label for="icon_prefix" class="active">Página (se puede modificar)</label>
+                            </div>
+                            <div class="col s12 center">
+                              <br>
+                                <input type="checkbox" class="filled-in terminosCheck" id="filled-in-box" />
+                                <label style="font-size:1rem" class="grey-text text-darken-3" for="filled-in-box">Acepto los <a class="pormayorUnico-text negrita" href="{{base_url()}}Legal/ ">Términos y Condiciones</a> y los <a class="pormayorUnico-text negrita" href="{{base_url()}}legal/privacidad">costos y comisiones de pormayor.pe</a></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action center">
+                        <button  type="button" class="btn btnCrear disabled pormayorUnico white-text">Crear Tienda</button>
+                        <input class="hide" type="submit" id="btnCrearTienda" name="btnCrearTienda" value="Crear Tienda">
+                    </div>
+                </div>
+            </div>
+            {% if userAgent == "PC" %}
+                <div class="col hide-on-small-only m6 l6">
+                    <a href="#utilizar" class="grey-text text-darken-3 crear_infoBtn">
+                        <div class="card horizontal">
+                          <div class="card-image">
+                            <img src="{{ruta_img}}crearTienda_3.webp">
+                          </div>
+                          <div class="card-stacked transition">
+                            <div class="card-content centrarForzado center fontA">
+                                <p>¿PORQUÉ UTILIZAR PORMAYOR.PE?</p>
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </div>
+                          </div>
+                        </div>
+                    </a>
+                    <br>
+                    <a href="#vendes" class="grey-text text-darken-3 crear_infoBtn">
+                        <div class="card horizontal">
+                          <div class="card-image">
+                            <img src="{{ruta_img}}crearTienda_1.webp">
+                          </div>
+                          <div class="card-stacked transition">
+                            <div class="card-content centrarForzado center fontA">
+                              <p>¿CÓMO VENDES CON NOSOTROS?</p>
+                              <i class="material-icons">keyboard_arrow_down</i>
+                            </div>
+                          </div>
+                        </div>
+                    </a>
+                    <br>
+                    <a href="#faq" class="grey-text text-darken-3 crear_infoBtn">
+                        <div class="card horizontal">
+                          <div class="card-image">
+                            <img src="{{ruta_img}}crearTienda_2.webp">
+                          </div>
+                          <div class="card-stacked transition">
+                            <div class="card-content centrarForzado center fontA">
+                              <p>PREGUNTAS FRECUENTES</p>
+                              <i class="material-icons">keyboard_arrow_down</i>
+                            </div>
+                          </div>
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    {{form_close()}}
+    <div class="row centrarForzado">
+        <div class="col l12 white" id="utilizar">
+            <h1 class=" fontC grey-text text-darken-2 sinBordeBottom hide-on-med-and-down">¿Porqué utilizar <b>pormayor.pe?</b></h1>
+            <h1 class=" fontE grey-text text-darken-2 sinBordeBottom hide-on-large-only">¿Porqué utilizar <b>pormayor.pe?</b></h1>
+            <div class="divider dividerMargin"></div>
+            <br>
+            <div class="row">
+                <div class="col s12 l3 center" {% if userAgent == "PC" %}style="border-right: 1px solid rgba(0,0,0,0.1)"{% endif %}>
+                    <i class="material-icons medium orange-text text-darken-1">payment</i><br>
+                    <p class="negrita sinBordeBottom">Contacto directo desde productos</p>
+                    <p class="simpleTexto centrarForzado">Tus compradores podrán contactarte directamente por whatsapp desde tus productos</p>
+                </div>
+                <div class="col s12 l3 center" {% if userAgent == "PC" %}style="border-right: 1px solid rgba(0,0,0,0.1)"{% endif %}>
+                    <br class="hide-on-large-only"><br class="hide-on-large-only">
+                    <i class="material-icons medium orange-text text-darken-1">add_shopping_cart</i><br>
+                    <p class="negrita sinBordeBottom">Precios según cantidad</p>
+                    <p class="simpleTexto centrarForzado">Coloca tus precios de acuerdo a la cantidad que te compren.</p>
+                </div>
+                <div class="col s12 l3 center" {% if userAgent == "PC" %}style="border-right: 1px solid rgba(0,0,0,0.1)"{% endif %}>
+                    <br class="hide-on-large-only"><br class="hide-on-large-only">
+                    <i class="material-icons medium orange-text text-darken-1">storage</i><br>
+                    <p class="negrita sinBordeBottom">Venta directa o por cotización</p>
+                    <p class="simpleTexto centrarForzado">Tus compradores pueden comprarte directamente o pedirte una cotización que luego decidirás si contestar o no.</p>
+                </div>
+                <div class="col s12 l3 center" {% if userAgent == "PC" %}style="border-right: 1px solid rgba(0,0,0,0.1)"{% endif %}>
+                    <br class="hide-on-large-only"><br class="hide-on-large-only">
+                    <i class="material-icons medium orange-text text-darken-1">security</i><br>
+                    <p class="negrita sinBordeBottom">Venta Segura</p>
+                    <p class="simpleTexto centrarForzado">Sin estafas en tus ventas gracias a nuestros sistemas de seguridad y monitoreo.</p>
+                </div>
+                <div class="col l12 hide-on-med-and-down"><br><br></div>
+                <div class="col s12 l3 center">
+                    <br class="hide-on-large-only"><br class="hide-on-large-only">
+                    <i class="material-icons medium orange-text text-darken-1">markunread</i><br>
+                    <p class="negrita sinBordeBottom">Marketing Digital</p>
+                    <p class="simpleTexto centrarForzado">Posiciónate y aumenta la visibilidad de tu tienda. ¡Nosotros nos encargamos!</p>
+                </div>
+                <div class="col s12 l3 center" {% if userAgent == "PC" %}style="border-right: 1px solid rgba(0,0,0,0.1)"{% endif %}>
+                    <br class="hide-on-large-only"><br class="hide-on-large-only">
+                    <i class="material-icons medium orange-text text-darken-1">access_time</i><br>
+                    <p class="negrita sinBordeBottom">Tienda siempre abierta</p>
+                    <p class="simpleTexto centrarForzado">Vende 24/7 cómodamente ¡Y hasta desde tu casa!</p>
+                </div>
+                <div class="col s12 l3 center" {% if userAgent == "PC" %}style="border-right: 1px solid rgba(0,0,0,0.1)"{% endif %}>
+                    <br class="hide-on-large-only"><br class="hide-on-large-only">
+                    <i class="material-icons medium orange-text text-darken-1">perm_phone_msg</i><br>
+                    <p class="negrita sinBordeBottom">Atención Personalizada</p>
+                    <p class="simpleTexto centrarForzado">Personal experto para orientarte o ayudarte cuando lo necesites.</p>
+                </div>
+                <div class="col s12 l3 center">
+                    <br class="hide-on-large-only"><br class="hide-on-large-only">
+                    <i class="material-icons medium orange-text text-darken-1">public</i><br>
+                    <p class="negrita sinBordeBottom">Del Perú para el Perú</p>
+                    <p class="simpleTexto centrarForzado">Somos el primer Megamercado Mayorista Peruano, sabemos cómo ayudarte y podemos hacerlo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row centrarForzado">
+        <div class="col s12 sinPadding"><br><br><br class="hide-on-med-and-down"></div>
+        <div class="col l12 blue darken-2" id="vendes">
+            <h1 class=" fontC white-text sinBordeBottom hide-on-med-and-down">Solo puedes vender si tienes...</b></h1>
+            <h1 class=" fontE white-text sinBordeBottom hide-on-large-only">Solo puedes vender si tienes...</b></h1>
+            <div class="divider white dividerMargin" style="opacity:.2"></div>
+            <br>
+            <div class="row centrarForzado">
+                <div class="col s12 l4 center valign-wrapper opacidad8">
+                    <div class="{% if userAgent == 'PC' %}centrarForzado{% endif %} valign-wrapper">
+                        <i class="material-icons fontD white-text">check</i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="fontD2 white-text">Identificación DNI</span>
+                    </div>
+                </div>
+                <div class="col s12 hide-on-large-only"><div class="dividerMargin"></div></div>
+                <div class="col s12 l4 center valign-wrapper opacidad8">
+                    <div class="{% if userAgent == 'PC' %}centrarForzado{% endif %} valign-wrapper">
+                        <i class="material-icons fontD white-text opacidad8">check</i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="fontD2 white-text">RUC Vigente</span>
+                    </div>
+                </div>
+                <div class="col s12 hide-on-large-only"><div class="dividerMargin"></div></div>
+                <div class="col s12 l4 center valign-wrapper opacidad8">
+                    <div class="{% if userAgent == 'PC' %}centrarForzado{% endif %} valign-wrapper">
+                        <i class="material-icons fontD white-text opacidad8" style="opacity:.8">check</i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="fontD2 white-text">Emisión de boletas o facturas</span>
+                    </div>
+                </div>
+                <div class="col s12"><br></div>
+                <div class="col l12 hide-on-med-and-down">
+                    <p class="right fontB2"><span class="white-text" style="opacity:.5">No todos los productos son aceptados en pormayor.pe.</span> <a href="{{base_url()}}Legal/prohibidos" class="pormayor-text"> Conoce cuáles están permitidos</a></p>
+                </div>
+                <div class="col l12 hide-on-large-only">
+                    <p class="right fontD2"><span class="white-text" style="opacity:.5">No todos los productos son aceptados en pormayor.pe.</span> <a href="{{base_url()}}Legal/prohibidos" class="pormayor-text"> <u>Conoce cuáles están permitidos</u></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if userAgent == "PC" %}
+        <div class="row centrarForzado">
+            <div class="col l8 sinPadding white">
+                <div class="stepsCrear" >
+                    <div >
+                        <div class="row centrarForzado valign-wrapper positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">1&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col l4">
+                                <div class=" centrarForzado" style="background: url('{{ruta_img}}crearTienda_5.webp')"></div>
+                            </div>
+                            <div class="col l8 fontD simpleTexto enfasisA">
+                                <span class="negrita">Crea tu tienda</span> con tu DNI y RUC válido
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div >
+                        <div class="row centrarForzado valign-wrapper positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">2&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col l4">
+                                <div class=" centrarForzado" style="background: url('{{ruta_img}}crearTienda_6.webp')"></div>
+                            </div>
+                            <div class="col l8 fontD simpleTexto enfasisA">
+                                <span class="negrita">Agrega productos</span> a precios competitivos
+                            </div>
+                        </div>
+                    </div>
+                    <div >
+                        <div class="row centrarForzado valign-wrapper positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">3&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col l4">
+                                <div class=" centrarForzado" style="background: url('{{ruta_img}}crearTienda_7.webp')"></div>
+                            </div>
+                            <div class="col l8 fontD simpleTexto enfasisA">
+                                <span class="negrita">Monitorea constantemente</span> tu correo para saber cuando realizaste una venta
+                            </div>
+                        </div>
+                    </div>
+                    <div >
+                        <div class="row centrarForzado valign-wrapper positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">4&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col l4">
+                                <div class=" centrarForzado" style="background: url('{{ruta_img}}crearTienda_8.webp')"></div>
+                            </div>
+                            <div class="col l8 fontD simpleTexto enfasisA">
+                                <span class="negrita">Te llamaremos</span> para coordinar el envío de los productos a tu comprador
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row centrarForzado valign-wrapper positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">5&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col l4">
+                                <div class=" centrarForzado" style="background: url('{{ruta_img}}crearTienda_9.webp')"></div>
+                            </div>
+                            <div class="col l8 fontD simpleTexto enfasisA">
+                                Recibirás tu dinero en <span class="negrita">5 días hábiles</span> que comienzan a partir del día de pago del comprador.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col l4 z-depth-2 sinPadding positionRelative" style="height: 250px;overflow:hidden">
+                <img class="anchoTotal" src="{{ruta_img}}crearTienda_4.webp">
+            </div>
+            <div class="col l4 offset-l8 sinPadding positionRelative sinUser">
+                <div  class="comoBoton positionAbsolute left0 bottom0 prevButtonCrear center white-text" style="width:50%"><i class=" material-icons enfasisA2 left">keyboard_arrow_left</i>ANTERIOR</div>
+                <div  class="comoBoton positionAbsolute right0 bottom0 nextButtonCrear center white-text" style="width:50%"><i class=" material-icons enfasisA2 right">keyboard_arrow_right</i>SIGUIENTE</div>
+            </div>
+        </div>
+    {% else %}
+         <div class="row centrarForzado">
+            <div class="col s12 sinPadding positionRelative asiFuncionaM" style="background: url('{{ruta_img}}crearTienda_4M.webp')">
+                <div  class="comoBoton positionAbsolute right0 bottom0 prevButtonCrear center white-text valign-wrapper" style="height:50%" ><i class="centrarForzado fontD material-icons enfasisA2">keyboard_arrow_left</i></div>
+                <div  class="comoBoton positionAbsolute right0 top0 nextButtonCrear center white-text valign-wrapper" style="height:50%" ><i class="centrarForzado fontD material-icons enfasisA2">keyboard_arrow_right</i></div>
+            </div>
+            <div class="col s12 sinPadding white">
+                <div class="stepsCrear" >
+                    <div >
+                        <div class="row centrarForzado positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">1&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col s12"><br><br><br></div>
+                            <div class="col s12 center">
+                                <div class="centrarForzado" style="background: url('{{ruta_img}}crearTienda_5M.webp')"></div>
+                                <div class="dividerMargin"></div>
+                            </div>
+                            <div class="col s12 fontE center simpleTexto enfasisA">
+                                <span class="negrita">Crea tu tienda</span> con tu DNI y RUC válido
+                            </div>
+                        </div>
+                    </div>
+                    <div >
+                        <div class="row centrarForzado positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">2&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col s12"><br><br><br></div>
+                            <div class="col s12 center">
+                                <div class="centrarForzado" style="background: url('{{ruta_img}}crearTienda_6M.webp')"></div>
+                                <div class="dividerMargin"></div>
+                            </div>
+                            <div class="col s12 fontE center simpleTexto enfasisA">
+                                <span class="negrita">Agrega productos</span> a precios competitivos
+                            </div>
+                        </div>
+                    </div>
+                    <div >
+                        <div class="row centrarForzado positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">3&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col s12"><br><br><br></div>
+                            <div class="col s12 center">
+                                <div class="centrarForzado" style="background: url('{{ruta_img}}crearTienda_7M.webp')"></div>
+                                <div class="dividerMargin"></div>
+                            </div>
+                            <div class="col s12 fontE center simpleTexto enfasisA">
+                                <span class="negrita">Monitorea constantemente</span> tu correo para saber cuando realizaste una venta
+                            </div>
+                        </div>
+                    </div>
+                    <div >
+                        <div class="row centrarForzado positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">4&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col s12"><br><br><br></div>
+                            <div class="col s12 center">
+                                <div class="centrarForzado" style="background: url('{{ruta_img}}crearTienda_8M.webp')"></div>
+                                <div class="dividerMargin"></div>
+                            </div>
+                            <div class="col s12 fontE center simpleTexto enfasisA">
+                                <span class="negrita">Te llamaremos</span> para coordinar el envío de los productos a tu comprador
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row centrarForzado positionRelative">
+                            <div class="positionAbsolute left0 top0 pormayorUnico-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="negrita">5&nbsp;</span><span class="fontC positionAbsolute">/&nbsp;5</span>
+                            </div>
+                            <div class="col s12"><br><br><br></div>
+                            <div class="col s12 center">
+                                <div class="centrarForzado" style="background: url('{{ruta_img}}crearTienda_9M.webp')"></div>
+                                <div class="dividerMargin"></div>
+                            </div>
+                            <div class="col s12 fontE center simpleTexto enfasisA">
+                                Recibirás tu dinero en <span class="negrita">5 días hábiles</span> que comienzan a partir del día de pago del comprador.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="row centrarForzado">
+        <div class="col s12 sinPadding"><br><br><br class="hide-on-med-and-down"></div>
+        <div class="col l12 grey darken-2" id="faq" >
+            <h1 class=" fontC white-text sinBordeBottom hide-on-med-and-down">Respondemos todas <b>tus dudas</b></b></h1>
+            <h1 class=" fontE white-text sinBordeBottom hide-on-large-only">Respondemos todas <b>tus dudas</b></b></h1>
+            <div class="divider white dividerMargin" style="opacity:.2"></div>
+            <br>
+            <div class="row grey lighten-3 sinBordeBottom" >
+                <div class="col s12 sinPadding"><br></div>
+                <div class="col s12 l12">
+                    <ul class="collapsible z-depth-0" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header negrita positionRelative enfasisA">¿Está permitido vender todo en Pormayor.pe?<i class="grey-text material-icons positionAbsolute right0">keyboard_arrow_down</i></div>
+                            <div class="collapsible-body">
+                                <p class="enfasisB">
+                                    Aunque puedes vender casi todo en <a href="//pormayor.pe" class="negrita pormayorUnico-text">www.pormayor.pe</a> existe una lista de productos restringidos que no puedes publicar, que puedes consultar <a href="{{base_url()}}Legal/prohibidos" class="negrita pormayorUnico-text">aquí.</a>
+                                </p>
+
+                                <p class="enfasisB">
+                                    Todos los productos deben ser legales, nuevos y originales; además de estar disponibles dentro del Perú. Estos productos podrán ser comprados por cualquier usuario.
+                                </p>
+
+                                <p class="enfasisB">
+                                    Podrás agregar nuevos productos, editar sus rangos de precios, stock, imágenes y desactivarlos; ingresando a tu cuenta en el <i>panel de tienda</i>.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header negrita positionRelative enfasisA">¿Cuáles son los costos de vender en pormayor?<i class="grey-text material-icons positionAbsolute right0">keyboard_arrow_down</i></div>
+                            <div class="collapsible-body">
+                                <p class="enfasisB">
+                                    Solo deberás pagar una subscripción si generas al menos una venta y una comisión por cada venta de acuerdo al plan que contrataste (consulta las <a href="{{base_url()}}Legal/tarifas" class="negrita pormayorUnico-text">tarifas de pormayor</a>). Si generas una venta recibirás tu dinero y <u>solo después</u> debes decidir si contratar una subscripción con pormayor.pe.
+                                </p>
+
+                                <p class="enfasisB">
+                                    Los pagos por ventas de productos se realizarán vía transferencia bancaria. Por cada venta recibirás tus pagos dentro de un período de <u>5 días</u>, estos comienzan a partir del día de pago del comprador.
+                                </p>
+
+                                <p class="enfasisB">
+                                    Con cada venta deberás <u>enviar la factura o boleta</u> correspondiente a la opción seleccionada por el comprador, <u>tu escoges</u> cual comprobante de pago deseas entregar por cada producto.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header negrita positionRelative enfasisA">¿Cómo funciona el envío de productos?<i class="grey-text material-icons positionAbsolute right0">keyboard_arrow_down</i></div>
+                            <div class="collapsible-body">
+                                <p class="enfasisB">
+                                    <u>No está permitido</u> entregar el producto personalmente en la tienda por motivos de seguridad, y tampoco podrás utilizar vehículos o unidades propias para repartir tus productos.
+                                </p>
+                                <p class="enfasisB">
+                                    <u>Solo cuando la venta este completamente procesada</u> recibirás una guía de envío en tu correo con todos los datos de la misma, deberás usar paqueterías autorizadas para enviar todos tu productos.
+                                </p>
+
+                                <p class="enfasisB">
+                                    El comprador <u>cubre los costos de envío</u> mediante el pago contra entrega. Todo este proceso será supervisado y controlado por nuestro departamento de ventas
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header negrita positionRelative enfasisA">Preparación de productos para su envío<i class="grey-text material-icons positionAbsolute right0">keyboard_arrow_down</i></div>
+                            <div class="collapsible-body">
+                                <p class="enfasisB">
+                                    Empaca tu producto protegiéndolo totalmente para evitar daños durante su envío, recuerda que <u>los proveedores deberán aceptar todas las devoluciones</u> en caso de que el producto llegue dañado.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s12">
+                    <ul class="collapsible z-depth-0" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header negrita positionRelative enfasisA">¿Pormayor.pe entrega factura por la comisión de las ventas?<i class="grey-text material-icons positionAbsolute right0">keyboard_arrow_down</i></div>
+                            <div class="collapsible-body">
+                                <p class="enfasisB">
+                                    Sí, te entregaremos una factura por <u>concepto de comisión de ventas concretadas</u>; cubriendo el monto correspondiente a las comisiones retenidas durante el mes.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s12 sinPadding"><br></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        var logo ="{{ruta_img}}logoNegativo.svg";
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+    <script src="{{base_url('public/')}}js/jquery.validate.js"></script>
+    <script src="{{base_url('public/js/tienda/')}}crear_tienda2.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

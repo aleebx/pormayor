@@ -1,0 +1,35 @@
+<label>CATEGORIAS LISTA VIEJA</label>
+<table>
+    <thead>
+        <tr>
+            <th>NOMBRE</th>
+            <th>CAT</th>
+            <th>SUB</th>
+            <th>DET</th>
+            <th>COL</th>
+            <th>VAR</th>
+            <th>VAO</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for pro in prodetalle %}
+    <tr>
+        <td>{{pro.Pro_Nombre}}</td>
+        <td>{{pro.Cat_Nombre}}</td>
+        <td>{{pro.Suc_Nombre}}</td>
+        <td>{{pro.Des_Nombre}}</td>
+        <td>{{pro.SKU_Color}}</td>
+        <td>{{pro.Var_Nombre}}</td>
+        <td>{{pro.Vao_Nombre}}</td>
+    </tr>
+
+{% endfor %}
+    </tbody>
+</table>
+
+{% block script %}
+	<script>
+	$(document).ready(function(){
+ 
+	});
+ {% endblock %}

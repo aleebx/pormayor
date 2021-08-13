@@ -1,0 +1,13 @@
+{% if usuario.logueado %}
+  {% set favorito = false %}
+  {% for prf in productos_favoritos if not favorito %}
+    {% if prf.Pro_IdProducto == pro.Pro_IdProducto %}
+      {% set favorito = true %}
+    {% endif %}
+  {% endfor %}
+  {% if favorito %}
+    <img class="positionAbsolute favMostrar seleccionado" src="{{ruta_img}}fav.svg" type="image/svg+xml"></img>
+  {% else %}
+    <img class="positionAbsolute favMostrar" src="{{ruta_img}}fav.svg" type="image/svg+xml"></img>
+  {% endif %}
+{% endif %}

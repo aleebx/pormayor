@@ -1,0 +1,266 @@
+{% if usuario.rol == 1 %}
+  {% set template = "layout/intranet/template_adm.twig" %}
+{% else %}
+  {% set template = "layout/intranet/template_usu.twig" %}
+{% endif %}
+
+{% extends template %}
+
+{% block head %}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <style type="text/css">
+    .select2-container {
+      margin-top:10px;
+    }
+    
+    .picker__box {
+      top:10%;
+      position:relative;
+    }
+    
+    .select2-selection {
+      height:35px !important;
+      width:255px;
+    }
+    
+    .picker__date-display {
+      background-color:#FEC00F;
+    } 
+    
+    .fixSelect .select2-selection,.fixSelect.select2-container {
+      width:100% !important;
+    }
+
+    .picker__day.picker__day--today,.picker__today,.picker__close { 
+      color:#0D0D0D;
+    } 
+    
+    .picker__day--selected,.picker--focused .picker__day--selected {
+      color:#F5F4F3;
+      font-weight:700;
+      background-color:#0D0D0D; 
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <main class="container muayuscula">
+    <div class="row infoCointainer" id="addLocal">
+      <div class="col s12 m12 l12">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header enfasisA"><i class="enfasisB material-icons">person</i>Datos Personales</div>
+            <div class="collapsible-body sinPadding">
+              {{form_open("",{role:'form',id:'formulario_datos',class:'form-horizontal login-form'})}}
+                <div class="row cardContentFix">
+                  <div class="input-field col {% if userAgent == "PC" %}s4{% else %}s12{% endif %}">
+                      <input type="hidden" id="Per_IdPersona" class="validate" name="Per_IdPersona" value="{{datos_usuario.Per_IdPersona}}" required="">
+                      <input type="text" id="dni" class="validate" name="dni" value="{{datos_usuario.Per_Dni}}" required="">
+                      <label for="dni" class="active">DNI</label>
+                  </div> 
+
+                  <div class="input-field col {% if userAgent == "PC" %}s4{% else %}s12{% endif %}">
+                    <input type="text" id="nombre" class="validate muayuscula" name="nombre" value="{{datos_usuario.Per_Nombre}}" required="">
+                    <label for="nombre" class="active">Nombre Completo</label>
+                  </div>
+                  
+                  <div class="input-field col {% if userAgent == "PC" %}s4{% else %}s12{% endif %}">
+                    <input type="date" id="fecha_nacimiento" class="datepicker" name="fecha_nacimiento" value="{{datos_usuario.Per_FechaNacimiento}}">
+                    <label for="fecha_nacimiento" class="active">Fecha de Nacimiento</label>
+                  </div>
+                
+                  <div class="input-field col {% if userAgent == "PC" %}s4{% else %}s12{% endif %}">
+                    <select name="selSexo">
+                      <option disabled value="">-Seleccione-</option>
+                      <option value="1" {% if datos_usuario.Per_Sexo == 1 %}selected{% endif %}>MASCULINO</option>
+                      <option value="2" {% if datos_usuario.Per_Sexo == 2 %}selected{% endif %}>FEMENINO</option>
+                    </select>
+                    <label style="font-size:14px;">Sexo</label>
+                  </div>
+                  
+                  <div class="input-field col {% if userAgent == "PC" %}s4{% else %}s12{% endif %}">
+                    <input type="text" id="telefono" class="validate" name="telefono" value="{{datos_usuario.Per_Telefono}}" minlength="9" maxlength ="9">
+                    <label for="telefono" class="active">Telefono</label>
+                  </div>
+                  
+                  <div class="input-field col {% if userAgent == "PC" %}s4{% else %}s12{% endif %}">
+                    <input type="text" id="celular" class="validate" name="celular" value="{{datos_usuario.Per_Celular}}" minlength="9" maxlength ="9">
+                    <label for="celular" class="active">Celular</label>
+                  </div>
+
+                  <div class="col s12 m4 l4 fixSelect">
+                    <label for="selDepartamento" style="font-size:15px;">Departamento</label><br>
+                    <select class="selectDir1 browser-default" name="selDepartamento" id="selDepartamento" style="width:100%">
+                      {% for reg in regiones %}
+                        <option value="{{reg.id}}" {% if reg.id == datos_usuario.Region_Id %} selected="" {% endif %}>{{reg.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  
+                  <div class="col s12 m4 l4 fixSelect" id="ajax_lista_provincias">
+                    <label for="selProvincia" style="font-size:15px;"> Provincia</label>
+                    <select class="selectDir2 browser-default" name="selProvincia" id="selProvincia" style="width:100%">
+                      {% for pro in provincias %}
+                        <option value="{{pro.id}}" {% if pro.id == datos_usuario.Provincia_Id %} selected="" {% endif %}>{{pro.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                    <div class="col s12 m4 l4 fixSelect" id="ajax_lista_distritos">
+                      <label for="selDistrito" style="font-size:15px;"> Distrito</label>
+                        <select class="selectDir3 browser-default" name="selDistrito" id="selDistrito" style="width:100%">
+                          {% for dis in distritos %}
+                            <option value="{{dis.id}}" {% if dis.id == datos_usuario.Distrito_Id %} selected="" {% endif %}>{{dis.name}}</option>
+                          {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="input-field col s12 m6 l12"></div>
+
+                    <div class="input-field col s12 m6 l12">
+                      <input type="text" id="direccion" class="validate muayuscula" name="direccion" value="{{datos_usuario.Per_Direccion}}">
+                      <label for="direccion" class="active">Dirección</label>
+                    </div>
+                  </div>
+
+                  <div class="right-align" style="padding:15px">
+                    <div id="loadTienda"></div>
+                    <input id="btnActualizar" type="submit" name="btnActualizar" value="Guardar" class="btn white-text">
+                  </div>
+              {{ form_close() }}
+            </div>
+          </li>
+
+          <li>
+            <div class="collapsible-header enfasisA"><i class="enfasisB material-icons">lock</i>Cambiar Contraseña</div>
+            <div class="collapsible-body sinPadding">
+              {{ form_open("", {role: 'form', id: 'formulario_cambiar', class:'form-horizontal login-form'}) }}
+                  <div class="row cardContentFix">
+                    <div class="input-field col s12">
+                      <input type="text" id="correo" class="validate" name="correo" value="{{datos_usuario.Usu_Correo}}" required="" disabled="">
+                      <label for="correo" class="active">Correo</label>
+                    </div> 
+                    <div class="input-field col s12">
+                      <input type="password" id="clave" class="validate" name="clave" required="">
+                      <label for="clave" class="active">Contraseña actual</label>
+                    </div>
+                    <div class="input-field col {% if userAgent == "PC" %}s6{% else %}s12{% endif %}">
+                      <input type="password" id="clave_nueva" class="validate" name="clave_nueva" required="">
+                      <label for="clave_nueva" class="active">Contraseña Nueva</label>
+                    </div>
+                    <div class="input-field col {% if userAgent == "PC" %}s6{% else %}s12{% endif %}">
+                      <input type="password" id="clave_nueva2" class="validate" name="clave_nueva2" required="">
+                      <label for="clave_nueva2" class="active">Repetir Contraseña</label>
+                    </div>
+                  </div>
+                  <div id="test" class="right-align" style="padding:15px">
+                    <div id="loadTienda"></div>
+                    <input type="submit" name="btnCambiarClave" value="Guardar" class="btn white-text">
+                  </div>
+                  {% if errors %}
+                    <div class="errorCard cardContentFix center" style="color: red">
+                    <p>{{errors.old_password}}</p>
+                    </div>
+                  {% endif %}
+                  {% if error %}
+                    <div class="errorCard cardContentFix center" style="color: red">
+                      {% if form_error('clave') %}
+                        <p>{{form_error('clave')}}</p>
+                      {% endif %}  
+                      {% if form_error('clave_nueva') %}
+                        <p>{{form_error('clave_nueva')}}</p>
+                      {% endif %}  
+                      {% if form_error('clave_nueva2') %}
+                        <p>{{form_error('clave_nueva2')}}</p>
+                      {% endif %}  
+                    </div>
+                  {% endif %}
+                </div>
+              {{ form_close() }}
+          </li>
+        </ul>
+      </div>
+      <div class="col s12 m6 l6">
+        <div class="card"></div>
+      </div>
+      <div class="col s12 m12 l12">
+        <div class="card">
+          <div class="card-content sinPadding"></div> 
+        </div>
+      </div>
+    </div>    
+  </main>
+</div>
+</main>
+{% endblock %}
+{% block script %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>  
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var sendForm=false;
+      $('.selectDir2').select2({
+        placeholder:'Selecciona la Provincia',
+        "language": {
+          "noResults":function(){
+            return "No hay datos cargados";
+          }
+        }
+      });
+
+      $('.selectDir3').select2({
+        placeholder: 'Selecciona el Distrito',
+        "language": {
+          "noResults": function(){
+            return "No hay datos cargados";
+          }
+        }
+      });
+
+      $('select').material_select();
+      
+      $('.datepicker').pickadate({
+        selectMonths:true,// Creates a dropdown to control month
+        selectYears:100,// Creates a dropdown of 15 years to control year,
+        max:true,
+        firstDay:1,
+        close:'Ok',
+        today:'Hoy',
+        clear:'Borrar',
+        monthsFull:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
+        monthsShort:["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Set","Oct","Nov","Dic"],
+        weekdays:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],
+        weekdaysShort:["Dom","Lun","Mar","Mie","Jue","Vie","Sab"],
+        weekdaysLetter:['D','L','M','M','J','V','S'],
+        closeOnSelect:false, // Close upon selecting a date
+        format:'yyyy-mm-dd'
+      });
+
+      //Usuario
+      $('#formulario_datos').submit(function(e) {
+        if(sendForm==false) {
+          e.preventDefault();
+        }
+
+        if(sendForm==false) {
+          Materialize.toast('<i class="material-icons left">check_circle</i>Datos guardados exitosamente',1500,'rounded successToast',function() {
+            sendForm=true;
+            $('#btnActualizar').trigger('click');
+          });
+        }
+      });
+
+      //Validacion de formularios
+      $("#formulario_datos").validate({
+        errorElement:'div',
+        errorPlacement:function(error,element) {
+          var placement=$(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+      });
+    });
+   </script>
+   <script src="{{base_url('public/')}}js/usuario/perfil.js" type="text/javascript"></script>
+{% endblock %}

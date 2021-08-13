@@ -1,0 +1,363 @@
+[19-Sep-2018 03:19:32 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 03:19:32 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=pepitocorazon&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 03:19:32 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 03:19:48 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “pepitocorazon.cocos.pe” has been added."},"preevent":{"result":1},"postevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 03:21:20 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 03:21:20 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=taxisanborja&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 03:21:20 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 03:21:37 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “taxisanborja.cocos.pe” has been added."},"event":{"result":1},"postevent":{"result":1},"preevent":{"result":1}}
+[19-Sep-2018 13:56:49 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 13:56:49 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=layconsa&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 13:56:49 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 13:57:07 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “layconsa.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 13:58:38 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 13:58:38 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=layconsa22&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 13:58:38 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 13:58:57 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “layconsa22.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 15:12:16 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 15:12:16 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=masias&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 15:12:16 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 15:12:37 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “masias.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 15:57:39 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 15:57:39 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=bretsa&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 15:57:39 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 15:58:00 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “bretsa.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 16:09:01 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 16:09:01 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=ans-peruana-eirl&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:09:01 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:09:22 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “ans-peruana-eirl.cocos.pe” has been added."},"event":{"result":1},"postevent":{"result":1},"preevent":{"result":1}}
+[19-Sep-2018 16:14:41 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 16:14:41 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=bequiza&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:14:41 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:15:00 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “bequiza.cocos.pe” has been added."},"event":{"result":1},"postevent":{"result":1},"preevent":{"result":1}}
+[19-Sep-2018 16:19:38 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 16:19:38 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=viva-g-y-m&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:19:38 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:19:58 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “viva-g-y-m.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 16:21:56 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 16:21:56 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=sedacusco&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:21:56 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:22:15 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “sedacusco.cocos.pe” has been added."},"event":{"result":1},"postevent":{"result":1},"preevent":{"result":1}}
+[19-Sep-2018 16:32:24 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 16:32:24 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=ferreyros&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:32:24 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:32:45 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “ferreyros.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 16:37:08 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 16:37:08 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=movistar&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:37:08 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:37:28 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “movistar.cocos.pe” has been added."},"event":{"result":1},"preevent":{"result":1},"postevent":{"result":1}}
+[19-Sep-2018 16:43:44 America/Lima] URL: http://www.cocos.pe:2082/json-api/cpanel
+[19-Sep-2018 16:43:44 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=construtorainmaculada&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:43:44 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:43:44 America/Lima] RESPONSE:
+ <html><head><META HTTP-EQUIV="refresh" CONTENT="2;URL=https://www.cocos.pe:2083/json-api/cpanel"></head><body></body></html>
+
+[19-Sep-2018 16:44:06 America/Lima] URL: https://www.cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 16:44:06 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=construtorainmaculada&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:44:06 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:44:27 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “construtorainmaculada.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 16:46:51 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 16:46:51 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=rimac-seguros&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:46:51 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:47:11 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “rimac-seguros.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 16:47:12 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 16:47:12 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=rimac-seguros&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 16:47:12 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 16:47:22 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"(XID 4zr35r) A DNS entry for the domain “rimac-seguros.cocos.pe” already exists."},"preevent":{"result":1},"event":{"result":0,"reason":"SubDomain::addsubdomain failed: (XID 4zr35r) A DNS entry for the domain “rimac-seguros.cocos.pe” already exists."},"postevent":{"result":1},"error":"SubDomain::addsubdomain failed: (XID 4zr35r) A DNS entry for the domain “rimac-seguros.cocos.pe” already exists."}
+[19-Sep-2018 17:13:22 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 17:13:22 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=mapfre&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 17:13:22 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 17:13:44 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “mapfre.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[19-Sep-2018 17:13:46 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 17:13:46 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=mapfre&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 17:13:46 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 17:13:56 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"(XID erbmgk) A DNS entry for the domain “mapfre.cocos.pe” already exists."},"postevent":{"result":1},"preevent":{"result":1},"event":{"reason":"SubDomain::addsubdomain failed: (XID erbmgk) A DNS entry for the domain “mapfre.cocos.pe” already exists.","result":0},"error":"SubDomain::addsubdomain failed: (XID erbmgk) A DNS entry for the domain “mapfre.cocos.pe” already exists."}
+[19-Sep-2018 17:29:51 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 17:29:51 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=electro-ucayali&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Fatienda
+[19-Sep-2018 17:29:51 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 17:30:13 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “electro-ucayali.cocos.pe” has been added."},"event":{"result":1},"preevent":{"result":1},"postevent":{"result":1}}
+[19-Sep-2018 17:49:55 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 17:49:55 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=claro&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 17:49:55 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 17:50:17 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “claro.cocos.pe” has been added."},"postevent":{"result":1},"event":{"result":1},"preevent":{"result":1}}
+[19-Sep-2018 19:34:12 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[19-Sep-2018 19:34:12 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=cicihaylas&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[19-Sep-2018 19:34:12 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[19-Sep-2018 19:34:34 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “cicihaylas.cocos.pe” has been added."},"postevent":{"result":1},"event":{"result":1},"preevent":{"result":1}}
+[20-Sep-2018 15:02:21 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[20-Sep-2018 15:02:21 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=mitiendita&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[20-Sep-2018 15:02:21 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[20-Sep-2018 15:02:48 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “mitiendita.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[22-Sep-2018 16:51:12 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[22-Sep-2018 16:51:12 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=podertecno&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[22-Sep-2018 16:51:12 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[22-Sep-2018 16:51:36 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “podertecno.cocos.pe” has been added."},"preevent":{"result":1},"postevent":{"result":1},"event":{"result":1}}
+[22-Sep-2018 18:52:10 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[22-Sep-2018 18:52:10 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=portal-alternativas-contables&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[22-Sep-2018 18:52:10 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[22-Sep-2018 18:52:33 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “portal-alternativas-contables.cocos.pe” has been added."},"preevent":{"result":1},"postevent":{"result":1},"event":{"result":1}}
+[22-Sep-2018 19:06:50 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[22-Sep-2018 19:06:50 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=bego&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[22-Sep-2018 19:06:50 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[22-Sep-2018 19:07:01 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"(XID ufhcb8) A DNS entry for the domain “bego.cocos.pe” already exists."},"preevent":{"result":1},"postevent":{"result":1},"event":{"result":0,"reason":"SubDomain::addsubdomain failed: (XID ufhcb8) A DNS entry for the domain “bego.cocos.pe” already exists."},"error":"SubDomain::addsubdomain failed: (XID ufhcb8) A DNS entry for the domain “bego.cocos.pe” already exists."}
+[23-Sep-2018 15:13:40 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[23-Sep-2018 15:13:40 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=greengold&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[23-Sep-2018 15:13:40 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[23-Sep-2018 15:14:02 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “greengold.cocos.pe” has been added."},"postevent":{"result":1},"event":{"result":1},"preevent":{"result":1}}
+[23-Sep-2018 15:30:28 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[23-Sep-2018 15:30:28 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=ejemplo2&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[23-Sep-2018 15:30:28 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[23-Sep-2018 15:30:49 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “ejemplo2.cocos.pe” has been added."},"preevent":{"result":1},"event":{"result":1},"postevent":{"result":1}}
+[23-Sep-2018 15:44:01 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[23-Sep-2018 15:44:01 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=sanfrancisco&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[23-Sep-2018 15:44:01 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[23-Sep-2018 15:44:24 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “sanfrancisco.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[23-Sep-2018 15:55:19 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[23-Sep-2018 15:55:19 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[23-Sep-2018 15:55:19 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[23-Sep-2018 15:55:19 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"Sorry, a subdomain was not specified.\n"},"preevent":{"result":1},"event":{"result":0,"reason":"SubDomain::addsubdomain failed: Sorry, a subdomain was not specified.\n"},"postevent":{"result":1},"error":"adminbin Cpanel/hooks/subdomain::addsubdomain: exit 1"}
+[23-Sep-2018 15:55:31 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[23-Sep-2018 15:55:31 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[23-Sep-2018 15:55:31 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[23-Sep-2018 15:55:32 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"Sorry, a subdomain was not specified.\n"},"preevent":{"result":1},"postevent":{"result":1},"event":{"reason":"SubDomain::addsubdomain failed: Sorry, a subdomain was not specified.\n","result":0},"error":"adminbin Cpanel/hooks/subdomain::addsubdomain: exit 1"}
+[23-Sep-2018 16:01:28 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[23-Sep-2018 16:01:28 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=bequiz&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[23-Sep-2018 16:01:28 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[23-Sep-2018 16:01:51 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “bequiz.cocos.pe” has been added."},"postevent":{"result":1},"event":{"result":1},"preevent":{"result":1}}
+[23-Sep-2018 17:16:22 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[23-Sep-2018 17:16:22 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=yupa&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[23-Sep-2018 17:16:22 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[23-Sep-2018 17:16:45 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “yupa.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[23-Sep-2018 19:39:09 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[23-Sep-2018 19:39:09 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=mitiendita&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[23-Sep-2018 19:39:09 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[23-Sep-2018 19:39:22 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"(XID 66bjmr) A DNS entry for the domain “mitiendita.cocos.pe” already exists."},"postevent":{"result":1},"preevent":{"result":1},"event":{"reason":"SubDomain::addsubdomain failed: (XID 66bjmr) A DNS entry for the domain “mitiendita.cocos.pe” already exists.","result":0},"error":"SubDomain::addsubdomain failed: (XID 66bjmr) A DNS entry for the domain “mitiendita.cocos.pe” already exists."}
+[23-Sep-2018 20:35:07 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[23-Sep-2018 20:35:07 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=mibanco&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[23-Sep-2018 20:35:07 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[23-Sep-2018 20:35:31 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “mibanco.cocos.pe” has been added."},"event":{"result":1},"preevent":{"result":1},"postevent":{"result":1}}
+[29-Sep-2018 23:00:33 America/Lima] PHP Fatal error:  require_once(): Failed opening required 'Facebook/autoload.php' (include_path='.:/home/cocospe/public_html/pormayor/application/libraries/Twig') in /home/cocospe/public_html/pormayor/application/libraries/Facebook.php on line 22
+[29-Sep-2018 23:01:14 America/Lima] PHP Fatal error:  require_once(): Failed opening required 'Facebook/autoload.php' (include_path='.:/home/cocospe/public_html/pormayor/application/libraries/Twig') in /home/cocospe/public_html/pormayor/application/libraries/Facebook.php on line 22
+[29-Sep-2018 23:03:42 America/Lima] PHP Fatal error:  require_once(): Failed opening required 'Facebook/autoload.php' (include_path='.:/home/cocospe/public_html/pormayor/application/libraries/Twig') in /home/cocospe/public_html/pormayor/application/libraries/Facebook.php on line 22
+[29-Sep-2018 23:35:04 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[29-Sep-2018 23:35:04 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=istproden&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[29-Sep-2018 23:35:04 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[29-Sep-2018 23:35:34 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “istproden.cocos.pe” has been added."},"event":{"result":1},"preevent":{"result":1},"postevent":{"result":1}}
+[30-Sep-2018 13:57:56 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[30-Sep-2018 13:57:56 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=apj&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[30-Sep-2018 13:57:56 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[30-Sep-2018 13:58:22 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “apj.cocos.pe” has been added."},"event":{"result":1},"preevent":{"result":1},"postevent":{"result":1}}
+[30-Sep-2018 15:32:56 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[30-Sep-2018 15:32:56 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=dorado&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[30-Sep-2018 15:32:56 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[30-Sep-2018 15:33:28 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “dorado.cocos.pe” has been added."},"preevent":{"result":1},"postevent":{"result":1},"event":{"result":1}}
+[30-Sep-2018 16:27:26 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[30-Sep-2018 16:27:26 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=n&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[30-Sep-2018 16:27:26 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[30-Sep-2018 16:27:54 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “n.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[30-Sep-2018 16:44:44 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[30-Sep-2018 16:44:44 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=o&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[30-Sep-2018 16:44:44 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[30-Sep-2018 16:45:17 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “o.cocos.pe” has been added."},"event":{"result":1},"postevent":{"result":1},"preevent":{"result":1}}
+[30-Sep-2018 17:08:09 America/Lima] URL: https://cocos.pe:2083/json-api/cpanel
+[30-Sep-2018 17:08:09 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=afrade&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[30-Sep-2018 17:08:09 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[30-Sep-2018 17:08:38 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “afrade.cocos.pe” has been added."},"preevent":{"result":1},"event":{"result":1},"postevent":{"result":1}}
+[30-Sep-2018 17:40:05 America/Lima] URL: https://186.64.119.125:2083/json-api/cpanel
+[30-Sep-2018 17:40:05 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=p&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[30-Sep-2018 17:40:05 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[30-Sep-2018 17:40:35 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “p.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[30-Sep-2018 17:53:07 America/Lima] URL: http://186.64.119.125:2082/json-api/cpanel
+[30-Sep-2018 17:53:07 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=r&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[30-Sep-2018 17:53:07 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[30-Sep-2018 17:53:07 America/Lima] RESPONSE:
+ <html><head><META HTTP-EQUIV="refresh" CONTENT="2;URL=https://blue91.dnsmisitio.net:2083/json-api/cpanel"></head><body></body></html>
+
+[30-Sep-2018 17:59:46 America/Lima] URL: http://186.64.119.125:2082/json-api/cpanel
+[30-Sep-2018 17:59:46 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=s&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[30-Sep-2018 17:59:46 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[30-Sep-2018 17:59:46 America/Lima] RESPONSE:
+ <html><head><META HTTP-EQUIV="refresh" CONTENT="2;URL=https://blue91.dnsmisitio.net:2083/json-api/cpanel"></head><body></body></html>
+
+[01-Oct-2018 14:49:00 America/Lima] URL: https://186.64.119.125:2083/json-api/cpanel
+[01-Oct-2018 14:49:00 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=saavedra&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[01-Oct-2018 14:49:00 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[01-Oct-2018 14:49:33 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “saavedra.cocos.pe” has been added."},"postevent":{"result":1},"preevent":{"result":1},"event":{"result":1}}
+[01-Oct-2018 17:44:15 America/Lima] URL: https://186.64.119.125:2083/json-api/cpanel
+[01-Oct-2018 17:44:15 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=terry&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[01-Oct-2018 17:44:15 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[01-Oct-2018 17:44:45 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “terry.cocos.pe” has been added."},"postevent":{"result":1},"event":{"result":1},"preevent":{"result":1}}
+[01-Oct-2018 17:45:17 America/Lima] URL: https://186.64.119.125:2083/json-api/cpanel
+[01-Oct-2018 17:45:17 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=terry&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[01-Oct-2018 17:45:17 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[01-Oct-2018 17:45:36 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"(XID k3sm28) A DNS entry for the domain “terry.cocos.pe” already exists."},"postevent":{"result":1},"event":{"result":0,"reason":"SubDomain::addsubdomain failed: (XID k3sm28) A DNS entry for the domain “terry.cocos.pe” already exists."},"preevent":{"result":1},"error":"SubDomain::addsubdomain failed: (XID k3sm28) A DNS entry for the domain “terry.cocos.pe” already exists."}
+[01-Oct-2018 17:46:30 America/Lima] URL: https://186.64.119.125:2083/json-api/cpanel
+[01-Oct-2018 17:46:30 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=angela&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[01-Oct-2018 17:46:30 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[01-Oct-2018 17:47:00 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “angela.cocos.pe” has been added."},"event":{"result":1},"preevent":{"result":1},"postevent":{"result":1}}
+[01-Oct-2018 17:50:28 America/Lima] URL: https://186.64.119.125:2083/json-api/cpanel
+[01-Oct-2018 17:50:28 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=marina&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[01-Oct-2018 17:50:28 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[01-Oct-2018 17:50:57 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “marina.cocos.pe” has been added."},"preevent":{"result":1},"postevent":{"result":1},"event":{"result":1}}
+[02-Oct-2018 18:31:10 America/Lima] URL: https://186.64.119.125:2083/json-api/cpanel
+[02-Oct-2018 18:31:10 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=luxusperu&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[02-Oct-2018 18:31:10 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[02-Oct-2018 18:31:45 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “luxusperu.cocos.pe” has been added."},"preevent":{"result":1},"postevent":{"result":1},"event":{"result":1}}
+[03-Oct-2018 07:30:04 America/Lima] URL: https://186.64.119.125:2083/json-api/cpanel
+[03-Oct-2018 07:30:04 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=ecos&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[03-Oct-2018 07:30:04 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[03-Oct-2018 07:30:39 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “ecos.cocos.pe” has been added."},"preevent":{"result":1},"postevent":{"result":1},"event":{"result":1}}
+[04-Oct-2018 10:31:48 America/Lima] URL: https://186.64.119.125:2083/json-api/cpanel
+[04-Oct-2018 10:31:48 America/Lima] DATA: cpanel_jsonapi_user=cocospe&cpanel_jsonapi_module=SubDomain&cpanel_jsonapi_func=addsubdomain&cpanel_jsonapi_apiversion=1&arg-0=mochilas-furia&arg-1=cocos.pe&arg-2=0&arg-3=0&arg-4=%2Fpublic_html%2Ftiendas
+[04-Oct-2018 10:31:48 America/Lima] Authentication Header: Authorization: Basic Y29jb3NwZTpuajc3M3hPcjJZ
+
+
+[04-Oct-2018 10:32:25 America/Lima] RESPONSE:
+ {"apiversion":"1","type":"event","module":"SubDomain","func":"addsubdomain","source":"module","data":{"result":"The subdomain “mochilas-furia.cocos.pe” has been added."},"preevent":{"result":1},"postevent":{"result":1},"event":{"result":1}}

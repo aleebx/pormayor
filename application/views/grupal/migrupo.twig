@@ -1,0 +1,220 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+	 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"  media="screen"/>
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/css/easyzoom.css"  media="screen"/>
+  <style type="text/css">
+    /*.btn-flat-not:hover{background-color: #21478F ;color: white !important;}*/
+    .sliderMobile .slick-list {padding:0px !important;}
+    .sliderMobile .slick-dots li.slick-active button:before{font-size: 70px !important;opacity: 1;color: {{configuracion.Con_ColorBtn}};}
+    .sliderMobile img{max-width:100%;max-height: 250px;}
+    .sliderMobile{height:250px;}
+    .card .card-image img {
+      width:auto !important;
+    }
+    .reloj{
+    border: 2px solid #f44336;
+    border-radius: 3px;
+    padding: 2px;
+    background-color: #f44336;
+    color: #ffffff;
+    }     
+  </style>
+{% endblock %}
+{% block content %}
+<main class="container">
+<div class="row">
+  <div class="col s12 l4">
+    <div class="card">        
+      <div class="card-image">
+          <div class="wrapperSliderImgMobile transition">
+            <div class="sliderMobile ">
+              {% for fot in fotos %}
+                {% if producto.Pro_IdProducto == fotos[0].producto_Pro_IdProducto %}
+                  {% if fot.Prf_Img|slice(0, 5)|lower != "nopic" %}
+                    <div>
+                      <img alt="{{producto.Pro_Nombre}} al pormayor" class="redondeo centrarForzado" src="{{ruta_img}}{{fot.Prf_Img}}">
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+      </div>
+      <div class="card-content pormayorUnico">
+        <br>
+        <span class="card-title activator white-text negrita">{{producto.Pro_Nombre}}<i class="material-icons right">more_vert</i></span>
+        {% set r3 = (producto.Pro_PrecioMinimo * 100) / producto.Pro_PrecioMaximo %}
+        {% set ahorro = 100 - r3 %}
+        {% if userAgent == "PC" %}
+        {% set caracteristicas = producto.Pro_Caracteristicas|split('|') %}
+          <ul class="caracteristicasLista">
+          {% for cat in caracteristicas %}
+            <li class="enfasisB fontB2 white-text"><i class="positionRelative material-icons fontB2">check</i>&nbsp;&nbsp;&nbsp; {{cat}}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>DETALLES</span>
+        <p>{{producto.Pro_Descripcion}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 l4">
+    <div class="card">
+      <div class="card-content row">
+        <div class="col s12 l12">
+          <span class="card-title">Un grupero comparte para comprar a precios de locura</span>
+          <div class="divider"></div>
+          {% set engrupo = inf_grupo.gruperos %}
+            {% if engrupo == 1 %}
+              {% set text = "grupero" %}
+            {% else %}
+              {% set text = "gruperos" %}
+            {% endif %}
+          {% if migrupo.Gru_Estado == 0 %}
+          <span class="card-title negrita">AVANCE DEL GRUPO</span>
+          <ul class="collection center">
+          {% for p in precios %}
+            {% if p.Prp_Desde <= engrupo and p.Prp_A >= engrupo %}
+              <li class="collection-item white-text pormayorUnico" style="border: 3px solid green;">
+              <img src="{{ruta_img}}groupU.svg" class="left" height="40px">
+                <span class="negrita fontD2">PRECIO ACTUAL</span><br>
+              <span class="negrita fontD">S/{{ p.Prp_Precios }}</span><br>
+              <span class="fontA"> {{engrupo}} {{text}}</span>
+            {% else %}
+              <li class="collection-item grey lighten-3">
+              <span>S/ {{ p.Prp_Precios }}</span><br>
+              De {{p.Prp_Desde}} a {% if p.Prp_A == '9999' %}+{% else %}{{p.Prp_A}}{% endif %} gruperos
+            {% endif %}
+            </li>
+          {% endfor %}
+          </ul>
+        {% else %}          
+          <ul class="collection center">
+            <li class="collection-item white-text pormayorUnico">
+              <img src="{{ruta_img}}groupU.svg" class="left" height="40px">
+              <span>Precio Actual</span><br>
+              <span class="negrita fontD">S/{{ migrupo.Gru_PrecioFinal}}</span>
+            </li>
+          </ul>
+        {% endif %}
+        </div>
+        <div class="col s12 l12 center"><br>
+          <div class="divider"></div>
+          <h5>COMPARTIR</h5>
+          <span class="card-title">Compartelo y hagamos que el precio baje hasta <b>S/{{producto.Pro_PrecioMinimo}}</b></span>
+          {% if userAgent != "PC" %}
+            <a href="fb-messenger://share/?link=https://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}&app_id=1956467824456142" class="btn blue"><img src="{{ruta_img}}/ms.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">MESSENGER</a>
+            <a href="whatsapp://send?text=https://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}" data-action="share/whatsapp/share" class="btn green"><img src="{{ruta_img}}/wa.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">WHATSAPP</a><br><br>
+          {% endif %}
+        </div>
+{#         <div class="col input-field s8 l8">
+            <input type="text" value="https:{{base_url()}}grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}" id="copiaLink">
+        </div> #}
+{#         <div class="col s4 l4"><br>
+            <a onclick="myCopia()" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Copiar el link para compartir">Copiar</a>
+        </div> #}
+        <div class="col s12 l12 center">
+          <div class="fb-like" data-href="http://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}?fb_ref=top_left&fb_source=profile_oneline" data-layout="button_count" data-action="recommend" data-size="large" data-show-faces="true" data-share="true"></div>
+        </div>
+        <div class="col s12 l12">
+          <span class="orange-text text-accent-4 fontC center">Ahorras hasta <b>{{ ahorro|round }}%</b></span><br>
+          <span class="green-text negrita"><i class="material-icons left tiny">visibility</i>{{vista.Pro_Vista}}</strong> han visto este producto</span><br>
+          {% if ventas_pro.ventas %}
+          <span class="orange-text negrita"><i class="material-icons left tiny">local_grocery_store</i>{{ventas_pro.ventas}}</strong> vendidos</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 l4">
+    <div class="card">
+      <div class="card-content">
+        {% if migrupo.Gru_Estado == 0 %}
+          <span class="fontD2">Este grupo se cierra en{% if userAgent != "PC" %}<br>{% endif %}<b class="reloj" id="dia"></b> <b class="reloj" id="hora"></b>:<b class="reloj" id="minuto"></b>:<b class="reloj" id="seg"></b></span><br><br>
+        {% else %}
+          <span class="reloj fontD2">GRUPO FINALIZADO</span><br><br>          
+        {% endif %}
+        {% if userAgent == "PC" %}
+          <a class="btn-large add_cart  anchoTotal green {% if migrupo.Gru_Estado == 0 %}disabled{% endif %}" data-is="{{migrupo.Sku_IdSku}}" data-ip="{{migrupo.Pro_IdProducto}}" data-pn="{{producto.Pro_Nombre}}" data-p="{{migrupo.Gru_PrecioFinal}}" data-v="{{migrupo.Grp_Variacion}}" data-u="{{migrupo.Grp_Unidad}}" data-img="{{producto.Prf_Img}}" data-c="{{migrupo.Grp_Color}}" data-tv="{{migrupo.Grp_TipoVar}}" data-it="{{migrupo.Tie_IdTienda}}" data-d="{{migrupo.Grp_Documento}}"><i class="left large material-icons">add_shopping_cart</i>COMPRAR</a><br><br>
+        {% endif %}
+          <a class="btn-large red abGrupo anchoTotal {% if migrupo.Gru_Estado == 1 %}disabled{% endif %}"  data-ig="{{migrupo.Grp_IdGrupero}}" data-pr="{{migrupo.Pro_IdProducto}}" data-gr="{{migrupo.Gru_IdGrupo}}"><i class="left large material-icons">cancel</i>abandonaR EL GRUPO</a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+{% if userAgent != "PC" %}
+      <div class="bottom0 anchoTotal row centrarForzado white mobileBottomBtn" style="position:fixed;z-index: 100">
+        <div class="col s12 sinPadding">
+          <a  class="add_cart btn-large pormayorUnico anchoTotal resumenMobileBtn {% if migrupo.Gru_Estado == 0 %}disabled{% endif %}" data-is="{{migrupo.Sku_IdSku}}" data-ip="{{migrupo.Pro_IdProducto}}" data-pn="{{producto.Pro_Nombre}}" data-p="{{migrupo.Gru_PrecioFinal}}" data-v="{{migrupo.Grp_Variacion}}" data-u="{{migrupo.Grp_Unidad}}" data-img="{{producto.Prf_Img}}" data-c="{{migrupo.Grp_Color}}" data-tv="{{migrupo.Grp_TipoVar}}" data-it="{{migrupo.Tie_IdTienda}}" data-d="{{migrupo.Grp_Documento}}"><i class="left large material-icons">add_shopping_cart</i>COMPRAR</a>
+        </div>
+      </div>   
+{% endif %}
+
+{% endblock %}
+
+{% block script %}
+  <script>
+  var rando_precio = {{precios|json_encode()}};
+  var flagVariaciones = false;
+//     function myCopia() {
+//   var copyText = document.getElementById("copiaLink");
+//   copyText.select();
+//   document.execCommand("copy");
+// }
+ 
+function countdown(endDate) {
+  let days, hours, minutes, seconds;
+  
+  endDate = new Date(endDate).getTime();
+  
+  if (isNaN(endDate)) {
+  return;
+  }
+  
+  setInterval(calculate, 1000);
+  
+  function calculate() {
+    let startDate = new Date();
+    startDate = startDate.getTime();
+    
+    let timeRemaining = parseInt((endDate - startDate) / 1000);
+    
+    if (timeRemaining >= 0) {
+      days = parseInt(timeRemaining / 86400);
+      timeRemaining = (timeRemaining % 86400);
+      
+      hours = parseInt(timeRemaining / 3600);
+      timeRemaining = (timeRemaining % 3600);
+      
+      minutes = parseInt(timeRemaining / 60);
+      timeRemaining = (timeRemaining % 60);
+      
+      seconds = parseInt(timeRemaining);
+      if (days == 1) {
+        document.getElementById("dia").innerHTML = parseInt(days, 10)+" día";
+      }else{
+        document.getElementById("dia").innerHTML = parseInt(days, 10)+" días";        
+      }
+      document.getElementById("hora").innerHTML = ("0" + hours).slice(-2);
+      document.getElementById("minuto").innerHTML = ("0" + minutes).slice(-2);
+      document.getElementById("seg").innerHTML = ("0" + seconds).slice(-2);
+    } else {
+      return;
+    }
+  }
+}
+
+(function () { 
+  countdown({{migrupo.Fecha_Fin|json_encode()}}); 
+}()); 
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/dist/easyzoom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="{{base_url('public/')}}js/grupal.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

@@ -1,0 +1,3 @@
+<h5>6.Lenguaje inapropiado</h5>
+<div class="divider"></div>
+<div class="fontParrafo enfasisB"><p>Entre los Usuarios de <b>Pormayor.pe</b> está prohibido el uso del lenguaje soez, ni insultante, ni inadecuado al momento de interactuar con otros Usuarios, negociar y cerrar operaciones, realizar comentarios, formulando preguntas y respuestas, entre otros. Y, en caso de identificar a un Usuario incumpleindo lo descrito en esta cláusula <b>Pormayor.pe</b> podrá suspenderlo temporalmente, o incluso inhabilitarlo definitivamente de operar en el “Sitio”.</p></div>

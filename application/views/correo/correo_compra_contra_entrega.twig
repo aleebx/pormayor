@@ -1,0 +1,161 @@
+{% extends "layout/correo.twig" %}
+
+{% block content %}
+<tr style="border-top: #f6b21d 5px solid;">
+  <td bgcolor="#3b3b3d" align="center" style="padding: 20px 0px 20px 0px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+  Confirmación de Compra Contraentrega
+  </td>
+</tr>
+<tr>
+  <td style="padding: 20px 0 0 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td style="padding: 0 0 20px 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+          {{nombre_usuario|title}}, gracias por confiar en nosotros para realizar esta compra. 
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 0 0 20px 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+          <b style="color:orange">IMPORTANTE</b><br>
+          <ul><li>Agregar número de celular de quien va a recibir la compra.</li><li>Su dirección debe ser exacta y con referencias.</li><li>El pago es en efectivo y el monto exacto (Courier no tiene para dar vuelto).</li><li>Tiempo de envio entre 1 a 3 días según destino.</li></ul>
+        </td>           
+        <td style="padding: 0 0 20px 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+           <a href="https://pormayor.pe/comprador/compra/detalle_compra/{{idcompra}}">MÁS INFORMACIÓN DE TU COMPRA <strong>CLICK ACÁ</strong></a>                
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+{% set tiendaActual = '' %}
+{% for items in dataCarrito %}
+  {% if tiendaActual != items.idtienda %}
+  {% set tiendaActual = items.idtienda %}
+    <tr>
+      <td style="background-color:#FEC00F;padding: 10px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:#383838;" width="" valign="top"><b>{{items.Tie_Nombre|upper}}</b>
+      </td>
+    </tr>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td style="font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+        <table style="table-layout: fixed" border="0" cellpadding="0" cellspacing="0" width="600px">
+          <thead>
+            <tr>
+              <th width="5" valign="middle"></th>
+              <th width="40" valign="middle"></th>
+              <th width="5" valign="middle"></th>
+              <th width="25" valign="middle"></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <br>
+        <table style="table-layout: fixed" border="0" cellpadding="0" cellspacing="0" width="590px">
+          <thead >
+            <tr>
+                <th width="50"></th>
+                <th style="padding: 12px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;border-right:1px solid #CBCBCB; border-bottom:1px solid #CBCBCB" width="200" valign="middle">PRODUCTO</th>
+                <th style="padding: 12px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;border-bottom:1px solid #CBCBCB" width="30" valign="middle">CANT.</th>
+                <th style="padding: 12px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;border-bottom:1px solid #CBCBCB" width="60" valign="middle">PRECIO UNITARIO</th>
+                <th style="padding: 12px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;border-bottom:1px solid #CBCBCB" width="60" valign="middle">IMPORTE</th>
+            </tr>
+          </thead>
+          {% if descuento == 0 %}
+          <tbody >
+            {% set total = 0 %}
+            {% for itemsInterno in dataCarrito %}
+              {% if tiendaActual == itemsInterno.idtienda %}
+                {% set preUni =  itemsInterno.price / itemsInterno.qty %}
+                <tr>
+                  <td style="border-bottom: 1px solid #CBCBCB; padding: 0px;" valign="top">
+                    <div style="margin:0 auto; margin:5px; width:50px; height: 50px;  border-radius: 10px;"><img style="top: 5px;position: relative;width: 100%; height: 40px; object-fit: contain;" src="http://pormayor.pe/img/{{itemsInterno.img}}"></div>
+                  </td>
+                  <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB;border-right:1px solid #CBCBCB; padding: 5px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                    {{itemsInterno.name|title}} {% if itemsInterno.color %} - <span style="color:rgba(0,0,0,0.5)">{{itemsInterno.color|title}}</span> {% endif %} {% if itemsInterno.tipovariacion != " " %} / {{itemsInterno.tipovariacion|upper}} {% endif %}
+                  </td>
+                  <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                    {{itemsInterno.qty}}<br>unid(s)
+                  </td>
+                  <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                    {{preUni}}
+                  </td>
+                  <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                  S/ {{itemsInterno.price}}
+                  </td>
+                </tr>
+                {% set total = total + itemsInterno.price %}
+              {% endif %}
+            {% endfor %}
+              {% set totalEnvio = costoEnvio|round() %}
+              {% set totalPagar = total + totalEnvio %}
+              <tr>
+                <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 15px; font-size: 15px;text-align:left;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">COSTO DE PRODUCTO</td>
+                <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:right;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top"><b>S/. {{total|number_format(2, '.', ' ')}}</b></td>
+              </tr>
+              <tr>
+                <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 15px; font-size: 15px;text-align:left;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">COSTO DE ENVÍO</td>
+                <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:right;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top"><b>S/. {{totalEnvio|number_format(2, '.', ' ')}}</b></td>
+              </tr>
+              <tr>
+                <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 15px; font-size: 15px;text-align:left;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">TOTAL A PAGAR</td>
+                <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:right;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top"><b>S/. {{totalPagar|number_format(2, '.', ' ')}}</b></td>
+              </tr>
+          </tbody>
+          {% else %}
+                <tbody >
+                  {% set total = 0 %}
+                  {% for itemsInterno in dataCarrito %}
+                    {% if tiendaActual == itemsInterno.idtienda %}
+                      {% set preUni =  itemsInterno.price_min %}
+                      <tr>
+                        <td style="border-bottom: 1px solid #CBCBCB; padding: 0px;" valign="top">
+                          <div style="margin:0 auto; margin:5px; width:50px; height: 50px;  border-radius: 10px;"><img style="top: 5px;position: relative;width: 100%; height: 40px; object-fit: contain;" src="http://pormayor.pe/img/{{itemsInterno.img}}"></div>
+                        </td>
+                        <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB;border-right:1px solid #CBCBCB; padding: 5px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                          {{itemsInterno.name|title}} {% if itemsInterno.color %} - <span style="color:rgba(0,0,0,0.5)">{{itemsInterno.color|title}}</span> {% endif %} {% if itemsInterno.tipovariacion != " " %} / {{itemsInterno.tipovariacion|upper}} {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                          {{itemsInterno.qty}}<br>unid(s)
+                        </td>
+                        <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                          {{preUni}}
+                        </td>
+                        <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                          {% set subtotal22 = itemsInterno.price_min * itemsInterno.qty %}
+                        S/ {{subtotal22}}
+                        </td>
+                      </tr>
+                      {% set total = total + subtotal22 %}
+                    {% endif %}
+                  {% endfor %}
+                    {% set totalEnvio = costoEnvio|round() %}
+                    {% set totalPagar = total + totalEnvio %}
+                    <tr>
+                      <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 15px; font-size: 15px;text-align:left;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">COSTO DE PRODUCTO</td>
+                      <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:right;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top"><b>S/. {{total|number_format(2, '.', ' ')}}</b></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 15px; font-size: 15px;text-align:left;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">COSTO DE ENVÍO</td>
+                      <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:right;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top"><b>S/. {{totalEnvio|number_format(2, '.', ' ')}}</b></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 15px; font-size: 15px;text-align:left;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">TOTAL A PAGAR</td>
+                      <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:right;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top"><b>S/. {{totalPagar|number_format(2, '.', ' ')}}</b></td>
+                    </tr>
+                </tbody>
+                {% endif %}
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><br><br></td>
+    </tr>
+  {% endif %}
+{% endfor %}
+{% endblock %}

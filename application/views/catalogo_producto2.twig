@@ -1,0 +1,102 @@
+{% extends "layout/intranet/template_lite_2.twig" %}
+{% block head %}
+    <style>
+        #main .content-wrapper-before {
+        position: absolute;
+        z-index: -1;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        height: 185px;
+        -webkit-transition: .3s ease all;
+        -moz-transition: .3s ease all;
+        -o-transition: .3s ease all;
+        transition: .3s ease all;
+    }
+    .gradient-45deg-blue {
+        background: #fec00f;
+        background: -webkit-linear-gradient(45deg, ##fec00f, #ffb000) !important;
+        background: -moz- oldlinear-gradient(45deg, ##fec00f, #ffb000) !important;
+        background: -o-linear-gradient(45deg, ##fec00f, #ffb000) !important;
+        background: linear-gradient(45deg,##fec00f, #ffb000) !important;
+    }
+        .fontX{font-size: 18px!important}
+        .container .row {margin-left: -.70rem;margin-right: -.70rem;}
+        {% if userAgent != 'PC' %}
+            .alturaDIV{height:289px;}
+            .fontD2{font-size: 0.8rem!important;font-weight:1000;}
+            .fontE{font-size: 0.8rem!important}
+        {% endif %}  
+    </style>
+{% endblock %}
+
+{% block content %}
+<main id="main" class="contentPage">
+    <div class="content-wrapper-before gradient-45deg-blue"></div>  
+    <br>
+    <div class="row">
+        <div class="col s12 m12 l12 center">
+            <span class="negrita fontC">Catálogo PorMayor.pe</span><br>
+            <span>Gastos logisticos para enviar a Agencias es de <b>S/10</b>. Enviamos en la agencia de su preferencia.</span>
+        </div>
+        {% if vendedor %}
+        <div class="col s12 m12 l12 center fontA">
+            <b>{{vendedor.Ven_Nombre}} </b>
+            <a href="tel:+51{{vendedor.Ven_Telefono}}">
+                   <b>{{vendedor.Ven_Telefono}}</b>
+            </a><br> 
+        </div>
+        {% endif %}
+    </div>
+        <div class="card">
+            <div class="card-content">
+              <div class="row">    
+                <div class="col s12 m12 l6">
+                  <div class="carousel">
+                    {% for fot in fotos %}
+                    {% if producto.Pro_IdProducto == fotos[0].producto_Pro_IdProducto %}
+                    {% if fot.Prf_Img|slice(0, 5)|lower != "nopic" %}
+                    <a class="carousel-item" href="#{{producto.Pro_IdProducto}}!"><img src="{{ruta_img}}{{fot.Prf_Img}}" alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" ></a>       
+                    {% endif %}                                        
+                    {% endif %}                                        
+                    {% endfor %}
+                  </div> 
+                </div> 
+                <div class="col s12 m12 l6">
+                  <div class="row">
+                    <div class="col s12 m12 l12 center" style="font-size:2rem;">
+                        {{ producto.Pro_Nombre|title }}
+                    </div>
+                    <div class="col s12 m12 l12 center" style="font-size:2.5rem;">
+                        <span class="card-title center">Rango de precios</span>
+                      {% for pre in precios %}
+                          {% if loop.last %}
+                        <div class="grey lighten-5 center" style="border: 1px solid white;">
+                            <p>{{pre.Prp_Desde}} Unidades por Cajón</p>
+                            <p>S/ <b>{{pre.Prp_Precios}} c/u</b></p>
+                        </div>
+                    {% endif %}   
+                      {% endfor %}
+                    </div>
+                    <div class="col s12 m12 l12 center"><br>
+                        <span>{{ producto.Pro_Descripcion }}</span>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+<div class="fixed-action-btn horizontal">
+    <a class="transparent" href="https://api.whatsapp.com/send?phone=+51{{vendedor.Ven_Telefono}}&text=Hola,%20quiero%20este%20producto%20https://pormayor.pe/catalogo/producto/{{producto.Pro_IdProducto}}">
+      <img src="{{ruta_img}}/wa.png">
+    </a>
+</div>
+</main>
+{% endblock %}
+
+{% block script %}
+    <script>
+    $(document).ready(function(){
+      $('.carousel').carousel();
+    });
+    </script>
+{% endblock %}

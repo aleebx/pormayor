@@ -1,0 +1,100 @@
+{% extends "layout/intranet/template_adm.twig" %}
+{% block head %}
+<style type="text/css">
+  .customColorB{
+    background-color: {{configuracion.Con_ColorBtn}} !important;
+  } 
+  .customColorA{
+    background-color:{{configuracion.Con_ColorHexa}};
+  }
+</style>
+{% endblock %}
+{% block content %}
+  <main class="container">
+    <div class="card">
+      <div class="card-content " style="padding: 0px">
+        <div class="row validarTienda" style="margin: 0px">
+          {{ form_open("", {role: 'form', id: 'formulario_registro', class:'form form-horizontal formValidate', method:'post', novalidate:'novalidate'}) }}
+          <div class="pormayorAccent col s12 center white-text">
+            <h5>Registrar Usuario</h5>
+          </div>
+          {% if error %}
+            <div class="col s12 center">
+              <p class="center red-text">Este correo ya fue registrado</p>
+            </div>
+          {% endif %}
+          <div id="dtienda" class="setup-content">
+            <div class="col s12 m3 l3 input-field">
+              <select name="selRol" required="" id="selRol">
+                <option value="" disabled>Seleccione</option>
+                <option value="1" {% if (error) and set_value('sel') == 1 %} selected="" {% endif %}>Administrador</option>
+                <option value="5" {% if (error) and set_value('sel') == 5 %} selected="" {% endif %}>Gerente</option>
+              </select>
+              <label for="selRol">Rol</label>
+            </div>
+            <div class="col s12 m3 l3 input-field">
+              <input name="dni" id="dni" type="text"  class=".form-group" required="" {% if (error) %} value="{{set_value('dni')}}{% endif %}">
+              <label for="dni">DNI</label>
+            </div>
+            <div class="col s12 m6 l6 input-field">
+              <input type="text" name="nombre" id="nombre"  class=".form-group" required="" {% if (error) %} value="{{set_value('nombre')}}{% endif %}">
+              <label for="nombre">Nombre Completo</label>
+            </div>
+            <div class="col s12 m3 input-field">
+              <input type="number" name="celular" id="celular"  required="" minlength="9"  maxlength="9" class=".form-group" {% if (error) %} value="{{set_value('celular')}}{% endif %}">
+              <label for="celular">Celular</label>
+            </div>
+            <div class="col s12 m5 input-field">
+              <input name="correo" type="email" id="correo"  class=".form-group" required="" {% if (error) %} value="{{set_value('correo')}}{% endif %}">
+              <label for="correo2">Correo Electrónico</label>
+            </div>
+            <div class="col s12 m4 input-field">
+              <input name="clave" type="password" id="clave"  class=".form-group" required="" autocomplete="new-password" {% if (error) %} value="{{set_value('clave')}}{% endif %}">
+              <label for="contrasena">Contraseña</label>
+            </div>
+          </div>
+        </div>
+        <div class="card-action center">
+          <a href="{{base_url()}}usuario/index/vendedor" class="btn-flat waves-effect waves-light waves-orange black-text">Atras</a>
+          <input type="submit" id="btnRegistrarse" name="btnRegistrarse" value="Registrarse" class="btn pormayorAccent btnCrear white-text"> 
+        </div>
+      </div>
+    </div>
+    {{ form_close() }}   
+  </main>
+{% endblock %}
+{% block script %}
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var sendForm= false;
+      $('select').material_select();
+
+      $("#formulario_registro").validate({
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error);
+          } else {
+            error.insertAfter(element);
+          }
+        }
+      });
+
+      //Usuario
+      $('#formulario_registro').submit(function(e){
+        if (sendForm == false) {
+          
+            e.preventDefault();
+        }
+
+        if (sendForm == false && $('#formulario_registro').valid() == true){
+          Materialize.toast('<i class="material-icons left ">check_circle</i>Usuario creado exitosamente', 1500, 'rounded successToast', function(){
+            sendForm = true;
+            $('#btnRegistrarse').trigger('click');
+          });
+        }
+      }); 
+    });
+  </script>
+{% endblock %}

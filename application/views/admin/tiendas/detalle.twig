@@ -1,0 +1,65 @@
+{% extends "layout/intranet/template_adm.twig" %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+  <main class="container">
+    <div class="card">
+      <div class="card-content sinPadding">
+        <h4 class="card-title center-align pormayor pormayorAccent-text" style="padding:15px">Tienda {{tienda.Tie_Nombre}}</h4>
+          <div class="row">
+            <div class="col s12">
+              <ul class="tabs">
+                {% include 'layout/intranet/tabs_tienda_adm.twig' %}
+              </ul>
+            </div>
+            <div id="test3" class="col s12 m12 l12">
+              <h5 class="center show-on-small hide-on-med-and-up">Datos</h5>
+                <table style="border-spacing:2px; border-collapse: separate;">
+                  <tbody>
+                    <tr>
+                      <td class="pormayorAccent white-text center">RUC</td>
+                      <td>{{tienda.Tie_ruc_dni}}</td>
+                    </tr>
+                    <tr>
+                      <td class="pormayorAccent white-text center">Razón Social</td>
+                      <td>{{tienda.Tie_RazonSocial}}</td>
+                    </tr>
+                    <tr>
+                      <td class="pormayorAccent white-text center">Nombre Comercial</td>
+                      <td>{{tienda.Tie_Nombre}}</td>
+                    </tr>
+                    <tr>
+                      <td class="pormayorAccent white-text center">Logo</td>
+                      <td>
+                        {% if tienda.Tie_Logo %}
+                          <img src="{{ruta_img}}{{tienda.Tie_Logo}}" height="50">
+                        {% else %}
+                          <img src="{{ruta_img}}sinlogo.webp" height="50">
+                        {% endif %}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="pormayorAccent white-text center">Subdominio</td>
+                      <td>{{tienda.Tie_Subdominio}}.{{dominio}}</td>
+                    </tr>
+                     <tr>
+                      <td class="pormayorAccent white-text center">Fecha de Registro:</td>
+                      <td>{{tienda.Tie_FechaRegistro|date('d-m-Y H:m:s')}}</td>
+                    </tr>                       
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </main>    
+
+{% endblock %}
+{% block script %}
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.tabs').tabs();
+    });
+  </script>  
+{% endblock %}

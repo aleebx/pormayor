@@ -1,0 +1,167 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css"  media="screen"/>
+    <style type="text/css">
+      .tabs .indicator{
+        background-color: rgba(255,255,255,0.6);
+      }
+
+      .tabs .tab a {
+        background-color: #eeeeee;
+      }
+      .tabs .tab.disabled a,.tabs .tab.disabled a:hover{
+        color: grey;
+      }
+
+      .tabs .tab a.active {
+          background-color: #0D0D0D;
+          color: white;
+      }
+
+      .select2-selection{
+        border: 0px !important ;
+        border-bottom: 1.5px solid #0D0D0D !important;
+        height: 38px !important ;
+        outline-width: 0 !important;
+      }
+</style>
+{% endblock %}
+{% block content %}
+
+<main class="container fixContainer">
+    <div class="card">
+      <div class="row centrarForzado">
+        <ul class="tabs col s12 sinPadding">
+          <li class="tab col s6"><a href="#configuracion" class="active irConfiguracion">Configuración</a></li>
+          <li class="tab col s6 disabled"><a href="#personalizacion" class="">Personalización</a></li>
+        </ul>
+      </div>
+      <div class="cardContentFix row">
+        <div id="configuracion" class="col s12">
+          <div class="row sinBordeBottom">
+            <div class="col s12 l12 orange-text sinPadding">
+              <span class="center"><i class="material-icons left">error_outline</i><b>Una tienda sin logo solo sera creada, pero no publicada. La resolución minima de las imagenes es de 500x500</b></span>
+            </div>
+            <div class="col s12 m12 l4 center">
+              <h5>Sube tu logo...</h5>
+              <a style="" class="waves-effect waves-light">
+                <div id="fotoPro1" style="height: 100%;" class="valign-wrapper"> 
+                  <img class="centrarForzado" src="{{ruta_img}}nopic.jpg" height="120px">
+                </div>
+                <input id="logoImg" class="logoImg fileInputProduct positionAbsolute bottom0 left0 right0 top0 anchoTotal comoBoton" name="file"  data-tie="{{usuario.id_tienda}}" type="file" accept="image/*" style="opacity:0">
+              </a>
+            </div>
+            <div class="col s12 m6 l4">
+              <h5>¿Dónde estás ubicado?</h5>
+              <select id="depSelect" class="browser-default" required>
+                  <option value="" disabled selected>Seleccione un Departamento</option>
+                {% for dep in departamento %}
+                  <option value="{{dep.id}}">{{dep.name}}</option>
+                {% endfor %}
+              </select>
+            <div id="provincia">
+            </div>
+            <div id="distrito">
+            </div>
+            </div>
+            <div class="col s12 m6 l4">
+              <br class="hide-on-med-and-up">
+              <h5>¿Cuál es el giro de tu negocio?</h5>
+              <select id="catSelect" class="browser-default" required>
+                  <option value="" disabled selected>Seleccione una Categoría</option>
+                {% for cat in categoria %}
+                  <option value="{{cat.Cat_IdCategoria}}">{{cat.Cat_Nombre}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col s12 m12 l12 ">
+            <br class="hide-on-med-and-up">
+            <button type="button" class="right waves-effect waves-dark btn pormayorUnico continuarBtn" >CONTINUAR</button>
+          </div>
+        </div>
+        <div id="personalizacion" class="col s12 sinPadding">
+          <h5 class="sinBordeBottom">Selecciona 2 Colores</h5>
+          <label>Agrega color a tu tienda</label>
+          <div class="divider"></div>
+          <br>
+            <div class="row centrarForzado colorBox">
+              <div class="col s3 m2 l2 sinPadding">
+                <div class=" red" data-color="#f44336"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="pink" data-color="#e91e63"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="purple" data-color="#9c27b0"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="deep-purple" data-color="#673ab7"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="indigo" data-color="#3f51b5"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="blue" data-color="#2196f3"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="light-blue" data-color="#03a9f4"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="cyan" data-color="#00bcd4"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="yellow darken-3" data-color="#f9a825"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="teal" data-color="#009688"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="green" data-color="#4caf50"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="light-green" data-color="#8bc34a "><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="amber" data-color="#ffc107"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="orange" data-color="#ff9800"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="deep-orange" data-color="#ff5722"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="brown" data-color="#795548"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="grey" data-color="#9e9e9e"><i class="material-icons checkSign">check</i></div>
+              </div>
+              <div class="col s3 m2 l2 sinPadding">
+                <div class="blue-grey" data-color="#607d8b"><i class="material-icons checkSign">check</i></div>
+              </div>
+            </div>
+            <div class="col s12 m12 l12 right-align">
+              <br>
+              <button class="waves-effect waves-dark btn-flat atrasBtn">ATRAS</button>
+              <button type="button" class="waves-effect waves-dark btn pormayorUnico guardarTienda" data-subdominio="{{subdominio}}" data-tie="{{usuario.id_tienda}}">Guardar Datos</button>
+            </div>
+        </div>
+      </div>
+      <br>
+    </div>  
+    <a data-anuncio="base2" class="modaltest" href="{{base_url()}}tienda/crear2" data-lity-target="{{ruta_img}}anuncio3.webp" data-lity></a>
+</main>
+
+{% endblock %}
+
+{% block script %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.js" ></script>
+  <script src="{{base_url('public/')}}js/tienda/enlace.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

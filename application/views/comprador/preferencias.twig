@@ -1,0 +1,83 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+	<style type="text/css">
+		.prefeBtn img{
+			border: 1px solid #121212;
+			cursor: pointer;
+			-webkit-transition: all .25s linear;
+			   -moz-transition: all .25s linear;
+			    -ms-transition: all .25s linear;
+			     -o-transition: all .25s linear;
+			        transition: all .25s linear;
+			filter:brightness(0%);
+		}
+		.prefeBtn img:hover{
+			border: 1px solid white;
+			filter:none;
+			background: #121212;
+		}
+
+		.prefeActiva{
+			border: 1px solid white !important;
+			filter:none !important;
+			background: #121212 !important;
+		}
+		label{
+			-webkit-transition: all .25s linear;
+			   -moz-transition: all .25s linear;
+			    -ms-transition: all .25s linear;
+			     -o-transition: all .25s linear;
+			        transition: all .25s linear;
+		}
+		.card-content .s6{
+			height: 170px;
+		}
+		@media (min-width: 320px) and (max-width: 480px) {
+			label{
+				font-size: 0.9rem;
+			}
+		}
+	</style>
+{% endblock %}
+{% block content %}
+	<main class="container">
+		<div class="card orange">
+			<div class="card-content center">
+				<div class="row">
+					<div class="col s4 l4">
+						<i class="material-icons yellow-text large">warning</i>
+					</div>
+					<div class="col s8 l8">
+						<span class="card-title negrita">VALIDAR CORREO</span>
+						<span class="card-title">Te hemos enviado un correo a <b>{{usu.Usu_Correo}}</b> para validar tu correo electronico. Verifique la bandeja de <b>SPAM</b> si no lográ localizarlo</span>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-content center sinPadding">
+				<span class="card-title negrita">{{pagina.titulo}}</span>
+				<div class="divider"></div>
+				<div class="row cardContentFix" style="">
+				{% for cat in categorias2 %}
+					<div class="col s6 m2 l2" >
+						<div class="prefeBtn">
+							<img src="{{ruta_img}}{{cat.Cat_IconMobile}}" height="100" type="image/svg+xml" data-idcat="{{cat.Cat_IdCategoria}}">
+						</div>
+						<label class="enfasisA">{{cat.Cat_Nombre}}</label>
+					</div>
+				{% endfor %}
+				</div>
+				<div class="row">
+					<a class="btn-flat" style="background-color: #e0e0e0" href="{{base_url()}}">Omitir</a>
+					<button class="btn pormayorUnico " id="btnGuardar">Guardar</button>
+				</div>
+				<br>
+			</div>
+		</div>
+	</main>
+{% endblock %}
+
+{% block script %}
+	<script src="{{base_url('public/')}}js/comprador/preferencias.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+{% endblock %}

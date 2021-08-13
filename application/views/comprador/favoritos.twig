@@ -1,0 +1,94 @@
+{% extends "layout/intranet/template_usu.twig" %}
+
+{% block head %}
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"  media="screen,projection"/>
+
+   <style type="text/css">
+		/*Moviles*/
+		.divBtnw{width: 105px;}
+		{% if userAgent != 'PC' %}
+		  .divBtnw{width: 50px;}
+		{% endif %}  
+	</style>
+{% endblock %}
+{% block content %}
+    <!-- Page Layout here -->
+    <main class="container" style="width:95%">
+      	<div class="card">
+      		<div class="row">
+	      		{% if productos %}
+	      			<div class="col s12">
+				        <div class="card-content center sinPadding">
+				        	<div class="row cardContentFix">
+					          	<h5 class="center card-title">{{pagina.titulo}}</h5>
+					            <div class="row"><div class="divider"></div></div>
+					            <table id="listFavoritosTbl" class="heighlight" width="100%">
+			                	<thead>
+			                  		<tr>
+			                  			<th>IMAGEN</th>
+			                    		<th>PRODUCTOS</th>
+			                    		<th width="5%">ACCION</th>
+			                  		</tr>
+			                	</thead>
+			                	<tbody>
+					              {% for pro in productos %} 
+					                <tr>
+					                	<td><img class="redondeo" src="{{ruta_img}}{{pro.Prf_Img}}" height="50"></td>
+					                	<td class="muayuscula">{{pro.Pro_Nombre}}</td>
+					                	<td>						                	
+						                    <button class="btn detalleProducto2 comoBoton white-text divBtnw" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">Ver Producto</button>
+						                  
+						                 	<button data-id_producto="{{pro.Pro_IdProducto}}" class="waves-effect red waves-light btn btnEliminar divBtnw">Eliminar</button>
+						                </td>
+					                </tr>
+					              {% endfor %}
+			              		</tbody>
+			            	</table>
+			            	<div class="center">{{ver_paginacion}}</div>      
+				        	</div>
+				        </div>
+			    	</div>
+			    {% else %}
+			    	<div class="center col s12 m12 l12" style="margin-top: 20px;">
+						<img src="{{ruta_img}}emptyFav.webp" height="150"></img>
+					</div>
+					<div class="center col s12 m12 l12">
+						<h5>Sin favoritos</h5>
+						<p class="enfasisB">Pon a latir tu corazón y convierte en favorito algún producto</p>
+					</div>
+					<div class="center col s12 m12 l12" style="margin:15px 0px">
+						<a href="https://pormayor.pe/" class="btn colorAccent">Comienza a cotizar</a>
+					</div>   
+			    {% endif %}
+			</div>
+        </div>		
+    </main>
+{% endblock %}
+
+{% block script %}
+	<script src="{{base_url('public/')}}js/comprador/favoritos.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+	<script type="text/javascript">
+		$('#listFavoritosTbl').DataTable({
+	     	"order": [[ 1, 'asc' ], [ 0, 'desc' ]],
+	        "language": {
+	            "lengthMenu": "",
+	            "zeroRecords": "No se encontro nada",
+	            "info": "Página _PAGE_ de _PAGES_",
+	            "infoEmpty": "No hay registros disponibles",
+			    "emptyTable":     "No hay información en la tabla",
+			    "infoFiltered":   "(filtrado de _MAX_ ventas)",
+			    "infoPostFix":    "",
+			    "thousands":      ",",
+			    "loadingRecords": "Cargando...",
+			    "processing":     "Procesando...",
+			    "search":         "Buscar:",
+			    "paginate": {
+			        "first":      "Primero",
+			        "last":       "Último",
+			        "next":       "Siguiente",
+			        "previous":   "Anterior"
+				        }
+			}
+		});
+	</script>
+{% endblock %}

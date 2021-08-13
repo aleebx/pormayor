@@ -1,0 +1,289 @@
+{% extends "layout/intranet/template_adm.twig" %}
+{% block head %}
+	<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/gestion_pedido.css')}}" media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css"  media="screen,projection"/>
+	<style type="text/css">
+		blockquote {
+			border-left: 5px solid #121212;
+			font-size: 16px;
+		}
+		table thead tr th {
+			border-radius: 0px;
+		}
+		.pSmall {
+			padding:4px !important;
+		}
+		.end {
+			text-align: end;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+    <main class="container" style="width:95%">
+    	<div class="card">
+        	<div class="card-content sinPadding">
+        		<div class="row cardContentFix">
+	    			<h5 class="center card-title"><b>DETALLE DE VENTA</b></h5>
+	    			<div class="divider"></div><br>
+	    			<div class="row">
+	    				<div class="col s12 m12 l12 center">
+	    					<span style="padding:5px;border-radius:4px;" class="negrita black-text fontA {% if venta.Pac_Estado == 1 %}green accent-4">NUEVA VENTA{% elseif venta.Pac_Estado == 2 %}light-green accent-4">VENTA CONFIRMADA{% elseif venta.Pac_Estado == 3 %}lime accent-2">LISTO PARA RECOGO{% elseif venta.Pac_Estado == 4 %}deep-orange accent-2">EN EL CORRIER{% elseif venta.Pac_Estado == 5 %} green darken-4">ENTREGADO{% elseif v.Pac_Estado == 6 %}red darken-3">ANULADO{% endif %}</span>
+	    				</div>
+	    		
+	    				<div class="col s12 l6">
+	    					<ul class="collection with-header">
+	    						<li class="collection-header blue"><h5><b><i class="material-icons left">person</i>DATOS CLIENTE</b></h5></li>
+	    						<li class="collection-item pSmall"><b>NOMBRE COMPLETO:</b> {% if venta.Per_Nombre %}{{venta.Per_Nombre}}{% else %}{{venta.nombr}}{% endif %}</li>
+	    						<li class="collection-item pSmall"><b>D.N.I:</b> {% if venta.Per_Dni %}{{venta.Per_Dni}}{% else %}{{venta.dni}}{% endif %}</li>
+	    						<li class="collection-item pSmall"><b>TELÉFONO:</b> {{compra_info.Pci_Telefono}}</li>
+	    						<li class="collection-item pSmall"><b>FECHA:</b> {{venta.Pac_FechaRegistro}}</li>
+	    					</ul>
+		    			</div>
+
+	    				<div class="col s12 l6">
+	    					<ul class="collection with-header">
+	    						<li class="collection-header blue"><h5><b><i class="material-icons left">local_shipping</i>DIRECCIÓN DE ENVIO</b></h5></li>
+	    						<li class="collection-item pSmall"><b>DEPARTEMANTO:</b> {{compra_info.region}}</li>
+	    						<li class="collection-item pSmall"><b>PROVINCIA:</b> {{compra_info.provincia}}</li>
+	    						<li class="collection-item pSmall"><b>DISTRITO:</b> {{compra_info.distrito}}</li>
+	    						<li class="collection-item pSmall"><b>DIRECCIÓN:</b> {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}</li>
+	    					</ul>
+		    			</div>
+
+		   				<div class="col s12 l12">
+				      		{% for dat in data_tiendas %}
+		    				<div class="col s12 l12">
+					      		<table class="bordered anchoTotal">
+					      			<thead style="table-layout:fixed" class="">
+					      				<tr class="sinPadding">
+					      					<th class="center pSmall blue"><h5>TIENDA<br><b>{{dat.Tie_Nombre}}</b></h5></th>
+					      					<th class="center pSmall blue"><h5>TELÉFONO<br><b>{{dat.Tie_Telefono}}</b></h5></th>
+					      					<th class="center pSmall blue"><h5>Nº OS<br><b>{{dat.Tie_CodEnvio}}</b></h5></th>
+					      					<th class="center pSmall">
+					      						{% if venta.Pac_Estado > 1 %}
+						      						{% if dat.Tie_CodEnvio == 0 %}
+						      							<a class="btn negrita red envRecojo" href="#" onclick="envioRecojo({{id.Pac_IdPago_Compra}},{{dat.Tie_IdTienda}})" style="width:100%;"><i class="material-icons left">local_shipping</i>ENV. RECOJO</a>
+						      						{% endif %}
+						      					{% endif %}		
+					      						
+					      						<a class="btn negrita" href="http://runningbox.azurewebsites.net/Orden/ListaTracking/{{dat.Tie_CodEnvio}}" target="_blank" style="width:100%;"><i class="material-icons left">near_me</i>CONSULTAR</a>
+					      						
+					    						<a class="btn negrita" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR OS</a>
+					    						<input type="text" name="nOS" id="nOS" class="hide" value="{{dat.Tie_CodEnvio}}">	    					
+											</th>
+					      				</tr>
+					      				<tr>
+					      					<th class="center blue" style="width:40%">PRODUCTO</th>
+					      					<th class="center blue" style="width:20%">CANTIDAD</th>
+					      					<th class="center blue" style="width:20%">PRECIO</th>
+					      					<th class="center blue" style="width:20%">IMPORTE</th>
+					      				</tr>
+					      			</thead>
+					      			<tbody>
+					      				{% set total = 3 %}
+					      				{% set total2 = 0 %}
+					      				{% set totalEnvio = 0 %}
+					      				{% for com in venta_detalle %}
+					      					{% if dat.Tie_IdTienda == com.Tie_IdTienda %}
+							      				<tr>
+							      					<td class="left">
+							      						{{com.Pro_Nombre}}</br>
+					    		   				<span class="enfasisB black-text">{{com.Var_Nombre}} {{com.Vao_Nombre}} {% if com.SKU_Color !=' ' and  com.SKU_Color !='' %}({{com.SKU_Color}}){% endif %}</span></br>
+							    					</td>
+							    					<td class="center">
+							    					{{com.Pcd_Cantidad}}
+							    					</td>
+							      					<td class="center">
+							      						{% set precioventa = com.Pcd_Precio %}
+							      						<span class="precioventa" id="precioventa{{ved.Pcd_IdSKU}}">{{precioventa|number_format(2, '.', ' ')}}</span>
+							      					</td>
+							      					<td id="tdimporte{{com.Pcd_IdSKU}}" class="center">
+							      						<span id="importe{{com.Pcd_IdSKU}}">{{com.Pcd_Importe|number_format(2, '.', ' ')}}</span>
+							      					</td>
+							      				
+							      				</tr>
+							      				{% set total = total + com.Pcd_Importe %}
+							      				{% set total2 = total2 + com.Pcd_Importe %}
+							      				{% set totalEnvio = totalEnvio + com.costoEnvio %}
+							      			{% endif %}
+					            		{% endfor %}
+					            		
+					            		<tfoot>
+						      				{% set totalEnvio=totalEnvio|round() %}
+
+						      				{% set totalPagar = total2 + totalEnvio %}
+						      				<tr>
+					                			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+					                			<td colspan="3" class="right-align sinPadding">
+					                				<b>TOTAL IMPORTE</b> 
+					                			<td class="center-align sinPadding" colspan="2">
+					                				<b>S/ <span class="fontA">{{total2|number_format(2, '.', ' ')}}</span></b>
+					                			</td>
+					                		</tr>
+
+					                		<tr>
+					                			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+					                			<td colspan="3" class="right-align sinPadding">
+					                				<b>TOTAL ENVÍO</b> 
+					                			<td class="center-align sinPadding" colspan="2">
+					                				<b>S/ <span class="fontA">{{totalEnvio|number_format(2, '.', ' ')}}</span></b>
+					                			</td>
+					                		</tr>
+
+					                		<tr>
+					                			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+					                			<td colspan="3" class="right-align sinPadding">
+					                				<b>TOTAL GENERAL</b> 
+					                			<td class="center-align sinPadding" colspan="2">
+					                				<b>S/ <span class="fontA">{{totalPagar|number_format(2, '.', ' ')}}</span></b>
+					                			</td>
+					                		</tr>
+					            		</tfoot>
+     			      				</tbody>
+					      		</table>
+					      		<br><br>
+		    				</div> 
+		    			{% endfor %}
+	    				</div>
+	    			</div>
+    			</div>
+			</div>
+		</div>
+    </main>
+
+    <div class="hide" id="printJS-form">
+    	<table style="border:1px solid black;font-variant: small-caps;">
+    		<tr>
+    			<td style="padding:50px;">
+    				<img src="{{ruta_img}}logoPM.jpg">
+    				<b>WWW.PORMAYOR.PE</b><br>
+    				AV NICOLÁS DE PIÉROLA 1131, OFICINA 508-509,<br> CERDADO DE LIMA, LIMA. <br>
+    				+51 923 500 413
+    			</td>
+    			<td style="padding:5px;">
+    				<div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+    					{{venta.Pac_FechaRegistro}}<br>
+				 		<b>DATOS CLIENTE</b><br>
+						<b>Nombre Completo:</b> {% if venta.Per_Nombre %}{{venta.Per_Nombre}}{% else %}{{venta.nombr}}{% endif %}<br>
+						<b>D.N.I:</b> {% if venta.Per_Dni %}{{venta.Per_Dni}}{% else %}{{venta.dni}}{% endif %} <br>
+						<b>Teléfono</b> {{compra_info.Pci_Telefono}} <br>
+						<b>Código:</b> <b>{{venta.Pac_CodPago}}</b>  <br>
+		    		</div><br>
+		 			<div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+				 		<b>DIRECCIÓN CLIENTE</b><br>
+		 				<b>Departamento:</b> {{compra_info.region}} <br> <b>Provincia:</b> {{compra_info.provincia}} <br> <b>Distrito:</b> {{compra_info.distrito}} <br> <b>Dirección:</b> {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}
+		 			</div>
+		 		</td>
+    		</tr>
+    		<tr>
+    			<td colspan="2" aling="center" style="font-size:50px;border:1px solid black; padding-left:350px;font-family: Arial, Helvetica, sans-serif;">Nº OS<b id="nOS2"></b></td>
+    		</tr>
+    		<tr>
+    			<td colspan="2" aling="center" style="font-size:30px;padding-left:270px;">¡GRACIAS POR COMPRAR CON NOSOTROS!</td>
+    		</tr>
+    	</table>
+    	<br>
+    	<br>
+    	<hr>
+    	<br>
+    	<br>
+    	<table style="border:1px solid black;font-variant: small-caps;">
+    		<tr>
+    			<td style="padding:50px;">
+    				<img src="{{ruta_img}}logoPM.jpg">
+    				<b>WWW.PORMAYOR.PE</b><br>
+    				JIRÓN ANDAHUAYLAS 251, INTERIOR 208-209<br> CERDADO DE LIMA, LIMA.<br>
+    				+51 923500413
+    			</td>
+    			<td style="padding:5px;">
+    				<div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+    					{{venta.Pac_FechaRegistro}}<br>
+				 		<b>DATOS CLIENTE</b><br>
+						<b>Nombre Completo:</b> {% if venta.Per_Nombre %}{{venta.Per_Nombre}}{% else %}{{venta.nombr}}{% endif %}<br>
+						<b>D.N.I:</b> {% if venta.Per_Dni %}{{venta.Per_Dni}}{% else %}{{venta.dni}}{% endif %} <br>
+						<b>Teléfono</b> {{compra_info.Pci_Telefono}} <br>
+						<b>Código:</b> <b>{{venta.Pac_CodPago}}</b>  <br>
+		    		</div><br>
+		 			<div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+				 		<b>DIRECCIÓN CLIENTE</b><br>
+		 				<b>Departamento:</b> {{compra_info.region}} <br> <b>Provincia:</b> {{compra_info.provincia}} <br> <b>Distrito:</b> {{compra_info.distrito}} <br> <b>Dirección:</b> {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}
+		 			</div>
+		 		</td>
+    		</tr>
+{#     		<tr>
+    			<td colspan="2" aling="center" style="font-size:50px;border:1px solid black; padding-left:350px;font-family: Arial, Helvetica, sans-serif;">Nº OS<b id="nOS3"></b></td>
+    		</tr> #}
+    		<tr>
+    			<td colspan="2" aling="center" style="font-size:30px;padding-left:270px;">¡GRACIAS POR COMPRAR CON NOSOTROS!</td>
+    		</tr>
+    	</table>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+	<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+	<script>
+		$("#nOS2").text($("#nOS").val());
+		$("#nOS3").text($("#nOS").val());
+		function envioRecojo(Pac_IdPago_Compra,Tie_IdTienda) {
+		    if(Pac_IdPago_Compra) {
+		    	$.confirm({
+				      icon:'send',
+				      type:'green',
+				      theme:'modern',
+				      draggable:false,
+				      closeIcon:false,
+				      animation:'scale',
+				      columnClass:'small',
+				      title:'Enivar recojo',
+				      content:'Los datos ingresados en el modulo de compra deben ser correctos y veridicos',
+				      buttons: {
+				        Guardar: {
+				          	btnClass:'btn pormayorUnico',                    
+				          	action: function() {
+					            $.ajax({
+					            	data: {
+						             	'Tie_IdTienda':Tie_IdTienda,
+								       	'Pac_IdPago_Compra':Pac_IdPago_Compra
+					            	},
+					            	type:'POST',
+					            	url:base_url+'/admin/index/apiCurriers',
+					            	success:function(r) {
+						              	$.confirm({
+							                type:'green',
+							                theme:'modern',
+							                icon:'thumb_up',
+							                closeIcon:false,
+							                draggable:false,
+							                columnClass:'small',
+							                animationBounce:1.5,
+							                title:'Enivar recojo',
+							                content:'El rocojo de la compra fue enviado exitosamente.',
+							                buttons: {
+							                	Aceptar: {
+								                    text:'Actualizar información',
+								                    btnClass:'btn pormayorUnico',                    
+								                    action:function() {
+								                      location.reload(true);
+								                    }       
+								                }
+							                }
+							            });
+							        }
+				          		});   
+				          	}       
+				        },
+				        Cancelar:{
+				        }
+				    }
+			    });
+		    } else {
+		      Materialize.toast('<i class="material-icons left ">warning</i>No se ha seleccionado ninguna orden.',2000,'rounded warningToast');
+		    }
+		}
+	</script>
+{% endblock %}
+
+

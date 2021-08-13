@@ -1,0 +1,152 @@
+{% extends "layout/correo.twig" %}
+
+{% block content %}
+	<td bgcolor="#FFFFFC" style="padding: 40px 30px 40px 30px;">
+  		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    		<tr>
+    			<td style="color: #121212; font-family: Arial, sans-serif; font-size: 24px;">
+					<b>Estimado, {{nombre_usuario}}</b>
+				</td>
+    		</tr>
+    		<tr>
+      			<td style="padding: 20px 0 30px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+      				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		               	<tr>
+		                	<td style="padding: 0px 0 20px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		                		Gracias por utilizar <a href="https://pormayor.pe" srtyle="color:#21478F;">pormayor.pe</a> para comprar estos productos, a continuación detallamos toda la información necesaria
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td>
+		                		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	                      		<thead>
+			                        <tr>
+										<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F; width:15%" valign="top">
+										  <b>Nombre Tienda</b>
+										</td>
+										<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F; width:10%" valign="top">
+										  <b>Telefono</b> 
+										</td>
+										<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;width:25% " valign="top">
+											<b>Correo</b>
+										</td>
+										{% if direccion_tienda != "" %}
+											<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;width:25%" valign="top">
+												<b>Dirección</b>
+											</td>
+										{% endif %}
+			                        </tr>
+			                    </thead>
+			                    <tbody>
+		                      		<tr>
+			                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+			                          		{{nombre_tienda}}
+		                          		</td>
+		  	                        	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+		  	                        		<a href="tel:{{telefono_tienda}}">{{telefono_tienda}}</a>
+		  	                        	</td>
+		  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+		  	                          		{{correo_tienda}}
+		  	                            </td>
+		  	                            {% if direccion_tienda != "" %}
+			  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+			  	                          		{{direccion_tienda}}
+			  	                          	</td>
+		  	                          	{% endif %}
+		  	                        </tr>
+			                    </tbody>
+		          			</table>
+		                		
+		                	</td>
+		                </tr>
+		                <tr>
+		                	<td style="padding: 20px 0 20px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		                		Con los siguientes productos	
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td>
+		                    	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		                      		<thead>
+				                        <tr>
+				                      		<td style="background-color:  white;" width="100" valign="top">
+		                          			</td>
+											<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;" width="350" valign="top">
+											<b>Producto</b>
+											</td>
+											<td colspan="1" style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;" width="50" valign="top">
+											<b>Cant.</b>
+											</td>
+											<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;" width="150" valign="top">
+											<b>Precio Unit.</b>
+											</td>
+											<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;"width="100" valign="top">
+											<b>Importe</b>
+											</td>
+				                        </tr>
+				                    </thead>
+				                    <tbody>
+		                      			{% set total = 0 %}
+				                      	{% for rsDatos in pdetalle %}
+				                      		<tr>
+					                          	<td style="border-bottom: 1px solid #CBCBCB; padding: 8px 0px;" valign="top">
+					                          		{% if rsDatos.imgpro %}
+					                          			<div style="margin:0 auto; margin:15px; width:100px; height: 100px;  border-radius: 3px;">
+						                            		<img style="width: 100%; height: 100px; object-fit: contain;" src="http://pormayor.pe/img/{{rsDatos.imgpro}}">
+						                            	</div>
+					                          		{% else %}
+					                          		 	<div style="margin:0 auto; margin:15px; width:100px; height: 100px;  border-radius: 3px;">
+						                            		<img style="width: 100%; height: 100px; object-fit: contain;" src="http://pormayor.pe/img/pronoimg.webp">
+						                            	</div>   
+					                          		{% endif %}
+					                            	
+				                          		</td>
+				  	                        	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+				  	                        		{{rsDatos.nompro}}
+				  	                        	</td>
+				  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+				  	                          		{{rsDatos.cantidad}}&nbsp; Unid.
+				  	                            </td>
+				  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+				  	                          		S/ {{rsDatos.precio}}
+				  	                          	</td>
+				  	                          	{% set  importe = rsDatos.cantidad * rsDatos.precio %}
+				  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.8);" valign="top">
+				  	                            	<span style="font-weight:600">S/ {{importe|number_format(2, '.', ' ')}}</span>
+				  	                          	</td>
+				  	                        </tr>
+							              	{% set total = importe + total %}
+				                      	{% endfor %}
+				                    </tbody>
+				                    <tfoot>
+				                        <tr>
+				                        	<td style="font-weight: 600; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.8);" colspan="3" valign="top">
+				                            	Total a pagar
+				                          	</td>
+				                          	<td style="border-bottom: 1px solid #CBCBCB; background-color: #0D0D0D; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:white;" colspan="2" valign="top">
+				                            	<span style="font-weight:600">S/ {{total|number_format(2, '.', ' ')}}</span>
+				                          	</td>
+				                        </tr>
+				                    </tfoot>
+		                		</table>
+              				</td>
+           				</tr>
+          			</table>
+        		</td>
+    		</tr>
+    	</table>
+	</td>
+{% endblock %}
+
+{% block content2 %}
+	<tr>
+		<td bgcolor="#FFFFFC" style="font-size: 12px; color:#121212 ;padding: 0px 10px 10px 10px;font-family: Arial, sans-serif;">
+			Estos precios son validos por quince (15) dias de emitido el presente recibo.
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFC" style="font-size: 14px; color:#121212 ;padding: 0px 15px 15px 15px;font-family: Arial, sans-serif;">			
+			<span style="font-size: 14px;">Atentamente&nbsp;</span><a href="http://{{subdominio}}.pormayor.pe" style=" color: #21478F;">{{nombre_tienda}}</a>
+        </td>
+    </tr>
+{% endblock %}

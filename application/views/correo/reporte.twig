@@ -1,0 +1,392 @@
+{% extends "layout/correo.twig" %}
+{% block content %}
+  <td style="padding: 10px 0 30px 0;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+      <tr>
+        <td style="padding:20px;color: #383838; font-family: Arial, sans-serif; font-size: 24px;">
+          Hola, {{tienda.Per_Nombre|title}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="height: 4px;background-color: #FEC00F;margin-bottom:6px"></div>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-size: 50px;font-family: Arial, sans-serif;color:white;text-align:center;height:300px;background: url('https://pormayor.pe/img/correoReporte_1.jpg')">
+          <div style="word-break: break-all;line-height:70px;width:580px;margin:0 auto">{{tienda.Tie_Nombre|upper}}</div> 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div style="height: 4px;background-color: #FEC00F;margin-top:6px"></div>
+        </td>
+      </tr>
+      <tr class="soloPC">
+        <td align="left" style="font-weight:600;padding: 20px 20px 5px 20px;font-size: 18px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">
+          Resumen estadístico de {{tienda.Tie_Nombre|title}}<br>
+        </td>
+      </tr>
+      <tr class="soloMovil">
+        <td align="left" style="font-weight:600;padding: 20px 20px 5px 20px;font-size: 1.5rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">
+          Resumen estadístico de tu tienda <b>{{tienda.Tie_Nombre|title}}</b><br>
+        </td>
+      </tr>
+      <tr class="soloPC">
+        <td align="left" style="font-weight:200;padding: 10px 20px 0px 20px;line-height:20px;font-size: 1.2rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.5)">
+          Adquiere un plan y te aseguramos <a style="color:#21478F;text-decoration: none;font-weight: 600" href="#ideas">más ventas</a>. Ingresa a Facturación desde tu Panel y ve las promociones que tenemos para ti. PROMOCIÓN en Plan PLATA y Plan ORO.
+        </td>
+      </tr>
+       <tr class="soloMovil">
+        <td align="left" style="font-weight:300;padding: 10px 20px 0px 20px;line-height:1.5rem;font-size: 1.2rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.9)">
+          <br>
+          Adquiere un plan y te aseguramos <a style="color:#21478F;text-decoration: none;font-weight: 600" href="#ideas">más ventas</a>. Ingresa a factuación desde tu Panel y ve las promociones que tenemos para ti. PROMOCIÓN en Plan PLATA y Plan ORO.
+        </td>
+      </tr>
+      <tr class="soloPC">
+        <td  style="width:600px;text-align: center;padding: 20px">
+          <big style="font: 16px/18px Arial, Helvetica, sans-serif;">
+            <a href="//pormayor.pe/usuario/login" target="_blank" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0 1rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 0.9rem; color: white;">CONSULTAR MI TIENDA</a>
+          </big>
+        </td>
+      </tr>
+      <tr class="soloMovil">
+        <td align="center" style="width:600px;font-family: Arial, sans-serif;text-align: center;padding: 20px">
+          <br>
+            <a href="//pormayor.pe/usuario/login" target="_blank" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0.7rem 1.2rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 1.3rem; color: white;margin: 0 auto;">CONSULTAR MI TIENDA</a>
+          <br>
+        </td>
+      </tr>
+      <tr>
+        <td style="height:25px;background: url('https://pormayor.pe/img/correoReporte_2.jpg')">
+        </td>
+      </tr>
+      <tr>
+        <td><br></td>
+      </tr>
+      <tr class="soloPC">
+        <td align="left" style="padding: 20px 10px;font-size: 14px;line-height: 25px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7);">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th width="193" style="font-size: 55px;font-family: Arial, sans-serif;color:rgba(0,0,0,0.8);text-align:center;height:208px;">
+                  <img style="margin-bottom:30px" src="https://pormayor.pe/img/correoReporte_3A.jpg"/><br>
+                  <b>{{tienda.NProducto}}</b>
+                </th>
+                <th width="193" style="font-size: 55px;font-family: Arial, sans-serif;color:rgba(0,0,0,0.8);text-align:center;height:208px;">
+                  <img style="margin-bottom:30px" src="https://pormayor.pe/img/correoReporte_4A.jpg"/><br>
+                  <b>{{tienda.Vistas}}</b>
+                </th>
+                <th width="193" style="font-size: 55px;font-family: Arial, sans-serif;color:rgba(0,0,0,0.8);text-align:center;height:208px;">
+                  <img style="margin-bottom:30px" src="https://pormayor.pe/img/correoReporte_5A.jpg"/><br>
+                  <b>{{tienda.Contacto}}</b>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center" style="font-weight:600;font-size: 19px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">
+                  <br>
+                  PRODUCTOS
+                </td>
+                <td align="center" style="font-weight:600;font-size: 19px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">
+                  <br>
+                  VISUALIZACIONES
+                </td>
+                <td align="center" style="font-weight:600;font-size: 19px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">
+                  <br>
+                  CONTÁCTO
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="vertical-align: sub;padding:10px; font-size: 14px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.6)">
+                  {% if tienda.NProducto < 1 %}
+                    Podemos ayudarte a mejorar estos datos, consulta <a style="color:#21478F;text-decoration: none;font-weight: 600" href="#ideas">algunas recomendaciones</a>
+                  {% else %}
+                    La cantidad de productos activos que has ingresado en tu tienda.
+                  {% endif %}
+                </td>
+                <td align="center" style="vertical-align: sub;padding:10px;font-size: 14px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.6)">
+                  Este es el total de veces que tus productos fueron vistos por tus compradores.
+                </td>
+                <td align="center" style="vertical-align: sub;padding:10px;font-size: 14px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.6)">
+                  {% if tienda.Vistas == 0 %}
+                    Podemos ayudarte a mejorar estos datos, consulta <a style="color:#21478F;text-decoration: none;font-weight: 600" href="#ideas">algunas recomendaciones</a> 
+                  {% else %}
+                      Cantidad de contáctos directos con tuS compradores gracias a el botón <b style="color:green">Escribir</b> y <b>Llamar</b>.
+                  {% endif %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr class="soloMovil">
+        <td align="left" style="padding: 20px 10px;font-size: 14px;line-height: 25px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7);">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th width="193" style="vertical-align: sub;font-size: 55px;font-family: Arial, sans-serif;color:rgba(0,0,0,0.8);text-align:center;height:208px;">
+                  <img style="margin-bottom:50px" src="https://pormayor.pe/img/correoReporte_3A.jpg"/><br>
+                  <b>{{tienda.NProducto}}</b><br>
+                </th>
+                <th width="387" align="left" >
+                  <span style="padding:10px;font-weight:600;font-size: 1.8rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">PRODUCTOS</span> <br>
+                  <p style="margin-top:3px;font-weight: 300;padding:10px; font-size: 1.5rem;line-height:1.8rem;font-family: Arial, sans-serif;color:rgba(0,0,0,0.9)">
+                    {% if tienda.NProducto < 1 %}
+                      Podemos ayudarte a mejorar estos datos, consulta <a style="color:#21478F;text-decoration: none;font-weight: 600" href="#ideas">algunas recomendaciones</a>
+                    {% else %}
+                      La cantidad de productos activos que has ingresado en tu tienda.
+                    {% endif %}
+
+                  </p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><br><br></td>
+              </tr>
+              <tr>
+                <td width="193" style="vertical-align: sub;font-size: 55px;font-family: Arial, sans-serif;color:rgba(0,0,0,0.8);text-align:center;height:208px;">
+                  <img style="margin-bottom:50px" src="https://pormayor.pe/img/correoReporte_4A.jpg"/><br>
+                  <b>{{tienda.Vistas}}</b><br>
+                </td>
+                <td width="387" align="left" >
+                  <span style="padding:10px;font-weight:600;font-size: 1.8rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">VISUALIZACIONES</span> <br>
+                  <p style="margin-top:3px;font-weight: 300;padding:10px; font-size: 1.5rem;line-height:1.8rem;font-family: Arial, sans-serif;color:rgba(0,0,0,0.9)">
+                    Este es el total de veces que tus productos fueron vistos por tus compradores.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td><br><br></td>
+              </tr>
+              <tr>
+                <td width="193" style="vertical-align: sub;font-size: 55px;font-family: Arial, sans-serif;color:rgba(0,0,0,0.8);text-align:center;height:208px;">
+                  <img style="margin-bottom:50px" src="https://pormayor.pe/img/correoReporte_5A.jpg"/><br>
+                  <b>{{tienda.Contacto}}</b><br>
+                </td>
+                <td width="387" align="left" >
+                  <span style="padding:10px;font-weight:600;font-size: 1.8rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">CONTÁCTO</span> <br>
+                  <p style="margin-top:3px;font-weight: 300;padding:10px; font-size: 1.5rem;line-height:1.8rem;font-family: Arial, sans-serif;color:rgba(0,0,0,0.9)">
+                    {% if tienda.Contacto == 0 %}
+                      Podemos ayudarte a mejorar estos datos, consulta <a style="color:#21478F;text-decoration: none;font-weight: 600" href="#ideas">algunas recomendaciones</a>
+                    {% else %}
+                        Cantidad de contáctos directos con tuS compradores gracias a el botón <b style="color:green">Escribir</b> y <b>Llamar</b>.
+                    {% endif %}
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="height:25px;background: url('https://pormayor.pe/img/correoReporte_2.jpg')">
+        </td>
+      </tr>
+      <tr>
+        <td><br></td>
+      </tr>
+      <tr>
+        <td style="padding: 50px 10px 10px 10px;background: rgba(33 ,71,143,0.08)">
+          <table class="soloPC" width="100%">
+            <tbody>
+              <tr>
+                <td align="center" style="color:#21478F;font-weight:600;font-size: 30px; font-family: Arial, sans-serif;">
+                  <a name="ideas">RECOMENDACIONES</a>
+                </td>
+              </tr>
+              <tr>
+                <td><br></td>
+              </tr>
+              <tr>
+                <td>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td align="center" style="vertical-align: sub">
+                          <span style="padding:5px 12.5px;height: 30px;width:30px;background-color:#21478F;border-radius:100%;font-weight:600;font-size: 25px; font-family: Arial, sans-serif;color:white">1</span>
+                        </td>
+                        <td style="padding-left:20px;font-weight:100;font-size: 18px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.6)">
+                          Agrega mas productos a tu tienda <br>
+                          <p style="margin-top:5px;font-weight:100;font-size: 13px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.5)">Así crearas más opciones para tus compradores. <a style="color:#21478F;text-decoration: none;font-weight: 600" href="https://pormayor.pe/usuario/login">Ir a subir a un producto</a></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br></td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="vertical-align: sub">
+                          <span style="padding:5px 12.5px;height: 30px;width:30px;background-color:#21478F;border-radius:100%;font-weight:600;font-size: 25px; font-family: Arial, sans-serif;color:white">2</span>
+                        </td>
+                        <td style="padding-left:20px;font-weight:100;font-size: 18px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.6)">
+                          Ingresa los mejores precios a tus productos <br>
+                          <p style="margin-top:5px;font-weight:100;font-size: 13px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.5)">Además de volver tus productos más atractivos para tus compradores, podrías aparecer en nuestra sección de ofertazos.</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br></td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="vertical-align: sub">
+                          <span style="padding:5px 12.5px;height: 30px;width:30px;background-color:#21478F;border-radius:100%;font-weight:600;font-size: 25px; font-family: Arial, sans-serif;color:white">3</span>
+                        </td>
+                        <td style="padding-left:20px;font-weight:100;font-size: 18px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.6)">
+                          Comparte tus productos por facebook <br>
+                          <p style="margin-top:5px;font-weight:100;font-size: 13px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.5)">Recuerda que puedes compartir tanto tu tienda como tus productos (individualmente) a tus contactos en Facebook.</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br></td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="vertical-align: sub">
+                          <span style="padding:5px 12.5px;height: 30px;width:30px;background-color:#FEC00F;border-radius:100%;font-weight:600;font-size: 25px; font-family: Arial, sans-serif;color:white">4</span>
+                        </td>
+                        <td style="padding-left:20px;font-weight:100;font-size: 18px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.6)">
+                          <b>Subscribete a uno de nuestros planes </b><br>
+                          <p style="margin-top:5px;font-weight:100;font-size: 13px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.5)">Aumentarás significativamente la visibilidad de tus productos gracias a nuestras herramientas de publicidad. <a style="color:#21478F;text-decoration: none;font-weight: 600" href="https://pormayor.pe/Legal/tarifas">Consulta nuestras tarifas para más información</a></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="soloMovil" width="100%">
+            <tbody>
+              <tr>
+                <td align="center" style="color:#21478F;font-weight:600;font-size: 2.5rem; font-family: Arial, sans-serif;">
+                  <br>
+                  <a name="ideas">RECOMENDACIONES</a>
+                </td>
+              </tr>
+              <tr>
+                <td><br><br></td>
+              </tr>
+              <tr>
+                <td>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td align="center" style="vertical-align: sub">
+                          <span style="padding:5px 12.5px;height: 30px;width:30px;background-color:#21478F;border-radius:100%;font-weight:600;font-size: 25px; font-family: Arial, sans-serif;color:white">1</span>
+                        </td>
+                        <td style="padding-left:20px;font-weight:400;font-size: 1.6rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.8)">
+                          Agrega mas productos a tu tienda <br>
+                          <p style="margin-top:10px;font-weight:300;font-size: 1.4rem;line-height: 1.7rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">Así crearas más opciones para tus compradores. <a style="color:#21478F;text-decoration: none;font-weight: 600" href="https://pormayor.pe/usuario/login">Ir a subir a un producto</a></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br><br><br></td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="vertical-align: sub">
+                          <span style="padding:5px 12.5px;height: 30px;width:30px;background-color:#21478F;border-radius:100%;font-weight:600;font-size: 25px; font-family: Arial, sans-serif;color:white">2</span>
+                        </td>
+                        <td style="padding-left:20px;font-weight:400;font-size: 1.6rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.8)">
+                          Ingresa los mejores precios a tus productos <br>
+                          <p style="margin-top:10px;font-weight:300;font-size: 1.4rem;line-height: 1.7rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">Además de volver tus productos más atractivos para tus compradores, podrías aparecer en nuestra sección de ofertazos.</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br><br><br></td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="vertical-align: sub">
+                          <span style="padding:5px 12.5px;height: 30px;width:30px;background-color:#21478F;border-radius:100%;font-weight:600;font-size: 25px; font-family: Arial, sans-serif;color:white">3</span>
+                        </td>
+                        <td style="padding-left:20px;font-weight:400;font-size: 1.6rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.8)">
+                          Comparte tus productos por facebook <br>
+                          <p style="margin-top:10px;font-weight:300;font-size: 1.4rem;line-height: 1.7rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">Recuerda que puedes compartir tanto tu tienda como tus productos (individualmente) a tus contactos en Facebook.</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br><br><br></td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="vertical-align: sub">
+                          <span style="padding:5px 12.5px;height: 30px;width:30px;background-color:#FEC00F;border-radius:100%;font-weight:600;font-size: 25px; font-family: Arial, sans-serif;color:white">4</span>
+                        </td>
+                        <td style="padding-left:20px;font-weight:100;font-size: 2rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">
+                          <b>Subscribete a uno de nuestros planes </b><br>
+                          <p style="margin-top:10px;font-weight:300;font-size: 2rem;line-height: 1.7rem; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">Aumentarás significativamente la visibilidad de tus productos gracias a nuestras herramientas de publicidad. <a style="color:#21478F;text-decoration: none;font-weight: 600" href="https://pormayor.pe/Legal/tarifas">Consulta nuestras tarifas para más información</a></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><br></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td><br></td>
+      </tr>
+      <tr>
+        <td style="height:25px;background: url('https://pormayor.pe/img/correoReporte_2.jpg')">
+        </td>
+      </tr>
+      <tr>
+        <td><br><br></td>
+      </tr>
+      <tr class="soloPC">
+        <td align="center" width="600" style="color:rgba(0,0,0,0.7);font-weight:600;font-size: 19px; font-family: Arial, sans-serif;">CONTÁCTANOS</td>
+      </tr>
+      <tr class="soloMovil">
+        <td align="center" width="600" style="color:rgba(0,0,0,0.7);font-weight:600;font-size: 1.8rem; font-family: Arial, sans-serif;">CONTÁCTANOS</td>
+      </tr>
+      <tr class="soloPC">
+        <td align="center" style="padding: 20px;font-size: 17px;font-weight: 100; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td align="center"><img src="https://pormayor.pe/img/correoReporte_6.jpg"/></td>
+                <td align="left" style="padding-left: 20px">923 500 413 / 966 767 762</td>
+              </tr>
+              <tr>
+                <td colspan="2"><div style="height: 1px;background-color: rgba(0,0,0,0.1);margin:12px 0px"></div></td>
+              </tr>
+              <tr>
+                <td align="center"><img src="https://pormayor.pe/img/correoReporte_7.jpg"/></td>
+                <td align="left" style="padding-left: 20px">ventas@pormayor.pe / ventas2@pormayor.pe</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr class="soloMovil"> 
+        <td><br></td>
+      </tr>
+      <tr class="soloMovil">
+        <td align="center" style="padding: 20px;font-size: 1.5rem;font-weight: 300; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7)">
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td align="center"><img src="https://pormayor.pe/img/correoReporte_6.jpg"/></td>
+                <td align="left" style="padding-left: 20px">923 500 413 / 966 767 762</td>
+              </tr>
+              <tr>
+                <td colspan="2"><div style="height: 1px;background-color: rgba(0,0,0,0.1);margin:12px 0px"></div></td>
+              </tr>
+              <tr>
+                <td align="center"><img src="https://pormayor.pe/img/correoReporte_7.jpg"/></td>
+                <td align="left" style="padding-left: 20px">ventas@pormayor.pe / ventas2@pormayor.pe</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+{% endblock %}

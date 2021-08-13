@@ -1,0 +1,135 @@
+<style>
+	@page {
+     margin: 10px;
+    }
+</style>
+<body>
+	<table  border="0" cellpadding="0" cellspacing="0" width="100%" > 
+	    <tr>
+	    	<td style="padding: 10px 0 30px 0;">
+	        	<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" >
+	          		<tr>
+	            		<td align="left" bgcolor="" style="padding: 15px 15px 15px 30px; color: #102542; font-size: 28px; font-weight: bold; font-family: Arial, sans-serif;">
+	              			<div >
+	                			<img src="http://pormayor.pe/img/logoCorreo.png" alt="logo-pormayor" style="display: block;" height="60" />
+	              			</div>
+	            		</td>
+	          		</tr>
+	          		<tr>
+	            		<td style="padding: 15px 0px 20px 30px;color: #121212; font-family: Arial, sans-serif; font-size: 24px;">
+							<b>Estimado, {{nombre_usuario}}</b>
+						</td>
+	          		</tr>
+	          		<tr>
+	          			<td style="padding: 20px 30px 0px 30px;">
+		          			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			              		<thead>
+			                        <tr>
+										<td style="width:50%;padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;"valign="top">
+										  NOMBRE TIENDA
+										</td>
+										<td style="width:20%;padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;" valign="top">
+										RUC
+										</td>
+										<td style="width:30%;padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;"valign="top">
+										  FECHA COTIZACIÓN
+										</td>
+			                        </tr>
+			                    </thead>
+			              		<tbody>
+		                      		<tr>
+		  	                        	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+		  	                        		<b>{{nombre_tienda|title}}</b>
+		  	                        	</td>
+		  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+		  	                          		<b>{{ruc_tienda}}</b>
+		  	                            </td>
+		  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+		  	                          		<b>{{fecha_coti|date('d/m/Y')}}</b>
+		  	                          	</td>
+		  	                        </tr>
+			                    </tbody>
+			        		</table>	
+		        		</td>
+	          		</tr>
+	          		<tr>
+						<td bgcolor="#FFFFFC" style="padding: 20px 30px 40px 30px;">
+					  		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+				               	<tr >
+				                	<td style="padding: 20px 0 30px 0;color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;width:100%">
+				                		A continuación te presentamos a detalle los precios vigentes de los articulos solicitados en la cotización <b>N° {{ "%06d"|format(id_venta) }}</b>
+				                  	</td>
+				                </tr>
+				                <tr>
+				                	<td>
+				                    	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+				                      		<thead>
+						                        <tr>
+													<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #dadada;" width="50" valign="top">
+													  <b>Producto</b>
+													</td>
+													<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #dadada;" width="10" valign="top">
+													<b>Cant.</b>
+													</td>
+													<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #dadada;" width="20" valign="top">
+													<b>Precio Unit.</b>
+													</td>
+													<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #dadada;"width="20" valign="top">
+													<b>Importe</b>
+													</td>
+						                        </tr>
+						                    </thead>
+				                      		<tbody>
+				                      			{% set count = 0 %}
+				                      			{% set total = 0 %}
+						                      	{% for rsDatos in pdetalle %}
+						                      		<tr>
+						  	                        	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+						  	                        		{{rsDatos.nompro}}
+						  	                        	</td>
+						  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+						  	                          		{{rsDatos.cantidad}}&nbsp;Unid.
+						  	                            </td>
+						  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+						  	                          		S/ {{rsDatos.precio}}
+						  	                          	</td>
+						  	                          	{% set  importe = rsDatos.cantidad*rsDatos.precio %}
+						  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.8);" valign="top">
+						  	                            	<span style="font-weight:600">S/ {{importe|number_format(2, '.', ' ')}}</span>
+						  	                          	</td>
+						  	                        </tr>
+									              	{% set count = count + 1 %}
+									              	{% set total = importe + total %}
+						                      	{% endfor %}
+						                    </tbody>
+						                    <tfoot>
+						                        <tr>
+						                        	<td style="font-weight: 600; padding: 8px 0px; font-size: 20px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.8);" colspan="2" valign="top">
+						                            	Total a pagar
+						                          	</td>
+						                          	<td style="border-bottom: 1px solid #CBCBCB; background-color: #0D0D0D; padding: 8px 0px; font-size: 20px;text-align:center;font-family: Arial, sans-serif;  color:white;" colspan="2" valign="top">
+						                            	<span style="font-weight:600">S/ {{total|number_format(2, '.', ' ')}}</span>
+						                          	</td>
+						                        </tr>
+						                    </tfoot>
+				                		</table>
+		              				</td>
+		           				</tr>
+		          			</table>
+						</td>
+					</tr>
+					<tr align="center">
+   						<td align="center" bgcolor="#FFFFFC" style="font-size: 12px; color:#121212 ;padding: 30px 30px 30px 30px;font-family: Arial, sans-serif;">
+   							<i>Estos precios son validos por quince (15) dias de emitida la presente cotización.</i>
+   						</td>
+   					</tr>
+   					<tr align="center">
+   						<td align="center" bgcolor="#FFFFFC" style="font-size: 14px; color:#121212 ;padding: 0px 30px 30px 30px;font-family: Arial, sans-serif;">		
+   							<span style="font-size: 14px;">DISCLAIMER</span>
+   				        </td>
+   				    </tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>

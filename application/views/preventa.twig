@@ -1,0 +1,59 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+{% endblock %}
+{% block content %}
+<div class="row centrarForzado">
+        {% for pro in productos %}
+          {% if  pro.Pro_Estado != 3 and not pro.Prf_Img is empty %}
+            <div class="col s12 mix sinPadding filtroProductoall filtroCatall filtroCat{{pro.Cat_IdCategoria}} filtroMarcaall filtroEdoall filtroEdo{{pro.Pro_EdoGarantia|title}} filtroMarca{{pro.Pro_Marca|title|replace({' ': '', '"' : "", "'" : ""})}}" data-idpro="{{pro.Pro_IdProducto}}" data-preciomin="{{pro.Pro_PrecioMinimo}}" data-idpro="{{pro.Pro_IdProducto}}" data-preciomin="{{pro.Pro_PrecioMinimo}}" data-fecha="{{pro.Pro_FechaCreacion}}">
+              <div class="card hoverable centrarForzado alturaDIV {% if pro.Pro_Estado == 4 %} divAgotado {% endif %}">
+                {% if pro.Pro_Estado == 4 %}<span class="centered"><b>AGOTADO</b></span>{% endif  %}
+                <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}"  class=" comoBoton grey-text text-darken-3" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}" itemscope itemtype="http://schema.org/Product">
+                  <div class="row centrarForzado">
+                    <div class="col s4 positionRelative sinPadding">
+                      {% if pro.Prf_Thumb != "" %}
+                        <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Thumb}}" class=" lazy containImgFilter anchoTotal" >
+                      {% else %}
+                        <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Img}}" class="lazy containImgFilter anchoTotal"> 
+                      {% endif %}
+                      {% if pro.Pro_Oferta == 1 %}
+                        <img class="sales positionAbsolute positionAbsolute top0 left0" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}ofertaA.webp" type="image" alt="">
+                      {% endif %}
+                      <!--{% include "layout/favoritos_mostrar.twig" %}-->
+                    </div>
+                    <div class="col s8 positionRelative" style="height:160px" style="border:1px solid red;">
+                      <br>
+                      <span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 30 ? pro.Pro_Nombre|title|slice(0, 30) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} {{ pro.Pro_Nombre|title|length > 26 ? pro.Pro_Nombre|title|slice(0, 27) ~ '...' : pro.Pro_Nombre }} {% endif %}</span>
+                      <div class="enfasisD divider " style="margin: 5px 0px"></div>
+                        <div class="fontB2 enfasisB truncateDesc" itemprop="description">{{pro.Pro_Descripcion|replace({'<p>': "", '</p>':"",'<strong>': "", '</strong>':"",'<br>': "", '</br>':"",'&nbsp;':" ",'<ul>':" ",'</ul>':" ",'</li>':" ",'<li>':" ",'<table>':" ",'</table>':" ",'</tr>':" ",'<tr>':" ",'</td>':" ",'<td>':" ",'<tbody>':" ",'</tbody>':" ",'<figure class="table">':" ",'</figure>':" ",'<div>':" ",'</div>':" "})|slice(0, 90)|title}}...</div>                          
+                        <div class="hide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+                        <span itemprop="lowPrice">{{pro.Pro_PrecioMinimo}}</span>
+                        <span itemprop="highPrice">{{pro.Pro_PrecioMaximo}}</span>
+                        <meta itemprop="priceCurrency" content="PEN" />
+                        </div>                                     
+                        <div class="row sinPadding rowsinpaddin">
+                          <div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6> </div>
+                          <div class="col s6 m6 l6 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X MAYOR</i></h6></div> 
+                          <span class="col s12 m12 l12 new-label pormayorUnico center fontE">
+                            {% if pro.Pro_Estado != 4 %}  <text class="fontD2">{% set vent = 0.04 * pro.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}
+                            {% if pro.cantFav > 0  %} 
+                            &nbsp;<label class="material-icons" style="color:red;font-size:14px;">favorite</label><span class="plikes">&nbsp;({{pro.cantFav}})</span>  {% endif %}
+                            {% else  %}&nbsp;<text class="fontD2">&nbsp;</text><label class="material-icons" style="color:red;font-size:14px;">&nbsp;</label><span class="plikes">&nbsp;</span> {% endif %} 
+                          </span>
+                        </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+</div> 
+
+{% endblock %} 
+
+{% block script %}
+{% endblock %} 

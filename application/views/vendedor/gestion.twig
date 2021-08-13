@@ -1,0 +1,85 @@
+<h5 class="center"><span class="negrita idVenta">{{eActual}}</span><br>{{xd}}</h5>
+<div class="row">
+  <div class="input-field col s12">
+    <input id="motivo" type="text" class="validate">
+    <label for="motivo">Motivo de comunicación</label>
+  </div>
+  <div class="input-field col s12">
+    <input id="resultado" type="text" class="validate">
+    <label for="resultado">Resultado de comunicación</label>
+  </div>
+  <div class="input-field col s12">
+    <input id="accion" type="text" class="validate">
+    <label for="accion">Acción según resultado</label>
+  </div>
+  <div class="input-field col s12">
+    {# <label for="fechaaccion">Fecha de Acción</label> #}
+    <input id="fechaaccion" type="date" class="validate">
+  </div>
+</div>
+<div class="row">
+	<div class="col l6 center">
+  		<a class="modal-action waves-effect waves-green btn-flat negrita blue lighten-1 actEstado" data-idv="{{id}}" data-tipo="{{xd}}"><i class="material-icons left">update</i>GUARDAR</a>
+	</div>
+	<div class="col l6 center">
+  		<a class="modal-action modal-close waves-effect waves-red btn-flat red lighten-4"><i class="material-icons left">close</i>SALIR</a>
+	</div>
+</div>
+<table class="bordered">
+<tr>
+  <th>TIPO</th>
+  <th>MOTIVO</th>
+  <th>RESULTADO</th>
+  <th>ACCIÓN</th>
+  <th>FECHA</th>
+</tr>
+<tbody id="tableGes">  
+  {% for g in gestion %}
+  <tr>
+  	<td>{{g.Ges_TipoCliente}}</td>
+    <td>{{g.Ges_Motivo}}</td>
+  	<td>{{g.Ges_Detalle}}</td>
+  	<td>{{g.Ges_Accion}}</td>
+  	<td>{{g.Ges_FechaProgramar}}</td>
+  </tr>
+  {% endfor %}
+</tbody>	
+</table>
+<script>
+	$('.actEstado').click(function(){
+		var tipo = $(this).data("tipo");
+    var Usu_IdUsuario = $(this).data("idv");
+    var motivo = $('#motivo').val();
+    var resultado = $('#resultado').val();
+    var accion = $('#accion').val();
+    var fechaaccion = $('#fechaaccion').val();
+		$.ajax({
+         data:{
+         'tipo' : tipo,
+         'Usu_IdUsuario' : Usu_IdUsuario,
+         'motivo' : motivo,
+         'resultado' : resultado,
+         'accion' : accion,
+         'fechaaccion' : fechaaccion
+         },
+         type: "POST",
+         url: base_url+'vnd/addgestion',
+         success: function(data){
+        var markup = "<td>"+ tipo +"</td><td>" + motivo +"</td><td>" + resultado +"</td><td>" + accion +"</td><td>" + fechaaccion +"</td><td></tr>";
+          $("#tableGes").append(markup);
+          $(".gMo"+Usu_IdUsuario).text(motivo);
+          $(".gDe"+Usu_IdUsuario).text(resultado);
+          $(".gAc"+Usu_IdUsuario).text(accion);
+          $(".gFp"+Usu_IdUsuario).text(fechaaccion);
+			    $('#motivo').val('');
+          $('#resultado').val('');
+          $('#accion').val('');
+          $('#fechaaccion').val('');
+         	// $('.modal').modal('close');
+         },
+         error: function(data) {
+           alert('error');
+         }
+      });
+	});
+</script>

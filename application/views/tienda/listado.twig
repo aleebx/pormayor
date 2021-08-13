@@ -1,0 +1,113 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+{% endblock %}
+{% block content %}
+  <main class="container">
+    <table id="listaP">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set i = 1 %}
+      {% for pro in productos %}
+        <tr>
+          <td>
+            <img src="{{ruta_img}}{{pro.Prf_Img}}" height="50"></td>
+          <td class="fontA">{{pro.Pro_Nombre}}</td>
+          <td class="fontC">{{pro.Prp_Desde}} - {% if pro.Prp_A == 9999 %} + {% else %}{{pro.Prp_A}}{% endif %}</td>
+          <td class="fontC">{{pro.Prp_Precios}}</td>
+        </tr>
+        {% set i = i + 1 %}
+      {% endfor %}
+      </tbody>
+    </table>
+  </main>
+{% endblock %}
+{% block script %}
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script>
+  $(document).ready( function () {
+          $('#listaP').DataTable({
+          "language": {
+          "thousands":",",
+          "lengthMenu":"",
+          "infoPostFix":"",
+          "search":"Buscar producto:",
+          "processing":"Procesando...",
+          "loadingRecords":"Cargando...",
+          "info":"Página _PAGE_ de _PAGES_",
+          "zeroRecords":"No se encontro nada",
+          "infoEmpty":"No hay registros disponibles",
+          "emptyTable":"No hay información en la tabla",
+          "infoFiltered":"(filtrado de _MAX_ registros)",
+          "paginate": {
+            "last":"Último",
+            "first":"Primero",
+            "next":"Siguiente",
+            "previous":"Anterior"
+          }
+        }
+      });
+    } );
+  </script>
+    <script>
+      $(window).on("load", function() {
+        $('.smallInfo div.l3 .sideB').slideUp();
+          var bLazy = new Blazy({
+               loadInvisible: true,
+               offset: 100
+            });
+      });
+
+(function () {
+        function logElementEvent(eventName, element) {
+          console.log(Date.now(), eventName, element.getAttribute("data-src"));
+        }
+
+        var callback_enter = function (element) {
+          logElementEvent("🔑 ENTERED", element);
+        };
+        var callback_exit = function (element) {
+          logElementEvent("🚪 EXITED", element);
+        };
+        var callback_loading = function (element) {
+          logElementEvent("⌚ LOADING", element);
+        };
+        var callback_loaded = function (element) {
+          logElementEvent("👍 LOADED", element);
+        };
+        var callback_error = function (element) {
+          logElementEvent("💀 ERROR", element);
+          element.src = "https://via.placeholder.com/440x560/?text=Error+Placeholder";
+        };
+        var callback_finish = function () {
+          logElementEvent("✔️ FINISHED", document.documentElement);
+        };
+        var callback_cancel = function (element) {
+          logElementEvent("🔥 CANCEL", element);
+        };
+
+        var ll = new LazyLoad({
+          class_applied: "lz-applied",
+          class_loading: "lz-loading",
+          class_loaded: "lz-loaded",
+          class_error: "lz-error",
+          // Assign the callbacks defined above
+          callback_enter: callback_enter,
+          callback_exit: callback_exit,
+          callback_cancel: callback_cancel,
+          callback_loading: callback_loading,
+          callback_loaded: callback_loaded,
+          callback_error: callback_error,
+          callback_finish: callback_finish
+        });
+      })();
+    </script>
+{% endblock %}

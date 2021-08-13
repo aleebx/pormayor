@@ -1,0 +1,72 @@
+{% extends "layout/correo.twig" %}
+
+{% block content %}
+	<td bgcolor="#FFFFFC" style="padding: 40px 30px 40px 30px;">
+  		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    		<tr>
+    			<td style="color: #383838; font-family: Arial, sans-serif; font-size: 24px;">
+					Hola, <b>{{nombre_usuario}}</b>
+				</td>
+    		</tr>
+    		<tr>
+      			<td style="padding: 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+      				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		               	<tr>
+		                	<td style="padding: 20px 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		                    	El comprador <b>{{nombre_cliente}}</b> acaba de solicitar una cotización a tu tienda, respondela presionando el siguiente botón.
+		                  	</td>
+		                </tr>
+		                <tr>
+			    			<td style="text-align: center">
+								<big style="font: 16px/18px Arial, Helvetica, sans-serif;">
+									<a href="{{Tie_Subdominio}}.{{dominio}}/usuario/cotizar/gestion_pedido_detalle/{{idPedido}}" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0 1rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 0.9rem; color: white;">RESPONDER COTIZACIÓN</a>
+								</big>
+							</td>
+			    		</tr>
+			    		<tr>
+			    			<td><br></td>
+			    		</tr>
+			    		<tr>
+              				<td style="padding: 10px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:#383838;border-bottom: 1px solid rgba(0,0,0,0.2)" width="" valign="top"><b>RESUMEN DE COTIZACIÓN</b>
+              				</td>
+              			</tr>
+              			<tr>
+              				<td><br></td>
+              			</tr>
+		                <tr>
+		                	<td>
+		                    	<table style="table-layout: fixed" border="0" cellpadding="0" cellspacing="0" width="550px">
+		                      		<thead style="background-color: #FEC00F;">
+		                        		<tr>
+		                          			<th style="background-color:  #FFFFFF;" width="80"></th>
+		                          			<th style="padding: 8px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;" width="150" valign="middle">PRODUCTO</th>
+		                          			<th style="padding: 8px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;" width="30" valign="middle">CANT.</th>
+		                        		</tr>
+		                      		</thead>
+		                      		<tbody>
+				                      	{% for items in dataCarrito %}
+				                      		{% if items.idtienda == Tie_IdTienda %}
+				                      			<tr>
+								                  	<td style="border-bottom: 1px solid #CBCBCB; padding: 0px;" valign="top">
+								                      <div style="margin:0 auto; margin:5px; width:100px; height: 100px;  border-radius: 10px;"><img style="width: 100%; height: 100px; object-fit: contain;" src="http://pormayor.pe/img/{{items.img}}"></div>
+								              		</td>
+							                    	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+							                        	{{items.name}}
+							                        </td>
+							                      	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+							                      		{{items.qty}}<br>
+							                      		unid(s)
+							                      	</td>
+								              	</tr>
+				                      		{% endif %}
+				                      	{% endfor %}
+				                    </tbody>
+		                		</table>
+              				</td>
+           				</tr>
+          			</table>
+        		</td>
+    		</tr>
+    	</table>
+	</td>
+{% endblock %}

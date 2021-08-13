@@ -1,0 +1,237 @@
+{% extends "layout/intranet/template_adm.twig" %}
+
+{% block content %}
+    <!-- Page Layout here -->
+    <main class="container">
+      <div class="card">
+          <div class="card-content center">
+          <a class="btn refrest"><i class="material-icons left">refresh</i>REFRESCAR PÁGINA</a><br><br>
+            <div class="row">
+                    <div class="row">
+                      <div class="col s12 m12 l12">
+                        <ul class="tabs pormayor">
+                          <li class="tab col s6"><a  style="font-size: 18px" href="#codBCP"><b>BCP</b></a></li>
+                          <li class="tab col s6"><a  style="font-size: 18px" href="#cogCH"><b>CAJA HUANCAYO</b></a></li>
+                        </ul>
+                      </div>
+                      <div id="codBCP" class="col s12 m12 l12" >
+                        <div style="max-height: 600px; overflow-y:auto;">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>CLIENTE</th>
+                                <th>TIENDA</th>
+                                <th>CODIGO</th>
+                                <th>MONTO</th>
+                                <th>FECHA</th>
+                                <th>TIPO</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% set nro = 1 %}
+                              {% for vco in ventas_bcp %}
+                              <tr>
+                                <td>{{nro}}</td>
+                                <td>{{vco.Per_Nombre}}</td>
+                                <td>{{vco.Tie_Nombre}}</td>
+                                <td>{{vco.Ven_CodCompra}}</td>
+                                <td>{{vco.Ven_Total}}</td>
+                                <td>{{vco.Ven_FechaRegistro}}</td>
+                                <td>PAGO COTIZACION</td>
+                              </tr>
+                              {% set nro = nro + 1 %}
+                              {% endfor %}
+                              {% for pag in pagos_bcp %}
+                              <tr>
+                                <td>{{nro}}</td>
+                                <td>{{pag.Per_Nombre}}</td>
+                                <td>{{pag.Tie_Nombre}}</td>
+                                <td>{{pag.Pac_CodPago}}</td>
+                                <td>{{pag.Pat_Monto}}</td>
+                                <td>{{pag.Pac_FechaRegistro}}</td>
+                                <td>COMPRA DIRECTA</td>
+                              </tr>
+                              {% set nro = nro + 1 %}
+                              {% endfor %}
+                              {% for pat in planes_tienda %}
+                              <tr>
+                                <td>{{nro}}</td>
+                                <td>{{pat.Per_Nombre}}</td>
+                                <td>{{pat.Tie_Nombre}}</td>
+                                <td>{{pat.Codigo}}</td>
+                                <td>{{pat.Pap_Monto}}</td>
+                                <td>{{pat.Pap_FechaRegistro}}</td>
+                                <td>PAGO PLAN</td>
+                              </tr>
+                              {% set nro = nro + 1 %}
+                              {% endfor %}                             
+                            </tbody>
+                          </table>
+                          </div>
+                          <div class="row">
+                            <div class="col s12 m12 l12 center">
+                              <a class="btn orange dBCP" xd="0">Descargar BCP</a>
+                              <a class="file-field btn waves-effect waves-light grey darken-4 checkBCP">Cargar BCP
+                                 <input  type="file" class="cBCP" id="myFile"  accept="text/plain" ya="0">
+                              </a>
+                              <span id="nameFileBCP"></span>
+
+                               <hr>
+                              <textarea style="height: 300px" id="outputPagos"></textarea>
+                              
+                              <a id="getPagos" class="btn">PROCESAR PAGO</a>
+                            </div> 
+                          </div> 
+
+                      </div>
+                      <div id="cogCH" class="col s12 m12 l12">
+                        <div style="max-height: 600px; overflow-y:auto;">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>CLIENTE</th>
+                                <th>TIENDA</th>
+                                <th>CODIGO</th>
+                                <th>MONTO</th>
+                                <th>FECHA</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% set nro2 = 1 %}
+                              {% for vco in ventas_ch %}
+                              <tr>
+                                <td>{{nro2}}</td>
+                                <td>{{vco.Per_Nombre}}</td>
+                                <td>{{vco.Tie_Nombre}}</td>
+                                <td>{{vco.Ven_CodCompra}}</td>
+                                <td>{{vco.Ven_Total}}</td>
+                                <td>{{vco.Ven_FechaRegistro}}</td>
+                              </tr>
+                              {% set nro2 = nro2 + 1 %}                              
+                              {% endfor %}
+                              {% for pag in pagos_ch %}
+                              <tr>
+                                <td>{{nro2}}</td>
+                                <td>{{pag.Per_Nombre}}</td>
+                                <td>{{pag.Tie_Nombre}}</td>
+                                <td>{{pag.Pac_CodPago}}</td>
+                                <td>{{pag.Pat_Monto}}</td>
+                                <td>{{pag.Pac_FechaRegistro}}</td>
+                              </tr>
+                              {% set nro2 = nro2 + 1 %}                              
+                              {% endfor %}                           
+                            </tbody>
+                          </table>
+                          </div>
+                          <div class="row">                        
+                            <div class="col s12 m12 l12 center">
+                              <a class="btn red" href="{{base_url()}}admin/generar/generar_excel" xd="0">Descargar</a>
+                              <a class="file-field btn waves-effect waves-light grey darken-4 checkCH">Cargar
+                                 <input  type="file" class="cCH" accept="text/plain" ya="0">
+                              </a>
+                              <span id="nameFileCH"></span>
+                             
+                            </div> 
+                          </div> 
+                      </div>
+                    </div>
+            </div>
+          </div>
+		  </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+        $('.refrest').click(function(){
+            location.reload(true);
+        });
+
+          var input = document.getElementById("myFile");
+          var output = document.getElementById("outputPagos");
+
+
+          input.addEventListener("change", function () {
+            if (this.files && this.files[0]) {
+              var myFile = this.files[0];
+              var reader = new FileReader();
+              
+              reader.addEventListener('load', function (e) {
+                // output.textContent = e.target.result;
+                var crep = e.target.result;
+                var tamCrep = crep.length;
+
+                var cabecera = crep.substring(1,250);
+                var lista = crep.substring(250,tamCrep);   
+                output.textContent = lista;
+              });
+              reader.readAsBinaryString(myFile);
+            }   
+          });
+
+        $('#getPagos').click(function(){
+            var datos = $('#outputPagos').val();
+            console.log(datos);
+        });
+
+        $('.dBCP').click(function(){
+            window.location.href=base_url+'admin/generar/crep_file_bcp';
+            if ($(this).attr('xd') == 0 ){
+            $(this).attr('xd',"1");              
+            $(this).append('<i class="material-icons right">done_all</i>');
+            }
+
+        });        
+
+        // $('.cBCP').change(function(e){
+        //     var fileName = e.target.files[0].name;
+        //     $('#nameFileBCP').text(fileName);
+        //     if ($(this).attr('ya') == 0 ){
+        //     $(this).attr('ya',"1");              
+        //     $('.checkBCP').append('<i class="material-icons right">done_all</i>');
+        //     }
+        // });
+
+        $('.dBBVA').click(function(){
+         var listo = e.target.files[0].name;
+            $('#nameFileBBVA').text(listo);
+            if ($(this).attr('xd') == 0 ){
+            $(this).attr('xd',"1");              
+            $(this).append('<i class="material-icons right">done_all</i>');
+            }
+        });
+
+        $('.cBBVA').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('#nameFileBBVA').text(fileName);
+            if ($(this).attr('ya') == 0 ){
+             $(this).attr('ya',"1");              
+            $('.checkBBVA').append('<i class="material-icons right">done_all</i>');
+            }
+        });
+
+        $('.dCH').click(function(){
+            var listo = e.target.files[0].name;
+            $('#nameFileCH').text(listo);
+            if ($(this).attr('xd') == 0 ){
+            $(this).attr('xd',"1");              
+            $(this).append('<i class="material-icons right">done_all</i>');
+            }
+        });
+
+        $('.cCH').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('#nameFileCH').text(fileName);
+            if ($(this).attr('ya') == 0 ){
+             $(this).attr('ya',"1");              
+            $('.checkCH').append('<i class="material-icons right">done_all</i>');
+            }
+        });
+
+
+    });
+    </script>
+{% endblock %}

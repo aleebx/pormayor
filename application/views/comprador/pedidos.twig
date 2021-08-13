@@ -1,0 +1,121 @@
+{% extends "layout/intranet/template_usu.twig" %}
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{base_url('public/')}}intranet/css/gestion_pedido.css?v={{now|date('i:s')}}"  media="screen"/>
+{% endblock %}
+{% block content %}
+    <!-- Page Layout here -->
+    <main class="container" style="width:95%">
+      	<div class="card">
+	        <div class="card-content center sinPadding">
+	        	<div class="row cardContentFix">
+		          	<h5 class="center card-title">Pedidos Realizados</h5>
+		            <div class="row"><div class="divider"></div></div>
+		             {% if pedidos %}
+		             <ul class="collapsible pedidosComprador" data-collapsible="accordion">
+			            {% for ped in pedidos %}
+						    <li>
+						      	<div class="collapsible-header">
+							      	<div class="row sinBordeBottom centrarForzado" style="width: 100%">
+										<div class="col s6 m5 l5 cardCustomGestion">
+											<div class="leftPedidoCont pormayorAccent">
+												<span class="new badge valign-wrapper left flow-text sinPadding" data-badge-caption="{{ "%06d"|format(ped.Ped_IdPedido) }}" ><i class="material-icons left">arrow_downward</i>&nbsp;</span>
+												<small>{{ped.Ped_FechaCreacion|date("m/d/Y")}}</small>
+											</div>
+										</div>
+										{% if ped.Tip_Estatus == 2 %}
+{# 											{% for cot in cotizacion %}	
+												{% if cot.pedido_Ped_IdPedido == ped.Ped_IdPedido %}
+ #}													{% if ped.Cot_Estado == 2 %}
+														<div class="col s6 m7 l7 green valign-wrapper" style="height:54px">
+															<h5 data-idcoti="{{ped.Cot_IdCotizacion}}" class="cotiHolder centrarForzado flow-text white-text">Cotizado</h5>   
+														</div>
+													{% else %}
+													     <div class="col s6 m7 l7 " style="word-break: break-word;position:relative;top:15px">
+														    <h5 data-idcoti="{{ped.Cot_IdCotizacion}}" class="cotiHolder centrarForzado flow-text" style="color:rgba(0,0,0,0.3)">Cotizacion</h5>
+														</div>  
+													{% endif %}           		
+												{# {% endif %}	 #}
+											{# {% endfor %} #}
+										{% else %}
+										   <div class="col s6 m7 l7 " style="word-break: break-word;position:relative;top:15px">
+											    <h5 class="cotiHolder centrarForzado flow-text" style="color:rgba(0,0,0,0.3)">Sin responder</h5>
+											</div>  
+										{% endif %}
+									</div>
+								</div>
+								<div class="collapsible-body  grey lighten-5 sinPadding">
+									<div class="row cardContentFix">
+{# 										{% for cot in cotizacion %}	
+											{% if cot.pedido_Ped_IdPedido == ped.Ped_IdPedido %} 
+
+ #}	
+									{% if ped.Tip_Estatus == 2 %}										
+										<a href="{{base_url()}}comprador/index/dCotizacion/{{ped.Cot_IdCotizacion}}" class="btn pormayorUnico" style="margin: 20px 0;">Ver {% if ped.Cot_Estado == 1 %}cotización {% else %} recibo {% endif %} </a>    
+									{% endif %}        		
+{# 											{% endif %}
+										{% endfor %}  #}
+										{% for dpe in dpedidos %}
+											{% if ped.Ped_IdPedido == dpe.Ped_IdPedido %}
+												<div class="row">
+									          <div class="col s4 m3 l3 center"><img class="fixImg redondeo" src="{{ruta_img}}{% if dpe.SKU_Img %}{{dpe.SKU_Img}}{% else %}nofoto.png{% endif %}" height=""></div>			
+									          <div class="col s5 m5 l5">
+									          	<b>{{dpe.Pro_Nombre}}</b></br>
+							              		<span>{{dpe.Var_Nombre}} {{dpe.Vao_Nombre}}</span> - 
+							              		<span style="font-size:12px" class="enfasisB">{{dpe.SKU_Color|title}}</span>
+									          </div>
+									          <div class="col s3 m4 l4"><span>{{dpe.Ped_Cantidad}}</span> <small class="enfasisB">{{dpe.Unm_Nombre}}</small></div>
+									      </div>
+											{% endif %} 
+										{% endfor %}
+									</div>
+								</div>
+						    </li>
+			           	 {% endfor %}
+					 </ul>
+					 {% else %} 
+					 	<div class="center col s12 m12 l12" style="margin-top: 20px;">
+		                    <img src="{{ruta_img}}emptyPedido.webp" height="150"></img>
+		                  </div>
+		                  <div class="center col s12 m12 l12">
+		                    <h5>Sin pedidos</h5>
+		                    <p class="enfasisB">Aún no haz realizado ningun pedido</p>
+		                  </div>
+		                  <div class="center col s12 m12 l12" style="margin:15px 0px">
+		                     <a href="{{base_url()}}" class="btn pormayorUnico">Comienza a cotizar</a>
+		                  </div>
+		            {% endif %} 
+	        		</div>
+	        	</div>
+        	</div>
+		</div>
+    </main>
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript">
+		//Cambio Footer
+	    $('.footerSecundario').removeClass('hide');
+	    $('.footerPrincipal').addClass('hide');
+	</script>
+    <script type="text/javascript">
+    	/***************NOTIFICACIONES********************/
+		  var cotizaciones=[];
+		  var i = 0;
+		  $('.cotiHolder').each(function(){
+
+		   cotizaciones[i] = $(this).data('idcoti');
+		   i++;
+		  });
+		  $.ajax({
+		    data:{
+		      'operacion' : 'cotizaciones',
+		      'cotizaciones' : cotizaciones,
+		    },
+		    type: "POST",
+		    url: base_url+'comprador/index/ajax_update_noti',
+		    success: function(data){
+
+		    }
+		  });
+    </script>
+{% endblock %}

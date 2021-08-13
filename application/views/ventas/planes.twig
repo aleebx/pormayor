@@ -1,0 +1,87 @@
+{% extends "layout/intranet/template_ven.twig" %}
+{% block head %}
+	<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"  media="screen,projection"/>
+
+	<style type="text/css">
+	.clickVenta {
+		cursor: pointer;
+	}
+	.nroTable {
+	 font-size: 1.4rem;
+	}
+	table.striped>tbody>tr:nth-child(odd){
+	background-color: #ffffff;
+	}
+	</style>
+
+{% endblock %}
+{% block content %}
+	<main class="container">
+	  <table id="example" class="display" style="width:100%">
+	    <thead>
+	      <tr>
+	          <th>#</th>
+	          <th>CÓDIGO</th>
+	          <th>FECHA REGISTRO</th>
+	          <th>PLAN</th>
+	          <th>PRECIO</th>
+	          <th>COMISIÓN</th>
+	          <th>ESTADO</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	{% set nro = 1 %}
+	    	{% for pla in planes %}
+	          <tr class="clickVenta" href="{{base_url()}}ventas/planes/">
+	            {# 1 = PAGO PENDIENTE | 2 = ACTIVO | 3 = VENCIDO #}
+	            <td class="nroTable negrita">{{nro}}</td>
+	            <td>{{pla.Codigo}}</td>
+	            <td>{{pla.Pap_FechaRegistro}}</td>
+	            <td>{{pla.Pla_Nombre}}</td>
+	            <td>{{pla.Pla_Precio}}</td>
+	            <td>{{pla.Pap_Comision}} %</td>
+	            <td>{% if pla.Pap_Estado == 1 %}PAGO PENDIENTE{% elseif pla.Pap_Estado == 2 %}ACTIVO{% elseif pla.Pap_Estado == 3 %}VENCIDO{% else %}ERROR{% endif %}</td>
+	          </tr>
+	          {% set nro = nro + 1 %}
+	    	{% endfor %}
+	    </tbody>
+	  </table>
+	</main>
+{% endblock %}
+
+{% block script %}
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+	    $('table tr').click(function(){
+	    	if ($(this).attr('href')) {
+	        	window.location = $(this).attr('href');
+	        	return false;
+	    	}
+	    });
+
+    $('#example').DataTable({
+	        "language": {
+	            "lengthMenu": "",
+	            "zeroRecords": "No se encontro nada",
+	            "info": "Página _PAGE_ de _PAGES_",
+	            "infoEmpty": "No hay registros disponibles",
+			    "emptyTable":     "No hay información en la tabla",
+			    "infoFiltered":   "(filtrado de _MAX_ tiendas)",
+			    "infoPostFix":    "",
+			    "thousands":      ",",
+			    "loadingRecords": "Cargando...",
+			    "processing":     "Procesando...",
+			    "search":         "Buscar:",
+			    "paginate": {
+			        "first":      "Primero",
+			        "last":       "Último",
+			        "next":       "Siguiente",
+			        "previous":   "Anterior"
+				        }
+				 }
+		});
+
+	});
+	</script>
+{% endblock %}

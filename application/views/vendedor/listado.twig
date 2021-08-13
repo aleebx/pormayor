@@ -1,0 +1,178 @@
+{% extends "layout/intranet/template_ven.twig" %}
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+{% endblock %}
+{% block content %}
+  <main class="">
+    <div class="card">
+      <div class="card-content">
+      {# <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> #}
+        <h4>MIS CLIENTES</h4>
+        <table id="listado">
+          <thead>
+            <tr>
+                <th>Fecha Creado</th>
+                <th>Cliente</th>
+                <th>ENTREGADOS</th>
+                <th>RECHAZADOS</th>
+                <th>VALOR TOTAL (ENTREGADO)</th>
+                <th>ESTADO ULTIMO PEDIDO</th>
+                <th>FECHA ULTIMO PEDIDO</th>
+                <th>ESTADO CLIENTE</th>
+                <th>FECHA INGRESADA</th>
+                <th>MOTIVO</th>
+                <th>DETALLE</th>
+                <th>ULTIMA ACCIÓN</th>
+                <th>FECHA PROGRAMADA</th>
+                <th></th>
+                <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for c in clientes %}
+                <tr class="trt{{c.Usu_IdUsuario}}">
+                  <td>{{c.Usu_Created|date("Y/m/d")}}</td>
+                  <td>{{c.Per_Nombre}} -{{c.Per_Telefono}} <small></small></td>
+                  <td>{{c.entregado}}</td>
+                  <td>{{c.rechazado}}</td>
+                  <td>{{c.monto_entregado}}</td>
+                  <td>{% if c.ultimo_estado == 1 %}NUEVA{% elseif c.ultimo_estado == 2 %}CONFIRMADA{% elseif c.ultimo_estado == 5 %}ENTREGADA{% elseif c.ultimo_estado == 6 %}RECHAZADA{% endif %}
+                  <td>{{c.ultimo_pedido}}</td>
+                  <td>
+                   {% set startDate = c.ultimo_pedido|date("Y-m-d") %}
+                    {% set endDate = "now"|date("Y-m-d") %}
+                  {% set difference = date(endDate).diff(date(startDate)) %}
+                  {% set leftDays = difference.days %}
+                  {% if leftDays%}
+                   {% if leftDays <= 10 or leftDays == 0 %}
+                    <a class="btn-flat green" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+tu+familia+de+PorMayor.Pe+te+env%C3%ADa+un++saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0AAprovechamos+para+informarle+que+hemos+incorporado+novedades+a+nuestra+pagina+web+y+puedes+conocerlas+ingresando+a+https%3A%2F%2Fpormayor.pe%2F+%0D%0ARecuerda+que+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0ANos+gustar%C3%ADa+conocer+tu+opini%C3%B3n+sobre+nuestros+nuevos+productos%F0%9F%98%8A">{% set tipo = 'ACTIVO' %}{{tipo}}</a>
+                  {% elseif leftDays >= 11 and leftDays <= 20 %}
+                    <a class="btn-flat yellow" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla">{% set tipo = 'INACTIVO +10 DIAS' %}{{tipo}}</a>
+                  {% elseif leftDays >= 21 and leftDays <= 30 %}
+                    <a class="btn-flat orange" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla">{% set tipo = 'INACTIVO +20 DIAS' %}{{tipo}}</a>
+                  {% elseif leftDays >= 31 and leftDays <= 40 %}
+                    <a class="btn-flat red" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+tu+familia+de+PORMAYOR+te+env%C3%ADa+un+cordial+saludo.+%F0%9F%A4%97%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+PREFERIRNOS%0D%0ATe+informo+que+han+llegado+variedad+de+productos+novedosos+que+puedes+conocer+ingresando+a+nuestra+web+https%3A%2F%2Fpormayor.pe%2F%0D%0ARecuerda+que+ahora+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0ACrece+con+Nosotros+%F0%9F%A5%B3%F0%9F%A5%B3%F0%9F%A5%B3">{% set tipo = 'INACTIVO +30 DIAS' %}{{tipo}}INACTIVO +30 DIAS</a>
+                  {% elseif leftDays >= 41  %}
+                    <a class="btn-flat black" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla">{% set tipo = 'INACTIVO +40 DIAS' %}{{tipo}}</a>
+                  {% endif %}
+                  {% else %}
+                    <a class="btn-flat blue" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0ATe+saluda+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+TU+INTERES%0D%0AAprovechamos+para+informarle+sobre+nuestra+MODALIDAD+DE+VENTA+en+la+que+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFTe+gustar%C3%ADa+obtener+mayor+informaci%C3%B3n%3F%0D%0AHazme+saber+y+podemos+agendar+una+Reuni%C3%B3n+y+para+brindarte+una+Asesor%C3%ADa+Completa+%F0%9F%91%A9%F0%9F%92%BB">{% set tipo = 'REGISTRADO' %}{{tipo}}</a>
+                  {% endif %}
+                  </td>
+                  {% set break = false %}
+                    {% set tt = 0 %}
+                  {% for ges in gestionc if not break%}
+                    {% if c.Usu_IdUsuario == ges.Usu_IdUsuario %}
+                      <td class="gFe{{c.Usu_IdUsuario}}">{{ges.Ges_FechaRegistro}}</td>
+                      <td class="gMo{{c.Usu_IdUsuario}}">{{ges.Ges_Motivo}}</td>
+                      <td class="gDe{{c.Usu_IdUsuario}}">{{ges.Ges_Detalle}}</td>
+                      <td class="gAc{{c.Usu_IdUsuario}}">{{ges.Ges_Accion}}</td>
+                      <td class="gFp{{c.Usu_IdUsuario}}">{{ges.Ges_FechaProgramar}}</td>
+                    {% set tt = 1 %}
+                      {% set break = true %}
+{#                       {% else %}
+                      <td class="gFe{{c.Usu_IdUsuario}}"></td>
+                      <td class="gMo{{c.Usu_IdUsuario}}"></td>
+                      <td class="gDe{{c.Usu_IdUsuario}}"></td>
+                      <td class="gAc{{c.Usu_IdUsuario}}"></td>
+                      <td class="gFp{{c.Usu_IdUsuario}}"></td> #}
+                      {% endif %}
+                  {% endfor %}
+                  {% if tt == 0 %}
+                      <td class="gFe{{c.Usu_IdUsuario}}"></td>
+                      <td class="gMo{{c.Usu_IdUsuario}}"></td>
+                      <td class="gDe{{c.Usu_IdUsuario}}"></td>
+                      <td class="gAc{{c.Usu_IdUsuario}}"></td>
+                      <td class="gFp{{c.Usu_IdUsuario}}"></td> 
+                  {% endif %}                 
+                  {# <td><a class="btn green" href="{{base_url()}}vnd/cliente/{{c.Usu_IdUsuario}}">VER</a></td> #}
+                  <td><a class="btn blue modal-trigger" id="{{c.Usu_IdUsuario}}" accessKey="{{c.Per_Nombre}}" xs="{{tipo}}" href="#modalGes"><i class="material-icons">update</i></a></td>
+                  <td><a class="btn red quitar" data-idu="{{c.Usu_IdUsuario}}"><i class="material-icons">delete</i></a></td>
+                </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <div id="modalGes" class="modal" style="z-index:9999 !important;width: 50%!important;">
+      <div class="modal-content" id="loadEdit"></div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+  <script>
+  $(document).ready( function () {
+    $('#listado').DataTable({
+      "responsive": true,
+      "language": {
+          "lengthMenu": "",
+          "zeroRecords": "No se encontro nada",
+          "info": "Página _PAGE_ de _PAGES_",
+          "infoEmpty": "No hay registros disponibles",
+          "emptyTable":     "No hay información en la tabla",
+          "infoFiltered":   "(filtrado de _MAX_ ventas)",
+          "infoPostFix":    "",
+          "thousands":      ",",
+          "loadingRecords": "Cargando...",
+          "processing":     "Procesando...",
+          "search":         "Buscar:",
+          "paginate": {
+              "first":      "Primero",
+              "last":       "Último",
+              "next":       "Siguiente",
+              "previous":   "Anterior"
+                  }
+      }
+    });
+  
+    $('#modalGes').modal({
+             dismissible:true, // Modal can be dismissed by clicking outside of the modal
+             opacity:.8, // Opacity of modal background
+             inDuration:300, // Transition in duration
+             outDuration:200, // Transition out duration
+             startingTop:'5%', // Starting top style attribute
+             endingTop:'10%', // Ending top style attribute
+              ready:function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                 var est=trigger[0]['accessKey'];
+                 var idv=trigger[0]['id'];
+                 var xd=trigger[0]['attributes'][3]['nodeValue'];
+                 $('#loadEdit').load(base_url+'vnd/gestion',{id:idv,est:est,xd:xd});
+                },
+              complete: function() {
+              } // Callback for Modal close
+          });
+
+  } );
+ $('.quitar').on('click', function () {
+    // $('.quitar').click(function(){
+  var id_usuario = $(this).data('idu');
+   $.ajax({
+       data:{
+        id_usuario : id_usuario
+       },
+       type: "POST",
+       url: base_url+'vnd/cambiar_estado', 
+       dataType: "json",
+       beforeSend:function(){
+        loading_screen = pleaseWait({
+            logo:"",
+            backgroundColor: '#fff',
+            loadingHtml: "<img src='{{ruta_img}}logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
+            });
+       },
+       success: function(data){
+        $('.trt'+id_usuario).addClass('hide');
+        loading_screen.finish();
+       },
+       error: function(data) {
+         alert('error');
+         console.log(data);
+       }
+    });
+ });
+  </script>
+{% endblock %}

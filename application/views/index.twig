@@ -1,0 +1,458 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"   media="screen"/>
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"  media="screen"/>
+	<style>
+		body > .inner {display: none;}
+		body.pg-loaded > .inner {display: block;}
+		.fontE{font-size: 1.4rem!important}
+		.container .row {margin-left: -.70rem;margin-right: -.70rem;}
+		{% if userAgent != 'PC' %}
+	  		.alturaDIV{height:289px;}
+	  		.fontD2{font-size: 0.8rem!important;font-weight:1000;}
+	  		.fontE{font-size: 0.8rem!important}
+
+		{% endif %}  
+	</style>
+{% endblock %}
+{% block content %}
+	<div class="inner">
+		{% if usuario.logueado %}
+			<div class="hide addHomeScreen valign-wrapper">
+				<button class="btn-flat white-text cerrarHomeScreen"><i class="fontA material-icons">close</i></button>
+				<div class="row">
+					{% if usuario.rol == 2 or usuario.rol == 3 %}
+						<div class="col s6 m6 sinPadding center">
+							<a href="http://{{subdominio_tienda}}.{{dominio}}/usuario/inventario/lProductos">
+								<img class="b-lazy" alt="Pormayor.pe - Crear tienda" data-src="{{ruta_img}}movilOpcionTiendaB.webp">
+							</a>
+						</div>
+						<div class="col s6 m6 sinPadding center" style="margin-bottom:20px">
+							<a href="{{base_url()}}comprador/index/pedidos">
+								<img class="b-lazy" alt="Pormayor.pe - Iniciar sesion" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
+							</a>
+						</div>
+						<div class="col s12 m12 center" style="margin-bottom:20px">
+							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
+						</div>
+					{% elseif usuario.rol == 5 %}
+						<div class="col s6 m6 sinPadding center" style="margin-bottom:20px">
+							<a href="{{base_url()}}gestor/gestion">
+								<img class="b-lazy" alt="Pormayor.pe - Iniciar sesion" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
+							</a>
+						</div>
+						<div class="col s12 m12 center" style="margin-bottom:20px">
+							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
+						</div>
+					{% else %}
+						<div class="col s6 m6 sinPadding center">
+							<a href="{{base_url()}}tienda/crear2">
+								<img class="b-lazy" alt="Pormayor.pe - Ir a tienda" data-src="{{ruta_img}}movilOpcionTiendaA.webp">
+							</a>
+						</div>
+						<div class="col s6 m6 sinPadding center" style="margin-bottom:20px">
+							<a href="{{base_url()}}comprador/index/pedidos">
+								<img class="b-lazy" alt="Pormayor.pe - Perfil de usuario" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
+							</a>
+						</div>
+						<div class="col s12 m12 center">
+							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
+						</div>
+					{% endif %}   
+				</div>
+			</div>
+		{% else %}
+			<div class="hide addHomeScreen container valign-wrapper">
+				<button class="btn-flat white-text cerrarHomeScreen"><i class="fontA material-icons">close</i></button>
+				<div class="row">
+					<div class="col s6 m6 center sinPadding">
+						<a href="{{base_url()}}tienda/crear">
+							<img class="b-lazy" alt="Pormayor.pe - Crear tienda" data-src="{{ruta_img}}movilOpcionTiendaA.webp">
+						</a>
+					</div>
+					<div class="col s6 m6 center sinPadding" style="margin-bottom:20px">
+						<a href="{{base_url()}}usuario/login">
+							<img class="b-lazy" alt="Pormayor.pe - registrarse como comprador"  data-src="{{ruta_img}}movilOpcionCompradorA.webp">
+						</a>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		<div class="positionRelative"> {#  BANNER SUPERIOR #}
+			{% if userAgent == "PC" %}
+				<div class="publicidad">
+					<a href="https://pormayor.pe/landing/c/unete-a-la-familia-pormayorpe?utm_source=google%2C%20google%20ads%2C%20ubivox%20newsletter%2C%20facebook%2C%20facebook%20ads%2C%20linkedin%2C%20linkeding%20campaign%20manager&utm_medium=banner%2C%20cpc%2C%20email%2C%20lead%2C%20registro&utm_campaign=%23YoSoyPorMayor&utm_term=comercios%2C%20yosoypormayor%2C%20tiendas%2C%20mayoristas%2C%20minoristas%2C%20comercio%20electronico%2C%20negocios%2C%20comercio%2C%20onine%2C%20ecommerce" ><img alt="Registrarse pormayor.pe" src="{{ruta_img}}wow-baner-web-home-vendedores.webp"></a>
+					<a href="{{base_url()}}grupal" ><img alt="Registrarse pormayor.pe" src="{{ruta_img}}wow-baner-web-home.webp"></a>
+					<a href="{{base_url()}}usuario/login" ><img alt="Registrarse pormayor.pe" src="{{ruta_img}}bn1209.webp"></a>
+					<a href="{{base_url()}}"><img alt="Pormayor.pe" class="b-lazy" data-src="{{ruta_img}}b_eW.webp"></a>
+				</div>
+			{% else %}
+				<div class="publicidad">
+					<a href="https://pormayor.pe/landing/c/unete-a-la-familia-pormayorpe?utm_source=google%2C%20google%20ads%2C%20ubivox%20newsletter%2C%20facebook%2C%20facebook%20ads%2C%20linkedin%2C%20linkeding%20campaign%20manager&utm_medium=banner%2C%20cpc%2C%20email%2C%20lead%2C%20registro&utm_campaign=%23YoSoyPorMayor&utm_term=comercios%2C%20yosoypormayor%2C%20tiendas%2C%20mayoristas%2C%20minoristas%2C%20comercio%20electronico%2C%20negocios%2C%20comercio%2C%20onine%2C%20ecommerce" ><img alt="Registrarse pormayor.pe" src="{{ruta_img}}wow-baner-web-home-vendedores-movil.webp"></a>
+					<a href="{{base_url()}}grupal" ><img alt="Registrarse pormayor.pe" src="{{ruta_img}}wow-baner-web-home-movil.webp"></a>
+					<a href="{{base_url()}}usuario/login" ><img alt="Registrarse pormayor.pe" src="{{ruta_img}}bnnercg_m.webp"></a>
+					<a href="{{base_url()}}"><img alt="Pormayor.pe" src="{{ruta_img}}b_eM.webp"></a>
+				</div>
+			{% endif %}
+			<div  class="comoBoton positionAbsolute left0  prevButton"><i class=" material-icons enfasisA2">keyboard_arrow_left</i></div>
+			<div  class="comoBoton positionAbsolute right0  nextButton"><i class=" material-icons enfasisA2">keyboard_arrow_right</i></div>
+		</div>
+	</div>
+	<main class="contentPage inner">
+		<div class="{% if userAgent == "PC" %}container{% endif %}">
+			<div class="row center">
+				<div class="col s3 l3 tooltipped" style="border-right:1px solid #e1e1e1;" data-position="bottom" data-delay="50" data-tooltip="Te lo llevamos hasta la puerta de tu casa"><i class="medium material-icons amber-text" style="font-size:3rem;">local_shipping</i><br><span>Entrega en todo <b>Perú</b></span></div>
+				<div class="col s3 l3 tooltipped" style="border-right:1px solid #e1e1e1;" data-position="bottom" data-delay="50" data-tooltip="Compra como mayorista sin ser mayorista"><i class="medium material-icons amber-text" style="font-size:3rem;">people_alt</i><br><span><b>Compras</b> Grupales</span></div>
+				<div class="col s3 l3 tooltipped" style="border-right:1px solid #e1e1e1;" data-position="bottom" data-delay="50" data-tooltip="Contra entrega, Tarjeta de Crédito/Débito y Transferencias/Depositos"><a href="tel:+017739536"><i class="medium material-icons amber-text" style="font-size:3rem;">credit_card</i><br><span class="black-text">Todos los <b>Métodos de Pago</b></span></a></div>
+				<div class="col s3 l3 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Llámanos si necesitas ayuda en tu compra"><a href="tel:+017739536"><i class="medium material-icons amber-text" style="font-size:3rem;">phonelink_ring</i><br><span class="black-text">Ventas <b>923500413</b></span></a></div>
+			</div>
+			<div class="row positionRelative containerCampana {% if userAgent != "PC" %}centrarForzado{% endif %} hide">
+				<div class="row centrarForzado positionRelative containerOfertazos hide {% if userAgent != "PC" %}centrarForzado{% endif %}">
+					{# SLICK DE PRODUCTOS EN GRUPO #}
+					<div class="center pormayorUnico">
+						<a href="{{base_url()}}grupal">
+						<h4 class="white-text negrita"><i class="material-icons">group</i>&nbsp;&nbsp;&nbsp;GRUPOS</h4></a>
+						{# <div class="pormayor positionRelative">
+							<span class="positionAbsolute"></span><i class="material-icons grey-text text-darken-4 positionAbsolute">group</i>
+						</div>
+						<span class="enfasisA sectionName">Grupos</span>
+						<a href="{{base_url()}}grupal" class="hide-on-med-and-down btn-flat pormayorUnico-text">/ &nbsp;Ver más...</a> #}
+					</div>
+					<div class="divider dividerMargin"></div>
+{# 					<div class="row positionRelative containerUltimos hide {% if userAgent != "PC" %}centrarForzado{% endif %}">
+						<div class="col s12 Ofertas sinPadding">
+							{% for pro in productos_grupal %}
+								<div class="card hoverable alturaDIV {% if pro.Pro_Estado == 4 %} divAgotado {% endif %}" itemscope itemtype="http://schema.org/Product">
+									{% if pro.Pro_Estado == 4 %}<span class="centered"><b>AGOTADO</b></span>{% endif %}									
+									<a itemprop="url" href="{{base_url()}}grupal/nuevo/{{pro.url}}" class="grey-text text-darken-4" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+										<div class="card-content center sinPadding cardHeight positionRelative valign-wrapper">
+											<img itemprop="image" class="fixImgProducto b-lazy centrarForzado" alt="{{pro.Pro_Nombre}} - Pormayor.pe" title="{{pro.Pro_Nombre}}" data-src="{{ruta_img}}{{pro.Prf_Thumb}}"/>
+											{% if pro.Pro_Oferta == 1 %}
+												<img class="sales positionAbsolute positionAbsolute top0 left0" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}ofertaA.webp" type="image" alt=""/>
+											{% endif %}
+										</div>
+										<div class="card-action center pormayorUnico cardActionProdFix">
+											<div class="hide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+											<span itemprop="lowPrice">{{pro.Pro_PrecioMinimo}}</span>
+											<span itemprop="highPrice">{{pro.Pro_PrecioMaximo}}</span>
+											<meta itemprop="priceCurrency" content="PEN" />
+											<meta itemprop="availability" content="https://schema.org/InStock"/>
+											</div>
+											<span itemprop="name" class="truncateNew fontD2 muayuscula white-text" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 34 ? pro.Pro_Nombre|title|slice(0, 34) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} {{pro.Pro_Nombre|title|length > 25 ? pro.Pro_Nombre|title|slice(0, 26) ~ '...' : pro.Pro_Nombre }} {% endif %}</span>
+											<div class="row sinPadding rowsinpaddin">
+												{% if pro.Gru_PrecioInicial == pro.Gru_PrecioFinal %}
+													<div class="col s12 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Gru_PrecioFinal}}</span><br><i>Agrúpate</i></h6></div> 
+												{% else %}
+													<div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE grey-text">S/ {{pro.Gru_PrecioInicial}}</span><br><i class="grey-text">Antes</i></h6> </div>
+													<div class="col s6 m6 l6 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Gru_PrecioFinal}}</span><br><i>Ahora</i></h6></div> 
+												{% endif %}
+											</div>  
+										</div>
+									</a>
+									<span class="col s12 m12 l12 new-label pormayorUnico center fontE">
+										{% if pro.Pro_Estado != 4 %}
+											<text class="fontD2">
+												{% set vent = 0.04 * pro.Pro_Vista %}
+													{% if vent > 1 %}{{vent|round}}
+											</text>
+											Ventas
+										{% else %}
+											&nbsp;
+										{% endif %}
+										{% if pro.cantFav > 0  %} 
+											&nbsp;
+											<label class="material-icons" style="color:red;font-size:14px;">favorite</label><span class="plikes">&nbsp;({{pro.cantFav}})</span>
+										{% endif %}
+										{% else  %}
+											&nbsp;<text class="fontD2">&nbsp;</text><label class="material-icons" style="color:red;font-size:14px;">&nbsp;</label><span class="plikes">&nbsp;</span>
+										{% endif %} 
+									</span>
+								</div>
+							{% endfor %}
+						</div>
+						
+						<div class="prev3 valign-wrapper positionAbsolute comoBoton sinUser">
+							<i class=" material-icons enfasisA">keyboard_arrow_left</i>
+						</div>
+						<div class="next3 valign-wrapper positionAbsolute comoBoton sinUser">
+							<i class=" material-icons enfasisA">keyboard_arrow_right</i>
+						</div>
+						<div class="col s12 l12 center hide-on-large-only">
+							<div class="dividerMargin"></div>
+							<a class="waves-effect waves-light btn pormayorUnico white-text" href="{{base_url()}}grupal">Ver más Productos</a>
+						</div>
+					</div> #}
+					<br>
+					<div class="center pormayor">
+						<a href="{{base_url()}}ultimos">
+						<h4 class="black-text negrita"><i class="material-icons">update</i>&nbsp;&nbsp;&nbsp;Últimos productos</h4></a>
+					</div>
+{# 					<div class="valign-wrapper leftIcon">
+						<div class="pormayor positionRelative">
+							<span class="positionAbsolute"></span><i class=" material-icons grey-text text-darken-4 positionAbsolute " >update</i>
+						</div>
+						<span class="enfasisA sectionName">Últimos productos</span>
+						<a href="{{base_url()}}ultimos" class="hide-on-med-and-down btn-flat pormayorUnico-text">/ &nbsp;Ver más...</a>
+					</div> #}
+					<div class="divider dividerMargin"></div>
+					<div class="row positionRelative containerUltimos hide {% if userAgent != "PC" %}centrarForzado{% endif %}">
+						<div class="col s12 Ultimos sinPadding">
+							{% for pro in producto_ultimos %}
+								<div class="card hoverable alturaDIV {% if pro.Pro_Estado == 4 %} divAgotado {% endif %}" itemscope itemtype="http://schema.org/Product">
+									{% if pro.Pro_Estado == 4 %}<span class="centered"><b>AGOTADO</b></span>{% endif %}									
+									<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" class="grey-text text-darken-4" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+										<div class="card-content center sinPadding cardHeight positionRelative valign-wrapper">
+											<img itemprop="image" class="fixImgProducto b-lazy centrarForzado" alt="{{pro.Pro_Nombre}} - Pormayor.pe" title="{{pro.Pro_Nombre}}" data-src="{{ruta_img}}{{pro.Prf_Thumb}}"/>
+											{% if pro.Pro_Oferta == 1 %}
+												<img class="sales positionAbsolute positionAbsolute top0 left0" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}ofertaA.webp" type="image" alt=""/>
+											{% endif %}
+										</div>
+										<div class="card-action center cardActionProdFix">
+											<div class="hide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+											<span itemprop="lowPrice">{{pro.Pro_PrecioMinimo}}</span>
+											<span itemprop="highPrice">{{pro.Pro_PrecioMaximo}}</span>
+											<meta itemprop="priceCurrency" content="PEN" />
+											<meta itemprop="availability" content="https://schema.org/InStock"/>
+											</div>
+											<span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 34 ? pro.Pro_Nombre|title|slice(0, 34) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} {{pro.Pro_Nombre|title|length > 25 ? pro.Pro_Nombre|title|slice(0, 26) ~ '...' : pro.Pro_Nombre }} {% endif %}</span>
+											<div class="row sinPadding rowsinpaddin">
+												<div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6> </div>
+												<div class="col s6 m6 l6 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>Grupal</i></h6></div> 
+											</div>  
+										</div>
+									</a>
+									<span class="col s12 m12 l12 new-label pormayorUnico center fontE">
+										{% if pro.Pro_Estado != 4 %}	<text class="fontD2">{% set vent = 0.04 * pro.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}
+									{% if pro.cantFav > 0  %} 
+										&nbsp;<label class="material-icons" style="color:red;font-size:14px;">favorite</label><span class="plikes">&nbsp;({{pro.cantFav}})</span>  {% endif %}
+										{% else  %}&nbsp;<text class="fontD2">&nbsp;</text><label class="material-icons" style="color:red;font-size:14px;">&nbsp;</label><span class="plikes">&nbsp;</span> {% endif %} 
+									</span>
+								</div>
+							{% endfor %}
+						</div>
+						
+						<div class="prev valign-wrapper positionAbsolute comoBoton sinUser">
+							<i class=" material-icons enfasisA">keyboard_arrow_left</i>
+						</div>
+						<div class="next valign-wrapper positionAbsolute comoBoton sinUser">
+							<i class=" material-icons enfasisA">keyboard_arrow_right</i>
+						</div>
+						<div class="col s12 l12 center hide-on-large-only">
+							<div class="dividerMargin"></div>
+							<a class="waves-effect waves-light btn pormayorUnico white-text" href="{{base_url()}}ultimos">Ver más Productos</a>
+						</div>
+					</div>
+					<br>
+
+					<!-- MAS VISTOS PRODUCTOS -->
+			{# 		<div class="valign-wrapper leftIcon">
+						<div class="pormayor positionRelative">
+							<span class="positionAbsolute"></span>
+							<i class=" material-icons grey-text text-darken-4 positionAbsolute">visibility</i>
+						</div>
+						<span class="enfasisA sectionName">Lo más visto</span>
+						<a href="{{base_url()}}ultimos" class="hide-on-med-and-down btn-flat pormayorUnico-text">/ &nbsp;Ver más...</a>
+					</div> #}
+					<div class="center pormayor">
+						<a href="{{base_url()}}ultimos">
+						<h4 class="black-text negrita"><i class="material-icons">visibility</i>&nbsp;&nbsp;&nbsp;Más vistos</h4></a>
+					</div>
+					<div class="divider dividerMargin"></div>
+					<div class="row positionRelative containerVistos hide {% if userAgent != "PC" %}centrarForzado{% endif %}">
+						<div class="col s12 Vistos sinPadding">
+							{% for pro in productos_vistos %}
+								<div class="card hoverable alturaDIV {% if pro.Pro_Estado == 4 %} divAgotado {% endif %}" itemscope itemtype="http://schema.org/Product">
+									
+									{% if pro.Pro_Estado == 4 %}<span class="centered"><b>AGOTADO</b></span>{% endif %}
+
+
+									<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" class="grey-text text-darken-4" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+										<div class="card-content center sinPadding cardHeight positionRelative valign-wrapper">
+											<img itemprop="image" class="fixImgProducto b-lazy centrarForzado" alt="{{pro.Pro_Nombre}} - Pormayor.pe" title="{{pro.Pro_Nombre}}" data-src="{{ruta_img}}{{pro.Prf_Thumb}}"/>
+											
+											{% if pro.Pro_Oferta == 1 %}
+												<img class="sales positionAbsolute positionAbsolute top0 left0" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}ofertaA.webp" type="image" alt=""/>
+											{% endif %}
+
+										</div>
+								 
+										<div class="card-action center cardActionProdFix">
+											<div class="hide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+												<span itemprop="lowPrice">{{pro.Pro_PrecioMinimo}}</span>
+												<span itemprop="highPrice">{{pro.Pro_PrecioMaximo}}</span>
+												<meta itemprop="priceCurrency" content="PEN"/>
+												<meta itemprop="availability" content="https://schema.org/InStock"/>
+											</div>
+												
+											<span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">
+												{% if userAgent == 'PC' %} 
+													{{pro.Pro_Nombre|title|length < 34 ? pro.Pro_Nombre|title|slice(0, 34) ~ '<br><br>' : pro.Pro_Nombre}} 
+												{% else %} 
+													{{pro.Pro_Nombre|title|length > 25 ? pro.Pro_Nombre|title|slice(0, 26) ~ '...' : pro.Pro_Nombre }} 
+												{% endif %}
+											</span>
+
+											<div class="row sinPadding rowsinpaddin" style="padding-bottom: 70px;">
+												<div class="col s6 m6 l6 green lighten-5">
+													<h6>
+														<span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span>
+														<br><i>Normal</i>
+													</h6> 
+												</div>
+												
+												<div class="col s6 m6 l6 green">
+													<h6 style="color:#fff">
+														<span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span>
+														<br><i>Grupal</i>
+													</h6>
+												</div> 
+											</div> 
+										</div>
+									</a>
+									<span class="col s12 m12 l12 new-label pormayorUnico center fontE">
+										{% if pro.Pro_Estado != 4 %}	<text class="fontD2">{% set vent = 0.04 * pro.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}
+									{% if pro.cantFav > 0  %} 
+										&nbsp;<label class="material-icons" style="color:red;font-size:14px;">favorite</label><span class="plikes">&nbsp;({{pro.cantFav}})</span>  {% endif %}
+										{% else  %}&nbsp;<text class="fontD2">&nbsp;</text><label class="material-icons" style="color:red;font-size:14px;">&nbsp;</label><span class="plikes">&nbsp;</span> {% endif %} 
+									</span>
+								</div>
+							{% endfor %}
+						</div>
+
+						<div class="prevV valign-wrapper positionAbsolute comoBoton sinUser">
+							<i class=" material-icons enfasisA">keyboard_arrow_left</i>
+						</div>
+						<div class="nextV valign-wrapper positionAbsolute comoBoton sinUser">
+							<i class=" material-icons enfasisA">keyboard_arrow_right</i>
+						</div>
+						<div class="col s12 l12 center hide-on-large-only">
+							<div class="dividerMargin"></div>
+							<a class="waves-effect waves-light btn pormayorUnico white-text" href="{{base_url()}}ultimos">Ver más Productos</a>
+						</div>
+					</div>
+					<br>
+
+					<!-- ELECTROHOGAR -->
+{# 					<div class="valign-wrapper leftIcon">
+						<div class="pormayor positionRelative">
+							<span class="positionAbsolute"></span>
+							<i class=" material-icons grey-text text-darken-4 positionAbsolute" >kitchen</i>
+						</div>
+						<span class="enfasisA sectionName">Tecnología</span>
+						<a href="{{base_url()}}categorias/tv-audio-y-foto-al-por-mayor-14" class="hide-on-med-and-down btn-flat pormayorUnico-text">/ &nbsp;Ver más...</a>
+					</div> #}
+					<div class="center pormayor">
+						<a href="{{base_url()}}categorias/tv-audio-y-foto-al-por-mayor-14">
+						<h4 class="black-text negrita"><i class="material-icons">devices_other</i>&nbsp;&nbsp;&nbsp;Tecnología</h4></a>
+					</div>
+					<div class="divider dividerMargin"></div>
+					<div class="row positionRelative containerCatEspecial hide">
+						<div class="col s12 l12 positionRelative sinPadding">
+							<div class="catEspecial">
+								{% for pro in producto_electrohogar %}
+
+									<div class="card hoverable alturaDIV {% if pro.Pro_Estado == 4 %} divAgotado {% endif %}" itemscope itemtype="http://schema.org/Product">
+										{% if pro.Pro_Estado == 4 %}
+											<span class="centered"><b>AGOTADO</b></span>    
+										{% endif  %}
+
+										<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" class="grey-text text-darken-4" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+
+											<div class="card-content center sinPadding cardHeight positionRelative valign-wrapper">
+												<img itemprop="image" class="fixImgProducto b-lazy centrarForzado" alt="{{pro.Pro_Nombre}} - Pormayor.pe" title="{{pro.Pro_Nombre}}" data-src="{{ruta_img}}{{pro.Prf_Thumb}}"/>
+												{% if pro.Pro_Oferta == 1 %}
+													<img class="sales positionAbsolute positionAbsolute top0 left0" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}ofertaA.webp" type="image" alt=""/>
+												{% endif %}
+											</div>
+							 
+											<div class="card-action center cardActionProdFix">
+												<div class="hide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+													<span itemprop="lowPrice">{{pro.Pro_PrecioMinimo}}</span>
+													<span itemprop="highPrice">{{pro.Pro_PrecioMaximo}}</span>
+													<meta itemprop="priceCurrency" content="PEN" />
+													<meta itemprop="availability" content="https://schema.org/InStock"/>
+												</div>
+
+												<span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 49 ? pro.Pro_Nombre|title|slice(0, 49) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} {{ pro.Pro_Nombre|title|length > 25 ? pro.Pro_Nombre|title|slice(0, 26) ~ '...' : pro.Pro_Nombre }} {% endif %}</span>
+
+												<div class="row sinPadding rowsinpaddin">
+													<div class="col s6 m6 l6 green lighten-5">
+														<h6>
+															<span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span>
+															<br><i>Normal</i>
+														</h6> 
+													</div>
+
+													<div class="col s6 m6 l6 green">
+														<h6 style="color:#fff">
+															<span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span>
+															<br><i>Grupal</i>
+														</h6>
+													</div> 
+												</div> 
+											</div>
+										</a>
+
+										<span class="col s12 m12 l12 new-label pormayorUnico center fontE">
+											{% if pro.Pro_Estado != 4 %}	<text class="fontD2">{% set vent = 0.04 * pro.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}
+											{% if pro.cantFav > 0  %} 
+											&nbsp;<label class="material-icons" style="color:red;font-size:14px;">favorite</label><span class="plikes">&nbsp;({{pro.cantFav}})</span>  {% endif %}
+											{% else  %}&nbsp;<text class="fontD2">&nbsp;</text><label class="material-icons" style="color:red;font-size:14px;">&nbsp;</label><span class="plikes">&nbsp;</span> {% endif %} 
+										</span>
+									</div>
+								{% endfor %}
+
+							</div>
+
+							<div class="prev valign-wrapper positionAbsolute comoBoton sinUser">
+								<i class=" material-icons enfasisA">keyboard_arrow_left</i>
+							</div>
+
+							<div class="next valign-wrapper positionAbsolute comoBoton sinUser">
+								<i class=" material-icons enfasisA">keyboard_arrow_right</i>
+							</div>
+						</div>
+
+						<div class="col s12 l12 center hide-on-large-only">
+							<div class="dividerMargin"></div>
+							<a class="waves-effect waves-light btn pormayorUnico white-text" href="{{base_url()}}categorias/tv-audio-y-foto-al-por-mayor-14">Ver más Tecnología</a>
+						</div>
+					</div>
+	
+					<!-- SEO PRINCIPAL -->
+					<br>
+					<div class="divider"></div>
+					<br>
+					<div class="container section descriptionIndex enfasisA row">
+						<div class="col s12 m12 l4">
+							<h1 class="fixH1" style="margin-top:0px">Sobre <b>PorMayor.pe</b></h1>
+							<p><i>PorMayor.pe</i> es una nueva plataforma de comercio electrónico dedicada a proporcionar productos, con una buena relación calidad-precio. Nuestro objetivo principal es romper con la cadena de suministro tradicional a través del modo <b>C2M (Fabricante - Cliente)</b> para proporcionar a los consumidores opciones justas y más rentables. Como logramos esto, implementando en nuestro sistema las “Compras Grupal” que le da autonomía al comprador de adquirir productos a precios de fábrica.</p>
+							<br><h1 class="fixH1" style="margin-top:0px">¿Qué te ofrece<b> pormayor.pe?</b></h1>
+							<p>Cada día las tendencias digitales se incrementan en el mercado, insertando productos de distintos rubro o categoría, a las ventas por internet, es por ello que Pormayor.pe es una plataforma de comercio electrónico que coloca al alcance de tus manos productos de distintas categorías,  en nuestro portal podrás encontrar desde <b>artículos electrónicos, celulares, tablet, audífonos, memorias usb, teclados, mouse </b>y todo un sin fin de productos de tecnología, artículos para el hogar como televisor, audio, sonido, consolas, además de  novedades
+						</div>
+
+						<div class="col s12 m12 l4"> que hacen la vida más práctica,
+							 productos de cuidado personal  que realzan la belleza femenina o artículos deportivos, zapatillas, cámaras, entre otros,  sin dejar atrás a los más pequeños de la casa, aquí podrás encontrar juegos didácticos, mochilas, decoraciones y hasta los artículos que ameritas para esas queridas vacaciones que tanto deseas Lo mejor de todo es que Pormayor.pe te proporciona el medio para que tu puedas comprar online de una manera fácil en la comodidad de tu hogar, centro de estudio o trabajo y puedas adquirir el producto que tanto buscaba a un menor costo directamente con precios de fábrica, que te permita ahorrar más, aunque deseas comprar solo por unidad. Esta gran ventaja la puedes obtener mediante tu “Compra Grupal” que solo te la ofrece <a href="{{base_url()}}">Pormayor.pe.</a></p><br><h1 class="fixH1" style="margin-top:0px">¿Innovadora Forma de Comprar online<b> "Compra Grupal"?</b></h1>
+							<p>Porque sabemos lo importante que eres para nosotros, pormayor.pe, te brinda una nueva forma de adquirir tus productos a un menor costo,  a través de la Compra Grupal, podrás disfrutar de los mejores precio del mercado,  es tan simple como registrarte en nuestra página, <a href="{{base_url()}}">www.pormayor.pe</a>, busca el producto que deseas, indica en que grupo entrarás y al 
+						</div>
+
+						<div class="col s12 m12 l4">completarse el grupo todos los integrantes podrán adquirir su producto a un menor costo, estarás comprado al minorista con precios de mayorista, excelente idea no?. Al completarse el grupo se concreta tu compra y podrás elegir tu forma de pago, si deseas puedes cancelar tu producto en efectivo al recibirlo en tu domicilio (Pago contra entrega) o puedes hacer uso del sistema de compra segura que te permite efectuar el pago  en línea  desde <a href="{{base_url()}}" title="PORMAYOR.PE AGRÚPATE, COMPRÁLO Y AHORRA">www.pormayor.pe</a> con tarjeta de débito o crédito. Ya conoces nuestra nueva modalidad de comprar en línea, mediante la Compra Grupal no esperes más y disfruta de esta excelente idea, que beneficia a todos los compradores al obtener sus productos a un menor precio, compra con confianza que nosotros nos encargamos de llevar tu producto hasta tu domicilio. Si ya conoces esta maravillosa idea solo compártela con tus familiares, amigos, en tus redes sociales mientras más rápidos se complete el grupo más pronto se concretará la compra y llegara tu producto a su destino, recuerda es una forma segura de comprar online, recibirás tu producto y cancelaras pago en destino o  en línea como tu  prefieras.</p>
+						</div>
+					</div>
+				</main>
+			{% endblock %}
+	{% block script %}
+		 <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+	     <script>
+	      var base_url = "{{base_url()}}";
+	      var loading_screen = pleaseWait({
+	          logo: '',
+	          backgroundColor: "#FEC00F",
+	          loadingHtml: "<img src='{{ruta_img}}logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
+	        });
+
+	    </script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js?v={{now|date('i:s')}}" ></script>
+		<script src="{{base_url('public/')}}js/index.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

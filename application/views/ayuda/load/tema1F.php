@@ -1,0 +1,3 @@
+<h5>7.Menor de edad</h5>
+<div class="divider"></div>
+<div class="fontParrafo enfasisB"><p>El objetivo de <b>Pormayor.pe</b> es brindar una comunidad segura, un espacio donde se realice operaciones con confianza. Por ello, solo aquellas personas con capacidad legal para contratar a nombre y representación de una empresa como así también de obligar a la misma en los Términos y Condiciones de Uso de <b>Pormayor.pe</b></a>  podrán acceder a los  “Servicios” de <b>Pormayor.pe</b> convirtiéndose así en Usuario, y en caso de identificar una “Cuenta” inscrita a nombre de un menor de edad, automáticamente será inhabilitada para operar dentro del “Sitio”, ya que de acuerdo a las leyes vigentes no están autorizados para responder por transacciones comerciales.</p></div>

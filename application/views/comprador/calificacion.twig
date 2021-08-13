@@ -1,0 +1,225 @@
+{% extends "layout/intranet/template_usu.twig" %}
+
+{% block head %}
+	<link type="text/css" rel="stylesheet" href="{{base_url('public/')}}intranet/css/jquery-confirm.min.css?v={{now|date('i:s')}}"  media="screen"/>
+	<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/please-wait.css')}}"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/spinkit.css')}}"  media="screen"/>
+    <style type="text/css">
+    	label[for=cc1]::after,label[for=ct1]::after{
+    		background-color: #4caf50 !important;
+    		border: 2px solid #388e3c !important;
+    	}
+    	label[for=cc2]::after,label[for=ct2]::after{
+    		background-color: #ff9800 !important;
+    		border: 2px solid #f57c00 !important;
+    	}
+    	label[for=cc3]::after,label[for=ct3]::after{
+    		background-color: #f44336 !important;
+    		border: 2px solid #d32f2f !important;
+    	}
+    	[type="radio"]:checked + label[for=cc1],[type="radio"]:checked + label[for=ct1]{
+    		color: #388e3c;
+    		font-weight: 600;
+    	}
+    	[type="radio"]:checked + label[for=cc2],[type="radio"]:checked + label[for=ct2]{
+    		color: #f57c00;
+    		font-weight: 600;
+    	}
+    	[type="radio"]:checked + label[for=cc3],[type="radio"]:checked + label[for=ct3]{
+    		color: #f44336;
+    		font-weight: 600;
+    	}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <main class="container">
+    	<ul class="collapsible collapSeguro" data-collapsible="accordion">
+		    <li>
+				<div class="collapsible-header active"><i class="material-icons">star_half</i>Calificación de compra</div>
+				<div class="collapsible-body sinPadding">
+			      	<div class="row cardContentFix">
+				      	<span class="fontA"><b>¿Recibiste la mercancía que esperabas?</b></span>
+						<ul class="collection">
+							<li class="collection-item sinPadding">
+								<p>
+							      <input name="ccompraradio" type="radio" id="cc1" value="1c" />
+							      <label for="cc1">Recibí la mercancía y esta bien</label>
+							    </p>
+							</li>
+							<li class="collection-item sinPadding">
+								<p>
+							      <input name="ccompraradio" type="radio" id="cc2" value="2c" />
+							      <label for="cc2">Decidí no comprarlo</label>
+							    </p>
+							</li>
+							<li class="collection-item sinPadding">
+								<p>
+							      <input name="ccompraradio" type="radio" id="cc3" value="3c" />
+							      <label for="cc3">No estoy conforme con mi compra. Reportar un problema</label>
+							    </p>
+							</li>
+						</ul>
+					    <div class="center">
+					   		<a class="btn contiCali" id="siguientetab">Continuar</a>
+						</div>
+						<br>
+		      		</div>
+		      	</div>
+		    </li>
+		    <li>
+		      <div class="collapsible-header "><i class="material-icons">store_mall_directory</i>Calificación de Tienda</div>
+		      <div class="collapsible-body sinPadding">
+		      	<div class="row cardContentFix">
+			      	<span class="fontA"><b>¿Recomendarias está tienda?</b></span>
+					<ul class="collection">
+						<li class="collection-item sinPadding">
+							<p>
+						      <input name="ctiendaradio" type="radio" id="ct1" value="1t" />
+						      <label for="ct1">Sí</label>
+						    </p>
+					    </li>
+					    <li class="collection-item sinPadding">						
+					    <p>
+					      <input name="ctiendaradio" type="radio" id="ct2" value="2t" />
+					      <label for="ct2">No estoy seguro</label>
+					    </p>
+					    </li>
+					    <li class="collection-item sinPadding">						
+					    <p>
+					      <input name="ctiendaradio" type="radio" id="ct3" value="3t" />
+					      <label for="ct3">No</label>
+					    </p>
+					    </li>
+					</ul>
+					<div class="input-field">
+					   	<input type="text" id="comentarioCompra">
+					   	<label for="comentarioCompra">Comparte tu experiencia con la tienda</label>
+					</div>
+				   	<div class="center">
+				   		<a class="btn-flat" id="atrasCcompra">atras</a>
+				   		<a class="btn fCalificar" data-idtie="{{idtienda}}" data-idven="{{idventa}}" data-usu="{{idusuario}}">FINALIZAR MI CALIFICACIÓN</a>
+				    </div>	
+					<br>
+	      		</div>
+		      </div>
+		    </li>
+		</ul>
+    </main>
+{% endblock %}
+{% block script %}
+    <script src="{{base_url('public/intranet/js/jquery-confirm.min.js')}}"></script>
+    <script src="{{base_url('public/intranet/js/')}}please-wait.min.js"></script>
+    <script>
+		var $panel_headers = $('.collapSeguro').find('> li > .collapsible-header');
+		$('.collapSeguro').off('click.collapse', '.collapsible-header');
+		$panel_headers.off('click.collapse').css('pointer-events', 'none');
+
+	  	$(document).ready(function(){
+	  		var calificacionCompra = '';
+	  		var calificacionTienda = '';
+		    $('#siguientetab').click(function(){
+		     	var cCompra = $('input[name=ccompraradio]:checked').val();
+		     	if(cCompra){
+		     		if(cCompra == "3c"){
+		     		 location.href= base_url+'comprador/compra/reportar/'+$('.fCalificar').data('idven');
+		     		}else{
+		     			$('.collapsible').collapsible('open', 1);
+		     		}
+		     		     		
+		     	}else{
+		     		Materialize.toast('<i class="material-icons left ">warning</i>Selecciona una opción', 2000, 'rounded warningToast');
+		     	}	     	
+		    });		     
+
+		     $('#atrasCcompra').click(function(){		     	
+		     	$('.collapsible').collapsible('open', 0);  
+		     	$('.collapsible').collapsible('close', 1);   
+		     });
+
+
+		     $('.fCalificar').click(function(){
+
+		     	var cCompra = $('input[name=ccompraradio]:checked').val();
+		     	var cTienda = $('input[name=ctiendaradio]:checked').val();
+		     	var comentario = $('#comentarioCompra').val();
+		     	var idVenta = $(this).data('idven');
+		     	var idTienda = $(this).data('idtie');
+		     	var idUsuario = $(this).data('usu');
+
+		     	if(cTienda && comentario){
+		     		$.ajax({
+				        data:{
+				          'cCompra' : cCompra,
+				          'cTienda' : cTienda,
+				          'comentario' : comentario,
+				          'idVenta' : idVenta,
+				          'idTienda' : idTienda,
+				          'idUsuario' : idUsuario
+				          },
+				        type: "POST",
+				        url: base_url+'comprador/compra/califica_compra_tienda', 
+				        dataType: "json",
+				        success: function(data){
+				        	if(cCompra == "1c"){
+				        		calificacionCompra= "califA.png";
+				        	}else if(cCompra == "2c"){
+				        		calificacionCompra= "califB.png";
+				        	}else if(cCompra == "3c"){
+				        		calificacionCompra= "califC.png";
+				        	}
+
+				        	if(cTienda == "1t"){
+				        		calificacionTienda= "califA.png";
+				        	}else if(cTienda == "2t"){
+				        		calificacionTienda= "califB.png";
+				        	}else if(cTienda == "3t"){
+				        		calificacionTienda= "califC.png";
+				        	}
+
+
+				          if(data){
+				          	var contenido =  "<div class='row centrarForzado'>"+
+							"<div class='col s6'>"+
+							"<p><b>Compra</b></p>"+
+							"<img src='{{ruta_img}}"+calificacionCompra+"'>"+
+							"</div>"+
+							"<div class='col s6'>"+
+							"<p><b>Tienda</b></p>"+
+							"<img src='{{ruta_img}}"+calificacionTienda+"'>"+
+							"</div>"+
+							"<div class='col s12'>"+
+							"<p>Gracias por calificar tu compra, así podremos ofrecerte un mejor servicio</p>"+
+							"</div>"+
+							"</div>";
+							$.confirm({
+					              theme: 'modern',
+					              closeIcon: false,
+					              animationBounce: 1.5,
+					              type: 'green',
+					              title: 'Calificación guardada',
+					              columnClass: 'small',
+					              content: contenido,
+					              draggable: false,
+					              buttons: {
+					                Entendido: {
+					                  btnClass: 'btn',
+					                  action: function (){
+					                   window.location.href = base_url+'comprador/compra/detalle/'+idVenta;
+					                  }
+					                }
+					              }
+					            });
+				          }
+				          else{
+				            Materialize.toast('<i class="material-icons left ">error</i>Ocurrió un error', 2000, 'rounded errorToast');
+				          }
+				        }
+				    });
+		     	}else{
+		     		Materialize.toast('<i class="material-icons left ">warning</i>Selecciona una opción y dejanos tu comentario', 2000, 'rounded warningToast');
+		     	}
+	     });
+		});
+    </script>
+{% endblock %}

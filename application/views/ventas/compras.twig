@@ -1,0 +1,94 @@
+{% extends "layout/intranet/template_ven.twig" %}
+{% block head %}
+	<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"  media="screen,projection"/>
+
+	<style type="text/css">
+	.clickVenta {
+		cursor: pointer;
+	}
+	.nroTable {
+	 font-size: 1.4rem;
+	}
+	table.striped>tbody>tr:nth-child(odd){
+	background-color: #ffffff;
+	}
+	</style>
+
+{% endblock %}
+{% block content %}
+	<main class="container">
+	  <table id="example" class="display" style="width:100%">
+	    <thead>
+	      <tr>
+	          <th>#</th>
+	          <th>CÓDIGO COMPRA</th>
+	          <th>FECHA COMPRA</th>
+	          <th>TIPO</th>
+	          <th>ESTADO</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	{% set nro = 1 %}
+	    	{% for ven in ventas %}
+	          <tr class="clickVenta" href="{{base_url()}}ventas/compras/detalle_v/{{ven.Ven_IdVenta}}">
+	            <td class="nroTable negrita">{{nro}}</td>
+	            <td>{{ven.Ven_CodCompra}}</td>
+	            <td>{{ven.Ven_FechaRegistro}}</td>
+	            <td>COTIZACIÓN</td>
+	            {# 1 = PAGO PENDIENTE | 2 = PAGO PROCESADO EXITOSAMENTE | 3 = VENTA EN PROCESO DE ENVIO | 4 = VENTA FINALIZADA | 4+ = ERROR #}
+	            <td>{% if ven.Ven_Estado == 1 %}PAGO PENDIENTE{% elseif ven.Ven_Estado == 2 %}PAGO PROCESADO EXITOSAMENTE{% elseif ven.Ven_Estado == 3 %}VENTA EN PROCESO DE ENVIO{% elseif ven.Ven_Estado == 4 %}VENTA FINALIZADA{% else %}ERROR{% endif %}</td>
+	          </tr>
+	          {% set nro = nro + 1 %}
+	    	{% endfor %}
+	    	{% for com in compras %}
+	          <tr class="clickVenta" href="{{base_url()}}ventas/compras/detalle_c/{{com.Pac_IdPago_Compra}}">
+	            <td class="nroTable negrita">{{nro}}</td>
+	            <td>{{com.Pac_CodPago}}</td>
+	            <td>{{com.Pac_FechaRegistro}}</td>
+	            <td>COMPRA SEGURA</td>
+	            {# 1 = PAGO PENDIENTE | 2 = PAGO PROCESADO EXITOSAMENTE | 3 = VENTA EN PROCESO DE ENVIO | 4 = VENTA FINALIZADA | 4+ = ERROR #}
+	            <td>{% if com.Pac_Estado == 1 %}PAGO PENDIENTE{% elseif com.Pac_Estado == 2 %}PAGO PROCESADO EXITOSAMENTE{% elseif com.Pac_Estado == 3 %}VENTA EN PROCESO DE ENVIO{% elseif com.Pac_Estado == 4 %}VENTA FINALIZADA{% else %}ERROR{% endif %}</td>
+	          </tr>
+	          {% set nro = nro + 1 %}
+	    	{% endfor %}
+	    </tbody>
+	  </table>
+	</main>
+{% endblock %}
+
+{% block script %}
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+	    $('table tr').click(function(){
+	    	if ($(this).attr('href')) {
+	        	window.location = $(this).attr('href');
+	        	return false;
+	    	}
+	    });
+
+    $('#example').DataTable({
+	        "language": {
+	            "lengthMenu": "",
+	            "zeroRecords": "No se encontro nada",
+	            "info": "Página _PAGE_ de _PAGES_",
+	            "infoEmpty": "No hay registros disponibles",
+			    "emptyTable":     "No hay información en la tabla",
+			    "infoFiltered":   "(filtrado de _MAX_ ventas)",
+			    "infoPostFix":    "",
+			    "thousands":      ",",
+			    "loadingRecords": "Cargando...",
+			    "processing":     "Procesando...",
+			    "search":         "Buscar:",
+			    "paginate": {
+			        "first":      "Primero",
+			        "last":       "Último",
+			        "next":       "Siguiente",
+			        "previous":   "Anterior"
+				        }
+				 }
+		});
+
+	});
+	</script>
+{% endblock %}

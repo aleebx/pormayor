@@ -1,0 +1,147 @@
+{% extends "layout/intranet/template_lite_2.twig" %}
+{% block head %}
+    <style>
+        #main .content-wrapper-before {
+        position: absolute;
+        z-index: -1;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        height: 185px;
+        -webkit-transition: .3s ease all;
+        -moz-transition: .3s ease all;
+        -o-transition: .3s ease all;
+        transition: .3s ease all;
+    }
+    .gradient-45deg-blue {
+        background: #fec00f;
+        background: -webkit-linear-gradient(45deg, ##fec00f, #ffb000) !important;
+        background: -moz- oldlinear-gradient(45deg, ##fec00f, #ffb000) !important;
+        background: -o-linear-gradient(45deg, ##fec00f, #ffb000) !important;
+        background: linear-gradient(45deg,##fec00f, #ffb000) !important;
+    }
+        .fontX{font-size: 18px!important}
+        .swiper-container {
+          width: 100%;
+          height: 100%;
+        }
+        .swiper-slide {
+          text-align: center;
+          font-size: 18px;
+          background: #fff;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+        }
+        .container .row {margin-left: -.70rem;margin-right: -.70rem;}
+        {% if userAgent != 'PC' %}
+            .alturaDIV{height:289px;}
+            .fontD2{font-size: 0.8rem!important;font-weight:1000;}
+            .fontE{font-size: 0.8rem!important}
+        {% endif %}  
+    </style>
+{% endblock %}
+
+{% block content %}
+<main id="main" class="contentPage">
+    <div class="content-wrapper-before gradient-45deg-blue"></div>  
+    <br>
+    <div class="row">
+        <div class="col s12 m12 l12 center">
+            <span class="negrita fontC">Catálogo para Mayoristas</span><br>
+            <span>Gastos logisticos para enviar a Agencias es de <b>S/10</b>. Enviamos en la agencia de su preferencia.</span>
+        </div>
+        {% if vendedor %}
+        <div class="col s12 m12 l12 center fontA">
+            <b>{{vendedor.Ven_Nombre}} </b>
+            <a href="tel:+51{{vendedor.Ven_Telefono}}">
+                   <b>{{vendedor.Ven_Telefono}}</b>
+            </a><br> 
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+      {% for pro in productos %}
+      <a itemprop="url" href="{{base_url()}}catalogo/producto_mayor/{{pro.Pro_IdProducto}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+          <div class="col s12 m7 l3 black-text">
+            <div class="card hoverable">
+              <div class="center" style="height:190px;">
+                <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy" src="{{ruta_img}}{{pro.Prf_Thumb}}" data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+              </div>
+              <div class="card-content center" style="height:100px;">
+                <p>
+                  <b class="truncate">{{pro.Pro_Nombre}}</b>                  
+                    <span class="fontA">S/ {{pro.Pro_PrecioMinimo}}</span><label> por mayor</label>
+                </p>
+              </div>
+            </div>
+          </div>
+      </a>
+      {% endfor %}
+      </div>
+  <div class="fixed-action-btn horizontal">
+    <a class="transparent" href="https://api.whatsapp.com/send?phone=+51{{vendedor.Ven_Telefono}}">
+      <img src="{{ruta_img}}/wa.png">
+    </a>
+  </div>
+
+</main>
+{% endblock %}
+
+{% block script %}
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+  <script>
+  (function () {
+        function logElementEvent(eventName, element) {
+          console.log(Date.now(), eventName, element.getAttribute("data-src"));
+        }
+
+        var callback_enter = function (element) {
+          logElementEvent("🔑 ENTERED", element);
+        };
+        var callback_exit = function (element) {
+          logElementEvent("🚪 EXITED", element);
+        };
+        var callback_loading = function (element) {
+          logElementEvent("⌚ LOADING", element);
+        };
+        var callback_loaded = function (element) {
+          logElementEvent("👍 LOADED", element);
+        };
+        var callback_error = function (element) {
+          logElementEvent("💀 ERROR", element);
+          element.src = "https://via.placeholder.com/440x560/?text=Error+Placeholder";
+        };
+        var callback_finish = function () {
+          logElementEvent("✔️ FINISHED", document.documentElement);
+        };
+        var callback_cancel = function (element) {
+          logElementEvent("🔥 CANCEL", element);
+        };
+
+        var ll = new LazyLoad({
+          class_applied: "lz-applied",
+          class_loading: "lz-loading",
+          class_loaded: "lz-loaded",
+          class_error: "lz-error",
+          // Assign the callbacks defined above
+          callback_enter: callback_enter,
+          callback_exit: callback_exit,
+          callback_cancel: callback_cancel,
+          callback_loading: callback_loading,
+          callback_loaded: callback_loaded,
+          callback_error: callback_error,
+          callback_finish: callback_finish
+        });
+      })();
+  </script> 
+{% endblock %}

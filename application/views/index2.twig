@@ -1,0 +1,285 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+	{# <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"   media="screen"/> #}
+	{# <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"> #}
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"  media="screen"/>
+	<style>
+		body > .inner {display: none;}
+		body.pg-loaded > .inner {display: block;}
+		.fontX{font-size: 18px!important}
+		.swiper-container {
+	      width: 100%;
+	      height: 100%;
+	    }
+		{% if userAgent != 'PC' %}
+	  		.alturaDIV{height:289px;}
+	  		.fontD2{font-size: 0.8rem!important;font-weight:1000;}
+	  		.fontE{font-size: 0.8rem!important}
+		{% endif %}  
+	</style>
+{% endblock %}
+{% block content %}
+	<div class="inner">
+		{% if usuario.logueado %}
+			<div class="hide addHomeScreen valign-wrapper">
+				<button class="btn-flat white-text cerrarHomeScreen"><i class="fontA material-icons">close</i></button>
+				<div class="row">
+					{% if usuario.rol == 2 or usuario.rol == 3 %}
+						<div class="col s6 m6 sinPadding center">
+							<a href="http://{{subdominio_tienda}}.{{dominio}}/usuario/inventario/lProductos">
+								<img class="b-lazy" alt="Pormayor.pe - Crear tienda" data-src="{{ruta_img}}movilOpcionTiendaB.webp">
+							</a>
+						</div>
+						<div class="col s6 m6 sinPadding center" style="margin-bottom:20px">
+							<a href="{{base_url()}}comprador/index/pedidos">
+								<img class="b-lazy" alt="Pormayor.pe - Iniciar sesion" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
+							</a>
+						</div>
+						<div class="col s12 m12 center" style="margin-bottom:20px">
+							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
+						</div>
+					{% elseif usuario.rol == 5 %}
+						<div class="col s6 m6 sinPadding center" style="margin-bottom:20px">
+							<a href="{{base_url()}}gestor/gestion">
+								<img class="b-lazy" alt="Pormayor.pe - Iniciar sesion" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
+							</a>
+						</div>
+						<div class="col s12 m12 center" style="margin-bottom:20px">
+							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
+						</div>
+					{% else %}
+						<div class="col s12 m12 sinPadding center" style="margin-bottom:20px">
+							<a href="{{base_url()}}comprador/index/pedidos">
+								<img class="b-lazy" alt="Pormayor.pe - Perfil de usuario" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
+							</a>
+						</div>
+						<div class="col s12 m12 center">
+							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
+						</div>
+					{% endif %}   
+				</div>
+			</div>
+		{% else %}
+			<div class="hide addHomeScreen container valign-wrapper">
+				<button class="btn-flat white-text cerrarHomeScreen"><i class="fontA material-icons">close</i></button>
+				<div class="row">
+					<div class="col s12 m12 center sinPadding" style="margin-bottom:20px">
+						<a href="{{base_url()}}usuario/login">
+							<img class="b-lazy" alt="Pormayor.pe - registrarse como comprador"  data-src="{{ruta_img}}movilOpcionCompradorA.webp">
+						</a>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	<main class="container">
+			{# <div class="positionRelative" >
+				<div class="publicidad center">
+					{% if userAgent == "PC" %}
+						<img alt="Pormayor.pe" src="{{ruta_img}}bannerjulio.webp" class="responsive-img">
+					{% else %}
+						<img  alt="Pormayor.pe" src="{{ruta_img}}bannerjulioM.webp">				
+					{% endif %}
+				</div>
+			</div><br> #}
+			{% if userAgent == 'PC' %}
+			<div class="swiper-container swBanner">
+			    <div class="swiper-wrapper">
+			      <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}bannerEmp.webp" class="responsive-img"></div>
+			      <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}bannerjulio.webp" class="responsive-img"></div>
+			    </div>
+			    <!-- Add Pagination -->
+			    <div class="swiper-pagination"></div>
+			</div>
+			{% else %}
+			<div class="swiper-container swBanner">
+			    <div class="swiper-wrapper">
+			      <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}bannerEmpM.webp" class="responsive-img"></div>
+			      <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}bannerjulioM.webp" class="responsive-img"></div>
+			    </div>
+			    <!-- Add Pagination -->
+			    <div class="swiper-pagination"></div>
+			</div>
+			{% endif %}
+			<div class="row">
+				<div class="col s12 m6 l6 center">
+					<a href="https://api.whatsapp.com/send?phone=51923500413&text=Hola,%20estoy%20en%20realizar%20un%20pedido." target="_blank" data-action="share/whatsapp/share" style="cursor: pointer;" class="fontC negrita black-text"><img src="{{ruta_img}}/wa.png" height="50" style="top:5px;margin-right:10px" class="positionRelative">VENTAS 923500413</a>
+				</div>
+				<div class="col s12 m6 l6">
+					<a href="https://api.whatsapp.com/send?phone=51955873746&text=Hola,%20estoy%20en%20realizar%20un%20pedido." target="_blank" data-action="share/whatsapp/share" style="cursor: pointer;" class="fontC negrita black-text"><img src="{{ruta_img}}/wa.png" height="50" style="top:5px;margin-right:10px" class="positionRelative">VENTAS 955873746</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m12 l12">
+					<span class="negrita fontX red-text">REMATE PRECIOS DE LOCURA</span>
+				</div>
+				<div class="col s12 m12 l12">
+					<div class="divider"></div>
+				</div>
+			</div>
+			<!-- Slider ultimos productos -->
+			<div class="row">
+					<div class="col s12 m12 l12">
+						<div class="swiper-container swBelleza">
+						    <div class="swiper-wrapper">
+						    	{% for pro in producto_remate %}
+							        <div class="swiper-slide">
+							        	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+								        	{# <div class="card z-depth-1" style="border-radius: 5px !important;">
+								        		 <div class="center" style="height:186px;"> #}
+									              <img src="{{ruta_img}}promo/{{pro.Pro_IdProducto}}.jpg" alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="responsive-img">
+								{# 	            </div>
+								        		<div class="card-body center">	
+								        		<p class="truncate">
+													{{ pro.Pro_Nombre|title }}
+								        		</p>									             
+								        		</div>
+								        		<div class="card-action">
+													<span class="fontC red-text negrita">S/ {{pro.Pro_PrecioMinimo}} <label>S/ {{pro.Pro_PrecioMaximo}} </label> </span>
+													<span class="new badge red">REMATE</span>
+								        		</div>
+								        	</div> #}
+							        	</a>				
+							        </div>
+						    	{% endfor %}
+						    </div>
+						    <div class="swiper-button-prev swiper-button-black"></div>
+						    <div class="swiper-button-next swiper-button-black"></div>
+						</div>
+					</div>
+				</div>
+
+			<div class="row">
+				<div class="col s12 m12 l12">
+					<span class="negrita fontX">ÚLTIMOS PRODUCTOS</span>
+				</div>
+				<div class="col s12 m12 l12">
+					<div class="divider"></div>
+				</div>
+			</div>
+			<!-- Slider ultimos productos -->
+			<div class="row">
+					<div class="col s12 m12 l12">
+						<div class="swiper-container swBelleza">
+						    <div class="swiper-wrapper">
+						    	{% for pro in producto_ultimos %}
+							        <div class="swiper-slide">
+							        	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" class="grey-text text-darken-4" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+								        	<div class="card z-depth-1" style="border-radius: 5px !important;">
+								        		 <div class="center" style="height:186px;">
+									              <img src="{{ruta_img}}{{pro.Prf_Thumb}}" alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="fixImgProducto">
+									            </div>
+								        		<div class="card-body center">	
+								        		<p class="truncate">
+													{{ pro.Pro_Nombre|title }}
+								        		</p>									             
+								        		</div>
+								        		<div class="card-action">
+													<span class="fontC">S/ {{pro.Pro_PrecioMaximo}} </span>
+													<span class="new badge blue">Nuevo</span>
+								        		</div>
+								        	</div>
+							        	</a>				
+							        </div>
+						    	{% endfor %}
+						    </div>
+						    <div class="swiper-button-prev swiper-button-black"></div>
+						    <div class="swiper-button-next swiper-button-black"></div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12 m12 l12">
+						<span class="negrita fontX">MÁS VISTOS</span>
+					</div>
+					<div class="col s12 m12 l12">
+						<div class="divider"></div>
+					</div>
+				</div>
+			<!-- Slider ultimos productos -->
+				<div class="row">
+					<div class="col s12 m12 l12">
+						<div class="swiper-container swNormal">
+						    <div class="swiper-wrapper">
+						    	{% for pro in productos_vistos %}
+								    <div class="swiper-slide">
+						    			<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" class="grey-text text-darken-4" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+								        	<div class="card z-depth-1" style="border-radius: 5px !important;">
+								        		 <div class="center" style="height:186px;">
+									              <img src="{{ruta_img}}{{pro.Prf_Thumb}}" alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="fixImgProducto">
+									            </div>
+								        		<div class="card-body center">	
+								        		<p class="truncate">
+													{{ pro.Pro_Nombre|title }}
+								        		</p>									             
+								        		</div>
+								        		<div class="card-action">
+													<span class="fontC">S/ {{pro.Pro_PrecioMaximo}} </span>
+								        		</div>
+								        	</div>
+							        	</a>		
+								    </div>
+						    	{% endfor %}
+						    </div>
+						    <div class="swiper-button-prev swiper-button-black"></div>
+						    <div class="swiper-button-next swiper-button-black"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col s12 m12 l12">						
+						<span class="negrita fontX"><i class="material-icons pink-text">spa</i>BELLEZA Y CUIDADO PERSONAL</span>
+					</div>
+					<div class="col s12 m12 l12">
+						<div class="divider"></div>
+					</div>
+				</div>
+			<!-- Slider ultimos productos -->
+				<div class="row">
+					<div class="col s12 m12 l12">
+						<div class="swiper-container swNormal">
+						    <div class="swiper-wrapper">
+						    	{% for pro in belleza %}
+							        <div class="swiper-slide">
+							        	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" class="grey-text text-darken-4" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+								        	<div class="card z-depth-1" style="border-radius: 5px !important;">
+								        		 <div class="center" style="height:186px;">
+									              <img src="{{ruta_img}}{{pro.Prf_Thumb}}" alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="fixImgProducto">
+									            </div>
+								        		<div class="card-body center">	
+								        		<p class="truncate">
+													{{ pro.Pro_Nombre|title }}
+								        		</p>									             
+								        		</div>
+								        		<div class="card-action">
+													<span class="fontC">S/ {{pro.Pro_PrecioMaximo}} </span>
+								        		</div>
+								        	</div>
+							        	</a>		
+							        </div>
+						    	{% endfor %}
+						    </div>
+						    <div class="swiper-button-prev swiper-button-black"></div>
+						    <div class="swiper-button-next swiper-button-black"></div>
+						</div>
+					</div>
+				</div>
+				</main>
+			{% endblock %}
+	{% block script %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+{# 		// <script src="https://unpkg.com/swiper/js/swiper.min.js"></script> #}
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	    <script>
+	      var base_url = "{{base_url()}}";
+	      var loading_screen = pleaseWait({
+	          logo: '',
+	          backgroundColor: "#FEC00F",
+	          loadingHtml: "<img src='{{ruta_img}}logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
+	        });
+	    </script>
+		<script src="{{base_url('public/')}}js/index.js?v=5"></script>
+{% endblock %}

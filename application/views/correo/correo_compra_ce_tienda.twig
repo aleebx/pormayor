@@ -1,0 +1,140 @@
+{% extends "layout/correo.twig" %}
+
+{% block content %}
+	<td bgcolor="#FFFFFC" style="padding: 40px 30px 0px 30px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td style="color: #383838; font-family: Arial, sans-serif; font-size: 24px;">
+        Hola, <b>{{nombre_tienda}} ¡Tienes una venta!</b>
+      </td>
+      </tr>
+      <tr>
+        <td style="padding: 20px 0 0 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td style="padding: 0 0 20px 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+                El método de pago elegido por el comprador fue <strong>CONTRA ENTREGA</strong>.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 0 0 20px 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">               
+                <ul>
+                  <li>Empaqueta tu producto adecuadamente.</li>
+                  <li>Imprime y pega tu guia de envio en el paquete.</li>
+                  <li>Entregar el paquete el día de mañana al courier que vendrá a tu negocio (Antes del medio día)</li>
+                </ul>
+                <strong>El courier se encargará de cobrar el valor de tus ventas. <br>
+                Los martes de cada semana serán depositado el dinero de tus ventas de la semana anterior.</strong>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #CBCBCB; padding: 10px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:#383838;" width="" valign="top"><b>DATOS DE USUARIO</b>
+        </td>
+      </tr>
+      <tr>
+        <td><br></td>
+      </tr>
+      <tr>
+        <td style="font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+          <table style="table-layout: fixed" border="0" cellpadding="0" cellspacing="0" width="600px">
+            <thead>
+              <tr>
+                <th width="5" valign="middle"></th>
+                <th width="55" valign="middle"></th>
+                <th width="5" valign="middle"></th>
+                <th width="25" valign="middle"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div style="background-color: #efefef;padding: 4.5px 7px;border-radius: 5px 0px 0px 5px;color: grey;">
+                  <img style="opacity:.6;width: 25px; height: 25px; object-fit: contain;" src="http://pormayor.pe/img/correo_iconA.png"></div>
+                </td>
+                <td colspan="3">
+                  <p style="width:97%;background-color: #efefef;padding: 10px;border-radius: 0px 5px 5px 0px;color: grey;">
+                  <a style="text-decoration:none; color: grey">{{nombre_usuario|upper}}</a></p>
+                </td>
+              </tr>
+              <tr>
+                <td><div style="background-color: #efefef;padding: 4.5px 7px;border-radius: 5px 0px 0px 5px;color: grey;">
+                  <img style="opacity:.6;width: 25px; height: 25px; object-fit: contain;" src="http://pormayor.pe/img/correo_iconB.png"></div>
+                </td>
+                <td >
+                  <p style="width:90%;background-color: #efefef;padding: 10px;border-radius: 0px 5px 5px 0px;color: grey;">
+                  <a style="text-decoration:none; color: grey" href="mailto:{{items.Tie_Correo}}">{{correo_usuario|upper}}</a></p>
+                </td>
+                <td><div style="background-color: #efefef;padding: 4.5px 7px;border-radius: 5px 0px 0px 5px;color: grey;">
+                  <img style="opacity:.6;width: 25px; height: 25px; object-fit: contain;" src="http://pormayor.pe/img/correo_iconC.png"></div>
+                </td>
+                <td>
+                  <p style="width:91%;background-color: #efefef;padding: 10px;border-radius: 0px 5px 5px 0px;color: grey;">{{telefono_usuario}}
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td><br><br></td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #CBCBCB; padding: 10px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:#383838;" width="" valign="top"><b>RESUMEN DE PRODUCTOS</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <br>
+          <table style="table-layout: fixed" border="0" cellpadding="0" cellspacing="0" width="590px">
+            <thead >
+              <tr>
+                  <th width="50"></th>
+                  <th style="padding: 12px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;border-right:1px solid #CBCBCB; border-bottom:1px solid #CBCBCB" width="200" valign="middle">PRODUCTO</th>
+                  <th style="padding: 12px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;border-bottom:1px solid #CBCBCB" width="30" valign="middle">CANT.</th>
+                  <th style="padding: 12px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;border-bottom:1px solid #CBCBCB" width="60" valign="middle">PRECIO UNITARIO</th>
+                  <th style="padding: 12px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;border-bottom:1px solid #CBCBCB" width="60" valign="middle">IMPORTE</th>
+              </tr>
+            </thead>
+            <tbody >
+              {% set total = 0 %}
+              {% for itemsInterno in dataCarrito %}
+                {% if Tie_IdTienda == itemsInterno.idtienda %}
+                  {% set preUni =  itemsInterno.price / itemsInterno.qty %}
+                  <tr>
+                    <td style="border-bottom: 1px solid #CBCBCB; padding: 0px;" valign="top">
+                      <div style="margin:0 auto; margin:5px; width:50px; height: 50px;  border-radius: 10px;"><img style="top: 5px;position: relative;width: 100%; height: 40px; object-fit: contain;" src="http://pormayor.pe/img/{{itemsInterno.img}}"></div>
+                    </td>
+                    <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB;border-right:1px solid #CBCBCB; padding: 5px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                      {{itemsInterno.name|title}} {% if itemsInterno.color %} - <span style="color:rgba(0,0,0,0.5)">{{itemsInterno.color|title}}</span> {% endif %} {% if itemsInterno.tipovariacion != " " %} / {{itemsInterno.tipovariacion|upper}} {% endif %}
+                    </td>
+                    <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                      {{itemsInterno.qty}}<br>unid(s)
+                    </td>
+                    <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                      {{preUni}}
+                    </td>
+                    <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                    S/ {{itemsInterno.price}}
+                    </td>
+                  </tr>
+                  {% set total = total + itemsInterno.price %}
+                {% endif %}
+              {% endfor %}
+          
+                <tr>
+                  <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 15px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">TOTAL A PAGAR</td>
+                  <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top"><b>S/. {{total|number_format(2, '.', ' ')}}</b></td>
+                </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td><br><br><br></td>
+      </tr>
+    </table>
+  </td>
+{% endblock %}

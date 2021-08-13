@@ -1,0 +1,197 @@
+{% extends "layout/intranet/template_usu.twig" %}
+
+{% block head %}
+	<link type="text/css" rel="stylesheet" href="{{base_url('public/')}}intranet/css/gestion_pedido.css?v={{now|date('i:s')}}"  media="screen,projection"/>
+	<style type="text/css">
+		blockquote{
+			border-left: 5px solid #121212;
+			font-size: 16px;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+    <main class="container" style="width:95%">
+    	<div class="card">
+        	<div class="card-content sinPadding">
+        		<div class="row cardContentFix">
+	    			<h5 class=" center card-title">{{pagina.titulo}}</h5>
+	    			<div class="divider"></div><br>
+	    			<div class="row">
+	    				{% if venta.Ven_CodCompra != 0 %}
+		    				<div class="row compraDetalleRow centrarForzado">
+		    					<div class="col s6 m3 l3 center positionRelative" >
+		    						<span class="positionAbsolute white centrarForzado tituloCompra"><b>TIPO COMPRA</b></span>
+			    					<div class="valign-wrapper">
+			    						<img class="redondeo centrarForzado pagoImg" src="{{ruta_img}}pagoA.png" height="140">
+			    					</div>
+			    					<i class="material-icons white positionAbsolute centrarForzado">payment</i>
+			    				</div>
+			    				<div class="col s6 m3 l3 center positionRelative" >
+		    						<span class="positionAbsolute white centrarForzado tituloBanco" ><b>BANCO</b></span>
+			    					<div class="valign-wrapper">
+			    						<img class="redondeo centrarForzado bancoImg" src="{% if venta_info.Vef_Banco == "BCP" %}{{ruta_img}}banco1.jpg {% elseif venta_info.Vef_Banco == "Caja Huancayo" %}{{ruta_img}}banco2.jpg{% endif %}" height="80">
+			    					</div>
+			    					<i class="material-icons white positionAbsolute centrarForzado">account_balance</i>
+			    				</div>
+			    				<div class="col s6 m3 l3 center positionRelative" >
+		    						<span class="positionAbsolute white centrarForzado tituloCodigo"><b>CODIGO COMPRA</b></span>
+			    					<div class="valign-wrapper">
+			    						<h3 class="centrarForzado"><b>{{venta.Ven_CodCompra}}</b></h3> 
+			    					</div>
+			    					<i class="material-icons white positionAbsolute centrarForzado">lock</i>
+			    				</div>
+			    				<div class="col s6 m3 l3 center positionRelative" >
+		    						<span class="positionAbsolute white centrarForzado tituloVencimiento"><b>VENCIMIENTO</b></span>
+			    					<div class="valign-wrapper">
+			    						<span class="centrarForzado"><h4>{{ venta.Ven_FechaRegistro|date_modify("+15 day")|date("d/m/Y") }}</h4></span>
+			    						<input id="fechaFinal" type="hidden" class="validate" value="{{ venta.Ven_FechaRegistro|date_modify("+15 day")|date("d/m/Y") }}" readonly="">
+			    					</div>
+			    					<i class="material-icons white positionAbsolute centrarForzado">update</i>
+			    				</div>
+			    			</div>
+
+		    				<div class="col s6 l12">
+		    					<label>DIRECCIÓN DE ENVIO</label>
+		    					<blockquote style="margin-top:0px">
+		    						{{venta_info.Vef_DirEnvio}}
+		    					</blockquote>
+		    				</div>	
+
+		    			{% else %}
+		    			   	<div class="row compraDetalleRow centrarForzado">
+		    					<div class="col s6 m3 l3 center positionRelative" >
+		    						<span class="positionAbsolute white centrarForzado tituloCompra"><b>TIPO COMPRA</b></span>
+			    					<div class="valign-wrapper">
+			    						<img class="redondeo centrarForzado pagoImg" src="{{ruta_img}}pagoB.png" height="140">
+			    					</div>
+			    					<i class="material-icons white positionAbsolute centrarForzado">payment</i>
+			    				</div>
+		    					<div class="col s6 m3 l3 center positionRelative" >
+		    						<span class="positionAbsolute white centrarForzado tituloBanco" ><b>NOMBRE</b></span>
+			    					<div class="valign-wrapper">
+			    						<h4 class="centrarForzado flow-text"><b>{{infotienda.Tie_Nombre|title}}</b></h4>
+			    					</div>
+			    					<i class="material-icons white positionAbsolute centrarForzado">store_mall_directory</i>
+			    				</div>
+			    				<div class="col s6 m3 l3 center positionRelative" >
+		    						<span class="positionAbsolute white centrarForzado tituloCodigo"><b>TELÉFONO TIENDA</b></span>
+			    					<div class="valign-wrapper">
+			    						<h4 class="centrarForzado flow-text">{{infotienda.Per_Telefono}}</h4> 
+			    					</div>
+			    					<i class="material-icons white positionAbsolute centrarForzado">phone</i>
+			    				</div>
+			    				<div class="col s6 m3 l3 center positionRelative" >
+		    						<span class="positionAbsolute white centrarForzado tituloVencimiento"><b>DIRECCIÓN</b></span>
+			    					<div class="valign-wrapper flow-text">
+			    						{{tienda_direccion.Loc_Direccion}}
+			    					</div>
+			    					<i class="material-icons white positionAbsolute centrarForzado">location_on</i>
+			    				</div>
+			    			</div>
+	    				{% endif %}
+	    				<div class="col s12 l12">
+				      		<table class="bordered"; style="width: 100%">
+				      			<thead class="pormayor pormayorAccent-text">
+				      				<tr class="enfasisA">
+				      					<th class="hide-on-med-and-down"></th>
+				      					<th>Producto</th>
+				      					<th>Precio S/</th>
+				      					<th>Importe S/</th>
+				      				</tr>
+				      			</thead>
+				      			<tbody>
+				      				{% set total = 3 %}
+				      				{% set total2 = 0 %}
+				      				{% for ved in venta_detalle %}
+					      				<tr>
+					      					<td class="hide-on-med-and-down">
+					      						<img class="redondeo centrarForzado" src="{{ruta_img}}{{ved.SKU_Img}}" height="50">
+					      					</td>
+					      					<td>
+					      						<b>{{ved.Ved_Cantidad}} {{ved.Unm_Nombre}}</b></br>
+					      						{{ved.Pro_Nombre}}</br>
+					    		   				<span class="enfasisB">{{ved.Var_Nombre}} {{ved.Vao_Nombre}}</span></br>
+					    					</td>
+					      					<td>
+					      						<span class="precioventa" id="precioventa{{ved.SKU_IdSKU}}">{{ved.Ved_Precio|number_format(2, '.', ' ')}}</span>
+					      					</td>
+					      					<td id="tdimporte{{ved.SKU_IdSKU}}">
+					      						{% set importe = ved.Ved_Cantidad * ved.Ved_Precio %}
+					      						<span id="importe{{ved.SKU_IdSKU}}">{{importe|number_format(2, '.', ' ')}}</span>
+					      					</td>
+					      				</tr>
+					      				{% set total = total + importe %}
+					      				{% set total2 = total2 + importe %}
+				            		{% endfor %}
+				      			</tbody>
+				      			<tfoot>
+			                		<tr>
+			                			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+			                			<td colspan="2" class="fontA center">
+			                				SubTotal 
+			                			<td class="right-align fontA " colspan="2">
+			                				S/ <span>{{total2|number_format(2, '.', ' ')}}</span>
+			                			</td>
+			                		</tr>
+			                		<tr>
+			                			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+			                			<td colspan="2" class="fontA center">
+			                				Compra Segura 
+			                			<td class="right-align fontA " colspan="2">
+			                				S/ <span>3.00</span>
+			                			</td>
+			                		</tr>
+			                		<tr>
+			                			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+			                			<td colspan="2" class="fontA center">
+			                				Total  
+			                			<td class="right-align fontA" colspan="2">
+			                				<b>S/ <span>{{total|number_format(2, '.', ' ')}}</span></b>
+			                			</td>
+			                		</tr>
+			            		</tfoot>
+				      		</table>
+	    				</div>
+	    			</div>
+	    			<div class="row center centrarForzado ">
+	    				{% if sicalifico %}
+	    					<div class="col s12 m12 l12 sinPadding">
+	    						<h5 style="padding:5px" class="pormayorAccent white-text">Calificación</h5>
+	    					</div>
+	    					<br><br><br>
+	    					<div class="col s3 m4 l4 center">
+	    						<p><b>COMPRA</b></p>
+			    				<img class="" src="{% if sicalifico.Cal_Compra == '1c' %} {{ruta_img}}califA.png {% elseif sicalifico.Cal_Compra == '2c'  %} {{ruta_img}}califB.png  {% else %} {{ruta_img}}califC.png {% endif %}" alt="calificacion tienda pormayor.pe" height="50">
+			    			</div>
+	    					<div class="col s3 m4 l4">
+			    				<p><b>TIENDA</b></p>
+			    				<img class="" src="{% if sicalifico.Cal_Tienda == '1t' %} {{ruta_img}}califA.png {% elseif sicalifico.Cal_Tienda == '2t'  %} {{ruta_img}}califB.png  {% else %} {{ruta_img}}califC.png {% endif %}" alt="calificacion tienda pormayor.pe" height="50">
+			    			</div>
+			    			<div class="col s6 m4 l4">
+			    				<blockquote class="centrarForzado"><i>{{sicalifico.Cal_Comentario}}</i></blockquote>
+			    			</div>
+	    				{% else %}	
+		    				<a href="{{base_url()}}comprador/compra/calificar/{{idventa}}">
+			    				<div class="col s6 m6 l6 green white-text" style="padding:10px">
+			    					<i class="material-icons left">thumbs_up_down</i>
+			    					CALIFICAR COMPRA
+			    				</div>
+		    				</a>	    				
+		    				<a href="{{base_url()}}comprador/compra/reportar/{{idventa}}">
+			    				<div class="col s6 m6 l6 red white-text" style="padding:10px">
+			    					<i class="material-icons left">warning</i>
+			    					REPORTAR PROBLEMA
+			    				</div>
+		    				</a>
+	    				{% endif %}
+	    			</div>
+    			</div>
+			</div>
+		</div>
+    </main>
+{% endblock %}
+
+{% block script %}
+    <script language="JavaScript" type="text/javascript" src="{{base_url('public/')}}js/jquery.validate.js" defer></script>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}   
+<style type="text/css">
+@media (min-width: 1024px) and (max-width: 1280px)  {
+	
+}
+@media (min-width: 1281px) {
+	
+}
+
+	
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="container fixContainer">
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<div class="card">
+				<div class="card-content sinPadding">
+					<div class="cardContentFix">
+						<h4 class="center">Articulos prohibidos a la venta</h4>
+						<div class="divider"></div>
+						<br><br>
+						<div class="row centrarForzado hide">
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi1.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi2.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi3.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi4.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi5.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi6.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi7.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi8.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi9.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi10.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi11.webp" >
+							</div>
+							<div class="col s12 m3 l3">
+								<img class="positionRelative anchoTotal animation" src="{{ruta_img}}prohi12.webp" >
+							</div>
+							<div class="col s12 m12 l12 center">
+								<a href="{{base_url()}}Legal/centro" class="btn pormayorUnico white-text">Regresar a centro de ayuda</a>
+								<br><br>
+							</div>
+							<div class="col s12 m12 l12 center">
+								<br>
+								<p><b>Si deseas información adicional, lineamientos y terminos legales; puedes seguir <a class="pormayorUnico-text" href="{{base_url()}}Legal/centro">este enlace.</a></b><b> y acceder a</b> <i>Sistema de opiniones y servicios</i></p>
+							</div>
+						</div>
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('.row .centrarForzado').removeClass('hide');
+
+	var functionBasedPropVal = anime({
+	  targets: '.animation',
+	  scale: [0, 1],
+	  duration: 1000,
+	  delay: function() { return anime.random(0, 1500); },
+	});
+});
+	  
+
+</script>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "layout/intranet/template_almacen.twig" %}
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+{% endblock %}
+{% block content %}
+  <main class="">
+    <div class="card">
+      <div class="card-content">
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        <span class="cart-title">Listado de productos</span>
+        <table id="listado">
+          <thead>
+            <tr>
+                <th></th>
+                <th>Cod | Producto</th>
+                <th>Cantidad Cajas</th>
+                <th>Cantidad Unidades</th>
+                <th>Ultimo Movimiento</th>
+                <th>Fecha</th>
+                <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for p in productos %}
+                <tr>
+                  <td><img src="{{ruta_img}}{{p.img_producto}}" height="40px"></td>
+                  <td>{{p.nombre_producto}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <div id="modalAlm" class="modal" style="z-index:9999 !important;width: 50%!important;">
+      <div class="modal-content" id="loadEdit">
+        
+        
+      </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+  <script>
+  $(document).ready( function () {
+    $('#listado').DataTable({
+      "responsive": true,
+      "language": {
+          "lengthMenu": "",
+          "zeroRecords": "No se encontro nada",
+          "info": "Página _PAGE_ de _PAGES_",
+          "infoEmpty": "No hay registros disponibles",
+          "emptyTable":     "No hay información en la tabla",
+          "infoFiltered":   "(filtrado de _MAX_ ventas)",
+          "infoPostFix":    "",
+          "thousands":      ",",
+          "loadingRecords": "Cargando...",
+          "processing":     "Procesando...",
+          "search":         "Buscar:",
+          "paginate": {
+              "first":      "Primero",
+              "last":       "Último",
+              "next":       "Siguiente",
+              "previous":   "Anterior"
+                  }
+      }
+    });
+
+    $('.quitar').click(function(){
+  var id_usuario = $(this).data('idu');
+   $.ajax({
+       data:{
+        id_usuario : id_usuario
+       },
+       type: "POST",
+       url: base_url+'vnd/cambiar_estado', 
+       dataType: "json",
+       beforeSend:function(){
+        loading_screen = pleaseWait({
+            logo:"",
+            backgroundColor: '#fff',
+            loadingHtml: "<img src='{{ruta_img}}logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
+            });
+       },
+       success: function(data){
+        $('.trt'+id_usuario).addClass('hide');
+        loading_screen.finish();
+       },
+       error: function(data) {
+         alert('error');
+         console.log(data);
+       }
+    });
+ });
+  
+    $('#modalAlm').modal({
+             dismissible:true, // Modal can be dismissed by clicking outside of the modal
+             opacity:.8, // Opacity of modal background
+             inDuration:300, // Transition in duration
+             outDuration:200, // Transition out duration
+             startingTop:'5%', // Starting top style attribute
+             endingTop:'10%', // Ending top style attribute
+              ready:function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                 var est=trigger[0]['accessKey'];
+                 var idv=trigger[0]['id'];
+                 var xd=trigger[0]['attributes'][3]['nodeValue'];
+                 // $('#loadEdit').load(base_url+'vnd/gestion',{id:idv,est:est,xd:xd});
+                },
+              complete: function() {
+              } // Callback for Modal close
+          });
+
+  } );
+  </script>
+{% endblock %}

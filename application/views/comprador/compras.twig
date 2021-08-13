@@ -1,0 +1,95 @@
+{% extends "layout/intranet/template_usu.twig" %}
+{% block head %}
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"  media="screen,projection"/>
+{% endblock %}
+{% block content %}
+   	<main class="container" style="width:95%">
+      <div class="card">
+          	<div class="card-content center sinPadding">
+          		<div class="row cardContentFix">
+		         	{% if ventas or compras %}
+		       			<table id="listVentaTbl" class="display" style="width:100%">
+						    <thead>
+						      	<tr>
+						          	<th class="">#</th>
+						          	<th class="">MONTO</th>
+						          	<th class="center">TIPO DE VENTA</th>
+						          	<th class="">ESTATUS</th>
+						          	<th class="">FECHA</th>
+						          	<th class="">ACCIÓN</th>
+						        </tr>
+						    </thead> 
+						    
+						    <tbody>
+				             	{% for com in compras %}
+				             		<tr>
+				             			<td>CS{{ "%06d"|format(com.Pac_IdPago_Compra) }}</td>
+
+										<td>S/ {{com.total}}</td>
+										<td class="center">
+											<span class="new badge black-text {% if com.Pac_Banco == "NO" %}light-blue lighten-3">CONTRAENTREGA{% elseif com.Pac_Banco == "Visanet" %}light-green">TARJETA{% elseif com.Pac_Banco == "TDO" %} purple lighten-4">DOT{% endif %}</span>
+										</td>
+
+										<td> 
+											<span class="new badge black-text negrita {% if com.Pac_Estado == 1 %}green accent-4">NUEVA{% elseif com.Pac_Estado == 2 %}light-green accent-4">CONFIRMADA{% elseif com.Pac_Estado == 3 %}lime accent-2">RECOGO{% elseif com.Pac_Estado == 4 %}deep-orange accent-2">CORRIER{% elseif com.Pac_Estado == 5 %} green darken-4">ENTREGADO{% elseif com.Pac_Estado == 6 %}red darken-3">ANULADO{% endif %}</span>
+										</td>
+										<td>{{com.Pac_FechaRegistro}}</td>
+										<td><a class="btn"href="{{base_url()}}comprador/compra/detalle_compra/{{com.Pac_IdPago_Compra}}">Ver detalle</a></td>
+									</tr>		
+								{% endfor %}
+							</tbody>
+						</table>	
+	            	{% else %}
+	            		<h5 class="center card-title">{{pagina.titulo}}</h5>
+					    <div class="row"><div class="divider"></div></div>
+				 		<div class="center col s12 m12 l12" style="margin-top: 20px;">
+							<img src="{{ruta_img}}emptyBuy.webp" height="150"></img>
+						</div>
+						<div class="center col s12 m12 l12">
+							<h5>Sin compras procesadas</h5>
+							<p class="enfasisB">Aún no haz realizado ninguna compra</p>
+						</div>
+						<div class="center col s12 m12 l12" style="margin:15px 0px">
+							<a href="{{base_url()}}" class="btn colorAccent">Comienza a cotizar</a>
+						</div>
+		            {% endif %}             
+            	</div>
+        	</div>
+		</div>
+    </main>
+{% endblock %}
+
+{% block script %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+	<script type="text/javascript">
+		//Cambio Footer
+	    $('.footerSecundario').removeClass('hide');
+	    $('.footerPrincipal').addClass('hide');
+
+	    $('#listVentaTbl').DataTable({
+	     	"order": [[ 0, 'desc' ], [ 0, 'asc' ]],
+	        "language": {
+	            "lengthMenu": "",
+	            "zeroRecords": "No se encontro nada",
+	            "info": "Página _PAGE_ de _PAGES_",
+	            "infoEmpty": "No hay registros disponibles",
+			    "emptyTable":     "No hay información en la tabla",
+			    "infoFiltered":   "(filtrado de _MAX_ ventas)",
+			    "infoPostFix":    "",
+			    "thousands":      ",",
+			    "loadingRecords": "Cargando...",
+			    "processing":     "Procesando...",
+			    "search":         "Buscar:",
+			    "paginate": {
+			        "first":      "Primero",
+			        "last":       "Último",
+			        "next":       "Siguiente",
+			        "previous":   "Anterior"
+				        }
+			}
+		});
+
+	</script>
+{% endblock %}

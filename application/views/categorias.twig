@@ -1,0 +1,119 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %} 
+{% endblock %}
+{% block content %}
+
+	<main class="container hide-on-med-and-down ">
+		<h4>Categorías</h4>
+		<div class="divider"></div>
+		<div class="card">
+			<br>
+			{% for cat in categorias2 %}
+			      <div class="row centrarForzado categoriaVistaContainer fixContainer">
+			      	
+			      	<img alt="{{cat.Cat_Nombre}} al pormayor" src="{{ruta_img}}{{cat.Cat_IconMobile}}" style="filter:brightness(0%);opacity: .8" type="image/svg+xml" class="left " width="30" height="30" />&nbsp;&nbsp;&nbsp;
+			      	<a href="{{base_url()}}categorias/{{cat.url}}" class="pormayorUnico-text comoBoton fontE" ><span>{{cat.Cat_Nombre}}</span></a> 
+			      	<div class="divider dividerMargin"></div>
+			      	<br>
+			        {% for sub in subcategoria2 %}
+			          {% if cat.Cat_IdCategoria == sub.categoria_Cat_IdCategoria %}
+			            <div class="col s4">
+			              	<a href="{{base_url()}}subcategoria/{{sub.url}}" class="blue-text text-darken-4 fontD2 negrita">{{sub.Suc_Nombre}}</a>
+			              	<div class="dividerMargin" ></div>
+			              	{% for des in detalle %}
+			          			{% if sub.Suc_IdSubCategoria == des.subcategoria_Suc_IdSubCategoria %}
+			          				{% if des.Des_IdDetalle_SubCategoria == 150 %}
+			          					<div class="col s12" >
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              		<br><br><br>
+						              	</div> 
+						            {% elseif des.Des_IdDetalle_SubCategoria == 208 %}
+			          					<div class="col s12" >
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              		<br><br><br>
+						              	</div>
+						            {% elseif des.Des_IdDetalle_SubCategoria == 248 %}
+			          					<div class="col s12" >
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              		<br><br>
+						              	</div>
+						            {% elseif des.Des_IdDetalle_SubCategoria == 56 %}
+			          					<div class="col s12" >
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              		<br><br><br><br><br><br>
+						              	</div>
+						            {% elseif des.Des_IdDetalle_SubCategoria == 129 %}
+			          					<div class="col s12" >
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              		<br><br>
+						              	</div>
+						            {% elseif des.Des_IdDetalle_SubCategoria == 66 %}
+			          					<div class="col s12" >
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              		<br><br><br><br><br>
+						              	</div>
+						            {% elseif des.Des_IdDetalle_SubCategoria == 25 %}
+			          					<div class="col s12" >
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              		<br><br>
+						              	</div>
+						            {% elseif des.Des_IdDetalle_SubCategoria == 274 %}
+			          					<div class="col s12" >
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              		<br><br><br>
+						              	</div>
+						            {% elseif des.Des_IdDetalle_SubCategoria == 280 %}
+			          					<div class="col s12" >
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              		<br><br>
+						              	</div>
+			          				{% else %}
+			          				   	<div class="col s12">
+						              		<a href="{{base_url()}}detalle/{{des.url}}" class="blue-text text-darken-4 lineHeightB">{{des.Des_Nombre}}</a>
+						              	</div> 
+			          				{% endif %}
+			          			{% endif %}
+			        		{% endfor %}
+			              	
+			            </div> 
+
+			          {% endif %}
+			        {% endfor %}
+			        <div class="col s12">
+			        	<br>
+			        	<div class=" divider dividerMargin"></div>
+			        </div>
+			      </div>
+		    {% endfor %}
+		    <br>
+		</div>
+	</main>
+
+	<main class="container hide-on-large-only fixContainer">
+		<ul class="collapsible" data-collapsible="accordion">
+			{% for cat in categorias2 %}
+			<li>
+		      <div class="collapsible-header valign-wrapper" style="padding:0.5rem">
+		      	<img alt="{{cat.Cat_Nombre}} al pormayor" src="{{ruta_img}}{{cat.Cat_IconMobile}}" style="filter:brightness(0%)" type="image/svg+xml" class="" width="30" height="30" /><span style="width: 15px"></span> {{cat.Cat_Nombre}}
+		      </div>
+		      <div class="collapsible-body" style="padding:0px 10px">
+		      	{% for sub in subcategoria2 %}
+		          {% if cat.Cat_IdCategoria == sub.categoria_Cat_IdCategoria %}
+		            <a href="{{base_url()}}subcategoria/{{sub.url}}" class="blue-text text-darken-4">
+			            <div class="" style="padding: 15px 0px;">
+			              {{sub.Suc_Nombre}} <i class="material-icons right">keyboard_arrow_right</i>
+			            </div> 
+		            </a> 
+		            <div class="divider"></div>
+		          {% endif %}
+		        {% endfor %}
+		      </div>
+		    </li>
+	    	{% endfor %}
+		 </ul>
+	</main>
+{% endblock %}
+
+{% block script %}
+	
+{% endblock %}

@@ -1,0 +1,11 @@
+    <select id="selProvincia" class="browser-default">
+        	<option value="" disabled selected>Seleccione la Provincia</option>  
+        {% for suc in provincia %}
+        	<option value="{{suc.id}}">{{suc.name}}</option>  
+		{% endfor %}                    
+    </select>
+
+
+{% block script %}
+    <script src="{{base_url('public/')}}js/tienda/selProvincia.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+{% endblock %}

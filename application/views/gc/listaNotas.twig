@@ -1,0 +1,29 @@
+{% for nos in notas %}				    		
+  	<div class="col s12 m12 l12 card">
+  		<div class="card-content">
+	  		<span class="new badge">{{nos.Not_FechaRegistro}}</span>
+	  		<span class="card-title">{{nos.Not_Titulo}}</span>
+	  		<div class="divider"></div>
+	  		{{nos.Not_Nota}}
+  		</div>
+  		<div class="card-action center">
+  			<a class="btn red deleteNota" data-idnot="{{nos.Not_IdNota}}">Eliminar</a>
+  		</div>
+  	</div>
+{% endfor %}
+	<script type="text/javascript">
+	$('.deleteNota').click(function(){
+		var Not_IdNota = $(this).data('idnot');
+		$.ajax({
+	        data:{
+	          'Not_IdNota' : Not_IdNota
+	        },
+	        type: "POST",
+	        url: base_url+'gestor/gestion/deleteNota',
+	        success: function(data){
+	          $('#listaNotas').load(base_url+'gestor/gestion/listNotas');
+	        }
+	    });
+
+	});
+	</script>

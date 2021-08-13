@@ -1,0 +1,61 @@
+<div class="col s6">
+<table class="striped centered">
+	<thead>
+		<tr>
+			<th>FECHA</th>
+			<th>CANTIDAD GESTIONES</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% set totalG = 0 %}
+	{% set totalV = 0 %}
+	{% set totalM = 0 %}
+	{% for ge in gestion %}
+		<tr>
+			<td>{{ge.fecha}}</td>
+			<td>{{ge.gestion}}</td>
+			{% set totalG = totalG + ge.gestion %}
+		</tr>
+	{% endfor %}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>TOTAL</td>
+			<td class="negrita fontC right">{{totalG}}</td>
+		</tr>
+	</tfoot>
+</table>
+</div>
+<div class="col s6">
+<table class="striped">
+	<thead>
+		<tr>
+			<th>FECHA</th>
+			<th>VENTAS</th>
+			<th>MONTO</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for ve in ventas %}
+		{% for ca in cantidad %}
+			{% if ve.fecha == ca.fecha %}
+				<tr>
+					<td>{{ve.fecha}}</td>
+					<td>{{ca.cantidad}}</td>
+					<td>{{ve.total}}</td>
+					{% set totalV = totalV + ca.cantidad %}
+					{% set totalM = totalM + ve.total %}
+				</tr>
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>TOTAL</td>
+			<td class="negrita fontC">{{totalV}}</td>
+			<td class="negrita fontC">S/ {{totalM}}</td>
+		</tr>
+	</tfoot>
+</table>
+</div>

@@ -1,0 +1,87 @@
+{% extends "layout/intranet/template_adm.twig" %}
+
+{% block content %}
+    <!-- Page Layout here -->
+    <main>
+      <div class="card">
+          <div class="row">
+            <form class="col s12">
+              <span class="card-title center">REGISTRO DE PEDIDO</span>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="datoC" type="text" class="validate">
+                  <label for="datoC">Datos Cliente</label>
+                </div>
+                <div class="input-field col s12">
+                  <input id="tlfC" type="text" class="validate">
+                  <label for="tlfC">Telefono de Contacto</label>
+                </div>
+              </div>
+              <div class="row">
+                 <div class="input-field col s12">
+                  {% set distri = ['Ate','Barranco','Bellavista','Breña','Callao','Carmen de La Legua','Chorrillos','Comas','El Agustino','Independencia','Jesús María','La Molina','La Perla','La Punta','La Victoria','Lima','Lince','Los Olivos','Magdalena del Mar','Miraflores','Pueblo Libre','Rímac','San Borja','San Isidro','San Juan de Lurigancho','San Juan de Miraflores','San Luis','San Martín de Porres','San Miguel','Santa Anita','Santiago de Surco','Surquillo','Villa El Salvador','Villa María del Triunfo'] %}
+                  <select id="distrC">
+                    <option value="" disabled selected>Seleccione el distrito</option>
+                    {% for di in distri %}
+                    <option value="{{di}}">{{di}}</option>
+                    {% endfor %}
+                  </select>
+                  <label>Distrito</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="direC" type="text" class="validate">
+                  <label for="direC">Dirección exacta</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="refC" type="text" class="validate">
+                  <label for="refC">Referencia</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="producto" type="text" class="validate">
+                  <label for="producto">Producto</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="text" type="number" any="0.00" class="validate">
+                  <label for="text">Monto a cobrar</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="horario">
+                    <option value="" disabled selected>Seleccione el distrito</option>
+                    <option value="TODO EL DÍA">TODO EL DÍA</option>
+                    <option value="MANANA">MAÑANA</option>
+                    <option value="TARDE">TARDE</option>
+                  </select>
+                  <label>Horario Entrega</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="observacion" type="text" class="validate">
+                  <label for="text">Observaciones</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12 center">
+                  <a class="btn green"><i class="material-icons left">save</i>GUARDAR</a>
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+    </main>
+{% endblock %}
+{% block script %}
+<script>
+$('select').material_select();
+</script>  
+{% endblock %}

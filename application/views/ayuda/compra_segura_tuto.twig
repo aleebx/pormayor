@@ -1,0 +1,199 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}  
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"   media="screen"/>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css"   media="screen"/>
+<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/compra_segura_tuto.css')}}"  media="screen"/>
+
+{% endblock %}
+
+{% block content %}
+<main class="container fixContainer">
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<div class="card">
+				<div class="card-content sinPadding">
+					<div class="cardContentFix">
+						<h4 class="center">¿Cómo comprar en pormayor.pe?</h4>
+						<div class="divider"></div>
+						<br>
+						<div id="containerTutoCompra" >
+						   <div class="compraTuto hide">
+								<div class="anchoTotal">
+									<div class="row sinBordeBottom">
+										<div class="col s12 sinPadding">
+											<div class="positionRelative altoEstandar">
+												<div class="containerTuto1A altoEstandar">
+									  				<div class="contentSearchMock center positionAbsolute" style="top:70px;left:0;right:0">
+										              <i class="material-icons searchboxIcon">search</i>
+										              <input type="text" class="fontA searchMock browser-default black-text white redondeo" placeholder="¿Qué producto buscas?">                
+										            </div>
+										            {% if userAgent == "PC" %}
+										            	<img src="{{ruta_img}}compraTuto_3.webp" style="bottom:10px;left:0;right:0" class="hide tecladoA centrarForzado positionAbsolute" height="110">
+										            	<img src="{{ruta_img}}compraTuto_4.webp" style="bottom:10px;left:0;right:0" class="hide tecladoB centrarForzado positionAbsolute" height="110">
+										            {% else %}
+										                <img src="{{ruta_img}}compraTuto_3B.webp" style="bottom:30px;left:0;right:0" class="hide tecladoA centrarForzado positionAbsolute" height="70">
+										            	<img src="{{ruta_img}}compraTuto_4B.webp" style="bottom:30px;left:0;right:0" class="hide tecladoB centrarForzado positionAbsolute" height="70">
+										            {% endif %}
+										            
+									  				<img src="{{ruta_img}}compraTuto_1.webp" class="imgFix anchoTotal">
+												</div>
+											<div class="preloader-wrapper big positionAbsolute centrarForzado hide">
+												<div class="spinner-layer spinner-blue-only">
+													<div class="circle-clipper left">
+														<div class="circle"></div>
+													</div>
+													<div class="gap-patch">
+														<div class="circle"></div>
+													</div>
+													<div class="circle-clipper right">
+														<div class="circle"></div>
+													</div>
+												</div>
+											</div>
+											<div class="containerTuto1B hide positionRelative altoEstandar">
+								  				<img src="{{ruta_img}}compraTuto_2.webp" class="imgFix anchoTotal">
+								  				<div class="centrarForzado positionAbsolute selector hide"></div>
+											</div>
+											</div>
+										</div>
+										<div class="col s12 sinPadding">
+											<div class="instruccion">
+												<p class="centrarForzado center fontA">Usa <b>nuestro buscador</b> para encontrar el producto que quieras cotizar y escógelo</p>
+											</div>
+										</div>
+										<div class="col s12 sinPadding center">
+											<a href="{{base_url()}}Legal/centro" class="btn grey darken-2 white-text regresarBtn">Regresar</a>
+											<button class="btn-flat repetirCompra1">Repetir</button>
+											<button class="btn pormayorUnico white-text contTutoCompra1">Continuar</button>
+											<br><br><br>
+										</div>
+									</div>
+								</div>
+								<div class="anchoTotal">
+									<div class="row sinBordeBottom">
+										<div class="col s12 sinPadding">
+											<div class="positionRelative altoEstandar">
+												<div class="containerTuto2A positionRelative altoEstandar">
+													<input type="text" class="fontA browser-default input1B positionAbsolute center" style="right:70px;top:10px;max-width:60px;background: none;border: none;" value="" readonly="">
+													<input type="text" class="fontA browser-default input2B positionAbsolute center" style="right:70px;top:70px;max-width:60px;background: none;border: none;" value="" readonly="">
+													<input type="text" class="fontA browser-default input3B positionAbsolute center" style="right:70px;top:125px;max-width:60px;background: none;border: none;" value="" readonly="">
+								  				<img src="{{ruta_img}}compraTuto_5.webp" style="object-position:100% 100%" class=" imgFix anchoTotal">
+								  				<div class="centrarForzado positionAbsolute selectorB hide"></div>
+											</div>
+											</div>
+										</div>
+										<div class="col s12 sinPadding">
+											<div class="instruccion">
+												<p class="centrarForzado center fontA">Elige las <i>cantidades y variaciones</i> para realizar tu compra y toca o haz click en <b>ACEPTAR</b></p>
+											</div>
+										</div>
+										<div class="col s12 sinPadding center">
+											<a href="{{base_url()}}Legal/centro" class="btn grey darken-2 white-text regresarBtn">Regresar</a>
+											<button class="btn-flat repetirCompra2">Repetir</button>
+											<button class="btn pormayorUnico white-text contTutoCompra2">Continuar</button>
+											<br><br>
+										</div>
+									</div>
+								</div>
+								<div class="anchoTotal">
+									<div class="row sinBordeBottom">
+										<div class="col s12 sinPadding">
+											<div class="positionRelative altoEstandar">
+												<div class="containerTuto3A altoEstandar">
+									            {% if userAgent == "PC" %}
+									            	<img src="{{ruta_img}}compraTuto_6B.webp" style="object-position:100% 100%" class="imgFix anchoTotal">
+									                <div class="centrarForzado positionAbsolute selectorC hide"></div>
+									            {% else %}
+									                <img src="{{ruta_img}}compraTuto_6.webp" style="object-position:100% 0%" class="imgFix anchoTotal">
+									                <div class="centrarForzado positionAbsolute selectorC hide"></div>
+									            {% endif %}
+									           		
+											</div>
+											<div class="containerTuto3B hide positionRelative altoEstandar">
+								  				<img src="{{ruta_img}}compraTuto_7.webp" class=" imgFix anchoTotal">
+								  				<div class="centrarForzado positionAbsolute selectorD hide"></div>
+											</div>
+											</div>
+										</div>
+										<div class="col s12 sinPadding">
+											<div class="instruccion">
+												<p class="centrarForzado center fontA">Toca o haz click en el botón <b>PEDIDO</b> y elige <b>COTIZAR</b> para verificar tu pedido</p>
+											</div>
+										</div>
+										<div class="col s12 sinPadding center">
+											<a href="{{base_url()}}Legal/centro" class="btn grey darken-2 white-text regresarBtn">Regresar</a>
+											<button class="btn-flat repetirCompra3">Repetir</button>
+											<button class="btn pormayorUnico white-text contTutoCompra3">Continuar</button>
+											<br><br>
+										</div>
+									</div>
+								</div>
+								<div class="anchoTotal">
+									<div class="row sinBordeBottom">
+										<div class="col s12 sinPadding">
+											<div class="positionRelative altoEstandar">
+												<div class="containerTuto4A positionRelative altoEstandar">
+								  					<img src="{{ruta_img}}compraTuto_8.webp" style="object-position:100% 100%" class="imgFix anchoTotal">
+								  					<div  class="subContainer4A positionAbsolute">
+								  						<input type="text" class="fontA browser-default input4A positionAbsolute center" style="left: 5px;top: 0px; max-width: 100px;background: none;border: none;" value="" readonly="">
+														<input type="text" class="fontA browser-default input4B positionAbsolute center" style="left: 10px;bottom: -2px;width: 200px;background: none;border: none;" value="" readonly="">
+								  					</div>
+								  					<div class="centrarForzado positionAbsolute selectorE hide"></div>
+												</div>
+											</div>
+										</div>
+										<div class="col s12 sinPadding">
+											<div class="instruccion">
+												<p class="centrarForzado center fontA">Escribe tu <b>teléfono</b>, y puedes agregar un <i>comentario</i> y tu <i>dirección</i>; luego toca o haz click en <b>ENVIAR PEDIDO</b> </p>
+											</div>
+										</div>
+										<div class="col s12 sinPadding center">
+											<a href="{{base_url()}}Legal/centro" class="btn grey darken-2 white-text regresarBtn">Regresar</a>
+											<button class="btn-flat repetirCompra4">Repetir</button>
+											<button class="btn pormayorUnico white-text contTutoCompra4">Continuar</button>
+											<br><br>
+										</div>
+									</div>
+								</div>
+								<div class="anchoTotal">
+									<div class="row sinBordeBottom">
+										<div class="col s12 sinPadding">
+											<div class="positionRelative altoEstandar">
+												<div class="containerTuto5A hide altoEstandar">
+								  					<img src="{{ruta_img}}compraTuto_9.webp" class="imgFix anchoTotal">
+								  					<div class="centrarForzado positionAbsolute selectorF hide"></div>
+												</div>
+												<div class="containerTuto5B hide positionRelative altoEstandar">
+									  				<img src="{{ruta_img}}compraTuto_10.webp" class="imgFix anchoTotal">
+												</div>
+											</div>
+										</div>
+										<div class="col s12 sinPadding">
+											<div class="instruccion">
+												<p class="centrarForzado center fontA">Finalmente toca o haz click en  <b>ENVIAR</b> y ¡Listo! Ahora espera que el <i>vendedor responda la cotización</i></p>
+											</div>
+										</div>
+										<div class="col s12 sinPadding center">
+											<a href="{{base_url()}}Legal/centro" class="btn grey darken-2 white-text regresarBtn">Regresar</a>
+											<button class="btn pormayorUnico white-text contTutoCompra5">Repetir Todo</button>
+											<br><br>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock %}
+
+{% block script %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" ></script>
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+	<script src="{{base_url('public/')}}js/compra_segura_tuto.js?v={{now|date('i:s')}}" defer></script> 
+{% endblock %}

@@ -1,0 +1,58 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+/****Info tienda****/
+.fileInput{
+  height: 200px;
+  position: relative;
+  bottom: 100px;
+  cursor: pointer;
+}
+.card-title{
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+.contTiendaArea{
+  margin-bottom: 20px;
+}
+
+/*****Locales******/
+.nombreLocal{
+ color: rgba(0,0,0,0.6);
+}
+.containerBtn{
+  display: inline-flex;
+}
+.btnDeleteLocal{
+  margin: 0px 5px 0px 5px;
+}
+.dirEnfa{
+  padding: 0px 5px !important;
+  color: yellow;
+}
+
+.warningToast{
+  background-color: rgba(255, 193, 7, 0.8);
+  color: rgba(0,0,0,0.8)
+}
+.contentAddLocal{
+  width: 98% !important;
+  margin: 0 auto !important;
+}
+.modalCustom{
+  padding: 0px !important;
+}
+.modalCustom h5{
+  margin-top: 0px !important;
+  padding: 25px;
+  color: white;
+  margin-bottom: 20px !important;
+  border-radius: 5px 5px 0px 0px !important;
+}
+.modal{
+  border-radius: 5px 5px 0px 0px !important;
+}
+    

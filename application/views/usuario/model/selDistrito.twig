@@ -1,0 +1,11 @@
+    <select id="selDistrito" class="browser-default" onchange="selCostoEnvio(this.value);">
+        	<option value="" disabled selected>Seleccione el Distrito</option>  
+        {% for suc in distrito %}
+        	<option value="{{suc.id}}">{{suc.name}}</option>  
+		{% endfor %}                    
+    </select>
+
+
+{% block script %}
+    <script src="{{base_url('public/')}}js/tienda/selDistrito.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+{% endblock %}

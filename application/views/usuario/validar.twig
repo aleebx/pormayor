@@ -1,0 +1,30 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+{% endblock %}
+{% block content %}
+	<main class="container">
+		<div class="card">
+			<div class="card-content center">
+				{% if error %}
+					<i class="material-icons red-text large">cancel</i><br>
+					<span class="card-title red-text negrita">ERROR AL VALIDAR CORREO</span>
+					<a href="{{base_url()}}" class="btn pormayorUnico">IR A COMPRAR</a>	
+				{% else %}
+					{% if activo %}
+						<i class="material-icons orange-text large">warning</i><br>
+						<span class="card-title orange-text negrita">SU CORREO YA HA SIDO VALIDADO</span>
+						<a href="{{base_url()}}" class="btn pormayorUnico">IR A COMPRAR</a>					
+					{% else %}
+						<i class="material-icons green-text large">thumb_up_alt</i><br>
+						<span class="card-title green-text negrita">TU CORREO HA SIDO VALIDADO EXITOSAMENTE</span>
+						<a href="{{base_url()}}" class="btn pormayorUnico">IR A COMPRAR</a>					
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</main>
+{% endblock %}
+
+{% block script %}
+	<script src="{{base_url('public/')}}js/comprador/preferencias.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+{% endblock %}

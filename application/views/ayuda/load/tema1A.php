@@ -1,0 +1,4 @@
+<h5>1. Cuentas duplicadas</h5>
+<div class="divider"></div>
+<div class="fontParrafo enfasisB"><p>Ante <b>Pormayor.pe</b> cada Usuario es identificado por su RUC y correo electrónico, y, tanto su reputación y calificaciones ganadas reflejan su trayectoria en la comunidad. Un usuario puede tener una cuenta por RUC que tenga. Y, en caso que un usuario se inscriba bajo diferentes identidades podrá ser inhabilitado permanentemente para operar en el “Sitio”.</p>
+<p>Para proceder con la verificación de la identidad del usuario suspendido, es necesario que nos envíe una copia del documento con el que se inscribió en <b>Pormayor.pe</b>. Dicho documento puede enviarlo al e-mail contacto@<b>pormayor.pe</b> o  haciendo clic en el botón  contacto.</p></div>

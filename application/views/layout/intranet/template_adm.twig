@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>      
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> {{pagina.titulo}} | pormayor.com</title>
+    <link rel="icon" type="image/png"  href="{{ruta_img}}logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/materialize.css')}}"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/materialize.min.css')}}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/')}}intranet/css/templates.css?v={{now|date('i:s')}}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/jquery-confirm.min.css')}}"  media="screen,projection"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+     <script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/manipularDom.js')}}"></script> 
+     <script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/xSim.js')}}"></script> 
+    <style type="text/css">
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+      main {
+        flex: 1 0 auto;
+        padding-left: 300px;
+      }
+      header, footer {
+            padding-left: 300px;
+          }
+      @media only screen and (max-width : 992px) {
+        header, main, footer {
+          padding-left: 0;
+        }
+      }
+      select {
+        background-color: rgba(243, 243, 243, 0.9);
+        border: 1px solid #a2acb3;
+        margin: 5px 0px;
+        
+      }
+     .btn-large, .btn, .btn-floating{
+        background-color: #21478F;
+      }
+    </style>
+    {% block head %} {% endblock %}
+   </head>
+  <body> 
+  <header>
+    <div class="navbar-fixed hide-on-large-only" id="inicio">
+      <nav class="nav-extended pormayor" data-color="#fff159">
+        <div  class="sinBordeBottom nav-wrapper row navRowMobile">
+          <div class="col s2 m2 l2 center hide-on-large-only colMenuButton sinPadding" style="height:56px">
+            <a href="#" data-activates="slide-out" class="centrarForzado button-collapse">
+              <img src="{{ruta_img}}menuIcon.svg" width="35">
+            </a>
+          </div>
+          <div class="col s3 m2 l2 center colMenuLogo sinPadding" >
+            <div class="logoNegativo">
+              <a href="{{base_url()}}">
+                <img alt="Pormayor.pe - Vende facilito, Compra segurito" src="{{ruta_img}}logoNegativo.svg" type="image/svg+xml" class="">
+              </a>
+            </div>
+          </div>  
+        </div>
+      </nav> 
+    </div>
+
+    <ul id="slide-out" class="side-nav fixed grey darken-4 z-depth-3 menuTex"> 
+      <li class="headerMenu center valign-wrapper">
+        <div class="logoIcon">
+          <a href="{{base_url()}}"><img alt="Pormayor.pe - Vende facilito, Compra segurito" src="{{ruta_img}}LogoPositivo.svg" class="valign-wrapper" height="40"></a>
+        </div>
+      </li>
+      <li class="itemMenu"><div class="acentBar" {% if pagina.opcion == "ventas" %}style="background:#ff9800"{% endif %}></div><a class="waves-effect" href="{{base_url()}}admin"><i class="material-icons">shopping_cart</i>CONTROL DE VENTAS</a></li>
+      
+      <li class="containerAvatar valign-wrapper">
+        <div class="avatarComprador" style="top: 2px;">
+          <a class="sinPadding"href="{{base_url()}}usuario/perfil">
+            <i style="font-size: 50px; color: rgba(255,255,255,0.8)" class="material-icons">account_circle</i>
+          </a>
+        </div>
+        <div class="avatarContainerComprador flow-text" style="top: 15px;">
+          <span class="avatarText1">{{usuario.nombre}}</span>
+        </div>
+        <a style="right: -180px;" class="cerrarSesionBtn sesionBtn avatarItem waves-effect right"><i class="material-icons">power_settings_new</i></a> 
+      </li>
+    </ul>
+  </header>
+   
+  {% block content %} {% endblock %} 
+
+  <footer class="inner page-footer grey darken-4 text-white">
+      {% if userAgent == 'PC' %}
+        <div class="footer-copyright pormayorAccent center">
+          <div class="container  white-text">
+          Derechos Reservados © 2018 pormayorpe S.A
+          </div>
+        </div>
+      {% else %}
+        <div class="footerMovil"></div>
+        <div class="footer-copyright pormayorAccent center">
+          <div class="container  white-text">Derechos Reservados © 2018 pormayorpe S.A</div>
+        </div> 
+      {% endif %}
+    </footer>
+
+  {% block modal %} {% endblock %}  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/jquery.validate.min.js')}}"></script> 
+  <script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/materialize.js')}}"></script>
+  <script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/jquery-confirm.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+  <script type="text/javascript">
+    //Cambio Footer
+    $('.footerSecundario').removeClass('hide');
+    $('.footerPrincipal').addClass('hide');
+     $('.inicioBtn').not('[href="#"]').click(function(event) {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top - 100
+        }, 2000, function() {
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) {
+            return false;
+          } else {
+            $target.attr('tabindex','-1');
+            $target.focus();
+          };
+        });
+      }
+    }
+  });
+    $(document).ready(function(){
+      $('.button-collapse').sideNav({
+        menuWidth: 300, // Default is 300
+        edge: 'left', // Choose the horizontal origin
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true, // Choose whether you can drag to open on touch screens,
+        }
+      );
+      //Funciones Side-Bar
+      $(".itemMenu").mouseover(function(){
+        $(this).find(".acentBar").css("background-color",$('.nav-extended').data('color'));
+      });
+      $(".itemMenu").mouseout(function(){
+        $(this).find(".acentBar").css("background-color","rgba(0,0,0,0.0)");
+      });
+      $(".cerrarSesionBtn").click(function() {
+        $.confirm({
+            icon: "power_settings_new",
+            theme: "modern",
+            closeIcon: !1,
+            animation: "scale",
+            type: "red",
+            title: "Cerrar Sesión",
+            columnClass: "small",
+            content: "Las ofertas te estaran esperando",
+            draggable: !1,
+            buttons: {
+                Cerrar: {
+                    btnClass: "btn",
+                    action: function() {
+                        location.href = base_url + "usuario/cerrar_sesion"
+                    }
+                },
+                Cancelar: {}
+            }
+        })
+      });
+
+      //FOOTER
+      var flagFooter = false;
+      $(".footerSecundario .collapsible-header").click(function() {
+          if (flagFooter == false) {
+              $('.footerSecundario .iconSide').text('expand_less');
+              $('.footerSecundario .sideB').slideUp(500);
+              flagFooter = true;
+          }else if (flagFooter == true){
+              $('.footerSecundario .iconSide').text('expand_more');
+              $('.footerSecundario .sideB').slideDown(200);
+              flagFooter = false;
+          }
+      });
+    });
+
+  </script>
+  <script> var base_url = "{{base_url()}}";</script>
+  {% block script %} {% endblock %}
+  </body>
+</html>

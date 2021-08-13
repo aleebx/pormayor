@@ -1,0 +1,176 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+ <style type="text/css">
+ #main .content-wrapper-before {
+    position: absolute;
+    z-index: -1;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: 185px;
+    -webkit-transition: .3s ease all;
+    -moz-transition: .3s ease all;
+    -o-transition: .3s ease all;
+    transition: .3s ease all;
+}
+.gradient-45deg-yellow {
+    background: #fec00f;
+    background: -webkit-linear-gradient(45deg, #fec00f, #f59e04) !important;
+    background: -moz- oldlinear-gradient(45deg, #fec00f, #f59e04) !important;
+    background: -o-linear-gradient(45deg, #fec00f, #f59e04) !important;
+    background: linear-gradient(45deg,#fec00f, #f59e04) !important;
+}
+ </style>
+{% endblock %}
+
+{% block content %}
+	<div  id="main">
+    <div class="content-wrapper-before gradient-45deg-yellow"></div>
+	<main class="container fixContainer">
+    <br class="hide-on-large-only"><br class="hide-on-large-only">
+        <div class="row ">
+            <div class="col s12 m12 l8 offset-l2">
+                <div class="card">
+                	<div class="card-content green hide" id="exitoReg">
+						<h5 class="center white-text">GRACIAS POR COMUNICARTE CON <b>PORMAYOR.PE</b></h5>
+						<p class="white-text">En la brevedad posible nos comunicaremos con usted para agendar una cita y visitar su establecimiento, dónde le explicaremos todo el módelo del negocio.</p>				
+					</div>
+                    <div class="card-content">
+                    	<div class="row">
+							<span class="card-title center">CREA TU TIENDA EN <b>PORMAYOR.PE</b></span>
+	                        <div class="col s12">
+	                            <div class="divider dividerMargin"></div>
+	                        </div>
+	                        <div class="input-field col s12 l12">
+	                          <input type="text" name="nombre" id="nombre"  class=".form-group" placeholder="Ingresa tu nombre">
+	                            <label for="nombre" class="active black-text">Nombre Completo</label>
+	                        </div>
+	                        <div class="col s12 l12 input-field">
+	                            <input name="ruc" type="number" placeholder="Ingresa tu RUC" class=".form-group" id="ruc" minlenght="11" placeholder="" required="">
+	                            <label for="ruc" class="active black-text">RUC</label>
+	                        </div>
+	                        <div class="input-field col s12 l12">
+	                          <input type="text" name="giro" id="giro"  class=".form-group" placeholder="Ingresa tu giro">
+	                            <label for="giro" class="active black-text">Giro del Negocio</label>
+	                        </div>
+	                        <div class="input-field col s12 l12">
+	                          <input type="text" name="dir" id="dir"  class=".form-group" placeholder="Ingresa tu Dirección">
+	                            <label for="dir" class="active black-text">Dirección del negocio</label>
+	                        </div>
+	                        <div class="col s12 m12 l6 input-field positionRelative">
+	                            <i class="material-icons prefix transitionB">email</i>
+	                            <input name="correo" id="correo" placeholder="Ingresa tu correo" type="email" class="email">
+	                            <label for="correo" class="active black-text">Correo Electrónico</label>
+	                        </div>
+	                        <div class="col s12 l6 input-field">
+	                            <i class="material-icons prefix transitionB">phone</i>
+	                            <input name="tlf" type="number" id="tlf" minlength="9" maxlength="9" class=".form-group" placeholder="Teléfono celular actual"  minlength="9" maxlength="9">
+	                            <label for="tlf" class="active black-text">Celular del Negocio</label>
+	                        </div>
+                            <div class="col s12 l12 center">
+                                <span>¿DE QUE FORMA QUIERES RECIBIR TU DINERO POR LA VENTA EN LA PLATAFORMA?</span><br>
+                                <span>Recuerda que las comisiones son distintas según lo que le elijas</span> <br> <br>
+                                <span>SELECCIONA UNA OPCIÓN</span> <br>
+                                <input name="group1" type="radio" id="test1" value="inmediato" />
+                                <label for="test1" class="black-text" style="font-size:1.2rem;">PAGO INMEDIATO</label>
+                                <input name="group1" type="radio" id="test2" value="semanal" />
+                                <label for="test2" class="black-text" style="font-size:1.2rem;">PAGO SEMANAL</label>                                
+                            </div>
+                            <div class="col s12 l12">
+                                <ul id="inmediato" class="hide">
+                                    <li>VENTA POR MENOR <b>10%</b></li>
+                                    <li>VENTA POR MAYOR O GRUPAL <b>4%</b></li>
+                                    <li></li>
+                                    <li>PROCESO:</li>
+                                    <li>1- Se te paga el total menos la comisión indicada</li>
+                                    <li>2- Se recoge la mercancía por nuestro Courier</li>
+                                </ul>
+                                <ul id="semanal" class="hide">
+                                    <li>VENTA POR MENOR <b>5%</b></li>
+                                    <li>VENTA POR MAYOR O GRUPAL <b>2%</b></li>
+                                    <li></li>
+                                    <li>PROCESO:</li>
+                                    <li>1- Se recoge la mercancía por nuestro Courier</li>
+                                    <li>2- Los pago se te hace los viernes de la siguiente semana</li>
+                                </ul>
+                            </div>
+	                        <div class="col s12 l12 input-field center">
+	                           <a class="btn gDV">CREAR MI TIENDA</a>
+	                        </div>
+	                    </div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+</main>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/jquery.sticky-kit.min.js')}}"></script>
+<script>
+    var entro = 0;	
+    $("input[name='group1']").click( function(){
+        var tp = $(this).val();
+        if (tp == 'inmediato' && entro == 0) {
+            $('#inmediato').removeClass('hide');
+            entro = 1;
+        }else if (tp == 'semanal' && entro == 0) {
+            $('#semanal').removeClass('hide');
+            entro = 1;
+        }else if (tp == 'inmediato' && entro == 1){
+            $('#inmediato').removeClass('hide');
+            $('#semanal').addClass('hide');
+        }else if (tp == 'semanal' && entro == 1){
+            $('#semanal').removeClass('hide');
+            $('#inmediato').addClass('hide');
+        }
+    });
+
+	$('.gDV').click(function(){
+	    var nombre = $("#nombre").val();
+	    var ruc = $("#ruc").val();
+	    var giro = $("#giro").val();
+	    var dir = $("#dir").val();
+	    var correo = $("#correo").val();
+	    var tlf = $("#tlf").val();
+        var pago = $("input[name='group1']:checked").val()
+	    if (nombre && ruc && giro && dir && correo && tlf && pago != undefined) {    	
+	        $.ajax({
+	          type: "POST",
+	          data: {
+	                "nombre": nombre,
+	                "ruc": ruc,
+	                "giro": giro,
+	                "dir": dir,
+	                "correo": correo,
+	                "tlf": tlf,
+                    "pago": pago
+	              },
+	          url: base_url + 'landing/guardar_datos',
+	          success: function (data) {
+	               $("#nombre").val('');
+				   $("#ruc").val('');
+				   $("#giro").val('');
+				   $("#dir").val('');
+				   $("#correo").val('');
+				   $("#tlf").val('');
+				   $("#contentReg").addClass('hide');
+				   $("#exitoReg").removeClass('hide');
+                   window.location.replace("https://pormayor.pe/usuario/login");
+	          }
+	        });
+	    }else{
+	    	alert('error');
+	    }
+	});
+	$(".unidadSticky").stick_in_parent({inner_scrolling: false,offset_top: 62,}).on("sticky_kit:stick", function(e) {
+        $(this).css("z-index",500);
+     }).on("sticky_kit:bottom", function(e) {
+        $(this).css("z-index",10);
+     }).on("sticky_kit:unbottom", function(e) {
+        $(this).css("z-index",500);
+    });
+</script>
+{% endblock %}

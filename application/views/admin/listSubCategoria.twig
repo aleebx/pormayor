@@ -1,0 +1,30 @@
+<select id="subcnueva">
+{% for sub in subcategoria %}
+    <option value="{{sub.Suc_IdSubCategoria}}">{{sub.Suc_Nombre}}</option>
+{% endfor %}
+</select>
+{% block script %}
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+	<script>
+	$(document).ready(function(){
+        $('select').material_select();
+        $("#subcnueva").change(function(){
+        var Suc_IdSubCategoria = $(this).val();
+         $.ajax({
+            data:{
+            'Suc_IdSubCategoria' : Suc_IdSubCategoria
+            },
+            type: "POST",
+            url: base_url+'admin/generar/detC', 
+            dataType: "json",
+            success: function(data){
+                $('#detallesub').load(base_url+'admin/generar/listDet',{datos:data});
+            },
+            error: function(data) {
+              alert('error');
+            }
+          });
+ 
+    });
+	});
+ {% endblock %}

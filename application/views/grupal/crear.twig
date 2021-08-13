@@ -1,0 +1,426 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+	 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"  media="screen"/>
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/css/easyzoom.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+
+  <style type="text/css">
+    /*.btn-flat-not:hover{background-color: #21478F ;color: white !important;}*/
+.sk-cube-grid {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+}
+
+.sk-cube-grid .sk-cube {
+  width: 33%;
+  height: 33%;
+  background-color: #333;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+          animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+}
+.sk-cube-grid .sk-cube1 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube2 {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube3 {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s; }
+.sk-cube-grid .sk-cube4 {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube5 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube6 {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube7 {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s; }
+.sk-cube-grid .sk-cube8 {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1); 
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  } 
+}
+    .sliderMobile .slick-list {padding:0px !important;}
+    .sliderMobile .slick-dots li.slick-active button:before{font-size: 70px !important;opacity: 1;color: {{configuracion.Con_ColorBtn}};}
+    {% if userAgent == 'PC' %}
+    .sliderMobile img{max-width:100%;max-height: 315px;}
+    {% else %}
+    .sliderMobile img{max-width:100%;max-height: 260px;}
+    {% endif %}
+    .sliderMobile{height:300px;}
+    .materialbox-caption{text-transform: uppercase;font-size: 1.5rem;}
+    /* Style the active class, and buttons on mouse-over */
+    hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+	.active2, .btn:hover {
+	background-color: #004d00 !important;
+	color: white !important;
+	}
+  .btng{
+    height: 60px;
+    line-height: 60px;
+    margin-top: 5px;
+  }
+ div.container4 {
+    height: 10em;
+    position: relative }
+div.container4 p {
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
+    [type="radio"] + label:before, [type="radio"] + label:after{
+      width: 25px !important;
+      height: 25px !important;
+    }
+    [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after{
+      border: 3px solid orange !important;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+    <main class="container">
+      {% if actComprar %}
+      <div class="row card-panel sinPadding centrarForzado" {% if userAgent == "PC" %}style="height: 80px;"{% endif %}>
+        {% if userAgent == "PC" %}
+        <div class="col s12 l2 center">
+          <i class="material-icons large">group</i>
+        </div>
+        {% endif %}
+        <div class="col s12 l10">
+          <div class="row">
+            <div class="col s12 l4 center">
+                <div class="row" style="margin-bottom: 0px">
+                  <div class="col input-field s8">
+                      <input type="text" value="https:{{base_url()}}grupal/crear/{{producto.Pro_IdProducto}}" id="copiaLink">
+                  </div>
+                  <div class="col s4"><br>
+                      <a onclick="myCopia()" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Copiar el link para compartir">Copiar</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col s12 l2 center">{% if userAgent == "PC" %}<br>{% endif %}
+              {% if userAgent == "PC" %}
+                <a href="http://www.facebook.com/dialog/send?app_id=1956467824456142&amp;link=http://pormayor.pe/grupal/crear/{{producto.Pro_IdProducto}}&amp;redirect_uri=https://www.pormayor.pe/" class="btn blue"><img src="{{ruta_img}}/ms.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">MESSENGER</a>
+              {% else %}
+                <a href="fb-messenger://share/?link=https://pormayor.pe/grupal/crear/{{producto.Pro_IdProducto}}&app_id=1956467824456142" class="btn blue"><img src="{{ruta_img}}/ms.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">MESSENGER</a>
+                <a href="whatsapp://send?text=Hola,%20compremos%20esto%20en%20grupo%20https://pormayor.pe/grupal/crear/{{producto.Pro_IdProducto}}" data-action="share/whatsapp/share" class="btn green"><img src="{{ruta_img}}/wa.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">WHATSAPP</a>
+              {% endif %}
+            </div>
+            <div class="col s12 l3 center"><br>
+              <div class="fb-like" data-href="http://pormayor.pe/grupal/crear/{{producto.Pro_IdProducto}}?fb_ref=top_left&fb_source=profile_oneline" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+            </div>
+            {% if userAgent == "PC" %}
+            <div class="col s4 l3 center"  style="border-left: 1.5px solid rgba(0,0,0,0.2)">
+              <span class="pormayorUnico-text flow-text"><strong>{{vista.Pro_Vista}}</strong> han visto este producto</span>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+	<div class="row card-panel">
+            <div class="col s12 m12 l12">
+              <span class="fixH1Seo centrarForzado enfasisA">{{producto.Pro_Nombre|title}}<i class="material-icons prefix">loyalty</i></span>
+              <br>
+              <hr>
+            </div>
+            <div class="col s12 {% if producto.Pro_Caracteristicas %}l6{% else %}l12{% endif %} center">
+              <div class="wrapperSliderImgMobile transition">
+                <div class="sliderMobile ">
+                  {% for fot in fotos %}
+                    {% if producto.Pro_IdProducto == fotos[0].producto_Pro_IdProducto %}
+                      {% if fot.Prf_Img|slice(0, 5)|lower != "nopic" %}
+                        <div class="">
+                          <img alt="{{producto.Pro_Nombre}} al pormayor" class="redondeo centrarForzado" src="{{ruta_img}}{{fot.Prf_Img}}">
+                        </div>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+<div itemscope itemtype="http://schema.org/Product" class="hide">
+<img itemprop="image" alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}{{fotos[0].Prf_Img}}" class="containImg" />
+<span itemprop="name">{{producto.Pro_Nombre}}</span>
+<p itemprop="description">{{producto.Pro_Descripcion|replace({'<figure class="image">': '', '</figure>' : '', '<img src="https://cdn.shopify.com/s/files/1/1415/1124/products/1138-Auto-Electrico-Porsche-6V-V2_1024x1024.jpg?v=1528385082">' : '', '<img src="https://cdn.shopify.com/s/files/1/1415/1124/products/1138-Auto-Electrico-Porsche-6V-V2_1024x1024.jpg?v=1528385082">': ''})}}</p>
+<a itemprop="isRelatedTo" href="http://{{producto.Tie_Subdominio}}.pormayor.pe"></a>
+<div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+<span itemprop="lowPrice">{{producto.Pro_PrecioMinimo}}</span>
+<span itemprop="highPrice">{{producto.Pro_PrecioMaximo}}</span>
+<meta itemprop="priceCurrency" content="S/" />
+</div>
+</div>
+        <div class="col s12 l6">
+        	<div class="row">
+        		<div class="col s12 l6 hide-on-small-only">
+              {% set r3 = (producto.Pro_PrecioMinimo * 100) / producto.Pro_PrecioMaximo %}
+              {% set ahorro = 100 - r3 %}
+        		{% set caracteristicas = producto.Pro_Caracteristicas|split('|') %}
+	              <ul class="caracteristicasLista">
+	                {% for cat in caracteristicas %}
+	                   <li class="enfasisB fontB2"><i class="positionRelative material-icons fontB2 grey-text text-darken-4">check</i>&nbsp;&nbsp;&nbsp; {{cat}}</li>
+	                {% endfor %}
+	              </ul>
+          		</div>
+          		<div class="col s12 l6">
+                <div class="center">
+                <span class="grey-text text-lighten-1 center">Precio Normal: S/ <b class="fontC"><s class="grey-text">{{producto.Pro_PrecioMaximo}}</s></b></span><br>
+                <span class="orange-text text-accent-4 fontC center">Ahorras hasta <b>{{ ahorro|round }}%</b></span>
+                </div>
+                  <ul class="collection">
+                    <li class="collection-item center negrita"><i class="material-icons left">group</i>COMPRAS GRUPALES</li>
+                    <li class="collection-item"><a href="#selPro" class="black-text"><i class="material-icons left">looks_one</i>SELECCIONA EL PRODUCTO</a></li>
+                    <li class="collection-item"><a href="#selGru" class="black-text"><i class="material-icons left">looks_two</i>ELIGE TU GRUPO DE COMPRA</a></li>
+                    <li class="collection-item"><a href="#selFin" class="black-text"><i class="material-icons left">looks_3</i>CONFIRMA TU GRUPO</a></li>
+                    {# <li class="collection-item">COMPARTE CON TU FAMILIARES, AMIGOS, CONOCIDOS O TODOS PARA QUE PUEDAN ADQUIRIR ESTE PRODUCTO A PRECIO DE FÁBRICA</li> #}
+                    <li class="collection-item center orange-text text-accent-4 negrita">CUANDO SE COMPLETE EL GRUPO SE ACTIVARÁ LA COMPRA PARA TODOS Y PODRÁN PAGAR CONTRAENTREGA O TARJETA DE CRÉDITO/DÉBITO</li>
+                  </ul>
+	              </div>
+        	</div>	
+        </div>
+    </div>
+
+    <div class="row card">
+        <div class="col s12 m5 l6 center section scrollspy" id="selPro">
+          <br>
+          <span class="card-title center negrita"><i class="material-icons left">looks_one</i>SELECCIONA QUE MODELO QUIERES</span>
+          <br>
+          <br>
+          {% for key, sku in SKU %}  
+            {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto %}
+            {% set colorActual = sku.SKU_Color %}
+              <div class="col s12 l12 sinPadding">
+                <div class="row centrarForzado">
+                  <div class="col s2 l2">
+                    <div class="positionRelative">
+                      {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+                        <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="fixImg4 redondeo" src="{{ruta_img}}nofoto.png" >
+                      {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
+                        <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}" >
+                      {% else %}
+                        <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class="fixImg4 redondeo" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                      {% endif %}
+                    {% set colorUnico = "" %}
+                    {% set colorHex = " " %}
+                    {% set break = false %}
+                    {% for col in colores if not break %}
+                      {% if col.SKU_Color == colorActual %}
+                        <div class="colorEjemplo positionAbsolute bottom0" style="background-color:{{col.Col_Hex}}"></div>
+                        {% set colorUnico = col.Col_Nombre %}
+                        {% set colorHex = col.Col_Hex %}
+                        {% set break = true %}
+                      {% endif %}
+                    {% endfor %}
+                    </div>
+                    <br>
+                  </div> 
+                  <div class="col s10 l10 sinPadding">
+                    <div class="row centrarForzado">
+                      <div class="col s8 l8 sinPadding"><br>
+                        <span class="fontB2 enfasisB">{{producto.Pro_Nombre|title}}</span> {# <i>{{colorUnico|title}}</i> #}
+                      </div> 
+                      <div class="col s4 l4 filaCant{{key}} center" style="margin-top:8px">
+                        {% set count = 0 %}
+                        {% set break = false %}
+                        {% for skub in SKUB|sort('asc') if not break  %}                        
+                            {% if colorActual == skub.SKU_Color  %}
+                            	 <p>
+								      <input name="skuGroup"  type="radio" class="browser-default" value="{{skub.SKU_IdSku}}" id="r{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{{colorHex}}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{precios[0].Prp_Desde}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" />
+								      <label for="r{{skub.SKU_IdSku}}" class="black-text"><i>{% if colorUnico == '' %}Unicolor{% else %}{{colorUnico|title}}{% endif %}</i></label>
+								            </p>
+                            {% else %}
+                              {% set break = false %} 
+                            {% endif %} 
+                        {% set count = count + 1 %}
+                        {% endfor %}
+                      </div>
+                      <div class="col s6 right-align precioUnitMobile precioUnitMobile{{key}} hide" style="margin-top:8px">
+                          <span class='enfasisC fontB2'><span class='precioproSide'></span> c/u</span>
+                          <p class='enfasisA fontD2'>S/<span class='totalproSide'></span> </p>
+                      </div>
+                      <br><br><br><br><br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+          <div class="col l1 center hide-on-small-only valign-wrapper center-align container4">
+            <p>
+              <i class="medium material-icons">arrow_forward</i>
+            </p>
+          </div>        
+          <div class="col s12 center hide-on-large-only center-align"><i class="medium material-icons">arrow_downward</i></div>        
+          <div class="col s12 m12 l5 center">
+          	<div class="row section scrollspy" id="selFin">
+          		<div class="col s12 l12 section scrollspy" id="selGru">
+	          		<span class="card-title center negrita"><i class="material-icons left">looks_two</i>SELECCIONA TU GRUPO</span>
+      					{% for pre in precios %}
+      						{% if loop.index != 1 %}
+      							<div class="col s12 l12 group">
+      							<a class="proGrupal anchoTotal btng btn green negrita fontC z-depth-3" data-cantidad="{{pre.Prp_Desde}}" data-pre="{{pre.Prp_Precios}}">GRUPO DE {{pre.Prp_Desde}} <span class="right fontD">S/ {{pre.Prp_Precios}}</span></a>
+      							</div>   
+      						{% endif %}
+      							<br>
+      							<br>
+      					{% endfor %}
+				      </div>
+              {% if userAgent == "PC" %}
+                {% if usuario.logueado %}
+                  {% if actComprar %}
+                    <div class="col s12 l12 center"><br>
+                      <span class="fontD2 negrita" style="padding:1px 1px;">{% if actComprar %}<i class="material-icons right">info</i>YA TE UNISTE A UN GRUPO{% endif %}</span>
+                    </div>
+                  {% else %}
+            				<div class="col s12 l12 center section scrollspy" id="selFin"><br><br>
+                      <label><i class="material-icons left black-text">looks_3</i></label>
+            					<a class="addGroup btn-large green disabled negrita" data-idpro="{{producto.Pro_IdProducto}}" data-idusu="{{usuario.id_usuario}}"><i class="left large material-icons">group_add</i>UNIRME A MI GRUPO DE COMPRA</a>
+            				</div>            
+                  {% endif %}
+                {% else %}
+                  <div class="col s12 l12 center"><br><br>
+                    <a class="col l12 btn transitionB comentLoginBtn" href="{{base_url()}}usuario/login">Iniciar sesión para comprar en grupo</a> 
+                  </div>
+                {% endif %}
+              {% endif %}
+			 </div>
+          </div>
+        </div>
+        {# {% if actComprar %} #}
+          <div id="modalG" class="modal {% if userAgent != "PC" %}bottom-sheet{% endif %}">
+            <div class="modal-content">
+              <h5 class="center">¡Te haz unido a tu grupo con éxito!</h5>
+              <h6 class="center">Comparte con tu familia, amigos, conocidos para que tu grupo se complete rápido y puedan comprar a este maravilloso precio</h6>
+                <div class="row card-panel sinPadding centrarForzado" {% if userAgent == "PC" %}style="height: 80px;"{% endif %}>
+                  {% if userAgent == "PC" %}
+                  <div class="col s12 l2 center">
+                    <i class="material-icons large">group</i>
+                  </div>
+                  {% endif %}
+                  <div class="col s12 l10">
+                    <div class="row">
+                      <div class="col s12 l4 center">
+                          <div class="row" style="margin-bottom: 0px">
+                            <div class="col input-field s8">
+                                <input type="text" value="https:{{base_url()}}grupal/crear/{{producto.Pro_IdProducto}}" id="copiaLink">
+                            </div>
+                            <div class="col s4"><br>
+                                <a onclick="myCopia()" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Copiar el link para compartir">Copiar</a>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col s12 l2 center">{% if userAgent == "PC" %}<br>{% endif %}
+                        {% if userAgent == "PC" %}
+                          <a href="http://www.facebook.com/dialog/send?app_id=1956467824456142&amp;link=http://pormayor.pe/grupal/crear/{{producto.Pro_IdProducto}}&amp;redirect_uri=https://www.pormayor.pe/" class="btn blue"><img src="{{ruta_img}}/ms.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">MESSENGER</a>
+                        {% else %}
+                          <a href="fb-messenger://share/?link=https://pormayor.pe/grupal/crear/{{producto.Pro_IdProducto}}&app_id=1956467824456142" class="btn blue"><img src="{{ruta_img}}/ms.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">MESSENGER</a>
+                          <a href="whatsapp://send?text=Hola,%20compremos%20esto%20en%20grupo%20https://pormayor.pe/grupal/crear/{{producto.Pro_IdProducto}}" data-action="share/whatsapp/share" class="btn green"><img src="{{ruta_img}}/wa.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">WHATSAPP</a>
+                        {% endif %}
+                      </div>
+                      <div class="col s12 l3 center"><br>
+                        <div class="fb-like" data-href="http://pormayor.pe/grupal/crear/{{producto.Pro_IdProducto}}?fb_ref=top_left&fb_source=profile_oneline" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                      </div>
+                      {% if userAgent == "PC" %}
+                      <div class="col s4 l3 center"  style="border-left: 1.5px solid rgba(0,0,0,0.2)">
+                        <span class="pormayorUnico-text flow-text"><strong>{{vista.Pro_Vista}}</strong> han visto este producto</span>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <a href="{{base_url()}}grupal" class="modal-action modal-close waves-effect waves-green btn-flat">CERRAR </a>
+            </div>
+          </div>
+
+        {# {% endif %} #}
+</main>
+              {% if userAgent != "PC" %}
+                {% if usuario.logueado %}
+                  {% if actComprar %}
+                    <div class="bottom0 anchoTotal row centrarForzado white mobileBottomBtn" style="position:fixed;z-index: 100">
+                      <div class="col s12 sinPadding">
+                        <a  class="btn-large pormayorUnico anchoTotal  resumenMobileBtn disabled">YA TE UNISTE A UN GRUPO</a>
+                      </div>
+                    </div>
+                  {% else %}
+                    <div class="bottom0 anchoTotal row centrarForzado white mobileBottomBtn" style="position:fixed;z-index: 100">
+                      <div class="col s12 sinPadding">
+                        <a  class="addGroup disabled btn-large pormayorUnico anchoTotal resumenMobileBtn" data-idpro="{{producto.Pro_IdProducto}}" data-idusu="{{usuario.id_usuario}}"><i class="right large material-icons">group_add</i>UNIRME A MI GRUPO DE COMPRA<label><i class="material-icons left">looks_3</i></label></a>
+                      </div>
+                    </div>            
+                  {% endif %}
+                {% else %}
+                    <div class="bottom0 anchoTotal row centrarForzado white mobileBottomBtn" style="position:fixed;z-index: 100">
+                      <div class="col s12 sinPadding">
+                        <a  class="btn-large pormayorUnico anchoTotal resumenMobileBtn comentLoginBtn" href="{{base_url()}}usuario/login"><i class="material-icons left">person</i>Iniciar sesión/Crear usuario</a>
+                      </div>
+                    </div>
+                {% endif %}
+              {% endif %}
+
+{% endblock %}
+
+{% block script %}
+  <script>
+  var uni = {{actComprar|json_encode()}};
+  if (uni == true) {
+  jQuery(document).ready(function(){
+      jQuery('#modalG').modal();
+      jQuery(document).ready(function(){
+          jQuery('#modalG').modal('open');
+      });
+  });
+  }
+$('.scrollspy').scrollSpy();
+  var rando_precio = {{precios|json_encode()}};
+  var flagVariaciones = false;
+  function myCopia() {
+  var copyText = document.getElementById("copiaLink");
+  copyText.select();
+  document.execCommand("copy");
+}
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/dist/easyzoom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="{{base_url('public/')}}js/grupal.js?v={{'now'|date('mdY')}}"></script>
+{% endblock %}

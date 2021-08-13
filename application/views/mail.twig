@@ -1,0 +1,379 @@
+{% extends "layout/correo.twig" %}
+
+{% block content %}
+	<tr style="border-top: #f6b21d 5px solid;">
+	<td bgcolor="#3b3b3d" align="center" style="padding: 20px 0px 20px 0px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+		Prospecto a tienda
+	</td>
+</tr>
+<tr>
+		<td style="padding: 10px 5px 5px 10px; color: #383838; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+			Datos del formulario
+		<br />
+	</td>
+</tr>
+<tr style="border-bottom: #f6b21d 5px solid;">
+		<td  style="padding: 10px 5px 5px 10px; color: #383838; font-family: Arial, sans-serif; font-size: 18px; line-height: 20px;">
+		<ul>
+			<li>Nombre Completo: {{nombre}}</li>
+			<li>RUC: {{ruc}}</li>
+			<li>Giro del Negocio: {{giro}}</li>
+			<li>Dirección del Negocio: {{dir}}</li>
+			<li>Correo: {{correo}}</li>
+			<li>Teléfono: {{tlf}}</li>
+		</ul>
+		</td>
+</tr>
+{% endblock %}
+{# <tr style="border-top: #f6b21d 5px solid;">
+    <td bgcolor="#3b3b3d" align="center" style="padding: 20px 5px 20px 5px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+    Felicidades <b>{{inf.Per_Nombre}}</b>, tu grupo ha finalizado
+    </td>
+</tr>
+<tr>
+    <td style="color: #383838; font-family: Arial, sans-serif; font-size: 20px;padding: 10px 5px 10px 5px;">
+    	{% if inf.Gru_PrecioFinal != inf.Gru_PrecioInicial %}
+			El grupo se acaba de cerrar. Pero no hemos logrado alcanzar algún descuento. Igualmente puedes acceder a comprar <b>{{inf.Pro_Nombre|title}}</b>.
+    	{% else %}
+      		El grupo se acaba de cerrar. Ahora puedes comprar <b>{{inf.Pro_Nombre|title}}</b> a <b style="color:#FEC00F;font-size: 28px;">S/{{inf.Gru_PrecioFinal}}</b>. 
+    	{% endif %} 
+    </td>
+</tr>
+<tr>
+	<td style="vertical-align: middle;padding: 5px; font-size: 15px;text-align:center;">
+    	<big style="font: 16px/18px Arial, Helvetica, sans-serif;">
+        	<a href="https://pormayor.pe/grupal/migrupo/{{inf.Pro_IdProducto}}" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0 1rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 0.9rem; color: white;">COMPRAR</a>
+      	</big>
+	</td>
+</tr>
+  <tr>
+  <td style="padding: 20px 0 0 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB;padding: 5px; font-size: 15px;">
+          <b style="color:orange">IMPORTANTE</b><br>
+          <ul>
+            <li>Tienes un plazo máximo de 48 horas, hasta (dia/mes/año hora/minuto)  para realizar tu pedido. Caso contrario perderías este descuento.</li>
+            <li>Puedes elegir  la modalidad de pago (contra entrega en efectivo*, tarjeta de crédito o depósito bancario)</li>
+            <li>Los envíos del producto se hacen a cada dirección señalada por cada grupero</li>
+            <li><b>*Contra entrega, valido solo para toda Lima Metropolitana.</b></li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr> #}
+{# <tr style="border-top: #f6b21d 5px solid;">
+	<tr style="border-top: #f6b21d 5px solid;">
+	    <td bgcolor="#3b3b3d" align="center" style="padding: 20px 5px 20px 5px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+	    Felicidades <b>{{inf.Per_Nombre}}</b>, tu grupo ha bajado el precio
+	    </td>
+	</tr>
+	<tr>
+	    <td style="color: #383838; font-family: Arial, sans-serif; font-size: 20px;padding: 10px 5px 10px 5px;">
+	    	Con la ayuda de todos hemos logrado un descuentazo. Ahora <b>{{inf.Pro_Nombre|title}}</b> tiene un precio actual de <b style="color:#FEC00F;font-size: 24px;">S/{{inf.Gru_PrecioFinal}}</b> antes <b style="color:#bcbcbc;">S/{{inf.Gru_PrecioInicial}}</b>
+	    </td>
+	</tr>
+  	<tr>
+    	<td style="vertical-align: middle;padding: 5px; font-size: 15px;text-align:center;">
+      		<big style="font: 16px/18px Arial, Helvetica, sans-serif;">
+              <a href="https://pormayor.pe/grupal/migrupo/{{inf.Pro_IdProducto}}" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0 1rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 0.9rem; color: white;">VER MI GRUPO</a>
+            </big>
+    	</td>
+  	</tr>
+    <tr>
+	  <td style="padding: 20px 0 0 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	      <tr>
+	        <td align="center" colspan="2" style="padding:5px;">
+	          <b>COMPARTE CON TODOS Y OBTENGAN EL MEJOR PRECIO</b>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td bgcolor="#038aff" align="center">
+	          <a href="fb-messenger://share/?link=https://pormayor.pe/grupal/nuevo/{{inf.Pro_IdProducto}}&app_id=1956467824456142" style="border: none;color: white;padding: 5px 3px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;"><img src="https://pormayor.pe/img/ms.png" height="25" style="top:5px;margin-right:10px"><b>MESSENGER</b></a>
+	        </td>
+	        <td bgcolor="#46c655" align="center">
+	          <a href="whatsapp://send?text=Hola,%20compremos%20esto%20en%20grupo%20https://pormayor.pe/grupal/nuevo/{{inf.Pro_IdProducto}}" data-action="share/whatsapp/share" style="border: none;color: white;padding: 5px 3px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;"><img src="https://pormayor.pe/img/wa.png" height="25" style="top:5px;margin-right:10px"><b>WHATSAPP</b></a>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB;padding: 5px; font-size: 15px;">
+	          <b style="color:orange">IMPORTANTE</b><br>
+	          <ul>
+	            <li>Este grupo se crea se crea exclusivamente entre todo los interesados en el producto (tus conocidos y otros desconocidos).</li>
+	            <li>El precio final conseguido será comunicado al cierre del grupo. </li>
+	            <li>Cada grupero elige de forma independiente la modalidad de pago (contra entrega en efectivo, tarjeta de crédito o depósito bancario)</li>
+	            <li>Los envíos del producto se hacen a cada dirección señalada por cada grupero.</li>
+	          </ul>
+	        </td>
+	      </tr>
+	    </table>
+	  </td>
+	</tr>
+<tr style="border-top: #f6b21d 5px solid;">
+    <td bgcolor="#3b3b3d" align="center" style="padding: 20px 0px 20px 0px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+    Felicidades <b>{{inf.Per_Nombre}}</b>
+    </td>
+</tr>
+<tr>
+	<td style="color: #383838; font-family: Arial, sans-serif; font-size: 18px;padding: 20px 0px 20px 0px;">
+		Ahora ya eres un <b>gruper@</b>. {% if inf.Gru_PrecioInicial == inf.Gru_PrecioFinal %} {% else %}Te recordamos que el precio regular de <b>{{inf.Pro_Nombre|title}}</b> es S/{{inf.Gru_PrecioInicial}}, pero actualmente tu grupo a logrado bajarlo hasta <b style="color:#FEC00F;">S/{{inf.Gru_PrecioFinal}}</b>{% endif %} Mientras más amigos se unan a la compra será mas barato para todos.
+	</td>
+</tr>
+<tr>
+	<td>
+		<table style="table-layout: fixed" border="0" cellpadding="0" cellspacing="0">
+			<thead>
+				<tr>
+					<th style="padding: 12px 10px; font-size: 18px;text-align:center;font-family: Arial, sans-serif;border-bottom: #f6b21d 5px solid;" width="200" valign="middle">PRODUCTO</th>
+					<th style="padding: 12px 10px; font-size: 18px;text-align:center;font-family: Arial, sans-serif;border-bottom: #f6b21d 5px solid;" width="200" valign="middle">PRECIO ACTUAL</th>
+				</tr>
+			</thead>
+			<tbody >
+				<tr>
+					<td bgcolor="#3b3b3d" style="padding:10px;color: white; font-family: Arial, sans-serif; font-size: 18px;text-align:center;border-bottom: #f6b21d 5px solid;" valign="middle">{{inf.Pro_Nombre}}</td>
+					<td bgcolor="#3b3b3d" style="padding:10px;color: white; font-family: Arial, sans-serif; font-size: 22px;text-align:center;border-bottom: #f6b21d 5px solid;" valign="middle">S/{{inf.Gru_PrecioFinal}}</td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2" style="padding: 10px 0px 0px 10px;">
+						<big style="font: 16px/18px Arial, Helvetica, sans-serif;">
+					    <a href="https://pormayor.pe/grupal/nuevo/{{inf.Pro_IdProducto}}" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0 1rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 0.9rem; color: white;">VER MI GRUPO</a>
+					    </big>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td style="padding: 20px 0 0 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td align="center" colspan="2" style="padding:5px;">
+					<b>COMPARTE CON TODOS Y OBTENGAN EL MEJOR PRECIO</b>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#038aff" align="center">
+					<a href="fb-messenger://share/?link=https://pormayor.pe/grupal/nuevo/{{inf.Pro_IdProducto}}&app_id=1956467824456142" style="border: none;color: white;padding: 5px 3px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;"><img src="https://pormayor.pe/img/ms.png" height="25" style="top:5px;margin-right:10px"><b>MESSENGER</b></a>
+				</td>
+				<td bgcolor="#46c655" align="center">
+					<a href="whatsapp://send?text=Hola,%20compremos%20esto%20en%20grupo%20https://pormayor.pe/grupal/nuevo/{{inf.Pro_IdProducto}}" data-action="share/whatsapp/share" style="border: none;color: white;padding: 5px 3px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;"><img src="https://pormayor.pe/img/wa.png" height="25" style="top:5px;margin-right:10px"><b>WHATSAPP</b></a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB;padding: 5px; font-size: 15px;">
+					<b style="color:orange">IMPORTANTE</b><br>
+					<ul>
+						<li>Este grupo se crea se crea exclusivamente entre todo los interesados en el producto (tus conocidos y otros desconocidos).</li>
+						<li>El precio final conseguido será comunicado al cierre del grupo. </li>
+						<li>Cada grupero elige de forma independiente la modalidad de pago (contra entrega en efectivo, tarjeta de crédito o depósito bancario)</li>
+						<li>Los envíos del producto se hacen a cada dirección señalada por cada grupero.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</td>
+</tr>
+	<td bgcolor="#3b3b3d" align="center" style="padding: 20px 0px 20px 0px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+	Cambio de contraseña exitoso
+	</td>
+</tr>
+<tr>
+	<td style="padding: 20px 10px 30px 10px; color: #383838; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+	El cambio de contraseña a tu cuenta de pormayor.pe se ha realizado exitosamente. Ya puedes acceder a tu cuenta
+	</td>
+</tr>
+<tr>
+	<td style="text-align: center">
+	<big style="font: 16px/18px Arial, Helvetica, sans-serif;">
+	<a href="{{base_url()}}usuario/reset_password/{{Usu_IdUsuario}}/{{Usu_NewEmailKey}}" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0 1rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 0.9rem; color: white;">IR A PORMAYOR</a>
+	</big>
+	</td>
+</tr>
+<tr style="border-bottom: #f6b21d 5px solid;">
+	<td style="padding: 20px 10px 30px 10px; color: #383838; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+	Atentamente,<br />
+	El equipo <a href="//pormayor.pe" style="text-decoration:none;"><b style="color:#FEC00F;">PorMayor.pe</b></a>
+	</td>
+</tr> #}
+{#     		<tr style="border-top: #f6b21d 5px solid;">
+    			<td bgcolor="#3b3b3d" align="center" style="padding: 20px 0px 20px 0px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+					Recuperación de contraseña
+				</td>
+    		</tr>
+    		<tr>
+      			<td bgcolor="#3b3b3d" style="padding: 10px 5px 5px 10px; color: white; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+      				Estimado usuario de Pormayor:
+					<br />
+				</td>
+			</tr>
+			<tr>
+      			<td bgcolor="#3b3b3d" style="padding: 10px 5px 5px 10px; color: white; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+      				Hemos recibido una solicitud para cambiar la contraseña a tu cuenta de <a href="//pormayor.pe" style="text-decoration:none;"><b style="color:#FEC00F;">PorMayor.pe</b></a>, a través de tu dirección de correo electrónico. Presiona el siguiente botón para continuar con el cambio de contraseña
+					<br />
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#3b3b3d" style="text-align: center;padding: 10px 5px 5px 10px; color: white; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+					<big style="font: 16px/18px Arial, Helvetica, sans-serif;">
+						<a href="{{base_url()}}usuario/reset_password/{{Usu_IdUsuario}}/{{Usu_NewEmailKey}}" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0 1rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 0.9rem; color: white;">CREAR NUEVA CONTRASEÑA</a>
+					</big>
+				</td>
+			</tr>
+			<tr>
+      			<td bgcolor="#3b3b3d" style="padding: 10px 5px 5px 10px; color: white; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+					¿El enlace no funciona? Copia el siguiente enlace a la barra de direcciones de tu navegador<br>
+					<nobr><a href="{{base_url()}}usuario/reset_password/{{Usu_IdUsuario}}/{{Usu_NewEmailKey}}" style="color:#FEC00F;">{{base_url()}}usuario/reset_password/{{Usu_IdUsuario}}/{{Usu_NewEmailKey}}</a></nobr><br />
+				</td>
+			</tr>
+    		<tr style="border-bottom: #f6b21d 5px solid;">
+      			<td bgcolor="#3b3b3d" style="padding: 10px 5px 5px 10px; color: white; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+      				Si no has iniciado este proceso, puede que alguien esté intentado acceder a tu cuenta de pormayor.pe. <b>No reenvíes este correo electrónico</b> y toma medidas de seguridad para evitar que tu cuenta sea vulnerada.
+					<br />
+					<br />
+					Atentamente,<br />
+					El equipo <a href="//pormayor.pe" style="text-decoration:none;"><b style="color:#FEC00F;">PorMayor.pe</b></a>
+      			</td>
+    		</tr> #}
+
+{# <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>{{pagina.titulo}}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body style="margin: 0; padding: 0;">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+		<tr>
+			<td style="padding: 10px 0 30px 0;">
+				<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+					<tr>
+						<td bgcolor="" align="" style="padding: 1px;">
+							<div style="position:relative" >
+								<img src="http://pormayor.pe/img/logCorreo.png" alt="logo-pormayor" style="display: block;" height="70" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td >&nbsp;</td>
+					</tr>
+					<tr style="border-top: #f6b21d 5px solid;">
+						<td bgcolor="#3b3b3d" align="center" style="padding: 20px 0px 20px 0px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+							Hola, <b style="color:#FEC00F;">{{nombre_usuario|upper}}</b><br><br>
+							Tu registro se ha hecho con éxito. <br>					
+							Por favor, valida tu dirección de correo electrónico para tu cuenta de <a href="//pormayor.pe" style="text-decoration:none;"><b style="color:#FEC00F;">PorMayor.pe</b></a>:<br>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#3b3b3d" style="text-align: center">
+							<big style="font: 16px/18px Arial, Helvetica, sans-serif;">
+							<a href="//pormayor.pe/usuario/validar_usuario/{{id}}" target="_blank" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0 1rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 1.2rem; color: white;">VALIDAR MI CUENTA</a>
+							</big>
+							<br><br><br>
+						</td>
+					</tr>
+					<tr style="border-bottom: #f6b21d 5px solid;">
+						<td bgcolor="#3b3b3d" align="center" style="font-size: 1rem; font-family: Arial, sans-serif;color:white">
+							<br><a href="//pormayor.pe/usuario/validar_usuario/{{id}}" style="text-decoration:none;color:#FEC00F;">pormayor.pe/usuario/validar_usuario/{{id}}</a><br>
+							Si el enlace no funciona al hacer clic en él, puede copiarlo en su ventana del navegador o teclearlo en ella directamente. <br><br>   	  		
+						</td>
+					</tr>
+				</table>
+				<table bgcolor="#3b3b3d" align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+					<tr>
+						<td  align="center" colspan="4" style="font-size: 1rem; font-family: Arial, sans-serif;color:white;padding:5px;">SIGUENOS</td>
+					</tr>
+					<tr>
+						<td align="center" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;padding:5px;">
+							<a href="https://www.instagram.com/pormayor.pe/?hl=es-la" style="color: #ffffff;" target="_blank">
+							<img src="https://pormayor.pe/img/instaW.png" alt="Twitter" width="25" height="25" style="display: block;" />
+							</a>
+						</td>
+						<td align="center" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;padding:5px;">
+							<a href="https://www.facebook.com/pormayoroficial/" style="color: #ffffff;" target="_blank">
+							<img src="https://pormayor.pe/img/faceW.png" alt="Facebook" width="25" height="25" style="display: block;" />
+							</a>
+						</td>
+						<td align="center" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;padding:5px;">
+							<a href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber" style="color: #ffffff;" target="_blank">
+							<img src="https://pormayor.pe/img/youtubeW.png" alt="youtubeW" width="25" height="25" style="display: block;" />
+							</a>
+						</td>
+						<td align="center" style="font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;padding:5px;">
+							<a href="mailto:contacto@pormayor.pe" style="color: #ffffff;" target="_blank">
+							<img src="https://pormayor.pe/img/mailW.png" alt="Correo" width="25" height="25" style="display: block;" />
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td  align="center" colspan="4" style="font-size: 0.6rem; font-family: Arial, sans-serif;color:white;padding:5px;">Este correo ha sido enviado desde los servidores de pormayor.pe por su consentimiento, <br>igualmente puede ver nuestros politicas de privacidad en el siguiente <a href="https://pormayor.pe/legal/privacidad" style="text-decoration:none;color:#FEC00F;">página</a></td>
+					</tr>
+					<tr>
+						<td  align="center" colspan="4" style="font-size: 0.6rem; font-family: Arial, sans-serif;color:white;padding:5px;">© <a href="https://pormayor.pe" style="text-decoration:none;color:#FEC00F;">pormayor.pe</a> todos los derechos reservados.</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
+
+
+
+
+{# 	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td align="center" style="padding: 10px 20px;font-size: 28px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7);text-shadow: 0px 0px 10px #febb15">¡Felicidades, <b>{{ inf.Per_Nombre }}</b>!</td>
+		</tr>
+		<tr>
+			<td align="center" style="padding: 10px 20px;font-size: 18px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.7);">Te haz unido con éxito a tu grupo</td>
+		</tr>
+		<tr>
+			<td align="center">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td width="50%" align="center" style="background-color: #21478F;border-radius:5px;padding: 10px 20px;font-size: 18px; font-family: Arial, sans-serif;color:white"><b>{{ inf.Pro_Nombre }}</b></td>
+						<td rowspan="2" width="50%" align="center" style="background-color: #febb15;border-radius:5px;font-size: 18px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.8);">
+							Precio Actual<br>S/<b style="font-size:30px;">{{ inf.Gru_PrecioFinal }}</b><br><br>
+							Este grupo cierra el<br><b style="color:red;">{{ inf.Fecha_Fin }}</b><br>
+							{% set r3 = (inf.Gru_PrecioFinal * 100) / inf.Gru_PrecioInicial %}
+          					{% set ahorro = 100 - r3 %}
+	      					{% if ahorro != 0 %}
+								Precio Regular <br><b style="color:grey;">{{ inf.Gru_PrecioInicial }}</b><br>
+								Ahora estás ahorrando {{ahorro}}%
+	      					{% endif %}	      					
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<div>
+								<img src="{{ruta_img}}{{ inf.Prf_Img }}" height="100px">
+							</div>
+						</td>						
+					</tr>
+					<tr>
+						<td colspan="2">
+							<br>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" style="border-radius:5px;padding: 10px 20px;font-size: 18px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.8);">
+							Si somos más, pagamos menos. <br>¿Qué esperas para compatir?							
+						</td>
+						<td align="center" style="padding: 10px 20px;font-size: 18px; font-family: Arial, sans-serif;color:rgba(0,0,0,0.8);">
+							<b>COMPARTE</b><br>
+	      					<a href="fb-messenger://share/?link=https://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}&app_id=1956467824456142"><img src="{{ruta_img}}/ms.png" height="35" style="top:5px;margin-right:10px"></a>
+                      		<a href="whatsapp://send?text=Hola,%20compremos%20esto%20en%20grupo%20https://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}" data-action="share/whatsapp/share"><img src="{{ruta_img}}/wa.png" height="40" style="top:5px;margin-right:10px"></a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table> #}

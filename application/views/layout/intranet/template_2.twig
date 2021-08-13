@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>      
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{% if categoriaFlag == true %}{{categoria_seo.Cat_Nombre|title}} al Por Mayor en PorMayor.pe - Agrúpate, Cómpralo y Ahorra{% elseif subcategoriaFlag == true %}{{subcategoria_seo.Suc_Nombre|title}} al Por Mayor en PorMayor.pe - Agrúpate, Cómpralo y Ahorra{% elseif  detalleFlag == true %}{{detalle_seo.Suc_Nombre|title}} - {{detalle_seo.Des_Nombre}} al Por Mayor en PorMayor.pe - Agrúpate, Cómpralo y Ahorra{% else %}{{pagina.titulo|title}}{% endif %}</title>
+<meta name="google-site-verification" content="MZNqZwO63SqZWJMD-S5PwzQhXBJoFBLp8BmwSgYAexM" />
+<meta property="fb:app_id" content="2623619600997776" />
+<meta property="og:title" content="{% if producto.Pro_Nombre %}{{producto.Pro_Nombre|upper}} - S/ {{producto.Pro_PrecioMaximo}}{% else %} PorMayor.pe - Agrúpate, Cómpralo y Ahorra{% endif %}" />
+<meta property="og:description" content="{% if producto.Pro_Nombre %}Agrúpate en Pormayor.pe y cómpralo en S/ {{producto.Pro_PrecioMinimo}} Cuantos más amigos se unan a la compra, más barato será para todos.{% else %} Somos la plataforma de comercio electrónico única en Perú con el sistema de compras grupales donde puedes ahorrar dinero en tus artículos preferidos invitando a tus amigos.{% endif %}"/>
+{% if producto.Pro_Nombre %}
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://pormayor.pe/img/{{fotos[0].Prf_Img}}" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="300" />
+{% else %}
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://pormayor.pe/img/logoPM.jpg" />
+{% endif %}
+<meta name="description" content="{% if categoriaFlag == true %}{% if categoria_seo.Cat_Meta_Description %}{{categoria_seo.Cat_Meta_Description}}{% else %}{{categoria_seo.Cat_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% elseif subcategoriaFlag == true %}{% if subcategoria_seo.Suc_Meta_Description %}{{subcategoria_seo.Suc_Meta_Description}}{% else %}{{subcategoria_seo.Suc_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% elseif detalleFlag == true %}{% if detalle_seo.Des_Meta_Description %}{{detalle_seo.Des_Meta_Description}}{% else %}{{detalle_seo.Des_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% else %}Compra y vende al por mayor en Lima.Crea tu propia tienda virtual mayorista o compra al por mayor para tu negocio fácil y rápido aquí.{% endif %}">
+<meta name="keywords" content="{% if categoriaFlag == true %}{% if categoria_seo.Cat_Keywords %}{{categoria_seo.Cat_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %}{% elseif subcategoriaFlag == true %}{% if subcategoria_seo.Suc_Keywords %}{{subcategoria_seo.Suc_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %}{% elseif detalleFlag == true %}{% if detalle_seo.Des_Keywords %}{{detalle_seo.Des_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %} {% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima,{% endif %}">
+<link rel="icon" href="{{ruta_img}}logo.png">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen">
+<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/materialize.min.css')}}"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/templates.min.css')}}"  media="screen"/>
+{% block analytics %}{% endblock %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129372100-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129372100-1');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6LFJ9S');</script>
+<!-- End Google Tag Manager -->
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '9ad5ed9d7ef3d4956d721974ef3d6e60ca5876d7';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+{% block head %} {% endblock %}
+</head>
+<body id="inicio" class="grey lighten-4">
+{% block messenger %}{% endblock %}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6LFJ9S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2623619600997776',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.2'
+    });      
+    FB.AppEvents.logPageView();         
+  };
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/es_ES/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+ !function(f,b,e,v,n,t,s)
+ {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+ n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+ if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+ n.queue=[];t=b.createElement(e);t.async=!0;
+ t.src=v;s=b.getElementsByTagName(e)[0];
+ s.parentNode.insertBefore(t,s)}(window, document,'script',
+ 'https://connect.facebook.net/en_US/fbevents.js');
+ fbq('init', '2398432313771404');
+ fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+ src="https://www.facebook.com/tr?id=2398432313771404&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<div class="inner">
+    <ul id='dropdown1' class='dropdown-content'>
+      {% if usuario.rol == 1 %}
+        <li><a href="{{base_url()}}admin/tiendas"><i class="material-icons left">settings</i>Panel</a></li>
+      {% elseif usuario.rol == 5 %}
+        <li><a href="{{base_url()}}gestor/gestion"><i class="material-icons left">settings</i>Panel Gestor</a></li>
+      {% else %}
+        <li><a href="{{base_url()}}comprador/index/"><i class="material-icons left">account_circle</i>Perfil de Usuario</a></li>
+        {% if usuario.rol == 2 or usuario.rol == 3 %}
+          <li><a href="https://{{subdominio_tienda}}.{{dominio}}/usuario/inventario/lProductos"><i class="material-icons left">settings</i>Panel Tienda</a></li>
+        {% endif %}
+      {% endif %}
+      <li class="divider"></li>
+      <li><a class="cerrarSesionBtn"><i class="material-icons left">power_settings_new</i>Cerrar sesión</a></li>
+    </ul>
+    <ul id='dropdown2' class='dropdown-content'>
+      {% if not noticoments is empty or not noticotiza is empty %}
+        {% if not noticoments is empty  %}
+          <li style="width: 320px">
+            <a  href="{{base_url()}}comprador/index/respuesta_comentario">
+              <i class="material-icons left">comment</i>Tu comentario <b>fue respondido </b><span class="pormayorUnico-text">(Ver)</span>
+            </a>
+          </li>
+        {% endif %}
+        {% if not noticotiza is empty  %}
+          <li style="width: 320px">
+            <a  href="{{base_url()}}comprador/index/pedidos">
+              <i class="material-icons left">comment</i><b>Respondieron</b> tu cotización <span class="pormayorUnico-text">(Ver)</span>
+            </a>
+          </li>
+        {% endif %}
+      {% else %}
+          <li >
+            <a  href="#">
+              <span class="enfasisC">No tienes notificaciones</span>
+            </a>
+          </li>
+      {% endif %}
+    </ul>
+</div>
+    <div class="navbar-fixed inner">
+      <nav class="z-depth-2 pormayor nav-extended">
+        <div  class="sinBordeBottom nav-wrapper row navRowMobile">
+          {% if userAgent == 'movil' %}
+            <div class="col s2 m2 l2 center hide-on-large-only colMenuButton ocultarSearch sinPadding" style="height:56px">
+              <a data-activates="mobile-pormayor" class="button-collapse centrarForzado">
+                <img alt="" src="{{ruta_img}}menuIcon.svg" width="35">
+                {% if not noticoments is empty or not noticotiza is empty %}
+                  <span class="pormayorUnico pulse"></span>
+                {% endif %}
+              </a>
+            </div>
+          {% endif %}
+          <div class="col s3 m2 l2 colMenuLogo ocultarSearch valign-wrapper">
+            <a href="{{base_url()}}" class="valign-wrapper anchoTotal">
+              <img alt="Pomayor.pe - Vende facilito, Compra segurito" src="{{ruta_img}}logoNegativo.svg" class="centrarForzado">
+            </a>
+          </div>     
+          {% if userAgent == "PC" %}     
+              {% if not vista_carrito_compra %}
+          <div class="col l2 ocultarSearch colMenuPc sinPadding">
+            <ul>
+              <li>          
+  <div class="megaMenuCategorias submenu">
+    <a class='black-text' href='#'>{# <i class="material-icons left">view_list</i> #}Categorías</a>
+      <div class="containerCategorias centrarForzado white z-depth-2 sinPadding">
+        <div class="row sinBordeBottom">
+          <nav itemscope="" itemtype="http://www.schema.org/SiteNavigationElement" class="uniqueNav col l3 sinPadding categoriasBtn">
+              <div itemprop="name" class="center categoriaBtn transition pormayorUnico white-text comoBoton positionRelative col l12 sinPadding valign-wrapper"  data-idcateg="20"><a itemprop="url" href="#" class="anchoTotal especialBtn">COMPRAS GRUPALES</a></div>
+{% for cat in categorias %}{% if cat.Cat_IdCategoria != 16 %}{% if cat.Cat_IdCategoria != 15 and cat.Cat_IdCategoria != 10 %}<div itemprop="name" class="categoriaBtn transition comoBoton positionRelative col l12 sinPadding valign-wrapper" data-nomcate="{{cat.Cat_Nombre}}" data-idcateg="{{cat.Cat_IdCategoria}}"><a itemprop="url" href="{{base_url()}}index/categorias/{{cat.url}}" class="valign-wrapper"><img alt="{{cat.Cat_Nombre}} al pormayor" src="{{ruta_img}}{{cat.Cat_IconMobile}}" type="image/svg+xml" class="" width="23" height="23" />&nbsp;&nbsp;&nbsp;&nbsp;{{cat.Cat_Nombre}}</a></div>{% endif %}{% endif %}
+            {% endfor %}
+          </nav>
+          <div class="col l6 grey lighten-5">
+            <div class="containerSubcategorias">
+              <div class="subcategoria col l3 sinPadding anchoTotal defaultBanner">
+                <a class="sinPadding" href="{{base_url()}}/grupal">
+                <img alt="Pormayor.pe - Promocion 1 " class="b-lazy anchoTotal" data-src="{{ruta_img}}mbanner.webp"  alt="Categoria pormayor.pe">
+                </a>
+              </div>
+{% for cat in categorias %}{% if cat.Cat_IdCategoria != 16 %}{% if cat.Cat_IdCategoria != 15 and cat.Cat_IdCategoria != 10 %}<div class="subcategoria hide" id="categoria{{cat.Cat_IdCategoria}}" data-menu="{{cat.Cat_IdCategoria}}" itemscope="" itemtype="http://www.schema.org/SiteNavigationElement">{% set break = false %}{% for sub in subcategoria if not break %}{% if cat.Cat_IdCategoria == sub.categoria_Cat_IdCategoria %}<a itemprop="url" href="{{base_url()}}index/subcategoria/{{sub.url}}" class="subcategoriaFirst transition sinPadding" data-idsub="{{sub.Suc_IdSubCategoria}}" data-subnom="{{sub.Suc_Nombre}}" >{{sub.Suc_Nombre|trim}}</a>{% for suc in subcat_detalle if not break2 %}{% if suc.subcategoria_Suc_IdSubCategoria == sub.Suc_IdSubCategoria and cat.Cat_Nombre == "Ferretería" %}{% if suc.Des_Nombre == "Piedras y Enchapes" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% else %}<a  itemprop="url" class="transition"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% endif %}{% set count3 = count3 + 1 %}{% if count3 == 6 %}{% set break2 = true %}{% endif %}{% elseif suc.subcategoria_Suc_IdSubCategoria == sub.Suc_IdSubCategoria and cat.Cat_Nombre != "Ferretería" %}{% if suc.Des_Nombre == "Botas y botines" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Cortador de Cabello" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Otros Accesorios" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_IdDetalle_SubCategoria == "38" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Accesorios" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Calefacción" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Calzado para Niño" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Textiles de Comedor" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Agendas" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Maletas de viaje" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_IdDetalle_SubCategoria == 97 %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Equipos Ortopédicos" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Audio Profesional" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% else %}<a itemprop="url" class="transition"  href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% endif %}{% endif %}{% endfor %}{% set count2 = count2 + 1 %}{% if count2 == 8 %}{% set break = true %}{% endif %}{% endif %}{% endfor %}{% set count2 = 0 %}</div>{% endif %}{% endif %}{% endfor %}
+            </div> 
+          </div>
+          <div class="col l3 sinPadding bannerVertical bannerCat20"><a class="sinPadding lineHeight0" href="{{base_url()}}index/especial/verano-de-ofertas"><img data-src="{{ruta_img}}gb_m.webp" class="b-lazy anchoTotal " alt="Banner campaña pormayor.pe"></a></div>
+{% for cat in categorias %}{% if cat.Cat_IdCategoria != 15 and cat.Cat_IdCategoria != 10 %}
+<div class="col l3 sinPadding bannerVertical hide bannerCat{{cat.Cat_IdCategoria}}">
+<a class="sinPadding lineHeight0" href="{{base_url()}}index/categorias/{{cat.url}}"><img data-src="{{ruta_img}}b_{{cat.Cat_IdCategoria}}.webp" class="b-lazy anchoTotal " alt="{{cat.Cat_Nombre}} en pormayor.pe"></a></div>
+{% endif %}{% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </li>
+<li>
+<a class='black-text' href='{{base_url()}}grupal' id="">{# <i class="material-icons left">group</i> #}Grupos</a>
+
+</li>
+              {#               <li>
+<div class="megaMenuTiendas submenu">
+<a class='black-text' href='#' id="menuTiendas">Tiendas</a>
+<div class="containerTiendas row centrarForzado white z-depth-2">
+{% set count = 0 %}{% set break = false %}{% for tie in tiendas2 if not break %}{% if tie.Tie_Logo %}
+<a class="sinPadding" href="https://{{tie.Tie_Subdominio}}.{{dominio}}">
+<div class="col s3 tiendaLink valign-wrapper transition">
+<img alt="{{tie.Tie_Nombre}}" title="{{tie.Tie_Nombre}}" data-src="{{ruta_img}}{{tie.Tie_Logo}}" class="b-lazy transition  redondeo fixImgPxTienda">
+<span><b>{{tie.Tie_Nombre|upper}}</b></span>
+</div>
+</a>{% set count = count + 1 %}{% if count == 12 %}{% set break = true %}{% endif %}{% endif %}{% endfor %}
+<div class="col s12 center">
+<a style="width:50%;" class="centrarForzado waves-effect waves-light btn pormayorUnico white-text"  href="{{base_url()}}index/tiendas">Todas las tiendas</a>
+</div>
+</div>
+</div>
+              </li> #}
+            </ul>
+          </div>
+          {% endif %} 
+          {% endif %}  
+          {% if not vista_carrito_compra %}
+            <div class="col {% if pagina.tipo == "principal" or pagina.tipo == "carrito" %} m6 s5 sinPadding {% else %} m8 s7 {% endif %} l2" style="padding-left:0px" >
+              <div class="contentSearch contentSearchTienda positionRelative">
+                <i class="material-icons positionAbsolute sinUser grey-text text-lighten-1 lineHeight0 transitionB">search</i>
+                <input type="text" class="browser-default buscador autocomplete redondeo white enfasisA" placeholder="¿Qué estas buscando?" data-tienda="pormayor">
+              </div> 
+            </div>
+          {% else %}
+            {% if userAgent == "PC" %}
+              <div class="col l4 fontA center grey-text text-darken-3" > 
+                <span style="font-weight:100">Asesoría Telefónica</span> (01) 773 9536
+               </div>
+            {% else %}
+              <div class="col s7 fontD2 center grey-text text-darken-3" > 
+                <img  style="top:9px;filter: brightness(15%)" class="positionRelative" src="{{ruta_img}}atencion_icon.png"  height="30">&nbsp;&nbsp;&nbsp; (01) 773 9536
+               </div> 
+            {% endif %}
+          {% endif %}
+          {% if pagina.tipo == "carrito"  %}
+            {% if userAgent != "PC" %}
+              {% if not producto_detalle %}
+                <div class="colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only">
+                  <div class="cartAnimacion positionRelative">
+                    <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                    <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons">shopping_cart</i></a>
+                    <div class="pormayorUnico redondeo positionAbsolute center sinUser transition hide cartTotalPointer">
+                      <div class="positionAbsolute left0 right0"></div>
+                      En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                {% if usuario.id_tienda != producto.Tie_IdTienda %}
+                  <div class="colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only positionRelative">
+                    <div class="cartAnimacion positionRelative">
+                      <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                      <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons">shopping_cart</i></a>
+                    </div>
+                    <div class="pormayorUnico redondeo positionAbsolute center sinUser transition hide cartTotalPointer">
+                      <div class="positionAbsolute left0 right0"></div>
+                      En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="col center s2 m2 l2 sinPadding colMenuButton ocultarSearch" >
+                    <a class="waves-effect waves-black addHome anchoTotal"><i class="material-icons pormayorAccent-text">group_add</i></a>
+                  </div>  
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+         {% if pagina.tipo == "principal"  %}
+          {% if usuario.logueado %}
+            {% if userAgent == 'movil' %}
+              <div class="colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only positionRelative">
+                <div class="cartAnimacion positionRelative">
+                  <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                  <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons">shopping_cart</i></a>
+                </div>
+                <div class="pormayorUnico redondeo positionAbsolute center sinUser transition hide cartTotalPointer">
+                  <div class="positionAbsolute left0 right0"></div>
+                  En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                </div>
+              </div>
+            {% endif %}
+          {% else %}
+            {% if userAgent == 'movil' %}
+              <div class="col center s2 m2 l2 sinPadding colMenuButton ocultarSearch" >
+                  <a class="waves-effect waves-black addHome anchoTotal"><i class="material-icons pormayorAccent-text">group_add</i></a>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endif %}   
+          <div class="col s2 m3 l6 ocultarSearch colMenuPcII hide-on-med-and-down">
+            {% if usuario.logueado %}
+                <ul  class="right">
+              {% if pagina.extrabtn == "SI" and pagina.titulo != "Tiendas" and commentsNot == false and comments == true %}
+                  <li>
+                    <a class="comentsBtn waves-effect waves-light black-text " href="#comentsBlock">Comentarios</a>
+                  </li>
+              {% endif %}
+                {% if not producto_detalle %}
+                  <li class="hide-on-med-and-down cartAnimacion positionRelative">
+                    <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                    <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons left">shopping_cart</i>Mi compra</a>
+                    <div class="pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide">
+                      <div class="positionAbsolute left0 right0 centrarForzado"></div>
+                      En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                    </div>
+                  </li>
+                {% else %}
+                  {% if usuario.id_tienda != producto.Tie_IdTienda %}
+                    <li class="hide-on-med-and-down cartAnimacion positionRelative">
+                      <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                      <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons left">shopping_cart</i>Mi compra</a>
+                      <div class="pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide">
+                        <div class="positionAbsolute left0 right0 centrarForzado"></div>
+                        En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                      </div>
+                    </li>
+                  {% endif %}
+                {% endif %}
+              {% if reputacion_volver %}
+                <li class="positionRelative">
+                    <a class="black-text" href="{{url_actual}}"><i class="material-icons left">arrow_back</i> Regresar</a>
+                  </li> 
+              {% endif %}
+                  <li class="positionRelative">
+                    {% if not noticoments is empty or not noticotiza is empty %}
+                      <span class="pormayorUnico pulse" style="top: 15px;right: 0px;left: 28px;"></span>
+                    {% endif %}
+                    <a class="dropdown-trigger black-text" href="#!"  data-activates="dropdown2">
+                      <i class="material-icons">{% if not noticoments is empty or not noticotiza is empty %}notifications{% else %}notifications_none{% endif %}</i>
+                    </a>
+                  </li> 
+                  {% if not vista_carrito_compra %}
+                  <li>
+                    <a class="dropdown-trigger black-text" href="#!" data-activates="dropdown1">{{ usuario.nombre|title|length > 7 ? usuario.nombre|title|slice(0, 7) ~ '...' : usuario.nombre  }}<i class="material-icons right">account_circle</i></a>
+                  </li> 
+                  {% endif %}
+                  {% if usuario.rol == 4 %}
+                    <li>
+                      <a class="black-text hide-on-med-and-up" href="{{base_url()}}tienda/crear"><i class="material-icons">add_box</i></a>
+                      <a class="white-text pormayorUnico btn hide-on-med-only paddingEspecial" href="{{base_url()}}tienda/crear2">Crea tu tienda</a>
+                    </li> 
+                  {% endif %}
+                </ul>      
+            {% else %}
+              <ul class="right">
+                {% if pagina.extrabtn == "SI" and pagina.titulo != "Tiendas" and commentsNot == false and comments == true  %}
+                  <li class="">
+                    <a class="comentsBtn waves-effect waves-light black-text " href="#comentsBlock">Comentarios</a>
+                  </li>
+                {% endif %} 
+                {% if vista_carrito_compra %}
+                  <li><a class="black-text" onclick="javascript:history.back()"><i class="material-icons left">arrow_back</i>Regresar</a></li> 
+                      <!-- <li><a href="{{base_url()}}"><i class="material-icons left">phone_in_talk</i>ASESORÍA <b>(01) 7739536</b></a></li>  -->
+                {% endif %}
+                <li class="hide-on-med-and-down cartAnimacion positionRelative">
+                  <span class="pormayorUnico counterCont positionAbsolute center" data-totalc="{{totalc}}"><span class="cantidad">0</span></span>
+                  <a class="grey-text text-darken-4 cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="material-icons left">shopping_cart</i>Mi compra</a>
+                  <div class="pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide">
+                    <div class="positionAbsolute left0 right0 centrarForzado"></div>
+                    En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                  </div>
+                </li>
+                <li>
+                  <a class="black-text hide-on-med-and-up" href="{{base_url()}}tienda/crear"><i class="material-icons">add_box</i></a>
+                    <a class="white-text pormayorUnico btn hide-on-med-only paddingEspecial" href="{{base_url()}}tienda/crear">Crea tu tienda</a>
+                </li>
+                <li>
+                  <a class="black-text hide-on-med-and-up" href="{{base_url()}}usuario/login"><i class="material-icons">account_circle</i></a>
+                  <a href="{{base_url()}}usuario/login" class="black-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Iniciar Sesión"><i class="material-icons">person_pin</i></a>
+                </li>
+              </ul>
+            {% endif %}
+          </div>
+          <a class="backSearch positionAbsolute lineHeight0 comoBoton "><i class="material-icons grey-text sinUser lineHeight0">arrow_back</i></a>
+        </div>
+        {% if pagina.extrabtn == "SI" and producto_detalle  and commentsNot == false %}
+          <div class="nav-content hide-on-large-only pormayor">
+            <div class="row sinBordeBottom" >
+              <div class="menuMobileSec2 hide col s3 center sinPadding">
+                <a class="waves-effect waves-light btn-flat" onclick="javascript:history.back()">Regresar</a>
+              </div>
+              <div class="menuMobileSec2 hide col s5 center sinPadding">
+                <!-- <a class="tiendaDirectoBtn waves-effect waves-light btn-flat sinPadding" href="http://{{producto.Tie_Subdominio}}.{{dominio}}">Ver Tienda</a> -->
+                <a class="waves-effect waves-light btn-flat sinPadding irComprarBtn" href="#compraBlock"><i style="line-height: inherit" class="left material-icons grey-text text-darken-3">keyboard_arrow_down</i>Ir a comprar</a>
+              </div>
+              <div class="menuMobileSec2 hide col s4 center sinPadding">
+                <a class="comentsBtn waves-effect waves-light btn-flat sinPadding" href="#comentsBlock">comentarios</a>
+              </div>
+            </div>
+          </div>
+        {% elseif filtro_movil_tiendas %}
+          <div class="nav-content hide-on-large-only pormayor">
+            <div class="row sinBordeBottom">
+              <div class="col s4 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                <select class=" browser-default filtroTCat simpleSelect grey-text text-darken-3">
+                  <option value="" disabled selected>CATEGORÍA</option>
+                  <option value="all">Todos</option>
+                  {% for btc in busqueda_tiendas_cat %}
+                    <option value="{{btc.Cat_IdCategoria}}">{{btc.Cat_Nombre}} ({{btc.cantidad_cat}})</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col s5 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                <select class="browser-default filtroDep simpleSelect grey-text text-darken-3" >
+                  <option value="" disabled selected>DEPARTAMENTO</option>
+                  <option value="all" >Ver todas</option>
+                  {% for btd in busqueda_tiendas_dep %}
+                    <option value="{{btd.id}}">{{btd.name}} ({{btd.cantidad_dep}})</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col s3 center sinPadding"> 
+                <select class="browser-default filtroTFecha simpleSelect grey-text text-darken-3" >
+                  <option value="" disabled selected>ORGANIZAR</option>
+                  <option value="ninguno">Ninguno</option>
+                  <option value="fechaMenos">Menos antiguedad SUNAT</option>
+                  <option value="fechaMas">Más antiguedad SUNAT</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        {% elseif filtro_movil and not solo_tienda %}
+          {% if userMovil != "PC" %}
+            <div class="nav-content hide-on-large-only pormayor">
+              <div class="row sinBordeBottom">
+                <div class="containerFiltrosA {% if filtro_categorias %} hide {% endif %}">
+                  <div class="col s5 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                   <button class="waves-effect waves-light btn-flat sinPadding anchoTotal masFiltros"><i class="material-icons positionRelative">filter_list</i>Más Filtros</button>
+                  </div>
+                  <div class="col s7 center sinPadding"> 
+                    <select class="browser-default simpleSelect filtroProductoCat grey-text text-darken-3" {% if filtro_categorias %}disabled{% endif %}>
+                      <option value="" disabled selected>FILTRAR POR CATEGORÍAS</option>
+                      <option value="all">Todos</option>
+                      {% for cat in producto_cat %}
+                        <option value="{{cat.Cat_IdCategoria}}">{{cat.Cat_Nombre}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="containerFiltrosB {% if not filtro_categorias %} hide {% endif %}">
+                  <div class="col {% if not filtro_categorias %} s3 {% else %} s4 {% endif %} center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default filtroMarcaSelect simpleSelect grey-text text-darken-3">
+                      <option value="" disabled selected>MARCA</option>
+                      <option value="all">Todas</option>
+                      {% for prm in producto_marcas %}
+                          <option value="{{prm.Pro_Marca|title|replace({' ': '', '"' : "", "'" : ""})}}">{{prm.Pro_Marca|title}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col {% if not filtro_categorias %} s3 {% else %} s4 {% endif %} center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3  filtroEdoSelect" >
+                      <option value="" disabled selected>ESTADO</option>
+                      <option value="all">Ambos</option>
+                      <option value="Nuevo">Nuevo</option>
+                      <option value="Reacondicionado">Reacondicionado</option>
+                    </select>
+                  </div>
+                  <div class="col s4 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3  filtroPreciosSelect" >
+                      <option value="" disabled selected>ORGANIZAR</option>
+                      <option value="ninguno">Ninguno</option>
+                      <option value="menor">Precio menor</option>
+                      <option value="mayor">Precio mayor</option>
+                      <option value="fechaMenos">Más nuevo</option>
+                      <option value="fechaMas">Más viejo</option>
+                    </select>
+                  </div>
+                  {% if not filtro_categorias %} 
+                    <div class="col s2 sinPadding menosFiltros center ">
+                      <i class="material-icons white-text sinUser anchoTotal positionRelative waves-effect grey-text text-darken-3">arrow_back</i>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="containerFiltrosC hide">
+                  <div class="col s4 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class=" browser-default simpleSelect grey-text text-darken-3 filtroTCat">
+                      <option value="" disabled selected>CATEGORÍAS</option>
+                      <option value="all">Todos</option>
+                      {% for btc in busqueda_tiendas_cat %}
+                        <option value="{{btc.Cat_IdCategoria}}">{{btc.Cat_Nombre}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col s5 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3 filtroDep" >
+                      <option value="" disabled selected>DEPARTAMENTOS</option>
+                      <option value="all" >Ver todas</option>
+                      {% for btd in busqueda_tiendas_dep %}
+                        <option value="{{btd.id}}">{{btd.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col s3 center sinPadding"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3 filtroTFecha" >
+                      <option value="" disabled selected>ORGANIZAR</option>
+                      <option value="ninguno">Ninguno</option>
+                      <option value="fechaMenos">Menos antiguedad SUNAT</option>
+                      <option value="fechaMas">Más antiguedad SUNAT</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% elseif filtro_movil and solo_tienda %}
+          {% if userMovil != "PC" %}
+            <div class="nav-content hide-on-large-only pormayor">
+              <div class="row sinBordeBottom">
+                <div class="containerFiltrosC">
+                  <div class="col s4 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class=" browser-default simpleSelect grey-text text-darken-3 filtroTCat">
+                      <option value="" disabled selected>CATEGORÍAS</option>
+                      <option value="all">Todos</option>
+                      {% for btc in busqueda_tiendas_cat %}
+                        <option value="{{btc.Cat_IdCategoria}}">{{btc.Cat_Nombre}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col s5 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3 filtroDep" >
+                      <option value="" disabled selected>DEPARTAMENTOS</option>
+                      <option value="all" >Ver todas</option>
+                      {% for btd in busqueda_tiendas_dep %}
+                        <option value="{{btd.id}}">{{btd.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col s3 center sinPadding"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3 filtroTFecha" >
+                      <option value="" disabled selected>ORGANIZAR</option>
+                      <option value="ninguno">Ninguno</option>
+                      <option value="fechaMenos">Menos antiguedad SUNAT</option>
+                      <option value="fechaMas">Más antiguedad SUNAT</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% elseif filtro_movil_especial %}
+          {% if userMovil != "PC" %}
+            <div class="nav-content hide-on-large-only pormayor">
+              <div class="row sinBordeBottom">
+                <div class="containerFiltros">
+                  <div class="col s4 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default filtroMarcaSelect simpleSelect grey-text text-darken-3">
+                      <option value="" disabled selected>MARCA</option>
+                      <option value="all">Todas</option>
+                      {% for prm in producto_marcas %}
+                          <option value="{{prm.Pro_Marca|title|replace({' ': '', '"' : "", "'" : ""})}}">{{prm.Pro_Marca|title}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col s4 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3  filtroEdoSelect" >
+                      <option value="" disabled selected>ESTADO</option>
+                      <option value="all">Ambos</option>
+                      <option value="Nuevo">Nuevo</option>
+                      <option value="Reacondicionado">Reacondicionado</option>
+                    </select>
+                  </div>
+                  <div class="col s4 center sinPadding" > 
+                    <select class="browser-default simpleSelect grey-text text-darken-3  filtroPreciosSelect" >
+                      <option value="" disabled selected>ORGANIZAR</option>
+                      <option value="ninguno">Ninguno</option>
+                      <option value="menor">Precio menor</option>
+                      <option value="mayor">Precio mayor</option>
+                      <option value="fechaMenos">Más nuevo</option>
+                      <option value="fechaMas">Más viejo</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% elseif filtro_movil_ultimos %}
+          {% if userMovil != "PC" %}
+            <div class="nav-content hide-on-large-only pormayor">
+              <div class="row sinBordeBottom">
+                <div class="containerFiltrosA {% if filtro_categorias %} hide {% endif %}">
+                  <div class="col s5 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                   <button class="waves-effect waves-light btn-flat sinPadding anchoTotal masFiltros"><i class="material-icons positionRelative">filter_list</i>Más Filtros</button>
+                  </div>
+                  <div class="col s7 center sinPadding"> 
+                    <select class="browser-default simpleSelect filtroProductoCat grey-text text-darken-3" {% if filtro_categorias %}disabled{% endif %}>
+                      <option value="" disabled selected>FILTRAR POR CATEGORÍAS</option>
+                      <option value="all">Todos</option>
+                      {% for cat in producto_cat %}
+                        <option value="{{cat.Cat_IdCategoria}}">{{cat.Cat_Nombre}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="containerFiltrosB {% if not filtro_categorias %} hide {% endif %}">
+                  <div class="col {% if not filtro_categorias %} s3 {% else %} s4 {% endif %} center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default filtroMarcaSelect simpleSelect grey-text text-darken-3">
+                      <option value="" disabled selected>MARCA</option>
+                      <option value="all">Todas</option>
+                      {% for prm in producto_marcas %}
+                          <option value="{{prm|title|replace({' ': '', '"' : "", "'" : ""})}}">{{prm|title}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col {% if not filtro_categorias %} s3 {% else %} s4 {% endif %} center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3  filtroEdoSelect" >
+                      <option value="" disabled selected>ESTADO</option>
+                      <option value="all">Ambos</option>
+                      <option value="Nuevo">Nuevo</option>
+                      <option value="Reacondicionado">Reacondicionado</option>
+                    </select>
+                  </div>
+                  <div class="col s4 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3  filtroPreciosSelect" >
+                      <option value="" disabled selected>ORGANIZAR</option>
+                      <option value="ninguno">Ninguno</option>
+                      <option value="menor">Precio menor</option>
+                      <option value="mayor">Precio mayor</option>
+                      <option value="fechaMenos">Más nuevo</option>
+                      <option value="fechaMas">Más viejo</option>
+                    </select>
+                  </div>
+                  {% if not filtro_categorias %} 
+                    <div class="col s2 sinPadding menosFiltros center ">
+                      <i class="material-icons white-text sinUser anchoTotal positionRelative waves-effect grey-text text-darken-3">arrow_back</i>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% elseif filtro_movil_popular %}
+          {% if userMovil != "PC" %}
+            <div class="nav-content hide-on-large-only pormayor">
+              <div class="row sinBordeBottom">
+                <div class="containerFiltrosA {% if filtro_categorias %} hide {% endif %}">
+                  <div class="col s5 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                   <button class="waves-effect waves-light btn-flat sinPadding anchoTotal masFiltros"><i class="material-icons positionRelative">filter_list</i>Más Filtros</button>
+                  </div>
+                  <div class="col s7 center sinPadding"> 
+                    <select class="browser-default simpleSelect filtroProductoCat grey-text text-darken-3" {% if filtro_categorias %}disabled{% endif %}>
+                      <option value="" disabled selected>FILTRAR POR CATEGORÍAS</option>
+                      <option value="all">Todos</option>
+                      {% set array_cat = [] %}
+                      {% for cat in producto_popular %}
+                        {% if cat.Cat_Nombre|title not in array_cat %}
+                           <option value="{{cat.Cat_IdCategoria}}">{{cat.Cat_Nombre}}</option>
+                           {% set array_cat = array_cat|merge([cat.Cat_Nombre|title]) %}
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="containerFiltrosB {% if not filtro_categorias %} hide {% endif %}">
+                  <div class="col {% if not filtro_categorias %} s3 {% else %} s4 {% endif %} center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default filtroMarcaSelect simpleSelect grey-text text-darken-3">
+                      <option value="" disabled selected>MARCA</option>
+                      <option value="all">Todas</option>
+                      {% set array_marcas = [] %}
+                      {% for prm in producto_popular %}
+                        {% if prm.Pro_Marca|title not in array_marcas %}
+                          {% set array_marcas = array_marcas|merge([prm.Pro_Marca|title]) %}
+                        {% endif %}
+                      {% endfor %}
+
+                      {% for prm in array_marcas %}
+                        {% if prm %}
+                          <option value="{{prm|replace({' ': '', '"' : "", "'" : ""})}}">{{prm|title}}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col {% if not filtro_categorias %} s3 {% else %} s4 {% endif %} center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3  filtroEdoSelect" >
+                      <option value="" disabled selected>ESTADO</option>
+                      <option value="all">Ambos</option>
+                      <option value="Nuevo">Nuevo</option>
+                      <option value="Reacondicionado">Reacondicionado</option>
+                    </select>
+                  </div>
+                  <div class="col s4 center sinPadding" style="border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <select class="browser-default simpleSelect grey-text text-darken-3  filtroPreciosSelect" >
+                      <option value="" disabled selected>ORGANIZAR</option>
+                      <option value="ninguno">Ninguno</option>
+                      <option value="menor">Precio menor</option>
+                      <option value="mayor">Precio mayor</option>
+                      <option value="fechaMenos">Más nuevo</option>
+                      <option value="fechaMas">Más viejo</option>
+                    </select>
+                  </div>
+                  {% if not filtro_categorias %} 
+                    <div class="col s2 sinPadding menosFiltros center ">
+                      <i class="material-icons white-text sinUser anchoTotal positionRelative waves-effect grey-text text-darken-3">arrow_back</i>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% elseif crear_tienda %}
+          {% if userMovil != "PC" %}
+            <div class="nav-content hide-on-large-only pormayor">
+              <div class="row sinBordeBottom">
+                <div class="containerFiltrosB ">
+                  <div class="col s4 sinPadding center valign-wrapper" style="height:36px;border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <a href="#utilizar" class="centrarForzado grey-text text-darken-3">PORMAYOR</a>
+                  </div>
+                  <div class="col s4 sinPadding center valign-wrapper" style="height:36px;border-right:1px solid rgba(0,0,0,0.2)"> 
+                    <a href="#vendes" class="centrarForzado grey-text text-darken-3">VENDER</a>
+                  </div>
+                  <div class="col s4 sinPadding center valign-wrapper" style="height:36px;"> 
+                    <a href="#faq" class="centrarForzado grey-text text-darken-3">PREGUNTAS</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% elseif pagina.extrabtn == "SI" and legales == true %}
+          <div class="nav-content hide-on-large-only pormayor">
+            <div class="row sinBordeBottom">
+                <div class="col s12 center"> 
+                  <select id="indiceLegal" class="black-text sinPadding browser-default simpleSelect selectMovil">
+                    <option value="" disabled selected>Indice de contenido</option>
+                    <option value="Aceptación">1. Aceptación</option>
+                    <option value="Capacidad">2. Capacidad</option>
+                    <option value="Registración">3. Registración</option>
+                    <option value="Modificación">4. Modificación y/o actualización del acuerdo</option>
+                    <option value="Listado">5. Listado de bienes.</option>
+                    <option value="Privacidad">6. Privacidad de la Información.</option>
+                    <option value="Obligaciones">7. Obligaciones y derechos de los Usuarios..</option>
+                    <option value="Conductas">8. Conductas prohibidas.</option>
+                    <option value="Violaciones">9. Violaciones del Sistema o Bases de Datos</option>
+                    <option value="Sanciones">10. Sanciones. Suspensión de operaciones.</option>
+                    <option value="Responsabilidad">11. Responsabilidad.</option>
+                    <option value="Alcance">12. Alcance de los servicios de pormayor.pe</option>
+                    <option value="Fallas">13. Fallas en el sistema.</option>
+                    <option value="Tarifas">14. Tarifas - Facturación.</option>
+                    <option value="Sistema">15. Sistema de reputación.</option>
+                    <option value="Propiedad">16. Propiedad Intelectual.</option>
+                    <option value="Anexos">17. Anexos.</option>
+                    <option value="Jurisdicción">18. Jurisdicción y Ley Aplicable.</option>
+                    <option value="Domicilio">19. Domicilio.</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+        {% elseif pagina.extrabtn == "SI" and privacidad == true %}
+          <div class="nav-content hide-on-large-only pormayor">
+            <div class="row sinBordeBottom">
+                <div class="col s12 center"> 
+                  <select id="indiceLegal" class="black-text sinPadding browser-default simpleSelect selectMovil">
+                    <option value="" disabled selected>Indice de contenido</option>
+                    <option value="Alcances">Alcances</option>
+                    <option value="Derechos">Derechos de acceso, cancelación y rectificación de la información personal</option>
+                    <option value="información">La información recibida</option>
+                    <option value="Uso">Uso que hacemos de la información</option>
+                    <option value="Confidencialidad">Confidencialidad de la Información</option>
+                    <option value="Clave">Clave Personal</option>
+                    <option value="Menores">Menores de Edad</option>
+                    <option value="Cookies">Cookies</option>
+                    <option value="Spam">Spam</option>
+                    <option value="Orden">Orden de autoridades competentes - Requerimientos Legales.</option>
+                    <option value="Seguridad">Seguridad. Almacenamiento de la información</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+        {% elseif pagina.extrabtn == "SI" and compra_segura == true %}
+          <div class="nav-content hide-on-large-only pormayor">
+            <div class="row sinBordeBottom">
+                <div class="col s12 center"> 
+                  <select id="indiceLegal" class="black-text sinPadding browser-default simpleSelect selectMovil">
+                    <option value="" disabled selected>Indice de contenido</option>
+                    <option value="Capacidad">Capacidad</option>
+                    <option value="Registracion">Registración de un Usuario</option>
+                    <option value="Acceso">Acceso a los “Servicio de CompraSegura”</option>
+                    <option value="Gestion">Gestión de pagos. Mandato</option>
+                    <option value="Proceso">Proceso del “Servicio de CompraSegura”</option>
+                    <option value="Boton">Botón pedidos, cotizar y comprar</option>
+                    <option value="marcas">Uso de marcas, logos y demás derechos de propiedad intelectual de los Vendedores</option>
+                    <option value="Reclamo">Reclamo</option>
+                    <option value="Miscelaneas">Misceláneas</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+        {% elseif pagina.extrabtn == "SI" and centro_general == true %}
+          <div class="nav-content hide-on-large-only pormayor">
+            <div class="row sinBordeBottom">
+              <div class="col s12 center" style="margin-bottom:5px"> 
+                <a class="waves-effect waves-light btn-flat" onclick="javascript:history.back()"><i style="top:-10px" class="iconSubNav material-icons left ">arrow_back</i>REGRESAR Al CENTRO DE AYUDA</a>
+              </div>
+            </div>
+          </div>
+        {% elseif pagina.extrabtn == "SI" and reputacion_volver == true %}
+          <div class="nav-content hide-on-large-only pormayor">
+            <div class="row sinBordeBottom">
+              <div class="col s12 center" style="margin-bottom:5px"> 
+                <a class="waves-effect waves-light btn-flat" onclick="javascript:history.back()"><i style="top:-10px" class="iconSubNav material-icons left ">arrow_back</i>REGRESAR Al PRODUCTO</a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        {% if userAgent != "PC" %}
+          {% if vista_carrito %}
+            <div class="nav-content white">
+              <div class="row centrarForzado navCompra">
+                <div class="col s4 sinUser center fontB2 pormayorUnico white-text">
+                  <i class="material-icons left small" >looks_one</i> <span class="positionRelative">RESUMEN</span>
+                </div>
+                <div class="col s4 sinUser enfasisD center fontB2">
+                  <i class="material-icons left small" >looks_two</i> <span class="positionRelative">DESPACHO</span>
+                </div>
+                <div class="col s4 sinUser enfasisD center fontB2">
+                  <i class="material-icons left small" >looks_3</i> <span class="positionRelative">PAGO</span>
+                </div>
+              </div>
+            </div>
+          {% elseif vista_carrito2 %}
+            <div class="nav-content white">
+              <div class="row centrarForzado navCompra">
+                <a href="{{base_url()}}productos/carrito">
+                  <div class="col s4 sinUser center fontB2 enfasisD">
+                    <i class="material-icons left small" >looks_one</i> <span class="positionRelative">RESUMEN</span>
+                  </div>
+                </a>
+                <div class="col s4 sinUser pormayorUnico white-text center fontB2">
+                  <i class="material-icons left small" >looks_two</i> <span class="positionRelative">DESPACHO</span>
+                </div>
+                <div class="col s4 sinUser enfasisD center fontB2">
+                  <i class="material-icons left small" >looks_3</i> <span class="positionRelative">PAGO</span>
+                </div>
+              </div>
+            </div>
+          {% elseif vista_carrito3 %}
+            <div class="nav-content white">
+              <div class="row centrarForzado navCompra">
+                <a href="{{base_url()}}productos/carrito">
+                  <div class="col s4 sinUser center fontB2 enfasisD">
+                    <i class="material-icons left small" >looks_one</i> <span class="positionRelative">RESUMEN</span>
+                  </div>
+                </a>
+                <a href="{{base_url()}}productos/despacho">
+                  <div class="col s4 sinUser enfasisD center fontB2">
+                    <i class="material-icons left small" >looks_two</i> <span class="positionRelative">DESPACHO</span>
+                  </div>
+                </a>
+                <div class="col s4 sinUser pormayorUnico white-text center fontB2">
+                  <i class="material-icons left small" >looks_3</i> <span class="positionRelative">PAGO</span>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      </nav>
+    </div>
+    <!-- HEADER -->
+        {% if usuario.logueado %}
+            <ul class="side-nav grey darken-4 z-depth-3 menuTex" id="mobile-pormayor">
+              <li class="headerMenu center valign-wrapper">
+                {% if usuario.rol == 2 or usuario.rol == 3 %}
+                  <a class="btn centrarForzado pormayor pormayorAccent-text" href="http://{{subdominio_tienda}}.{{dominio}}/usuario/inventario/lProductos" style="padding: 0 16px;">Perfil Tienda</a>
+                {% elseif usuario.rol == 5 %}
+                  <a class="btn centrarForzado pormayor pormayorAccent-text" href="{{base_url()}}gestor/gestion" style="padding: 0 16px;">GESTOR</a>
+                {% endif %}
+                <a href="{{base_url()}}comprador/index/pedidos" class="btn centrarForzado pormayorUnico white-text" style="padding: 0 16px;">Perfil Usuario</a>
+              </li>
+              <li class="sinUser itemMenu white-text" style="margin: 5px 20px 5px 20px;">Hola, <b>{{usuario.nombre|title|length > 15 ? usuario.nombre|title|slice(0, 15) ~ '...' : usuario.nombre}}</b><a class="cerrarSesionBtn sesionBtn right"><i class="material-icons red-text">power_settings_new</i></a> 
+              </li> 
+              <li class="itemMenu">
+                <a class="white-text" href="{{base_url()}}"><i class="material-icons ">home</i>Ir a Inicio</a>      
+              </li>     
+              <li class="itemMenu">
+                <a class="white-text" href="{{base_url('grupal')}}"><i class="material-icons">group</i>Ver Grupos</a>
+              </li> 
+              <li class="itemMenu">
+                <a class="notiBtn white-text">Notificaciones
+                  <i class="material-icons left">notifications</i>
+                  {% if not noticoments is empty or not noticotiza is empty %}
+                    <span style="font-weight:600" class="new badge pormayor pormayorAccent-text" data-badge-caption="Nueva"></span>
+                  {% endif %}
+                </a> 
+              </li>     
+              <li class="itemMenu">
+                <ul class="collapsible collapsible-accordion">
+                  <li class="submenu">
+                    <a class="collapsible-header fixHeaderSideMobile waves-effect white-text" href="#" style="padding: 0 32px">Categorias <i class="material-icons right">keyboard_arrow_down</i></a>
+                    <div class="collapsible-body">
+                      <ul class="grey darken-4">{% for cat in categorias %}<ul class="collapsible collapsible-accordion"><li class="submenu"><a class="collapsible-header fixHeaderSideMobile" href="#"><img alt="{{cat.Cat_Nombre}} al pormayor" src="{{ruta_img}}{{cat.Cat_IconMobile}}" type="image/svg+xml" class="positionRelative" width="20" height="20" />&nbsp;&nbsp;&nbsp;&nbsp;{{cat.Cat_Nombre}}<i class="material-icons right">keyboard_arrow_down</i></a><div class="collapsible-body"><ul class="grey darken-3">{% for sub in subcategoria %}{% if cat.Cat_IdCategoria == sub.categoria_Cat_IdCategoria %}<li><a class="white-text" itemprop="url" href="{{base_url()}}index/subcategoria/{{sub.url}}" data-idsub="{{sub.Suc_IdSubCategoria}}" data-subnom="{{sub.Suc_Nombre}}"><b>{{sub.Suc_Nombre|trim}}</b> </a>{% for suc in subcat_detalle %}{% if suc.subcategoria_Suc_IdSubCategoria == sub.Suc_IdSubCategoria %}{% if suc.Des_IdDetalle_SubCategoria == 230 %}<a itemprop="url" style="height:60px;line-height:30px" href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% else %}<a itemprop="url" href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% endif %}{% endif %}{% endfor %}</li>{% endif %}{% endfor %}</ul></div></li></ul>{% endfor %}
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </li>              
+            </ul>         
+        {% else %}  
+            <ul class="side-nav grey darken-4 z-depth-3 menuTex" id="mobile-pormayor">
+              <li class="headerMenu center valign-wrapper">
+                <a class="btn centrarForzado" href="{{base_url()}}usuario/login" style="padding: 0 16px;">Iniciar sesión</a>
+                <a class="btn pormayor pormayorAccent-text centrarForzado" href="{{base_url()}}tienda/crear" style="padding: 0 16px;">Crea tu tienda</a>
+              </li>     
+              <li class="itemMenu">
+                <a class="white-text" href="{{base_url()}}"><i class="material-icons ">home</i>Inicio</a>      
+              </li>     
+              <li class="itemMenu">
+                <a class="white-text" href="{{base_url('grupal')}}"><i class="material-icons">group</i>Grupos</a>
+              </li>      
+              <li class="itemMenu">
+                <ul class="collapsible collapsible-accordion containerCatMovil">
+                  <li class="submenu">
+                    <a class="collapsible-header fixHeaderSideMobile waves-effect white-text" href="#">Categorias <i class="material-icons right">keyboard_arrow_down</i></a>
+                    <div class="collapsible-body">
+                      <ul class="grey darken-4">{% for cat in categorias %}<ul class="collapsible collapsible-accordion"><li class="submenu"><a class="collapsible-header fixHeaderSideMobile" href="#"><img alt="{{cat.Cat_Nombre}} al pormayor" src="{{ruta_img}}{{cat.Cat_IconMobile}}" type="image/svg+xml" class="positionRelative" width="20" height="20" />&nbsp;&nbsp;&nbsp;&nbsp;{{cat.Cat_Nombre}}<i class="material-icons right">keyboard_arrow_down</i></a><div class="collapsible-body"><ul class="grey darken-3">{% for sub in subcategoria %}{% if cat.Cat_IdCategoria == sub.categoria_Cat_IdCategoria %}<li><a class="white-text" itemprop="url" href="{{base_url()}}index/subcategoria/{{sub.url}}" data-idsub="{{sub.Suc_IdSubCategoria}}" data-subnom="{{sub.Suc_Nombre}}"><b>{{sub.Suc_Nombre|trim}}</b> </a>{% for suc in subcat_detalle %}{% if suc.subcategoria_Suc_IdSubCategoria == sub.Suc_IdSubCategoria %}{% if suc.Des_IdDetalle_SubCategoria == 230 %}<a itemprop="url" style="height:60px;line-height:30px" href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% else %}<a itemprop="url" href="{{base_url()}}index/detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% endif %}{% endif %}{% endfor %}</li>{% endif %}{% endfor %}</ul></div></li></ul>{% endfor %}
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+        {% endif %}
+      <!-- Container Notficaciones -->
+      <div id="notiContainer" class="modal modal-fixed-footer">
+        <div class="modal-content modalCustomPro white">
+          <h5 style="padding:15px" class="headerModal z-depth-2 pormayorAccent-text pormayor">Notificaciones</h5>
+          <div class="row">
+            {% if not noticoments is empty or not noticotiza is empty %}
+              {% if not noticoments is empty  %}
+                <div style="padding: 10px 10px 15px 10px;border-bottom: 0.5px solid rgba(0,0,0,0.3);" class="col s12 m12 l12">
+                  <i class="material-icons left enfasisA">comment</i><span>Tu comentario <b>fue respondido</b><br> <a class="pormayorUnico-text" href="{{base_url()}}comprador/index/respuesta_comentario">Ver Respuestas</a></span>
+                </div>
+              {% endif %}
+              {% if not noticotiza is empty  %}
+                <div style="padding: 10px 10px 15px 10px;border-bottom: 0.5px solid rgba(0,0,0,0.3);" class="col s12 m12 l12">
+                  <i class="material-icons left enfasisA">playlist_add_check</i><span><b>Respondieron </b> tu cotización<br> <a class="pormayorUnico-text" href="{{base_url()}}comprador/index/pedidos">Ver Cotizaciones</a></span>
+                </div>
+              {% endif %}
+            {% else %}
+            <div class="card center">
+              <div class="card-content">
+                <div class="row">
+                  <div class="center col s12 m12 l12" style="margin-top: 20px;">
+                    <img class="b-lazy" alt="Pormayor.pe - Notificacion vacia" data-src="{{ruta_img}}emptyNoti.webp" height="150">
+                  </div>
+                  <div class="center col s12 m12 l12">
+                    <h5>Sin notificaciones</h5>
+                    <p class="enfasisC">No tenemos notificaciones para ti en este momento</p>
+                  </div>
+                </div>
+              </div>
+            </div>          
+            {% endif %}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        </div>
+      </div>
+      <div class="overlayBody hide"></div>
+      <img class="b-lazy subscriber_icon hide" data-src="{{ruta_img}}subscribirse_2.webp">
+      {% if not usuario.logueado %}
+        <!-- MODAL SUBSCRIPTION -->
+        <div id="subscriber_modal" class="modal transparent" >
+          <div class="subs_animate1">
+            <div class="modal-content white sinPadding">
+              <img class="b-lazy fixImg3 " data-src="{{ruta_img}}subscribirse_1.webp">
+            </div>
+            <div class="row centrarForzado white">
+              <div class="col s12 center">
+                <br>
+              </div>
+              <div class="input-field col s12 l12">
+                <div class="col s8 l8 sinPadding">
+                  <input id="email_subs" placeholder="Introduce tu correo" class="centrarForzado center" type="email">
+                </div>
+                <div class="col s4 l4 sinPadding pormayorUnico">
+                  <a class="anchoTotal btn pormayorUnico subscribeBtn">SUBSCRIBIRSE</a>
+                </div>
+              </div>
+              <div class="col s12 l12 center">
+                <div class="dividerMargin"></div>
+                <a href="#" class="btn-flat fontB2 waves-effect waves-light modal-action modal-close grey-text text-darken-1">Ahora no, quizas más adelante.</a>
+                <br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% block content %} {% endblock %} 
+
+      <footer class="inner page-footer grey darken-4 text-white">
+        {% if userAgent == 'PC' %}
+          {% if index == true %}
+            <div class="container fixContainer footerPrincipal ">
+              <div class="row sinBordeBottom" >
+                  <div class="col s6 m3 l3">
+                    <h5 class="">Servicio al cliente</h5>
+                    <ul>
+                        <li><a class="" href="{{base_url()}}Legal/centro">Centro de ayuda</a></li>
+                        <li><a class="" href="{{base_url()}}Legal/">Términos y condiciones</a></li>
+                        <li><a class="" href="{{base_url()}}index/contactanos">Contáctanos</a></li> 
+                      </ul>
+                  </div> 
+                  <div class="col s3 m3 l3">
+                    <h5 class="">Acerca de nosotros</h5>
+                    <ul>
+                        <li><a class="" href="{{base_url()}}index/about" >Acerca de pormayor.pe</a></li>
+                        <li><a class="" href="{{base_url()}}">Acerca de pormayor.SA</a></li>
+                        <li><a class="" href="{{base_url()}}index">Mapa de sitio</a></li> 
+                      </ul>
+                  </div>
+                  <div class="col s3 m3 l3">
+                    <h5 class="">Servicios de comercio</h5>
+                    <ul>
+                        <li><a class="" href="{{base_url()}}legal/privacidad">Políticas de privacidad</a></li>
+                        <!-- <li><a class="" href="{{base_url()}}index">Política de envios</a></li> -->
+                        <li><a class="" href="{{base_url()}}legal/compra_segura">Compra segura</a></li>
+                      </ul>
+                  </div>
+                <div class="col s12 m6 l3 sinPadding">
+                  <h5>Síguenos</h5>
+                    <div clasS="row center centrarForzado footerBuscador">
+                      <div class="col s3">
+                        <a  href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="instagram pormayor.pe" title="instagram pormayor.pe" src="{{ruta_img}}instaW.png" height="30"></a>
+                      </div>
+                      <div class="col s3">
+                        <a  href="https://www.facebook.com/pormayoroficial/"><img alt="facebook pormayor.pe" title="facebook pormayor.pe" src="{{ruta_img}}faceW.png" height="30"></a>
+                      </div>
+                      <div class="col s3">
+                        <a  href="mailto:contacto@pormayor.pe"><img alt="correo pormayor.pe" title="correo pormayor.pe" src="{{ruta_img}}mailW.png" height="30"></a>
+                      </div>
+                      <div class="col s3">
+                        <a  href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber"><img alt="youtube pormayor.pe" title="youtube pormayor.pe" src="{{ruta_img}}youtubeW.png" height="30"></a>
+                      </div>
+                    </div>
+                    <div class="col s6 center">
+                      <a class="sinPadding anchoTotal waves-effect waves-black btn-flat white-text" href="{{base_url()}}">Inicio</a>
+                    </div>
+                    <div class="col s6 center">
+                      <a  class="anchoTotal inicioBtn waves-effect waves-black btn-flat white-text"  href="#inicio"><i class="small material-icons">keyboard_arrow_up</i></a>
+                    </div>
+                    <div class="col l12"><div class="divider grey darken-3 dividerMargin"></div></div>
+                    <div class="col s2 center sinPadding">
+                      <img class="fixImg2C" src="{{ruta_img}}logoVisa.png" >
+                    </div>  
+                    <div class="col s10 fontB center sinPadding" >
+                      Esta tienda está autorizada por Visa para realizar transacciones electrónicas.
+                    </div>                
+                </div>        
+              </div>
+            </div>
+          {% else %}
+            <div class="container footerSecundario">
+              <div class="row sinBordeBottom" >
+                <div class="col s8 l12">
+                  <ul class="collapsible centrarForzado" data-collapsible="accordion">
+                    <li>
+                      <div class="collapsible-header grey darken-3 white-text center">
+                        <div class="centrarForzado"><i class="material-icons left iconSide">expand_more</i>Ver más información</div>
+                      </div>
+                      <div class="collapsible-body">
+                        <div class="row sinBordeBottom">
+                          <div class="col s6 m3 l3">
+                            <h5 class="">Servicio al cliente</h5>
+                            <ul>
+                              <li><a class="" href="{{base_url()}}Legal/centro">Centro de ayuda</a></li>
+                              <li><a class="" href="{{base_url()}}Legal/">Términos y condiciones</a></li>
+                              <li><a class="" href="{{base_url()}}index/contactanos">Contáctanos</a></li> 
+                            </ul>
+                          </div> 
+                          <div class="col s3 m3 l3">
+                            <h5 class="">Acerca de nosotros</h5>
+                            <ul>
+                              <li><a class="" href="{{base_url()}}index/about" >Acerca de pormayor.pe</a></li>
+                              <li><a class="" href="{{base_url()}}">Acerca de pormayor.SA</a></li>
+                              <li><a class="" href="{{base_url()}}index">Mapa de sitio</a></li> 
+                            </ul>
+                          </div>
+                          <div class="col s3 m3 l3">
+                            <h5 class="">Servicios de comercio</h5>
+                            <ul>
+                              <li><a class="" href="{{base_url()}}legal/privacidad">Políticas de privacidad</a></li>
+                              <!-- <li><a class="" href="{{base_url()}}index">Política de envios</a></li> -->
+                              <li><a class="" href="{{base_url()}}legal/compra_segura">Compra segura</a></li>
+                            </ul>
+                          </div>
+                          <div class="col s12 m6 l3 ">
+                            <h5 class=" hide-on-med-and-down">Síguenos</h5>
+                              <div clasS="row center footerBuscador">
+                                <div class="col s3">
+                                  <a  href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="instagram pormayor.pe" title="instagram pormayor.pe" src="{{ruta_img}}instaW.png" height="30"></a>
+                                </div>
+                                <div class="col s3">
+                                  <a  href="https://www.facebook.com/pormayoroficial/"><img alt="facebook pormayor.pe" title="facebook pormayor.pe" src="{{ruta_img}}faceW.png" height="30"></a>
+                                </div>
+                                <div class="col s3">
+                                  <a  href="mailto:contacto@pormayor.pe"><img alt="correo pormayor.pe" title="correo pormayor.pe" src="{{ruta_img}}mailW.png" height="30"></a>
+                                </div>
+                                <div class="col s3">
+                                  <a  href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber"><img alt="youtube pormayor.pe" title="youtube pormayor.pe" src="{{ruta_img}}youtubeW.png" height="30"></a>
+                                </div>
+                              </div>
+                              <div class="col s6">
+                                <a class="anchoTotal waves-effect waves-black btn-flat white-text" href="{{base_url()}}">Inicio</a>
+                              </div>
+                              <div class="col s6">
+                                <a  class="anchoTotal inicioBtn waves-effect waves-black btn-flat white-text"  href="#inicio"><i class="small material-icons">keyboard_arrow_up</i></a>
+                              </div>                
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col l12"><br></div>
+                <div class="col s8 l5 sideB">
+                  <div class="row sinBordeBottom">
+                    <div class="col l4 center sinPadding">
+                      <a class="white-text" href="{{base_url()}}Legal/centro">Centro de ayuda</a>
+                    </div>
+                    <div class="col l5 center sinPadding">
+                      <a class="white-text" href="{{base_url()}}Legal/">Términos y condiciones</a>
+                    </div>
+                    <div class="col l3 center sinPadding">
+                      <a class="white-text" href="{{base_url()}}index/contactanos">Contáctanos</a>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col s4 l7 sideB">
+                  <div class="col s3 m1 l1 center">
+                    <a  href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="instagram pormayor.pe" title="instagram pormayor.pe" src="{{ruta_img}}instaW.png" height="30"></a>
+                  </div>
+                  <div class="col s3 m1 l1 center">
+                    <a  href="https://www.facebook.com/pormayoroficial/"><img alt="facebook pormayor.pe" title="facebook pormayor.pe" src="{{ruta_img}}faceW.png" height="30"></a>
+                  </div>
+                  <div class="col s3 m1 l1 center">
+                    <a  href="mailto:contacto@pormayor.pe"><img alt="correo pormayor.pe" title="correo pormayor.pe" src="{{ruta_img}}mailW.png" height="30"></a>
+                  </div>
+                  <div class="col s3 m1 l1 center">
+                    <a  href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber"><img alt="youtube pormayor.pe" title="youtube pormayor.pe" src="{{ruta_img}}youtubeW.png" height="30"></a>
+                  </div>                
+                  <div clasS="col s6 m4 l2  center">
+                    <a class="sinPadding anchoTotal waves-effect waves-black btn-flat white-text" href="{{base_url()}}">Inicio</a>                
+                  </div>
+                  <div class="col s6 m4 l1 center sinPadding">
+                    <a  class="sinPadding anchoTotal inicioBtn waves-effect waves-black btn-flat white-text"  href="#inicio"><i class="small material-icons">keyboard_arrow_up</i></a>
+                  </div>
+                  <div class="col l2 center sinPadding">
+                    <img class="fixImg2C" src="{{ruta_img}}logoVisa.png" >
+                  </div>  
+                  <div class="col l3 fontB center sinPadding" >
+                    Esta tienda está autorizada por Visa para realizar transacciones electrónicas.
+                  </div> 
+                </div>      
+              </div>
+            </div>
+          {% endif %}
+          <div class="footer-copyright pormayorAccent center">
+            <div class="container  white-text">
+            Derechos Reservados © 2018 pormayorpe S.A
+            </div>
+          </div>
+        {% else %}
+          <br><br><br>
+          {# <div class="footerMovil">
+            <div class="row sinBordeBottom">
+              <div class="col s12">
+                <ul class="collapsible" data-collapsible="accordion">
+                  <li>
+                    <div class="collapsible-header grey darken-3 white-text"><i class="material-icons">person</i>Servicio al cliente</div>
+                    <div class="collapsible-body">
+                      <ul>
+                        <li><a class="" href="{{base_url()}}Legal/centro">Centro de ayuda</a></li>
+                        <li><a class="" href="{{base_url()}}Legal/">Términos y condiciones</a></li>
+                        <li><a class="" href="{{base_url()}}index/contactanos">Contáctanos</a></li> 
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header grey darken-3 white-text"><i class="material-icons">home</i>Acerca de nosotros</div>
+                    <div class="collapsible-body">
+                      <ul>
+                        <li><a class="" href="{{base_url()}}index/about" >Acerca de pormayor.pe</a></li>
+                        <li><a class="" href="{{base_url()}}">Acerca de pormayor.SA</a></li>
+                        <li><a class="" href="{{base_url()}}index">Mapa de sitio</a></li> 
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header grey darken-3 white-text"><i class="material-icons">business_center</i>Servicios de comercio</div>
+                    <div class="collapsible-body">
+                      <ul>
+                        <li><a class="" href="{{base_url()}}legal/privacidad">Políticas de privacidad</a></li>
+                        <!-- <li><a class="" href="{{base_url()}}index">Política de envios</a></li> -->
+                        <li><a class="" href="{{base_url()}}legal/compra_segura">Compra segura</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="col s3 center">
+                <a  href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="instagram pormayor.pe" title="instagram pormayor.pe" src="{{ruta_img}}instaW.png" height="30"></a>
+              </div>
+              <div class="col s3 center">
+                <a  href="https://www.facebook.com/pormayoroficial/"><img alt="facebook pormayor.pe" title="facebook pormayor.pe" src="{{ruta_img}}faceW.png" height="30"></a>
+              </div>
+              <div class="col s3 center">
+                <a  href="mailto:contacto@pormayor.pe"><img alt="correo pormayor.pe" title="correo pormayor.pe" src="{{ruta_img}}mailW.png" height="30"></a>
+              </div>
+              <div class="col s3 center">
+                <a  href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber"><img alt="youtube pormayor.pe" title="youtube pormayor.pe" src="{{ruta_img}}youtubeW.png" height="30"></a>
+              </div>
+              <div class="col s6 center">
+                <a class="anchoTotal waves-effect waves-black btn-flat white-text" href="{{base_url()}}">Inicio</a>
+              </div>
+              <div class="col s6 center">
+                <a  class="anchoTotal inicioBtn waves-effect waves-black btn-flat white-text"  href="#inicio"><i class="small material-icons">keyboard_arrow_up</i></a>
+              </div> 
+              <div class="col s12"><div class="dividerMargin"></div></div>
+              <div class="col s3 center">
+                <img class="fixImg2B" src="{{ruta_img}}logoVisa.png" >
+              </div>  
+              <div class="col s9 fontB2 center" >
+                Esta tienda está autorizada por Visa para realizar transacciones electrónicas.
+              </div>         
+            </div>
+          </div>
+          <div class="footer-copyright pormayorAccent center">
+            <div class="container  white-text">
+            Derechos Reservados © 2018 pormayorpe S.A
+            </div>
+          </div>  #}
+        {% endif %}
+      </footer>
+    {% block modal %} {% endblock %}
+      <script> var base_url = "{{base_url()}}";</script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+      {# <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>#}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js"></script>
+      <script src="{{base_url('public/js/template-lite.js')}}" defer></script>
+      <script src="{{base_url('public/intranet/js/jquery-confirm.min.js')}}" defer></script> 
+      <script src="{{base_url('public/intranet/service-worker.js')}}"></script>
+      <script>
+        (function(w,d,u){
+          var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+          var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn.bitrix24.es/b9521005/crm/tag/call.tracker.js');
+      </script>
+    {% block script %} {% endblock %}
+   </body>
+
+</html>

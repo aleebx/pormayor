@@ -1,0 +1,61 @@
+{% extends "layout/intranet/template_adm.twig" %}
+
+{% block head %}
+	<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"  media="screen,projection"/>
+{% endblock %}
+
+{% block content %}
+    <!-- Page Layout here -->
+    <main class="container">
+      <div class="card">
+          <div class="card-content center">
+            	  <table id="example" class="display" style="width:100%">
+				    <thead>
+				      <tr>
+				          <th>Tienda</th>
+				          <th>Producto</th>
+				          <th>Visto</th>
+				          <th>Contactado</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    	{% for top in productos_top %}
+						<tr>
+							<td>{{top.Tie_Nombre}}</td>
+							<td>{{top.Pro_Nombre}}</td>
+							<td>{{top.Pro_Vista}}</td>
+							<td>{{top.Pro_Contacto}}</td>
+						</tr>
+				    	{% endfor %}
+				    </tbody>
+				  </table>        
+          </div>
+		</div>
+    </main>
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript">
+	    $('#example').DataTable({
+	        "language": {
+	            "lengthMenu": "",
+	            "zeroRecords": "No se encontro nada",
+	            "info": "Página _PAGE_ de _PAGES_",
+	            "infoEmpty": "No hay registros disponibles",
+			    "emptyTable":     "No hay información en la tabla",
+			    "infoFiltered":   "(filtrado de _MAX_ ventas)",
+			    "infoPostFix":    "",
+			    "thousands":      ",",
+			    "loadingRecords": "Cargando...",
+			    "processing":     "Procesando...",
+			    "search":         "Buscar:",
+			    "paginate": {
+			        "first":      "Primero",
+			        "last":       "Último",
+			        "next":       "Siguiente",
+			        "previous":   "Anterior"
+				        }
+				 }
+		});
+	</script>
+{% endblock %}

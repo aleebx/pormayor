@@ -1,0 +1,32 @@
+<h5 class="enfasisB" >Ofertazos</h5>
+<div class="row positionRelative">
+<div class="col s12 Ofertas">
+{% set count = 0 %}
+{% set break = false %}
+{% for pro in producto_oferta if not break %}
+{% if pro.Prf_Img|slice(0, 5) != "nopic" %}
+<div class="card hoverable">
+<a class="detalleProducto2" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+<div class="card-content center imgPeq sinPadding cardHeight positionRelative">
+{% for fot in fotos2 %}
+{% if pro.Pro_IdProducto == fot.producto_Pro_IdProducto %}
+<img class="containImg anchoTotal cardHeight lazy" alt="{{pro.Pro_Nombre}}" title="{{pro.Pro_Nombre}}" data-src="{{ruta_img}}{{fot.Prf_Img}}" style="padding-top:15px">
+<img class="sales positionAbsolute" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}sales.svg" type="image" alt="" width="45">
+{% endif %}
+{% endfor %}
+</div>
+<div class="card-action center flow-text">
+<span class="truncate" title="{{pro.Pro_Nombre}}">{{pro.Pro_Nombre}}</span>
+{% if configuracion.Mostrar_Precio != 1 %}
+<h6><i>Precio entre: S/ {{pro.Pro_PrecioRango}}</i></h6>
+{% endif %}            
+</div>
+</a>
+</div>
+{% set count = count + 1 %}{% if count == 6 %}{% set break = true %}{% endif %}
+{% endif %}
+{% endfor %}
+</div>
+<div class="prev valign-wrapper"><i class="centrarForzado material-icons">arrow_back</i></div>
+<div class="next valign-wrapper"><i class="centrarForzado material-icons">arrow_forward</i></div>
+</div>

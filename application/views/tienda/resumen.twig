@@ -1,0 +1,469 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+  <style type="text/css">
+    .btn-flat-not:hover{color: white !important;background-color: #21478F ;}
+    .btnFlatMobile{border-bottom: 2px solid #21478F;}
+    .tabs{
+      height: 60px !important;
+    }
+    .tabs .tab a{
+        color:rgba(0,0,0,0.5);
+        font-weight:100
+    }
+
+    .tabs .tab a:hover {
+        color: #21478F;
+    }
+
+    .tabs .tab a.active {
+        color: #21478F;
+    }
+    .tabs .indicator {
+        background-color:#21478F;
+    }
+    [type="checkbox"].filled-in:checked + label:after {
+      border: 2px solid #21478F;
+      background-color: #21478F;
+    }
+    .error{
+      color: red;
+    }
+    .descuento {
+    text-decoration:line-through;
+    color: grey;
+    }
+  </style>
+  <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/autocomplete.min.css')}}"  media="screen"/>
+{% endblock %}
+{% block content %}
+    <main class="container fixContainer"><br><br>
+    <div class="card-panel center blue white-text fontD2">
+      Emprende con nosotros, puedes llevarte cualquier producto a precio por mayor con una compra mìnima de <b class="fontA">S/100</b>
+    </div>
+      {% if userAgent == "PC" %}
+        <div class="row centrarForzado">
+          <div class="col s12 sinPadding">
+            <br>
+            <div class="row breadPago">
+              <div class="col l4 valign-wrapper">
+                <h1 class="fixH1Seo enfasisA center centrarForzado">Carrito de compras</h1>
+              </div>
+              <div class="col l3 sinUser valign-wrapper fontD2 pormayorUnico-text">
+                <i class="material-icons left small">looks_one</i> RESUMEN<span class=" anchoTotal grey lighten-2 right"></span>
+              </div>
+              <div class="col l3 sinUser enfasisD valign-wrapper fontD2 sinPadding">
+                <i class="material-icons left small">looks_two</i> DESPACHO<span class=" anchoTotal grey lighten-2 right"></span>
+              </div>
+              <div class="col l2 sinUser enfasisD valign-wrapper fontD2">
+                <i class="material-icons left small">looks_3</i> PAGO
+              </div>
+            </div>
+          </div>
+          {% if not carrito is empty %}
+          <div class="cart_content hide">
+            <div class="col l9">
+              <div class="card">
+                <div class="card-content sinPadding">
+                  <div class="row cardContentFix"> 
+                    
+                    <div id="cart_details">
+                      
+                    </div>
+                    <div class="col s6 left-align">
+                      <a class="waves-effect waves-light btn-flat btn-flat-not transition" href="{{url_actual}}"><i class="material-icons left">arrow_back</i>Seguir Comprando</a>
+                    </div>  
+                    <div class="col s6 right-align">
+                      <button class="waves-effect waves-light btn-flat clear_cart"><i class="material-icons left">delete_sweep</i><u>Vaciar Carrito</u></button>
+                    </div>
+                    <div class="col s12">
+                      <div class="divider dividerMargin"></div>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col l3 sinPadding">
+              <div class="card">
+                <div class="card-content sinPadding">
+                  <div class="row cardContentFix centrarForzado detallesPedidoCont">
+                    <div class="col s12 center">
+                      <span class="fontA enfasisA">Detalles de tu Pedido</span>
+                      <div class="divider dividerLista"></div>
+                    </div>
+                    <div class="col s3 center enfasisB left-align valign-wrapper">
+                      Cantidad
+                    </div>
+                    <div class="col s9 center enfasisA valign-wrapper">
+                      <span class="centrarForzado"><span class="fontD2"><b class="cantResumen"></b></span>&nbsp; <span class="enfasisB">Unidades</span></span>
+                    </div>
+                    <div class="col s12">
+                      <div class="divider dividerMargin"></div>
+                    </div>
+                    <div class="col s3 center enfasisB left-align valign-wrapper">
+                      Total
+                    </div>
+                    <div class="col s9 center enfasisA valign-wrapper">
+                      <span class="centrarForzado">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen"></b></span></span>
+                    </div>
+                    <div class="col s3 center enfasisB totalD1 hide left-align valign-wrapper">
+                      Total 2
+                    </div>
+                    <div class="col s9 center enfasisA totalD2 hide valign-wrapper">
+                      <span class="centrarForzado">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen2"></b></span></span>
+                    </div>
+                    <div class="col s12">
+                      <div class="divider dividerMargin"></div>
+                    </div>
+{#                     <div class="col s4 m4 l4 sinPadding">
+                      <a href="{{base_url()}}productos/pedido" class="btn-flat">Cotizar</a>
+                    </div> #}
+                    <div class="col s12 m12 l12 center sinPadding">
+                      {% if usuario.logueado %}
+                        {% if unidPe >= 100 %}
+                        <a href="{{base_url()}}productos/despacho" class="btn anchoTotal pormayorUnico">Comprar</a>
+                        {% else %}
+                          <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
+                        {% endif %}
+                      {% else %}
+                        {% if unidPe >= 100 %}
+                        <a class="waves-effect waves-light btn anchoTotal pormayorUnico modal-trigger comprar_popup" data-flag="{{flag_login}}" href="#sesion_popup">Comprar</a> 
+                        {% else %}
+                          <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                    <div class="col s12">
+                      <div class="divider dividerMargin"></div>
+                      <br>
+                    </div>
+                    <div class="col s6 sinPadding center valign-wrapper" style="">
+                      <img class="centrarForzado" src="{{ruta_img}}safety_pay.webp" height="45" >
+                    </div>
+                    <div class="col s6 positionRelative center-align valign-wrapper">
+                      <a class="centrarForzado" href="https://pormayor.pe/legal/compra_segura">
+                        <img alt="Pormayor.pe - Rate" class="linkCompraSegura transition comoBoton positionRelative" src="{{ruta_img}}pagoA.png" alt="compra segura pormayor.pe" height="55">
+                      </a>
+                    </div>
+                    <div class="col s12"><br></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 center">
+            <br><br><br><br><br>
+            <div class="preloader-wrapper big active">
+              <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% else %}
+              <div class="center col s12 m12 l12" style="margin-top: 20px;">
+                <img src="{{ruta_img}}emptyCart.webp" height="150"></img>
+              </div>
+              <div class="center col s12 m12 l12">
+                <h5>Sin productos agregados</h5>
+                <p class="enfasisB">No haz agregado productos para comprar</p>
+              </div>
+              <div class="center col s12 m12 l12">
+                <a class="btn pormayorUnico" href="{{url_actual}}">Ir a comprar</a>
+                <br><br>
+              </div>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="row centrarForzado">
+          <div class="col s12 sinPadding">
+            <div class="row centrarForzado ">
+              <div class="col s12 center">
+                <h1 class="fontA enfasisA centrarForzado">Carrito de compras</h1>
+              </div>
+            </div>
+            <br>
+          </div>
+        {% if not carrito is empty %}
+          <div class="cart_content hide">
+            <div class="col s12 sinPadding">
+              <div class="card">
+                <div class="card-content sinPadding">
+                  <div class="row cardContentFix"> 
+                    
+                    <div id="cart_details">
+                      
+                    </div>
+                    <div class="col s12 center">
+                      <a class="waves-effect waves-light btn-flat btnFlatMobile transition pormayorUnico-text" href="{{url_actual}}"><i class="material-icons left">arrow_back</i>Seguir Comprando</a>
+                      <br><br>
+                    </div>     
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 sinPadding">
+              <div class="card">
+                <div class="card-content sinPadding">
+                  <div class="row cardContentFix centrarForzado detallesPedidoCont">
+                    <div class="col s12 center">
+                      <span class="fontA enfasisA">Detalles de tu Pedido</span>
+                      <div class="divider dividerLista"></div>
+                    </div>
+                    <div class="col s3 center enfasisB left-align valign-wrapper">
+                      Cantidad
+                    </div>
+                    <div class="col s9 center enfasisA valign-wrapper">
+                      <span class="centrarForzado"><span class="fontD2"><b class="cantResumen"></b></span>&nbsp; <span class="enfasisB">Unidades</span></span>
+                    </div>
+                    <div class="col s12">
+                      <div class="divider dividerMargin"></div>
+                    </div>
+                    <div class="col s3 center enfasisB left-align valign-wrapper">
+                      Total
+                    </div>
+                    <div class="col s9 center enfasisA valign-wrapper">
+                      <span class="centrarForzado">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen"></b></span></span>
+                    </div> 
+                    <div class="col s3 center enfasisB totalD1 hide left-align valign-wrapper">
+                      Total Desc
+                    </div>
+                    <div class="col s9 center enfasisA totalD2 hide valign-wrapper">
+                      <span class="centrarForzado">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen2"></b></span></span>
+                    </div>             
+                    <div class="col s12 sinPadding center">
+                      <br>
+                      <div class="divider"></div>
+                      <br>
+                    </div>
+                    <div class="col s6 center">
+                      <img class="" src="{{ruta_img}}safety_pay.webp" height="40">
+                    </div>       
+                    <div class="col s6 positionRelative center-align valign-wrapper">
+                      <a class="centrarForzado" href="https://pormayor.pe/legal/compra_segura">
+                        <img alt="Pormayor.pe - Rate" class="linkCompraSegura transition comoBoton " src="{{ruta_img}}pagoA.png" alt="compra segura pormayor.pe" height="50">
+                      </a>
+                    </div>
+                    <div class="col s12"><br><br></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 center">
+            <br><br><br>
+            <div class="preloader-wrapper big active">
+              <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+            <br><br><br>
+          </div>
+          {% else %}
+              <div class="center col s12 m12 l12" style="margin-top: 20px;">
+                <img src="{{ruta_img}}emptyCart.webp" height="150"></img>
+              </div>
+              <div class="center col s12 m12 l12">
+                <h5 class="movilNoProduct">Sin productos agregados</h5>
+                <p class="enfasisB">No haz agregado productos para comprar</p>
+              </div>
+              <div class="center col s12 m12 l12">
+                <a class="btn pormayorUnico " href="{{url_actual}}">Ir a comprar</a>
+                <br><br>
+              </div>
+          {% endif %}
+        </div>  
+        <div class="row centrarForzado bottom0 anchoTotal white left0 setbuttonMobile transitionB">
+          <div class="col s4 valign-wrapper" style="height:45px">
+            &nbsp;&nbsp;&nbsp;<span class="fontA"><b class="cantResumen"></b></span>&nbsp;&nbsp;<span class="enfasisB">Unidades</span>
+          </div>
+          <div class="totalN1 col s4 right-align" style="height:45px">
+            <span >S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen"></b></span></span>
+          </div>
+          <div class="totalB1 hide col s4 right-align" style="height:45px">
+            <span >S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen2"></b></span></span>
+          </div>
+          <div class="col s12">
+            <div class="divider"></div>
+          </div>
+          {# <div class="col s4 sinPadding center valign-wrapper" style="height:54px">
+            <a href="{{base_url()}}productos/pedido" class="centrarForzado btn-flat">Cotizar</a>
+          </div> #}
+          <div class="col s12 center sinPadding">
+            {% if usuario.logueado %}
+              {% if unidPe >= 100 %}
+                <a href="{{base_url()}}productos/despacho" class="btn anchoTotal pormayorUnico">Comprar</a>
+              {% else %}
+                <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
+              {% endif %}
+            {% else %}
+              {% if unidPe >= 100 %}
+                <a class="waves-effect waves-light btn anchoTotal pormayorUnico modal-trigger comprar_popup" data-flag="{{flag_login}}" href="#sesion_popup">Comprar</a> 
+              {% else %}
+                <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      <div id="sesion_popup" class="modal white">
+        <div class="modal-content positionRelative" style="padding-top:0px">
+          <a href="#" class="modal-action modal-close waves-effect waves-red btn-flat positionAbsolute"><i class="material-icons sinUser">close</i></a>
+          <div class="row {% if userAgent != "PC" %}centrarForzado{% endif %}">
+            <div class="col s12 {% if userAgent != "PC" %}sinPadding{% endif %}">
+              <ul class="tabs valign-wrapper">
+                <li class="tab col s6"><a href="#iniciar" class=" fontD2 transition">INICIAR SESIÓN</a></li>
+                <li class="tab col s6"><a href="#crear" class=" fontD2 transition">CREAR CUENTA</a></li>
+              </ul>
+            </div>
+            <div id="iniciar" class="col s12" >
+              {{ form_open("", {role: 'form', id: 'formulario_login', class:'form form-horizontal formValidate', method:'post', novalidate:'novalidate'}) }}
+              <div class="row validarPersonales centrarForzado card-content sinPadding">
+                {% if errors %}
+                  <div class="col s12 center hide">
+                    <input type="hidden" class="validarCorreo2" value="Error">
+                  </div> 
+                {% endif %}
+                <br>
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix transitionB">email</i>
+                  <input name="correo" type="email" id="correo"  class=".form-group" required="" placeholder="Ingresa tu correo de registro">
+                  <label for="icon_prefix">Correo Electrónico</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix transitionB">lock</i>
+                  <input name="clave" type="password" id="clave" class=".form-group" required="" autocomplete="new-password" placeholder="Ingresa tu contraseña pormayor.pe">
+                  <label for="icon_prefix">Contraseña</label>
+                </div>
+                <div class="col s12 right-align">
+                  <a class="fontB2 grey-text text-darken-1 btn-flat transitionB btn-flat-not waves-effect waves-light waves-blue" href="{{base_url()}}usuario/olvido_contrasenia">¿Olvidaste tu contraseña?</a>
+                </div>
+                <div class="col s12">
+                  
+                  <div class="divider dividerMargin"></div>
+                  <br>
+                </div>
+                {% if userAgent == "PC" %}
+                  <div class="col l12 center">
+                    <input type="submit" name="btnIngresar" value="INGRESAR A PORMAYOR" class="btn anchoTotal pormayor btnCrear pormayorAccent-text negrita">
+                  </div>  {# 
+                  <div class="col s12 m8 l6">
+                    <a style="background-color: #4267B2;" class="anchoTotal btn btnCrear white-text" onclick="logInWithFacebook()"><img style="top: 3px;right: 10px;" class="positionRelative left" src="{{ruta_img}}faceIcon.svg" type="image/svg+xml" height="25">INGRESAR CON FACEBOOK
+                    </a>
+                  </div> #}
+                {% else %}
+                  <div class="col s12 l12 center">
+                    <input type="submit" name="btnIngresar" value="INGRESAR" class="btn anchoTotal pormayor btnCrear pormayorAccent-text negrita">
+                  </div>  
+             {#      <div class="col s7 m8 l6">
+                    <a style="background-color: #4267B2;" class="anchoTotal btn btnCrear white-text" onclick="logInWithFacebook()"><img style="top: 3px;right: 10px;" class="positionRelative left" src="{{ruta_img}}faceIcon.svg" type="image/svg+xml" height="25">USAR FACEBOOK
+                    </a>
+                  </div> #}
+                {% endif %}
+              </div>
+              {{ form_close() }}
+            </div>
+            <div id="crear" class="col s12">
+              {{ form_open("", {role: 'form', id: 'formulario_registro', class:'form form-horizontal formValidate', method:'post', novalidate:'novalidate'}) }}
+              <div class="row validarTienda centrarForzado card-content sinPadding">
+                {% if (success) %}
+                  {% if form_error('correo') %}
+                    <input type="hidden" class="validarCorreo" value="Error">
+                  {% endif %}
+                {% endif %}
+                <br>
+                <div class="input-field col s12 l6">
+                  <i class="material-icons prefix transitionB">chrome_reader_mode</i>
+                  <input name="dni" id="dni" type="text"  class=".form-group" placeholder="Ingresa tu DNI" required="" {% if (success) %} value="{{set_value('dni')}}{% endif %}">
+                  <label for="dni">DNI</label>
+                </div>
+                <div class="input-field col s12 l6">
+                  <i class="material-icons prefix transitionB">person</i>
+                  <input type="text" name="nombre" id="nombre"  class=".form-group" required="required" {% if (success) %} value="{{set_value('nombre')}}{% endif %}">
+                  <label for="nombre">Nombre Completo</label>
+                </div>
+                <div class="col s12 m12 l6 input-field positionRelative">
+                  <i class="material-icons prefix transitionB">email</i>
+                  <input name="correoA" id="correoA" type="email" class="email .form-group"  required="required" placeholder="Ingresa tu correo de registro" {% if (success) %} value="{{set_value('correoA')}}"{% endif %}>
+                  <label for="icon_prefix">Correo Electrónico</label>
+                  <ul class="autosuffix centrarForzado"></ul>
+                  <input type="hidden" name="correo" id="correo2">
+                </div>
+                <div class="col s12 m12 l6 input-field positionRelative">
+                  <i class="material-icons prefix transitionB">phone</i>
+                  <input name="celular" id="celular" type="number" class=".form-group"  required="required" placeholder="Ingresa tu celular de contacto" {% if (success) %} value="{{set_value('celular')}}"{% endif %}>
+                  <label for="icon_prefix">Celular</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix transitionB">lock</i>
+                  <input name="clave" type="password" id="contrasena"  class=".form-group" required="" autocomplete="new-password" {% if (success) %} value="{{set_value('clave')}}{% endif %}">
+                  <label for="contrasena">Contraseña para <b>pormayor.pe</b></label>
+                </div>
+                <div class="col s12">
+                  <br>
+                    <input type="checkbox" class="filled-in terminosCheck" id="filled-in-box" />
+                    <label style="font-size:1rem" class="grey-text text-darken-3" for="filled-in-box">Acepto los <a class="pormayorUnico-text negrita" href="{{base_url()}}Legal/ ">Términos y Condiciones</a> y las <a class="pormayorUnico-text negrita" href="{{base_url()}}legal/privacidad">Políticas de Privacidad y Confidencialidad de la información</a></label>
+                </div>
+                <div class="col s12">
+                    <br>
+                    <input type="checkbox" class="filled-in" id="publicidad_mat" checked="checked" />
+                    <label style="font-size:1rem" class="grey-text text-darken-3" for="publicidad_mat">Acepto recibir material promocional en mi correo</label>
+                    <input type="hidden" name="publicidad_valor" id="publicidad_valor">
+                </div>
+                <div class="col s12">
+                  <br>
+                  <div class="divider dividerMargin"></div>
+                </div>
+                {% if userAgent == "PC" %}
+                  <div class="col l12 center">
+                    <a class="btn pormayor anchoTotal btnRegistrarse disabled grey-text text-darken-4 negrita">Registrarse</a>
+                    <input type="submit" id="btnRegistrarse" name="btnRegistrarse" class="hide anchoTotal btn pormayor  ">
+                  </div> {#  
+                  <div class="col s12 m8 l7">
+                    <a style="background-color: #4267B2;" class="anchoTotal btn btnCrear white-text" onclick="logInWithFacebook()"><img style="top: 3px;right: 10px;" class="positionRelative left" src="{{ruta_img}}faceIcon.svg" type="image/svg+xml" height="25">REGISTRARSE CON FACEBOOK
+                    </a>
+                  </div> #}
+                {% else %}
+                  <div class="col s12 center">
+                    <input type="submit" id="btnRegistrarse" name="btnRegistrarse" value="Registrarse" class="anchoTotal disabled btnRegistrarse btn pormayor  btnCrear grey-text text-darken-4 negrita">
+                  </div>{#   
+                  <div class="col s7">
+                    <a style="background-color: #4267B2;" class="anchoTotal btn btnCrear white-text" onclick="logInWithFacebook()"><img style="top: 3px;right: 10px;" class="positionRelative left" src="{{ruta_img}}faceIcon.svg" type="image/svg+xml" height="25">USAR FACEBOOK
+                    </a>
+                  </div>  #} 
+                {% endif %}
+                
+              </div>
+              {{ form_close() }}
+            </div>
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div> -->
+      </div>
+    </main>
+    
+{% endblock %}
+
+{% block script %}
+  <script>
+    var flagVariaciones = {{flagVariaciones}};
+  </script>
+  <script src="{{base_url('public/intranet/js/jquery-confirm.min.js')}}"></script> 
+  <script src="{{base_url('public/')}}js/jquery.validate.js"></script>
+  <script src="{{base_url('public/intranet/js/')}}autocomplete.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="{{base_url('public/')}}js/tienda/cart_resumen.js?v=2607"></script>
+{% endblock %}

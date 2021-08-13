@@ -1,0 +1,753 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"  media="screen"/>
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/css/easyzoom.css"  media="screen"/>
+  <style type="text/css">
+    .btn-flat-not:hover{background-color: #21478F ;color: white !important;}
+    .materialbox-caption{text-transform: uppercase;font-size: 1.5rem;}
+    .sliderMobile .slick-list {padding:0px !important;}
+    .sliderMobile .slick-dots li.slick-active button:before{font-size: 70px !important;opacity: 1;color: {{configuracion.Con_ColorBtn}};}
+    .sliderMobile img{max-width:100%;max-height: 250px;}
+    .sliderMobile{height:250px;}
+    .card .card-image img {
+      width:auto !important;
+    }
+    .card-badge{
+    line-height: 2em;
+    position: absolute;
+    top: 1rem;
+    right: -10rem;
+    display: block;
+    width: 25rem;
+    height: 2em;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    text-indent: .8em;
+    background: #ffeb00;
+    background: -webkit-linear-gradient(45deg, #ffeb00 0%, #ffa300 100%);
+    background: -moz- oldlinear-gradient(45deg, #ffeb00 0%, #ffa300 100%);
+    background: -o-linear-gradient(45deg, #ffeb00 0%, #ffa300 100%);
+    background: linear-gradient(45deg, #ffeb00 0%, #ffa300 100%);
+  }
+  .card-badge a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: #dedede;
+}
+.card {
+    overflow: hidden;
+    margin: 1rem 0 1rem 0;
+}
+#main .content-wrapper-before {
+    position: absolute;
+    z-index: -1;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: 185px;
+    -webkit-transition: .3s ease all;
+    -moz-transition: .3s ease all;
+    -o-transition: .3s ease all;
+    transition: .3s ease all;
+}
+.gradient-45deg-indigo-purple {
+    background: #303f9f;
+    background: -webkit-linear-gradient(45deg, #303f9f, #7b1fa2) !important;
+    background: -moz- oldlinear-gradient(45deg, #303f9f, #7b1fa2) !important;
+    background: -o-linear-gradient(45deg, #303f9f, #7b1fa2) !important;
+    background: linear-gradient(45deg, #303f9f, #7b1fa2) !important;
+}
+.gradient-45deg-yellow {
+    background: #fec00f;
+    background: -webkit-linear-gradient(45deg, #fec00f, #f59e04) !important;
+    background: -moz- oldlinear-gradient(45deg, #fec00f, #f59e04) !important;
+    background: -o-linear-gradient(45deg, #fec00f, #f59e04) !important;
+    background: linear-gradient(45deg,#fec00f, #f59e04) !important;
+}
+.input-number-group {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.input-number-group input[type=number]::-webkit-inner-spin-button,
+.input-number-group input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.input-number-group .input-group-button {
+  line-height: calc(80px/2 - 5px);
+}
+
+.input-number-group .input-number {
+  width: 80px;
+  padding: 0 12px;
+  vertical-align: top;
+  text-align: center;
+  outline: none;
+  display: block;
+  margin: 0;
+}
+
+.input-number-group .input-number,
+.input-number-group .input-number-decrement,
+.input-number-group .input-number-increment {
+  border: 1px solid #cacaca;
+  height: 40px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-radius: 0;
+}
+
+.input-number-group .input-number-decrement,
+.input-number-group .input-number-increment {
+  display: inline-block;
+  width: 40px;
+  background: #e6e6e6;
+  color: #0a0a0a;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.input-number-group .input-number-decrement {
+  margin-right: 0.3rem;
+}
+
+.input-number-group .input-number-increment {
+  margin-left: 0.3rem;
+}
+  </style>
+  
+{% endblock %}
+{% block content %}
+  <div id="main">
+  <div class="content-wrapper-before gradient-45deg-yellow"></div>
+  <main class="container fixContainer positionRelative">
+    <br class="hide-on-large-only">
+    <br class="">
+    <div class="row">      
+      <div class="col l12">
+        <div class="">
+          <div class="">
+            <a href="//pormayor.pe/categorias/{{producto.urlCategoria}}" class="pormayorUnico-text breadcrumb">{{producto.Cat_Nombre|title}}</a>
+            <a href="//pormayor.pe/subcategoria/{{producto.urlSubCategoria}}" class="centrarForzado pormayorUnico-text breadcrumb">{{producto.Suc_Nombre}}</a>
+            <a href="//pormayor.pe/detalle/{{producto.urlDetalle}}" class="centrarForzado pormayorUnico-text breadcrumb">{{producto.Des_Nombre}}</a>
+            <h4 class="centrarForzado muayuscula">{{producto.Pro_Nombre|title}} {% if producto.Pro_Preventa == 1 %} (PRE-VENTA) <span class="new badge blue">PRE-VENTA</span> {% endif %}</h4>
+          </div>
+        </div>
+      </div>
+      {% if userAgent == "PC" %}
+      <div class="col l4">
+        <div class="card" style="height:508.5px;">
+          <div class="card-content row sinPadding">
+            <div class="col l12 center" id="imagenesPro" >
+              {% if fotos is empty %}
+                <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails redondeo white">
+                  <a href="{{ruta_img}}pronoimg.webp">
+                    <img alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}pronoimg.webp" class="containImg anchoTotal"/>
+                  </a>
+                </div>
+              {% else %}
+                <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails redondeo white">
+                  <a href="{{ruta_img}}{{fotos[0].Prf_Img}}">
+                    <img alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}{{fotos[0].Prf_Img}}" class="containImg anchoTotal"/>
+                  </a>
+                </div>
+              {% endif %}
+              <div class="center">
+                <ul class="thumbnails">
+                  {% if fotos is empty %}
+                    <li class="col">
+                      <a href="{{ruta_img}}pronoimg.webp" data-standard="{{ruta_img}}pronoimg.webp">
+                        <img alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}pronoimg.webp" class="redondeo" height="40">
+                      </a>
+                    </li>
+                  {% else %}
+                      {% for fot in fotos %}
+                        {% if producto.Pro_IdProducto == fotos[0].producto_Pro_IdProducto %}
+                          {% if fot.Prf_Img|slice(0, 5)|lower != "nopic" %}
+                          <li class="col">
+                            <a href="{{ruta_img}}{{fot.Prf_Img}}" data-standard="{{ruta_img}}{{fot.Prf_Img}}">
+                              <img alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}{{fot.Prf_Img}}" class="redondeo" height="40">
+                            </a>
+                          </li>
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+      <div class="col l4">
+        <div class="card">          
+          <div class="card-content" style="padding: 24px 24px 21px 24px;">
+            <span class="card-title">Opciones</span>
+            <div style="max-height:325px; overflow-y:auto;">
+            {% if producto.Cat_IdCategoria != 12 and producto.Cat_IdCategoria != 2 and producto.Suc_IdSubCategoria != 41 %}
+            {% for key, sku in SKU %}  
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible > 2 %}
+                {% set colorActual = sku.SKU_Color %}
+                    <div class="row centrarForzado">
+                      <div class="col l5 left-align">
+                        <div class="positionRelative">
+                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}nofoto.png" >
+                          {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}" >
+                          {% else %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                          {% endif %}
+                          <label>{{colorActual}}</label>
+                        {% set colorUnico = "" %}
+                        {% set colorHex = " " %}
+                        {% set break = false %}
+                        {% for col in colores if not break %}
+                          {% if col.SKU_Color == colorActual %}
+                            {# <div class="colorEjemplo positionAbsolute bottom0" style="background-color:{{col.Col_Hex}}"></div> #}
+                            {% set colorUnico = col.Col_Nombre %}
+                            {% set colorHex = col.Col_Hex %}
+                            {% set break = true %}
+                          {% endif %}
+                        {% endfor %}
+                        </div>
+                        <br>
+                      </div> 
+                      <div class="col l7 valign-wrapper filaCant{{key}}">
+                        <div class="input-group input-number-group">
+                          <div class="input-group-button">
+                            <span class="input-number-decrement">-</span>
+                          </div>
+                          {% set count = 0 %}
+                          {% set break = false %}
+                          {% for skub in SKUB|sort('asc') if not break  %}                        
+                              {% if colorActual == skub.SKU_Color and skub.SKU_StockDisponible > 2 %}
+                                  <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="{{skub.SKU_StockDisponible}}" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                              {% else %}
+                                {% set break = false %} 
+                              {% endif %} 
+                          {% set count = count + 1 %}
+                          {% endfor %}
+                          <div class="input-group-button">
+                            <span class="input-number-increment">+</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="row centrarForzado">
+                      <div class="col s12 center red">
+                        <b class="fontA">{{sku.SKU_Color}} AGOTADO</b>
+                      </div>
+                      <br><br>
+                    </div>
+                    {% endif %}
+              {% endfor %}
+              {% else %}
+                {% for key, sku in SKU %}  
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible > 2 %}
+                {% set colorActual = sku.SKU_Color %}
+                    <div class="row centrarForzado">
+                      <div class="col l5 left-align">
+                        <div class="positionRelative">
+                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}nofoto.png" >
+                          {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}" >
+                          {% else %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                          {% endif %}
+                          <label>{{colorActual}}</label>
+                        {% set colorUnico = "" %}
+                        {% set colorHex = "" %}
+                        {% set break = false %}
+                        {% for col in colores if not break %}
+                          {% if col.SKU_Color == colorActual %}
+                            {# <div class="colorEjemplo positionAbsolute bottom0" style="background-color:{{col.Col_Hex}}"></div> #}
+                            {% set colorUnico = col.Col_Nombre %}
+                            {% set colorHex = col.Col_Hex %}
+                            {% set break = true %}
+                          {% endif %}
+                        {% endfor %}
+                        </div>
+                        <br>
+                      </div> 
+                      <div class="col l7">
+                        <div class="row">
+                          <div class="col s12 l12 sinPadding ">
+                          </div>
+                            {% set count = 0 %}
+                            {% set break = false %}
+                          <div class="col l12 sinPadding  centrarForzado row filaCant{{key}}">
+                              {% set count = 0 %}
+                              {% set break = false %}
+                              {% for skub in SKUB|sort('asc') if not break  %}                        
+                                  {% if colorActual == skub.SKU_Color %}
+                                      <span class="fontB2" for="{{skub.SKU_IdSku}}">Talla {{skub.Vao_Nombre}}</span>
+                                        <div class="input-group input-number-group">
+                                          <div class="input-group-button">
+                                            <span class="input-number-decrement">-</span>
+                                          </div>
+                                            <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                                          <div class="input-group-button">
+                                            <span class="input-number-increment">+</span>
+                                          </div>
+                                        </div>
+                                  {% else %}
+                                    {% set break = false %} 
+                                  {% endif %} 
+                              {% set count = count + 1 %}
+                              {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="row centrarForzado">
+                      <div class="col s12 center red">
+                        <b class="fontA">{{sku.SKU_Color}} AGOTADO</b>
+                      </div>
+                      <br><br>
+                    </div>
+                    {% endif %}
+              {% endfor %}
+              {% endif %}
+              </div>
+                <div class="row sinPadding bottom0" style="margin-bottom: 0px;">
+                  <div class="col l6 sinPadding center">
+                    <a class="btn-large add_cart green" data-totalc="{{totalc}}" data-pmin="{{producto.Pro_PrecioMinimo}}"><i class="material-icons left">shopping_cart</i>COMPRAR</a>
+                  </div> 
+                  <div class="col l6 right-align sinPadding">
+                    <p><span class="totalPro fontA">0</span> UNID</p>
+                    <p class="fontC">S/<span class="totalPago negrita">0</span></p>
+                  </div>
+                  {% if SKU|length >= 2 %}
+                    <div class="col l12 center">
+                      <b class="red-text">Tenga presente que puede variar los colores según disponibilidad</b>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col l4">
+            <div class="card">
+              <div class="card-content">
+                <div class="row">
+                <div class="col s12 center">
+                  <span class="fontD ">s/ {{producto.Pro_PrecioMinimo}} x mayor</span>
+                </div>                
+                <div class="col s12 center">
+                  {% if producto.Pro_Preventa == 1 %} <br>
+                    <p class="fontA">FECHA DE LLEGADA DE LA MERCANCÍA {{producto.Pro_FechaPreventa}} </p> <br>
+                  {% endif %}
+                </div>
+                  <div class="card-badge"><a class="white-text">{% if producto.Pro_Preventa == 1 %}PRE-VENTA{% else %}<b>OFERTA</b>{% endif %}</a></div>
+{#                   <div class="col s12">
+                    <p>Compra todo los productos que tenemos a precio por mayor, única condición para aplicar a los excelentes precios es que tu compra total supere los 100 soles</p>
+                  </div> #}
+                  <div class="col s12 "><br>
+                   <span class="grey-text"><i class="material-icons green-text left">shopping_bag</i>{% set vent = 0.5 * producto.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}</span>
+                  </div>
+                </div>
+                <div class="cardContentFix" id="visualizas" style="display:none;"></div>
+                <div id="visualizarEnvio" style="display:none;">
+                  <div class="row sinPadding">
+                    <div class="col l6">
+                      <select id="selecRegion" class="browser-default" data-valor="{{direccion_usuario.Pag_idregion}}">
+                      <option value="0" disabled selected>Departamento</option>
+                      {% for reg in region %}
+                        <option value="{{reg.id}}">{{reg.name}}</option>
+                      {% endfor %}
+                      </select>
+                    </div>
+                    <div id="provincia" class="col l6">
+                      <select  disabled class="browser-default">
+                        <option value="0" disabled selected> Seleccione una provincia</option>
+                      </select>
+                    </div>
+                    <div id="distrito" class="col l6">
+                      <select disabled class="browser-default">
+                        <option value="0" disabled selected> Seleccione un distrito</option>
+                      </select>
+                    </div>
+                    <div class="col l6">
+                      <select id="cantEnvio" class="browser-default">
+                      <option value="0" disabled selected>Cantidad</option>
+                        {% for i in 1..100 %}
+                          <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row sinPadding">
+                    <div class="col l12 black-text negrita noenv tiempoEntrega" style="text-align: left;font-size:16px;">Tiempo de entrega de 2 a 3 días (Lima y Callao)</div>
+                    <div class="col l12" style="text-align: right;">S/ <span class="cEnv fontC negrita">0.00</span></div>
+                  </div>
+                </div>
+            </div> 
+        </div>
+      </div>
+    {% else %}
+      <div class="col s12">
+        <div class="card">
+          <div class="card-image">
+              <div class="wrapperSliderImgMobile transition">
+                <div class="sliderMobile ">
+                  {% for fot in fotos %}
+                    {% if producto.Pro_IdProducto == fotos[0].producto_Pro_IdProducto %}
+                      {% if fot.Prf_Img|slice(0, 5)|lower != "nopic" %}
+                        <div>
+                          <img alt="{{producto.Pro_Nombre}} al pormayor" class="redondeo centrarForzado" src="{{ruta_img}}{{fot.Prf_Img}}">
+                        </div>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+          </div>
+          <div class="card-content">     
+                <div class="row">
+                  <div class="col s12 center">
+                    <span class="fontD ">s/ {{producto.Pro_PrecioMinimo}} x mayor</span>
+                  </div>
+                </div>             
+              {% if producto.Cat_IdCategoria != 12 and producto.Cat_IdCategoria != 2 and producto.Suc_IdSubCategoria != 41 %}
+            {% for key, sku in SKU %}  
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible > 2 %}
+                {% set colorActual = sku.SKU_Color %}
+                    <div class="row centrarForzado">
+                      <div class="col s5 left-align">
+                        <div class="positionRelative">
+                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed redondeo" height="40px" src="{{ruta_img}}nofoto.png" >
+                          {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed redondeo" height="40px" src="{{ruta_img}}{{producto.Prf_Img}}" >
+                          {% else %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class=" materialboxed redondeo" height="40px" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                          {% endif %}
+                          <label>{{colorActual}}</label> 
+                        </div>
+                        <br>
+                      </div> 
+                      <div class="col s7 valign-wrapper filaCant{{key}}">
+                        <div class="input-group input-number-group">
+                          <div class="input-group-button">
+                            <span class="input-number-decrement">-</span>
+                          </div>
+                          {% set count = 0 %}
+                          {% set break = false %}
+                          {% for skub in SKUB|sort('asc') if not break  %}                        
+                              {% if colorActual == skub.SKU_Color and skub.SKU_StockDisponible > 2 %}
+                                  <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                              {% else %}
+                                {% set break = false %} 
+                              {% endif %} 
+                          {% set count = count + 1 %}
+                          {% endfor %}
+                          <div class="input-group-button">
+                            <span class="input-number-increment">+</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="row centrarForzado">
+                      <div class="col s12 center red">
+                        <b class="fontA">{{sku.SKU_Color}} AGOTADO</b>
+                      </div>
+                      <br><br>
+                    </div>
+                    {% endif %}
+              {% endfor %}
+            {% else %}
+              {% for key, sku in SKU %}  
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible > 5 %}
+                {% set colorActual = sku.SKU_Color %}
+                    <div class="row centrarForzado">
+                      <div class="col S5 left-align">
+                        <div class="positionRelative">
+                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}nofoto.png" width="60px">
+                          {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}" width="60px">
+                          {% else %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class="materialboxed fixImg4 redondeo" width="60px" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                          {% endif %}
+                          <label>{{colorActual}}</label>
+                        {% set colorUnico = "" %}
+                        {% set colorHex = "" %}
+                        {% set break = false %}
+                        {% for col in colores if not break %}
+                          {% if col.SKU_Color == colorActual %}
+                            {# <div class="colorEjemplo positionAbsolute bottom0" style="background-color:{{col.Col_Hex}}"></div> #}
+                            {% set colorUnico = col.Col_Nombre %}
+                            {% set colorHex = col.Col_Hex %}
+                            {% set break = true %}
+                          {% endif %}
+                        {% endfor %}
+                        </div>
+                        <br>
+                      </div> 
+                      <div class="col s7">
+                        <div class="row">
+                          <div class="col s12 sinPadding">
+                          </div>
+                            {% set count = 0 %}
+                            {% set break = false %}
+                          <div class="col l12 sinPadding  centrarForzado row filaCant{{key}}">
+                              {% set count = 0 %}
+                              {% set break = false %}
+                              {% for skub in SKUB|sort('asc') if not break  %}                        
+                                  {% if colorActual == skub.SKU_Color  and skub.SKU_StockDisponible > 2 %}
+                                      <span class="fontB2" for="{{skub.SKU_IdSku}}">Talla {{skub.Vao_Nombre}}</span>
+                                        <div class="input-group input-number-group">
+                                          <div class="input-group-button">
+                                            <span class="input-number-decrement">-</span>
+                                          </div>
+                                            <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                                          <div class="input-group-button">
+                                            <span class="input-number-increment">+</span>
+                                          </div>
+                                        </div>
+                                  {% else %}
+                                    {% set break = false %} 
+                                  {% endif %} 
+                              {% set count = count + 1 %}
+                              {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                                    {% else %}
+                    <div class="row centrarForzado">
+                      <div class="col s12 center red">
+                        <b class="fontA">{{sku.SKU_Color}} AGOTADO</b>
+                      </div>
+                      <br><br>
+                    </div>
+                    {% endif %}
+              {% endfor %}
+            {% endif %}
+              <div class="row">
+                {% if SKU|length >= 2 %}
+                    <div class="col l12 center">
+                      <b class="red-text">Tenga presente que puede variar los colores según disponibilidad</b>
+                    </div>
+                {% endif %}
+                <div class="col s12 center">
+                  {% if producto.Pro_Preventa == 1 %} <br>
+                    <p class="fontA">FECHA DE LLEGADA DE LA MERCANCÍA {{producto.Pro_FechaPreventa}} </p> <br>
+                  {% endif %}
+                </div>
+{#                  <div class="col s12 center">
+                  <p>Compra todos los productos que tenemos a precio por mayor, única condición para aplicar a los excelentes precios es que tu compra total supere los 100 soles</p>
+                </div> #}
+              </div>         
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    </div>
+        <div class="row">
+          <div class="col s12 {% if producto.Pro_Video %}l6{% else %}l12{% endif %} white">
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col s3"><a class="active" href="#dPro">Detalle del producto</a></li>
+                <li class="tab col s3"><a href="#cPro">Caracteristicas</a></li>
+              </ul>
+            </div>
+            <div id="dPro" class="col s12">{{producto.Pro_Descripcion}}</div>
+            <div id="cPro" class="col s12">
+              <table class="striped" style="table-layout: fixed">
+                <thead class="">
+                  <tr>
+                    <th width="40"></th>
+                    <th width="60"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if producto.Pro_Marca %}
+                    <tr>
+                      <td class="enfasisB">Marca</td>
+                      <td>{{producto.Pro_Marca|title}}</td>
+                    </tr>
+                  {% endif %}
+                  {% if producto.Pro_Garantia %}
+                    <tr>
+                      <td class="enfasisB">Garantía</td>
+                      <td>{{producto.Pro_Garantia|title}}</td>
+                    </tr>
+                  {% endif %}
+                  {% if producto.Pro_EdoGarantia %}
+                    <tr>
+                      <td class="enfasisB">Estado Producto</td>
+                      <td>{{producto.Pro_EdoGarantia|title}}</td>
+                    </tr>
+                  {% endif %}
+                  <tr>
+                    <td  class="enfasisB">Colores</td>
+                    <td >
+                      {% set arrayColores = [] %}
+                      {% for col in colores %}
+                        {% if col.producto_Pro_IdProducto == pro.Pro_IdProducto %}
+                         {% if col.Col_Hex not in arrayColores %}
+                         {% set arrayColores = arrayColores|merge([col.Col_Hex]) %}
+                            {{col.Col_Nombre|title}}, 
+                         {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                      {% if arrayColores is empty %}
+                        <span class="flow-text notFlow enfasisB"><i>Producto único</i></span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  {% if producto.Pro_Documento %}
+                    <tr>
+                      <td  class="enfasisB">Documento pago</td>
+                      <td >
+                        {% if producto.Pro_Documento == 1 %}
+                          Boleta
+                        {% elseif producto.Pro_Documento == 2 %} Boleta o Factura {% endif %}
+                      </td>
+                    </tr>
+                  {% endif %}
+                  {% if producto_ficha %}
+                    {% if producto_ficha.Prf_Campo1 %}
+                      <tr>
+                        <td class="enfasisB">Dimensiones <br>(largo x ancho x alto)</td>
+                        <td>{{producto_ficha.Prf_Campo1|title}}</td>
+                      </tr>
+                    {% endif %}
+                    {% if producto_ficha.Prf_Campo2 %}
+                      <tr>
+                        <td class="enfasisB">{% if producto.Cat_IdCategoria == 6 %}¿Qué contiene la caja? {% else %} Peso {% endif %}</td>
+                        <td>{% if producto.Cat_IdCategoria == 6 %}{{producto_ficha.Prf_Campo2|title}}{% else %} {{producto_ficha.Prf_Campo2|title}} Kg. {% endif %}</td>
+                      </tr>
+                    {% endif %}
+                    {% if producto_ficha.Prf_Campo3 %}
+                      <tr>
+                        <td class="enfasisB">{% if producto.Cat_IdCategoria == 6 %}Peso {% else %} Material {% endif %}</td>
+                        <td>{% if producto.Cat_IdCategoria == 6 %}{{producto_ficha.Prf_Campo3|title}} Kg.{% else %} {{producto_ficha.Prf_Campo3|title}}{% endif %}</td>
+                      </tr>
+                    {% endif %}
+                    {% if producto_ficha.Prf_Campo4 %}
+                      <tr>
+                        <td class="enfasisB">{% if producto.Cat_IdCategoria == 6 %}Potencia {% else %} Uso {% endif %}</td>
+                        <td>{% if producto.Cat_IdCategoria == 6 %}{{producto_ficha.Prf_Campo4|title}} ws. {% else %} {{producto_ficha.Prf_Campo4|title}}{% endif %}</td>
+                      </tr>
+                    {% endif %}
+                    {% if producto_ficha.Prf_Campo5 %}
+                      <tr>
+                        <td class="enfasisB">{% if producto.Cat_IdCategoria == 6 %}Material {% else %} Observaciones {% endif %}</td>
+                        <td>{{producto_ficha.Prf_Campo5|title}}</td>
+                      </tr>
+                    {% endif %}
+                  {% endif %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          {% if producto.Pro_Video %}
+          <div class="col s12 l6">
+             
+                  <div class="video-container">
+                    <iframe width="853" height="480" src="{{producto.Pro_Video}}" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                
+          </div>
+          {% endif %}
+          <div class="col s12 l12">
+            <div class="row">
+              {% for pro in producto_subcategoria %}
+              <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+                  <div class="col s12 m7 l3 black-text">
+                    <div class="card hoverable">
+                      <div class="center" style="height:190px;">
+                        <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy" data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+                      </div>
+                      <div class="card-content center" style="height:100px;">
+                        <p>
+                          <b class="truncate">{{pro.Pro_Nombre}}</b>
+                            <span class="fontA">S/ {{pro.Pro_PrecioMaximo}}</span> <label>S/ {{pro.Pro_PrecioMinimo}}</label>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+      </div>
+  </main>
+</div>
+
+  {% if userAgent != "PC" %}
+    <div class="bottom0 anchoTotal row centrarForzado pormayorUnico white-text mobileBottomBtn" style="position:fixed;z-index: 100">
+      <div class="col s6 sinPadding center">
+        <span class="totalPro fontC">0</span> UNID
+      </div>
+      <div class="col s6 sinPadding center">
+        <span class="fontC white-text"><b>S/<span class="totalPago white-text">0</span></b></span>
+      </div>
+      <div class="col s12 sinPadding">
+        <a  class="btn-large green add_cart anchoTotal"  data-totalc="{{totalc}}" data-pmin="{{producto.Pro_PrecioMinimo}}">COMPRAR</a>
+      </div>
+    </div>
+  {% endif %}
+  <!-- Aviso de agregado -->
+  <div id="modal_aviso" class="modal">
+    <div class="modal-content validar sinPadding white">
+      <a class="modal-close modal-close-custom right"><i class="material-icons  closeIconA">close</i></a>
+      <h5 class="center centrarForzado white-text z-depth-2 green">Agregado al carrito</h5>
+      <div class="aviso_productos">
+        <div class="row">
+          <br>
+          <div class="center col s12 m12 l12">
+            <img class="redondeo" height="200px" src="{{ruta_img}}{{fotos[0].Prf_Img}}"> 
+          </div>
+          <div class="center col s12 m12 l12">
+            <a class="btn pormayorUnico center verCarrito" href="{{base_url()}}productos/carrito">Ir al carrito</a>
+            <a class="btn-flat center modal-close "><u>Seguir comprando</u></a>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div> 
+{% endblock %} 
+
+{% block script %}
+  <script>
+  rando_precio = {{precios|json_encode()}};
+  flagVariaciones = false;
+  dim = {{producto_ficha.Prf_Campo1|json_encode()}};
+  pes = {{producto_ficha.Prf_Campo3|json_encode()}}; 
+  TiedaId = {{producto.Tie_IdTienda|json_encode()}}; 
+  Remate = {{producto.Pro_Saldo|json_encode()}}; 
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/dist/easyzoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+  <script src="{{base_url('public/')}}js/tienda/dpro.js?v={{now|date('i:s')}}"></script>
+  <script src="{{base_url('public/')}}js/productos/favoritos.js?v={{now|date('i:s')}}"></script>
+
+{% endblock %}

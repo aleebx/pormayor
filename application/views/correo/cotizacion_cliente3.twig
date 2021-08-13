@@ -1,0 +1,150 @@
+{% extends "layout/correo.twig" %}
+
+{% block content %}
+	<td bgcolor="#FFFFFC" style="padding: 40px 30px 40px 30px;">
+  		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    		<tr>
+    			<td style="color: #121212; font-family: Arial, sans-serif; font-size: 24px;">
+					<b>Estimado, {{nombre_usuario}}</b>
+				</td>
+    		</tr>
+    		<tr>
+      			<td style="padding: 20px 0 30px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+      				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		               	<tr>
+		                	<td style="padding: 20px 0 0 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		                		Te damos las gracias por confiar en nuestro metodo de <b>Compra Segura</b>, a continuación te explicaremos de forma detallada cuales son los pasos a seguir y todo lo que necesitas para finalizar tu compra. 
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td style="padding: 20px 0 0 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;text-align: center;">
+		                		<i>Tu Codigo compra</i>
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td style="padding: 30px 0 40px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		                		<div style="text-align:center; display:block;height:100%;width:100%"><span style="border-radius: 5px; margin: 0 auto; background-color: #21478F;padding:15px;font-size: 2rem;color: white">{{codcompra}}</span></div>
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td>
+		                		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	                      		<thead>
+			                        <tr>
+										<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F; width:15%" valign="top">
+										  <b>Codigo compra</b>
+										</td>
+										<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F; width:10%" valign="top">
+										  <b>Banco</b> 
+										</td>
+										<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;width:25% " valign="top">
+											<b>Sub-Total</b>
+										</td>
+										<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;width:25%" valign="top">
+											<b>Importe Compra segura</b>
+										</td>
+										<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;width:25% "valign="top">
+											<b>Total a pagar</b>
+										</td>
+			                        </tr>
+			                    </thead>
+		                      		<tr>
+			                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+			                          		{{codcompra}}
+		                          		</td>
+		  	                        	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+		  	                        		{{banco}}
+		  	                        	</td>
+		  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+		  	                          		{{subtotal}}
+		  	                            </td>
+		  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+		  	                          		S/ 3
+		  	                          	</td>
+		  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+		  	                          		<b>S/ {{ventaTotal}}</b>
+		  	                          	</td>
+		  	                        </tr>
+			                    </tbody>
+		          			</table>
+		                		
+		                	</td>
+		                </tr>
+		                <tr>
+		                	<td style="padding: 20px 0 20px 0; color: #121212; font-family: Arial, sans-serif; font-size: 1.5rem; line-height: 20px;"> Pasos para finalizar Compra
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td style="padding: 20px 0 20px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		                		<b>1.</b> Dirigete a un Agente "BANCO 	SELECCIONADO" <br><br>
+		                		<b>2.</b> Dirigete a un Agente "BANCO 	SELECCIONADO" <br><br>
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td style="padding: 20px 0 20px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		                		Una vez <b>finalices estos pasos</b> te serán enviados en <i>{{direnvio}}</i> los siguientes productos:
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td>
+		                    	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		                      		<thead>
+				                        <tr>
+				                      		<td style="background-color:  white;" width="100" valign="top">
+		                          			</td>
+											<td style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;" width="350" valign="top">
+												<b>Producto</b>
+											</td>
+											<td colspan="2" style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;" width="50" valign="top">
+												<b>Cant.</b>
+											</td>
+				                        </tr>
+				                    </thead>
+		                      		<tbody>
+		                      			{% set count = 0 %}
+				                      	{% for rsDatos in pdetalle %}
+				                      		<tr>
+					                          	<td style="border-bottom: 1px solid #CBCBCB; padding: 8px 0px;" valign="top">
+					                          		{% if rsDatos.imgpro %}
+					                          			<div style="margin:0 auto; margin:15px; width:100px; height: 100px;  border-radius: 3px;">
+						                            		<img style="width: 100%; height: 100px; object-fit: contain;" src="http://pormayor.pe/img/{{rsDatos.imgpro}}">
+						                            	</div>
+					                          		{% else %}
+					                          		 	<div style="margin:0 auto; margin:15px; width:100px; height: 100px;  border-radius: 3px;">
+						                            		<img style="width: 100%; height: 100px; object-fit: contain;" src="http://pormayor.pe/img/pronoimg.webp">
+						                            	</div>   
+					                          		{% endif %}
+					                            	
+				                          		</td>
+				  	                        	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+				  	                        		{{rsDatos.nompro}}
+				  	                        	</td>
+				  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+				  	                          		{{rsDatos.cantidad}}&nbsp; Unid.
+				  	                            </td>
+				  	                        </tr>
+							              	{% set count = count + 1 %}
+				                      	{% endfor %}
+				                    </tbody>
+		                		</table>
+              				</td>
+           				</tr>
+          			</table>
+        		</td>
+    		</tr>
+    	</table>
+	</td>
+{% endblock %}
+
+{% block content2 %}
+	<tr>
+		<td bgcolor="#FFFFFC" style="font-size: 12px; color:#121212 ;padding: 0px 10px 10px 10px;font-family: Arial, sans-serif;">
+			Estos precios son validos por quince (15) dias de emitido el presente recibo.
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFC" style="font-size: 14px; color:#121212 ;padding: 0px 15px 15px 15px;font-family: Arial, sans-serif;">			
+			<span style="font-size: 14px;">Atentamente&nbsp;</span><a href="http://{{subdominio}}.pormayor.pe" style=" color: #21478F;">{{nombre_tienda}}</a>
+        </td>
+    </tr>
+{% endblock %}

@@ -1,0 +1,605 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/css/easyzoom.css"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+<style type="text/css">
+/*.btn-flat-not:hover{background-color: #21478F ;color: white !important;}*/
+.sk-cube-grid {
+width: 40px;
+height: 40px;
+margin: 100px auto;
+}
+
+.sk-cube-grid .sk-cube {
+width: 33%;
+height: 33%;
+background-color: #333;
+float: left;
+-webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+}
+.sk-cube-grid .sk-cube1 {
+-webkit-animation-delay: 0.2s;
+animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube2 {
+-webkit-animation-delay: 0.3s;
+animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube3 {
+-webkit-animation-delay: 0.4s;
+animation-delay: 0.4s; }
+.sk-cube-grid .sk-cube4 {
+-webkit-animation-delay: 0.1s;
+animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube5 {
+-webkit-animation-delay: 0.2s;
+animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube6 {
+-webkit-animation-delay: 0.3s;
+animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube7 {
+-webkit-animation-delay: 0s;
+animation-delay: 0s; }
+.sk-cube-grid .sk-cube8 {
+-webkit-animation-delay: 0.1s;
+animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube9 {
+-webkit-animation-delay: 0.2s;
+animation-delay: 0.2s; }
+@-webkit-keyframes sk-cubeGridScaleDelay {
+0%, 70%, 100% {
+-webkit-transform: scale3D(1, 1, 1);
+transform: scale3D(1, 1, 1);
+} 35% {
+-webkit-transform: scale3D(0, 0, 1);
+transform: scale3D(0, 0, 1); 
+}
+}
+@keyframes sk-cubeGridScaleDelay {
+0%, 70%, 100% {
+-webkit-transform: scale3D(1, 1, 1);
+transform: scale3D(1, 1, 1);
+} 35% {
+-webkit-transform: scale3D(0, 0, 1);
+transform: scale3D(0, 0, 1);
+} 
+}
+.sliderMobile .slick-list {padding:0px !important;}
+.sliderMobile .slick-dots li.slick-active button:before{font-size: 70px !important;opacity: 1;color: {{configuracion.Con_ColorBtn}};}
+{% if userAgent == 'PC' %}
+.sliderMobile img{max-width:100%;max-height: 315px;}
+{% else %}
+.sliderMobile img{max-width:100%;max-height: 260px;}
+{% endif %}
+.sliderMobile{height:300px;}
+.materialbox-caption{text-transform: uppercase;font-size: 1.5rem;}
+/* Style the active class, and buttons on mouse-over */
+hr{
+border: 0;
+height: 1px;
+background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+div.container4 {
+height: 10em;
+position: relative }
+div.container4 p {
+margin: 0;
+position: absolute;
+top: 100%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%) }
+[type="radio"] + label:before, [type="radio"] + label:after{
+width: 25px !important;
+height: 25px !important;
+}
+[type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after{
+border: 3px solid orange !important;
+}
+.rotate{  
+  -webkit-transform: rotate(90deg);     /* Chrome and other webkit browsers */
+  -moz-transform: rotate(90deg);        /* FF */
+  -o-transform: rotate(90deg);          /* Opera */
+  -ms-transform: rotate(90deg);         /* IE9 */
+  transform: rotate(90deg);             /* W3C compliant browsers */
+}
+.one, .two, .three{
+    position:absolute;
+  margin-top:-10px;
+  z-index:1;
+  height:40px;
+  width:40px;
+  border-radius:25px;
+  
+}
+.one{
+  left:25%;
+}
+.two{
+  left:50%;
+}
+.three{
+  left:75%;
+}
+.primary-color{
+  background-color:#4989bd;
+}
+.success-color{
+  background-color:#5cb85c;
+}
+.danger-color{
+  background-color:#d9534f;
+}
+.warning-color{
+  background-color:#f0ad4e;
+}
+.info-color{
+  background-color:#5bc0de;
+}
+.no-color{
+  background-color:inherit;
+}
+.card .card-image img {
+  width:auto !important;
+}
+.reloj{
+    border: 2px solid #f44336;
+    border-radius: 3px;
+    padding: 2px;
+    background-color: #f44336;
+    color: #ffffff;
+}
+{% if userAgent == "PC" %}
+.gauge{
+  width: 400px;
+  height: 300px;
+}
+{% else %}
+.gauge{
+  width: 300px;
+  height: 200px;
+}
+{% endif %}
+</style>
+{% endblock %}
+{% block content %}
+  <div {# style="background-image:url('http://localhost/b/pormayor/img/grupoback.png');background-repeat: no-repeat; background-attachment: fixed; background-position: bottom; " #}>
+<main class="container">
+  {% if actComprar %}
+    <div class="row card-panel sinPadding centrarForzado" {% if userAgent == "PC" %}style="height: 80px;"{% endif %}>
+    {% if userAgent == "PC" %}
+    <div class="col s12 l2 center">
+    <i class="material-icons large">group</i>
+    </div>
+    {% endif %}
+    <div class="col s12 l10">
+    <div class="row">
+    <div class="col s12 l4 center">
+    <div class="row" style="margin-bottom: 0px">
+    <div class="col input-field s8">
+    <input type="text" value="https:{{base_url()}}grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}" id="copiaLink2">
+    </div>
+    <div class="col s4"><br>
+    <a onclick="myCopia()" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Copiar el link para compartir">Copiar</a>
+    </div>
+    </div>
+    </div>
+    <div class="col s12 l2 center">{% if userAgent == "PC" %}<br>{% endif %}
+    {% if userAgent == "PC" %}
+    {% else %}
+    <a href="fb-messenger://share/?link=https://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}&app_id=1956467824456142" class="btn blue"><img src="{{ruta_img}}/ms.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">MESSENGER</a>
+    <a href="whatsapp://send?text=Hola,%20compremos%20esto%20en%20grupo%20https://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}" data-action="share/whatsapp/share" class="btn white-text pormayorUnico"><img src="{{ruta_img}}/wa.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">WHATSAPP</a>
+    {% endif %}
+    </div>
+    <div class="col s12 l3 center"><br>
+    <div class="fb-like" data-href="http://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}?fb_ref=top_left&fb_source=profile_oneline" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+    </div>
+    {% if userAgent == "PC" %}
+    <div class="col s4 l3 center"  style="border-left: 1.5px solid rgba(0,0,0,0.2)">
+    <span class="pormayorUnico-text flow-text"><strong>{{vista.Pro_Vista}}</strong> han visto este producto</span>
+    </div>
+    {% endif %}
+    </div>
+    </div>
+    </div>
+  {% endif %}
+  <div class="row">
+    <div class="col s12 l4">
+      <div class="card">        
+        <div class="card-image">
+            <div class="wrapperSliderImgMobile transition">
+              <div class="sliderMobile ">
+                {% for fot in fotos %}
+                  {% if producto.Pro_IdProducto == fotos[0].producto_Pro_IdProducto %}
+                    {% if fot.Prf_Img|slice(0, 5)|lower != "nopic" %}
+                      <div>
+                        <img alt="{{producto.Pro_Nombre}} al pormayor" class="redondeo centrarForzado" src="{{ruta_img}}{{fot.Prf_Img}}">
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+        <div class="card-content pormayorUnico">
+          <br>
+          <span class="card-title activator white-text negrita">{{producto.Pro_Nombre}}<i class="material-icons right">more_vert</i></span>
+          {% set r3 = (producto.Pro_PrecioMinimo * 100) / producto.Pro_PrecioMaximo %}
+          {% set ahorro = 100 - r3 %}
+          {% if userAgent == "PC" %}
+          {% set caracteristicas = producto.Pro_Caracteristicas|split('|') %}
+            <ul class="caracteristicasLista">
+            {% for cat in caracteristicas %}
+              <li class="enfasisB fontB2 white-text"><i class="positionRelative material-icons fontB2">check</i>&nbsp;&nbsp;&nbsp; {{cat}}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>DETALLES</span>
+          <p>{{producto.Pro_Descripcion}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 l4">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title"><b>Grupero</b>, es aquella persona que aprovecha inteligentemente las compras grupales.</span>
+          <div class="divider"></div>
+          {% set engrupo = inf_grupo.gruperos %}
+          <span class="card-title negrita">AVANCE DEL GRUPO</span>
+          <ul class="collection center">
+          {% for p in precios %}
+            {% if p.Prp_Desde <= engrupo and p.Prp_A >= engrupo %}
+              <li class="collection-item white-text pormayorUnico pulse" style="border: 3px solid green;">
+              <img src="{{ruta_img}}groupU.svg" class="left" height="40px">
+              <span class="negrita fontD">S/ {{ p.Prp_Precios }}</span><br>
+              De {{p.Prp_Desde}} a {% if p.Prp_A == '9999' %}+{% else %}{{p.Prp_A}}{% endif %} gruperos
+              <span class="right fontC"><i class="material-icons left">arrow_right</i> {{engrupo}}</span>
+            {% else %}
+              <li class="collection-item grey lighten-3">
+              <span>S/ {{ p.Prp_Precios }}</span><br>
+              De {{p.Prp_Desde}} a {% if p.Prp_A == '9999' %}+{% else %}{{p.Prp_A}}{% endif %} gruperos
+            {% endif %}
+            </li>
+          {% endfor %}
+          </ul>
+          {% if inf_grupo %}
+          <span class="fontD2">Este grupo se cierra en <b class="reloj" id="dia"></b> <b class="reloj" id="hora"></b>:<b class="reloj" id="minuto"></b>:<b class="reloj" id="seg"></b></span><br>
+          {% endif %}
+          {% for p in precios %}
+            {% if p.Prp_Desde <= engrupo and p.Prp_A >= engrupo %}
+            <h5>Somos <b>{{engrupo}}</b> gruperos y pagaremos a <b>S/{{ p.Prp_Precios }}</b> cada uno. <br>Con más miembros podría bajar hasta <b>S/{{ producto.Pro_PrecioMinimo}}</b></h5>
+            {% endif %}
+          {% endfor %}
+          <span class="orange-text text-accent-4 fontC center">Ahorras hasta <b>{{ ahorro|round }}%</b></span><br>
+          {# <span class="red-text negrita"><i class="material-icons left tiny">storage</i>Quedan {{producto.SKU_Cantidad}} en STOCK</span><br> #}
+          <span class="green-text negrita"><i class="material-icons left tiny">visibility</i>{{vista.Pro_Vista}}</strong> han visto este producto</span><br>
+          {% if ventas_pro.ventas %}
+          <span class="orange-text negrita"><i class="material-icons left tiny">local_grocery_store</i>{{ventas_pro.ventas}}</strong> vendidos</span><br>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col s12 l4">
+        <div class="card">
+          <div class="card-content row">
+            <span class="card-title center-align">Si somos más, pagamos menos. ¿Qué esperas para unirte?</span>
+            <span class="card-title center-align negrita">SELECCIONA TU MODELO:</span>
+            <div class="divider"></div><br>
+           {% for key, sku in SKU %}  
+            {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto %}
+            {% set colorActual = sku.SKU_Color %}
+            <div class="col s12 l12 sinPadding">
+            <div class="row centrarForzado">
+            <div class="col s2 l2">
+            <div class="positionRelative">
+            {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="fixImg4 redondeo" src="{{ruta_img}}nofoto.png" >
+            {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
+            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}" >
+            {% else %}
+            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class="fixImg4 redondeo" src="{{ruta_img}}{{sku.SKU_Img}}" >
+            {% endif %}
+            {% set colorUnico = "" %}
+            {% set colorHex = " " %}
+            {% set break = false %}
+            {% for col in colores if not break %}
+            {% if col.SKU_Color == colorActual %}
+            <div class="colorEjemplo positionAbsolute bottom0" style="background-color:{{col.Col_Hex}}"></div>
+            {% set colorUnico = col.Col_Nombre %}
+            {% set colorHex = col.Col_Hex %}
+            {% set break = true %}
+            {% endif %}
+            {% endfor %}
+            </div>
+            <br>
+            </div> 
+            <div class="col s10 l10 sinPadding">
+            <div class="row centrarForzado">
+            <div class="col s8 l8 sinPadding"><br>
+            <span class="fontB2 enfasisB">{{producto.Pro_Nombre|title}}</span>
+            </div> 
+            <div class="col s4 l4 filaCant{{key}} center" style="margin-top:8px">
+            {% set count = 0 %}
+            {% set break = false %}
+            {% for skub in SKUB|sort('asc') if not break  %}                        
+            {% if colorActual == skub.SKU_Color  %}
+            <p>
+            <input name="skuGroup"  type="radio" class="browser-default" value="{{skub.SKU_IdSku}}" id="r{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{{colorHex}}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{precios[0].Prp_Desde}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" />
+            <label for="r{{skub.SKU_IdSku}}" class="black-text"><i>{% if colorUnico == '' %}Unicolor{% else %}{{colorUnico|title}}{% endif %}</i></label>
+            </p>
+            {% else %}
+            {% set break = false %} 
+            {% endif %} 
+            {% set count = count + 1 %}
+            {% endfor %}
+            </div>
+            <div class="col s6 right-align precioUnitMobile precioUnitMobile{{key}} hide" style="margin-top:8px">
+            <span class='enfasisC fontB2'><span class='precioproSide'></span> c/u</span>
+            <p class='enfasisA fontD2'>S/<span class='totalproSide'></span> </p>
+            </div>
+            <br><br><br> 
+            </div>
+            </div>
+            </div>
+            </div>
+            {% endif %}
+           {% endfor %}
+          </div>
+          <div class="card-action center">
+            {% if usuario.logueado %}
+                <a class="btn-large anchoTotal pormayorUnico negrita addGroup {% if actComprar or inf_grupo.Gru_Estado == 1 %}disabled{% endif %}" data-idpro="{{producto.Pro_IdProducto}}" data-idusu="{{usuario.id_usuario}}"><i class="material-icons left">group</i>AGRUPARME</a>
+            {% else %}
+              <a class="waves-effect waves-light btn-large anchoTotal pormayorUnico modal-trigger comprar_popup negrita" data-flag="{{flag_login}}" href="#sesion_popup"><i class="material-icons left">group</i>AGRUPARME</a> 
+            {% endif %}
+          </div>
+        </div>
+    </div>
+  </div>
+</main>
+</div>
+{# modal #}
+      <div id="sesion_popup" class="modal white">
+        <div class="modal-content positionRelative" style="padding-top:0px">
+          <a href="#" class="modal-action modal-close waves-effect waves-red btn-flat positionAbsolute"><i class="material-icons sinUser">close</i></a>
+          <div class="row {% if userAgent != "PC" %}centrarForzado{% endif %}">
+            <div class="col s12 {% if userAgent != "PC" %}sinPadding{% endif %}">
+              <ul class="tabs valign-wrapper">
+                <li class="tab col s6"><a href="#iniciar" class=" fontD2 transition">INICIAR SESIÓN</a></li>
+                <li class="tab col s6"><a href="#crear" class=" fontD2 transition">CREAR CUENTA</a></li>
+              </ul>
+            </div>
+            <div id="iniciar" class="col s12" >
+              {{ form_open("", {role: 'form', id: 'formulario_login', class:'form form-horizontal formValidate', method:'post', novalidate:'novalidate'}) }}
+              <div class="row validarPersonales centrarForzado card-content sinPadding">
+                {% if errors %}
+                  <div class="col s12 center hide">
+                    <input type="hidden" class="validarCorreo2" value="Error">
+                  </div> 
+                {% endif %}
+                <br>
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix transitionB">email</i>
+                  <input name="correo" type="email" id="correo"  class=".form-group" required="" placeholder="Ingresa tu correo de registro">
+                  <label for="icon_prefix">Correo Electrónico</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix transitionB">lock</i>
+                  <input name="clave" type="password" id="clave" class=".form-group" required="" autocomplete="new-password" placeholder="Ingresa tu contraseña pormayor.pe">
+                  <label for="icon_prefix">Contraseña</label>
+                </div>
+                <div class="col s12 right-align">
+                  <a class="fontB2 grey-text text-darken-1 btn-flat transitionB btn-flat-not waves-effect waves-light waves-blue" href="{{base_url()}}usuario/olvido_contrasenia">¿Olvidaste tu contraseña?</a>
+                </div>
+                <div class="col s12">
+                  
+                  <div class="divider dividerMargin"></div>
+                  <br>
+                </div>
+                {% if userAgent == "PC" %}
+                  <div class="col l6 center">
+                    <input type="submit" name="btnIngresar" value="INGRESAR A PORMAYOR" class="btn anchoTotal pormayor btnCrear pormayorAccent-text negrita">
+                  </div>
+                {% else %}
+                  <div class="col s5 l6 center">
+                    <input type="submit" name="btnIngresar" value="INGRESAR" class="btn anchoTotal pormayor btnCrear pormayorAccent-text negrita">
+                  </div>
+                {% endif %}
+              </div>
+              {{ form_close() }}
+            </div>
+            <div id="crear" class="col s12">
+              {{ form_open("", {role: 'form', id: 'formulario_registro', class:'form form-horizontal formValidate', method:'post', novalidate:'novalidate'}) }}
+              <div class="row validarTienda centrarForzado card-content sinPadding">
+                {% if (success) %}
+                  {% if form_error('correo') %}
+                    <input type="hidden" class="validarCorreo" value="Error">
+                  {% endif %}
+                {% endif %}
+                <br>
+                <div class="input-field col s12 l6">
+                  <i class="material-icons prefix transitionB">chrome_reader_mode</i>
+                  <input name="dni" id="dni" type="text"  class=".form-group" placeholder="Ingresa tu DNI" required="" {% if (success) %} value="{{set_value('dni')}}{% endif %}">
+                  <label for="dni">DNI</label>
+                </div>
+                <div class="input-field col s12 l6">
+                  <i class="material-icons prefix transitionB">person</i>
+                  <input type="text" name="nombre" id="nombre"  class=".form-group" required="required" {% if (success) %} value="{{set_value('nombre')}}{% endif %}">
+                  <label for="nombre">Nombre Completo</label>
+                </div>
+                <div class="col s12 m12 l6 input-field positionRelative">
+                  <i class="material-icons prefix transitionB">email</i>
+                  <input name="correoA" id="correoA" type="email" class="email .form-group"  required="required" placeholder="Ingresa tu correo de registro" {% if (success) %} value="{{set_value('correoA')}}"{% endif %}>
+                  <label for="icon_prefix">Correo Electrónico</label>
+                  <ul class="autosuffix centrarForzado"></ul>
+                  <input type="hidden" name="correo" id="correo2">
+                </div>
+                <div class="col s12 m12 l6 input-field positionRelative">
+                  <i class="material-icons prefix transitionB">phone</i>
+                  <input name="celular" id="celular" type="number" class=".form-group"  required="required" placeholder="Ingresa tu celular de contacto" {% if (success) %} value="{{set_value('celular')}}"{% endif %}>
+                  <label for="icon_prefix">Celular</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix transitionB">lock</i>
+                  <input name="clave" type="password" id="contrasena"  class=".form-group" required="" autocomplete="new-password" {% if (success) %} value="{{set_value('clave')}}{% endif %}">
+                  <label for="contrasena">Contraseña para <b>pormayor.pe</b></label>
+                </div>
+                <div class="col s12">
+                  <br>
+                    <input type="checkbox" class="filled-in terminosCheck" id="filled-in-box" />
+                    <label style="font-size:1rem" class="grey-text text-darken-3" for="filled-in-box">Acepto los <a class="pormayorUnico-text negrita" href="{{base_url()}}Legal/ ">Términos y Condiciones</a> y las <a class="pormayorUnico-text negrita" href="{{base_url()}}legal/privacidad">Políticas de Privacidad y Confidencialidad de la información</a></label>
+                </div>
+                <div class="col s12">
+                    <br>
+                    <input type="checkbox" class="filled-in" id="publicidad_mat" checked="checked" />
+                    <label style="font-size:1rem" class="grey-text text-darken-3" for="publicidad_mat">Acepto recibir material promocional en mi correo</label>
+                    <input type="hidden" name="publicidad_valor" id="publicidad_valor">
+                </div>
+                <div class="col s12">
+                  <br>
+                  <div class="divider dividerMargin"></div>
+                </div>
+                {% if userAgent == "PC" %}
+                  <div class="col l12 center">
+                    <a class="btn pormayor anchoTotal btnRegistrarse disabled grey-text text-darken-4 negrita">Registrarse</a>
+                    <input type="submit" id="btnRegistrarse" name="btnRegistrarse" class="hide anchoTotal btn pormayor  ">
+                  </div>
+                {% else %}
+                  <div class="col s12 center">
+                    <input type="submit" id="btnRegistrarse" name="btnRegistrarse" value="Registrarse" class="anchoTotal disabled btnRegistrarse btn pormayor  btnCrear grey-text text-darken-4 negrita">
+                  </div>  
+                {% endif %}                
+              </div>
+              {{ form_close() }}
+            </div>
+          </div>
+        </div>
+      </div>
+      {# Comparte para que puedas comprar a <b>S/{{ producto.Pro_PrecioMinimo }}</b> tu <b>{{ producto.Pro_Nombre }}</b> #}
+      <div id="modalG" class="modal pormayorUnico">
+        <div class="modal-content white-text">
+          <h4 class="center">¡Ya eres un grupero!</h5>
+          <h5 class="center">Compartelo y hagamos que el precio baje hasta S/{{producto.Pro_PrecioMinimo}}</h6>
+            <div class="row card-panel sinPadding centrarForzado" {% if userAgent == "PC" %}style="height: 80px;"{% endif %}>
+              {% if userAgent == "PC" %}
+              <div class="col s12 l2 center">
+                <i class="material-icons large black-text">group</i>
+              </div>
+              {% endif %}
+              <div class="col s12 l10">
+                <div class="row">
+                  <div class="col s12 l2 center">{% if userAgent == "PC" %}<br>{% endif %}
+                    {% if userAgent == "PC" %}                      
+                    {% else %}<br>
+                      <span class="black-text">COMPARTIR</span> <br>
+                      <a href="fb-messenger://share/?link=https://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}&app_id=1956467824456142" class="btn blue"><img src="{{ruta_img}}/ms.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">MESSENGER</a>
+                      <a href="whatsapp://send?text=Hola,%20compremos%20esto%20en%20grupo%20https://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}" data-action="share/whatsapp/share" class="btn green"><img src="{{ruta_img}}/wa.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">WHATSAPP</a>
+                    {% endif %}
+                  </div>
+                  <div class="col s12 l3 center"><br>
+                    <div class="fb-like" data-href="http://pormayor.pe/grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}?fb_ref=top_left&fb_source=profile_oneline" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                  </div>
+                  <div class="col s12 l4 center black-text">
+                      <div class="row" style="margin-bottom: 0px">
+                        <div class="col input-field s8">
+                            <input type="text" value="https:{{base_url()}}grupal/nuevo/pormayor-{{producto.Pro_IdProducto}}" id="copiaLink">
+                        </div>
+                        <div class="col s4"><br>
+                            <a onclick="myCopia()" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Copiar el link para compartir">Copiar</a>
+                        </div>
+                      </div>
+                  </div>
+                  {% if userAgent == "PC" %}
+                  <div class="col s4 l3 center">
+                    <span class="pormayorUnico-text flow-text"><strong>{{vista.Pro_Vista}}</strong> han visto este producto</span>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer transparent left-aling">
+          <a href="{{base_url()}}grupal" class="modal-action modal-close waves-effect waves-red btn white negrita red-text"><i class="material-icons left">close</i> CERRAR </a>
+        </div>
+      </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+  var uni = {{actComprar|json_encode()}};
+  if (uni == true) {
+  jQuery(document).ready(function(){
+      jQuery('#modalG').modal();
+      jQuery(document).ready(function(){
+          jQuery('#modalG').modal('open');
+      });
+  });
+  }
+  var rando_precio = {{precios|json_encode()}};
+  var flagVariaciones = false;
+
+  function myCopia() {
+  var copyText = document.getElementById("copiaLink");
+  copyText.select();
+  document.execCommand("copy");
+}
+  function myCopia2() {
+  var copyText = document.getElementById("copiaLink2");
+  copyText.select();
+  document.execCommand("copy");
+}
+
+function countdown(endDate) {
+  let days, hours, minutes, seconds;
+  
+  endDate = new Date(endDate).getTime();
+  
+  if (isNaN(endDate)) {
+  return;
+  }
+  
+  setInterval(calculate, 1000);
+  
+  function calculate() {
+    let startDate = new Date();
+    startDate = startDate.getTime();
+    
+    let timeRemaining = parseInt((endDate - startDate) / 1000);
+    
+    if (timeRemaining >= 0) {
+      days = parseInt(timeRemaining / 86400);
+      timeRemaining = (timeRemaining % 86400);
+      
+      hours = parseInt(timeRemaining / 3600);
+      timeRemaining = (timeRemaining % 3600);
+      
+      minutes = parseInt(timeRemaining / 60);
+      timeRemaining = (timeRemaining % 60);
+      
+      seconds = parseInt(timeRemaining);
+      if (days == 1) {
+        document.getElementById("dia").innerHTML = parseInt(days, 10)+" día";
+      }else{
+        document.getElementById("dia").innerHTML = parseInt(days, 10)+" días";        
+      }
+      document.getElementById("hora").innerHTML = ("0" + hours).slice(-2);
+      document.getElementById("minuto").innerHTML = ("0" + minutes).slice(-2);
+      document.getElementById("seg").innerHTML = ("0" + seconds).slice(-2);
+    } else {
+      return;
+    }
+  }
+}
+
+(function () { 
+  countdown({{inf_grupo.Fecha_Fin|json_encode()}}); 
+}());
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="{{base_url('public/')}}js/jquery.validate.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="{{base_url('public/')}}js/login.js?v={{'now'|date('mdY')}}"></script>
+  <script src="{{base_url('public/')}}js/grupal.js?v={{'now'|date('mdY')}}"></script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout/intranet/template_adm.twig" %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">  
+{% endblock %}
+
+{% block content %}
+    <!-- Page Layout here -->
+    <main>
+      <div class="card">
+          <div class="card-content">
+            {# <span class="card-title">{{usuario.nombre}}</span> #}
+            <table id="tableGrupo" class="display" data-page-length='25'>
+            	<thead>
+            		<tr>
+                        <th>USUARIO</th>
+                        <th>PRODUCTO</th>
+                        <th>GRUPO</th>
+                        <th>PRECIO</th>
+                        <th>TELEFONO</th>
+                        <th>ESTADO</th>
+            		</tr>
+            	</thead>
+            	<tbody>
+            		{% for gru in grupo %}            		
+            		<tr>
+                        <td>{{gru.Per_Nombre}}</td>
+                        <td>{{gru.Pro_Nombre}}</td>
+                        <td class="negrita fontA center">{{gru.Prg_Grupo}}</td>
+                        <td>{{gru.Prg_Precio}}</td>
+                        <td>{{gru.Per_Telefono}}</td>
+                        <td class="white-text" style="font-size:1px;">{% if gru.Prg_Estado == 0 %}F<span class="new badge orange" data-badge-caption="FALTA"></span>{% else %}C<span class="new badge green" data-badge-caption="COMPLETADO"></span>{% endif %}</td>
+            		</tr>            		
+            		{% endfor %}
+            	</tbody>
+            </table>
+          </div>
+		</div>
+    </main>
+
+{% endblock %}
+
+{% block script %}
+	<script>
+	$(document).ready(function(){
+    	var table = $('#tableGrupo').DataTable();
+	});
+	</script>
+{% endblock %}

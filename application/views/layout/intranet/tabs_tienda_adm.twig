@@ -1,0 +1,29 @@
+<!-- GRUPO A -->
+<li class="tab col s3 hide-on-small-only">
+	<a href="{{base_url()}}admin/tiendas/detalle/{{tienda.Tie_IdTienda}}" {% if funcion == "detalles" %}class="active"{% endif %}  target="_self">Datos de la tienda</a>
+</li>
+<li class="tab col s3 show-on-small hide-on-med-and-up">
+	<a href="{{base_url()}}admin/tiendas/detalle/{{tienda.Tie_IdTienda}}" {% if funcion == "detalles" %}class="active"{% endif %}  target="_self"><i class="material-icons">face</i></a>
+</li>
+<!-- GRUPO B -->
+<li class="tab col s3 hide-on-small-only">
+	<a  href="{{base_url()}}admin/tiendas/locales/{{tienda.Tie_IdTienda}}" {% if funcion == "locales" %}class="active"{% endif %} target="_self">Locales 
+	<span class="new badge" style="padding:5px 10px; float: none" >{{cantidad_locales}}</span></a> 
+</li>
+<li class="tab col s3 show-on-small hide-on-med-and-up">
+	<a  href="{{base_url()}}admin/tiendas/locales/{{tienda.Tie_IdTienda}}" {% if funcion == "locales" %}class="active"{% endif %} target="_self"><i class="material-icons">store</i></a> 
+</li>
+<!-- GRUPO C -->
+<li class="tab col s3 hide-on-small-only">
+	<a href="{{base_url()}}admin/tiendas/usuarios/{{tienda.Tie_IdTienda}}" {% if funcion == "usuarios" %}class="active"{% endif %} target="_self">Usuarios <span class="new badge" style="padding:5px 10px;  float: none" >{{cantidad_usuarios}}</span></a>
+</li>
+<li class="tab col s3 show-on-small hide-on-med-and-up">
+	<a href="{{base_url()}}admin/tiendas/usuarios/{{tienda.Tie_IdTienda}}" {% if funcion == "usuarios" %}class="active"{% endif %} target="_self"><i class="material-icons">group</i></a>
+</li>
+<!-- GRUPO D -->
+<li class="tab col s3 hide-on-small-only">
+	<a href="{{base_url()}}admin/tiendas/mas_info/{{tienda.Tie_IdTienda}}" {% if funcion == "mas_info" %}class="active"{% endif %} target="_self">Más info</a>
+</li>
+<li class="tab col s3 show-on-small hide-on-med-and-up">
+	<a href="{{base_url()}}admin/tiendas/mas_info/{{tienda.Tie_IdTienda}}" {% if funcion == "mas_info" %}class="active"{% endif %} target="_self"><i class="material-icons">more_horiz</i></a>
+</li>

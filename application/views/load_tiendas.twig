@@ -1,0 +1,40 @@
+{% if tiendas %}
+  {% for tie in tiendas %}
+    <div class="col s6 m4 l3">
+      <a class="center enfasisA comoBotom" href="http://{{tie.Tie_Subdominio}}.{{dominio}}" data-idproducto="{{pro.Pro_IdProducto}}">
+        <div class="card hoverable tiendasAll">
+          <div class="center" style="height:100px">
+            {% if tie.Tie_Logo %}
+              <img src="{{ruta_img}}{{tie.Tie_Logo}}" class="fixImg3 redondeo" style="padding: 5px;">
+            {% else %}
+              <img src="{{ruta_img}}sinlogo.webp" class="fixImg3 redondeo" style="padding: 5px;">
+            {% endif %}
+          </div>
+          <div class="card-content cardContentCustom center valign-wrapper pormayorAccent white-text sinPadding">
+            <div class="center anchoTotal"> {{tie.Tie_Nombre|title}}</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+  <div class="col s12 center ">
+    {# <a href="{{base_url()}}/index/tiendas" class="btn btn-large pormayorUnico">Ver todas las tiendas</a> #}
+  </div>
+{% else %}
+	<div class="card">
+		<div class="card-content center">
+      <div class="row">
+        <div class="center col s12 m12 l12" style="margin-top: 20px;">
+          <img src="{{ruta_img}}emptyStore.webp" height="150"></img>
+        </div>
+        <div class="center col s12 m12 l12">
+          <h5>Esta tienda aún no existe</h5>
+          <p class="enfasisB">Puedes probar a buscar otra tienda y seguro tendrás mas suerte...</p>
+        </div>
+        <div class="center col s12 m12 l12" style="margin-top:15px">
+           {# <a href="{{base_url()}}/index/tiendas" class="btn pormayorUnico">Ver todas las tiendas</a> #}
+        </div>
+      </div>
+		</div>
+	</div>
+{% endif %}

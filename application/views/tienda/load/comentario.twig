@@ -1,0 +1,15 @@
+<ul class="collection">
+{% for com in comentarios %}
+    <li class="collection-item">
+      <article >
+        {{com.Com_Comentario}} <span style="font-size:0.7rem" class="right">{{com.Com_FechaCreacion|date('d/m/Y')}}</span> 
+      </article>
+      {% if com.Res_Respuesta %}
+        <article class="grey-text" style="margin-left: 20px">{{com.Res_Respuesta}}
+          <span style="font-size:0.7rem" class="right">{{com.Res_FechaCreacion|date('d/m/Y')}}</span>
+        </article>
+      {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{# </ul>  #}

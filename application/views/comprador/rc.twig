@@ -1,0 +1,158 @@
+{% extends "layout/intranet/template_usu.twig" %}
+
+{% block content %} 
+{% set idProducto = idProducto + 1 %}
+    <!-- Page Layout here -->
+    <main class="container"> 
+      <h5 class="center">Preguntas</h5>
+      {% set idProducto = 0 %}
+      {% if respuesta_comentario is not empty %}
+        {% for com in respuesta_comentario %}
+          {% if idProducto == 0 %}
+            <div class="card horizontal cardCustomComment">
+              <div class="sideBorder pormayorAccent"></div>
+              <div class="positionAbsolute center" style="top:5px; left:0; right:0">
+                <a class="btn pormayorUnico detalleProducto comoBoton" data-idproducto="{{com.Pro_IdProducto}}" data-nombre="{{com.Pro_Nombre}}" data-subdominio="{{com.Tie_Subdominio}}">Ver producto</a>
+                <br>
+                <span class="fontA muayuscula">{{com.Pro_Nombre|title}}</span>
+              </div>
+              <div class="card-image valign-wrapper" style="max-width:60px;margin-top:70px">
+                <img src="{{ruta_img}}{{com.Prf_Img}}" class="responsive-img">
+              </div>
+              <div class="card-stacked" style="margin-top:70px">
+                <div class="card-content sinPadding">
+                  <div class="cardContentFix">
+                    <article>
+                      <i class="material-icons left pormayorAccent-text" >chat</i>{{com.Com_Comentario}}<span class="grey-text" style="font-size:0.7rem;"> - {{com.Com_FechaCreacion|date('d/m/Y  h:i')}} - </span>  
+                    </article>  
+                    {% if com.Res_Respuesta %}        
+                      <article>
+                        <i class="material-icons left pormayorAccent-text" >comment</i><span class="commentRespuesta" data-idrespuesta="{{com.Res_IdRespuesta}}">{{com.Res_Respuesta}}</span>
+                      </article> 
+                    {% else %}
+                      <article>
+                        <i class="material-icons left" style="color:#c7c7c7">comment</i><span class="commentRespuesta" data-idrespuesta="{{com.Res_IdRespuesta}}">Sin Respuesta</span>
+                      </article>  
+                    {% endif %}
+                  </div>
+                </div>
+              {% set idProducto = com.Pro_IdProducto %}
+          {% elseif idProducto == com.Pro_IdProducto  %}
+             <div class="card-content sinPadding" style="padding-top:0px">
+              <div class="cardContentFix">
+                <article>
+                  <i class="material-icons left" >chat</i>{{com.Com_Comentario}}<span class="grey-text" style="font-size:0.7rem;"> - {{com.Com_FechaCreacion|date('d/m/Y  h:i')}} - </span>  
+                </article>          
+                {% if com.Res_Respuesta %}        
+                  <article>
+                    <i class="material-icons left">comment</i><span class="commentRespuesta" data-idrespuesta="{{com.Res_IdRespuesta}}">{{com.Res_Respuesta}}</span>
+                  </article> 
+                {% else %}
+                  <article>
+                    <i class="material-icons left" style="color:#c7c7c7">comment</i><span class="commentRespuesta" data-idrespuesta="{{com.Res_IdRespuesta}}">Sin Respuesta</span>
+                  </article>  
+                {% endif %}
+              </div>
+            </div>
+            {% set idProducto = com.Pro_IdProducto %}
+          {% elseif idProducto != com.Pro_IdProducto %}
+              </div>
+            </div>
+            <div class="card horizontal cardCustomComment">
+              <div class="sideBorder pormayorAccent"></div>
+              <div class="positionAbsolute center" style="top:5px; left:0; right:0">
+                <a class="btn pormayorUnico detalleProducto comoBoton" data-idproducto="{{com.Pro_IdProducto}}" data-nombre="{{com.Pro_Nombre}}" data-subdominio="{{com.Tie_Subdominio}}">Ver producto</a>
+                <br>
+                <span class="fontA">{{com.Pro_Nombre|title}}</span>
+              </div>
+              <div class="card-image valign-wrapper" style="max-width:60px;margin-top:70px">
+                <img src="{{ruta_img}}{{com.Prf_Img}}" class="responsive-img">
+              </div>
+              <div class="card-stacked" style="margin-top:70px">
+                <div class="card-content sinPadding">
+                  <div class="cardContentFix">
+                    <article>
+                      <i class="material-icons left" >chat</i>{{com.Com_Comentario}}<span class="grey-text" style="font-size:0.7rem;"> - {{com.Com_FechaCreacion|date('d/m/Y  h:i')}} - </span>  
+                    </article>          
+                    {% if com.Res_Respuesta %}        
+                      <article>
+                        <i class="material-icons left">comment</i><span class="commentRespuesta" data-idrespuesta="{{com.Res_IdRespuesta}}">{{com.Res_Respuesta}}</span>
+                      </article>
+                    {% else %}
+                      <article>
+                        <i class="material-icons left" style="color:#c7c7c7">comment</i><span class="commentRespuesta" data-idrespuesta="{{com.Res_IdRespuesta}}">Sin Respuesta</span>
+                      </article>  
+                    {% endif %}
+                  </div>
+                </div> 
+            {% set idProducto = com.Pro_IdProducto %}
+          {% endif %}
+        {% endfor %}
+        {% else %}
+            <div class="center col s12 m12 l12" style="margin-top: 20px;">
+              <img src="{{ruta_img}}emptyQuestion.webp" height="150"></img>
+            </div>
+            <div class="center col s12 m12 l12">
+              <h5>Sin preguntas relizadas</h5>
+              <p class="enfasisB">Aún no preguntas sobre ningun producto... ¿Seguro?</p>
+            </div>
+            <div class="center col s12 m12 l12" style="margin:15px 0px">
+              <a href="{{base_url()}}" class="btn pormayorUnico">Comienza a cotizar</a>
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+      /***************NOTIFICACIONES********************/
+      var respuestas=[];
+      var i = 0;
+      $('.commentRespuesta').each(function(){
+
+       respuestas[i] = $(this).data('idrespuesta');
+       i++;
+      });
+      $.ajax({
+        data:{
+          'operacion' : 'comentarios',
+          'respuestas' : respuestas,
+        },
+        type: "POST",
+        url: base_url+'comprador/index/ajax_update_noti',
+        success: function(data){
+
+        }
+      });  
+
+      $('.detalleProducto').click(function(){
+        var Pro_IdProducto = $(this).data('idproducto');
+        var Pro_Nombre = $(this).data('nombre');
+        var Nombre = Pro_Nombre.toString();
+        var PMP = "pormayor-";
+        var subdominio = $(this).data('subdominio');
+        // proGuion = Nombre.replace(" ", "-");
+        proGuion = buildSlugValue(Nombre);
+        res = PMP.concat(Pro_IdProducto);
+        res2 = res.concat('-');
+        pro = res2.concat(proGuion);
+        location.href= "http://"+subdominio+'.pormayor.pe/tienda/productos/dp/'+pro ;
+      });
+
+      function buildSlugValue(str) {
+      str = str.replace(/^\s+|\s+$/g, ''); // trim
+      str = str.toLowerCase();
+      // remove accents, swap ñ for n, etc
+      var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
+      var to = "aaaaaeeeeeiiiiooooouuuunc------";
+      for (var i = 0, l = from.length; i < l; i++) {
+          str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      }
+      str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+          .replace(/\s+/g, '-') // collapse whitespace and replace by -
+          .replace(/-+/g, '-'); // collapse dashes
+      return str;
+    } 
+
+    </script>
+{% endblock %}

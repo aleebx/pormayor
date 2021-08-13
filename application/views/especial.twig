@@ -1,0 +1,220 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}   
+<style type="text/css">
+  .select-dropdown{
+    text-align: center;
+  }
+  .truncate{
+    text-transform: none !important;
+  }
+  h6 i{
+    font-size: 0.8rem;
+  }
+  .tituloTienda  img{
+    height: 34px;
+  }
+  .tabs .indicator {
+    height: 2.5px !important;
+    background-color: #21478F;
+  }
+  .tabs .tab a:hover, .tabs .tab a.active {
+    color: #21478F;
+  }
+  .btn, .btn:active, .btn:focus{
+    background-color: #21478F;
+  }
+</style>
+{% endblock %}
+{% block content %}
+  <main class="container fixContainer">
+    <br class="hide-on-large-only">
+    <br class="hide-on-large-only">
+    <div class="row centrarForzado">
+      <div class="col l12 sinPadding">
+        {% if userAgent == "PC" %}
+        <img class="anchoTotal" alt="Productos Electrohogar pormayor.pe" src="{{ruta_img}}bgEspecial.webp">
+        {% else %}
+        <img class="anchoTotal" alt="Productos Electrohogar pormayor.pe" src="{{ruta_img}}bgEspecialM.webp">    
+        {% endif %}
+      </div>
+      <div class="containerListProd col s12 sinPadding">
+        {% if producto[0].Des_Nombre %}
+          <ol class="hide" itemscope itemtype="http://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+              <a itemprop="item" class="pormayorUnico-text breadcrumb"><span itemprop="name">{{producto[0].Cat_Nombre}}</span></a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+              <a itemprop="item" class="pormayorUnico-text breadcrumb "><span itemprop="name">{{producto[0].Suc_Nombre}}</span></a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+              <a itemprop="item" class="pormayorUnico-text breadcrumb "><span itemprop="name">{{producto[0].Des_Nombre}}</span></a>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        {% endif %}
+
+        {% if userAgent == "PC" %}
+          <div class="row centrarForzado">
+            <br>
+            <div class="col s12 m12 l4 sideBarProd white z-depth-1 unidadSticky" style="padding:10px 20px">
+              <div class="positionRelative">
+                <div class="sideB" data-scroll>
+                  <h5 class="center">Filtros</h5>
+                  <div class="row centrarForzado">
+                    <div class="col s12 sinPadding">
+                      <div class="center">
+                        <button class="btn vista btnOrderBy pcFiltro" id="btn_cuadricula" data-dispositivo="pc" data-tipo="cuadricula"><i class="material-icons left">apps</i>Ver en tarjetas</button>
+                        <button class="btn-flat boton_no_seleccionado vista btnOrderBy pcFiltro pormayorUnico-text" data-filtronro="{{filtro_nro}}" data-filtro="{{filtro_tipo}}" id="btn_listado" data-dispositivo="pc" data-tipo="listado"><i class="material-icons left">list</i>Ver en listado</button>
+                      </div>
+                      <br>
+                    </div>
+
+                    <div class="col s12 sinPadding">
+                      <label class="enfasisB">Filtrar por Marca</label>
+                      <select class="browser-default filtroMarcaSelect">
+                        <option value="" disabled selected>Selecciona una marca</option>
+                        <option value="all">Todas</option>
+                        {% for prm in producto_marcas %}
+                            <option value="{{prm.Pro_Marca|title|replace({' ': '', '"' : "", "'" : ""})}}">{{prm.Pro_Marca|title}}</option>
+                        {% endfor %}
+                      </select>
+                      <div class="dividerMargin"></div>
+                    </div>
+                    <div class="col s12 sinPadding">
+                      <label class="enfasisB">Filtrar por Estado del producto</label>
+                      <select class="browser-default filtroEdoSelect" >
+                        <option value="" disabled selected>Selecciona un estado</option>
+                        <option value="all">Ambos</option>
+                        <option value="Nuevo">Nuevo</option>
+                        <option value="Reacondicionado">Reacondicionado</option>
+                      </select>
+                      <div class="dividerMargin"></div>
+                    </div>
+                    <div class="col s12 sinPadding">
+                      <label class="enfasisB">Organizar</label>
+                      <select class="browser-default filtroPreciosSelect" >
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="ninguno">Ninguno</option>
+                        <option value="menor">Precio menor</option>
+                        <option value="mayor">Precio mayor</option>
+                        <option value="fechaMenos">Más nuevo</option>
+                        <option value="fechaMas">Más viejo</option>
+                      </select>
+                      <div class="dividerMargin"></div>
+                    </div>
+                    <div class="col s12  sinPadding">
+                      <div class="divider dividerMargin"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m12 l4 center hide white z-depth-1 " style="padding:10px 20px">
+              <div class="preloader-wrapper big active centrarForzado">
+                <div class="spinner-layer spinner-blue-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div><div class="gap-patch">
+                    <div class="circle"></div>
+                  </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 l8 ajax_filtro_productos containerProductos">
+              {% for pro in productos_campana %}
+                {#{% if  pro.Pro_Estado != 3 and not pro.Prf_Img is empty %}#} 
+                {% if  pro.Pro_Estado != 3 %}
+                  <div class="col s6 m4 l4 mix filtroProductoall filtroCatall filtroCat{{pro.Cat_IdCategoria}} filtroMarcaall filtroEdoall filtroEdo{{pro.Pro_EdoGarantia|title}} filtroMarca{{pro.Pro_Marca|title|replace({' ': '', '"' : "", "'" : ""})}}" data-idpro="{{pro.Pro_IdProducto}}" data-preciomin="{{pro.Pro_PrecioMinimo}}" data-fecha="{{pro.Pro_FechaCreacion}}">
+                    <div class="card hoverable centrarForzado" itemscope itemtype="http://schema.org/Product">
+                      <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" class=" comoBoton grey-text text-darken-3" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+                      <div class="card-content center sinPadding positionRelative">
+                        {% if pro.Prf_Thumb != "" %}
+                          <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Thumb}}" class="b-lazy containImgFilter anchoTotal" >
+                        {% else %}
+                          <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Img}}" class="b-lazy containImgFilter anchoTotal"> 
+                        {% endif %}
+                        
+                        {% if pro.Pro_Oferta == 1 %}
+                          <img class="sales positionAbsolute positionAbsolute top0 left0" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}ofertaA.webp" type="image" alt="">
+                        {% endif %}
+                        {% include "layout/favoritos_mostrar.twig" %}
+                      </div>
+                      <div class="enfasisD divider"></div>
+                      <div class="card-action center cardActionProdFix">
+                        <div class="hide fontB2 enfasisB" itemprop="description">{{pro.Pro_Descripcion|replace({'<p>': "", '</p>':"",'<strong>': "", '</strong>':"",'<br>': "", '</br>':"",'&nbsp;':" ",'<ul>':" ",'</ul>':" ",'</li>':" ",'<li>':" ",'<table>':" ",'</table>':" ",'</tr>':" ",'<tr>':" ",'</td>':" ",'<td>':" ",'<div>':" ",'</div>':" "})|slice(0, 150)|title}}...</div>
+                        <div class="hide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+                        <span itemprop="lowPrice">{{pro.Pro_PrecioMinimo}}</span>
+                        <span itemprop="highPrice">{{pro.Pro_PrecioMaximo}}</span>
+                        <meta itemprop="priceCurrency" content="PEN" />
+                        </div>
+                        <span itemprop="name" class="truncate fontA" title="{{pro.Pro_Nombre}}">{{pro.Pro_Nombre|title}}</span><h6><i>Desde &nbsp;</i><span class="pormayorUnico-text fontC"><b>S/ {{pro.Pro_PrecioMinimo}}</b></span></h6>     
+                      </div>
+                      </a>
+                    </div>
+                    <br><br>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          <div class="row centrarForzado">
+            <br>
+            <div class="col s12 sinPadding ajax_filtro_productos containerProductos">
+              {% for pro in productos_campana %}
+                {#{% if  pro.Pro_Estado != 3 and not pro.Prf_Img is empty %}#} 
+                {% if  pro.Pro_Estado != 3 %}
+                  <div class="col s12 mix sinPadding filtroProductoall filtroCatall filtroCat{{pro.Cat_IdCategoria}} filtroMarcaall filtroEdoall filtroEdo{{pro.Pro_EdoGarantia|title}} filtroMarca{{pro.Pro_Marca|title|replace({' ': '', '"' : "", "'" : ""})}}" data-idpro="{{pro.Pro_IdProducto}}" data-preciomin="{{pro.Pro_PrecioMinimo}}" data-idpro="{{pro.Pro_IdProducto}}" data-preciomin="{{pro.Pro_PrecioMinimo}}" data-fecha="{{pro.Pro_FechaCreacion}}">
+                    <div class="card hoverable centrarForzado">
+                      <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" class=" comoBoton grey-text text-darken-3" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}" itemscope itemtype="http://schema.org/Product">
+                        <div class="row centrarForzado">
+                          <div class="col s4 positionRelative sinPadding">
+                            {% if pro.Prf_Thumb != "" %}
+                              <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Thumb}}" class=" b-lazy containImgFilter anchoTotal" >
+                            {% else %}
+                              <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Img}}" class="b-lazy containImgFilter anchoTotal"> 
+                            {% endif %}
+                            {% if pro.Pro_Oferta == 1 %}
+                              <img class="sales positionAbsolute positionAbsolute top0 left0" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}ofertaA.webp" type="image" alt="">
+                            {% endif %}
+                            {% include "layout/favoritos_mostrar.twig" %}
+                          </div>
+                          <div class="col s8 positionRelative" style="height:160px">
+                            <br>
+                            <span itemprop="name" class="truncate fontD2" style="font-weight: 400" title="{{pro.Pro_Nombre}}">{{pro.Pro_Nombre|title}}</span>
+                            <div class="enfasisD divider " style="margin: 5px 0px"></div>
+                              <div class="fontB2 enfasisB" itemprop="description">{{pro.Pro_Descripcion|replace({'<p>': "", '</p>':"",'<strong>': "", '</strong>':"",'<br>': "", '</br>':"",'&nbsp;':" ",'<ul>':" ",'</ul>':" ",'</li>':" ",'<li>':" ",'<table>':" ",'</table>':" ",'</tr>':" ",'<tr>':" ",'</td>':" ",'<td>':" ",'<tbody>':" ",'</tbody>':" ",'<figure class="table">':" ",'</figure>':" ",'<div>':" ",'</div>':" "})|slice(0, 90)|title}}...</div>
+                                
+                              <div class="hide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+                              <span itemprop="lowPrice">{{pro.Pro_PrecioMinimo}}</span>
+                              <span itemprop="highPrice">{{pro.Pro_PrecioMaximo}}</span>
+                              <meta itemprop="priceCurrency" content="PEN" />
+                              </div>
+                              <h6 class="positionAbsolute bottom0 precioProVista"><i>Desde &nbsp;</i><span class="pormayorUnico-text fontC"><b>S/ {{pro.Pro_PrecioMinimo}}</b></span></h6>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <br>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div> 
+        {% endif %}
+      </div>
+    </div>
+	</main>
+{% endblock %}
+
+{% block script %}
+  <script>var busqueda_flag = "{{busqueda_flag}}";</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="{{base_url('public/')}}js/productos/favoritos.js?v={{now|date('i:s')}}"></script>
+  <script src="{{base_url('public/')}}js/especial.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

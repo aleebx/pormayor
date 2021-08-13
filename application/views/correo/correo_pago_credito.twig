@@ -1,0 +1,163 @@
+{% extends "layout/correo.twig" %}
+
+{% block content %}
+<tr style="border-top: #f6b21d 5px solid;">
+  <td bgcolor="#3b3b3d" align="center" style="padding: 20px 0px 20px 0px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+  Confirmación de pago conTarjeta
+  </td>
+</tr>
+<tr>
+    <td style="padding: 20px 0 30px 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td style="padding: 0 0 20px 0; color: #383838; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+               <b>{{nombre_usuario|title}}</b>, tu compra se proceso exitosamente, nos comunicaremos con la tienda para que tus productos sean entregados lo más rápido posible.</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:#383838;border-bottom: 1px solid rgba(0,0,0,0.2)" width="" valign="top"><b>DATOS DE COMPRA</b>
+              </td>
+            </tr>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <table style="table-layout: fixed" width="100%">
+                  <thead>
+                    <tr>
+                      <th width="50%"></th>
+                      <th width="50%"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="width:100%;padding:10px 10px;background:#eaeaea;border-radius: 5px;color:#616161"><span style="color:#9c9c9c;font-size: 12px"># Pedido:</span> <b>10{{infoCompra.compra_pedidoCompra}}V</b> </td>
+                      <td style="width:100%;padding:10px 10px;background:#eaeaea;border-radius: 5px;color:#616161"><span style="color:#9c9c9c;font-size: 12px">Fecha:</span> {{infoCompra.compra_fechaCompra|date("d/m/Y \\- g:ia")}}  </td>
+                    </tr> 
+                    <tr>
+                      <td style="width:100%;padding:10px 10px;background:#eaeaea;border-radius: 5px;color:#616161"><span style="color:#9c9c9c;font-size: 12px"> Tarjeta:</span> {{infoCompra.compra_nroTarjeta}} </td>
+                      <td style="width:100%;padding:10px 10px;background:#eaeaea;border-radius: 5px;color:#616161"><span style="color:#9c9c9c;font-size: 12px">Total Compra:</span> <b>S/ {{infoCompra.compra_Total}}</b></td>
+                    </tr> 
+                    <tr>
+                      <td style="width:100%;padding:10px 10px;background:#eaeaea;border-radius: 5px;color:#616161"><span style="color:#9c9c9c;font-size: 12px"> Código:</span> {{infoCompra.compra_codAccion}} </td>
+                      <td style="width:100%;padding:10px 10px;background:#eaeaea;border-radius: 5px;color:#616161"><span style="color:#9c9c9c;font-size: 12px">Nombre:</span> {{nombre_usuario|title}}</td>
+                    </tr> 
+                    <tr>
+                      <td colspan="2" style="width:100%;padding:10px 10px;background:#eaeaea;border-radius: 5px;color:#616161"><span style="color:#9c9c9c;font-size: 12px"> Dirección:</span> {{infoCompra.compra_direccion}} </td>
+                    </tr> 
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:#383838;border-bottom: 1px solid rgba(0,0,0,0.2)" width="" valign="top"><b>RESUMEN DE COMPRA</b>
+              </td>
+            </tr>
+            {% for id_tiendas in array_id_tienda %}
+              <tr>
+                <td><br><br></td>
+              </tr>
+              <tr>
+                <td style="font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:#383838;font-weight: 600"><a style="text-decoration: none;color: #21478f;" target="_blank" href="https://{{id_tiendas.Tie_Subdominio}}.pormayor.pe">TIENDA {{id_tiendas.Tie_Nombre|upper}}</a></td>
+              </tr>
+              <tr>
+                <td style="height: 10px;"></td>
+              </tr>
+              <tr>
+                <td>
+                  <table style="table-layout: fixed" width="100%">
+                    <thead>
+                      <tr>
+                        <th width="67%"></th>
+                        <th width="3%"></th>
+                        <th width="30%"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="width:100%;padding:12px 10px;background:#eaeaea;border-radius: 5px;color:#616161"><span style="color:#9c9c9c;font-size: 12px">Nombre:</span> {{id_tiendas.Tie_Nombre|title}} </td>
+                        <td></td>
+                        <td style="width:100%;padding:12px 10px;background:#eaeaea;border-radius: 5px;color:#616161"><span style="color:#9c9c9c;font-size: 12px">Teléfono:</span> {{id_tiendas.Tie_Telefono}}</td>
+                      </tr> 
+                  
+                      <tr>
+                        <td><div style="height: 10px"></div></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <table style="table-layout: fixed" border="0" cellpadding="0" cellspacing="0" width="550px">
+                        <thead style="background-color: #FEC00F;">
+                          <tr>
+                              <th style="background-color:  #FFFFFF;" width="80"></th>
+                              <th style="padding: 8px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;" width="150" valign="middle">PRODUCTO</th>
+                              <th style="padding: 8px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;" width="30" valign="middle">CANT.</th>
+                              <th style="padding: 8px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;" width="60" valign="middle">PRECIO UNITARIO</th>
+                              <th style="padding: 8px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;" width="60" valign="middle">IMPORTE</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% set total = 0 %}
+                          {% for items in dataCarrito %}
+                            {% if id_tiendas.Tie_IdTienda == items.idtienda %}
+                            {% set preUni = items.price / items.qty %}
+                                <tr>
+                                  <td style="border-bottom: 1px solid #CBCBCB; padding: 0px;" valign="top">
+                                    <div style="margin:0 auto; margin:5px; width:100px; height: 60px;  border-radius: 10px;"><img style="width: 100%; height: 55px; object-fit: contain;" src="http://pormayor.pe/img/{{items.img}}"></div>
+                                </td>
+                                  <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                                    {{items.name|title}}
+                                  </td>
+                                  <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                                    {{items.qty}}<br>unid(s)
+                                  </td>
+                                <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                                    {{preUni}}
+                                </td>
+                                <td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                                  {{items.price}}
+                                </td>
+                              </tr>
+                              {% set total = total + items.price %}
+                            {% endif %}
+                          {% endfor %}
+                          {% set totalEnvio = costoEnvio|round() %}
+                         {% set totalPagar = total + totalEnvio %}
+                          <tr>
+                              <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 10px; font-size: 15px;text-align:left;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                              COSTO DE PRODUCTO
+                            </td>
+                            <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:right;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                              <b>S/. {{total|number_format(2, '.', ' ')}}</b>
+                            </td>
+                          </tr>
+
+                          <tr>
+                              <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 10px; font-size: 15px;text-align:left;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                              COSTO DE ENVÍO
+                            </td>
+                            <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:right;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                              <b>S/. {{totalEnvio|number_format(2, '.', ' ')}}</b>
+                            </td>
+                          </tr>
+
+                          <tr>
+                              <td colspan="3" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 10px; font-size: 15px;text-align:left;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                              TOTAL A PAGAR
+                            </td>
+                            <td colspan="2" style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:right;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+                              <b>S/. {{totalPagar|number_format(2, '.', ' ')}}</b>
+                            </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </td>
+              </tr>   
+            {% endfor %}
+        </table>
+    </td>
+</tr>
+{% endblock %}

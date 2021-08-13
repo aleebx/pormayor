@@ -1,0 +1,12 @@
+    <select id="sucSelect" class="browser-default">
+        	<option value="" disabled selected>Seleccione la SubCategoria</option>  
+        {% for suc in subcategoria %}
+        	<option value="{{suc.Suc_IdSubCategoria}}">{{suc.Suc_Nombre}}</option>  
+		{% endfor %}                    
+    </select>
+    {# <label>Sub Categoría</label> #}
+
+
+{% block script %}
+    <script src="{{base_url('public/')}}js/tienda/selSuc.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+{% endblock %}

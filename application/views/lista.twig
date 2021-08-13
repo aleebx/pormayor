@@ -1,0 +1,54 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+{% endblock %}
+{% block content %}
+  <main class="container">
+    <table id="listaP">
+      <thead>
+        <tr>
+          <th>IMG</th>
+          <th>COD</th>
+          <th>PRODUCTO</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for pro in producto %}
+        <tr>
+          <td><img src="{{ruta_img}}{{ pro.Prf_Img }}" height="40px"></td>
+          <td>{{ pro.Pro_IdProducto }}</td>
+          <td>{{ pro.Pro_Nombre }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+	</main>
+{% endblock %}
+{% block script %}
+<script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script>
+  $(document).ready( function () {
+          $('#listaP').DataTable({
+          "language": {
+          "thousands":",",
+          "lengthMenu":"",
+          "infoPostFix":"",
+          "search":"Buscar producto:",
+          "processing":"Procesando...",
+          "loadingRecords":"Cargando...",
+          "info":"Página _PAGE_ de _PAGES_",
+          "zeroRecords":"No se encontro nada",
+          "infoEmpty":"No hay registros disponibles",
+          "emptyTable":"No hay información en la tabla",
+          "infoFiltered":"(filtrado de _MAX_ registros)",
+          "paginate": {
+            "last":"Último",
+            "first":"Primero",
+            "next":"Siguiente",
+            "previous":"Anterior"
+          }
+        }
+      });
+    } );
+  </script>
+{% endblock %}

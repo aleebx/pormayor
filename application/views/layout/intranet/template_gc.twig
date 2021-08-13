@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>      
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{pagina.titulo}}</title>    
+    <meta name="description" content="Crea tu propia tienda o explora tiendas de mayoristas. Adquiere o vende tu mercancía de manera segura. Facilito y rapidito. Primer portal de ventas por mayor en Perú.">
+    <meta name="keywords" content="Ventas por mayor peru,Ropa al por mayor peru,Zapatos por mayor,Comprar al por mayor,Barato">
+    <link rel="icon" href="{{ruta_img}}logo.png">
+    {# <link rel="manifest" href="{{base_url('public/intranet/manifest.json')}}"> #}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen">
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/materialize.min.css')}}"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/jquery-confirm.min.css')}}"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/')}}intranet/css/templates.min.css?v={{now|date('i:s')}}"  media="screen,projection"/>
+    {% block head %} {% endblock %}
+    <style type="text/css">
+    header, main, footer {
+      padding-left: 300px;
+    }
+
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }
+    </style>
+   </head>
+  <body> 
+  <header>
+    <div class="navbar-fixed hide-on-large-only" id="inicio">
+      <nav class="nav-extended pormayor" data-color="#fff159">
+        <div  class="sinBordeBottom nav-wrapper row navRowMobile">
+          <div class="col s2 m2 l2 center hide-on-large-only colMenuButton sinPadding" style="height:56px">
+            <a href="#" data-activates="slide-out" class="centrarForzado button-collapse">
+              <img src="{{ruta_img}}menuIcon.svg" width="35">
+            </a>
+          </div>
+          <div class="col s3 m2 l2 center colMenuLogo sinPadding" >
+            <div class="logoNegativo">
+              <a href="{{base_url()}}">
+                <img src="{{ruta_img}}logoNegativo.svg" type="image/svg+xml" class="">
+              </a>
+            </div>
+          </div>  
+        </div>
+      </nav> 
+    </div> 
+    <ul id="slide-out" class="side-nav fixed grey darken-4 z-depth-3 menuTex"> 
+      <li class="headerMenu center valign-wrapper">
+        <div class="logoIcon">
+          <a href="{{base_url()}}"><img src="{{ruta_img}}LogoPositivo.svg" class="valign-wrapper" height="40"></a>
+        </div>
+      </li>
+      {# <li class="itemMenu"><div class="acentBar"></div><a href="{{base_url()}}" class="waves-effect"><i class="material-icons">account_box</i>Perfil</a></li> #}
+      <li class="itemMenu"><div class="acentBar"></div><a href="{{base_url()}}gestor/gestion" class="waves-effect"><i class="material-icons">store</i>Gestión Tienda</a></li>
+      {# <li class="itemMenu"><div class="acentBar"></div><a href="{{base_url()}}gestor/gestion/comisiones" class="waves-effect"><i class="material-icons">store</i>Comisiones</a></li> #}
+      <li class="itemMenu"><div class="acentBar"></div><a href="{{base_url()}}gestor/gestion/agenda" class="waves-effect"><i class="material-icons">store</i>Agenda</a></li>
+      <li class="containerAvatar valign-wrapper">
+        <div class="avatarComprador" style="top: 2px;">
+          <a class="sinPadding"href="{{base_url()}}usuario/perfil">
+            <i style="font-size: 50px; color: rgba(255,255,255,0.8)" class="material-icons">account_circle</i>
+          </a>
+        </div>
+        <div class="avatarContainerComprador flow-text" style="top: 15px;">
+          <span class="avatarText1">{{usuario.nombre}}</span>
+        </div>
+        <a style="right: -180px;" class="sesionBtn avatarItem waves-effect right tooltipped" data-delay="30" data-position="top" data-tooltip="Cerrar Sesion" href="{{base_url()}}usuario/cerrar_sesion"><i class="material-icons">power_settings_new</i></a>
+      </li>
+    </ul>
+  </header>
+  {% block content %} {% endblock %} 
+
+  <footer class="inner page-footer grey darken-4 text-white">
+      {% if userAgent == 'PC' %}
+          <div class="container footerSecundario">
+            <div class="row sinBordeBottom" >
+              <div class="col s8 l12">
+                <ul class="collapsible centrarForzado" data-collapsible="accordion">
+                  <li>
+                    <div class="collapsible-header grey darken-3 white-text center">
+                      <div class="centrarForzado"><i class="material-icons left iconSide">expand_more</i>Ver más información</div>
+                    </div>
+                    <div class="collapsible-body sinPadding">
+                      <div class="row sinBordeBottom">
+                        <div class="col s6 m3 l3">
+                          <h5 class="">Servicio al cliente</h5>
+                          <ul>
+                            <li><a class="" href="{{base_url()}}Legal/centro">Centro de ayuda</a></li>
+                            <li><a class="" href="{{base_url()}}Legal/">Términos y condiciones</a></li>
+                            <li><a class="" href="{{base_url()}}index/contactanos">Contáctanos</a></li> 
+                          </ul>
+                        </div> 
+                        <div class="col s3 m3 l3">
+                          <h5 class="">Acerca de nosotros</h5>
+                          <ul>
+                            <li><a class="" href="{{base_url()}}index/about" >Acerca de pormayor.pe</a></li>
+                            <li><a class="" href="{{base_url()}}">Acerca de pormayor.SA</a></li>
+                            <li><a class="" href="{{base_url()}}index">Mapa de sitio</a></li> 
+                          </ul>
+                        </div>
+                        <div class="col s3 m3 l3 sinPadding">
+                          <h5 class="">Servicios de comercio</h5>
+                          <ul>
+                            <li><a class="" href="{{base_url()}}legal/privacidad">Políticas de privacidad</a></li>
+                            <li><a class="" href="{{base_url()}}index">Política de envios</a></li>
+                            <li><a class="" href="{{base_url()}}legal/compra_segura">Compra segura</a></li>
+                          </ul>
+                        </div>
+                        <div class="col s12 m6 l3">
+                          <h5 class=" hide-on-med-and-down">Síguenos</h5>
+                            <div clasS="row center footerBuscador">
+                              <div class="col s3">
+                                <a  href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="instagram pormayor.pe" title="instagram pormayor.pe" src="{{ruta_img}}instaW.png" height="30"></a>
+                              </div>
+                              <div class="col s3">
+                                <a  href="https://www.facebook.com/pormayoroficial/"><img alt="facebook pormayor.pe" title="facebook pormayor.pe" src="{{ruta_img}}faceW.png" height="30"></a>
+                              </div>
+                              <div class="col s3">
+                                <a  href="mailto:contacto@pormayor.pe"><img alt="correo pormayor.pe" title="correo pormayor.pe" src="{{ruta_img}}mailW.png" height="30"></a>
+                              </div>
+                              <div class="col s3">
+                                <a  href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber"><img alt="youtube pormayor.pe" title="youtube pormayor.pe" src="{{ruta_img}}youtubeW.png" height="30"></a>
+                              </div>
+                            </div>
+                            <div class="col s6">
+                              <a class="anchoTotal waves-effect waves-black btn-flat white-text" href="{{base_url()}}">Inicio</a>
+                            </div>
+                            <div class="col s6">
+                              <a  class="anchoTotal inicioBtn waves-effect waves-black btn-flat white-text"  href="#inicio"><i class="small material-icons">keyboard_arrow_up</i></a>
+                            </div>                
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>    
+            </div>
+          </div>
+        <div class="footer-copyright pormayorAccent center">
+          <div class="container  white-text">
+          Derechos Reservados © 2018 pormayorpe S.A
+          </div>
+        </div>
+      {% else %}
+        <div class="footerMovil">
+          <div class="row sinBordeBottom">
+            <div class="col s12">
+              <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header grey darken-3 white-text"><i class="material-icons">person</i>Servicio al cliente</div>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="" href="{{base_url()}}Legal/centro">Centro de ayuda</a></li>
+                      <li><a class="" href="{{base_url()}}Legal/">Términos y condiciones</a></li>
+                      <li><a class="" href="{{base_url()}}index/contactanos">Contáctanos</a></li> 
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header grey darken-3 white-text"><i class="material-icons">home</i>Acerca de nosotros</div>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="" href="{{base_url()}}index/about" >Acerca de pormayor.pe</a></li>
+                      <li><a class="" href="{{base_url()}}">Acerca de pormayor.SA</a></li>
+                      <li><a class="" href="{{base_url()}}index">Mapa de sitio</a></li> 
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header grey darken-3 white-text"><i class="material-icons">business_center</i>Servicios de comercio</div>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="" href="{{base_url()}}legal/privacidad">Políticas de privacidad</a></li>
+                      <li><a class="" href="{{base_url()}}index">Política de envios</a></li>
+                      <li><a class="" href="{{base_url()}}legal/compra_segura">Compra segura</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col s3 center">
+              <a  href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="instagram pormayor.pe" title="instagram pormayor.pe" src="{{ruta_img}}instaW.png" height="30"></a>
+            </div>
+            <div class="col s3 center">
+              <a  href="https://www.facebook.com/pormayoroficial/"><img alt="facebook pormayor.pe" title="facebook pormayor.pe" src="{{ruta_img}}faceW.png" height="30"></a>
+            </div>
+            <div class="col s3 center">
+              <a  href="mailto:contacto@pormayor.pe"><img alt="correo pormayor.pe" title="correo pormayor.pe" src="{{ruta_img}}mailW.png" height="30"></a>
+            </div>
+            <div class="col s3 center">
+              <a  href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber"><img alt="youtube pormayor.pe" title="youtube pormayor.pe" src="{{ruta_img}}youtubeW.png" height="30"></a>
+            </div>
+            <div class="col s6 center">
+              <a class="anchoTotal waves-effect waves-black btn-flat white-text" href="{{base_url()}}">Inicio</a>
+            </div>
+            <div class="col s6 center">
+              <a  class="anchoTotal inicioBtn waves-effect waves-black btn-flat white-text"  href="#inicio"><i class="small material-icons">keyboard_arrow_up</i></a>
+            </div>            
+          </div>
+        </div>
+        <div class="footer-copyright pormayorAccent center">
+          <div class="container  white-text">Derechos Reservados © 2018 pormayorpe S.A</div>
+        </div> 
+      {% endif %}
+    </footer>
+
+  {% block modal %} {% endblock %}  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> 
+  <script> var base_url = "{{base_url()}}";</script>
+  <script>  
+     $(".button-collapse").sideNav();
+     //FOOTER
+     var flagFooter = false;
+      $(".footerSecundario .collapsible-header").click(function() {
+          if (flagFooter == false) {
+              $('.footerSecundario .iconSide').text('expand_less');
+              $('.footerSecundario .sideB').slideUp(500);
+              flagFooter = true;
+          }else if (flagFooter == true){
+              $('.footerSecundario .iconSide').text('expand_more');
+              $('.footerSecundario .sideB').slideDown(200);
+              flagFooter = false;
+          }
+      });
+  </script> 
+  {% block script %} {% endblock %}
+  </body>
+</html>

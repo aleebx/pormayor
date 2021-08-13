@@ -1,0 +1,80 @@
+{% extends "layout/intranet/template_adm.twig" %}
+{% block head %}
+  <style type="text/css">
+    .pagination{
+      padding-left: 40px !important;
+    }
+    .btn, .btn-large {
+      text-decoration: none;
+      color: #fff;
+      background-color: #353535;
+      text-align: left;
+      letter-spacing: .5px;
+      -webkit-transition: .1s ease-out;
+      transition: .1s ease-out;
+      cursor: pointer;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">  
+{% endblock %}
+{% block content %}
+  <main>
+    <div class="card">
+      <div class="card-content">
+        <h5 class="card-title left">Listado de Compradores</h5>
+        <table id="listCompradoresTable" class="display" style="width:100%;">
+          <thead>
+            <tr>
+              <th>NOMBRE</th>
+              <th>COMPRAS</th>
+              {% if userAgent == "PC" %}<th>GRUPOS</th><th>FAVORITOS</th>{% endif %}  
+              <th>ACCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% set nro = 1 %}
+            {% for comp in compradores %}
+              <tr>
+                <td class="muayuscula">{{comp.Per_Nombre}}</td>
+                <td>{{comp.compras}}</td>
+                {% if userAgent == "PC" %}<td>{{comp.grupos}}</td><td>{{comp.favoritos}}</td>{% endif %} 
+                <td>
+                  <a class="btn orange btnEdit" href="{{base_url()}}admin/compradores/detalle_comprador/{{comp.Usu_IdUsuario}}" target="_blank"><i class="material-icons">edit</i></a>
+                  <a class="btn red btnDeleteComp" data-idcompr="{{comp.Per_IdPersona}}"><i class="material-icons">delete_forever</i></a>
+                </td>
+              </tr>
+              {% set nro = nro + 1 %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+{% block script %}
+  <script src="{{base_url('public/js/admin/compradores/')}}index.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $('#listCompradoresTable').DataTable({
+      "order":[[1,'desc'],[1,'asc']],
+      "language": {
+        "lengthMenu":"",
+        "zeroRecords":"No se encontro nada",
+        "info":"Página _PAGE_ de _PAGES_",
+        "infoEmpty":"No hay registros disponibles",
+        "emptyTable":"No hay información en la tabla",
+        "infoFiltered":"(filtrado de _MAX_ ventas)",
+        "infoPostFix":"",
+        "thousands":",",
+        "loadingRecords":"Cargando...",
+        "processing":"Procesando...",
+        "search":"Buscar:",
+        "paginate": {
+          "first":"Primero",
+          "last":"Último",
+          "next":"Siguiente",
+          "previous":"Anterior"
+        }
+      }
+    });
+  </script>
+{% endblock %}

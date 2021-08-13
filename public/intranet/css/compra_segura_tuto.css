@@ -1,0 +1,190 @@
+  @media (min-width: 320px) and (max-width: 480px) {
+  .iziModal {
+    max-width: 90% !important;
+  }
+   }
+
+
+   .slick-dots li.slick-active button:before {
+    color: #21478f !important;
+  }
+
+
+  .circle-clipper .circle{
+    border-width: 5px !important;
+  }
+  .altoEstandar{
+    height: 250px !important;
+  }
+  .imgFix{
+    height:100%;
+    object-fit: cover
+  }
+
+  .instruccion{
+    height:140px !important;
+  }
+
+  .instruccion p{
+    padding:10px !important;
+  }
+
+  /*TUTO 1*/
+  .searchMock{
+    padding: 10px 20px 10px 50px !important;
+    border: 0 solid #cecece !important;
+  }
+
+  .preloader-wrapper{
+    top:100px;
+    left:0px;
+    right:0px
+  }
+
+  .containerTuto1A{
+    -webkit-transition: all .50s linear;
+       -moz-transition: all .50s linear;
+        -ms-transition: all .50s linear;
+         -o-transition: all .50s linear;
+            transition: all .50s linear;
+  }
+
+  .selector{
+    height:150px; width:130px;border: 3px solid #21478F;top: 40px; left: 0px;right: 50px;
+  }
+  
+
+  /*TUTO 2*/
+  input:focus{
+      outline: none;
+  }
+  .selectorB{
+    height: 40px;
+      width: 100px;
+      border: 3px solid #21478F;
+      bottom: -10px;
+      left: 60px;
+      right: 0px;
+  }
+
+  .selectorBMobile{
+    height: 40px;
+      width: 100px;
+      border: 3px solid #21478F;
+      left: 0px;
+      right: 0px;
+      margin-right: 80%;
+  }
+
+  /*TUTO 3*/
+  .selectorC{
+    height: 40px;
+      width: 60px;
+      border: 3px solid #21478F;
+      top: 0px;
+      right: 10px;
+  }
+
+  .selectorD{
+    height: 40px;
+      width: 60px;
+      border: 3px solid #21478F;
+      bottom: 90px;
+      right: 0px;
+      left: 50px;
+  }
+
+  /*TUTO 4*/
+  .selectorE{
+    height: 30px;
+      width: 90px;
+      border: 3px solid #21478F;
+      bottom: 15px;
+      right: 60px;
+  }
+
+  .subContainer4A{
+    width: 220px;
+    height: 75px;
+    top: 105px;
+    right: 13px;
+  }
+
+  /*TUTO 5*/
+  .selectorF{
+    height: 30px;
+      width: 90px;
+      border: 3px solid #21478F;
+      bottom: 75px;
+      right: 60px;
+      left: 0;
+
+  }
+
+  /*QUERYS*/
+  @media (min-width: 1024px) {
+    .selectorC{
+      height: 40px;
+        width: 60px;
+        border: 3px solid #21478F;
+        bottom: 0px;
+        top: initial;
+        right: 0px;
+    }
+    .selectorD{
+      height: 45px;
+        width: 90px;
+        border: 3px solid #21478F;
+        bottom: 80px;
+        right: 0px;
+        left: 75px;
+    }
+    .subContainer4A{
+      width: 233px !important;
+      height: 78px !important;
+      top: 98px !important;
+      right: 13px !important;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .selectorD{
+        width: 90px;
+        bottom: 85px;
+        right: 0px;
+        left: 90px;
+    }
+    .subContainer4A{
+      width: 233px !important;
+      height: 78px !important;
+      top: 98px !important;
+      right: 13px !important;
+    }
+  }
+  @media (min-width: 320px) and (max-width: 600px) {
+    .input1B{
+      top:38px !important;
+    }
+    .input2B{
+      top:90px !important;
+    }
+    .input3B{
+      top:140px !important;
+    }
+    .selectorF{
+      width: 60px !important;
+    }
+    
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    .selectorB{
+      left: -130px !important;
+      right: 0px !important;
+    }
+    
+  }
+   @media (min-width: 320px){
+    .slick-dots{
+      bottom: 15px !important;
+    }
+    
+  }

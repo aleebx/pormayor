@@ -1,0 +1,72 @@
+
+svg{
+  overflow: initial !important;
+}
+
+.circleScore{
+  width: 130px;
+  height: 130px;
+  background: none;
+  border-radius: 50%;
+  top: 17px;
+  left: 0;
+  right: 0;
+}
+#inputAnimation{
+  top: 15px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: 600;
+}
+
+div input.text-output{
+  border-bottom: 0px !important;
+  text-align: center;
+  font-size: 7rem !important;
+  color:white;
+  font-weight: 600;
+  height: 100%;
+  margin: 0 auto;
+  cursor: auto;
+}
+
+div input.scoreText{
+  border-bottom: 0px !important;
+  text-align: center;
+  font-size: 3rem !important;
+  font-weight: 600;
+  height: 100%;
+  margin: 0 auto;
+  cursor: auto;
+}
+
+#tabCalifA.active{
+  background-color: red;
+}
+.tabs .tab a{
+  -webkit-transition: all .25s linear;
+     -moz-transition: all .25s linear;
+      -ms-transition: all .25s linear;
+       -o-transition: all .25s linear;
+          transition: all .25s linear;
+}
+
+.tabs .tab a[href='#tabCalifB'].active {
+    background-color: #ff9800 ;
+}
+.tabs .tab a[href='#tabCalifA'].active {
+    background-color: #4caf50 ;
+}
+.tabs .tab a[href='#tabCalifC'].active {
+    background-color: #f44336;
+}
+.tabs .indicator {
+            opacity: 0;
+        } /*Color of underline*/
+.tabs a{
+  border-radius: 5px 5px 0px 0px;
+}
+.tabs a img{
+  top: 5px
+}

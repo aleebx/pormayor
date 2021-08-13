@@ -1,0 +1,78 @@
+<div id="rowContentVariacion">
+	<br>
+	<div class="divider"></div>
+	<h5 style="font-size: 1.3rem;line-height:150%">Seleccione las variaciones del producto</h5>
+
+	<div>	
+		<div id="rowTallas" class="col s12 l12">
+			<label></label>
+			<div class="row sinBordeBottom">
+				{% for var in variacion %}
+				    {% for vac in var_cat %}
+						{% if var.Var_IdVariacion == vac.variacion_Var_IdVariacion %}
+								{% if vac.Vao_IdVaricion_Opcion == 62 %}
+									<div style="margin: 5px 0px;" class="containerTalla col s12 m12 l12 existe center sinPadding">
+										<i class="enfasisB">Este producto no tiene variación</i>
+										<div class="center">
+											<input type="checkbox" name="sinColor" class="sinColor" xd="0" id="sinColor" />
+											<label for="sinColor">¿SIN COLORES?</label>
+										</div>
+
+										<input type="checkbox" name="varCheckbox" data-nomvar="{{var.Var_Nombre}}" data-vari="{{var.Var_IdVariacion}}" class="hide checkboxVar" data-vaon="{{vac.Vao_Nombre}}" id="{{vac.Vao_IdVaricion_Opcion}}" checked="checked" />
+										<label class="hide" for="{{vac.Vao_IdVaricion_Opcion}}">Prueba</label>
+									</div>
+									{% else %}
+									<div style="margin: 5px 0px;" class="containerTalla col s4 m4 l3 existe">
+										<input type="checkbox" name="varCheckbox" data-nomvar="{{var.Var_Nombre}}" data-vari="{{var.Var_IdVariacion}}" class="checkboxVar" data-vaon="{{vac.Vao_Nombre}}" id="{{vac.Vao_IdVaricion_Opcion}}" />
+										<label style="padding-left:25px" for="{{vac.Vao_IdVaricion_Opcion}}">{{vac.Vao_Nombre}}</label>
+									</div>
+								{% endif %} 
+						{% endif %}
+					{% endfor %}
+				{% endfor %}	
+			</div>
+		</div>
+		<div class="col s12 l12 colorsCont" style="position:relative" id="colorsCont">
+			<label class="fontB"><b>Colores</b></label>
+			<select class="coloresVar browser-default col l12" name="colores[]" id="coloresVar" multiple="multiple">
+				<option value="0" id="{{col.Col_IdColores}}">  </option>
+		        {% for col in colores %}
+					<option value="{{col.Col_IdColores}}" id="{{col.Col_IdColores}}">{{col.Col_Nombre}}</option>
+				{% endfor %}
+			</select>
+			<p style="position: absolute;bottom: 1px;padding:5px" class="customColorA center labelColores white-text">Puedes agregar <b>varios</b> colores</p>
+		</div>
+	</div>
+</div>
+	
+{% block script %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#rowTallas').hide();
+			if ($('.containerTalla').hasClass('existe')){
+				$('#rowTallas').show(1000);
+			}else{
+				$('#rowTallas').hide(1000);
+				$('#rowTallas').addClass('No existe');
+			}
+    		$('#coloresVar').select2({
+    			multiple: true
+    		});
+    		$('.labelColores').css('width',$('.select2-container').width()+'px');
+
+    		$('#sinColor').click(function(){
+    			var v = $(this).attr("xd");
+    			if(v==0){
+    				$('.colorsCont').addClass('hide');
+    				$(this).attr("xd","1")
+    			}else{
+    				$('.colorsCont').removeClass('hide');
+    				$(this).attr("xd","0")
+    			}
+    		});
+
+    		
+		});
+	</script>
+    <script src="{{base_url('public/')}}js/tienda/varcat.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+{% endblock %}

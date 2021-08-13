@@ -1,0 +1,57 @@
+<h4 class="center">CAMBIO DE ESTADO #<span class="negrita idVenta">{{id}}</span></h4>
+<ul class="collection">
+	<li class="collection-item">
+		<input  name="gEst" type="radio" value="1" id="est1" {% if eActual == 1 %}checked{% endif %} />
+		<label class="black-text negrita" for="est1">NUEVA VENTA</label>
+	</li>
+	<li class="collection-item">
+		<input name="gEst" type="radio" value="2" id="est2" {% if eActual == 2 %}checked{% endif %} />
+		<label class="black-text negrita" for="est2">CONFIRMADA</label>
+	</li>
+	<li class="collection-item">
+		<input name="gEst" type="radio" value="3" id="est3" {% if eActual == 3 %}checked{% endif %} />
+		<label class="black-text negrita" for="est3">LISTO RECOGO</label>
+	</li>
+	<li class="collection-item">
+		<input name="gEst" type="radio" value="4" id="est4" {% if eActual == 4 %}checked{% endif %} />
+		<label class="black-text negrita" for="est4">EN CORRIER</label>
+	</li>
+	<li class="collection-item">
+		<input name="gEst" type="radio" value="5" id="est5" {% if eActual == 5 %}checked{% endif %} />
+		<label class="black-text negrita" for="est5">ENTREGADO</label>
+	</li>
+	<li class="collection-item">	
+		<input name="gEst" type="radio" value="6" id="est6" {% if eActual == 6 %}checked{% endif %} />
+		<label class="black-text negrita" for="est6">ANULADO</label>
+	</li>
+</ul>
+<div class="row">
+	<div class="col l6 center">
+  		<a class="modal-action waves-effect waves-green btn-flat negrita blue lighten-1 actEstado" data-idv="{{id}}"><i class="material-icons left">update</i>ACTUALIZAR</a>
+	</div>
+	<div class="col l6 center">
+  		<a class="modal-action modal-close waves-effect waves-red btn-flat red lighten-4"><i class="material-icons left">close</i>SALIR</a>
+	</div>
+</div>
+
+<script>
+	$('.actEstado').click(function(){
+		var nuevoEstado = $('input[name=gEst]:checked').val();
+		var idVenta = $(this).data("idv");
+		$.ajax({
+         data:{
+         'nuevoEstado' : nuevoEstado,
+         'idVenta' : idVenta
+         },
+         type: "POST",
+         url: base_url+'admin/index/actualizar_estado',
+         success: function(data){
+         	$('.modal').modal('close');
+         	location.reload(true);
+         },
+         error: function(data) {
+           alert('error');
+         }
+      });
+	});
+</script>

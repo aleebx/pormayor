@@ -1,0 +1,127 @@
+{% extends "layout/intranet/template_adm.twig" %}
+
+{% block head %}
+  <style type="text/css">
+    .picker__date-display{
+      background-color: #FEC00F;
+    } 
+    .picker__box{
+        top: 10%;
+        position: relative;
+    }
+    .picker__day.picker__day--today,.picker__today,.picker__close 
+    { 
+        color: #0D0D0D;
+    } 
+    .picker__day--selected, .picker--focused .picker__day--selected {
+        color: #F5F4F3;
+        font-weight: 700;
+        background-color: #0D0D0D; 
+        
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <main class="container">
+    <div class="card">
+      <div class="card-content sinPadding">
+        <div class="row cardContentFix">
+          <div class="col s12 m12 l12 center-align">
+            <h4 class="card-title">{{pagina.titulo}}</h4>
+          </div>
+          {{ form_open("", {role: 'form', id: 'formulario_datos', class:'form-horizontal login-form'}) }}
+            <div class="input-field col s12 m6 l6">
+              <input type="hidden" id="Per_IdPersona" class="validate" name="Per_IdPersona" value="{{datos_usuario.Per_IdPersona}}">
+              <input type="text" id="dni" class="validate" name="dni" value="{{datos_usuario.Per_Dni}}" required="">
+              <label for="dni" class="active">DNI</label>
+            </div> 
+            <div class="input-field col s12 m6 l6">
+              <input type="text" id="nombre" class="validate" name="nombre" value="{{datos_usuario.Per_Nombre}}" required>
+              <label for="nombre" class="active">Nombre Completo</label>
+            </div>
+            <div class="input-field col s6">
+              <select name="selSexo">
+                <option value="" disabled>-Seleccione-</option>
+                <option value="1" {% if datos_usuario.Per_Sexo == 1 %}selected{% endif %}>Masculino</option>
+                <option value="2" {% if datos_usuario.Per_Sexo == 2 %}selected{% endif %}>Femenino</option>
+              </select>
+              <label>Sexo</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="fecha_nacimiento" class="datepicker validate" name="fecha_nacimiento" value="{{datos_usuario.Per_FechaNacimiento}}">
+              <label for="fecha_nacimiento" class="active">Fecha de Nacimiento</label>
+            </div>
+            <div class="input-field col s6">
+              <input type="text" id="telefono" class="validate" name="telefono" value="{{datos_usuario.Per_Telefono}}" required minlength="9" maxlength="9">
+              <label for="telefono" class="active">Telefono</label>
+            </div>
+            <div class="input-field col s6">
+              <input type="text" id="celular" class="validate" name="celular" value="{{datos_usuario.Per_Celular}}" minlength="9" maxlength="9">
+              <label for="celular" class="active">Celular</label>
+            </div>
+          </div>
+          <div class="card-action center-align">
+            <a class="btn-flat grey-text text-darken-4" type="button" href="{{base_url()}}usuario">Atras</a>
+            <input type="submit" id="btnActualizar" name="btnActualizar" value="Guardar" class="btn pormayorAccent white-text">
+          </div>
+          {{ form_close() }}
+      </div>
+    </div>
+  </main>
+{% endblock %}
+{% block script %}
+  <script language="JavaScript" type="text/javascript" src="{{base_url('public/')}}js/jquery.validate.js" defer></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var sendForm = false; 
+      $('select').material_select();  
+
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 100, // Creates a dropdown of 15 years to control year,
+        max: true,
+        today: 'Hoy',
+        close: 'Ok',
+        clear: 'Borrar',
+        firstDay: 1,
+        monthsFull: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+        weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+        weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+        weekdaysLetter: [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
+        closeOnSelect: false, // Close upon selecting a date
+        format: 'yyyy-mm-dd'
+      }); 
+
+      //Validacion de formularios
+      $("#formulario_datos").validate({
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error);
+          } else {
+            error.insertAfter(element);
+          }
+        }
+      });
+
+      //Usuario
+      $('#formulario_datos').submit(function(e){
+        if (sendForm == false) {
+            alert($('#Per_IdPersona').val())
+            e.preventDefault();
+        }
+
+        if (sendForm == false && $('#formulario_datos').valid() == true){
+          Materialize.toast('<i class="material-icons left ">check_circle</i>Datos guardados exitosamente', 1500, 'rounded successToast', function(){
+            sendForm = true;
+            $('#btnActualizar').trigger('click');
+          });
+        }
+      });  
+
+      
+    });
+  </script> 
+{% endblock %}

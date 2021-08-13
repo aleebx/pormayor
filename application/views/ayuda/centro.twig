@@ -1,0 +1,797 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}  
+<style type="text/css">
+	.helpCenter .collapsible-body ul li{
+		padding: 15px;
+		-webkit-transition: all .25s linear;
+		   -moz-transition: all .25s linear;
+		    -ms-transition: all .25s linear;
+		     -o-transition: all .25s linear;
+		        transition: all .25s linear;
+	}
+	i.positionRelative,  img.positionRelative{
+		top:5px;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="container helpCenter fixContainer">
+	<br class="hide-on-large-only">
+	<br class="hide-on-large-only">
+	<h3 class="center ">Centro de Ayuda </h3>
+	<div class="card containerLoader hide" style="padding:10px">
+		<div class="card-content sinPadding">
+			<div class="cardContentFix">
+
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<div class="card">
+				<div class="card-content sinPadding">
+					<div class="cardContentFix">
+						<h5 class="center"><b>Artículos Destacados</b></h5>
+						<div class="divider"></div>
+						<br><br>
+						<div class="row center">
+							{# <div class="col s6 m3 l2 offset-l2 center">
+								<a href="{{base_url()}}Legal/compra_tuto">
+									<div class="pormayorUnico white-text valign-wrapper redondeo comoBoton sinUser" style="padding:10px;height:100px">
+										<i class="material-icons medium centrarForzado">lock</i>
+									</div>
+									<p class="pormayorAccent-text"><b>¿Cómo comprar en pormayor.pe</b>?</p>
+								</a>
+							</div>
+							<div class="col s6 m3 l2 center">
+								<a href="{{base_url()}}Legal/tarifas">
+									<div class="pormayorUnico white-text valign-wrapper redondeo comoBoton sinUser" style="padding:10px;height:100px">
+										<i class="material-icons medium centrarForzado">credit_card</i>
+									</div>
+									<p class="pormayorAccent-text"><b>¿Cuales son nuestras Tarifas?</b></p>
+								</a>
+							</div>
+							<div class="row hide-on-med-and-up"></div>
+							<div class="col s6 m3 l2 center">
+								<a href="{{base_url()}}Legal/reputacion">
+									<div class="pormayorUnico white-text valign-wrapper redondeo comoBoton sinUser" style="padding:10px;height:100px">
+										<i class="material-icons medium centrarForzado">star_border</i>
+									</div>
+									<p class="pormayorAccent-text"><b>Nuestro Sistema de Reputación</b></p>
+								</a>
+							</div> #}
+							<div class="col s6 m3 l2 center">
+								<a href="{{base_url()}}Legal/prohibidos">
+									<div class="pormayorUnico white-text valign-wrapper redondeo comoBoton sinUser" style="padding:10px;height:100px">
+										<i class="material-icons medium centrarForzado">not_interested</i>
+									</div>
+									<p class="pormayorAccent-text"><b>¿Qué productos no puedes vender?</b></p>
+								</a>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<div class="card">
+				<div class="card-content sinPadding">
+					<div class="cardContentFix">
+						<h5 class="center"><b>¿Cómo usar pormayor.pe?</b></h5>
+						<div class="divider"></div>
+						<br class="hide-on-med-and-down"><br class="hide-on-med-and-down">
+						<div class="row hide-on-med-and-down">
+							<div class="col s12 m12 l5">
+								<div class="card-content sinPadding">
+									<div class="cardContentFix">
+										<ul class="collapsible" data-collapsible="accordion">
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">person</i>Usuario</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tutoPC tutoPCFirst comoBoton" data-tuto="Registrarse en pormayor.pe">Registrarse en pormayor.pe</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Porqué necesito tener un DNI para registrarme?">¿Por qué necesito tener un DNI para registrarme?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="Crear una tienda en pormayor.pe">Crear una tienda en pormayor.pe</a></li>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Porqué debo tener un RUC para crear una tienda?">¿Por qué debo tener un RUC para crear una tienda?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Cómo accedo al perfil de usuario?">¿Cómo accedo al perfil de usuario?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Cómo edito los datos de mi cuenta?">¿Cómo edito los datos de mi cuenta?</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">store_mall_directory</i>Tienda</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Donde edito los datos de mi tienda?">Dónde edito los datos de mi tienda?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Donde edito mis datos personales y contraseña?">Dónde edito mis datos personales y contraseña?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Porqué puedo colocar un numero de cuenta como dato personal?">¿Por qué puedo colocar un número de cuenta como dato personal?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Cómo agregos más locales de mi tienda?">¿Cómo agregos más locales de mi tienda?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Donde contesto las cotizaciones que me solicitan?">Dónde contesto las cotizaciones que me solicitan?</a></li>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Donde Respondo las preguntas que me realizan?">Dónde respondo las preguntas que me realizan?</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">storage</i>Productos</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Cómo convierto un producto en favorito?">¿Cómo convierto un producto en favorito?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Qué significa el minimo de venta de un producto?">¿Qué significa el minimo de venta de un producto?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Cómo agrego/elimino productos al pedido actual?">¿Cómo agrego/elimino productos al pedido actual?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Cómo comparto un producto en facebook?">¿Cómo comparto un producto en facebook?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Cómo cotizo mi pedido actual?">¿Cómo cotizo mi pedido actual?</a></li>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="No encuentro mis pedidos cotizados">No encuentro mis pedidos cotizados</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Cómo finalizo la compra de un pedido cotizado?">¿Cómo finalizo la compra de un pedido cotizado?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Donde veo mis compras realizadas?">¿Donde veo mis compras realizadas?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tutoPC comoBoton" data-tuto="¿Donde califico la tienda a la que compre productos?">¿Donde califico la tienda a la que compre productos?</a></li>
+										      		<div class="divider"></div>
+										      	</ul>
+										      </div>
+										    </li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col s12 m12 l7">
+								<div class="cardContentFix">
+									<div class="card">
+										<div class="card-content sinPadding">
+											<div class="cardContentFix">
+												<div class="containerTutoPC">
+
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+								   </div>
+							</div>
+						</div>
+						<div class="row sinBordeBottom hide-on-large-only">
+							<div class="col s12 m12 l5">
+								<div class="card-content sinPadding">
+									<div class="cardContentFix">
+										<ul class="collapsible" data-collapsible="accordion">
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">person</i>Usuario</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="Registrarse en pormayor.pe">Registrarse en pormayor.pe</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Porqué necesito tener un DNI para registrarme?">¿Porqué necesito tener un DNI para registrarme?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="Crear una tienda en pormayor.pe">Crear una tienda en pormayor.pe</a></li>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Porqué debo tener un RUC para crear una tienda?">¿Porqué debo tener un RUC para crear una tienda?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Cómo accedo al perfil de usuario?">¿Cómo accedo al perfil de usuario?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Cómo edito los datos de mi cuenta?">¿Cómo edito los datos de mi cuenta?</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">store_mall_directory</i>Tienda</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Donde edito los datos de mi tienda?">¿Donde edito los datos de mi tienda?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Donde edito mis datos personales y contraseña?">¿Donde edito mis datos personales y contraseña?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Porqué puedo colocar un numero de cuenta como dato personal?">¿Porqué puedo colocar un numero de cuenta como dato personal?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Cómo agregos más locales de mi tienda?">¿Cómo agregos más locales de mi tienda?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Donde contesto las cotizaciones que me solicitan?">¿Donde contesto las cotizaciones que me solicitan?</a></li>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Donde Respondo las preguntas que me realizan?">¿Donde respondo las preguntas que me realizan?</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">storage</i>Productos</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Cómo convierto un producto en favorito?">¿Cómo convierto un producto en favorito?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Qué significa el minimo de venta de un producto?">¿Qué significa el minimo de venta de un producto?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Cómo agrego/elimino productos al pedido actual?">¿Cómo agrego/elimino productos al pedido actual?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Cómo comparto un producto en facebook?">¿Cómo comparto un producto en facebook?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Cómo cotizo mi pedido actual?">¿Cómo cotizo mi pedido actual?</a></li>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="No encuentro mis pedidos cotizados">No encuentro mis pedidos cotizados</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Cómo finalizo la compra de un pedido cotizado?">¿Cómo finalizo la compra de un pedido cotizado?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Donde veo mis compras realizadas?">¿Donde veo mis compras realizadas?</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tuto comoBoton" data-tuto="¿Donde califico la tienda a la que compre productos?">¿Donde califico la tienda a la que compre productos?</a></li>
+										      		<div class="divider"></div>
+										      	</ul>
+										      </div>
+										    </li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<div class="card">
+				<div class="card-content sinPadding">
+					<div class="cardContentFix">
+						<h5 class="center"><b>Bases Legales</b></h5>
+						<div class="divider"></div>
+						<br class="hide-on-med-and-down"><br class="hide-on-med-and-down">
+						<div class="row hide-on-med-and-down">
+							<div class="col s12 m12 l5">
+								<div class="card-content sinPadding">
+									<div class="cardContentFix">
+										<ul class="collapsible" data-collapsible="accordion">
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">person_outline</i>Inhabilitación o Suspensión de Usuarios</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text temaPC temaPCFirst comoBoton" data-tema="Cuentas duplicadas">Cuentas duplicadas</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Calificación Negativa">Calificación Negativa</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Incumplimiento">Incumplimiento del compromiso de compra</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Operaciones irregulares">Operaciones irregulares</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Incumplimiento">Incumplimiento del compromiso de venta</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Lenguaje inapropiado">Lenguaje inapropiado</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Menor de edad">Menor de edad</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Error en la cuenta de e-mail">Error en la cuenta de e-mail</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Limitaciones">Limitaciones para operar en el sitio de usuarios suspendidos</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Limitaciones">Limitaciones para operar en el sitio de usuarios inhabilitados</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Inhabilitación por falta de pago">Inhabilitación por falta de pago</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Problemas con los datos de la inscripción">Problemas con los datos de la inscripción</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">star_half</i>Sistema de opiniones de servicios</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Características generales">Características generales</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Restricciones">Restricciones</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Auto-opinión">Auto-opinión</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Responsabilidad por las opiniones">Responsabilidad por las opiniones</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Responsabilidad de Pormayor.pe">Responsabilidad de Pormayor.pe</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">do_not_disturb</i>Articulos prohibidos</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Publicaciones que violen la propiedad intelectual">Publicaciones que violen la propiedad intelectual</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Réplicas, falsificaciones, copias no autorizadas, copia de imagen y/o descripción">Réplicas, falsificaciones, copias no autorizadas, copia de imagen y/o descripción</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Celulares y equipos tecnológicos fuera de ley">Celulares y equipos tecnológicos fuera de ley</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Armas, municiones y material explosivo">Armas, municiones y material explosivo</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Estupefacientes y sustancias prohibidas">Estupefacientes y sustancias prohibidas</a></li>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Propiedad robada">Propiedad robada</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Flora, fauna y derivados">Flora, fauna y derivados</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Productos o servicios para adultos y ropa interior usada">Productos o servicios para adultos y ropa interior usada</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Huesos, órganos y residuos humanos">Huesos, órganos y residuos humanos</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Violencia y discriminación">Violencia y discriminación</a></li>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Publicaciones">Publicaciones que violen derechos de propiedad intelectual y con fines distintos a la venta de un producto o servicio</a></li>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Patrimonio histórico, cultural, arqueológico y paleontológico"> Patrimonio histórico, cultural, arqueológico y paleontológico</a></li>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Productos que requieran homologación o autorización de organismos estatales">Productos que requieran homologación o autorización de organismos estatales</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+											<li>
+										      <div class="collapsible-header"><i class="material-icons">credit_card</i>Tarifas y facturación</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Términos">Términos</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Contratación de Tiendas Virtuales">Contratación de Tiendas Virtuales</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Comisión de Venta por el Servicio de CompraSegura">Comisión de Venta por el "Servicio de CompraSegura"</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Comisión de Compra por el Servicio de CompraSegura">Comisión de Compra por el "Servicio de CompraSegura"</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Detalle de Planes de contratación de Tiendas Virtuales">Detalle de Planes de contratación de Tiendas Virtuales</a></li>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Renovable de forma automática">Renovable de forma automática</a></li>
+										      		<li><a class="pormayorUnico-text temaPC comoBoton" data-tema="Descuentos aplicados a los vendedores">Descuentos aplicados a los vendedores</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col s12 m12 l7">
+								<div class="cardContentFix">
+									<div class="card">
+										<div class="card-content sinPadding">
+											<div class="cardContentFix">
+												<div class="containerTemaPC">
+
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row sinBordeBottom hide-on-large-only">
+							<div class="col s12 m12 l5">
+								<div class="card-content sinPadding">
+									<div class="cardContentFix">
+										<ul class="collapsible hide-on-large-only" data-collapsible="accordion">
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">person_outline</i>Inhabilitación o Suspensión de Usuarios</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Cuentas duplicadas">Cuentas duplicadas</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Calificación Negativa">Calificación Negativa</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Incumplimiento">Incumplimiento del compromiso de compra</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Operaciones irregulares">Operaciones irregulares</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Incumplimiento">Incumplimiento del compromiso de venta</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Lenguaje inapropiado">Lenguaje inapropiado</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Menor de edad">Menor de edad</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Error en la cuenta de e-mail">Error en la cuenta de e-mail</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Limitaciones">Limitaciones para operar en el sitio de usuarios suspendidos</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Limitaciones">Limitaciones para operar en el sitio de usuarios inhabilitados</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Inhabilitación por falta de pago">Inhabilitación por falta de pago</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Problemas con los datos de la inscripción">Problemas con los datos de la inscripción</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">star_half</i>Sistema de opiniones de servicios</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Características generales">Características generales</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Restricciones">Restricciones</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Auto-opinión">Auto-opinión</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Responsabilidad por las opiniones">Responsabilidad por las opiniones</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Responsabilidad de Pormayor.pe">Responsabilidad de Pormayor.pe</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons">do_not_disturb</i>Articulos prohibidos</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Publicaciones que violen la propiedad intelectual">Publicaciones que violen la propiedad intelectual</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Réplicas, falsificaciones, copias no autorizadas, copia de imagen y/o descripción">Réplicas, falsificaciones, copias no autorizadas, copia de imagen y/o descripción</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Celulares y equipos tecnológicos fuera de ley">Celulares y equipos tecnológicos fuera de ley</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Armas, municiones y material explosivo">Armas, municiones y material explosivo</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Estupefacientes y sustancias prohibidas">Estupefacientes y sustancias prohibidas</a></li>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Propiedad robada">Propiedad robada</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Flora, fauna y derivados">Flora, fauna y derivados</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Productos o servicios para adultos y ropa interior usada">Productos o servicios para adultos y ropa interior usada</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Huesos, órganos y residuos humanos">Huesos, órganos y residuos humanos</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Violencia y discriminación">Violencia y discriminación</a></li>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Publicaciones">Publicaciones que violen derechos de propiedad intelectual y con fines distintos a la venta de un producto o servicio</a></li>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Patrimonio histórico, cultural, arqueológico y paleontológico"> Patrimonio histórico, cultural, arqueológico y paleontológico</a></li>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Productos que requieran homologación o autorización de organismos estatales">Productos que requieran homologación o autorización de organismos estatales</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+											<li>
+										      <div class="collapsible-header"><i class="material-icons">credit_card</i>Tarifas y facturación</div>
+										      <div class="collapsible-body sinPadding">
+										      	<ul>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Términos">Términos</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Contratación de Tiendas Virtuales">Contratación de Tiendas Virtuales</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Comisión de Venta por el Servicio de CompraSegura">Comisión de Venta por el "Servicio de CompraSegura"</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Comisión de Compra por el Servicio de CompraSegura">Comisión de Compra por el "Servicio de CompraSegura"</a></li>
+										      		<div class="divider"></div>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Detalle de Planes de contratación de Tiendas Virtuales">Detalle de Planes de contratación de Tiendas Virtuales</a></li>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Renovable de forma automática">Renovable de forma automática</a></li>
+										      		<li><a class="pormayorUnico-text tema comoBoton" data-tema="Descuentos aplicados a los vendedores">Descuentos aplicados a los vendedores</a></li>
+										      	</ul>
+										      </div>
+										    </li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</main>
+{% endblock %}
+
+{% block script %}
+<script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/jquery.sticky-kit.min.js')}}"></script>
+<script>
+	$(document).ready(function(){
+		$('.temaPCFirst').trigger('click');
+		$('.tutoPCFirst').trigger('click');
+	});
+
+	$('.tema').click(function() {
+		var nombre_tema = $(this).data('tema');
+
+		$('.containerLoader').removeClass('hide');
+
+		if(nombre_tema == 'Cuentas duplicadas'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1A.php');
+		}else if(nombre_tema == 'Calificación Negativa'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1B.php');
+		}else if(nombre_tema == 'Incumplimiento'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1C.php');
+		}else if(nombre_tema == 'Operaciones irregulares'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1D.php');
+		}else if(nombre_tema == 'Lenguaje inapropiado'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1E.php');
+		}else if(nombre_tema == 'Menor de edad'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1F.php');
+		}else if(nombre_tema == 'Error en la cuenta de e-mail'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1G.php');
+		}else if(nombre_tema == 'Limitaciones'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1H.php');
+		}else if(nombre_tema == 'Inhabilitación por falta de pago'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1I.php');
+		}else if(nombre_tema == 'Problemas con los datos de la inscripción'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema1J.php');
+		}
+		// TEMA 2
+		else if(nombre_tema == 'Características generales'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema2A.php');
+		}else if(nombre_tema == 'Restricciones'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema2B.php');
+		}else if(nombre_tema == 'Auto-opinión'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema2C.php');
+		}else if(nombre_tema == 'Responsabilidad por las opiniones'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema2D.php');
+		}else if(nombre_tema == 'Responsabilidad de Pormayor.pe'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema2E.php');
+		}
+		// TEMA 3
+		else if(nombre_tema == 'Publicaciones que violen la propiedad intelectual'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3A.php');
+		}else if(nombre_tema == 'Réplicas, falsificaciones, copias no autorizadas, copia de imagen y/o descripción'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3B.php');
+		}else if(nombre_tema == 'Celulares y equipos tecnológicos fuera de ley'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3C.php');
+		}else if(nombre_tema == 'Armas, municiones y material explosivo'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3D.php');
+		}else if(nombre_tema == 'Estupefacientes y sustancias prohibidas'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3E.php');
+		}else if(nombre_tema == 'Propiedad robada'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3F.php');
+		}else if(nombre_tema == 'Flora, fauna y derivados'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3G.php');
+		}else if(nombre_tema == 'Productos o servicios para adultos y ropa interior usada'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3H.php');
+		}else if(nombre_tema == 'Huesos, órganos y residuos humanos'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3I.php');
+		}else if(nombre_tema == 'Violencia y discriminación'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3J.php');
+		}else if(nombre_tema == 'Publicaciones'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3K.php');
+		}else if(nombre_tema == 'Patrimonio histórico, cultural, arqueológico y paleontológico'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3L.php');
+		}else if(nombre_tema == 'Productos que requieran homologación o autorización de organismos estatales'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema3M.php');
+		}
+		// TEMA 4
+        else if(nombre_tema == 'Términos'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema4A.php');
+		}else if(nombre_tema == 'Contratación de Tiendas Virtuales'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema4B.php');
+		}else if(nombre_tema == 'Comisión de Venta por el Servicio de CompraSegura'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema4C.php');
+		}else if(nombre_tema == 'Comisión de Compra por el Servicio de CompraSegura'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema4D.php');
+		}else if(nombre_tema == 'Detalle de Planes de contratación de Tiendas Virtuales'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema4E.php');
+		}else if(nombre_tema == 'Renovable de forma automática'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema4F.php');
+		}else if(nombre_tema == 'Descuentos aplicados a los vendedores'){
+			$('.containerLoader').load(base_url+'application/views/ayuda/load/tema4G.php');
+		}
+
+        $('.collapsible').remove();
+        $('.helpCenter .row').remove();
+  	});
+
+	$('.temaPC').click(function() {
+		var nombre_tema = $(this).data('tema');
+
+		$('.temaPC').each(function(){
+	       $(this).parent().removeClass('pormayorUnico');
+			$(this).removeClass('white-text');
+			$(this).addClass('pormayorUnico-text');
+	    });
+		$(this).parent().addClass('pormayorUnico');
+		$(this).addClass('white-text');
+		$(this).removeClass('pormayorUnico-text');
+
+		if(nombre_tema == 'Cuentas duplicadas'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1A.php');
+		}else if(nombre_tema == 'Calificación Negativa'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1B.php');
+		}else if(nombre_tema == 'Incumplimiento'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1C.php');
+		}else if(nombre_tema == 'Operaciones irregulares'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1D.php');
+		}else if(nombre_tema == 'Lenguaje inapropiado'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1E.php');
+		}else if(nombre_tema == 'Menor de edad'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1F.php');
+		}else if(nombre_tema == 'Error en la cuenta de e-mail'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1G.php');
+		}else if(nombre_tema == 'Limitaciones'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1H.php');
+		}else if(nombre_tema == 'Inhabilitación por falta de pago'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1I.php');
+		}else if(nombre_tema == 'Problemas con los datos de la inscripción'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema1J.php');
+		}
+		// TEMA 2
+		else if(nombre_tema == 'Características generales'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema2A.php');
+		}else if(nombre_tema == 'Restricciones'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema2B.php');
+		}else if(nombre_tema == 'Auto-opinión'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema2C.php');
+		}else if(nombre_tema == 'Responsabilidad por las opiniones'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema2D.php');
+		}else if(nombre_tema == 'Responsabilidad de Pormayor.pe'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema2E.php');
+		}
+		// TEMA 3
+		else if(nombre_tema == 'Publicaciones que violen la propiedad intelectual'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3A.php');
+		}else if(nombre_tema == 'Réplicas, falsificaciones, copias no autorizadas, copia de imagen y/o descripción'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3B.php');
+		}else if(nombre_tema == 'Celulares y equipos tecnológicos fuera de ley'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3C.php');
+		}else if(nombre_tema == 'Armas, municiones y material explosivo'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3D.php');
+		}else if(nombre_tema == 'Estupefacientes y sustancias prohibidas'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3E.php');
+		}else if(nombre_tema == 'Propiedad robada'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3F.php');
+		}else if(nombre_tema == 'Flora, fauna y derivados'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3G.php');
+		}else if(nombre_tema == 'Productos o servicios para adultos y ropa interior usada'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3H.php');
+		}else if(nombre_tema == 'Huesos, órganos y residuos humanos'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3I.php');
+		}else if(nombre_tema == 'Violencia y discriminación'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3J.php');
+		}else if(nombre_tema == 'Publicaciones'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3K.php');
+		}else if(nombre_tema == 'Patrimonio histórico, cultural, arqueológico y paleontológico'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3L.php');
+		}else if(nombre_tema == 'Productos que requieran homologación o autorización de organismos estatales'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema3M.php');
+		}
+		// TEMA 4
+        else if(nombre_tema == 'Términos'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema4A.php');
+		}else if(nombre_tema == 'Contratación de Tiendas Virtuales'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema4B.php');
+		}else if(nombre_tema == 'Comisión de Venta por el Servicio de CompraSegura'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema4C.php');
+		}else if(nombre_tema == 'Comisión de Compra por el Servicio de CompraSegura'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema4D.php');
+		}else if(nombre_tema == 'Detalle de Planes de contratación de Tiendas Virtuales'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema4E.php');
+		}else if(nombre_tema == 'Renovable de forma automática'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema4F.php');
+		}else if(nombre_tema == 'Descuentos aplicados a los vendedores'){
+			$('.containerTemaPC').load(base_url+'application/views/ayuda/load/tema4G.php');
+		}
+  	});
+
+	//TUTORIALES
+	$('.tuto').click(function() {
+		var nombre_tuto = $(this).data('tuto');
+		var container = ".containerLoader";
+		$('.containerLoader').removeClass('hide');
+
+		if(nombre_tuto == 'Registrarse en pormayor.pe'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1A.php');
+		}else if(nombre_tuto == '¿Porqué necesito tener un DNI para registrarme?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1B.php');
+		}else if(nombre_tuto == 'Crear una tienda en pormayor.pe'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1C.php');
+		}else if(nombre_tuto == '¿Porqué debo tener un RUC para crear una tienda?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1D.php');
+		}else if(nombre_tuto == '¿Cómo accedo al perfil de usuario?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1E.php');
+		}else if(nombre_tuto == '¿Cómo edito los datos de mi cuenta?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1F.php');
+		}
+		// TUTORIALES 2
+		else if(nombre_tuto == '¿Donde edito los datos de mi tienda?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2A.php');
+		}else if(nombre_tuto == '¿Donde edito mis datos personales y contraseña?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2B.php');
+		}else if(nombre_tuto == '¿Porqué puedo colocar un numero de cuenta como dato personal?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2C.php');
+		}else if(nombre_tuto == '¿Cómo agregos más locales de mi tienda?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2D.php');
+		}else if(nombre_tuto == '¿Donde contesto las cotizaciones que me solicitan?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2E.php');
+		}else if(nombre_tuto == '¿Donde Respondo las preguntas que me realizan?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2F.php');
+		}
+		// TUTORIALES 3
+		else if(nombre_tuto == '¿Cómo convierto un producto en favorito?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3A.php');
+		}else if(nombre_tuto == '¿Qué significa el minimo de venta de un producto?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3B.php');
+		}else if(nombre_tuto == '¿Cómo agrego/elimino productos al pedido actual?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3C.php');
+		}else if(nombre_tuto == '¿Cómo comparto un producto en facebook?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3D.php');
+		}else if(nombre_tuto == '¿Cómo cotizo mi pedido actual?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3E.php');
+		}else if(nombre_tuto == 'No encuentro mis pedidos cotizados'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3F.php');
+		}else if(nombre_tuto == '¿Cómo finalizo la compra de un pedido cotizado?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3G.php');
+		}else if(nombre_tuto == '¿Donde veo mis compras realizadas?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3H.php');
+		}else if(nombre_tuto == '¿Donde califico la tienda a la que compre productos?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3I.php');
+		}
+
+		$('.collapsible').remove();
+        $('.helpCenter .row').remove();
+  	});
+
+	$('.tutoPC').click(function() {
+		var nombre_tuto = $(this).data('tuto');
+		var container = ".containerTutoPC"
+		$('.tutoPC').each(function(){
+	       $(this).parent().removeClass('pormayorUnico');
+			$(this).removeClass('white-text');
+			$(this).addClass('pormayorUnico-text');
+	    });
+		$(this).parent().addClass('pormayorUnico');
+		$(this).addClass('white-text');
+		$(this).removeClass('pormayorUnico-text');
+
+		if(nombre_tuto == 'Registrarse en pormayor.pe'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1A.php');
+		}else if(nombre_tuto == '¿Porqué necesito tener un DNI para registrarme?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1B.php');
+		}else if(nombre_tuto == 'Crear una tienda en pormayor.pe'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1C.php');
+		}else if(nombre_tuto == '¿Porqué debo tener un RUC para crear una tienda?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1D.php');
+		}else if(nombre_tuto == '¿Cómo accedo al perfil de usuario?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1E.php');
+		}else if(nombre_tuto == '¿Cómo edito los datos de mi cuenta?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto1F.php');
+		}
+		// TUTORIALES 2
+		else if(nombre_tuto == '¿Donde edito los datos de mi tienda?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2A.php');
+		}else if(nombre_tuto == '¿Donde edito mis datos personales y contraseña?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2B.php');
+		}else if(nombre_tuto == '¿Porqué puedo colocar un numero de cuenta como dato personal?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2C.php');
+		}else if(nombre_tuto == '¿Cómo agregos más locales de mi tienda?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2D.php');
+		}else if(nombre_tuto == '¿Donde contesto las cotizaciones que me solicitan?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2E.php');
+		}else if(nombre_tuto == '¿Donde Respondo las preguntas que me realizan?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto2F.php');
+		}
+		// TUTORIALES 3
+		else if(nombre_tuto == '¿Cómo convierto un producto en favorito?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3A.php');
+		}else if(nombre_tuto == '¿Qué significa el minimo de venta de un producto?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3B.php');
+		}else if(nombre_tuto == '¿Cómo agrego/elimino productos al pedido actual?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3C.php');
+		}else if(nombre_tuto == '¿Cómo comparto un producto en facebook?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3D.php');
+		}else if(nombre_tuto == '¿Cómo cotizo mi pedido actual?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3E.php');
+		}else if(nombre_tuto == 'No encuentro mis pedidos cotizados'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3F.php');
+		}else if(nombre_tuto == '¿Cómo finalizo la compra de un pedido cotizado?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3G.php');
+		}else if(nombre_tuto == '¿Donde veo mis compras realizadas?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3H.php');
+		}else if(nombre_tuto == '¿Donde califico la tienda a la que compre productos?'){
+			$(container).load(base_url+'application/views/ayuda/load/tutoriales/tuto3I.php');
+		}
+  	});
+
+	// $('#indiceLegal').change(function() {
+	// 	var nombreIndice = $(this).val();
+	//     $('html, body').animate({
+ //          scrollTop: $("#"+nombreIndice).offset().top - 100
+ //        }, 1500);
+ //  	});
+
+	// $(".unidadSticky").stick_in_parent({inner_scrolling: false,offset_top: 62,}).on("sticky_kit:stick", function(e) {
+ //        $(this).css("z-index",1000);
+ //     }).on("sticky_kit:bottom", function(e) {
+ //        $(this).css("z-index",10);
+ //     }).on("sticky_kit:unbottom", function(e) {
+ //        $(this).css("z-index",1000);
+ //    });
+
+</script>
+{% endblock %}

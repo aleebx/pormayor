@@ -1,0 +1,97 @@
+{% extends "layout/intranet/template_ven.twig" %}
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+{% endblock %}
+{% block content %}
+  <main class="container">
+    <div class="card">
+      <div class="card-content">
+        <h4>Listado de clientes - Todos los clientes registrado en PorMayor</h4>
+        <small></small>
+        <table id="listado">
+          <thead>
+            <tr>
+                <th>Fecha Creado</th>
+                <th>Cliente</th>
+                <th>Ubicación</th>
+                <th>Teléfono</th>
+                <th>Ventas</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for c in clientes %}
+                <tr>
+                  <td>{{c.Usu_Created|date("Y/m/d")}}</td>
+                  <td>{{c.Per_Nombre}} {{c.Usu_Correo}}</td>
+                  <td>{{c.dep}} - {{c.dis}}</td>
+                  <td>{{c.Per_Telefono}}</td>
+                  <td>{{c.compras}}</td>
+                  {% if c.Usu_IdUsuario_Ven == 0 %}
+                  <td id="td{{c.Usu_IdUsuario}}"><a class="btn btn-primary assCliente" data-idu="{{c.Usu_IdUsuario}}">ASIGNARME</a></td>
+                  {% elseif c.Usu_IdUsuario_Ven == usuario.id_usuario %}
+                  <td>CLIENTE</td>
+                  {% else %}
+                  <td>NO DISPONIBLE</td>
+                  {% endif %}
+                  <td><a class="btn blue modal-trigger" id="{{c.Usu_IdUsuario}}" accessKey="{{c.Usu_Correo}}" href="#modalGes">Clave</a></td>
+                </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <div id="modalGes" class="modal" style="z-index:9999 !important;width: 50%!important;">
+      <div class="modal-content" id="loadEdit"></div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+  <script src="{{base_url('public/')}}js/vendedor/lcliente.js?v=12" type="text/javascript"></script>
+  <script>
+  $(document).ready( function () {
+    $('#listado').DataTable({
+      "responsive": true,
+      "order": [[0, "desc" ]],
+      "language": {
+          "lengthMenu": "",
+          "zeroRecords": "No se encontro nada",
+          "info": "Página _PAGE_ de _PAGES_",
+          "infoEmpty": "No hay registros disponibles",
+          "emptyTable":     "No hay información en la tabla",
+          "infoFiltered":   "(filtrado de _MAX_ ventas)",
+          "infoPostFix":    "",
+          "thousands":      ",",
+          "loadingRecords": "Cargando...",
+          "processing":     "Procesando...",
+          "search":         "Buscar:",
+          "paginate": {
+              "first":      "Primero",
+              "last":       "Último",
+              "next":       "Siguiente",
+              "previous":   "Anterior"
+                  }
+      }
+    });
+  
+    $('#modalGes').modal({
+             dismissible:true, // Modal can be dismissed by clicking outside of the modal
+             opacity:.8, // Opacity of modal background
+             inDuration:300, // Transition in duration
+             outDuration:200, // Transition out duration
+             startingTop:'5%', // Starting top style attribute
+             endingTop:'10%', // Ending top style attribute
+              ready:function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                 var est=trigger[0]['accessKey'];
+                 var idv=trigger[0]['id'];
+                 $('#loadEdit').load(base_url+'vnd/vista_clave',{id:idv,est:est});
+                },
+              complete: function() {
+              } // Callback for Modal close
+          });
+});
+  </script>
+{% endblock %}

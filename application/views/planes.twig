@@ -1,0 +1,31 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}   
+{% endblock %}
+{% block content %}
+	<main class="container">
+		<div class="row">
+			{% for pla in planes %}
+			<div class="card col s12 l4">
+				<div class="card-content">
+					<span class="card-title">{{pla.Pla_Nombre}}</span>
+					<span>S/ {{pla.Pla_Precio|number_format}}</span><span>Diario</span></p>
+					{% set caracteristicas =  pla.Pla_Caracteristicas|split(';') %}
+					  	<ul class="collection">
+					  		{% for caracteristica in caracteristicas %}
+					  			<li class="collection-item">{{caracteristica}}</li>
+					  		{% endfor %}
+					  	</ul>
+				</div>
+				<div class="card-action center">
+					<a href="{{base_url()}}tienda/crear/{{pla.Pla_IdPlan}}" class="btn black-text">Quiero este
+			  		</a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</main>
+{% endblock %}
+
+{% block script %}
+<script src="{{base_url('public/js/tienda/')}}planes.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+{% endblock %}

@@ -1,0 +1,352 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}   
+<style type="text/css">
+table.striped>tbody>tr:nth-child(odd) {
+	background: #f5f5f5 !important;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+.arrow-right {
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+}
+table.responsive-table td,table.responsive-table thead tr th{
+	text-align: center !important
+}
+table.responsive-table thead tr th::before {
+    content: normal !important; 
+}
+table.responsive-table tr{
+	padding: 0px !important;
+}
+table.responsive-table tbody tr td:not(.fontD2){
+	border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+	height: 61px !important;
+}
+.borderBottom{
+	border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+}
+.fixColumn{
+	position: relative;
+    left: -3px;
+}
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="container">
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<div class="card">
+				<div class="card-content sinPadding">
+					<h4 class="center">Tarifas</h4>
+					<div class="divider"></div>
+					<br class="hide-on-med-and-down">
+					<div class="row container centrarForzado hide-on-med-and-down">
+						<div class="col s12 " >
+							<div class="row centrarForzado" style="background: #ff6700; padding:10px;">
+								<div class="col l4" >
+									<img class="centrarForzado fixImg3" src="{{ruta_img}}tarifas_1.png" >
+									<div class="anchotTotal center">
+										<img class="" src="{{ruta_img}}tarifas_2.png" >
+									</div>
+								</div>
+								<div class="col l8 positionRelative" style="background: url('{{ruta_img}}tarifas_3.png');background-size: contain;">
+									<span class=" fontC pormayor-text">SI ADQUIERES UN PLAN...</span>
+									<br><br>
+									<i class="material-icons left negrita pormayorUnico redondeo white-text positionRelative" style="top:3px;padding:3px">keyboard_arrow_right</i><span class="white-text fontE simpleTexto">Servicio fotográfico a 20 productos</span>
+									<br><br>
+									<i class="material-icons left negrita pormayorUnico redondeo white-text positionRelative" style="top:3px;padding:3px">keyboard_arrow_right</i><span class="white-text fontE simpleTexto">Te ayudamos a subir tus productos</span>
+									<br><br><br>
+									
+									
+									<span class="positionAbsolute bottom0 right0 enfasisB2">*CIERTAS CONDICIONES APLICAN</span>
+									
+								</div>
+							</div>
+						</div>
+						<div class="col s12">
+							<table class="striped bordered">
+								<thead>
+									<tr>
+										<th width="25%" style="padding:7px;"></th>
+										<th width="25%" class="brown center fontE negrita white-text positionRelative sinRedondeo" style="padding:7px;">
+											BRONCE<div class="arrow-down positionAbsolute left0 right0 centrarForzado" style="bottom:-15px;border-top: 15px solid #795548;"></div>
+											<img class="positionAbsolute right0" src="{{ruta_img}}tarifas_4.png" >
+										</th>
+										<th width="25%" class="grey center fontE negrita positionRelative sinRedondeo" style="padding:7px;">
+											PLATA<div class="arrow-down positionAbsolute left0 right0 centrarForzado" style="bottom:-15px;border-top: 15px solid #9e9e9e;"></div>
+											<img class="positionAbsolute right0" src="{{ruta_img}}tarifas_6.png" >
+										</th>
+										<th width="25%" class="pormayor center fontE negrita positionRelative sinRedondeo" style="padding:7px;">
+											ORO<div class="arrow-down positionAbsolute left0 right0 centrarForzado" style="bottom:-15px;border-top: 15px solid #FEC00F;"></div>
+											<img class="positionAbsolute right0" src="{{ruta_img}}tarifas_5.png" >
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="fontD2 center simpleTexto grey-text text-darken-3">DURACIÓN</td>
+										<td class="center brown-text negrita fontE">1 MES</td>
+										<td class="center grey-text text-darken-2 negrita fontE">6 MESES</td>
+										<td class="center amber lighten-4 amber-text text-darken-2 negrita fontE">12 MESES</td>
+									</tr>
+									<tr>
+										<td class="fontD2 center simpleTexto grey-text text-darken-3">PUBLICIDAD CORREO</td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center"><i class="small material-icons grey-text text-darken-2">check_circle</i></td>
+										<td class="center amber lighten-4"><i class="small material-icons pormayor-text">check_circle</i></td>
+									</tr>
+									<tr>
+										<td class="fontD2 center simpleTexto grey-text text-darken-3">PUBLICIDAD PÁGINA</td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center amber lighten-4"><i class="small material-icons pormayor-text">check_circle</i></td>
+									</tr>
+									<tr>
+										<td class="fontD2 center simpleTexto grey-text text-darken-3">PRODUCTOS</td>
+										<td class="center brown-text negrita fontE">ILIMITADOS</td>
+										<td class="center grey-text text-darken-2 negrita fontE">ILIMITADOS</td>
+										<td class="center amber lighten-4 amber-text text-darken-2 negrita fontE">ILIMITADOS</td>
+									</tr>
+									<tr>
+										<td class="fontD2 center simpleTexto grey-text text-darken-3">STICKER PUBLICITARIO</td>
+										<td class="center"><i class="small material-icons brown-text">check_circle</i></td>
+										<td class="center"><i class="small material-icons grey-text text-darken-2">check_circle</i></td>
+										<td class="center amber lighten-4"><i class="small material-icons pormayor-text">check_circle</i></td>
+									</tr>
+									<tr>
+										<td class="fontD2 center simpleTexto grey-text text-darken-3">POSICIONAMIENTO</td>
+										<td class="center brown-text negrita fontE">MEDIO</td>
+										<td class="center grey-text text-darken-2 negrita fontE">ALTO</td>
+										<td class="center amber lighten-4 amber-text text-darken-2 negrita fontE">MUY ALTO</td>
+									</tr>
+									<tr>
+										<td class="fontD2 center simpleTexto grey-text text-darken-3">TIENDA PERSONALIZADA</td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center amber lighten-4"><i class="small material-icons pormayor-text">check_circle</i></td>
+									</tr>
+									<tr>
+										<td class="fontD2 center simpleTexto grey-text text-darken-3">MES ADICIONAL</td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center grey-text text-darken-2 negrita fontE">1 MES</td>
+										<td class="center amber lighten-4 amber-text text-darken-2 negrita fontE">3 MESES</td>
+									</tr>
+									<tr>
+										<th width="25%" style="padding:5px;"></th>
+										<th width="25%" class="brown center white-text positionRelative sinRedondeo" style="padding:5px; ">
+											<span class="positionAbsolute fontD2" style="top:4px;left:50px">S/</span><span class="fontD">30.</span><span class="fontE">00</span>
+										</th>
+										<th width="25%" class="grey center positionRelative sinRedondeo" style="padding:5px;">
+											<span class="positionAbsolute fontD2" style="top:4px;left:50px">S/</span><span class="fontD">180.</span><span class="fontE">00</span>
+										</th>
+										<th width="25%" class="pormayor center positionRelative sinRedondeo" style="padding:5px;">
+											<span class="positionAbsolute fontD2" style="top:4px;left:50px">S/</span><span class="fontD">360.</span><span class="fontE">00</span>
+										</th>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col s12 center enfasisB">
+							<br><br><br>
+							<p>*El PLAN BRONCE tiene una comisión por venta de 3%,  PLAN PLATA 2% y PLAN ORO 1%  <b>solo</b> si se realiza el pago a través de nuestro método de pago COMPRA SEGURA. </p>
+							<div class="dividerMargin"></div>
+							<p>*Promoción disponible desde el 15 de marzo hasta el 30 de abril . Se tomarán máximo 5 fotos por cada producto, para un total de  máximo 100 fotos. El plan debe  adquirirse durante el periodo de validez de la promoción.</p>
+							<div class="dividerMargin"></div>
+							<p>*Para que el posicionamiento de tu tienda sea <i>Alto o Muy Alto</i>, asegúrate de tener logo y al menos 5 productos agregados</p>
+							<span class="fontB">Condiciones de tarifas sujetas a cambios</span>
+						</div>
+						<div class="col s12 m12 l12 center">
+							<br><br>
+							<a href="{{base_url()}}Legal/centro" class="btn pormayorUnico white-text">Regresar a centro de ayuda</a>
+							<br><br>
+						</div>
+						<div class="col s12">
+							<div class="divider dividerMargin"></div>
+						</div>
+						<div class="col s12 m12 l12 center">
+							<p><b>Si deseas información adicional, lineamientos y terminos legales; puedes seguir <a class="pormayorUnico-text" href="{{base_url()}}Legal/centro">este enlace</a></b><b> y acceder a</b> <i>Tarifas y facturación</i></p>
+							<br>
+						</div>
+					</div>
+					<!-- MOVIL -->
+					<div class="row centrarForzado hide-on-large-only">
+						<div class="col s12 sinPadding" >
+							<div class="row centrarForzado" style="background: #ff6700; padding:10px;">
+								<div class="col s12 sinPadding center" >
+									<img class="centrarForzado fixImg3" src="{{ruta_img}}tarifas_1.png" >
+									<div class="anchotTotal center">
+										<img class="" src="{{ruta_img}}tarifas_2.png" >
+									</div>
+								</div>
+								<div class="col s12 positionRelative" style="">
+									<br>
+									<span class=" fontA pormayor-text">SI ADQUIERES UN PLAN...</span>
+									<br><br>
+									<i class="material-icons left fontA pormayorUnico redondeo white-text positionRelative" style="top:3px;padding:2px">keyboard_arrow_right</i><span class="white-text fontA simpleTexto">Servicio fotográfico a 20 productos</span>
+									<br><br>
+									<i class="material-icons left fontA pormayorUnico redondeo white-text positionRelative" style="top:3px;padding:2px">keyboard_arrow_right</i><span class="white-text fontA simpleTexto">Te ayudamos a subir tus productos</span>
+									<br><br><br>
+									
+									
+									<span class="positionAbsolute bottom0 right0 enfasisB2">*CIERTAS CONDICIONES APLICAN</span>
+									
+								</div>
+							</div>
+						</div>
+						<div class="col s12 sinPadding">
+							<table class=" bordered responsive-table">
+								<thead>
+									<tr class="sinPadding">
+										<th width="100" style="padding:28px;"></th>
+										<th class="brown center fontA negrita white-text positionRelative sinRedondeo" style="height:61px;padding-top:5px;">
+											BRONCE<div class="arrow-right positionAbsolute centrarForzado" style="z-index:50;top:21px;right:-10px;border-left: 10px solid #795548;"></div>
+											<img class="positionAbsolute left0 right0 centrarForzado" style="bottom:-15px;z-index:50;z-index:50" src="{{ruta_img}}tarifas_4.png" height="50">
+										</th>
+										<th class="grey center fontA negrita positionRelative sinRedondeo" style="height:61px;padding-top:5px;">
+											PLATA<div class="arrow-right positionAbsolute centrarForzado" style="z-index:50;top:21px;right:-10px;border-left: 10px solid #9e9e9e;"></div>
+											<img class="positionAbsolute left0 right0 centrarForzado" style="bottom:-15px;z-index:50" src="{{ruta_img}}tarifas_6.png" height="50">
+										</th>
+										<th class="pormayor center fontA negrita positionRelative sinRedondeo" style="height:61px;padding-top:5px;">
+											ORO<div class="arrow-right positionAbsolute centrarForzado" style="z-index:50;top:21px;right:-10px;border-left: 10px solid #FEC00F;"></div>
+											<img class="positionAbsolute left0 right0 centrarForzado" style="bottom:-15px;z-index:50" src="{{ruta_img}}tarifas_5.png" height="50">
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td width="120" class="fontD2 center simpleTexto grey-text text-darken-3 borderBottom">DURACIÓN</td>
+										<td class="center brown-text negrita fontE">1 MES</td>
+										<td class="center grey-text text-darken-2 negrita fontE">6 MESES</td>
+										<td class="center amber lighten-4 amber-text text-darken-2 negrita fontE">12 MESES</td>
+									</tr>
+									<tr>
+										<td class="fontD2 center simpleTexto grey-text text-darken-3 borderBottom">PUBLICIDAD CORREO</td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center"><i class="small material-icons grey-text text-darken-2">check_circle</i></td>
+										<td class="center amber lighten-4"><i class="small material-icons pormayor-text">check_circle</i></td>
+									</tr>
+									<tr >
+										<td class="fontD2 center simpleTexto grey-text text-darken-3 borderBottom">PUBLICIDAD PÁGINA</td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center amber lighten-4"><i class="small material-icons pormayor-text">check_circle</i></td>
+									</tr>
+									<tr >
+										<td class="fontD2 center simpleTexto grey-text text-darken-3 borderBottom">PRODUCTOS</td>
+										<td class="center brown-text negrita fontE">ILIMITADOS</td>
+										<td class="center grey-text text-darken-2 negrita fontE">ILIMITADOS</td>
+										<td class="center amber lighten-4 amber-text text-darken-2 negrita fontE">ILIMITADOS</td>
+									</tr>
+									<tr >
+										<td class="fontD2 center simpleTexto grey-text text-darken-3 borderBottom">STICKER PUBLICITARIO</td>
+										<td class="center"><i class="small material-icons brown-text">check_circle</i></td>
+										<td class="center"><i class="small material-icons grey-text text-darken-2">check_circle</i></td>
+										<td class="center amber lighten-4"><i class="small material-icons pormayor-text">check_circle</i></td>
+									</tr>
+									<tr >
+										<td class="fontD2 center simpleTexto grey-text text-darken-3 borderBottom">POSICIONAMIENTO</td>
+										<td class="center brown-text negrita fontE">MEDIO</td>
+										<td class="center grey-text text-darken-2 negrita fontE">ALTO</td>
+										<td class="center amber lighten-4 amber-text text-darken-2 negrita fontE">MUY ALTO</td>
+									</tr>
+									<tr >
+										<td class="fontD2 center simpleTexto grey-text text-darken-3 borderBottom">TIENDA PERSONALIZADA</td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center amber lighten-4"><i class="small material-icons pormayor-text">check_circle</i></td>
+									</tr>
+									<tr >
+										<td class="fontD2 center simpleTexto grey-text text-darken-3 borderBottom">MES ADICIONAL</td>
+										<td class="center"><i class="fontE material-icons grey-text text-lighten-1">cancel</i></td>
+										<td class="center grey-text text-darken-2 negrita fontE">1 MES</td>
+										<td class="center amber lighten-4 amber-text text-darken-2 negrita fontE">3 MESES</td>
+									</tr>
+									<tr >
+										<td class="fontD2"></td>
+										<td width="150" class="brown center white-text positionRelative sinRedondeo" style="padding:5px; ">
+											<span class="positionAbsolute fontB2 top0 " style="left:5px">S/</span><span class="fontD negrita">30.</span><span class="fontE">00</span>
+										</td>
+										<td class="grey center positionRelative sinRedondeo" style="padding:5px;">
+											<span class="positionAbsolute fontB2 top0" style="left:5px">S/</span><span class="fontD negrita">180.</span><span class="fontE">00</span>
+										</td>
+										<td class="pormayor center positionRelative sinRedondeo" style="padding:5px;">
+											<span class="positionAbsolute fontB2 top0" style="left:5px">S/</span><span class="fontD negrita">360.</span><span class="fontE">00</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col s12 center enfasisB">
+							<br class="hide-on-med-and-down"><br ><br>
+							<p>*El PLAN BRONCE tiene una comisión por venta de 3%,  PLAN PLATA 2% y PLAN ORO 1%  <b>solo</b> si se realiza el pago a través de nuestro método de pago COMPRA SEGURA. </p>
+							<div class="dividerMargin"></div>
+							<p>*Promoción disponible desde el 15 de marzo hasta el 30 de abril . Se tomarán máximo 5 fotos por cada producto, para un total de  máximo 100 fotos. El plan debe  adquirirse durante el periodo de validez de la promoción.</p>
+							<div class="dividerMargin"></div>
+							<p>*Para que el posicionamiento de tu tienda sea <i>Alto o Muy Alto</i>, asegúrate de tener logo y al menos 5 productos agregados</p>
+							<span class="fontB">Condiciones de tarifas sujetas a cambios</span>
+						</div>
+						<div class="col s12 m12 l12 center">
+							<br><br>
+							<a href="{{base_url()}}Legal/centro" class="btn pormayorUnico white-text">Regresar a centro de ayuda</a>
+							<br><br>
+						</div>
+						<div class="col s12">
+							<div class="divider dividerMargin"></div>
+						</div>
+						<div class="col s12 m12 l12 center">
+							<p><b>Si deseas información adicional, lineamientos y terminos legales; puedes seguir <a class="pormayorUnico-text" href="{{base_url()}}Legal/centro">este enlace</a></b><b> y acceder a</b> <i>Tarifas y facturación</i></p>
+							<br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock %}
+
+{% block script %}
+<script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/jquery.sticky-kit.min.js')}}"></script>
+<script>
+	// $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
+	//     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+	//       var target = $(this.hash);
+	//       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+	//       if (target.length) {
+	//         event.preventDefault();
+	//         $('html, body').animate({
+	//           scrollTop: target.offset().top - 90
+	//         }, 1500, function() {
+	//           var $target = $(target);
+	//           $target.focus();
+	//           if ($target.is(":focus")) { 
+	//             return false;
+	//           } else {
+	//             $target.attr('tabindex','-1');
+	//             $target.focus(); 
+	//           };
+	//         });
+	//       }
+	//     }
+ //  	});
+
+	// $('#indiceLegal').change(function() {
+	// 	var nombreIndice = $(this).val();
+	//     $('html, body').animate({
+ //          scrollTop: $("#"+nombreIndice).offset().top - 100
+ //        }, 1500);
+ //  	});
+
+</script>
+{% endblock %}

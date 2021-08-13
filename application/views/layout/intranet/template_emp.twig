@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>      
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{% if categoriaFlag == true %}{{categoria_seo.Cat_Nombre|title}} al Por Mayor en PorMayor.pe - Agrúpate, Cómpralo y Ahorra{% elseif subcategoriaFlag == true %}{{subcategoria_seo.Suc_Nombre|title}} al Por Mayor en PorMayor.pe - Agrúpate, Cómpralo y Ahorra{% elseif  detalleFlag == true %}{{detalle_seo.Suc_Nombre|title}} - {{detalle_seo.Des_Nombre}} al Por Mayor en PorMayor.pe - Agrúpate, Cómpralo y Ahorra{% else %}{{pagina.titulo|title}}{% endif %}</title>
+<meta name="google-site-verification" content="MZNqZwO63SqZWJMD-S5PwzQhXBJoFBLp8BmwSgYAexM" />
+<meta property="fb:app_id" content="2623619600997776" />
+<meta property="og:title" content="{% if producto.Pro_Nombre %}{{producto.Pro_Nombre|upper}} - Hasta S/{{producto.Pro_PrecioMinimo}}{% else %} PorMayor.pe - Agrúpate, Cómpralo y Ahorra{% endif %}" />
+<meta property="og:description" content="{% if producto.Pro_Nombre %}Precio Normal: S/{{producto.Pro_PrecioMaximo}}. Agrúpate en Pormayor.pe y cómpralo a precio de fábrica. Somos más, pagamos menos{% else %} Somos la plataforma de comercio electrónico única en Perú con el sistema de compras grupales dónde puedes ahorrar dinero en tus artículos preferidos invitando a tus amigos.{% endif %}"/>
+{% if producto.Pro_Nombre %}
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://pormayor.pe/img/{{fotos[0].Prf_Img}}" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="300" />
+{% else %}
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://pormayor.pe/img/logoPM.jpg" />
+{% endif %}
+<meta name="description" content="{% if categoriaFlag == true %}{% if categoria_seo.Cat_Meta_Description %}{{categoria_seo.Cat_Meta_Description}}{% else %}{{categoria_seo.Cat_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% elseif subcategoriaFlag == true %}{% if subcategoria_seo.Suc_Meta_Description %}{{subcategoria_seo.Suc_Meta_Description}}{% else %}{{subcategoria_seo.Suc_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% elseif detalleFlag == true %}{% if detalle_seo.Des_Meta_Description %}{{detalle_seo.Des_Meta_Description}}{% else %}{{detalle_seo.Des_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% else %}Compra y vende al por mayor en Lima.Crea tu propia tienda virtual mayorista o compra al por mayor para tu negocio fácil y rápido aquí.{% endif %}">
+<meta name="keywords" content="{% if categoriaFlag == true %}{% if categoria_seo.Cat_Keywords %}{{categoria_seo.Cat_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %}{% elseif subcategoriaFlag == true %}{% if subcategoria_seo.Suc_Keywords %}{{subcategoria_seo.Suc_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %}{% elseif detalleFlag == true %}{% if detalle_seo.Des_Keywords %}{{detalle_seo.Des_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %} {% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima,{% endif %}">
+<link rel="icon" href="{{ruta_img}}logo.png">
+{# <link rel="canonical" href="https://pormayor.pe"/> #}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen">
+<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/materialize.min.css')}}"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/templates.min.css')}}"  media="screen"/>
+{% block analytics %}{% endblock %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129372100-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129372100-1');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6LFJ9S');</script>
+<!-- End Google Tag Manager -->
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '9ad5ed9d7ef3d4956d721974ef3d6e60ca5876d7';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<script type='text/javascript'>
+ window.smartlook||(function(d) {
+   var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+   var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+   c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+   })(document);
+   smartlook('init', 'fb84ee2d6ec1691312a6f95f28c7ad81c02229d7');
+</script>
+{% block head %} {% endblock %}
+  <style type="text/css">
+  .autocomplete-content{width: 40vw!important;}
+  .w100 {width:200% !important}
+  @media only screen and (max-width: 600px) {
+  .w100 {width:100% !important}
+  .autocomplete-content{width: 80vw!important;}
+  }
+  </style>
+</head>
+<body id="inicio" class="grey lighten-4">
+{% block messenger %}{% endblock %}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6LFJ9S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2623619600997776',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.2'
+    });      
+    FB.AppEvents.logPageView();         
+  };
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/es_ES/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+ !function(f,b,e,v,n,t,s)
+ {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+ n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+ if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+ n.queue=[];t=b.createElement(e);t.async=!0;
+ t.src=v;s=b.getElementsByTagName(e)[0];
+ s.parentNode.insertBefore(t,s)}(window, document,'script',
+ 'https://connect.facebook.net/en_US/fbevents.js');
+ fbq('init', '2398432313771404');
+ fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+ src="https://www.facebook.com/tr?id=2398432313771404&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+    <div class="navbar-fixed inner">
+      <nav class="z-depth-2 pormayorUnico">
+        <div  class="nav-wrapper row navRowMobile">
+          <div class="col s2 m2 l2 colMenuLogo ocultarSearch valign-wrapper">
+            <a data-activates="mobile-pormayor" class="button-collapse centrarForzado">
+              <img alt="" src="{{ruta_img}}menuIcon.svg" width="35">
+            </a>
+            <a href="{{base_url()}}" class="valign-wrapper anchoTotal hide-on-small-only">
+              <img alt="PorMator.pe EMPRESAS" src="{{ruta_img}}logo_pm_empresa_mini.png" class="centrarForzado">
+            </a>
+          </div>
+          <div class="col s8 m8 l8 sinPadding">
+            <div class="contentSearch contentSearchTienda positionRelative">
+              <i class="material-icons positionAbsolute sinUser grey-text text-lighten-1 lineHeight0 transitionB">search</i>
+              <input type="text" class="browser-default buscador autocomplete redondeo white enfasisA" placeholder="Buscar productos" data-tienda="pormayor">
+            </div>
+          </div> 
+          <div class="col s2 m2 l2 center">
+            <a href="{{base_url()}}usuario/login" class="white-text">
+              <i class="material-icons left">person</i> <span class="hide-on-small-only">REGISTRATE / INICIAR SESIÓN</span> 
+            </a>
+          </div>
+        </div>        
+      </nav>
+    </div>     
+    {% block content %} {% endblock %}
+    <footer class="page-footer grey darken-4 black-text">
+      <div class="">
+        <div class="row pormayor">
+          <div class="col s12 l12">&nbsp;</div>
+          <div class="col s12 l12">
+              <div class="row">
+                <div class="col s12 l3 center-align input-field">
+                  <a href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="Instagram PorMayor.pe" title="Instagram PorMayor.pe" src="{{ruta_img}}instaW.png" height="30"></a>
+                  <a href="https://www.facebook.com/pormayoroficial/"><img alt="Facebook PorMayor.pe" title="Facebook PorMayor.pe" src="{{ruta_img}}faceW.png" height="30"></a>
+                  <a href="mailto:contacto@pormayor.pe"><img alt="Correo PorMayor.pe" title="Correo PorMayor.pe" src="{{ruta_img}}mailW.png" height="30"></a>
+                  <a href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber"><img alt="Youtube PorMayor.pe" title="Youtube PorMayor.pe" src="{{ruta_img}}youtubeW.png" height="30"></a>
+                </div>
+                <div class="col l4 input-field">
+                  <span>Recibe las últimas tendencias de PorMayor.pe e ideas únicas para regalar directamente en tu bandeja de entrada</span>
+                </div>
+                <div class="col s6 l3 input-field">
+                  <input type="email" id="email_subs" class="redondeo white" placeholder="Introduce tu correo electrónico">
+                </div>
+                <div class="col s6 l2 center-align input-field">
+                  <a class="btn subscribeBtn grey darken-4 pulse negrita">SUSCRIBIRME</a>  
+                </div>                    
+            </div>
+          </div>
+          </div>
+          <div class="row white-text">
+          <div class="col l3 s12">
+            <h5 class="amber-text">PorMayor.pe</h5>
+            <p>Somos el primer ecommerce de Perú dónde se puede comprar de forma grupal, ahorrando hasta 50% del precio regular de los productos.</p>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="amber-text">MI CUENTA</h5>
+            <ul>
+              <li><span class="orange-text">&#9830;</span> <a class="" href="{{base_url()}}usuario/login">Registrarte</a></li>
+              <li><span class="orange-text">&#9830;</span> <a class="" href="{{base_url()}}usuario/login">Iniciar Sesión</a></li>
+              <li><span class="orange-text">&#9830;</span> <a class="" href="{{base_url()}}usuario/olvido_contrasenia">Recuperar Contraseña</a></li>
+              <li><span class="orange-text">&#9830;</span> <a class="" href="{{base_url()}}contacto">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="amber-text">SERVICIO AL CLIENTE</h5>
+            <ul>
+              <li><span class="orange-text">&#9830;</span> <a class="" href="{{base_url()}}legal/centro">Centro de Ayuda</a></li>
+              <li><span class="orange-text">&#9830;</span> <a class="" href="{{base_url()}}legal">Terminos y condiciones</a></li>
+              <li><span class="orange-text">&#9830;</span> <a class="" href="{{base_url()}}legal/privacidad">Politicas de Privacidad</a></li>
+              <li><span class="orange-text">&#9830;</span> <a class="" href="{{base_url()}}legal/compra_segura">Compra Segura</a></li>
+              <li><span class="orange-text">&#9830;</span> <a class="" href="http://runningbox.azurewebsites.net/Orden/ListaTracking/">Rastrea tu Pedido</a></li>
+            </ul>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="amber-text">ESCRÍBENOS</h5>
+            <ul>
+              <li><span class="orange-text">&#9830;</span> <a href="tel:51923500413">923500413</a></li>
+              <li><span class="orange-text">&#9830;</span> <a href="mailto:contacto@pormayor.pe">contacto@pormayor.pe</a></li>
+              <li><span class="orange-text">&#9830;</span> Horario de Atención:<br>
+                Lunes a Viernes: 9:00 AM a 6:30 PM<br>
+                Sábados: 9:00 AM a 1:00 PM</li>
+              <li>Av. Nicolás Piérola 1131, Oficina 508. Lima - Perú</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container row">
+          <div class="col l8 center sinPadding">
+            © 2018 Derechos Reservados <a href="{{base_url()}}">PorMayor.pe S.A.</a>
+          </div>
+          <div class="col l4 fontB center sinPadding" >
+            <img class="fixImg2C" src="{{ruta_img}}logoVisa.png">
+            Esta tienda está autorizada por Visa para realizar transacciones electrónicas.
+          </div>
+        </div>
+      </div>
+    </footer>      
+    {% block modal %} {% endblock %}
+      <script> var base_url = "{{base_url()}}";</script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js"></script>
+      <script src="{{base_url('public/js/template-lite.js?v=2.0')}}" defer></script>
+      <script src="{{base_url('public/intranet/js/jquery-confirm.min.js')}}" defer></script> 
+    {% block script %} {% endblock %}
+   </body>
+
+</html>

@@ -1,0 +1,6 @@
+{% for pre in precios %}
+<div class="col s4 m4 l4 rangoPrecio">
+  <i class="">De {{pre.Prp_Desde}} a {% if pre.Prp_A == 9999 %} + {% else %}{{pre.Prp_A}} {% endif %}</i> <br>
+  <span><b>S/ {{pre.Prp_Precios}}</b></span>
+</div>
+{% endfor %}

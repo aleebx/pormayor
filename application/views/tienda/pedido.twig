@@ -1,0 +1,138 @@
+{% extends "layout/intranet/template_lite.twig" %}
+
+{% block content %}
+    <!-- Page Layout here -->
+    <main class="container">
+    <div class="row">
+      {% if carrito is empty %}
+        <div class="pedidoVacio"></div>
+      {% endif %}
+
+      {% if usuario.logueado and not carrito is empty %}
+        <div class="col s12 m6 l7 cardPedido" id="pedidoItems">
+          <div class="card ">
+            <div class="card-content sinPadding">
+              <span class="card-title pormayorAccent white-text center">Pedido a cotizar</span>
+              <div class="contentsPedido cardContentFix">
+                <table class="bordered">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Producto</th>
+                      <th style="width: 25%">Variacion</th>
+                      <th class="center" style="width: 25%;">Cant.</th>
+                    </tr>
+                  </thead>
+                  <tbody style="font-size: 14px">
+                {% for car in carrito %}
+                <tr>
+                  <td> <img src="{{ruta_img}}{{car.img}}" height="40" style="border-radius:2px"></td>
+                  <td> <span class="nombreProCoti muayuscula">{{car.name}}</span> </td>
+                  <td> 
+                    {% if car.tipovariacion != " " and car.variacion != " " %}
+                      {{car.tipovariacion}} {{car.variacion}} -
+                    {% endif %}
+                     <span class="enfasisB">{{car.color|title}}</span> 
+
+                  </td>
+                  <td class="center"> <b>{{car.qty}}</b>  Unid.</td>
+                </tr>
+                {% endfor %}
+                 </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m5 l5">
+          <div class="card cardPedido">
+            <div class="card-content sinPadding">
+              <span class="card-title center pormayor pormayorAccent-text">Datos Personales</span>
+              <div class="contentsPedido cardContentFix" style="padding-top: 10px;">
+                <div class="input-field col s12">
+                  <input placeholder=""  id="nombreComprador" type="text" class="validate" value="{{usuario_inf.Per_Nombre}}" readonly="">
+                  <label for="nombreComprador">Nombre completo</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                  <input placeholder="" id="tlf" type="number" class="validate" min="1" value="{{usuario_inf.Per_Telefono}}">
+                  <label for="tlf">Telefono de Contacto</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                  <input placeholder="" id="correo" type="email" class="validate" value="{{usuario_inf.Usu_Correo}}" readonly="">
+                  <label for="correo">Correo electronico</label>
+                </div>
+                <div class="input-field col s12">
+                  <textarea id="comentario" class="materialize-textarea validate"></textarea>
+                  <label for="comentario">Comentario</label>
+                </div class="input-field col s12">
+                  <p style="margin-left: 12px">
+                    <input type="checkbox" id="siDireccion" />
+                    <label for="siDireccion">Direcciòn (opcional)</label>
+                  </p>
+                <div id="campoNO" class="hide"></div>
+                <div id="direccionVista" class=" hide" style="margin-top: 10px">
+                  <select id="selecRegion" class="browser-default">
+                    <option value="0" disabled selected> Seleccione una región</option>
+                    {% for reg in region %}
+                      <option value="{{reg.id}}">{{reg.name}}</option>
+                    {% endfor %}
+                  </select>
+                  <div id="provincia">
+                  </div>
+                  <div id="distrito">
+                  </div>
+                  <div class="row sinBordeBottom">
+                    <div class="input-field col s12 l12 hide" id="toHide">
+                      <input id="direccionComprador" type="text" class="validate">
+                      <label for="direccionComprador">Direccion</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-action center">
+              <a class="btn-flat grey-text text-darken-4" href="{{base_url()}}">Atras</a>
+                <a class="btn colorAccent" id="btnCotizar" data-idtienda="{{tienda.Tie_IdTienda}}">Enviar Pedido</a>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <a class="hide usuario_iniciado" href="{{base_url()}}usuario/login/productos_pedido">registrado</a>
+      {% endif %}
+    </div>
+  </main>
+{% endblock %}
+
+{% block script %}
+    <script language="JavaScript" src="{{base_url('public/intranet/js/jquery.sticky-kit.min.js')}}"></script>
+    <script src="{{base_url('public/intranet/js/jquery-confirm.min.js')}}"></script> 
+    <script>
+    if ($('.pedidoVacio').length) {
+      location.href= base_url; 
+    }
+
+      if ($('.usuario_iniciado').length) {
+        var link= $('usuario_iniciado').attr('href');
+        $.confirm({
+          icon: 'pan_tool',
+          theme: 'modern',
+          closeIcon: false,
+          animation: 'scale',
+          type: 'red',
+          title: 'Inicia Sesión',
+          columnClass: 'small',
+          content: 'Para cotizar estos productos debes estar registrado<br><br><div class="col s12 center"><a class="btn pormayorUnico" href="//pormayor.pe/usuario/login/productos_pedido">Iniciar Sesión</a></div>',
+          draggable: false,
+          buttons: {
+              Iniciar :    {   
+                  btnClass: 'btn pormayorUnico hide',                 
+                  action: function (){
+
+                  }       
+              },
+          }
+        });
+      }
+    </script>
+    <script src="{{base_url('public/')}}js/tienda/jspedido.js" type="text/javascript"></script>
+    <script language="JavaScript" type="text/javascript" src="{{base_url('public/')}}js/jquery.validate.js" defer></script>
+{% endblock %}

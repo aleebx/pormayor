@@ -1,0 +1,159 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"   media="screen"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/autocomplete.min.css')}}"  media="screen"/>
+    <style type="text/css">
+        .pg-loading-logo{
+            max-height: 150px;
+        }
+        .btn-flat-not:hover{color: white !important;background-color: #21478F ;}
+        [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+            background-color: #21478F;
+        }
+
+        [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+            border: 2px solid #21478F;
+        }
+        [type="checkbox"].filled-in:checked + label:after {
+          border: 2px solid #21478F;
+          background-color: #21478F;
+        }
+        .error{
+          color: red;
+        }
+        .opacidad8{
+            opacity: .8;
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+            .pg-loading-logo{
+                max-height: 80px;
+            }
+        }
+    </style>   
+{% endblock %}
+
+{% block content %}
+	<main class="container">
+        <br>
+        <div class="card">
+            <div class="card-content">
+            	<div class="row">
+					<span class="card-title">Hoja de reclamaciones</span>
+                    <p>PorMayor.pe S.A. - RUC 20603706804 - Jirón Andahuaylas 251, Tienda 208 Cercado de Lima - Lima.<br>Completa la información y revisaremos tu caso. Te contestaremos dentro de los próximos 30 días. Para conseguir una respuesta más rápida, visita nuestra <a href="{{base_url()}}legal/centro">Ayuda</a>.</p>
+                    <br>
+                    <div class="input-field">
+                      <input type="text" name="nombre" id="nombre"  class=".form-group" placeholder="Ingresa tu nombre">
+                        <label for="nombre" class="active black-text">Nombre y apellido</label>
+                    </div>
+                    <div class="input-field">
+                        <input name="di" type="number" placeholder="Ingresa tu Número de documento de identidad" class=".form-group" id="di" required="">
+                        <label for="di" class="active black-text">Número de documento de identidad</label>
+                    </div>
+                    <div class="input-field">
+                      <input type="text" name="dir" id="dir"  class=".form-group" placeholder="Ingresa tu Dirección">
+                        <label for="dir" class="active black-text">Dirección</label>
+                    </div>
+                    <div class="input-field positionRelative">
+                        <i class="material-icons prefix transitionB">email</i>
+                        <input name="correo" id="correo" placeholder="Ingresa tu correo" type="email" class="email">
+                        <label for="correo" class="active black-text">Correo Electrónico</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix transitionB">phone</i>
+                        <input name="tlf" type="number" id="tlf" minlength="9" maxlength="9" class=".form-group" placeholder="Teléfono celular actual"  minlength="9" maxlength="9">
+                        <label for="tlf" class="active black-text">Celular</label>
+                    </div>
+                    <div>
+                        <span>¿Qué quieres registrar?</span><br>
+                        <input name="group1" type="radio" id="qqr1" value="Queja" />
+                        <label for="qqr1">Queja</label>
+                        <input name="group1" type="radio" id="qqr2" value="Reclamo" />
+                        <label for="qqr2">Reclamo</label>
+                    </div>
+                    <br>
+                    <div>
+                        <span>¿Por qué tema nos escribes?</span><br>
+                        <input name="group2" type="radio" id="qte1" value="Producto"/>
+                        <label for="qte1">Producto</label>
+                        <input name="group2" type="radio" id="qte2" value="Servicio"/>
+                        <label for="qte2">Servicio</label>
+                    </div>
+                    <br>
+                    <div class="input-field">
+                        <input type="text" name="monto" id="monto"  class=".form-group" placeholder="Ingresa tu monto a reclamar">
+                        <label for="monto" class="active black-text">¿Qué monto quieres reclamar? (Opcional)</label>
+                    </div>
+                    <div class="input-field">
+                      <textarea id="taproblema" class="materialize-textarea"></textarea>
+                      <label for="taproblema">¿Cuál fue el problema?</label>
+                    </div>
+                    <div class="input-field">
+                      <textarea id="sespera" class="materialize-textarea"></textarea>
+                      <label for="sespera">¿Qué solución esperas?</label>
+                    </div>
+                    <div class="input-field center">
+                       <a class="btn gDV">ENVIAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+<div id="modal" class="modal">
+    <div class="modal-content center">
+      <h4>REGISTRO DE HOJA DE RECLAMO COMPLETADO</h4>
+      <p>POR FAVOR REVICE SU CORREO ELECTRONICO <b id="correoModal"></b> CON EL DETALLE DE SU RECLAMO.
+        <br> 
+        Revisaremos tu caso. 
+        <br>
+        Te contestaremos dentro de los próximos 30 días.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="{{base_url()}}" class="modal-action modal-close waves-effect waves-red btn red">CERRAR</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>	
+	$('.gDV').click(function(){
+	    var nombre = $("#nombre").val();
+	    var di = $("#di").val();
+	    var dir = $("#dir").val();
+	    var correo = $("#correo").val();
+        var tlf =  $("#tlf").val();
+	    var qqr = $("input[name='group1']:checked").val();
+        var qte = $("input[name='group2']:checked").val();
+        var monto =  $("#monto").val();
+        var problema =  $("#taproblema").val();
+        var solucion =  $("#sespera").val();
+	    if (nombre && di && dir && correo && tlf && qqr != undefined && qte != undefined && problema && solucion) {    	
+	        $.ajax({
+	          type: "POST",
+	          data: {
+	                "nombre": nombre,
+	                "di": di,
+	                "dir": dir,
+	                "correo": correo,
+	                "tlf": tlf,
+                    "qqr": qqr,
+                    "qte": qte,
+                    "monto": monto,
+                    "problema": problema,
+                    "solucion": solucion
+	              },
+	          url: base_url + 'reclamo/guardar_datos',
+	          success: function (data) {
+                $('#modal').modal();
+                $('#modal').modal('open'); 
+                $('#correoModal').text(correo); 
+	          }
+	        });
+	    }else{
+
+	    }
+	});
+</script>
+{% endblock %}

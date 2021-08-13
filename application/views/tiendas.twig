@@ -1,0 +1,67 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+<style type="text/css">
+  .select-dropdown{
+  	text-align: center;
+  }
+</style>
+{% endblock %}
+{% block content %}
+	<main class="container">		
+			<div class="tiendas_destacadas">
+				<div id="mistiendas" class="row">
+					{% set letras = [] %}
+					{% for tie in tiendas2 %}
+					    {% if tie.Tie_Nombre|first|lower not in letras %}
+					        {% set letras = letras|merge([tie.Tie_Nombre|first|lower]) %}
+					    {% endif %}
+					{% endfor %}
+					{% for letra in letras %}
+					    <div id="letra{{letra|upper}}" data-letra="{{letra|upper}}" class="letrasTiendas col s12"><h3 class="center">{{letra|upper}}</h3></div>
+						{% for tie in tiendas2 %}
+							{% if tie.Tie_Logo != '' %}
+								{{ include('load_tiendas_main.twig', {'letra': letra}) }}
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+			</div>
+		</div>
+	</main>
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript">
+		var arrayLetras=[];
+		$('.letrasTiendas').each(function(){
+		 arrayLetras.push("<option value="+$(this).data('letra')+">"+$(this).data('letra')+"</option>");
+		});
+
+		function scrollDiv(id) {
+		    id = id.replace("link", "");
+		    $('html,body').animate({
+		        scrollTop: $("#" + id).offset().top - 100
+		    }, 'slow');
+		}
+
+		//Cambio Footer
+	    $('.footerSecundario').removeClass('hide');
+	    $('.footerPrincipal').addClass('hide');
+
+	    //Filtrar por letra
+	    $('.menuMobilePri1').remove();
+	    $('.nav-content .row').append("<div class='black-text input-field col s12 center'>"+
+	    								"<select class='filtrarTiendas'>"+
+	    									'<option value="" selected disabled>Ordenar por</option>'+
+	    									arrayLetras
+	    								+
+										"</select>"+
+	    								"</div>" );
+
+	    $('.filtrarTiendas').change(function(){
+	    	var letraAcual= "letra"+$(this).val();
+	    	scrollDiv(letraAcual);
+	    });
+	    $('select').material_select();
+	</script>
+	<script src="{{base_url('public/')}}js/tienda/jsbtienda.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+{% endblock %}

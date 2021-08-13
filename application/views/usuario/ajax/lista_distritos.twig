@@ -1,0 +1,21 @@
+{# <select name="selDistrito" id="selDistrito">
+	<option disabled value="">-Seleccione-</option>
+    {% for dis in distritos %}
+    	<option value="{{dis.id}}">{{dis.name}}</option>
+    {% endfor %}
+</select>
+<label>Distrito</label> #}
+<label for="selDistrito"> Distrito
+	<select class="selectDir3 browser-default" name="selDistrito" id="selDistrito">
+	  <option disabled value="">Selecciona el Distrito</option>
+	  {% for dis in distritos %}
+	    <option value="{{dis.id}}">{{dis.name}}</option>
+	  {% endfor %}
+	</select>
+</label>
+<script type="text/javascript">
+	// $('select').material_select();
+	$('.selectDir3').select2({
+            placeholder: 'Selecciona el Distrito'
+        });
+</script>

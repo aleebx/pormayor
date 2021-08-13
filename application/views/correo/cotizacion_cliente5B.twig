@@ -1,0 +1,81 @@
+{% extends "layout/correo.twig" %}
+
+{% block content %}
+	<td bgcolor="#FFFFFC" style="padding: 40px 30px 40px 30px;">
+  		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    		<tr>
+      			<td style="padding: 20px 0 30px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+      				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		               	<tr>
+		                	<td style="padding: 0px 0 20px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		                		El comprador <b>{{nombre_usuario}}</b> a traves de <b>COMPRA SEGURA</b> aprobo los siguientes productos
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td>
+		                    	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		                      		<thead>
+		                      			<tr>
+											<th style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;width:40%"  valign="top">
+											<b>Producto</b>
+											</th>
+											<th style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;width:10%"  valign="top">
+											<b>Cant.</b>
+											</th>
+											<th style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;width:25%"  valign="top">
+											<b>Precio Unit.</b>
+											</th>
+											<th style="padding: 15px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;  color:black; background-color: #FEC00F;width:25%" valign="top">
+											<b>Importe</b>
+											</th>
+				                        </tr>
+				                    </thead>
+				                    <tbody>
+		                      			{% set total = 0 %}
+				                      	{% for rsDatos in pdetalle %}
+				                      		<tr>
+				  	                        	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+				  	                        		{{rsDatos.nompro}}
+				  	                        	</td>
+				  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+				  	                          		{{rsDatos.cantidad}}&nbsp; Unid.
+				  	                            </td>
+				  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);" valign="top">
+				  	                          		S/ {{rsDatos.precio}}
+				  	                          	</td>
+				  	                          	{% set  importe = rsDatos.cantidad * rsDatos.precio %}
+				  	                          	<td style="vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.8);" valign="top">
+				  	                            	<span style="font-weight:600">S/ {{importe|number_format(2, '.', ' ')}}</span>
+				  	                          	</td>
+				  	                        </tr>
+							              	{% set total = importe + total %}
+				                      	{% endfor %}
+				                    </tbody>
+				                    <tfoot>
+				                        <tr>
+				                        	<td style="font-weight: 600; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.8);" colspan="2" valign="top">
+				                            	Total a pagar
+				                          	</td>
+				                          	<td style="border-bottom: 1px solid #CBCBCB; background-color: #0D0D0D; padding: 8px 0px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:white;" colspan="2" valign="top">
+				                            	<span style="font-weight:600">S/ {{total|number_format(2, '.', ' ')}}</span>
+				                          	</td>
+				                        </tr>
+				                    </tfoot>
+		                		</table>
+              				</td>
+           				</tr>
+           				<tr>
+		                	<td style="padding: 20px 0 20px 0; color: #121212; font-family: Arial, sans-serif; font-size: 1.5rem; line-height: 2rem;">Una vez realizado el pago correspondiente te <b>notificaremos</b> para que envies los productos solicitados.
+		                  	</td>
+		                </tr>
+		                <tr>
+		                	<td style="padding: 0px 0 20px 0; color: #121212; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px;">
+		                		Gracias por utilizar <a href="https://pormayor.pe" style="color: #21478F;">pormayor.pe</a>
+		                  	</td>
+		                </tr>
+          			</table>
+        		</td>
+    		</tr>
+    	</table>
+	</td>
+{% endblock %}

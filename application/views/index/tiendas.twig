@@ -1,0 +1,74 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+<style type="text/css">	
+	.tituloTienda  img{
+		height: 34px;
+	}
+</style>
+{% endblock %}
+{% block content %}
+	<main class="container fixContainer">
+		<br class="hide-on-large-only">
+		<br class="hide-on-large-only">
+		<h4 class="center hide-on-med-and-down">Tiendas <span>({{tiendas2|length}})</span></h4>
+		<br>
+		<div class="row">
+			{% if userAgent == "PC" %}
+			<div class="col l4 sideBarProd white z-depth-1 unidadSticky" style="padding:10px 20px">
+	            <div class="positionRelative">
+	              <div class="" data-scroll>
+	                <h5 class="center">Filtros</h5>
+	                <div class="row centrarForzado">
+	                  <br>
+	                  <div class="col s12 sinPadding">
+	                    <label class="enfasisB">Filtrar por categorías</label>
+	                    <select class=" browser-default filtroTCat">
+	                      <option value="" disabled selected>Selecciona una categoría</option>
+	                      <option value="all">Todos</option>
+	                      {% for btc in busqueda_tiendas_cat %}
+	                        <option value="{{btc.Cat_IdCategoria}}">{{btc.Cat_Nombre}} ({{btc.cantidad_cat}})</option>
+	                      {% endfor %}
+	                    </select>
+	                    <br>
+	                  </div>
+	                  <div class="col s12 sinPadding">
+	                    <label class="enfasisB">Filtrar por departamento</label>
+	                    <select class="browser-default filtroDep" >
+	                      <option value="" disabled selected>Selecciona un departamento</option>
+	                      <option value="all" >Ver todas</option>
+	                      {% for btd in busqueda_tiendas_dep %}
+	                        <option value="{{btd.id}}">{{btd.name}} ({{btd.cantidad_dep}})</option>
+	                      {% endfor %}
+	                    </select>
+	                    <br>
+	                  </div>
+	                  <div class="col s12 sinPadding">
+	                    <label class="enfasisB">Organizar</label>
+	                    <select class="browser-default filtroTFecha" >
+	                      <option value="" disabled selected>Selecciona una opción</option>
+	                      <option value="ninguno">Ninguno</option>
+	                      <option value="fechaMenos">Menos antiguedad SUNAT</option>
+	                      <option value="fechaMas">Más antiguedad SUNAT</option>
+	                    </select>
+	                    <br>
+	                  </div>
+	                </div>
+	              </div>
+	           	</div>
+	        </div>
+	        {% endif %}
+			<div class="col s12 l8 containerFiltroTiendas" id="ajax_filtro_tiendas">
+				{% for tie in tiendas2 %}
+					{{ include('load_tiendas_main.twig') }}
+				{% endfor %}
+			</div>
+		</div>
+	</main>
+{% endblock %}
+
+{% block script %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+	<script src="{{base_url('public/')}}js/tienda/jsbtienda.js?v={{now|date('i:s')}}"></script>
+
+{% endblock %}

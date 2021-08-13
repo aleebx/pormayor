@@ -1,0 +1,955 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org/",
+        "@type": "Product",
+        "name": "{{producto.Pro_Nombre}}",
+        "image": [
+          "{{ruta_img}}{{fotos[0].Prf_Img}}",
+         ],
+        "description": "{{producto.Pro_Descripcion|replace({'<p>': "", '</p>':"",'<strong>': "", '</strong>':"",'<br>': "", '</br>':"",'&nbsp;':" "})|slice(0, 200)}}",
+        "mpn": "{{producto.Pro_IdProducto}}",
+        "brand": {
+          "@type": "Thing",
+          "name": "{{producto.Pro_Marca}}"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "PEN",
+          "price": "{{producto.Pro_PrecioMinimo}}",
+          "priceValidUntil": "2019-12-31",
+          "itemCondition": "{{producto.Pro_EdoGarantia|title}}",
+          "availability": "http://schema.org/InStock",
+          "seller": {
+            "@type": "Organization",
+            "name": "{{producto.Tie_Nombre}}"
+          }
+        }
+      };
+  </script>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"  media="screen"/>
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/css/easyzoom.css"  media="screen"/>
+  <style type="text/css">
+    .btn-flat-not:hover{background-color: #21478F ;color: white !important;}
+    .sliderMobile .slick-list {padding:0px !important;}
+    .sliderMobile .slick-dots li.slick-active button:before{font-size: 70px !important;opacity: 1;color: #21478F;}
+    .sliderMobile img{max-width:100%;max-height: 250px;}
+    .sliderMobile{height:250px;}
+    .materialbox-caption{text-transform: uppercase;font-size: 1.5rem;}
+  </style>
+{% endblock %}
+{% block content %}
+  <main class="container fixContainer positionRelative">
+    <br class="hide-on-large-only">
+    <br class="hide-on-large-only">
+    <div class="row centrarForzado">
+      <div class="card">
+        <div class="card-content sinPadding">
+          <div class="row cardContentFix anchoTotal">
+            <div class="col s12 m12 l10 hide-on-med-and-down">
+              <a href="//pormayor.pe/categorias/{{producto.urlCategoria}}" class="pormayorUnico-text breadcrumb">{{producto.Cat_Nombre}}</a>
+              <a href="//pormayor.pe/subcategoria/{{producto.urlSubCategoria}}" class="centrarForzado pormayorUnico-text breadcrumb">{{producto.Suc_Nombre}}</a>
+              <a href="//pormayor.pe/detalle/{{producto.urlDetalle}}" class="centrarForzado pormayorUnico-text breadcrumb">{{producto.Des_Nombre}}</a>
+              <ol class="hide" itemscope itemtype="http://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                  <a href="//pormayor.pe/categorias/{{producto.urlCategoria}}" itemprop="item" class="pormayorUnico-text breadcrumb"><span itemprop="name">{{producto.Cat_Nombre}}</span></a>
+                  <meta itemprop="position" content="1" />
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                  <a href="//pormayor.pe/subcategoria/{{producto.urlSubCategoria}}" itemprop="item" class="pormayorUnico-text breadcrumb "><span itemprop="name">{{producto.Suc_Nombre}}</span></a>
+                  <meta itemprop="position" content="2" />
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                  <a href="//pormayor.pe/detalle/{{producto.urlDetalle}}" itemprop="item" class="pormayorUnico-text breadcrumb "><span itemprop="name">{{producto.Des_Nombre}}</span></a>
+                  <meta itemprop="position" content="3" />
+                </li>
+              </ol>
+             {% if userAgent ==  "PC" %}
+                {% if usuario.logueado %}
+                  {% if producto_favorito %}
+                    <div class="star comoBoton seleccionado right comoBoton" style="padding-left:10px"  data-id_producto="{{producto.Pro_IdProducto}}" data-valor="1">
+                      <img alt="Pormayor.pe - favoritos" src="{{ruta_img}}fav.svg" type="image/svg+xml"></img>
+                    </div>
+                  {% else %}
+                    <div class="star comoBoton right comoBoton" style="padding-left:10px" data-id_producto="{{producto.Pro_IdProducto}}" data-valor="0">
+                      <img alt="Pormayor.pe - favoritos" src="{{ruta_img}}fav.svg" type="image/svg+xml"></img>
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+              <span style="{% if usuario.logueado %}border-right: 1.5px solid rgba(0,0,0,0.2);{% endif %}padding:0px 10px" class="pormayorUnico-text right">{{vista.Pro_Vista}} vistas</span>
+              {% if range_producto %}
+                <a class='dropdown-button sinPadding right valign-wrapper grey-text text-darken-2' href='#' data-activates='calificacion3' style="border-right: 1px solid rgba(0,0,0,0.2);"><img alt="Pormayor.pe - Rate" class="positionRelative left" src="{{ruta_img}}califA.png" alt="calificacion tienda pormayor.pe" height="20" >&nbsp;&nbsp;&nbsp; {{range_producto.positivo|round}}%<i class="material-icons">arrow_drop_down</i></a>
+                <ul id='calificacion3' class='dropdown-content'>
+                    <li style="border-left:6px solid #4caf50" ><a  href="#!"><img alt="Pormayor.pe - Rate" class="left positionRelative" src="{{ruta_img}}califA.png" alt="calificacion tienda pormayor.pe" height="25">&nbsp;&nbsp;&nbsp;EL <b>{{range_producto.positivo|round}}%</b> LO RECOMIENDA</a></li>
+                    <li style="border-left:6px solid #ffc107"><a  href="#!"><img alt="Pormayor.pe - Rate" class="left positionRelative" src="{{ruta_img}}califB.png" alt="calificacion tienda pormayor.pe" height="25">&nbsp;&nbsp;&nbsp;EL <b>{{range_producto.neutral|round}}%</b> NO OPINA SOBRE EL</a></li>
+                    <li style="border-left:6px solid #f44336"><a href="#!"><img alt="Pormayor.pe - Rate" class="left positionRelative" src="{{ruta_img}}califC.png" alt="calificacion tienda pormayor.pe" height="25">&nbsp;&nbsp;&nbsp;EL <b>{{range_producto.negativo|round}}%</b> NO LO RECOMIENDO</a>
+                </ul>
+              {% endif %}
+            </div>
+            {% if userAgent == "PC" %}
+              <div class="col s12 m12 l2 hide-on-med-and-down" style="border-left: 1.5px solid rgba(0,0,0,0.2)">
+                <div class="fb-like left" data-href="http://{{producto.Tie_Subdominio}}.pormayor.pe/tienda/productos/dp/{{url}}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+              </div>
+            {% endif %}
+            <div class="col s12 m12 l12 hide-on-med-and-down">
+              <h1 class="fixH1Seo centrarForzado enfasisA muayuscula">{{producto.Pro_Nombre|title}}</h1>
+              <br>
+              <div class="divider"></div>
+            </div>
+            <div class="col s12 {% if producto.Pro_Caracteristicas %} l4 {% else %} l7 {% endif %} center hide-on-med-and-down" id="imagenesPro" >
+              {% if fotos is empty %}
+                <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails redondeo white">
+                  <a href="{{ruta_img}}pronoimg.webp">
+                    <img alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}pronoimg.webp" class="containImg anchoTotal"/>
+                  </a>
+                </div>
+              {% else %}
+                <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails redondeo white">
+                  <a href="{{ruta_img}}{{fotos[0].Prf_Img}}">
+                    <img alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}{{fotos[0].Prf_Img}}" class="containImg anchoTotal"/>
+                  </a>
+                </div>
+              {% endif %}
+              <ul class="thumbnails">
+                {% if fotos is empty %}
+                  <li class="col">
+                    <a href="{{ruta_img}}pronoimg.webp" data-standard="{{ruta_img}}pronoimg.webp">
+                      <img alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}pronoimg.webp" class="redondeo containImg" height="40">
+                    </a>
+                  </li>
+                {% else %}
+                    {% for fot in fotos %}
+                      {% if producto.Pro_IdProducto == fotos[0].producto_Pro_IdProducto %}
+                        {% if fot.Prf_Img|slice(0, 5)|lower != "nopic" %}
+                        <li class="col">
+                          <a href="{{ruta_img}}{{fot.Prf_Img}}" data-standard="{{ruta_img}}{{fot.Prf_Img}}">
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}{{fot.Prf_Img}}" class="redondeo containImg" height="40">
+                          </a>
+                        </li>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+            <div class="col s12 l6 center show-on-medium-and-down hide-on-large-only">
+              <div class="wrapperSliderImgMobile hide transition">
+                <div class="sliderMobile ">
+                  {% for fot in fotos %}
+                    {% if producto.Pro_IdProducto == fotos[0].producto_Pro_IdProducto %}
+                      {% if fot.Prf_Img|slice(0, 5)|lower != "nopic" %}
+                        <div class="">
+                          <img alt="{{producto.Pro_Nombre}} al pormayor" class="redondeo centrarForzado" src="{{ruta_img}}{{fot.Prf_Img}}">
+                        </div>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="preloader-wrapper big active preloadImgMobile">
+                <div class="spinner-layer" style="border-color: #FEC00F">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div><div class="gap-patch">
+                    <div class="circle"></div>
+                  </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% if userAgent != "PC" %}
+              <div class="col s12 l6 center show-on-medium-and-down hide-on-large-only">
+                <h1 class="fixH1Seo centrarForzado enfasisA muayuscula">{{producto.Pro_Nombre|title}}</h1>
+                <br>
+              </div>
+            {% endif %}
+            {% if userAgent != "PC" %}
+              <div class="col s12 m12 l2 center">
+                <span class="pormayorUnico-text right">{{vista.Pro_Vista}} vistas</span>
+              {% if usuario.logueado %}
+                {% if producto_favorito %}
+                  <div class="star comoBoton seleccionado left"  data-id_producto="{{producto.Pro_IdProducto}}" data-valor="1">
+                    <img alt="Pormayor.pe - favoritos comoBoton" src="{{ruta_img}}fav.svg" type="image/svg+xml"></img>
+                  </div>
+                {% else %}
+                  <div class="star comoBoton left" data-id_producto="{{producto.Pro_IdProducto}}" data-valor="0">
+                    <img alt="Pormayor.pe - favoritos comoBoton" src="{{ruta_img}}fav.svg" type="image/svg+xml"></img>
+                  </div>
+                {% endif %}
+              {% endif %}
+                <div class="fb-like" data-href="http://{{producto.Tie_Subdominio}}.pormayor.pe/tienda/productos/dp/{{url}}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+              </div>
+            {% endif %}
+            <div class="row centrarForzado hide-on-large-only">
+              <div class="divider"></div>
+            </div>
+            <div itemscope itemtype="http://schema.org/Product" class="hide">
+              <img itemprop="image" alt="{{producto.Pro_Nombre}} al pormayor" src="{{ruta_img}}{{fotos[0].Prf_Img}}" class="containImg" />
+              <span itemprop="name" class="muayuscula">{{producto.Pro_Nombre}}</span>
+              <p itemprop="description">{{producto.Pro_Descripcion}}</p>
+              <a itemprop="isRelatedTo" href="http://{{producto.Tie_Subdominio}}.pormayor.pe"></a>
+              <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+                <span itemprop="lowPrice">{{producto.Pro_PrecioMinimo}}</span>
+                <span itemprop="highPrice">{{producto.Pro_PrecioMaximo}}</span>
+                 <meta itemprop="priceCurrency" content="S/" />
+              </div>
+            </div>
+            {% if userAgent == "PC" %}
+              {% if producto.Pro_Caracteristicas %}
+                <div class="col s12 l3">
+                  {% set caracteristicas = producto.Pro_Caracteristicas|split('|') %}
+                  <ul class="caracteristicasLista">
+                    {% for cat in caracteristicas %}
+                    <li class="enfasisB fontB2"><i class="positionRelative material-icons fontB2 grey-text text-darken-3">check</i>&nbsp;&nbsp;&nbsp; {{cat}}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            {% endif %}
+            <div class="col s12 l5 center" style="margin-top:15px">
+              <div class="row centrarForzado">
+<!--                 <div class="col s3 sinPadding left-align enfasisB">
+                  Precio
+                </div> -->
+<!--                 
+                <div class="col s9 sinPadding left-align ">
+                  {% if userAgent == "PC" %}
+                    <span class="enfasisA fontA"><b>S/ {{producto.Pro_PrecioMinimo}}</b></span> / {{precios|last.Prp_Desde}} a +  Unidades
+                  {% else %}
+                     <span class="enfasisA fontA"><b>S/ {{producto.Pro_PrecioMinimo}}</b></span> / {{precios|last.Prp_Desde}} a + Unidades
+                  {% endif %}
+                  <br><br>
+                </div> -->
+
+                <div class="col s3 sinPadding left-align enfasisB">
+                  Colores:
+                </div>
+                <div class="col s9 sinPadding left-align ">
+                  {% set arrayColores = [] %}
+                  {% for col in colores %}
+                    {% if col.producto_Pro_IdProducto == pro.Pro_IdProducto %}
+                     {% if col.Col_Hex not in arrayColores %}
+                     {% set arrayColores = arrayColores|merge([col.Col_Hex]) %}
+                        <div class="colorSample" style="background-color: {{col.Col_Hex}};"></div>
+                     {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if arrayColores is empty %}
+                    <span class="flow-text notFlow enfasisB"><i>Producto único</i></span>
+                  {% endif %}
+                  <br><br>
+                </div>
+                      <div class="col s3 sinPadding left-align enfasisB positionRelative">
+                        Tallas: <span  class="tooltipped positionAbsolute comoBoton" style="right:10px" data-position="top" data-delay="50" data-tooltip="Selecciona una talla y compararás precios. Abajo podrás comprar"><i class="material-icons pormayorUnico-text">help_outline</i></span>
+                      </div>
+                      <div class="col s9 sinPadding left-align ">
+                        {% for tal in tallas %}
+                        <div class=" sinUser comoBoton tallaBtn transition positionRelative" data-clicked="" data-color="{{configuracion.Con_ColorBtn}}" data-talla="" data-idtalla="{{tal.PVO_IdPVO}}"> <div class="transition positionAbsolute white"><i class="material-icons pormayorUnico-text fontB2 ">check_box</i></div>{{tal.Vao_Nombre}}</div>
+                        {% endfor %}
+                        <br>
+                      </div>
+                {% if userAgent == "PC" %}
+                <div class="col s12 sinPadding">
+                  <div class="divider dividerMargin"></div>
+                </div>
+                <div class="wrapperSliderPrecios hide transition">
+                  <div class="col s2 sinPadding left-align enfasisB positionRelative">
+                    Precios
+                  </div>
+                  <div class="col s10 sinPadding left-align">
+                    <div class="row centrarForzado positionRelative" >
+                      <div class="sliderPrecios">
+                        {% for pre in precios %}
+                          <div class="col s3 m3 l3 rangoPrecio">
+                              <!-- <i class="precioA">{{pre.Prp_Desde}} +</i> <br> -->
+                              <span class="fontA">S/ {{pre.Prp_Precios}}</span><br>
+                              <i class="transition">De {{pre.Prp_Desde}} a {% if pre.Prp_A == 9999 %} + {% else %}{{pre.Prp_A}} {% endif %}</i>
+                          </div>
+                        {% endfor %}
+                      </div>
+                      <div class="prevRangoPrecios  align-wrapper positionAbsolute comoBoton sinUser"><i class=" material-icons enfasisA">keyboard_arrow_left</i></div>
+                      <div class="nextRangoPrecios  valign-wrapper positionAbsolute comoBoton sinUser"><i class=" material-icons enfasisA">keyboard_arrow_right</i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="preloader-wrapper big active preloadPrecios">
+                  <div class="spinner-layer" style="border-color: #FEC00F">
+                    <div class="circle-clipper left">
+                      <div class="circle"></div>
+                    </div><div class="gap-patch">
+                      <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                </div>
+                {% else %}
+                <div class="wrapperSliderPrecios hide transition">
+                  <div class="col s12 sinPadding left-align enfasisB positionRelative">
+                    Precios
+                    <br><br>
+                  </div>
+                  <div class="col s12 sinPadding">
+                    <div class="row centrarForzado positionRelative grey lighten-4 " style="padding-bottom:5px;border-bottom:2px solid {{configuracion.Con_ColorBtn}} ">
+                      <div class="sliderPrecios">
+                        {% for pre in precios %}
+                          <div class="col s3 m3 l3 rangoPrecio">
+                            <span><b>S/ {{pre.Prp_Precios}}</b></span>
+                            <i class="">De {{pre.Prp_Desde}} a {% if pre.Prp_A == 9999 %} + {% else %}{{pre.Prp_A}} {% endif %}</i> <br>
+                          </div>
+                        {% endfor %}
+                      </div>
+                      <div class="prevRangoPrecios  align-wrapper positionAbsolute comoBoton sinUser"><i class=" material-icons enfasisA">keyboard_arrow_left</i></div>
+                      <div class="nextRangoPrecios  valign-wrapper positionAbsolute comoBoton sinUser"><i class=" material-icons enfasisA">keyboard_arrow_right</i></div>
+                    </div>
+                    <br>
+                  </div>
+                </div>
+                <div class="preloader-wrapper big active preloadPrecios">
+                  <div class="spinner-layer" style="border-color: #FEC00F">
+                    <div class="circle-clipper left">
+                      <div class="circle"></div>
+                    </div><div class="gap-patch">
+                      <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                </div>    
+                {% endif %}
+              </div>
+              {% if userAgent != 'PC' %}
+                {% if range_producto %}
+                  <div class="col s12 valign-wrapper left-align positionRelative sinPadding comoBoton waves-effect  sinUser" >
+                    <div style="border-left:6px solid #4caf50" class='btn-flat sinPadding comoBoton infoReputacionBtn'><img alt="Pormayor.pe - Rate" style="margin-left:5px;top:5px" class="positionRelative left" src="{{ruta_img}}califA.png" alt="calificacion tienda pormayor.pe" height="25"> &nbsp;&nbsp;  EL {{range_producto.positivo|round}}% RECOMIENDA ESTE PRODUCTO</div>
+                    <div class="infoReputacion hide positionAbsolute top0 white z-depth-2 left0 anchoTotal" style="z-index: 10;">
+                      <i class="material-icons positionAbsolute comoBoton sinUser closeInfoReputacion fontD2" style="top:5px;right:5px">close</i>
+                      <div class='row centrarForzado'>
+                        <div style="border-left:5px solid #4caf50;padding:10px 0px 10px 5px" class="col s12 valign-wrapper left-align ">
+                          <img alt="Pormayor.pe - Rate"  class="positionRelative left" src="{{ruta_img}}califA.png" alt="calificacion tienda pormayor.pe" height="20"> &nbsp;&nbsp;  EL &nbsp;<b>{{range_producto.positivo|round}}%</b>&nbsp; RECOMIENDA EL PRODUCTO
+                        </div>
+                        <div class="col s12 sinPadding">
+                          <div class="divider dividerMargin"></div>
+                        </div>
+                        <div style="border-left:5px solid #ffc107;padding:10px 0px 10px 5px" class="col s12 valign-wrapper left-align">
+                          <img alt="Pormayor.pe - Rate"  class="positionRelative left" src="{{ruta_img}}califB.png" alt="calificacion tienda pormayor.pe" height="20"> &nbsp;&nbsp;  EL &nbsp;<b>{{range_producto.neutral|round}}%</b>&nbsp; NO OPINA DEL PRODUCTO
+                        </div>
+                        <div class="col s12 sinPadding">
+                          <div class="divider dividerMargin"></div>
+                        </div>
+                        <div style="border-left:5px solid #f44336;padding:10px 0px 10px 5px" class="col s12 valign-wrapper left-align">
+                          <img alt="Pormayor.pe - Rate"  class="positionRelative left" src="{{ruta_img}}califC.png" alt="calificacion tienda pormayor.pe" height="20"> &nbsp;&nbsp;  EL &nbsp;<b>{{range_producto.neutral|round}}</b>&nbsp; NO RECOMIENDA EL PRODUCTO
+                        </div>
+                      </div>
+                    </div>
+                    <br class="hide infoReputacionHelper"><br class="hide infoReputacionHelper"><br class="hide infoReputacionHelper"><br class="hide infoReputacionHelper"><br class="hide infoReputacionHelper"><br class="hide infoReputacionHelper"><br class="hide infoReputacionHelper"><br class="hide infoReputacionHelper">
+                  </div>
+                  <div class="col sinPadding s12"><div class="divider dividerMargin"></div></div>
+                {% endif %}
+              {% endif %}
+              {% if userAgent == "PC" %}
+                <div class="col l12 sinPadding"><div class="divider dividerMargin"></div></div>
+   <!--              <div class="col l6 positionRelative">
+                  {# <a class="pormayorUnico btn anchoTotal white-text infoBtn">CONTACTAR A TIENDA<a> #}
+                  <a class="btn green waContacto anchoTotal" data-id="{{producto.Pro_IdProducto}}" data-href="https://api.whatsapp.com/send?phone=51{{datos_tienda.Per_Telefono}}&text=Hola,%20vi%20tu%20producto%20en%20*PorMayor*%20y%20estoy%20interesado%20https://{{producto.Tie_Subdominio}}.pormayor.pe/tienda/productos/dp/{{url}}"><img src="{{ruta_img}}/wa.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">Escribir</a>
+                </div> -->
+                <div class="col l12 positionRelative">
+                  <a class="pormayorUnico-text anchoTotal  btn-flat btn-flat-not2 irComprarBtn" href="#compraBlock"><i style="line-height: inherit" class=" material-icons pormayorUnico-text left">keyboard_arrow_down</i>Ir a comprar</a>
+                </div>
+                <div class="col l12"><br></div>
+                <!-- <div class="col l4 left-align  negrita grey-text text-darken-3">
+                  <img src="{{ruta_img}}/veriStore.webp" height="45" style="" class="positionRelative left"><span style="margin-left :5px">TIENDA</span> <br> <span style="margin-left :5px">FÍSICA</span>
+                </div>
+                <div class="col l4 sinPadding left-align negrita grey-text text-darken-3">
+                  <img src="{{ruta_img}}/veriPay.webp" height="45" style="" class="positionRelative left"><span style="margin-left :5px">COMPRA</span><br><span style="margin-left :5px">PROTEGIDA</span>
+                </div>
+                <div class="col l4 positionRelative  valign-wrapper">
+                  <img style="margin-right:10px;" alt="Pormayor.pe - Rate" class="linkCompraSegura transition comoBoton " src="{{ruta_img}}pagoA.png" alt="compra segura pormayor.pe" height="45">
+                  <img class="metodoPagoImg" src="{{ruta_img}}logoVisaB.png" height="35">
+                </div> -->
+                <div class="col l12"><div class="dividerMargin"></div></div>
+                <div class="sinPadding col l12 center" style="border-right:1px solid rgba(0,0,0,0.2)">
+                  <a class="btn-flat btn-flat-not transitionB pormayorUnico-text" href="https://{{producto.Tie_Subdominio}}.pormayor.pe">VISITAR {{ producto.Tie_Nombre|title|length > 22 ? producto.Tie_Nombre|title|slice(0, 22) ~ '...' : producto.Tie_Nombre  }}</a>
+                </div>
+<!--                 <div class="col l6 center">
+                  <a class=" btn-flat btn-flat-not transitionB pormayorUnico-text reputacionTienda" href="{{base_url()}}tienda/reputacion/{{producto.Tie_Subdominio}}">Ver Reputación</a>
+                </div> -->
+<!--                 <div class="col l12 left-align">
+                  <div class="dividerMargin"></div>
+                  <i class="material-icons left small grey-text text-darken-3">local_shipping</i><span class="fontD2 simpleTexto">Envio acordado con el Vendedor</span>
+                  <div class="dividerMargin"></div>
+                </div> -->
+                <div class="col l12 left-align">
+                  <a href="{{base_url()}}Legal" class="grey-text text-darken-3">
+                  <div class="dividerMargin"></div>
+                  <i class="material-icons left small grey-text text-darken-3">security</i><span class="fontD2 simpleTexto">Seguridad pormayor</span> <span class="fontB2 enfasisC"> - ¿Como te protege pormayor.pe?</span>
+                  </a>
+                </div>
+              {% else %}
+             <!--    <div class="col s12 left-align valign-wrapper negrita grey-text text-darken-3">
+                  <img src="{{ruta_img}}/veriStore.webp" height="45" style="" class="positionRelative left">&nbsp;TIENDA FÍSICA
+                </div> -->
+                <!-- <div class="col sinPadding s12"><div class="divider dividerMargin"></div></div> -->
+                <div class="col s12 sinPadding">
+                  <div class="col s12 center sinPadding">
+                      <a class="btn-flat pormayorUnico-text" href="https://{{producto.Tie_Subdominio}}.pormayor.pe" style="border-bottom: 2px solid {{configuracion.Con_ColorBtn}}"> VISITAR 
+                         {{ producto.Tie_Nombre|title|length > 10 ? producto.Tie_Nombre|title|slice(0, 10) ~ '...' : producto.Tie_Nombre  }}
+                      </a> 
+                    </div>
+<!--                     <div class="col s6 center sinPadding" style="border-left:1.5px solid rgba(0,0,0,0.3);">
+                      <a class="btn-flat pormayorUnico-text reputacionTienda" href="{{base_url()}}tienda/reputacion/{{producto.Tie_Subdominio}}" style="border-bottom: 2px solid {{configuracion.Con_ColorBtn}}" >Ver Reputación</a>
+                    </div> -->
+                </div>
+<!--                 <div class="col s12 positionRelative left-align sinPadding ">
+                  <br>
+                  <div class="col s6 center">
+                    <a class="btn pormayorUnico llamarContacto" data-id="{{producto.Pro_IdProducto}}" href="tel:{{datos_tienda.Per_Telefono}}"><i class="material-icons left">phone</i>Llamar</a>
+                  </div>
+                  <div class="col s6 center">
+                    <a class="btn green waContacto anchoTotal" data-id="{{producto.Pro_IdProducto}}" data-href="https://api.whatsapp.com/send?phone=51{{datos_tienda.Per_Telefono}}&text=Hola,%20vi%20tu%20producto%20en%20*PorMayor*%20y%20estoy%20interesado%20https://{{producto.Tie_Subdominio}}.pormayor.pe/tienda/productos/dp/{{url}}"><img src="{{ruta_img}}/wa.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">Escribir</a>
+
+                  <div class="infoContainer hide positionAbsolute top0 left0 white z-depth-2" style="z-index: 10;padding:10px;">
+                    <i class="material-icons positionAbsolute comoBoton sinUser closeInfoContainer fontD2" style="top:5px;right:5px">close</i>
+                    <div class='row centrarForzado'>
+                      <div class="col s12 center">
+                        <span class="fontD2 negrita">{{datos_tienda.Tie_Nombre}}</span>
+                        <div class="divider dividerMargin"></div>
+                      </div>
+                      <div class="col s12 center">
+                        {{datos_tienda.Loc_Direccion}}
+                      </div>
+                      {% if datos_tienda.Loc_Direccion %}
+                      <div class="col s12"><br></div>
+                      {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+               <!--  <div class="col sinPadding s12"><div class="divider dividerMargin"></div></div>
+                <div class="col sinPadding s12"><div class="dividerMargin"></div></div>
+                <div class="col s6 left-align negrita grey-text text-darken-3">
+                  <img src="{{ruta_img}}/veriPay.webp" height="45" style="" class="positionRelative left"><span style="margin-left :5px">COMPRA</span><br><span style="margin-left :5px">PROTEGIDA</span>
+                </div>
+                <div class="col s6 positionRelative center valign-wrapper">
+                  <div class="centrarForzado valign-wrapper"><img style="margin-right:10px;" alt="Pormayor.pe - Rate" class="linkCompraSegura transition comoBoton " src="{{ruta_img}}pagoA.png" alt="compra segura pormayor.pe" height="45">
+                  <img class="metodoPagoImg" src="{{ruta_img}}logoVisaB.png" height="35"></div>
+                </div>
+                <div class="col sinPadding s12"><div class="divider dividerMargin"></div></div>
+                <div class="col l12 left-align">
+                  <i class="material-icons left small grey-text text-darken-3">local_shipping</i><span class="fontD2 simpleTexto">Envio acordado con el Vendedor</span>
+                  <div class="dividerMargin"></div>
+                </div> -->
+                <div class="col sinPadding s12"><div class="divider dividerMargin"></div></div>
+                <div class="col l12 left-align">
+                  <a href="{{base_url()}}Legal" class="grey-text text-darken-3">
+                  <i class="material-icons left small grey-text text-darken-3">security</i><span class="fontD2 simpleTexto">Seguridad pormayor</span> <span class="fontB2 enfasisC"> - ¿Como te protege pormayor.pe?</span>
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <br>
+          <div class="divider"></div>
+          {% if userAgent == "PC" %}
+          <div class="row cardContentFix" id="compraBlock">
+            <div class="col s12 m12 l5 popper miniTutoPro" style="border-right: 1px solid rgba(0,0,0,0.2);">
+              <span class="card-title center">Variaciones del producto</span>
+              {% for key, sku in SKU %}  
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto %}
+                {% set colorActual = sku.SKU_Color %}
+                  <div class="col s12 sinPadding">
+                    <div class="row centrarForzado">
+                      <div class="col l3 left-align">
+                        <div class="positionRelative">
+                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}nofoto.png" >
+                          {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}" >
+                          {% else %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                          {% endif %}
+                        {% set colorUnico = "" %}
+                        {% set colorHex = "" %}
+                        {% set break = false %}
+                        {% for col in colores if not break %}
+                          {% if col.SKU_Color == colorActual %}
+                            <div class="colorEjemplo positionAbsolute bottom0" style="background-color:{{col.Col_Hex}}"></div>
+                            {% set colorUnico = col.Col_Nombre %}
+                            {% set colorHex = col.Col_Hex %}
+                            {% set break = true %}
+                          {% endif %}
+                        {% endfor %}
+                        </div>
+                        <br>
+                      </div> 
+                      <div class="col l9">
+                        <div class="row">
+                          <div class="col s12 l12 sinPadding ">
+                            <span class="fontB2 enfasisB muayuscula">{{producto.Pro_Nombre|title}}</span> <br><i>{{colorUnico|title}}</i>
+                          </div>
+                          {# <div class="col s3 l3 input-field filaCant{{key}}"> #}
+                            {% set count = 0 %}
+                            {% set break = false %}
+                          <div class="col l12 sinPadding  centrarForzado row filaCant{{key}}">
+                            {% for skub in SKUB|sort('asc') if not break  %}
+                                {% if colorActual == skub.SKU_Color  %}
+                                  <div class="col s3" >
+                                    <label class="fontB2" for="{{skub.SKU_IdSku}}">{{skub.Vao_Nombre}}</label>
+                                    <select name="cantidad" class="center cantSku cant{{skub.SKU_IdSku}} browser-default" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{{colorHex}}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-pvo="{{skub.PVO_IdPVO}}" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{precios[0].Prp_Desde}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}">
+                                      <option value="-" disabled selected>Cant.</option>
+                                      {% for i in precios[0].Prp_Desde..200 %}<option value="{{i}}">{{i}}</option>{% endfor %}
+                                    </select>
+                                    <input type="number" min="0" id="precioUni{{skub.SKU_IdSku}}" class="hide center preUni" data-idsku="{{skub.SKU_IdSku}}" readonly="">
+                                    <input type="number" min="0" id="precioPro{{skub.SKU_IdSku}}" class="hide center preImp" data-idsku="{{skub.SKU_IdSku}}" readonly="">
+                                    <br>
+                                    </div>
+                                {% else %}
+                                  {% set break = false %} 
+                                {% endif %} 
+                            {% set count = count + 1 %}
+                            {% endfor %}
+                                  </div>
+                          {# </div> #}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+     {#          <div class="popupCantidad blue white-text redondeo hide positionRelative" style="padding:20px;z-index: 800"><span class="arrow-left positionAbsolute"></span> Selecciona <b>la cantidad</b> que desees de cada talla para la variación de este producto. <br><br>TIP: Si necesitas agregar más de 200 Unidades, puedes repetir el proceso<br><br> 
+                <a class="btn grey darken-3 eliminarPopper" data-tipo="Cantidad">Entendido</a>
+              </div> #}
+            </div>
+            <div class="col l1">
+            </div>
+            <div class="col s12 m12 l6  sinPadding unidadSticky positionRelative centrarForzado">
+              <span class="card-title center">Resumen de producto actual</span>
+              <br>
+              <div class="row resumenContainer centrarForzado">
+                <div class="emptyResumen">
+                  <div class="center col s12 m12 l12" >
+                    <img src="{{ruta_img}}emptyProductos.webp" height="150"></img>
+                  </div>
+                  <div class="center col s12 m12 l12">
+                    <h5>Sin productos</h5>
+                    <span class="enfasisB">Aquí va tu lista de compras...</span>
+                  </div>
+                </div>
+                <div class="resumenPrecios">
+                
+                </div>
+              </div>
+                <div class="prevResumen align-wrapper comoBoton sinUser positionAbsolute hide"><i class=" material-icons fontA enfasisA">keyboard_arrow_up</i></div>
+                <div class="nextResumen valign-wrapper comoBoton sinUser positionAbsolute hide"><i class=" material-icons fontA enfasisA">keyboard_arrow_down</i></div>
+              <div class="row">
+                {% if usuario.id_tienda != producto.Tie_IdTienda %}
+                  <div class="col s7 sinPadding center valign-wrapper wrapperPrecioMobile">
+                    <a class="centrarForzado btn green add_cart sinHover" data-totalc="{{totalc}}">AGREGAR AL CARRITO</a>
+                  </div>
+                  <div class="col s5 sinPadding right-align valign-wrapper wrapperPrecioMobile positionRelative">
+                    <span class="centrarForzado fontB2 positionAbsolute"><strong id="totalcantidad">0</strong> unidades</span>
+                    <span class="centrarForzado">S/. <strong class="fontC" id="totalImporte">0</strong></span>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <div class="row cardContentFix" id="compraBlock">
+            <div class="col s12 m12 l5 popper miniTutoPro sinPadding">
+              <span class="card-title center">Variaciones del producto</span>
+              <br>
+              {% for key, sku in SKU %}  
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto %}
+                {% set colorActual = sku.SKU_Color %}
+                  <div class="col s12 sinPadding">
+                    <div class="row centrarForzado">
+                      <div class="col s3 left-align valign-wrapper" style="height:100px">
+                        <div class="positionRelative">
+                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}nofoto.png">
+                          {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}">
+                          {% else %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}{{sku.SKU_Img}}">
+                          {% endif %}
+                        {% set colorUnico = "" %}
+                        {% set colorHex = "" %}
+                        {% set break = false %}
+                        {% for col in colores if not break %}
+                          {% if col.SKU_Color == colorActual %}
+                            <div class="colorEjemplo positionAbsolute bottom0" style="background-color:{{col.Col_Hex}}"></div>
+                            {% set colorUnico = col.Col_Nombre %}
+                            {% set colorHex = col.Col_Hex %}
+                            {% set break = true %}
+                          {% endif %}
+                        {% endfor %}
+                        </div>
+                        <br>
+                      </div> 
+                      <div class="col s9 valign-wrapper sinPadding">
+                        <div class="row centrarForzado">
+                          <div class="col s12 sinPadding center-align">
+                            <span class="fontB2 enfasisB muayuscula">{{producto.Pro_Nombre|upper}}</span> <i>{{colorUnico|title}}</i>
+                          </div> 
+                            {% set count = 0 %}
+                            {% set break = false %}
+                            {% for skub in SKUB|sort('asc') if not break  %}                        
+                                {% if colorActual == skub.SKU_Color  %}
+                          <div class="col s4  filaCant{{key}} filaCantMobile">
+                                    <label class="fontB2" for="{{skub.SKU_IdSku}}">{{skub.Vao_Nombre}}</label>
+                                    <select name="cantidad" class="center cantSku cant{{skub.SKU_IdSku}} browser-default" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{{colorHex}}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-pvo="{{skub.PVO_IdPVO}}" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-idtienda="{{producto.Tie_IdTienda}}" data-key="{{key}}" data-minventa="{{precios[0].Prp_Desde}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}">
+                                      <option value="-" disabled selected>Cant.</option>
+                                      {% for i in precios[0].Prp_Desde..200 %}<option value="{{i}}">{{i}}</option>{% endfor %}
+                                    </select>
+                                    <input type="number" min="0" id="precioUni{{skub.SKU_IdSku}}" class="hide center preUni" data-idsku="{{skub.SKU_IdSku}}" readonly="">
+                                    <input type="number" min="0" id="precioPro{{skub.SKU_IdSku}}" class="hide center preImp" data-idsku="{{skub.SKU_IdSku}}" readonly="">
+                                    
+                          </div>
+                                {% else %}
+                                  {% set break = false %} 
+                                {% endif %} 
+                            {% set count = count + 1 %}
+                            {% endfor %}
+                          <br><br><br><br><br><br>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}    
+          {% if userAgent != "PC" %}
+            {% if producto.Pro_Caracteristicas %}
+            <div class="divider"></div>
+            <div class="row cardContentFix" id="caractBlock">
+              <div class="col s12 l3">
+                {% set caracteristicas = producto.Pro_Caracteristicas|split('|') %}
+                <ul class="caracteristicasLista">
+                  {% for cat in caracteristicas %}
+                  <li class="enfasisB fontB2"><i class="positionRelative material-icons fontB2 grey-text text-darken-3">check</i>&nbsp;&nbsp;&nbsp; {{cat}}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            {% endif %}
+            <div class="divider"></div>
+            <div class="row cardContentFix" id="destacadosBlock">
+              <div class="col s12 m12 l12">
+                <span class="card-title">Destacados de la tienda</span>
+              </div>
+              <div class="col s12 m12 l12 positionRelative">
+                <div class="col s12 m3 l3 sliderDestacadosMobile" >
+                {% for prt in producto_tienda %}
+                    <div class="card hoverable" itemscope itemtype="http://schema.org/Product">
+                      <a href="{{base_url()}}productos/dp/{{prt.url}}" itemprop="url" class="enfasisA" data-idproducto="{{prt.Pro_IdProducto}}" data-nombre="{{prt.Pro_Nombre}}">
+                      <div class="card-content center sinPadding cardHeight positionRelative">
+                      {% if prt.Prf_Img %}
+                        <img itemprop="image" class="containImg anchoTotal cardHeight " alt="{{prt.Pro_Nombre}} - Pormayor.pe" title="{{prt.Pro_Nombre}}" src="{{ruta_img}}{{prt.Prf_Img}}" style="padding-top:15px">
+                      {% else %}
+                        <img itemprop="image" class="containImg anchoTotal cardHeight " alt="{{prt.Pro_Nombre}} - Pormayor.pe" title="{{prt.Pro_Nombre}}" src="pronoimg.webp" style="padding: 5px">
+                      {% endif %}
+                      {% if prt.Pro_Oferta == 1 %}
+                        <img class="sales positionAbsolute positionAbsolute top0 left0" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}ofertaA.webp" type="image" alt="">
+                      {% endif %}  
+                      </div>
+                      <div class="card-action center flow-text">
+                      <div class="hide" itemprop="description">{{prt.Pro_Descripcion}}</div>
+                      <div class="hide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+                      <span itemprop="lowPrice">{{prt.Pro_PrecioMinimo}}</span>
+                      <span itemprop="highPrice">{{prt.Pro_PrecioMaximo}}</span>
+                      <meta itemprop="priceCurrency" content="PEN" />
+                      </div>
+                      <span itemprop="name" class="truncate" title="{{prt.Pro_Nombre}}">{{prt.Pro_Nombre|title}}</span><h6><i>Desde &nbsp;</i><b class="pormayorUnico-text fontC">S/ {{prt.Pro_PrecioMinimo}}</b></h6>          
+                      </div>
+                      </a>
+                      <div class="pormayorUnico anchoTotal positionAbsolute bottom0" style="height:5px"></div>
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="prevDest valign-wrapper positionAbsolute comoBoton sinUser"><i class=" material-icons white-text">keyboard_arrow_left</i></div>
+                <div class="nextDest valign-wrapper positionAbsolute comoBoton sinUser"><i class=" material-icons white-text">keyboard_arrow_right</i></div>
+              </div>
+            </div>
+          {% endif %}
+          <div class="divider"></div>
+          <div class="row cardContentFix" id="informationBlock">
+            <div class="col s12 m12 l8">
+              <span class="card-title">Información del producto</span>
+              {{producto.Pro_Descripcion}}
+            </div>
+            <div class="col s12 m12 l4 sinPadding hide-on-large-only">
+              <br>
+              <div class="divider"></div>
+              <br>
+            </div>
+            <div class="col s12 m12 l4 sinPadding">
+              <span class="card-title">Ficha del Producto</span>
+              <div class="">
+                <table class="striped" style="table-layout: fixed">
+                  <thead class="">
+                    <tr>
+                      <th width="40"></th>
+                      <th width="60"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% if producto.Pro_Marca %}
+                      <tr>
+                        <td class="enfasisB">Marca</td>
+                        <td>{{producto.Pro_Marca|title}}</td>
+                      </tr>
+                    {% endif %}
+                    {% if producto.Pro_Garantia %}
+                      <tr>
+                        <td class="enfasisB">Garantía</td>
+                        <td>{{producto.Pro_Garantia|title}}</td>
+                      </tr>
+                    {% endif %}
+                    {% if producto.Pro_EdoGarantia %}
+                      <tr>
+                        <td class="enfasisB">Estado Producto</td>
+                        <td>{{producto.Pro_EdoGarantia|title}}</td>
+                      </tr>
+                    {% endif %}
+                    <tr>
+                      <td  class="enfasisB">Colores</td>
+                      <td >
+                        {% set arrayColores = [] %}
+                        {% for col in colores %}
+                          {% if col.producto_Pro_IdProducto == pro.Pro_IdProducto %}
+                           {% if col.Col_Hex not in arrayColores %}
+                           {% set arrayColores = arrayColores|merge([col.Col_Hex]) %}
+                              {{col.Col_Nombre}}, 
+                           {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                        {% if arrayColores is empty %}
+                          <span class="flow-text notFlow enfasisB"><i>Producto único</i></span>
+                        {% endif %}
+                      </td>
+                    </tr>
+                    {% if producto.Pro_Documento %}
+                      <tr>
+                        <td  class="enfasisB">Documento pago</td>
+                        <td >
+                          {% if producto.Pro_Documento == 1 %}
+                            Boleta
+                          {% elseif producto.Pro_Documento == 2 %} Boleta o Factura {% endif %}
+                        </td>
+                      </tr>
+                    {% endif %}
+                    {% if producto_ficha %}
+                      {% if producto_ficha.Prf_Campo1 %}
+                        <tr>
+                          <td class="enfasisB">Dimensiones <br>(largo x ancho x alto)</td>
+                          <td>{{producto_ficha.Prf_Campo1}}</td>
+                        </tr>
+                      {% endif %}
+                      {% if producto_ficha.Prf_Campo2 %}
+                        <tr>
+                          <td class="enfasisB">{% if producto.Cat_IdCategoria == 6 %}¿Qué contiene la caja? {% else %} Peso {% endif %}</td>
+                          <td>{% if producto.Cat_IdCategoria == 6 %}{{producto_ficha.Prf_Campo2}}{% else %} {{producto_ficha.Prf_Campo2}} Kg. {% endif %}</td>
+                        </tr>
+                      {% endif %}
+                      {% if producto_ficha.Prf_Campo3 %}
+                        <tr>
+                          <td class="enfasisB">{% if producto.Cat_IdCategoria == 6 %}Peso {% else %} Material {% endif %}</td>
+                          <td>{% if producto.Cat_IdCategoria == 6 %}{{producto_ficha.Prf_Campo3}} Kg.{% else %} {{producto_ficha.Prf_Campo3}}{% endif %}</td>
+                        </tr>
+                      {% endif %}
+                      {% if producto_ficha.Prf_Campo4 %}
+                        <tr>
+                          <td class="enfasisB">{% if producto.Cat_IdCategoria == 6 %}Potencia {% else %} Uso {% endif %}</td>
+                          <td>{% if producto.Cat_IdCategoria == 6 %}{{producto_ficha.Prf_Campo4}} ws. {% else %} {{producto_ficha.Prf_Campo4}}{% endif %}</td>
+                        </tr>
+                      {% endif %}
+                      {% if producto_ficha.Prf_Campo5 %}
+                        <tr>
+                          <td class="enfasisB">{% if producto.Cat_IdCategoria == 6 %}Material {% else %} Observaciones {% endif %}</td>
+                          <td>{{producto_ficha.Prf_Campo5}}</td>
+                        </tr>
+                      {% endif %}
+                    {% endif %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="hide-on-med-and-down divider"></div>
+          {% if userAgent == "PC" %}
+          <div class="row cardContentFix" id="destacadosBlock">
+            <div class="col s12 m12 l12">
+              <span class="card-title">Destacados de la tienda</span>
+            </div>
+            <div class="col s12 m12 l12">
+              {% for prt in producto_tienda %}
+                <div class="col s6 m3 l3 colProSmarth" >
+                  <div class="card hoverable" itemscope itemtype="http://schema.org/Product">
+                    <a href="{{base_url()}}productos/dp/{{prt.url}}" itemprop="url" class="enfasisA" data-idproducto="{{prt.Pro_IdProducto}}" data-nombre="{{prt.Pro_Nombre}}">
+                    <div class="card-content center sinPadding cardHeight positionRelative">
+                    {% if prt.Prf_Img %}
+                      <img itemprop="image" class="containImg anchoTotal cardHeight " alt="{{prt.Pro_Nombre}} - Pormayor.pe" title="{{prt.Pro_Nombre}}" src="{{ruta_img}}{{prt.Prf_Img}}" style="padding-top:15px">
+                    {% else %}
+                      <img itemprop="image" class="containImg anchoTotal cardHeight " alt="{{prt.Pro_Nombre}} - Pormayor.pe" title="{{prt.Pro_Nombre}}" src="pronoimg.webp" style="padding: 5px">
+                    {% endif %}
+                    {% if prt.Pro_Oferta == 1 %}
+                      <img class="sales positionAbsolute positionAbsolute top0 left0" alt="Pormayor.pe - Producto en oferta" src="{{ruta_img}}ofertaA.webp" type="image" alt="">
+                    {% endif %}  
+                    </div>
+                    <div class="card-action center flow-text">
+                    <div class="hide" itemprop="description">{{prt.Pro_Descripcion}}</div>
+                    <div class="hide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+                    <span itemprop="lowPrice">{{prt.Pro_PrecioMinimo}}</span>
+                    <span itemprop="highPrice">{{prt.Pro_PrecioMaximo}}</span>
+                    <meta itemprop="priceCurrency" content="PEN" />
+                    </div>
+                    <span itemprop="name" class="truncate" title="{{prt.Pro_Nombre}}">{{prt.Pro_Nombre|title}}</span><h6><i>Desde &nbsp;</i><b class="pormayorUnico-text fontC">S/ {{prt.Pro_PrecioMinimo}}</b></h6>          
+                    </div>
+                    </a>
+                    <div class="pormayorUnico anchoTotal positionAbsolute bottom0" style="height:5px"></div>
+                  </div>
+                </div>
+              {% endfor %}
+              </div>
+          </div>
+          {% endif %}
+          <br>
+          <div class="divider"></div>
+          <div class="row cardContentFix" id="comentsBlock">
+            <div class="col s12 m12 l12 sinPadding">
+                <span class="card-title">Comentarios</span>
+                <div class="row">
+                  <div class="col s12 m6 l6" id="divComentario">
+                    {% if comentarios_respuestas %}
+                    <ul class="collection">
+                      {% for com in comentarios_respuestas %}
+                        <li class="collection-item">
+                          <article >
+                            {{com.Com_Comentario}} <span class="fontB2 right">{{com.Com_FechaCreacion|date('d/m/Y')}}</span> 
+                          </article>
+                          {% if com.Res_Respuesta %}
+                            <article class="grey-text" style="margin-left: 20px">{{com.Res_Respuesta}}
+                              <span class="fontB2 right">{{com.Res_FechaCreacion|date('d/m/Y')}}</span>
+                            </article>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                      </ul>
+                    {% else %}
+                      <span class="grey-text">Sé el primero en preguntar y sal de dudas.</span>
+                    {% endif %}
+                  </div>
+                  <div style="border-left: 1px solid rgba(0,0,0,0.2)" class="input-field col s12 m6 l6 center">
+                    {% if usuario.logueado %}
+                      {% if usuario.id_tienda != producto.Tie_IdTienda or usuario.rol == 4 %} 
+                          <textarea id="comentarioPro" placeholder="Escribe tu pregunta, y recuerda que no puedes solicitar información personal a la tienda por aca" class="materialize-textarea" maxlength="100" data-length="100"></textarea>
+                          <label for="comentarioPro">¿Qué necesitas saber?</label>
+                          <a style="margin-left:15px" class="btn right pormayorUnico enviarComentario" data-idproducto="{{producto.Pro_IdProducto}}" data-usuario="{{usuario.id_usuario}}" data-idtienda="{{producto.Tie_IdTienda}}">Preguntar</a>
+                      {% elseif usuario.id_tienda == producto.Tie_IdTienda %}
+                        <a class="btn pormayorUnico" href="{{base_url()}}usuario/comentario">Ir a responder preguntas</a>
+                      {% else %}
+                        
+                      {% endif %} 
+                    {% else %}
+                       <a class="btn-flat btn-flat-not transitionB  pormayorUnico-text comentLoginBtn" href="http://pormayor.pe/usuario/login">Inicia sesión para comentar</a> 
+                    {% endif %}
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </main>
+  {% if userAgent != "PC" %}
+    <div class="bottom0 anchoTotal row centrarForzado white mobileBottomBtn" style="position:fixed;z-index: 100">
+      <div class="col s12 sinPadding">
+        <a  class="btn-large pormayorUnico anchoTotal  resumenMobileBtn ">VER RESUMEN</a>
+      </div>
+      <div class="col s6 sinPadding center hide">
+        <label class="fontB2">Total de compra</label><br>
+        <span class="fontC"><b>S/ <span class="totalMobileBottom"></span></b></span>
+      </div>
+    </div>
+    <div id="resumenMobile" class="modal bottom-sheet row" style="max-height: 420px;height:100%">
+      <div class="row centrarForzado">
+        <div class="col s12 m12 l6  sinPadding positionRelative centrarForzado">
+          <h5 class="fontA center">Resumen  actual</h5>
+          <div class="row resumenContainer centrarForzado">
+            <div class="emptyResumen">
+              <div class="center col s12 m12 l12" >
+                <br>
+                <img src="{{ruta_img}}emptyProductos.webp" height="150"></img>
+              </div>
+              <div class="center col s12 m12 l12">
+                <h5>Sin productos</h5>
+                <span class="enfasisB">Aquí va tu lista de compras...</span>
+              </div>
+            </div>
+            <div class="resumenPrecios">
+            
+            </div>
+          </div>
+            <div class="prevResumen align-wrapper comoBoton sinUser positionAbsolute hide"><i class=" material-icons fontA enfasisA">keyboard_arrow_up</i></div>
+            <div class="nextResumen valign-wrapper comoBoton sinUser positionAbsolute hide"><i class=" material-icons fontA enfasisA">keyboard_arrow_down</i></div>
+          <div class="row centrarForzado">
+            {% if usuario.id_tienda != producto.Tie_IdTienda %}
+              <div class="col s7 sinPadding center valign-wrapper wrapperPrecioMobile">
+                <a class="centrarForzado btn green add_cart sinHover" data-totalc="{{totalc}}">AGREGAR AL CARRITO</a>
+              </div>
+              <div class="col s5 sinPadding right-align valign-wrapper wrapperPrecioMobile positionRelative">
+                <span class="centrarForzado fontB2 positionAbsolute "><strong id="totalcantidad">0</strong> unidades</span>
+                <span class="centrarForzado">S/. <strong class="fontC" id="totalImporte">0</strong></span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+   <!-- Aviso de agregado -->
+  <div id="modal_aviso" class="modal">
+    <div class="modal-content validar sinPadding white">
+      <a class="modal-close modal-close-custom right"><i class="material-icons  closeIconA">close</i></a>
+      <h5 class="center centrarForzado white-text z-depth-2 green">Agregado al carrito</h5>
+      <div class="aviso_productos">
+        <div class="row">
+          <br>
+          <div class="center col s12 m12 l2">
+            <img class="fixImg4 redondeo imgAviso" src=""> 
+          </div>
+          <div class="left-align col s12 m12 l8">
+            <span class="fontB2"><b class="nombreAviso"></b></span><br>
+            <span class="fontB2 enfasisB cantAviso"></span><br>
+            <span class="fontB2">Sub-total <span class="fontA pormayorUnico-text totalAviso"></span><br>
+          </div>
+          <div class="center col s12 m12 l12">
+            <br><br>
+            <a class="btn center verCarrito pormayorUnico" href="{{base_url()}}productos/carrito">Ir al carrito</a><a class="btn-flat center modal-close "><u>Seguir comprando</u></a>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+  var rando_precio = {{precios|json_encode()}};
+  var flagVariaciones = {{flag_variaciones|json_encode()}};
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/dist/easyzoom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="{{base_url('public/')}}js/tienda/cart_cotizacion_rc.js?v={{now|date('i:s')}}"></script>
+  <script src="{{base_url('public/')}}js/productos/favoritos.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

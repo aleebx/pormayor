@@ -1,0 +1,117 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}   
+<style type="text/css">
+.reloj{
+    border: 2px solid #f44336;
+    border-radius: 3px;
+    padding: 2px;
+    background-color: #f44336;
+    color: #ffffff;
+}
+</style>
+{% endblock %}
+{% block content %}
+  <main class="container">
+    <div class="row">
+      <div class="col s12 l3 unidadSticky">
+        <div class="card pormayorUnico white-text">
+          <div class="card-content row">
+            <span class="card-title center">¿Cómo ser un <b>Gruper@</b>?</span>
+            <div class="col s12 l12 anchoTotal">
+              <i class="material-icons left">looks_one</i>Regístrate
+            </div>
+            <div class="col s12 l12 anchoTotal">
+              <i class="material-icons left">looks_two</i>Selecciona el producto que deseas comprar
+            </div>
+            <div class="col s12 l12 anchoTotal">
+              <i class="material-icons left">looks_3</i>Selecciona el modelo
+            </div>
+            <div class="col s12 l12 anchoTotal">
+              <i class="material-icons left">looks_4</i>¡Agrúpate!
+            </div>
+{#             <ul class="collection">
+              <li class="collection-item comoBoton" href="{{base_url()}}usuario/login"></li>
+              <li class="collection-item">2. Selecciona el producto que deseas comprar</li>
+              <li class="collection-item"></li>
+              <li class="collection-item">4. ¡Agrúpate!</li>
+            </ul> #}
+          </div>
+        </div>
+        {% if miproductosgrupal %}
+        <div class="card" style="max-height: 500px;overflow-y:auto;">
+          <div class="card-content">
+            <span class="card-title center negrita">Mi Grupos</span>
+              <ul>
+                {% for pro in miproductosgrupal %}
+                  {% if pro.Prg_Estado != 3 %}
+                    <a class="grey-text text-darken-4" href="{{base_url()}}grupal/migrupo/{{pro.Pro_IdProducto}}">
+                      <li>
+                        <div class="row" style="border: 2px solid #fec00f;border-radius: 3px;">
+                          <div class="col s3 l3">
+                              {% if pro.Prf_Thumb != "" %}
+                                <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Thumb}}" class="b-lazy anchoTotal">
+                              {% else %}
+                                <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Img}}" class="b-lazy anchoTotal"> 
+                              {% endif %}
+                          </div>
+                          <div class="col s9 l9 pormayor">
+                            <span class="negrita">{{pro.Pro_Nombre}}</span><br><span class="fontA right">S/<b>{{pro.Gru_PrecioFinal}}</b></span>
+                          </div>
+                          {% if pro.Gru_Estado == 1 %}
+                            <div class="col s12 l12 pormayorUnico center">
+                              <span class="negrita white-text"><i class="material-icons tiny">local_grocery_store</i>&nbsp;COMPRAR</span>
+                            </div>
+                          {% endif %}
+                        </div>
+                      </li>
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="col s12 l8">
+        <div class="row">
+          {% for pro in productos_grupal %}
+            {% if pro.Prg_Estado != 3 and pro.Gru_Estado == 0 %}
+            <div class="col s12 l4">
+              <div class="card">
+              <a itemprop="url" href="{{base_url()}}grupal/nuevo/{{pro.url}}" class="comoBoton" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}" itemtype="http://schema.org/Product" title="{{pro.Pro_Nombre}}">        
+                <div class="card-image">
+                    <div class="wrapperSliderImgMobile transition">
+                      <div class="sliderMobile ">
+                        {% if pro.Prf_Thumb != "" %}
+                            <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Thumb}}" class=" b-lazy containImgFilter anchoTotal" >
+                          {% else %}
+                            <img itemprop="image" data-src="{{ruta_img}}{{pro.Prf_Img}}" class="b-lazy containImgFilter anchoTotal"> 
+                          {% endif %}
+                      </div>
+                    </div>
+                </div>
+                <div class="card-content pormayorUnico white-text">
+                  <div style="height:40px;">
+                    <span class="white-text negrita">{{pro.Pro_Nombre|title}}</span>
+                  </div>
+                  <span class="new badge fontD2"><i class="material-icons left">group</i>{% for pco in producto_count %}{% if pro.Pro_IdProducto == pco.Pro_IdProducto and idp != pro.Pro_IdProducto %}{% set idp = pco.Pro_IdProducto %}{{pco.gruperos}}{% endif %}{% endfor %}</span> 
+                  <p class="fontA">S/ <span class="fontD white-text"><b>{{pro.Gru_PrecioFinal}}</b></span></p>
+                  <p class="center">Este grupo se cierra el <br><span class="negrita reloj">{{pro.Fecha_Fin|date("d/m/Y h:h")}}</span></span>
+                </div>
+              </a>
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+	</main>
+{% endblock %}
+{% block script %}
+  <script>var busqueda_flag = "{{busqueda_flag}}";</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="{{base_url('public/')}}js/productos/favoritos.js?v={{now|date('i:s')}}"></script>
+  <script src="{{base_url('public/')}}js/grupal2.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

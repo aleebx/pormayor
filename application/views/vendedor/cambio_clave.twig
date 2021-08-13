@@ -1,0 +1,43 @@
+<h5 class="center"><span class="negrita idVenta">{{eActual}}</span></h5>
+<div class="row">
+  <div class="input-field col s12">
+    <input id="clave" type="text" class="validate">
+    <label for="clave">Nueva contraseña</label>
+  </div>
+  <div class="input-field col s12">
+    <input id="clave1" type="text" class="validate">
+    <label for="clave1">Confirmar nueva contraseña</label>
+  </div>
+</div>
+<div class="row">
+	<div class="col l6 center">
+  		<a class="modal-action waves-effect waves-green btn-flat negrita blue lighten-1 cambioC" data-idv="{{id}}"><i class="material-icons left">update</i>GUARDAR</a>
+	</div>
+	<div class="col l6 center">
+  		<a class="modal-action modal-close waves-effect waves-red btn-flat red lighten-4"><i class="material-icons left">close</i>SALIR</a>
+	</div>
+</div>
+<script>
+	$('.cambioC').click(function(){
+    var Usu_IdUsuario = $(this).data("idv");
+    var clave = $('#clave').val();
+    var clave1 = $('#clave1').val();
+    if (clave == clave1){      
+  		$.ajax({
+           data:{
+           'Usu_IdUsuario' : Usu_IdUsuario,
+           'clave' : clave,
+           'clave1' : clave1
+           },
+           type: "POST",
+           url: base_url+'vnd/cambio_clave',
+           success: function(data){
+            $('.modal').modal('close');
+           },
+           error: function(data) {
+             alert('error');
+           }
+        });
+    }
+	});
+</script>

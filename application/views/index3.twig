@@ -1,0 +1,185 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"  media="screen"/>
+	<style>
+		body > .inner {display: none;}
+		body.pg-loaded > .inner {display: block;}
+		.fontX{font-size: 18px!important}
+		.swiper-container {
+	      width: 100%;
+	      height: 100%;
+	    }
+		{% if userAgent != 'PC' %}
+	  		.alturaDIV{height:289px;}
+	  		.fontD2{font-size: 0.8rem!important;font-weight:1000;}
+	  		.fontE{font-size: 0.8rem!important}
+		{% endif %}  
+	</style>
+	<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1031699667283458');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+{% endblock %}
+{% block content %}
+	<div class="inner">
+		{% if usuario.logueado %}
+			<div class="hide addHomeScreen valign-wrapper">
+				<button class="btn-flat white-text cerrarHomeScreen"><i class="fontA material-icons">close</i></button>
+				<div class="row">
+					{% if usuario.rol == 2 or usuario.rol == 3 %}
+						<div class="col s6 m6 sinPadding center">
+							<a href="http://{{subdominio_tienda}}.{{dominio}}/usuario/inventario/lProductos">
+								<img class="b-lazy" alt="Pormayor.pe - Crear tienda" data-src="{{ruta_img}}movilOpcionTiendaB.webp">
+							</a>
+						</div>
+						<div class="col s6 m6 sinPadding center" style="margin-bottom:20px">
+							<a href="{{base_url()}}comprador/index/pedidos">
+								<img class="b-lazy" alt="Pormayor.pe - Iniciar sesion" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
+							</a>
+						</div>
+						<div class="col s12 m12 center" style="margin-bottom:20px">
+							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
+						</div>
+					{% elseif usuario.rol == 5 %}
+						<div class="col s6 m6 sinPadding center" style="margin-bottom:20px">
+							<a href="{{base_url()}}gestor/gestion">
+								<img class="b-lazy" alt="Pormayor.pe - Iniciar sesion" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
+							</a>
+						</div>
+						<div class="col s12 m12 center" style="margin-bottom:20px">
+							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
+						</div>
+					{% else %}
+						<div class="col s12 m12 sinPadding center" style="margin-bottom:20px">
+							<a href="{{base_url()}}comprador/index/pedidos">
+								<img class="b-lazy" alt="Pormayor.pe - Perfil de usuario" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
+							</a>
+						</div>
+						<div class="col s12 m12 center">
+							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
+						</div>
+					{% endif %}   
+				</div>
+			</div>
+		{% else %}
+			<div class="hide addHomeScreen container valign-wrapper">
+				<button class="btn-flat white-text cerrarHomeScreen"><i class="fontA material-icons">close</i></button>
+				<div class="row">
+					<div class="col s12 m12 center sinPadding" style="margin-bottom:20px">
+						<a href="{{base_url()}}usuario/login">
+							<img class="b-lazy" alt="Pormayor.pe - registrarse como comprador"  data-src="{{ruta_img}}movilOpcionCompradorA.webp">
+						</a>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	<main>
+		{% if userAgent == 'PC' %}
+			<div class="swiper-container swBanner">
+			    <div class="swiper-wrapper">
+			      {# <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}banner_navidad_w.webp" class="responsive-img"></div> #}
+			      <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}webpm.webp" class="responsive-img"></div>
+			    </div>
+			    <div class="swiper-pagination"></div>
+			</div>
+			<div class="row">
+				<div class="col s12 center">
+					<a href="{{base_url()}}categorias/deportes-al-mayor-5">
+						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" class="lazy" data-src="{{ruta_img}}1DEPORTES.png">
+					</a>
+					<a href="{{base_url()}}categorias/electrohogar-al-mayor-6">
+						<img alt="Productos de electrohogar al por mayor" title="Productos de electrohogar al por mayor" class="lazy" data-src="{{ruta_img}}2ELECTROHOGAR.png">
+					</a>
+					<a href="{{base_url()}}categorias/audio-video-al-mayor-14">
+						<img alt="Productos de accesorios al por mayor" title="Productos de accesorios al por mayor" class="lazy" data-src="{{ruta_img}}3TVAUDIO.png">
+					</a>
+					<a href="{{base_url()}}categorias/hogar-al-mayor-8">
+						<img alt="Productos de hogar mayor" title="Productos de hogar mayor" class="lazy" data-src="{{ruta_img}}4HOGAR.png">
+					</a>
+					<a href="{{base_url()}}categorias/belleza-al-mayor-1">
+						<img alt="Productos de belleza al por mayor" title="Productos de belleza al por mayor" class="lazy" data-src="{{ruta_img}}5BELLEZA.png">
+					</a>
+				</div>
+			</div>
+		{% else %}
+			<div class="swiper-container swBanner">
+			    <div class="swiper-wrapper">
+			      {# <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}banner_navidad_m.webp" class="responsive-img"></div> #}
+			      <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}cel-pm.webp" class="responsive-img"></div>
+			    </div>
+			    <div class="swiper-pagination"></div>
+			</div>
+			<div class="row">
+				<div class="col s6">
+					<a href="{{base_url()}}categorias/deportes-al-mayor-5">
+						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" data-src="{{ruta_img}}DEPMOVIL.png" class="responsive-img lazy">
+					</a>
+					<a href="{{base_url()}}categorias/electrohogar-al-mayor-6">
+						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" data-src="{{ruta_img}}EHMOVIL.png" class="responsive-img lazy">
+					</a>
+				</div>
+				<div class="col s6">
+					<a href="{{base_url()}}categorias/deportes-al-mayor-5">
+						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" data-src="{{ruta_img}}ACCMOVIL.png" class="responsive-img lazy">
+					</a>
+					<a href="{{base_url()}}categorias/belleza-al-mayor-1">				
+						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" data-src="{{ruta_img}}BELLEZAMOVIL.png" class="responsive-img lazy">
+					</a>
+				</div>
+			</div>
+		{% endif %}
+		<div class="row">
+		  	{% for pro in productos %}
+		  	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+		        <div class="col s6 m6 l2 black-text" style="padding:5px" data-cd="{{pro.Pro_PM}}">
+		          <div class="card hoverable z-depth-0">
+		            <div class="center" style="height:190px;">
+		              <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo"data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+		            </div>
+		            <div class="card-content center" style="height:100px;">
+		              <p>
+		              	<span class="truncate">{{pro.Pro_Nombre}}</span>
+		              	{% if pro.Pro_Preventa == 1 %}
+		              	<span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x mayor<span class="new badge blue left">PRE-VENTA</span>
+		              	{% else %}
+		              	<span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x mayor</label>
+		              	{% endif %}
+		              </p>
+		            </div>
+		          </div>
+		        </div>
+	    	</a>
+		  	{% endfor %}
+	    </div>
+	</main>	
+{% endblock %}
+{% block script %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+	    <script>
+	      var base_url = "{{base_url()}}";
+	      var loading_screen = pleaseWait({
+	          logo: '',
+	          backgroundColor: "#FEC00F",
+	          loadingHtml: "<img src='{{ruta_img}}logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
+	        });
+	    </script>
+		<script src="{{base_url('public/')}}js/index.js?v=5"></script>
+{% endblock %}

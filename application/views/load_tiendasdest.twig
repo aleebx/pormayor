@@ -1,0 +1,9 @@
+{# <div class="tiendas_destacadas">
+<h5 class="enfasisB">Tiendas destacadas </h5>
+<div class="row">
+{% for tie in tiendas %}<div class="col s6 m4 l3"><div class="card cardFix hoverable tiendasAll"><a class="" href="http://{{tie.Tie_Subdominio}}.{{dominio}}" data-idproducto="{{pro.Pro_IdProducto}}"><div class="card-content center sinPadding">{% if tie.Tie_Logo %}<img alt="{{tie.Tie_Nombre}}" title="{{tie.Tie_Nombre}}" data-src="{{ruta_img}}{{tie.Tie_Logo}}" class="lazy responsive-img fixImg3 redondeo" style="padding: 5px;">{% else %}<img alt="tienda pormayor con los mejores precios y ofertas" title="tienda pormayor" data-src="{{ruta_img}}sinlogo.webp" class="lazy responsive-img fixImg3 redondeo" style="padding: 5px;">{% endif %}</div><div class="tituloTienda center pormayorAccent white-text card-content valign-wrapper sinPadding"><div class="anchoTotal center" > {{tie.Tie_Nombre|title}}</div><img alt="" data-src="{{ruta_img}}checkStore.svg" class="lazy sales" width="35"></div></a></div></div>{% endfor %}
+<div class="col s12 l12 center ">
+<a class="waves-effect waves-light btn-large pormayorUnico white-text" href="{{base_url()}}index/tiendas">Ver más tiendas</a>
+</div>
+</div>
+</div> #}

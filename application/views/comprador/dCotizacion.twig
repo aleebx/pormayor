@@ -1,0 +1,363 @@
+{% extends "layout/intranet/template_usu.twig" %}
+
+{% block head %}
+	<style type="text/css">
+  		.tachado
+  		{
+  			text-decoration:line-through;
+  			color: #0000008a;
+  			color: #f13c30;
+  		}
+  		.collection .collection-item,  .collection .collection-header{
+		    border: 1px solid #e0e0e0 !important;
+		}
+		.bancos{
+			opacity: 0.5;
+			cursor: pointer;
+			-webkit-transition: all .25s linear;
+			   -moz-transition: all .25s linear;
+			    -ms-transition: all .25s linear;
+			     -o-transition: all .25s linear;
+			        transition: all .25s linear;
+		}
+		.precioFinal{
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+		.totalFinal{
+			font-size: 2rem;
+			font-weight: 600;
+		}
+		.desactFila{
+			color: grey;
+			user-select: none;
+		}
+		[type="checkbox"].filled-in:checked + label:after {
+			background-color: #21478F !important;
+			border: 2px ;
+		}
+		[type="checkbox"].filled-in:not(:checked) + label:after{
+			border: 2px solid #21478F !important;
+		}
+	</style>
+	<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/jquery-confirm.min.css')}}"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/please-wait.css')}}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/spinkit.css')}}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/introjs.min.css')}}"  media="screen,projection"/>
+
+{% endblock %}
+
+{% block content %}
+    <main>
+    	<div class="row" >
+    		<div class="col s12 m12 l12" style="padding:0 0.5rem;">
+                <div class="card">
+                    <div class="card-content cotizacionStep1 sinPadding">
+                        <div class="row sinBordeBottom">
+			                <div class="pormayor col s12 center pormayorAccent-text">
+			                    <h5>Cotizacion</h5>
+			                </div>
+			                <div class="input-field col s12 center">
+			                    <button class="btn tutorialBtn"> <i class="material-icons left">help</i>¿Que debo hacer aqui?</button>
+			                </div>
+            				<!-- <span class="new badge" style="height:30px"><i class="material-icons left" style="margin:0">mail</i>REVISA TU CORREO</span> -->
+				      		<table class="bordered">
+				      			<thead>
+				      				<tr>
+				      					<th class="center"style="width:20%">Producto</th>
+				      					<th class="center"  style="width:10%">Cant.</th>
+				      					<th class="center sinPadding" style="width:30%">Precio</th>
+				      					<th class="center sinPadding" style="width:30%">Importe</th>
+				      					<th class="center" style="width:10%"></th>
+				      				</tr>
+				      			</thead>
+				      			<tbody>
+				      				{% set monto = 0 %}
+				      				{% set primeraFila = true %}
+				      				{% set monto_cotizado = 0 %}
+				      				<input type="hidden" name="porcentaje" id="porcentaje" value="{{dcotizacion[0].Tie_PorcentajeCotizacion}}">
+				      				<input type="hidden" name="id_cotizacion" id="id_cotizacion" value="{{Cot_IdCotizacion}}">
+				      				{% for cot in dcotizacion %}
+				      					{% if primeraFila == true %}
+					      					<tr id="profinal{{cot.SKU_IdSKU}}" class="introInfo" data-step="1" data-intro='Aqui tienes todos los productos seleccionados en tu cotización' data-position="bottom">
+						      					<td class="center sinPadding">
+						      						<img src="{{ruta_img}}{{cot.SKU_Img}}" height="50"><br>
+						      						<span class="nombrePro">{{cot.Pro_Nombre}}</span></br>
+						    		   				<span class="enfasisB varNombre">{{cot.Var_Nombre}}: {{cot.Vao_Nombre}} - <b>{{cot.SKU_Color}}</b> </span>
+						    					</td>
+						      					<td class="center introInfo" data-step="2" data-intro='Las cantidades de cada producto pueden ser cambiadas si así lo deseas' data-position="right">
+													<input type="number" step="1" value="{{cot.Cantidad_Cotizacion}}" class="center-align cantidad centrarForzado" id="cantidad{{cot.SKU_IdSKU}}"><br>
+													<span class="enfasisB uniMed">Unid.</span>
+						      					</td>
+						      					<td class="center introInfo" data-step="3" data-intro='El precio de cada producto puede variar dependiendo de su cantidad' data-position="right">
+						      						<span class="precioA precioFinal introInfo" data-step="4" data-intro='Este es el precio ofrecido por el dueño de la tienda por <b>{{cot.Cantidad_Cotizacion}} {{cot.Pro_Nombre}}(s)</b>' data-position="top" id="precioA{{cot.SKU_IdSKU}}">{{cot.PrecioDscto_Cotizacion|number_format(2, '.', ' ')}}</span><br>
+						      						<span class="tachado precioB introInfo" data-step="5" data-intro="El <b>precio de venta normal</b> de este producto si compras pocas cantidades es este" data-position="right" id="precioB{{cot.SKU_IdSKU}}">{{cot.Precio_Cotizacion|number_format(2, '.', ' ')}}</span>
+						      						<span class="hide preciocotizado  precioFinal" id="preciocotizado{{cot.SKU_IdSKU}}">{{cot.PrecioDscto_Cotizacion}}</span>
+						      						<span class="hide tachado precioventa" id="precioventa{{cot.SKU_IdSKU}}">{{cot.Precio_Cotizacion|number_format(2, '.', ' ')}}</span>
+						      						
+						      					</td>
+						      					<td  class="center introInfo" data-step="6" data-intro='Este es el total de <b>{{cot.Cantidad_Cotizacion}} {{cot.Pro_Nombre}}(s)</b> por el precio de S/ {{cot.PrecioDscto_Cotizacion|number_format(2, '.', ' ')}}' data-position="bottom" id="tdimporte{{cot.SKU_IdSKU}}">
+						      						{% set importe = cot.Cantidad_Cotizacion * cot.PrecioDscto_Cotizacion %}
+						      						<span id="importe{{cot.SKU_IdSKU}}">{{importe|number_format(2, '.', ' ')}}</span>
+						      					</td>
+						      					<td class="sinPadding introInfo" data-step="7" data-intro='Puedes <b>eliminar o activar productos</b> en tu compra final presionando este botón. Recuerda que esto afectara el precio final de la compra' data-position="top" >
+													  <input type="checkbox" id="cbProducto{{cot.SKU_IdSKU}}" checked="checked" class="filled-in cbProducto" value="{{cot.SKU_IdSKU}}" data-cantidad="{{cot.Cantidad_Cotizacion}}" data-precioventa="{{cot.Precio_Cotizacion}}" data-preciocotizado="{{cot.PrecioDscto_Cotizacion}}" data-id="{{cot.SKU_IdSKU}}" data-img="{{cot.SKU_Img}}" data-nompro="{{cot.Pro_Nombre}}">
+													  <label class="sinPadding" for="cbProducto{{cot.SKU_IdSKU}}"></label>
+						      					</td>
+						      				</tr>
+						      				{% set primeraFila = false %}
+				      					{% else %}
+				      					  	<tr id="profinal{{cot.SKU_IdSKU}}">
+						      					<td class="center sinPadding">
+						      						<img src="{{ruta_img}}{{cot.SKU_Img}}" height="50"><br>
+						      						<span class="nombrePro">{{cot.Pro_Nombre}}</span></br>
+						    		   				<span class="enfasisB varNombre">{{cot.Var_Nombre}}: {{cot.Vao_Nombre}} - <b>{{cot.SKU_Color}}</b> </span>
+						    					</td>
+						      					<td class="center">
+													<input type="number" step="1" value="{{cot.Cantidad_Cotizacion}}" class="center-align cantidad centrarForzado" id="cantidad{{cot.SKU_IdSKU}}"><br>
+													<span class="enfasisB uniMed">Unid.</span>
+						      					</td>
+						      					<td class="center">
+						      						<span class="precioA precioFinal" id="precioA{{cot.SKU_IdSKU}}">{{cot.PrecioDscto_Cotizacion|number_format(2, '.', ' ')}}</span><br>
+						      						<span class="tachado precioB" id="precioB{{cot.SKU_IdSKU}}">{{cot.Precio_Cotizacion|number_format(2, '.', ' ')}}</span>
+						      						<span class="hide preciocotizado  precioFinal" id="preciocotizado{{cot.SKU_IdSKU}}">{{cot.PrecioDscto_Cotizacion}}</span>
+						      						<span class="hide tachado precioventa" id="precioventa{{cot.SKU_IdSKU}}">{{cot.Precio_Cotizacion|number_format(2, '.', ' ')}}</span>
+						      						
+						      					</td>
+						      					<td  class="center" id="tdimporte{{cot.SKU_IdSKU}}">
+						      						{% set importe = cot.Cantidad_Cotizacion * cot.PrecioDscto_Cotizacion %}
+						      						<span id="importe{{cot.SKU_IdSKU}}">{{importe|number_format(2, '.', ' ')}}</span>
+						      					</td>
+						      					<td class="sinPadding">
+													  <input type="checkbox" id="cbProducto{{cot.SKU_IdSKU}}" checked="checked" class="filled-in cbProducto" value="{{cot.SKU_IdSKU}}" data-cantidad="{{cot.Cantidad_Cotizacion}}" data-precioventa="{{cot.Precio_Cotizacion}}" data-preciocotizado="{{cot.PrecioDscto_Cotizacion}}" data-id="{{cot.SKU_IdSKU}}" data-img="{{cot.SKU_Img}}" data-nompro="{{cot.Pro_Nombre}}">
+													  <label class="sinPadding" for="cbProducto{{cot.SKU_IdSKU}}"></label>
+						      					</td>
+						      				</tr>  
+				      					{% endif %}
+					      				
+					      				{% set monto = monto + cot.Precio_Cotizacion*cot.Cantidad_Cotizacion %}
+					      				{% set monto_cotizado = monto_cotizado + cot.PrecioDscto_Cotizacion*cot.Cantidad_Cotizacion %}
+				            		{% endfor %}
+				      			</tbody>
+				      			<tfoot>
+			                		<tr>
+			                			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+			                			{# <td colspan="2">Total Real <span id="total" style="font-size: 16px">S/. {{monto|number_format(2, '.', ' ')}}</span></td> #}
+			                			<td colspan="5" class="center">
+			                				<span class="totalA totalFinal introInfo" data-step="8" data-intro='Este es el total <b>que debes pagar</b> por todos los productos solicitados. <i>Recuerda que esto puede cambiar dependiendo de las cantidades o productos que selecciones</i>' data-position="top" id="totalA">S/ {{monto_cotizado|number_format(2, '.', ' ')}}</span><br>
+			                				<span class="totalB tachado introInfo" data-step="9" data-intro='Este es el <b>total normal</b> en caso de seleccionar pocas cantidades por todos los productos solicitados. <i>Recuerda que esto puede cambiar dependiendo de las cantidades o productos que selecciones</i>' data-position="top" id="totalB">S/ {{monto|number_format(2, '.', ' ')}}</span>
+			                				
+			                				<span  class="hide tachado" id="tdTotalReal">Total Real S/<span id="totalReal" style="font-size: 16px">{{monto|number_format(2, '.', ' ')}}</span><br></span>
+			                				<span class="hide" id="tdTotalDscto">Total Cotizado S/<span id="totalDscto" style="font-size: 16px">{{monto_cotizado}}</span></span>
+			                				<span class="hide" style="font-size:1.5rem" id="tdTotalAhorrado"> Ahorro de S/<span id="totalAhorrado">{{(monto - monto_cotizado)|number_format(2, '.', ' ')}}</span></span>
+			                			</td>
+			                		</tr> 
+			                		<tr class="filaAhorro green white-text">
+			                			{# <td colspan="2">Total Real <span id="total" style="font-size: 16px">S/. {{monto|number_format(2, '.', ' ')}}</span></td> #}
+			                			<td colspan="5" class="center">
+			                				<span class="introInfo" data-step="10" data-intro='Esta es la cantidad en <b>soles que te ahorras</b> de acuerdo a las cantidades que solicitaste de cada producto. <i>Recuerda que esto puede cambiar dependiendo de las cantidades o productos que selecciones</i>' data-position="top" style="font-size:1.5rem" id="tdtotalC"><span id="totalC">Ahorro de S/ {{(monto - monto_cotizado)|number_format(2, '.', ' ')}}</span></span>
+			                			</td>
+			                		</tr>
+			            		</tfoot>
+				      		</table>
+	      				</div>
+	      			</div>
+	      			<div class="card-content cotizacionSeguro sinPadding">
+                        <div class="row sinBordeBottom">
+			                <div class="col s12 m12 l12 center white-text pormayor">
+			                    <h5 class="pormayorAccent-text"><i>Compra segura</i> pormayor</h5>
+			                </div>
+			                <ul class="collapsible collapSeguro" data-collapsible="accordion">
+							    <li>
+							      <div class="collapsible-header active"><i class="material-icons left">filter_1</i><i class="material-icons enfasisB">person</i><span class="enfasisB">Datos personales</span></div>
+							      <div class="collapsible-body sinPadding">
+							      	<div class="row cardContenFix">
+							      		<div class="input-field col s12 m8 l4">
+							      			<label for="dniEnvio">DNI</label>
+							      			<input id="dniEnvio" type="text" class="validate"  value="{{datoscomprador.Per_Dni}}" {% if datoscomprador.Per_Dni is empty %}{% else %} readonly	{% endif %} required>
+								        </div>
+								        <div class="input-field col s12 m4 l8">
+								          <label for="nomPerEnvio">Nombre</label>
+								          <input id="nomPerEnvio" type="text" class="validate"  value="{{datoscomprador.Per_Nombre}}" {% if datoscomprador.Per_Nombre is empty %}{% else %} readonly	{% endif %} required>
+								        </div>
+								        <div class="input-field col s4 m4 l6">
+								          <label for="telfEnvio">Telefono</label>
+								          <input id="telfEnvio" type="number" class="validate"  value="{{datoscomprador.Per_Telefono}}" required>
+								        </div>
+								        <div class="input-field col s8 m4 l6">
+								          <label for="correoEnvio">Correo</label>
+								          <input id="correoEnvio" type="email" class="validate"  value="{{datoscomprador.Usu_Correo}}" {% if datoscomprador.Usu_Correo is empty %}{% else %} readonly	{% endif %} required>
+								        </div>
+								        <div class="input-field col s12">
+									        <textarea id="dirEnvio" class="materialize-textarea validate" required></textarea>
+	          								<label for="dirEnvio">Direccion de Envio</label>
+								        </div>
+										<br>
+										<div class="divider"></div>
+										<div class=" col s12 l12">
+										    <h5>Comprar como Empresa <span class="enfasisB">(opcional)</span></h5>
+										</div>
+										<div class="input-field col s12 l4">
+									        <input id="rucEmpresaEnvio" type="number">
+          									<label for="rucEmpresaEnvio">Ruc</label>
+								        </div>
+								        <div class="input-field col s12 l8">
+									        <input id="nomEmpresaEnvio" type="text">
+          									<label for="nomEmpresaEnvio">Nombre / Razón Social</label>
+								        </div>
+								        <div class="col s12 m12 l12 center">
+						      				<a class="btn contEnvio pormayorUnico">Continuar</a>
+							      		</div>
+							      	</div>
+							      </div>
+							    </li>
+							    <li>
+							      <div class="collapsible-header active"><i class="material-icons left">filter_2</i><i class="enfasisB material-icons">storage</i><span class="enfasisB">Datos de Compra</span></div>
+							      <div class="collapsible-body sinPadding">
+							      	<div class="row sinBordeBottom cardContentFix">
+							      		<div class="resumenProductos"> 
+							      			
+							      		</div>
+							      		<div class="col s12 m12 l12 hide" id="rucResumenContainer">
+								          	<ul class="collection with-header">
+								          		<li class="collection-header pormayor pormayorAccent-text"><i class="material-icons left">credit_card</i>Pago como empresa</li>
+												<li class="collection-item">RUC: <b><span class="rucResumenEnvio"></span></b></li>
+												<li class="collection-item">Nombre: <b><span class="nomEmpreResumenEnvio"></span></b></li>
+											</ul>
+								        </div>
+								        <div class="col s12 m12 l12">
+								          	<ul class="collection with-header">
+								          		<li class="collection-header pormayor pormayorAccent-text"><i class="material-icons left">credit_card</i>Total a pagar</li>
+												<li class="collection-item">Sub-total <span class="right"><b><span class="subTotalCompra right"></span></b></span></li>
+												<li class="collection-item">Importe Pago Seguro <span class="right"><b>S/ 3</b></span></li>
+												<li class="collection-item"><h4 class="centrarForzado right-align">S/ <span class="totalCompra"></span></li>
+											</ul>
+								        </div>
+								        <div class="col s12 m12 l12 center">
+						      				<span style="font-size:0.8rem;color:grey">
+												Estos precios son validos por quince (15) dias de emitida la presente cotización.
+								      		</span>
+							      		</div>
+								        <div class="col s12 m12 l12">
+							      			<ul class="collection with-header">
+										        <li class="collection-header pormayor pormayorAccent-text"><i class="material-icons left">credit_card</i>Banco para Pagar</li>
+										        <li class="collection-item">
+										        	<div class="row">
+										        		<div class="col l6 center">
+										        			<img class="redondeo bancos" data-banco="BCP" src="{{ruta_img}}banco1.jpg" height="100">
+										        		</div>
+										        		<div class="col l6 center">
+										        			<img class="redondeo bancos" data-banco="Caja Huancayo" src="{{ruta_img}}banco2.jpg" height="100">
+										        		</div>
+										        	</div>
+										        </li>
+									      	</ul>
+								        </div>
+								        <div class="input-field col s12 m12 l12">
+							      			<ul class="collection with-header">
+										        <li class="collection-header pormayor pormayorAccent-text"><i class="material-icons left">location_on</i>Direccion de entrega</li>
+										        <li class="collection-item"><span class="dirResumenEnvio"></span></li>
+									      	</ul>
+								        </div>
+							      		<div class="col s12 m12 l12 center">
+							      			<button class="btn-flat prevCompraSeguraBtn" type="button" >Atras</button>
+						      				<a class="btn pagarBtn pormayorUnico" id="btnPagoSeguro">Finalizar Compra</a>
+							      		</div>
+						            </div>
+						            <br>
+							      </div>
+							    </li>
+							</ul>
+	      				</div>
+	      			</div>
+	      			<div class="card-content cotizacionAcuerdo sinPadding">
+                        <div class="row sinBordeBottom">
+			                <div class="col s12 m12 l12 center white-text pormayor ">
+			                    <h5 class="pormayorAccent-text">Informacion de Tienda</h5>
+			                </div>
+			                <ul class="collapsible" data-collapsible="accordion">
+							    <li>
+							      <div class="collapsible-header active"><i class="material-icons">store</i>Datos</div>
+							      <div class="collapsible-body sinPadding">
+							      	<div class="row cardContenFix">
+							      		<div class="col s12 m8 l8">
+								          <label for="">Nombre Tienda</label>
+								          <p class="fontA">{{infotienda.Tie_RazonSocial|title}}</p>
+								        </div>
+								        <div class="col s12 m4 l4">
+								          <label for="">Telefono</label>
+								          <p class="fontA">{{infotienda.Per_Telefono}}</p>
+								        </div>
+								        {% if infotienda.Per_Direccion %}
+									        <div class="col s12 m12 l12">
+									          <label for="">Dirección</label>
+									          <p class="fontA">{{infotienda.Per_Direccion}}</p>
+									        </div>
+								        {% endif %}
+							      	</div>
+							      </div>
+							    </li>
+							    <li>
+							      <div class="collapsible-header"><i class="material-icons">storage</i>Productos<span class="new badge totalCompra" data-badge-caption="Total"></span></div>
+							      <div class="collapsible-body sinPadding">
+							      	<div class="row sinBordeBottom cardContentFix">
+							      		<div class="resumenProductos"> 
+							      			
+							      		</div>
+						                <div class="col s12 m6 l6">
+						                    <h5 class="center">Total <span class="totalCompra"></span></h5>
+						                </div>
+						                <div class="col s12 m6 l6 center">
+						      				<a class="btn descargarCoti pormayorUnico" >Descargar Cotizacion</a>
+							      		</div>
+						                <div class="col s12 m12 l12 center">
+						      				<span style="font-size:0.8rem;color:grey">
+												Estos precios son validos por quince (15) dias de emitida la presente cotización.
+								      		</span>
+							      		</div>
+						            </div>
+						            <br>
+							      </div>
+							    </li>
+							</ul>
+	      				</div>
+	      			</div>
+	      			<div class="card-action center" style="padding:15px">
+	      				<div class="row sinBordeBottom">
+				      		<div class="col s12 m12 l12">
+		                        <button class="btn nextBtn pormayorUnico modal-trigger" data-target="tipoPagoModel" id="btnProcesarCompra" data-idtienda="{{infotienda.Tie_IdTienda}}">Procesar Compra</button>
+		                        <button class="btn-flat prevBtn" type="button" >Volver a Cotizacion</button>
+		                        <button class="btn-flat verComprasBtn" type="button" >Ver Compras</button>
+		                        <a class="btn cambiarBtn pormayorUnico pagoSeguroChange"><i class="material-icons left ">verified_user</i>Usar pago seguro</a>
+		                   	</div>
+	                    </div>
+                    </div>
+		      	</div>
+			</div>
+		</div>
+    </main>
+    <div class="modal modalTipoPago" id="tipoPagoModel">
+      <div class="modal-content modalCustomPro">
+        <a class="modal-close modal-close-custom right" data-dismiss="modal"><i class="material-icons  closeIconA">close</i></a>
+        <h5 class="headerModal z-depth-2 pormayor pormayorAccent-text">Tipo de pago</h5>
+        <br><br>
+         <div class="row">
+         	<div class="col s6 m6 l6 center">
+         		<img class="anchoTotal pagoSeguroBtn" src="{{ruta_img}}pagoA.png" >
+         	</div>
+         	<div class="col s6 m6 l6 center ">
+         		<img class="anchoTotal pagoAcuerdoBtn" src="{{ruta_img}}pagoB.png" >
+         	</div>
+         </div>
+         <p class="center"><a class='pormayorUnico-text' href='#' id='beneficiosPago'>Conoce los beneficios del <i>Pago seguro</i></a></p> 
+      </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/jquery-confirm.min.js')}}"></script>
+    <script src="{{base_url('public/intranet/js/')}}please-wait.min.js" type="text/javascript"></script>
+    <script src="{{base_url('public/')}}js/tienda/dCotizacion.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+    <script language="JavaScript" type="text/javascript" src="{{base_url('public/')}}js/jquery.validate.js" defer></script>
+    <script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/intro.min.js')}}"></script>
+{% endblock %}

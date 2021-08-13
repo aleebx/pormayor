@@ -1,0 +1,593 @@
+{% extends "layout/intranet/template_ven.twig" %}
+
+{% block head %}
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+	<style type="text/css">
+		blockquote{
+			border-left: 5px solid #121212;
+			font-size: 16px;
+		}
+		table thead tr th{
+			border-radius: 0px;
+		}
+		.paddingLi{
+			padding: 3px 20px !important;
+		}
+		.select2 {
+			width: 90% !important;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+    <main class="container" style="width:95%">
+    	<div class="card">
+        	<div class="card-content sinPadding">
+        		<div class="row cardContentFix">
+        			<h5 class="center card-title"><b>DETALLE DE VENTA</b></h5>
+	    			<div class="divider"></div><br>
+	    			<div class="row">
+	    				<div class="col s12 m4 l4 center">
+	    					<span style="padding:5px;border-radius:4px;" class="negrita black-text fontA {% if venta.Pac_Estado == 1 %}green accent-4">NUEVA VENTA{% elseif venta.Pac_Estado == 2 %}light-green accent-4">VENTA CONFIRMADA{% elseif venta.Pac_Estado == 3 %}lime accent-2">LISTO PARA RECOGO{% elseif venta.Pac_Estado == 4 %}deep-orange accent-2">EN EL CORRIER{% elseif venta.Pac_Estado == 5 %} green darken-4">ENTREGADO{% elseif venta.Pac_Estado == 6 %}red">ANULADO{% endif %}</span>
+	    					<br/>
+	    				</div>
+	    				<div class="col s12 m4 l4">
+	    					<a class="btn negrita blue" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR ROTULADO</a>
+	    				</div>	    				
+	    				<div class="col s12 m4 l4">
+	    					<a class="btn negrita green" onclick="printJS('printJS-form2', 'html')" style="width:100%;"><i class="material-icons left">list</i>IMPRIMIR VENTA</a>
+	    				</div>	    				
+	    				<div class="col s12 l12">
+	    				{% if venta.Pac_Banco == 'NO' %}
+	    					<ul class="collection with-header">
+	    						<li class="collection-item pSmall center purple"><span class="fontA"><b>MÉTODO DE PAGO: PAGO CONTRA ENTREGA</b></span></li>
+	    					</ul>
+	    				{% elseif venta.Pac_Banco == 'TIENDA' %}	    				    
+	    					<ul class="collection with-header">
+	    						<li class="collection-item pSmall center yellow"><span class="fontA"><b>RETIRO EN TIENDA</b></span></li>
+	    					</ul>
+	    				{% elseif venta.Pac_Banco == 'Visanet' %}   
+	    					<ul class="collection with-header">
+	    						<li class="collection-item pSmall center blue"><span class="fontA"><b>MÉTODO DE PAGO: TARJETA DE CRÉDITO/DEBITO</b></span></li>
+	    					</ul>
+	    				{% else %}   
+	    					<ul class="collection with-header">
+	    						<li class="collection-item pSmall center red"><span class="fontA"><b>MÉTODO DE PAGO: DEPOSITO/TRANSFERENCIA</b></span></li>
+	    					</ul>
+	    				{% endif %}
+	    				</div>
+	    				<div class="col s12 l6">
+	    					<ul class="collection with-header">
+	    						<li class="collection-header colorPrincipal"><h6><b><i class="material-icons left">person</i>DATOS CLIENTE</b></h6></li>
+	    						<li class="collection-item pSmall"><b>NOMBRE COMPLETO:</b> {% if venta.Per_Nombre %}{{venta.Per_Nombre}}{% else %}{{venta.nombr}}{% endif %}</li>
+	    						<li class="collection-item pSmall"><b>D.N.I:</b> {% if venta.Per_Dni %}{{venta.Per_Dni}}{% else %}{{venta.dni}}{% endif %}</li>
+	    						<li class="collection-item pSmall"><b>TELÉFONO: {{compra_info.Pci_Telefono}}</b> <a href="https://api.whatsapp.com/send?phone=51{{compra_info.Pci_Telefono}}&text=Hola,%20por%20favor%20confirme%20su%20compra%20en%20PorMayor.pe%20para%20realizar%20el%20envío."><img src="{{ruta_img}}/wa.png" height="25" class="positionRelative right"></a></li>
+	    						<li class="collection-item pSmall"><b>FECHA:</b> {{venta.Pac_FechaRegistro}}</li>
+	    						{% if compra_info.Pci_Ruc %}
+	    						<li class="collection-item green center">SOLICITO FACTURA</li>
+	    						<li class="collection-item pSmall"><b>RUC:</b> {{compra_info.Pci_Ruc}}</li>
+	    						{% endif %}
+	    						<li class="collection-item pSmall">Vendedor:<b>{{venta.vendedor}}</b></li>
+	    					</ul>
+		    			</div>	
+	    				<div class="col s12 l6">
+	    					<ul class="collection with-header">
+	    						<li class="collection-header colorPrincipal"><h6><b><i class="material-icons left">local_shipping</i>DIRECCIÓN DE ENVIO</b></h6></li>
+	    						<li class="collection-item pSmall"><b>DEPARTEMANTO:</b> {{compra_info.region}}</li>
+	    						<li class="collection-item pSmall"><b>PROVINCIA:</b> {{compra_info.provincia}}</li>
+	    						<li class="collection-item pSmall"><b>DISTRITO:</b> {{compra_info.distrito}}</li>
+	    						<li class="collection-item pSmall"><b>DIRECCIÓN:</b>{% if venta.Pac_Banco == 'TIENDA' %} <b>RETIRO EN TIENDA </b> {% endif %} {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}</li>
+	    					</ul>
+		    			</div>
+		    			<div class="col s12 l12 green lighten-5">		    				
+			    			<table class="bordered centered">
+			            <thead>
+			            	<tr>
+			            		<th>Medio</th>
+			            		<th>Monto</th>
+			            		<th>Estado</th>
+			            		<th>#</th>
+			            		<th>Fecha</th>
+			            		<th></th>
+			            	</tr>
+			            </thead>
+			            <tbody>            	
+			            	{% for v in vauche %}
+			            		<tr>
+			            			<td>{{v.Pvoc_MedioPago}}</td>
+			            			<td>{{v.Pvoc_Monto}}</td>
+			            			<td>{% if v.Pvoc_EstadoComprobante == 0 %}<span class="new badge red">PENDIENTE</span>{% else %}<span class="new badge green">VERIFICADO</span>{% endif %}</td>
+			            			<td>{{v.Pvoc_NumComprobante}}</td>
+			            			<td>{{v.Pvoc_FechaComprobante}}</td>
+			            			<td><img src="{{ruta_img}}/vauche/{{v.Pvoc_LogoPago}}" class="materialboxed" width="30px"></td>
+			            		</tr>
+			            	{% endfor %}
+			            </tbody>
+		            </table><br>
+		    			</div>
+
+	    				<div class="col s12 l12">
+	    					{% if venta.Pac_Estado == 1 or venta.Pac_Estado == 2 %}
+	    					<a data-target="modalProducto" class="btn-flat modal-trigger"><i class="material-icons left">add</i>Agregar producto</a>
+	    					<a data-target="modalVocher" class="btn-flat modal-trigger"><i class="material-icons left">add</i>Pagos</a>
+	    					<a data-target="modalFactura" class="btn-flat modal-trigger"><i class="material-icons left">list</i>Factura</a>
+	    					<a data-target="modalBoleta" class="btn-flat modal-trigger"><i class="material-icons left">list</i>Boleta</a>
+	    					<a class="btn-flat right red-text modal-trigger" data-target="modalAnula"><i class="material-icons left">clear</i>ANULAR VENTA</a>
+	    					{% endif %}
+	    					{% if (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) and vauche %}
+	    					<a class="btn-flat right green-text modal-trigger" data-target="modalConfirma"><i class="material-icons left">check</i>ENTREGADA</a>
+	    					{% endif %}
+				      		<table class="bordered"; style="width: 100%;">
+				      			<thead class="colorPrincipal">
+				      				<tr class="pormayor black-text">
+				      					<th></th>
+				      					<th>Producto</th>
+				      					<th class="center">Cantidad</th>
+				      					<th class="center">Precio S/</th>
+				      					<th class="center">Importe S/</th>
+				      					<th class="center"></th>
+				      				</tr>
+				      			</thead>
+				      			<tbody>
+				      				{% set total2 = 0 %}
+				      				{% set totalEnvio = 0 %}
+				      				{% for ved in venta_detalle %}
+					      				<tr>
+					      					<td>
+					      						<img class="redondeo centrarForzado" src="{{ruta_img}}{% if ved.SKU_Img %}{{ved.SKU_Img}}{% else %}{{ved.Prf_Img}}{% endif %}" height="50">
+					      					</td>
+					      					<td>
+					      						{{ved.Pro_Nombre}}</br>
+					    		   				<span class="enfasisB black-text">{{ved.SKU_Color}}</span></br>
+					    					</td>
+					    					<td class="center">
+					      						<span class="center">{{ved.Pcd_Cantidad}}</span></br>
+					    					</td>
+					      					<td class="center">
+					      						<span class="precioventa" id="precioventa{{ved.SKU_IdSKU}}">{{ved.Pcd_Precio|number_format(2, '.', ' ')}}</span>
+					      					</td>
+					      					<td id="tdimporte{{ved.SKU_IdSKU}}" class="center">
+					      						<span id="importe{{ved.SKU_IdSKU}}">{{ved.Pcd_Importe|number_format(2, '.', ' ')}}</span>
+					      					</td>
+					      					<td>
+					      						{% if venta_detalle|length > 1 %} 
+					      						<a class="btn-flat delPro" data-idvd="{{ved.Pcd_IdPago_Compra_Detalle}}" data-ids="{{ved.SKU_IdSKU}}" data-cant="{{ved.Pcd_Cantidad}}"><i class="material-icons red-text">clear</i></a>
+					      						{% endif %}
+					      					</td>
+					      				</tr>
+					      				{% set total2 = total2 + ved.Pcd_Importe %}
+					      				{% set totalEnvio = totalEnvio + ved.Pce_CostoEnvio %}
+				            		{% endfor %}
+				      			</tbody>
+				      			<tfoot>
+				      				{% set totalEnvio = venta.Pac_Envio|round() %}
+				      				{% set totalPagar = total2 + totalEnvio %}
+				      				<tr>
+			                			<td colspan="4" class="right-align sinPadding">
+			                			 	TOTAL IMPORTE
+			                			</td>
+			                			<td class="center-align" colspan="2">
+			                				<span>{{total2|number_format(2, '.', ' ')}}</span>
+			                			</td>
+			                		</tr>
+			                		<tr>
+			                			<td colspan="4" class="right-align sinPadding">
+			                				TOTAL ENVÍO
+			                			</td>
+			                			<td class="center-align" colspan="2">
+			                				<span>{{venta.Pac_Envio|number_format(2, '.', ' ')}}</span>
+			                			</td>
+			                		</tr>
+			                		<tr>
+			                			<td colspan="4" class="right-align sinPadding">
+			                				TOTAL A PAGAR
+			                			</td>
+			                			<td class="center-align" colspan="2">
+			                				<b style="font-size:2em;">{{totalPagar|number_format(2, '.', ' ')}}</b>
+			                			</td>
+			                		</tr>
+			            		</tfoot>
+				      		</table>
+	    				</div>
+	    			</div>
+    			</div>
+			</div>
+		</div>
+    </main>
+    <div id="modalVoucher" class="modal" style="z-index:9999 !important;width: 50%!important;">
+        <div class="modal-content" id="loadEditVocuher"></div>
+    </div>
+    <div id="modalFactura" class="modal" style="z-index:9999 !important;width: 50%!important;">
+        <div class="modal-content">
+        	<span class="card-title">GENERAR FACTURA DEL CLIENTE {{venta.Per_Nombre}}</span>
+          <div class="row">
+	        <div class="input-field col s6">
+	          <input id="razonSocial" type="text" class="validate" value="{{venta.Per_Nombre}}">
+	          <label for="razonSocial">Razón Social</label>
+	        </div>
+	        <div class="input-field col s6">
+	          <input type="text" id="ruc" class="validate" value="{{compra_info.Pci_Ruc}}">
+	          <label for="ruc">RUC</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="email" class="validate">
+	          <label for="email">Correo Electronico</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="tlf" class="validate" value="{{compra_info.Pci_Telefono}}">
+	          <label for="tlf">Teléfono</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="ubigeo" class="validate" value="{{compra_info.iddistrito}}" disabled>
+	          <label for="ubigeo">UBIGEO</label>
+	        </div>
+	        <div class="input-field col s12">
+	          <input type="text" id="direccion" class="validate" value="{% if venta.Pac_Banco == 'TIENDA' %}RETIRO EN TIENDA {% endif %} {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} Referencia: {{compra_info.Pci_Referencia}}">
+	          <label for="direccion">Dirección</label>
+	        </div>
+	        <div class="input-field col s12">
+	        	<a class="btn gFact green" data-idv="{{idventa}}">GENERAR FACTURA</a>
+	        	<a class="btn impB2 orange" href="" disabled>IMPRIMIR BOLETA</a>
+	       	</div>
+	      </div>
+        </div>
+    </div>
+    <div id="modalBoleta" class="modal" style="z-index:9999 !important;width: 50%!important;">
+        <div class="modal-content">
+        	<span class="card-title">GENERAR BOLETA DEL CLIENTE {{venta.Per_Nombre}}</span>
+          <div class="row">
+	        <div class="col s4">
+	          <select id="selectDoc" class="browser-default">
+	          	<option value="1">DNI</option>
+	          	<option value="4">CARNET EXTRANJERIA</option>
+	          	<option value="7">PASAPORTE</option>
+	          	<option value="0">OTRO DOCUMENTO</option>
+	          </select>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="numerodoc" class="validate" value="{{venta.Per_Dni}}">
+	          <label for="numerodoc">Número Documento</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input id="razonSocial2" type="text" class="validate" value="{{venta.Per_Nombre}}">
+	          <label for="razonSocial2">Nombre</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="email" class="validate">
+	          <label for="email">Correo Electronico</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="tlf" class="validate" value="{{compra_info.Pci_Telefono}}">
+	          <label for="tlf">Teléfono</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="ubigeo" class="validate" value="{{compra_info.iddistrito}}" disabled>
+	          <label for="ubigeo">UBIGEO</label>
+	        </div>
+	        <div class="input-field col s12">
+	          <input type="text" id="direccion" class="validate" value="{% if venta.Pac_Banco == 'TIENDA' %}RETIRO EN TIENDA {% endif %} {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} Referencia: {{compra_info.Pci_Referencia}}">
+	          <label for="direccion">Dirección</label>
+	        </div>
+	        <div class="input-field col s12">
+	        	<a class="btn gBoleta green" data-idv="{{idventa}}">GENERAR BOLETA</a>
+	        	<a class="btn impB orange" href="" disabled>IMPRIMIR BOLETA</a>
+	       	</div>
+	      </div>
+        </div>
+    </div>
+    <div id="modalConfirma" class="modal light-green" style="z-index:9999 !important;width: 50%!important;">
+        <div class="modal-content center">
+        	<p> SOLO DE CONFIRMAR CUANDO SE HAYA ENTREGADO LA COMPRA AL CLIENTE Y SE HAYA VERIFICADO QUE TODOS LOS PRODUCTOS ENTREGADOS
+        SON LOS QUE APRECEN EN SU COMPRA. SI ES ASÍ DAR CLICK EN <b>CONFIRMAR</b>.</p>
+        	<a class="btn green confV" data-idv="{{idventa}}">CONFIRMAR</a>
+        </div>
+    </div>
+    <div id="modalAnula" class="modal amber" style="z-index:9999 !important;width: 50%!important;">
+        <div class="modal-content center">
+        	<p>SOLO DE ANULAR CUANDO SE HAYA CONFIRMADO LA CANCELACIÓN POR PARTE DEL CLIENTE O HAYAN PASADO 24 HORAS DE REALIZO LA COMPRA Y NO HUBIESE COMUNICACIÓN. SI ES ASÍ DAR CLICK EN <b>ANULAR</b></p>
+        	<a class="btn red anuV" data-idv="{{idventa}}">ANULAR</a>
+        </div>
+    </div>
+
+    <div id="modalProducto" class="modal" style="z-index:9999 !important;width: 70%!important;">
+        <div class="modal-content row">
+        	<span class="modal-title">AGREGAR PRODUCTO</span>
+        	<div class="col s12 l12">
+                  <select class="browser-default select2" id="selProducto">
+                  	<option value="0" selected> Seleccione el producto</option>
+                    {% for pro in productos %}
+                      <option value="{{pro.Pro_IdProducto}}" data-pre="{{pro.Pro_PrecioMinimo}}" data-ids="{{pro.SKU_IdSKU}}" data-var="{{pro.SKU_Color}}" data-dispo="{{pro.SKU_StockDisponible}}">{{pro.Pro_Nombre}} {{pro.SKU_Color}}</option>
+                    {% endfor %}
+                  </select><br><br>
+            </div>
+            <div class="col s4">
+              <div class="form-group">
+                <label for="stockD">STOCK DISPONIBLE</label>
+                <input class="form-control" type="number" id="stockD" value="" disabled>
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="form-group">
+                <label for="cantP">Cantidad</label>
+                <input class="form-control" type="number" id="cantP" value="1">
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="form-group">
+                <label for="precioP">Precio</label>
+                <input class="form-control" type="number" id="precioP" value="0">
+              </div>
+            </div>
+            <div class="col s12">
+            	<a class="btn btn-success btn-lg btn-block add-row"><i class="material-icons left">add</i>AGREGAR PRODUCTO</a>
+            </div>            
+            <div class="col s12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>PRODUCTO</th>
+                      <th>CANTIDAD</th>
+                      <th>PRECIO</th>
+                      <th>SUBTOTAL</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablaListado" class="grey lighten-4">                   
+                  </tbody>
+                </table>
+            </div>
+            <div class="col s12">
+            	<a class="btn green btn-lg btn-block addpedido" data-idv="{{idventa}}"><i class="material-icons left">add_box</i>AGREGAR AL PEDIDO</a>
+            </div>
+        </div>
+    </div>
+    <div class="hide" id="printJS-form">   
+    	<table style="border:1px solid black;font-variant: small-caps;">
+    		<tr>
+    			<td style="padding:50px;">
+    				<img src="{{ruta_img}}logoPM.jpg">
+    				<b>WWW.PORMAYOR.PE</b><br>
+    				PORMAYOR.PE S.A.
+    				RUC: 20603706804
+    				JIRÓN ANDAHUAYLAS 251, INTERIOR 208-209<br> CERDADO DE LIMA, LIMA.<br>
+    				+51 923500413
+    			</td>
+    			<td style="padding:5px;">
+    				<div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+    					{{venta.Pac_FechaRegistro}}<br>
+				 		<b>DATOS CLIENTE</b><br>
+						<b>Nombre Completo:</b> {% if venta.Per_Nombre %}{{venta.Per_Nombre}}{% else %}{{venta.nombr}}{% endif %}<br>
+						<b>D.N.I:</b> {% if venta.Per_Dni %}{{venta.Per_Dni}}{% else %}{{venta.dni}}{% endif %} <br>
+						<b>Teléfono</b> {{compra_info.Pci_Telefono}} <br>
+						<b>Código:</b> <b>{{venta.Pac_CodPago}}</b>  <br>
+		    		</div><br>
+		 			<div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+				 		<b>DIRECCIÓN CLIENTE</b><br>
+		 				<b>Departamento:</b> {{compra_info.region}} <br> <b>Provincia:</b> {{compra_info.provincia}} <br> <b>Distrito:</b> {{compra_info.distrito}} <br> <b>Dirección:</b> {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}
+		 			</div>
+		 		</td>
+    		</tr>
+    		<tr>
+    			<td colspan="2" aling="center" style="font-size:30px;padding-left:270px;">¡GRACIAS POR COMPRAR CON NOSOTROS!</td>
+    		</tr>
+    	</table>
+    </div>
+
+    <div class="hide" id="printJS-form2">
+    	<table style="padding:0px;">
+    		<tr>
+    			<td align="center">
+    				<b>DETALLE DE VENTA {{venta.Pac_CodPago}}</b> 
+		 		</td>
+    	</table> 
+        <table>
+    		<tr>
+    			<td width="50%" align="">
+    				<div style="font-size:14px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+    					Fecha de venta: {{venta.Pac_FechaRegistro}}<br>
+				 		<b>DATOS CLIENTE</b><br>
+						<b>Nombre Completo:</b> {% if venta.Per_Nombre %}{{venta.Per_Nombre}}{% else %}{{venta.nombr}}{% endif %}<br>
+						<b>D.N.I:</b> {% if venta.Per_Dni %}{{venta.Per_Dni}}{% else %}{{venta.dni}}{% endif %} <br>
+						<b>Teléfono</b> {{compra_info.Pci_Telefono}} <br>
+						<b>Código:</b> <b>{{venta.Pac_CodPago}}</b>  <br>
+		    		</div><br>
+		 		</td>
+    			<td  width="50%" align="">
+		 			<div style="font-size:14px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+				 		<b>DIRECCIÓN CLIENTE</b><br>
+		 				<b>Departamento:</b> {{compra_info.region}} <br> <b>Provincia:</b> {{compra_info.provincia}} <br> <b>Distrito:</b> {{compra_info.distrito}} <br> <b>Dirección:</b> {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}<br>
+		 				Vendedor:<b>{{venta.vendedor}}</b>
+		 			</div>
+		 		</td>
+    		</tr>
+    	</table>   
+		<table class="bordered"; style="width: 100%;">
+  			<thead >
+  				<tr>
+  					<th style="border-bottom: 1px solid;border-top: 1px solid"></th>
+  					<th style="border-bottom: 1px solid;border-top: 1px solid"></th>
+  					<th style="border-bottom: 1px solid;border-top: 1px solid">Producto</th>
+  					<th style="border-bottom: 1px solid;border-top: 1px solid">Cantidad</th>
+  					<th style="border-bottom: 1px solid;border-top: 1px solid">Precio S/</th>
+  					<th style="border-bottom: 1px solid;border-top: 1px solid">Importe S/</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  				{# Pro_Nombre, Var_Nombre, Vao_Nombre, Pcd_Precio, Pcd_Cantidad,Pcd_Importe,Pcd_Documento, Prf_Img, Sku_Img #}
+  				{% set total2 = 0 %}
+  				{% set totalEnvio = 0 %}
+  				{% for ved in venta_detalle %}
+      				<tr>
+      					<td class="">
+      						<input type="checkbox" name=""> 
+      					</td>
+      					<td class="">
+      						<img class="redondeo centrarForzado" src="{{ruta_img}}{% if ved.SKU_Img %}{{ved.SKU_Img}}{% else %}{{ved.Prf_Img}}{% endif %}" height="30">
+      					</td>
+      					<td>
+      						{{ved.Pro_Nombre}}</br>
+    		   				<span class="enfasisB black-text">{{ved.SKU_Color}}</span></br>
+    					</td>
+
+    					<td align="center">
+      						<span class="center">{{ved.Pcd_Cantidad}}</span></br>
+    					</td>
+      					<td class="center">
+
+      						<span class="precioventa" id="precioventa{{ved.SKU_IdSKU}}">{{ved.Pcd_Precio|number_format(2, '.', ' ')}}</span>
+      					</td>
+      					<td id="tdimporte{{ved.SKU_IdSKU}}" class="center">
+      						<span id="importe{{ved.SKU_IdSKU}}">{{ved.Pcd_Importe|number_format(2, '.', ' ')}}</span>
+      					</td>
+      				</tr>
+      				{% set total2 = total2 + ved.Pcd_Importe %}
+      				{% set totalEnvio = totalEnvio + ved.Pce_CostoEnvio %}
+        		{% endfor %}
+  			</tbody>
+  			<tfoot>
+  				{% set totalEnvio = venta.Pac_Envio|round() %}
+  				{% set totalPagar = total2 + totalEnvio %}
+  				<tr>
+        			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+        			<td colspan="5" style="border-bottom: 1px solid;">
+        				<b>TOTAL IMPORTE</b> 
+        			<td style="border-bottom: 1px solid;">
+        				<b>S/ <span class="fontA">{{total2|number_format(2, '.', ' ')}}</span></b>
+        			</td>
+        		</tr>
+        		<tr>
+        			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+        			<td colspan="5" style="border-bottom: 1px solid;">
+        				<b>TOTAL ENVÍO</b> 
+        			<td style="border-bottom: 1px solid;">
+        				<b>S/ <span class="fontA">{{venta.Pac_Envio|number_format(2, '.', ' ')}}</span></b>
+        			</td>
+        		</tr>
+        		<tr>
+        			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+        			<td colspan="5" style="border-bottom: 1px solid;">
+        				<b>TOTAL A PAGAR</b> 
+        			<td style="border-bottom: 1px solid;">
+        				<b>S/ <span class="fontA">{{totalPagar|number_format(2, '.', ' ')}}</span></b>
+        			</td>
+        		</tr>
+    		</tfoot>
+  		</table>
+  		<br>
+  		<table style="width:100%">
+        <thead>
+        	<tr>
+        		<th>Medio</th>
+        		<th>Monto</th>
+        		<th>Estado</th>
+        		<th>#</th>
+        		<th>Fecha</th>
+        	</tr>
+        </thead>
+        <tbody>
+        {% set montV = 0 %}          	
+        	{% for v in vauche %}
+        		<tr>
+        			<td style="border-bottom:1px solid black;">{{v.Pvoc_MedioPago}}</td>
+        			<td style="border-bottom:1px solid black;">{{v.Pvoc_Monto}}</td>
+        			<td style="border-bottom:1px solid black;">{% if v.Pvoc_EstadoComprobante == 0 %}<span class="new badge red">PENDIENTE</span>{% else %}<span class="new badge green">VERIFICADO</span>{% endif %}</td>
+        			<td style="border-bottom:1px solid black;">{{v.Pvoc_NumComprobante}}</td>
+        			<td style="border-bottom:1px solid black;">{{v.Pvoc_FechaComprobante}}</td>
+        			{% set montV = montV + v.Pvoc_Monto %}
+        		</tr>
+        	{% endfor %}
+        </tbody>
+      </table><br>
+        <h4 style="color: red;">{% if montV == totalPagar %}PEDIDO PROCESADO CON ÉXITO - ENTREGAR{% else %}TOTAL DE COMPRABANTES NO COINCIDEN CON EL TOTAL DEL PEDIDO - POR FAVOR VERIFICAR PAGOS{% endif %}</h4> 
+		<table>
+			<tr>
+				<td>
+					Despachado por:____________________________
+				</td>
+				<td>
+					Revisado por:____________________________
+				</td>
+			</tr> 
+		</table>
+    </div>
+    <div id="modalVocher" class="modal" style="z-index:9999 !important;{% if userAgent != "PC" %}width: 100%!important;{% else %}width: 70%!important;{% endif %}">
+	    <div class="modal-content" id="loadTienda">
+			<div class="collapsible-header enfasisA"><i class="enfasisB material-icons">format_align_justify</i>INFORMACIÓN DEL COMPROBANTE</div>
+	      	<div class="row">
+                <div class="col s12 m6 l4">
+                	<label for="us3">MEDIO DE PAGO</label>
+                <select id="selPag" class="browser-default">
+                	<option value="EFECTIVO">EFECTIVO</option>
+                	<option value="BCP">BCP</option>
+                	<option value="INTERBANK">INTERBANK</option>
+                	<option value="SCOTIABANK">SCOTIABANK</option>
+                </select>
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    <input type="number" id="montoV" class="validate" name="montoV" required="" value="{{totalPagar|number_format(2, '.', ' ')}}">
+                    <label for="montoV" class="active">MONTO</label>
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    <input type="number" id="Numcomprobante" class="validate" name="Numcomprobante" required="">
+                    <label for="Numcomprobante" class="active">NUMERO DE COMPROBANTE</label>
+                </div>
+                <div class="input-field col s12 m6 l4">
+                     <input type="date" id="Fechacomprobante" class="datepicker" name="Fechacomprobante">
+                     <label for="Fechacomprobante" class="active truncate" style="font-size:18px;">FECHA DEL COMPROBANTE</label>
+                </div>
+                <div class="input-field col s12 m12 l8">
+                	<label for="us" class="active truncate" style="font-size:18px;">SUBIR FOTO DEL COMPROBANTE</label>
+	                 <div class="file-field input-field">
+							      <div class="btn">
+							        <span>Vauche</span>
+							        <input id="logoImg" type="file" accept="image/*">
+							      </div>
+							      <div class="file-path-wrapper">
+							        <input class="file-path validate" type="text">
+							      </div>
+					  			</div>
+                </div>
+            </div>
+            <table class="bordered">
+	            <thead>
+	            	<tr>
+	            		<th>Medio</th>
+	            		<th>Monto</th>
+	            		<th>Estado</th>
+	            		<th>#</th>
+	            		<th>Fecha</th>
+	            		<th></th>
+	            	</tr>
+	            </thead>
+	            <tbody>            	
+	            	{% for v in vauche %}
+	            		<tr>
+	            			<td>{{v.Pvoc_MedioPago}}</td>
+	            			<td>{{v.Pvoc_Monto}}</td>
+	            			<td>{% if v.Pvoc_EstadoComprobante == 0 %}<span class="new badge red">PENDIENTE</span>{% else %}<span class="new badge green">VERIFICADO</span>{% endif %}</td>
+	            			<td>{{v.Pvoc_NumComprobante}}</td>
+	            			<td>{{v.Pvoc_FechaComprobante}}</td>
+	            			<td><img src="{{ruta_img}}/vauche/{{v.Pvoc_LogoPago}}" class="materialboxed" width="30px"></td>
+	            		</tr>
+	            	{% endfor %}
+	            </tbody>
+            </table>
+	    </div>
+	    <div class="modal-footer">               
+	    		<a class="btn black-text white modal-action modal-close waves-effect waves-red btn-flat">CERRAR</a>
+                <a id="btnRegistrarComprobante" data-idv="{{idventa}}" class="btn green white-text">Cargar pago</a>
+         </div>
+	 </div>
+{% endblock %}
+
+{% block script %}
+	<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script src="{{base_url('public/')}}js/tienda/detalleventa.js?v=2506"></script>
+	<script src="{{base_url('public/')}}js/tienda/pago_pedido.js?v=0607"></script>
+	<script src="{{base_url('public/')}}js/vauche.js"></script>
+{% endblock %}

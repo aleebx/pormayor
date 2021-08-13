@@ -1,0 +1,367 @@
+{% extends "layout/intranet/template_gc.twig" %}
+
+{% block head %}
+<style type="text/css">
+
+	.modal{
+	z-index: 1500 !important; 
+	width: 80%;
+	}
+	 .picker__date-display{
+      background-color: #FEC00F;
+    } 
+
+    .picker__box{
+        top: 10%;
+        position: relative;
+    }
+
+    .picker__day.picker__day--today,.picker__today,.picker__close{ 
+        color: #0D0D0D;
+    } 
+
+    .picker__day--selected, .picker--focused .picker__day--selected {
+        color: #F5F4F3;
+        font-weight: 700;
+        background-color: #0D0D0D;        
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <!-- Page Layout here -->
+    <main class="menu3">
+    	<div class="card">
+        	<div class="card-content">
+          	<span class="card-title center">Agenda</span>
+{#             	<div class="row">
+              		<div class="col s12 m12 l12 center">
+              			<a class="waves-effect waves-light btn modal-trigger" href="#crearContacto"><i class="material-icons left">person_add</i>Contacto</a>
+              			<a class="waves-effect waves-light btn modal-trigger" href="#crearNota"><i class="material-icons left">note_add</i>Nota</a>
+              			<a class="waves-effect waves-light btn modal-trigger" href="#crearActividad"><i class="material-icons left">add</i>Actividad</a>
+              		</div>
+              	</div> #}
+		        <div class="row">
+				    <div class="col s12">
+				      <ul class="tabs">
+				        <li class="tab col s4 m4 l4"><a href="#listContacto">Contactos</a></li>
+				        <li class="tab col s4 m4 l4"><a class="active" href="#listNota">Notas</a></li>
+				        <li class="tab col s4 m4 l4"><a class="active" href="#listActividades">Actividades</a></li>
+				      </ul>
+				    </div>
+				    <div id="listContacto" class="col s12 m12 l12">
+				    	<div class="row">
+				    		<div class="col s12 m12 l12 center">
+				    				<a class="waves-effect waves-light btn modal-trigger" style="margin: 20px" href="#crearContacto"><i class="material-icons left">person_add</i>Contacto</a>
+				    		</div>
+				    	</div>
+				    	<div class="row" id="listaContatos">
+							{% for cli in clientes %}
+					    	<div class="card col s9 m9 l9">			
+							      <span class="title"><b>{{cli.Clg_Apellido_Paterno}} {{cli.Clg_Apellido_Materno}}</b>, {{cli.Clg_Nombre}}</span>
+							      <p>Teléfono: {{cli.Clg_Telefono}}<br>
+							         Dirección: {{cli.Clg_Direccion}}
+							      </p>							      
+						    </div>
+						    <div class="col s3 m3 l3 center">
+						    	<a href="tel:{{cli.Clg_Telefono}}" class="btn">Llamar</a>
+							     <a class="btn red deleteCliente" data-idcli="{{cli.Clg_IdClientes_Gestor}}"><i class="material-icons">delete</i></a>
+						    </div>
+							{% endfor %}
+					    </div>
+				    </div>
+				    <div id="listNota" class="col s12 m12 l12">
+				    	<div class="col s12 m12 l12 center">
+				    		<a class="waves-effect waves-light btn modal-trigger" style="margin: 20px" href="#crearNota"><i class="material-icons left">note_add</i>Nota</a>
+				    	</div>
+						  <div class="row" id="listaNotas">
+				    	{% for nos in notas %}				    		
+						  	<div class="col s12 m6 l12 card">
+						  		<div class="card-content">
+							  		<span class="new badge">{{nos.Not_FechaRegistro}}</span>
+							  		<span class="card-title">{{nos.Not_Titulo}}</span>
+							  		<div class="divider"></div>
+							  		{{nos.Not_Nota}}
+						  		</div>
+						  		<div class="card-action center">
+						  			<a class="btn red deleteNota" data-idnot="{{nos.Not_IdNota}}">Eliminar</a>
+						  		</div>
+						  	</div>
+				    	{% endfor %}
+						  </div>
+				    </div>
+				    <div id="listActividades" class="col s12 m12 l12">
+				    	<div class="col s12 m12 l12 center">
+					    	<a class="waves-effect waves-light btn modal-trigger" style="margin: 20px" href="#crearActividad"><i class="material-icons left">add</i>Actividad</a>
+				    	</div>
+						  <div class="row" id="listaActividades">
+				  				{% for act in actividades %}
+				  				<div class="col s12 m6 l12 card">
+							  		<div class="card-content">
+								  		<span class="new badge">{{act.Acg_Fecha}} {{act.Acg_Hora}}</span>
+								  		<span class="card-title">{{act.Acg_Actividad}}</span>
+								  		<div class="divider"></div>
+								  		{{act.Acg_Detalle}}
+							  		</div>
+							  		<div class="card-action center">
+							  			<a class="btn red deleteActividad" data-idact="{{act.Acg_IdActividad}}">Eliminar</a>
+							  		</div>
+						  		</div>
+				  				{% endfor %}
+						  </div>
+				    </div>
+				</div>
+            </div>
+        </div>
+    </main>
+    <div id="crearContacto" class="modal" style="z-index: 1500; width: 70%">
+	    <div class="modal-content">
+	      <h4>Crear contacto</h4>
+			<div class="row">
+				<div class="input-field col s12 m12 l12">
+		          <input placeholder="Nombre cliente" id="nombreCliente" type="text" class="validate">
+		          <label for="nombreCliente">Nombre</label>
+	        	</div>
+	        	<div class="input-field col s6 m6 l6">
+		          <input placeholder="Apellido Paterno" id="apellidoPCliente" type="text" class="validate">
+		          <label for="apellidoPCliente">Apellido Paterno</label>
+	        	</div>
+	        	<div class="input-field col s6 m6 l6">
+		          <input placeholder="Apellido Materno" id="apellidoMCliente" type="text" class="validate">
+		          <label for="apellidoMCliente">Apellido Materno</label>
+	        	</div>
+	        	<div class="input-field col s6 m6 l6">
+		          <input placeholder="Teléfono cliente" id="tlfCliente" type="number" class="validate">
+		          <label for="tlfCliente">Teléfono</label>
+	        	</div>
+	        	<div class="input-field col s6 m6 l6">
+		          <input placeholder="Tipo cliente" id="tipoCliente" type="text" class="validate">
+		          <label for="tipoCliente">Tipo cliente</label>
+	        	</div>
+	        	<div class="input-field col s12 m12 l12">
+		          <input placeholder="Dirección cliente" id="direccionCliente" type="text" class="validate">
+		          <label for="direccionCliente">Dirección</label>
+	        	</div>
+			</div>
+	    </div>
+	    <div class="modal-footer">
+	      <a class="modal-action modal-close waves-effect waves-green btn green addCliente" data-idusu="{{usuario.id_usuario}}"><i class="material-icons left">person_add</i>Agregar</a>
+	    </div>
+    </div>
+    
+    <div id="crearNota" class="modal" >
+	    <div class="modal-content">
+	      <h4>Crear nota</h4>
+			<div class="row">
+				<div class="input-field col s12 m12 l12">
+		          <input placeholder="Titulo de nota" id="tituloNota" type="text" class="validate">
+		          <label for="tituloNota">Título</label>
+	        	</div>
+	        	<form class="col s12">
+			      <div class="row">
+			        <div class="input-field col s12">
+			          <textarea id="nota" class="materialize-textarea"></textarea>
+			          <label for="nota">Nota</label>
+			        </div>
+			      </div>
+			    </form>
+			</div>
+	    </div>
+	    <div class="modal-footer">
+	      <a href="#!" class="modal-action modal-close waves-effect waves-green btn green addNota" data-idusu="{{usuario.id_usuario}}"><i class="material-icons left">note_add</i>Agregar</a>
+	    </div>
+    </div>
+
+    <div id="crearActividad" class="modal" >
+	    <div class="modal-content">
+	      <h4>Crear Actividad</h4>
+			<div class="row">
+				<div class="input-field col s12 m12 l12">
+		          <input placeholder="Nombre de Actividad" id="tituloActividad" type="text" class="validate">
+		          <label for="tituloActividad">Actividad</label>
+	        	</div>
+	        	<form class="col s12 m12 l12">
+			      <div class="row">
+			        <div class="input-field col s12">
+			          <textarea id="detalleActividad" class="materialize-textarea"></textarea>
+			          <label for="detalleActividad">Detalle de Actividad</label>
+			        </div>
+			      </div>
+			    </form>
+			    <div class="input-field col s12 m12 l12">
+		          <input type="text" class="datepicker" id="fechaActividad">
+		          <label for="fechaActividad">Fecha de Actividad</label>
+	        	</div>
+			    <div class="input-field col s12 m12 l12">
+		          <input type="text" class="timepicker" id="horaActividad">
+		          <label for="horaActividad">Hora de Actividad</label>
+	        	</div>
+			</div>
+	    </div>
+	    <div class="modal-footer">
+	      <a href="#!" class="modal-action modal-close waves-effect waves-green btn green addActividad" data-idusu="{{usuario.id_usuario}}"><i class="material-icons left">add</i>Agregar</a>
+	    </div>
+    </div>
+{% endblock %}
+
+{% block script %} 
+<script>
+	$('.modal').modal();
+
+	$('.addCliente').click(function(){
+		var Usu_IdUsuario = $(this).data('idusu');
+		var Nombre = $('#nombreCliente').val();
+		var ApellidoP = $('#apellidoPCliente').val();
+		var ApellidoM = $('#apellidoMCliente').val();
+		var Tfl = $('#tlfCliente').val();
+		var Direccion = $('#direccionCliente').val();
+
+		$.ajax({
+	        data:{
+	          'Usu_IdUsuario' : Usu_IdUsuario,
+	          'Nombre' : Nombre,
+	          'ApellidoP' : ApellidoP,
+	          'ApellidoM' : ApellidoM,
+	          'Tfl' : Tfl,
+	          'Direccion' : Direccion
+	        },
+	        type: "POST",
+	        url: base_url+'gestor/gestion/crearCliente',
+	        success: function(data){
+			    $('#nombreCliente').val('');
+				$('#apellidoPCliente').val('');
+				$('#apellidoMCliente').val('');
+				$('#tlfCliente').val('');
+				$('#direccionCliente').val('');
+	          $('#listaContatos').load(base_url+'gestor/gestion/listClientes');
+	        }
+	    });
+
+	});
+
+	$('.deleteCliente').click(function(){
+		var Clg_IdCliente = $(this).data('idcli');
+		$.ajax({
+	        data:{
+	          'Clg_IdCliente' : Clg_IdCliente
+	        },
+	        type: "POST",
+	        url: base_url+'gestor/gestion/deleteCliente',
+	        success: function(data){
+	          $('#listaContatos').load(base_url+'gestor/gestion/listClientes');
+	        }
+	    });
+
+	});
+
+	$('.addNota').click(function(){
+		var Usu_IdUsuario = $(this).data('idusu');
+		var tituloNota = $('#tituloNota').val();
+		var Nota = $('#nota').val();
+
+		$.ajax({
+	        data:{
+	          'Usu_IdUsuario' : Usu_IdUsuario,
+	          'tituloNota' : tituloNota,
+	          'Nota' : Nota
+	        },
+	        type: "POST",
+	        url: base_url+'gestor/gestion/crearNota',
+	        success: function(data){
+	        	$('#tituloNota').val('');
+				$('#nota').val('');
+	          $('#listaNotas').load(base_url+'gestor/gestion/listNotas');
+	        }
+	    });
+	});
+
+
+	$('.deleteNota').click(function(){
+		var Not_IdNota = $(this).data('idnot');
+		$.ajax({
+	        data:{
+	          'Not_IdNota' : Not_IdNota
+	        },
+	        type: "POST",
+	        url: base_url+'gestor/gestion/deleteNota',
+	        success: function(data){
+	          $('#listaNotas').load(base_url+'gestor/gestion/listNotas');
+	        }
+	    });
+	});
+
+
+	$('.addActividad').click(function(){
+		var Usu_IdUsuario = $(this).data('idusu');
+		var Actividad = $('#tituloActividad').val();
+		var Detalle = $('#detalleActividad').val();
+		var Fecha = $('#fechaActividad').val();
+		var Hora = $('#horaActividad').val();
+
+		$.ajax({
+	        data:{
+	          'Usu_IdUsuario' : Usu_IdUsuario,
+	          'Actividad' : Actividad,
+	          'Detalle' : Detalle,
+	          'Fecha' : Fecha,
+	          'Hora' : Hora
+	        },
+	        type: "POST",
+	        url: base_url+'gestor/gestion/crearActividad',
+	        success: function(data){
+	        $('#tituloActividad').val('');
+			$('#detalleActividad').val('');
+			$('#fechaActividad').val('');
+			$('#horaActividad').val('');
+	          $('#listaActividades').load(base_url+'gestor/gestion/listActividades');
+	        }
+	    });
+	});
+
+
+	$('.deleteActividad').click(function(){
+		var Acg_IdActividad = $(this).data('idact');
+		$.ajax({
+	        data:{
+	          'Acg_IdActividad' : Acg_IdActividad
+	        },
+	        type: "POST",
+	        url: base_url+'gestor/gestion/deleteActividad',
+	        success: function(data){
+	          $('#listaActividades').load(base_url+'gestor/gestion/listActividades');
+	        }
+	    });
+	});
+
+ $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 100, // Creates a dropdown of 15 years to control year,
+        min: true,
+        max: 100,
+        today: 'Hoy',
+        close: 'Ok',
+        clear: 'Borrar',
+        monthsFull: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+        weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+        weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+        weekdaysLetter: [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
+        closeOnSelect: false, // Close upon selecting a date
+        format: 'yyyy-mm-dd'
+      });
+
+  	$('.timepicker').pickatime({
+	    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+	    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+	    twelvehour: false, // Use AM/PM or 24-hour format
+	    donetext: 'OK', // text for done-button
+	    cleartext: 'Borrar', // text for clear-button
+	    canceltext: 'Cancelar', // Text for cancel-button,
+	    container: 'body', // ex. 'body' will append picker to body
+	    autoclose: false, // automatic close timepicker
+	    ampmclickable: true, // make AM PM clickable
+	    aftershow: function(){} //Function for after opening timepicker
+	  });
+
+</script>
+{% endblock %}

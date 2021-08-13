@@ -1,0 +1,20 @@
+{# <select name="selProvincia" id="selProvincia">
+	<option disabled value="">-Seleccione-</option>
+    {% for pro in provincias %}
+    	<option value="{{pro.id}}">{{pro.name}}</option>
+    {% endfor %}
+</select>
+<label>Provincia</label> #}
+<label for="selProvincia"> Provincia
+	<select class="selectDir2 browser-default" name="selProvincia" id="selProvincia">
+	  {% for pro in provincias %}
+	    <option value="{{pro.id}}">{{pro.name}}</option>
+	  {% endfor %}
+	</select>
+</label>
+<script type="text/javascript">
+	// $('select').material_select();
+	$('.selectDir2').select2({
+            placeholder: 'Selecciona la Provincia'
+        });
+</script>

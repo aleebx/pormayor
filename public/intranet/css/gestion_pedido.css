@@ -1,0 +1,83 @@
+/*Basic*/
+.cardCustomGestion a{
+  text-align:right;
+  height: 54px; 
+  padding: 0px;
+}
+.cardCustomGestion div:first-child{
+  padding: 0px;
+  height: 54px;
+}
+.leftPedidoCont{
+  font-size: 18px !important; 
+  padding: 27px !important;
+}
+.cardCustomGestion small{
+  top: -20px;position: 
+  relative; color: 
+  rgba(255,255,255,0.5); 
+  padding-right:10px
+}
+.nombrePedidoCont{
+  color: rgba(0,0,0,0.8);
+  height: 54px;
+}
+.nombrePedido{
+  margin: 0 auto;
+}
+.checkPedidoCont{
+   height: 54px;
+}
+.checkPedidoCont i{
+  margin: 0 auto;
+}
+
+
+@media (min-width: 1281px) {
+  .cardCustomGestion small {
+  top: 0;
+}
+}
+
+/*LAPTOPS - PC*/
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .cardCustomGestion small {
+  top: 0;
+}
+} 
+/*TABLETS*/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cardCustomGestion small {
+  top: 0;
+}
+}
+/* Smartphones Media querys*/
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .checkPedidoCont i{
+    font-size: 20px;
+    position: relative;
+    left: -10px;
+  }
+}
+
+/*******GESTION PEDIDO 2******/
+.nombrePedido{
+  color: rgba(0,0,0,0.8);
+  font-weight: 600;
+}
+.tipoPedido{
+  color: rgba(0,0,0,0.5);
+  font-size: 12px ;
+}
+.cantPedido{
+  color: rgba(0,0,0,0.7);
+}
+.cardGestionPedido2{
+  padding: 15px !important;
+}
+.totalContainerPedido{
+  margin-bottom: 20px;
+}
+.collection{
+  margin-bottom: 30px;
+}

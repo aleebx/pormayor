@@ -1,0 +1,48 @@
+<table id="tablaProductos" class="heighlight">
+  <thead class="pormayor pormayorAccent-text">
+    <tr>
+      <th class="center">N°</th>
+      <th class="center" colspan="2">Tienda</th>
+      <th class="center">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% set nro = inicio + 1 %}
+    {% for tie in tiendas %}
+      <tr>
+        <td>{{nro}}</td>
+        <td>
+          <span><b>{{tie.Tie_Nombre|title}}</b></span><br>
+          <span class="enfasisB">{{tie.Duenio}}</span><br>
+          <small class="enfasisC">{{tie.Tie_FechaRegistro|date("d-m-Y")}}</small><br>
+          {% if tie.Pla_IdPlan == 2 %}
+            {% if tie.Tie_CicloFacturacion is null %}
+              <span style="background-color: #4caf50; margin-left: 0px" class="new badge left">Gratis / {% if tie.Tie_Cuota == 1 %}1 mes{% else %}6 meses{% endif %}</span>
+            {% else %}
+              <span style="background-color: #2196f3; margin-left: 0px" class="new badge left">Básico</span>
+            {% endif %}
+          {% elseif tie.Pla_IdPlan == 3 %}
+            <span style="background-color: #fec00f; margin-left: 0px" class="new badge left">Pro</span>
+          {% endif %}
+          <br>
+          {% if tie.Tie_Estado == 1 %}
+            <span class="green-text">Activo</span>
+          {% else %}
+            <span class="red-text">Inactivo</span>
+          {% endif %}
+        </td>
+        <td class="center">
+          {% if tie.Tie_Logo %}
+            <img src="{{ruta_img}}{{tie.Tie_Logo}}" height="50">
+          {% else %}
+            <img src="{{ruta_img}}sinlogo.png" height="50">
+          {% endif %}
+        </td>
+        <td class="center">
+          <a class="btn waves-effect waves-light pormayorAccent" href="{{base_url()}}admin/tiendas/detalle/{{tie.Tie_IdTienda}}"><i class="material-icons">list</i></a>
+        </td>
+      </tr>
+      {% set nro = nro + 1 %}
+    {% endfor %}
+  </tbody>
+</table>

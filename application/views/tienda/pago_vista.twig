@@ -1,0 +1,495 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block analytics %}
+  <script>
+    window.dataLayer=window.dataLayer || []
+    dataLayer.push({{analytics|json_encode(constant('JSON_UNESCAPED_UNICODE'))}});
+  </script>
+{% endblock %}
+{% block head %}
+  <style type="text/css">
+    body {
+      overflow-x:hidden;
+    }
+    .btn-flat-not:hover{color: white !important;background-color:#21478F;}
+    .btnFlatMobile{border-bottom: 2px solid #21478F;}
+    [type="radio"]:checked + label:after,[type="radio"].with-gap:checked + label:after {
+      background-color: #21478F;
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+        border: 2px solid #21478F;
+    }
+    
+    [type="checkbox"].filled-in:checked + label:after {
+        border:2px solid #21478F;
+        background-color:#21478F;
+    }
+
+    .jconfirm.jconfirm-modern .jconfirm-box div.jconfirm-content{
+      text-align: left !important;
+    }
+  </style>
+  
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css" media="screen"/>
+{% endblock %}
+{% block content %}
+  <main class="container loadingPago {% if userAgent != "PC" %} fixContainer {% endif %}" {% if userAgent == "PC" %}style="width: 98%"{% endif %}>
+    {% if userAgent == "PC" %}
+      <div class="row centrarForzado">
+        <div class="col s12 sinPadding">
+          <div class="row breadPago">
+            <div class="col l4 valign-wrapper">
+              <h1 class="fixH1Seo enfasisA center centrarForzado">Carrito de compras</h1>
+            </div>
+            <a href="{{base_url()}}productos/carrito">
+              <div class="col l3 sinUser enfasisD fontD2 valign-wrapper comoBoton">
+                  <i class="material-icons left small">looks_one</i> RESUMEN<span class=" anchoTotal grey lighten-2 right"></span>
+              </div>
+            </a>
+            <a href="{{base_url()}}productos/despacho">
+              <div class="col l3 sinUser enfasisD fontD2 valign-wrapper sinPadding">
+                <i class="material-icons left small">looks_two</i> DESPACHO<span class=" anchoTotal grey lighten-2 right"></span>
+              </div>
+            </a>
+            <div class="col l2 sinUser fontD2 valign-wrapper pormayorUnico-text">
+              <i class="material-icons left small ">looks_3</i> PAGO
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <div class="card yellow" style="font-size:1rem;">
+            <div class="card-content">
+            <p>Si en su pedido hay productos de <b>PRE-VENTA</b>, la entrega se va a efectuar según la fecha de entrega indicada en el producto. <br> Si en su pedido hay productos disponibles puede solicitar la entrega parcial de su compra con un <b>costo adicional de 10 soles</b> si va ser contraentrega o enviado a provincia.</p>
+            </div> 
+          </div> 
+        </div>
+        <div class="col l4 sinPadding unidadSticky hide">
+          <div class="card ">
+            <div class="card-content sinPadding">
+              <div class="row cardContentFix centrarForzado cart_content hide">
+                <div class="col s12 center sinPadding">
+                  <span class="fontA enfasisA">Detalles de tu Pedido</span>
+                  <div class="divider dividerLista"></div>
+                  <br>
+                </div>
+                {% set total = 0 %}
+                {% set total2 = 0 %}
+                {% for idt in id_tiendas %}
+                  <br>
+                  <p class="negrita center">TIENDA {{idt.Tie_Nombre|upper}}</p> 
+                  <br> 
+                  {% for car in carrito %}
+                    {% if idt.Tie_IdTienda == car.idtienda %}
+                      <div class="col s12 sinPadding">
+                        <div class="row centrarForzado detallePedido2">
+                          <div class="col s2 center">
+                            <img class="centrarForzado redondeo fixImg2" alt="{{car.name}} al pormayor" src="{{ruta_img}}{{car.img}}" >
+                          </div>
+                          <div class="col s7 sinPadding">
+                            <span class="enfasisA fontB2 muayuscula">{{car.name|title|length > 42 ? car.name|title|slice(0, 42) ~ '...' : car.name|title  }}</span><br>
+                            {% if car.tipovariacion != " " %}
+                              <span class="fontB2 enfasisB">{{car.tipovariacion}} {{car.variacion}}&nbsp;</span>
+                            {% endif %}
+                            {% if car.color != "" %}
+                              <span class="enfasisB">({{car.color|title}})</span><br>
+                            {% endif %}
+                            <span class="enfasisA"><span class="cantCarrito">{{car.qty}}</span> unidades</span>
+                          </div>
+                          <div class="col s3 positionRelative totalN hide">
+                            <span class="positionAbsolute right0 top0 enfasisB fontB2">
+                              <span class="precioUnitCarrito{{car.rowid}}">{{car.precio_unit}}</span> c/u
+                            </span><br> 
+                              <span class="positionAbsolute right0 bottom0"><small> S/. &nbsp;&nbsp;</small>
+                                <span class="fontD2 subTotalCarrito subTotalCarrito{{car.rowid}}">{{car.price}}</span>
+                              </span>
+                          </div>                          
+                          <div class="col s3 positionRelative totalD hide">
+                            <span class="positionAbsolute right0 top0 enfasisB fontB2">
+                              <span class="precioUnit2Carrito{{car.rowid}}">{{car.price_min}}</span> c/u
+                            </span><br> 
+                              <span class="positionAbsolute right0 bottom0"><small> S/. &nbsp;&nbsp;</small>
+                                {% set almayor = car.price_min * car.qty %}
+                                <span class="fontD2 subTotalCarrito2 subTotal2Carrito{{car.rowid}}">{{almayor}}</span>
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col s12">
+                        <div class="divider dividerMargin"></div>
+                      </div>
+                    {% endif %}
+                     {% set total = total + car.price %}
+                     {% set total2 = total2 + almayor %}
+                  {% endfor %}  
+                {% endfor %} 
+                <div class="col s3 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Cantidad
+                </div>
+                <div class="col s9 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto"><span class="fontD2"><b class="cantResumen"></b></span>&nbsp; <span class="enfasisB">Unidades</span></span>
+                </div>
+                <div class="col s6 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Costo de producto
+                </div>
+                <div class="col s6 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp;<span class="fontD2"><b class="costoProducto"></b></span> <span class="enfasisB"></span>
+                </div>
+                <div class="col s7 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                   Gasto de despacho
+                </div>
+                <div class="col s5 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp;<span class="fontD2"><b class="idCostoReal">{{costoReal}}</b></span> <span class="enfasisB"></span></span>
+                </div>
+                <div class="col s12">
+                  <div class="divider dividerMargin"></div>
+                </div>
+                <div class="col s3 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Total
+                </div>
+                <div class="col s9 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp; <span class="fontD2"><b class="totalResumen"></b></span></span>
+                </div>
+                <div class="col s12">
+              </div>
+              <div class="col s12 center">
+                <br><br><br>
+                <div class="centrarForzado preloader-wrapper big active">
+                  <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
+                    <div class="circle-clipper left">
+                      <div class="circle"></div>
+                    </div><div class="gap-patch">
+                      <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                </div>
+                <br><br><br>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="col l3 unidadSticky hide">
+          <div class="card ">
+            <div class="card-content sinPadding">
+              <div class="row cardContentFix centrarForzado cart_content hide">
+                <div class="col s12 center">
+                  <span class="fontA enfasisA">Pago de pedido</span>
+                  <br>
+                </div>
+                <div class="col s12">                  
+                  <div class="divider"></div><br>
+                  <span class="enfasisA"><b>Nombre:</b> {{inf_compra.nombre}}</span><br>
+                  <span class="enfasisA"><b>Teléfono:</b> {{inf_compra.tlf}}</span><br>
+                  <span class="enfasisA"><b>Correo:</b> {{inf_compra.correo}}</span><br>
+                  <span class="enfasisA"><b>Dirección:</b> {{inf_compra.direccion}}</span><br><br>
+                  <div class="divider"></div><br>
+                </div>
+                <div class="col s6 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Costo de producto
+                </div>
+                <div class="col s6 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp;<span class="fontD2"><b class="costoProducto"></b></span> <span class="enfasisB"></span>
+                </div>
+                 <div class="col s6 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                   Gasto de despacho
+                </div>
+                <div class="col s6 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp;<span class="fontD2"><b>{{costoReal}}</b></span> <span class="enfasisB"></span></span>
+                </div>
+                <div class="col s12">
+                  <div class="divider dividerMargin"></div>
+                </div>
+                <div class="col s3 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Cantidad
+                </div>
+                <div class="col s9 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto"><span class="fontD2"><b class="cantResumen"></b></span>&nbsp; <span class="enfasisB">Unidades</span></span>
+                </div>
+                 
+                <div class="col s12">
+                  <div class="divider dividerMargin"></div>
+                </div>
+                <div class="col s3 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Total
+                </div>
+                <div class="col s9 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen"></b></span></span>
+                  <span style="margin-left: auto" class="hide">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen2"></b></span></span>
+                </div>
+
+                <div class="col s4 m4 l12 pagoTDC center positionRelative hide">
+
+                  {% if total2 >= 100 %}
+                  <input type="number" value="{{total2}}" id="totalPago" class="hide">
+                  {% else %}
+                  <input type="number" value="{{total}}" id="totalPago" class="hide">
+                  {% endif %}
+                </div>
+
+              </div>
+              <div class="col s12 center">
+                <br><br><br>
+                <div class="centrarForzado preloader-wrapper big active">
+                  <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
+                    <div class="circle-clipper left">
+                      <div class="circle"></div>
+                    </div><div class="gap-patch">
+                      <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                </div>
+                <br><br><br>
+              </div>
+          </div>
+        </div>
+        </div>        
+          <div class="col s12">
+          <div class="card" id="pagoBlock">
+            <div class="card-content sinPadding">
+              <div class="row cardContentFix" > 
+                <span class="card-title center black-text">Selecciona un método de despacho</span>
+                <div class="col s12"><div class="dividerMargin"></div></div>
+                {% if inf_compra.provincia == '150100' or inf_compra.provincia == '070100' %}
+                <div class="col s12 l6 center enfasisA transition sinPadding">
+                  <a href="#!" class="pagoLinkCarrito grey-text text-darken-3" data-tipo="TIENDA">
+                    <div class="positionRelative transition">
+                      <img class="redondeo bancoImg " src="{{ruta_img}}irTienda.png" height="61"><br>
+                      <span>Retiro en tienda - Lima</span>
+                      <i class="material-icons green-text small positionAbsolute fontC white transition">check_box</i>
+                    </div>
+                  </a>
+                  <br>
+                </div>
+                <div class="col s12 l6 center enfasisA transition sinPadding">
+                  <a href="#!" class="pagoLinkCarrito grey-text text-darken-3" data-tipo="ACUERDO">
+                    <div class="positionRelative transition">
+                      <img class="redondeo bancoImg " src="{{ruta_img}}pagoce.png" height="61"><br>
+                      <span >Contraentrega - Lima y Callao</span>
+                      <i class="material-icons green-text small positionAbsolute fontC white transition">check_box</i>
+                    </div>
+                  </a>
+                  <br>
+                </div>
+                {% else %}
+                <div class="col s12 l12 center enfasisA transition sinPadding">
+                  <a href="#!" class="pagoLinkCarrito grey-text text-darken-3" data-tipo="TOD">
+                    <div class="positionRelative transition">
+                      <img class="redondeo bancoImg " src="{{ruta_img}}bank.png" height="61"><br>
+                      <span>Envio a provincia | Deposito o Transferencia</span>
+                      <i class="material-icons green-text small positionAbsolute fontC white transition">check_box</i>
+                    </div>
+                  </a>
+                  <br>
+                </div>
+                {% endif %}
+              </div>
+          </div>
+            </div>
+          </div>
+    {% else %}
+      <div class="row centrarForzado">
+        <div class="col s12 sinPadding">
+          <br><br><br>
+          <div class="row centrarForzado ">
+            <div class="col s12 center">
+              <h1 class="fontA enfasisA centrarForzado">Carrito de compras</h1>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col s12 sinPadding">
+          <div class="card ">
+            <div class="card-content sinPadding">
+              <div class="row cardContentFix centrarForzado cart_content hide">
+                <div class="col s12 center">
+                  <span class="fontA enfasisA">Detalles de tu pedido</span>
+                </div>                
+                <div class="col s12">                  
+                  <div class="divider"></div><br>
+                  <span class="enfasisA"><b>Nombre:</b> {{inf_compra.nombre}}</span><br>
+                  <span class="enfasisA"><b>Teléfono:</b> {{inf_compra.tlf}}</span><br>
+                  <span class="enfasisA"><b>Correo:</b> {{inf_compra.correo}}</span><br>
+                  <span class="enfasisA"><b>Dirección:</b> {{inf_compra.direccion}}</span><br><br>
+                  <div class="divider"></div><br>
+                </div>
+                {% set total = 0 %}
+                {% set total2 = 0 %}
+                {% for idt in id_tiendas %}
+                  {% for car in carrito %}
+                    {% if idt.Tie_IdTienda == car.idtienda %}
+                      <div class="col s12 sinPadding">
+                        <div class="row centrarForzado detallePedidoMobile">
+                          <div class="col s3">
+                            <img class="centrarForzado redondeo fixImg2B" alt="{{car.name}} al pormayor" src="{{ruta_img}}{{car.img}}" >
+                          </div>
+                          <div class="col s9">
+                            <span class="enfasisA muayuscula">{{car.name|title}}</span><br>
+                            {% if car.tipovariacion != " " %}
+                              <span class="enfasisB">{{car.tipovariacion}}&nbsp; {{car.variacion}}&nbsp;</span>
+                            {% endif %}
+                            {% if car.color != "" %}
+                              <span class="enfasisB">({{car.color|title}})</span>
+                            {% endif %}
+                          </div>
+                          <div class="col s3 offset-s3 enfasisB fontD2 valign-wrapper">
+                            <span class="cantCarrito">{{car.qty}}</span>&nbsp; u
+                          </div>
+                          <div class="col s4 positionRelative totalN hide">
+                            <span class="positionAbsolute right0 top0 enfasisB fontB2">
+                              <span class="precioUnitCarrito{{car.rowid}}">{{car.precio_unit}}</span> c/u
+                            </span><br> 
+                            <span class="positionAbsolute right0 bottom0">
+                              <small> S/. &nbsp;&nbsp;</small><span class="fontA subTotalCarrito subTotalCarrito{{car.rowid}}">{{car.price}}</span>
+                            </span>
+                          </div>
+                          <div class="col s4 positionRelative totalD hide">
+                            <span class="positionAbsolute right0 top0 enfasisB fontB2">
+                              <span class="precioUnitCarrito{{car.rowid}}">{{car.price_min}}</span> c/u
+                            </span><br><br>
+                              <span class="positionAbsolute right0 bottom0">
+                                {% set almayor = car.price_min * car.qty %}
+                                <small> S/. &nbsp;&nbsp;</small><span class="fontA subTotalCarrito2 subTotalCarrito{{car.rowid}}">{{almayor}}</span>
+                              </span>
+                          </div>
+                          <div class="col s1 ">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col s12">
+                        <br>
+                        <div class="divider"></div>
+                        <br>
+                      </div>
+                    {% endif %}
+                    {% set total = total + car.price %}
+                    {% set total2 = total + car.price %}
+                  {% endfor %}
+                {% endfor %}
+                {% set porTdc = ( total * 6) / 100 %}
+                {% set pagoConTDC = total + porTdc %}
+                <div class="col s6 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Costo de producto
+                </div>
+                <div class="col s6 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp;<span class="fontD2"><b class="costoProducto"></b></span> <span class="enfasisB"></span>
+                </div>
+                <div class="col s12">
+                  <div class="divider dividerMargin"></div>
+                </div>
+                <div class="col s3 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Cantidad
+                </div>
+                <div class="col s9 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto"><span class="fontD2"><b class="cantResumen"></b></span>&nbsp; <span class="enfasisB">Unidades</span></span>
+                </div>
+                <div class="col s12">
+                  <div class="divider dividerMargin"></div>
+                </div>
+                <div class="col s6 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Costo de producto
+                </div>
+                <div class="col s6 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp;<span class="fontD2"><b class="costoProducto"></b></span> <span class="enfasisB"></span>
+                </div>
+                <div class="col s7 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Costo de envío
+                </div>
+                <div class="col s5 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp;<span class="fontD2"><b class="idCostoReal">{{costoReal}}</b></span> <span class="enfasisB"></span></span>
+                </div>
+                <div class="col s3 center enfasisB left-align valign-wrapper" style="height: 45px;">
+                  Total
+                </div>
+                <div class="col s9 center enfasisA valign-wrapper" style="height: 45px;">
+                  <span style="margin-left: auto">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen"></b></span></span>
+                  <span style="margin-left: auto" class="hide">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen2"></b></span></span>
+                </div>
+                <div class="col s12 center sinPadding">
+                  {% if total2 >= 100 %}
+                  <input type="number" value="{{total2}}" id="totalPago" class="hide">
+                  {% else %} 
+                  <input type="number" value="{{total}}" id="totalPago" class="hide">
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col s12 center">
+                <br><br><br>
+                <div class="preloader-wrapper big active">
+                  <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
+                    <div class="circle-clipper left">
+                      <div class="circle"></div>
+                    </div><div class="gap-patch">
+                      <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 sinPadding">
+          <div class="card" id="pagoBlock">
+            <div class="card-content sinPadding">
+              <div class="row cardContentFix" > 
+                <span class="card-title center black-text">Selecciona un método de despacho</span>
+                <br>
+                 {% if inf_compra.provincia == '150100' or inf_compra.provincia == '070100' %}
+                <div class="col center s12 enfasisA fontD2 transition" style="border: 2px solid #fec00f;padding: 3px;border-radius: 5px;">
+                  <a href="#!" class="pagoLinkCarrito grey-text text-darken-3" data-tipo="TIENDA">
+                    <div class="positionRelative transition">
+                      <img class="redondeo bancoImg " src="{{ruta_img}}irTienda.png" height="61"><br>
+                      <span>Retiro en tienda - Lima</span>
+                    </div>
+                  </a>
+                  <br>
+                </div>
+                <div class="col center s12 enfasisA fontD2 transition" style="border: 2px solid #fec00f;padding: 3px;border-radius: 5px;">
+                  <a href="#!" class="pagoLinkCarrito grey-text text-darken-3" data-tipo="ACUERDO">
+                    <div class="positionRelative transition">
+                      <img class="redondeo bancoImg " src="{{ruta_img}}pagoce.png"><br>
+                      <span>Contraentrega - Lima y Callao</span>
+                    </div>
+                  </a>
+                  <br>
+                </div>
+                {% else %}
+                <div class="col center s12 enfasisA fontD2 transition" style="border: 2px solid #fec00f;padding: 3px;border-radius: 5px;">
+                  <a href="#!" class="pagoLinkCarrito grey-text text-darken-3" data-tipo="TOD">
+                    <div class="positionRelative transition">
+                      <img class="redondeo bancoImg " src="{{ruta_img}}bank.png" height="61"><br>
+                      <span>Envio a provincia - Depósito o Transferencia</span>
+                    </div>
+                  </a>
+                  <br>
+                </div>
+              {%  endif %}
+              </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row centrarForzado bottom0 anchoTotal white left0 setbuttonMobile transitionB">
+        {% if total2 >= 100 %}
+        <input type="number" value="{{total2}}" id="totalPago" class="hide">
+        {% else %}
+        <input type="number" value="{{total}}" id="totalPago" class="hide">
+        {% endif %}
+      </div>
+    {% endif %}
+  </main>
+
+{% endblock %}
+
+{% block script %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+  <script src="{{base_url('public/')}}js/tienda/cart_pago.js?v=2706"></script>
+{% endblock %}

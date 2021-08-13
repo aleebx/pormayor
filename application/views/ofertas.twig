@@ -1,0 +1,129 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}   
+{% endblock %}
+{% block content %}
+<main class="container colProSmarth">
+      <div class="rowProTablet">
+      	<div class="containerListProd">      
+          <div class="row" id="listProducto">
+		{% for pro in producto %}                                              
+              <div class="col s6 m4 l3 colProSmarth"> 
+                <a class="detalleProducto" style="color: rgba(0,0,0,0.8); cursor: pointer;" d data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}"> 
+                  <div class="card hoverable">         
+                    <div class="card-content center" style="height:180px; padding:1px; background-color:rgba(0,0,0,0.0.15);">
+                      {% for fot in fotos %}                      
+                        {% if pro.Pro_IdProducto == fot.producto_Pro_IdProducto %}
+                          <img src="{{ruta_img}}{{fot.Prf_Img}}" class="containImg" style="width:100%;height:180px; padding: 5px">
+                          {% if pro.Pro_Oferta == 1 %}
+                        <div class="top-Text">
+                          <img src="{{ruta_img}}sales.svg" type="image/svg+xml" class="sales" width="50">
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                      {% endfor %}                                         
+                    </div>
+                    <div class="card-action center flow-text" style="    height: 134px;padding: 0px; border-top:1px solid rgba(0,0,0,0.0.15)">                      
+                        <span style="padding-top:20px;user-select:none" class="truncate">{{pro.Pro_Nombre}}</span>
+                          {% if configuracion.Mostrar_Precio == 1 %}
+                          <h6 class="truncate" style="user-select:none; font-size: 0.8rem; font-style: italic">Precio entre: S/{{pro.Pro_PrecioRango}}</h6>                                 
+                          {% else %} 
+                          {% endif %}
+                        <div class="puntuacionPro colorContainer center">
+                          <div class="row" style="margin: 0px; padding: 0px;">
+                            {% set arrayColores = [] %}
+                            {% for col in colores %}
+                              {% if col.producto_Pro_IdProducto == pro.Pro_IdProducto %}
+                               {% if col.Col_Hex not in arrayColores %}
+                               {% set arrayColores = arrayColores|merge([col.Col_Hex]) %}
+                               <div class="" style="margin-bottom: 2.5px; display: inline-block">
+                                  <div style="border-radius: 1px; height: 10px; width: 10px;  background-color: {{col.Col_Hex}}; border: 1px solid rgba(0,0,0,0.5)"></div>
+                                </div>
+                               {% endif %}
+                              {% endif %}
+                            {% endfor %}
+                          </div>
+                        </div>
+                        <div class="puntuacionPro starsContainer valign-wrapper">
+                          <div class="center" style="margin: 0 auto;">
+                          {% for i in 1..5 %}
+                            {% if pro.Pro_Valoracion >= i %}
+                              <i class="material-icons flow-text" style="color:#fdd835">star</i>
+                            {% else %}
+                              <i class="material-icons flow-text" style="color:black">star_border</i>
+                            {% endif %}
+                          {% endfor %}
+                          </div>
+                        </div>                 
+                  </div>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+	</div>
+	</div>
+	</div>
+	</main>
+{% endblock %}
+
+{% block script %}
+    <script src="{{base_url('public/')}}js/tienda/cart_cotizacion.js?v={{now|date('i:s')}}" type="text/javascript"></script>
+    <script type="text/javascript">
+    //Cambio Footer
+    $('.footerSecundario').removeClass('hide');
+    $('.footerPrincipal').addClass('hide');
+
+    $('.colorContainer').hide();
+    var MenorPC = 0;
+    if ($(window).width() > 767) {
+        if (!MenorPC) {
+            if ($(window).width() > 767) {
+              $('.detalleProducto').mouseenter(function(){
+                var div= $(this);
+                div.find(".starsContainer").hide(0, function  (){
+                  div.find(".colorContainer").show();
+                });
+                
+              });
+
+              $('.detalleProducto').mouseleave(function(){
+                var div= $(this);
+                  div.find(".colorContainer").hide(0, function() {
+                  div.find(".starsContainer").show();
+                });
+              });
+            }
+        }else{
+          MenorPC = 1;
+        }
+    }
+
+    $(window).resize(function() {
+        if (!MenorPC) {
+            if ($(window).width() > 767) {
+              $('.detalleProducto').mouseenter(function(){
+                var div= $(this);
+                div.find(".starsContainer").hide(0, function  (){
+                  div.find(".colorContainer").show();
+                });
+                
+              });
+
+              $('.detalleProducto').mouseleave(function(){
+                var div= $(this);
+                  div.find(".colorContainer").hide(0, function() {
+                  div.find(".starsContainer").show();
+                });
+              });
+            }
+        }
+    });
+
+    $(document).ready(function() {
+      if ($('.noExiste').length){
+        $('.nav-content').hide(); 
+        $('.filtrarBtn').hide();
+        $('.comentsBtn').hide();
+      }
+    });
+    </script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layout/correo.twig" %}
+
+{% block content %}
+<tr style="border-top: #f6b21d 5px solid;">
+  <td bgcolor="#3b3b3d" align="center" style="padding: 20px 0px 20px 0px;font-size: 1.5rem; font-family: Arial, sans-serif;color:white">
+  Cambio de contraseña exitoso
+  </td>
+</tr>
+<tr>
+  <td style="padding: 20px 10px 30px 10px; color: #383838; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+  El cambio de contraseña a tu cuenta de pormayor.pe se ha realizado exitosamente. Ya puedes acceder a tu cuenta
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center">
+  <big style="font: 16px/18px Arial, Helvetica, sans-serif;">
+  <a href="{{base_url()}}usuario/reset_password/{{Usu_IdUsuario}}/{{Usu_NewEmailKey}}" style="border: none;background-color: #21478F;border-radius: 2px;display: inline-block;height: 36px;line-height: 36px;padding: 0 1rem;-webkit-tap-highlight-color: transparent;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);text-decoration: none;font-size: 0.9rem; color: white;">IR A PORMAYOR</a>
+  </big>
+  </td>
+</tr>
+<tr style="border-bottom: #f6b21d 5px solid;">
+  <td style="padding: 20px 10px 30px 10px; color: #383838; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">
+  Atentamente,<br />
+  El equipo <a href="//pormayor.pe" style="text-decoration:none;"><b style="color:#FEC00F;">PorMayor.pe</b></a>
+  </td>
+</tr>
+{% endblock %}
+

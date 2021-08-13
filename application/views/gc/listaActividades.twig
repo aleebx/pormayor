@@ -1,0 +1,31 @@
+{% for act in actividades %}
+<div class="col s12 m6 l12 card">
+<div class="card-content">
+<span class="new badge">{{act.Acg_Fecha}} {{act.Acg_Hora}}</span>
+<span class="card-title">{{act.Acg_Actividad}}</span>
+<div class="divider"></div>
+{{act.Acg_Detalle}}
+</div>
+<div class="card-action center">
+<a class="btn red deleteActividad" data-idact="{{act.Acg_IdActividad}}">Eliminar</a>
+</div>
+</div>
+{% endfor %}
+
+<script type="text/javascript">
+
+$('.deleteActividad').click(function(){
+var Acg_IdActividad = $(this).data('idact');
+$.ajax({
+data:{
+'Acg_IdActividad' : Acg_IdActividad
+},
+type: "POST",
+url: base_url+'gestor/gestion/deleteActividad',
+success: function(data){
+$('#listaActividades').load(base_url+'gestor/gestion/listActividades');
+}
+});
+});
+
+</script>

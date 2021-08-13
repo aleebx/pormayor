@@ -1,0 +1,117 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %} 
+	<style type="text/css">
+		.btn-flat-not{
+			border: 1px solid rgba(255,255,255,0.5);
+		}
+		.btn-flat-not:hover{
+			border: 0px;
+			background-color: #21478F;
+			font-weight: 600;
+		}
+
+		.noMove{
+			opacity: 0;
+			-webkit-transform: translateX(400px);
+			   -moz-transform: translateX(400px);
+			    -ms-transform: translateX(400px);
+			     -o-transform: translateX(400px);
+			        transform: translateX(400px);
+		}
+
+		.noMove_left{
+			opacity: 0;
+			-webkit-transform: translateX(-400px);
+			   -moz-transform: translateX(-400px);
+			    -ms-transform: translateX(-400px);
+			     -o-transform: translateX(-400px);
+			        transform: translateX(-400px);
+		}
+
+		.transitionEspecial{
+			-webkit-transition: all .40s ease-out;
+			   -moz-transition: all .40s ease-out;
+			    -ms-transition: all .40s ease-out;
+			     -o-transition: all .40s ease-out;
+			        transition: all .40s ease-out;
+		}
+	</style>  
+{% endblock %}
+
+{% block content %}
+<main class="container fixContainer" style="overflow-x: hidden;">
+	<br class="hide-on-med-and-up"><br class="hide-on-med-and-up">
+	<div class="row">
+		<div class="col s12 l12 center" style="height:400px;background: url('{{ruta_img}}seguridadCompra_1.jpg')">
+			<br><br>
+			<h1 class="negrita center white-text">SEGURIDAD PORMAYOR.PE</h1>
+			<div class="divider centrarForzado white" style="opacity:.4;width:30%"></div><br>
+			<p class="center enfasisA2 fontD2 centrarForzado" style="width:80%">Mientras compres con nosotros te garantizamos total seguridad, recuerda que tu confianza es lo más valioso para nosotros. Nuestros protocolos de seguridad siempre estarán disponibles para ti.</p>
+			<br><br>
+			<a href="#" class="transition btn-flat btn-flat-not white-text">atención</a> &nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#" class="transition btn-flat btn-flat-not white-text">Contacto</a> &nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#" class="btn pormayor grey-text text-darken-4 negrita">COMPRA PROTEGIDA</a> &nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#" class="transition btn-flat btn-flat-not white-text">Devoluciones</a> &nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+		<div class="col s12 fontC center">
+			<div class="dividerMargin"></div>
+			<i class="material-icons fontD positionRelative" style="top:5px">security</i>&nbsp;&nbsp;
+			Estamos inscritos en la SUNAT. <a class="pormayorUnico-text negrita" href="http://www.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaMovil.jsp">Consultanos Aquí</a>
+			<p class="centrarForzado enfasisB fontD2">Búscanos como <b>PORMAYOR.PE S.A</b></p>
+		</div>
+		<div class="col s12"><br><br><br></div>
+		<div class="col s12 white" style="background: url('{{ruta_img}}fondo.png');">
+			<h3 class="center enfasisA negrita">COMPRA PROTEGIDA</h3><br>
+			<div class="divider"></div>
+			<div class="row centrarForzado">
+				<div class="col l6 positionRelative"  style="border-right: 2px dotted grey;">
+					<i class="material-icons medium white positionAbsolute pormayorUnico-text" style="padding:20px 0px;right:-32px;">shopping_cart</i>
+					<i class="material-icons medium white positionAbsolute pormayorUnico-text" style="padding:10px 0px;top: 400px;right:-32px;">payment</i>
+					<i class="material-icons medium white positionAbsolute pormayorUnico-text" style="padding:10px 0px;top: 750px;right:-32px;">local_shipping</i>
+					<i class="material-icons medium white positionAbsolute pormayorUnico-text" style="padding:10px 0px;top: 1050px;right:-32px;">sentiment_very_satisfied</i>
+
+					
+					<div class="compraSegura_2 noMove_left transitionEspecial" style="margin-top:300px;margin-left:60px">
+						<br>
+						<img class="left" alt="seguridad pormayor 1" src="{{ruta_img}}seguridad_2.jpg">
+						<p style="width:80%" class="fontC sinBordeBottom enfasisB negrita left left-align">Paga</p>
+						<p style="width:90% ;margin-top:0px" class="fontE enfasisB simpleTexto left left-align">Realiza tu pago a través de uno de nuestros métodos de pago seguro. Retenemos el dinero hasta que todo esté bien</p>
+					</div>
+					<div class="compraSegura_4 noMove_left transitionEspecial" style="margin-top:650px;margin-left:60px">
+						<br>
+						<img class="left" alt="seguridad pormayor 1" src="{{ruta_img}}seguridad_4.jpg">
+						<p style="width:80%" class="fontC sinBordeBottom enfasisB negrita left left-align">Califica</p>
+						<p style="width:90% ;margin-top:0px" class="fontE enfasisB simpleTexto left left-align">Una vez todo este bien con la compra, no olvides calificar al vendedor</p>
+					</div>
+
+				</div>
+				<div class="col l6 positionRelative" >
+					<div class="compraSegura_1 noMove transitionEspecial" style="margin-right:70px">
+						<br>
+						<img class="right" alt="seguridad pormayor 1" src="{{ruta_img}}seguridad_1.jpg">
+						<p style="width:80%" class="fontC sinBordeBottom enfasisB negrita right right-align">Elige</p>
+						<p style="width:90% ;margin-top:0px" class="fontE enfasisB simpleTexto right right-align">Selecciona los artículos que deseas comprar y añádelos al carrito</p>
+					</div>
+
+					<div class="compraSegura_3 noMove transitionEspecial" style="margin-top:650px;margin-right:70px">
+						<br>
+						<img class="right" alt="seguridad pormayor 1" src="{{ruta_img}}seguridad_3.jpg">
+						<p style="width:80%" class="fontC sinBordeBottom enfasisB negrita right right-align">Envia</p>
+						<p style="width:90% ;margin-top:0px" class="fontE enfasisB simpleTexto right right-align">Acuerda una forma de envío con el vendedor</p>
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+	<p>COMPRA PROTEGIDA - DEVOLUCIONES - CONTACTO - ATENCION AL CLIENTE PERSONALIZADA</p>
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/debug.addIndicators.min.js"></script>
+<script src="{{base_url('public/intranet/js/jquery.sticky-kit.min.js')}}"></script>
+<script src="{{base_url('public/js/')}}seguridad.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

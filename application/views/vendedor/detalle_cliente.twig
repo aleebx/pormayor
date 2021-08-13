@@ -1,0 +1,57 @@
+  {% extends "layout/intranet/template_ven.twig" %}
+{% block head %}
+{% endblock %}
+{% block content %}
+  <main class="container">
+    <div class="card">
+      <div class="card-content">
+        <span class="cart-title">Listado de cliente</span>
+        <table id="ListVnetasTabla1" style="width:100%">
+          <thead>
+             <tr style="font-size:12px;">
+                <th>#</th>
+                <th>CLIENTE</th>
+                {# <th>MONTO</th> #}
+                <th>TIPO DE VENTA</th>
+                <th>ESTADO</th> 
+                <th>FECHA</th>
+                <th>ACCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for pag in compras %}
+                <a href="{{base_url()}}vnd/detalle/{{pag.Pac_IdPago_Compra}}">
+                  <tr {% if pag.Pac_Estado == 1 %}class="lime lighten-5"{%endif %}>                     
+                    <td>{{pag.Pac_CodPago}}</td>
+                    <td>{{pag.Per_Nombre}} - {{pag.Per_Telefono}}</td>
+                    <td>
+                    {% if pag.Pac_Banco == "NO" %}
+                      CONTRAENTREGA
+                    {% elseif pag.Pac_Banco == "TIENDA" %}
+                      RETIRO EN TIENDA
+                    {% elseif pag.Pac_Banco == "Visanet" %}
+                      TARJETA DE CRÉDITO/DÉBITO
+                    {% else %}
+                      DEPÓSITO o TRANSFERENCIA                                  
+                    {% endif %}
+                    </td>
+                    <td>
+                      <span id="estV{{pag.Pac_IdPago_Compra}}" class="new badge black-text negrita {% if pag.Pac_Estado == 1 %}green accent-4">NUEVA{% elseif pag.Pac_Estado == 2 %}light-green accent-4">CONFIRMADA{% elseif pag.Pac_Estado == 3 %}lime accent-2">RECOGO{% elseif pag.Pac_Estado == 4 %}deep-orange accent-2">COURIER{% elseif pag.Pac_Estado == 5 %} green darken-4">ENTREGADO{% elseif pag.Pac_Estado == 6 %}red darken-3">ANULADO{% endif %}</span>
+                    </td>
+                    <td><b>{{pag.Pac_FechaRegistro}}</b></td>
+                    <td>
+                    <a class="btn orange" href="{{base_url()}}vnd/detalle/{{pag.Pac_IdPago_Compra}}"  target="_blank"><i class="material-icons">launch</i></a>
+                        <a class="btn blue modal-trigger" id="{{pag.Pac_IdPago_Compra}}" accessKey="{{pag.Pac_Estado}}" href="#modalEdit"><i class="material-icons">update</i></a>
+                    </td>
+                  </tr>
+                </a>
+              {% endfor %}
+          </tbody>
+      </table>  
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

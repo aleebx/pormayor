@@ -1,0 +1,154 @@
+{% extends "layout/intranet/template_adm.twig" %}
+{% block head %}
+<style type="text/css">
+ @media (min-width: 320px) and (max-width: 480px) {
+    .editUsuario{
+      margin-bottom: 10px;
+    }
+  }
+
+</style>
+{% endblock %}
+{% block content %}
+  <main class="container">
+  	<div class="card">
+      	<div class="card-content sinPadding">
+          <div class="row cardContentFix">
+          	<div class="col s12 m12 l12 center-align">
+              <h4 class="card-title">{{pagina.titulo}}</h4>
+          	</div>
+          	<div class="input-field col s12 m12 l12 center-align inputFieldCustom sinPadding">
+             	<a href="{{base_url()}}usuario/crear_usuario" class="btn waves-effect waves-light modal-trigger"><i class="material-icons left">add</i>Agregar</a>
+          	</div>
+          	<div class="col s12 l12 sinPadding">
+             	<table id="tablaProductos" class="heighlight">
+                <thead>
+                  <tr style="background-color:#fec00f">
+                    <th>N°</th>
+                    <th>Datos</th>
+                   	<th>Opciones</th>
+                 	</tr>
+              	</thead>
+               	<tbody>
+                  {% set nro = 1 %}
+                  {% for usu in usuarios %}
+                    <tr>
+                      <td><b style="font-size:22px">{{nro}}</b></td>
+                      <td style="position:relative">
+                        <p>{{usu.Per_Nombre}}</p>
+                        <span class="enfasisA">
+                        {% if usu.Rol_IdRol == 1 %}
+                          Administrador
+                        {% elseif usu.Rol_IdRol == 5 %}
+                          CÓDIGO: <b style="font-size:20px">{{usu.Codigo}}
+                        {% endif %}
+                        </b></span><br>
+                        <small class="enfasisB">{{usu.Usu_Correo}}</small><br>
+                        {% if usu.Usu_Activated == 1 %}
+                          <div class="personaActiva">
+                            <i class="green-text material-icons">check_circle</i>
+                          </div>
+                        {% endif %}
+                      </td>
+                      <td class="center">
+                        <a class="btn editUsuario waves-effect waves-light pormayorAccent" href="{{base_url()}}usuario/editar/{{usu.Usu_IdUsuario}}"><i class="material-icons">edit</i></a>
+                        <a class="btn" href="{{base_url()}}admin/tiendas/tiendas_gestor/{{usu.Usu_IdUsuario}}"><i class="material-icons">store</i></a>
+
+                        {# <button class="btnActivar btn waves-effect waves-light red"  data-idusuario="{{usu.Usu_IdUsuario}}"><i class="material-icons">sync_disabled</i></button> #}
+                       
+                      </td>
+                    </tr>
+                    {% set nro = nro + 1 %}
+                  {% endfor %}
+             		</tbody>
+            	</table>
+            </div> 
+          </div>  
+    		</div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+{% block script %}
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(":checkbox").click(evento_checkbox);
+    });
+
+    $(".btnActivar").click(function(){
+      var valor = $(this).data('idusuario');
+      var estado;
+        $.confirm({
+            icon: 'help',
+            theme: 'modern',
+            closeIcon: true,
+            animation: 'scale',
+            type: 'orange',
+            title: 'Manejar usuario',
+            columnClass: 'small',
+            content: 'El cambio sera inmediato',
+            draggable: false,
+            buttons: {
+                Activar: {
+                    btnClass: 'btn-green',                   
+                    action: function (){
+                      estado = 1;
+                      $.ajax({
+                        type: "POST",
+                        data:
+                            {
+                              "id": valor,
+                              "estado": estado              
+                            },
+                        url: base_url+'usuario/post_actualizar_estado',
+                        success: function (data) {
+                          Materialize.toast('<i class="material-icons left ">check_circle</i>El usuario se activo exitosamente', 1500, 'rounded successToast', function(){
+                            location.reload(true);
+                          });
+                        }
+                      });
+                    }       
+                },
+                Desactivar: {
+                    btnClass: 'btn-red', 
+                    action: function (){
+                      estado = 0;
+                      $.ajax({
+                        type: "POST",
+                        data:
+                            {
+                              "id": valor,
+                              "estado": estado              
+                            },
+                        url: base_url+'usuario/post_actualizar_estado',
+                        success: function (data) {
+                          Materialize.toast('<i class="material-icons left ">check_circle</i>El usuario se desactivo exitosamente', 1500, 'rounded successToast', function(){
+                            location.reload(true);
+                          });
+                        }
+                      });
+                    }    
+                }
+            }
+        });
+    });
+
+    function evento_checkbox() 
+    {
+      
+
+      if($('#'+$(this).attr("id")).prop('checked') ) 
+      {       
+        estado = 1;
+      }
+      else
+      {
+        estado = 0;
+      }
+
+      console.log("estado "+estado);
+
+            
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% for cli in clientes %}
+<div class="card col s9 m9 l9">			
+      <span class="title"><b>{{cli.Clg_Apellido_Paterno}} {{cli.Clg_Apellido_Materno}}</b>, {{cli.Clg_Nombre}}</span>
+      <p>Teléfono: {{cli.Clg_Telefono}}<br>
+         Dirección: {{cli.Clg_Direccion}}
+      </p>							      
+</div>
+<div class="col s3 m3 l3 center">
+	<a href="tel:{{cli.Clg_Telefono}}" class="btn">Llamar</a>
+	<a class="btn red deleteCliente" data-idcli="{{cli.Clg_IdClientes_Gestor}}"><i class="material-icons">delete</i></a>
+</div>
+{% endfor %}
+
+<script type="text/javascript">
+
+	$('.deleteCliente').click(function(){
+		var Clg_IdCliente = $(this).data('idcli');
+		$.ajax({
+	        data:{
+	          'Clg_IdCliente' : Clg_IdCliente
+	        },
+	        type: "POST",
+	        url: base_url+'gestor/gestion/deleteCliente',
+	        success: function(data){
+	          $('#listaContatos').load(base_url+'gestor/gestion/listClientes');
+	        }
+	    });
+
+	});
+</script>

@@ -1,0 +1,148 @@
+{% extends "layout/intranet/template_adm.twig" %}
+{% block head %}
+    <!-- <link type="text/css" rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"   media="screen"/> -->
+{% endblock %}
+{% block content %}
+    <!-- Page Layout here -->
+    <main class="">
+      <div class="card">
+          <div class="card-content center">
+            <span class="card-title">
+            	<table id="tablaVariaciones" class="bordered">
+            		<thead>
+            			<tr class="pormayor pormayorAccent-text">
+            				{# <th>#</th> #}
+            				<th class="comoBoton tooltipped" data-position="bottom" data-delay="50" data-tooltip="Reordenar A-Z">CATEGORIA</th>
+            				<th class="comoBoton tooltipped" data-position="bottom" data-delay="50" data-tooltip="Reordenar A-Z">SUBCATEGORIA</th>
+            				<th class="comoBoton tooltipped" data-position="bottom" data-delay="50" data-tooltip="Reordenar A-Z">DETALLE</th>
+            				<th class="comoBoton tooltipped" data-position="bottom" data-delay="50" data-tooltip="Reordenar A-Z">ID DES</th>
+            				<th class="comoBoton no-sort">ID VAO</th>
+            			</tr>
+            		</thead>
+            		<tbody>
+            			{% set num = 1 %}
+            			{% for lis in lista %}
+            				<tr>
+            					{# <td nteditable='true'>{{num}}<td> #}
+            					<td contenteditable='true' class="catEdit" data-id="{{lis.Cat_IdCategoria}}">{{lis.Cat_Nombre}}</td>
+            					<td contenteditable='true' class="sucEdit" data-id="{{lis.Suc_IdSubCategoria}}">{{lis.Suc_Nombre}}</td>
+            					<td contenteditable='true' class="desEdit" data-id="{{lis.Des_IdDetalle_SubCategoria}}">{{lis.Des_Nombre}}</td>
+            					<td contenteditable='false' class="varEdit" data-id="{{lis.var1}}">{{lis.Des_Nombre}}</td>
+            					<td contenteditable='true' class="varEdit" data-id="{{lis.var2}}">{{lis.Vao_Nombre}}</td>
+            				</tr>
+            				{% set num = num + 1 %}
+            			{% endfor %}
+            		</tbody>
+            	</table>
+            </span>          
+          </div>
+		</div>
+    </main>
+{% endblock %}
+    
+{% block script %}
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+	<script>
+	$(document).ready(function(){
+        $('#tablaVariaciones').dataTable( {
+            "order": [],
+            "paging": false,
+            "language": {
+                "search": "BUSCAR EN TABLA"
+            },
+            "columnDefs": [ {
+              "targets"  : 'no-sort',
+              "orderable": false,
+            }]
+        });
+        //Edicion Categoria 
+        $('.catEdit').blur(function(){
+            var Cat_Id = $(this).data('id');
+            var nombre_cat = $(this).text();
+
+            if (nombre_cat !=  "") {
+                $.ajax({
+                  data:{
+                    'Cat_Id':Cat_Id,
+                    'nombre_cat':nombre_cat,
+                  },
+                  method:"POST",
+                  url: base_url+'admin/generar/ajax_editar_categoria',
+                  success:function(data){ 
+                    if (data == "Correcto"){
+                        Materialize.toast('<i class="material-icons left ">check_circle</i>Se edito exitosamente la categoria', 1500, 'rounded successToast', function(){
+                            location.reload(true);
+                        });
+                       
+                    }else{
+                        Materialize.toast('<i class="material-icons left ">warning</i>Existe un error al guardar la categoria', 2000, 'rounded errorToast');
+                    }
+                  }
+                }); 
+            }else{
+                Materialize.toast('<i class="material-icons left ">warning</i>La categoria no puede estar vacia', 2000, 'rounded warningToast');
+            }
+        });
+
+        //Edicion Sub-categoria 
+        $('.sucEdit').blur(function(){
+            var Suc_Id = $(this).data('id');
+            var nombre_Suc = $(this).text();
+
+            if (nombre_Suc !=  "") {
+                $.ajax({
+                  data:{
+                    'Suc_Id':Suc_Id,
+                    'nombre_Suc':nombre_Suc,
+                  },
+                  method:"POST",
+                  url: base_url+'admin/generar/ajax_editar_suc',
+                  success:function(data){ 
+                    if (data == "Correcto"){
+                        Materialize.toast('<i class="material-icons left ">check_circle</i>Se edito exitosamente la subcategoria', 1500, 'rounded successToast', function(){
+                            location.reload(true);
+                        });
+                       
+                    }else{
+                        Materialize.toast('<i class="material-icons left ">warning</i>Existe un error al guardar la subcategoria', 2000, 'rounded errorToast');
+                    }
+                  }
+                }); 
+            }else{
+                Materialize.toast('<i class="material-icons left ">warning</i>La subcategoria no puede estar vacia', 2000, 'rounded warningToast');
+            }
+        });
+
+        //Edicion Detaller sub-categoria 
+        $('.desEdit').blur(function(){
+            var Des_Id = $(this).data('id');
+            var nombre_Des = $(this).text();
+
+            if (nombre_Des !=  "") {
+                $.ajax({
+                  data:{
+                    'Des_Id':Des_Id,
+                    'nombre_Des':nombre_Des,
+                  },
+                  method:"POST",
+                  url: base_url+'admin/generar/ajax_editar_des',
+                  success:function(data){ 
+                    if (data == "Correcto"){
+                        Materialize.toast('<i class="material-icons left ">check_circle</i>Se edito exitosamente el detalle de la subcategoria', 1500, 'rounded successToast', function(){
+                            location.reload(true);
+                        });
+                       
+                    }else{
+                        Materialize.toast('<i class="material-icons left ">warning</i>Existe un error al guardar el detalle de la subcategoria', 2000, 'rounded errorToast');
+                    }
+                  }
+                }); 
+            }else{
+                Materialize.toast('<i class="material-icons left ">warning</i>El detalle de la subcategoria no puede estar vacia', 2000, 'rounded warningToast');
+            }
+        });
+
+	});
+	</script>
+
+{% endblock %}

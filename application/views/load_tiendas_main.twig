@@ -1,0 +1,23 @@
+<div class="col s6 m4 l3 mix filtroTCatall filtroTCat{{tie.Tie_Categoria}} filtroDep{{tie.Tie_Departamento}} filtroDepall" data-idtienda="{{tie.Tie_IdTienda}}" data-fechasunat="{{tie.Tie_FechaInscripcion|date("Ymd")}}" itemscope itemtype="http://schema.org/Store">
+<div class="card cardFix hoverable centrarForzado tiendasAll">
+<a class="" href="https://{{tie.Tie_Subdominio}}.{{dominio}}" data-idproducto="{{pro.Pro_IdProducto}}">
+<div class="card-content center sinPadding valign-wrapper">
+  {% if tie.Tie_Logo %}
+    <img itemprop="image" alt="{{tie.Tie_Nombre}} - pormayor.pe" title="{{tie.Tie_Nombre}}" src="{{ruta_img}}{{tie.Tie_Logo}}" class="centrarForzado responsive-img fixImg3 redondeo" style="padding: 5px;">
+  {% else %}
+    <img itemprop="image" src="{{ruta_img}}sinlogo.webp" class="centrarForzado fixImg3 redondeo" style="padding: 5px;">
+  {% endif %}
+</div>
+<div class="center tituloTienda valign-wrapper" >
+<span itemprop="name" class="fontB anchoTotal">{{tie.Tie_Nombre|upper}}</span>
+<img src="{{ruta_img}}holderTienda.webp" class="transition positionAbsolute bottom0">
+</div>
+<span class="hide" itemprop="description">{{tie.Tid_Descripcion|title}}</span>
+<address class="hide" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+<span itemprop="streetAddress">{{tie.Loc_Direccion|title}}</span>
+<span itemprop="addressCountry">Péru</span>
+</address>
+</a>
+</div>
+<br>
+</div>

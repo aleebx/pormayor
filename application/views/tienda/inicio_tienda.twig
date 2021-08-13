@@ -1,0 +1,156 @@
+{% extends "layout/intranet/template_lite.twig" %}
+
+{% block head %}
+
+  <style type="text/css">
+    .select-dropdown{
+      text-align: center;
+    }
+    .truncate{
+      text-transform: none !important;
+    }
+    h6 i{
+      font-size: 0.8rem;
+    }
+    .tituloTienda  img{
+      height: 34px;
+    }
+    .tabs .indicator {
+      height: 2.5px !important;
+      background-color: #21478F;
+    }
+    .tabs .tab a:hover, .tabs .tab a.active {
+      color: #21478F;
+    }
+    .btn, .btn:active, .btn:focus{
+      background-color: #21478F;
+    }
+  </style>
+{% endblock %} 
+
+{% block content %}
+  <main class="container fixContainer">
+    <div class="row ">
+      <br><br class="hide-on-large-only">
+      {% if userAgent == "PC" %}
+        <div class="col s12 m12 l4 sideBarProd white z-depth-1 unidadSticky2" style="padding:10px 20px">
+          <div class="positionRelative">
+            <div class="" data-scroll>
+              <h5 class="center">Filtros</h5>
+              <div class="row centrarForzado">
+                <br>
+                <div class="col s12 sinPadding">
+                  <label class="enfasisB">Filtrar por categorías</label>
+                  <select class=" browser-default filtroTCat">
+                    <option value="" disabled selected>Selecciona una categoría</option>
+                    <option value="all">Todos</option>
+                    {% for btc in busqueda_tiendas_cat %}
+                      <option value="{{btc.Cat_IdCategoria}}">{{btc.Cat_Nombre}}</option>
+                    {% endfor %}
+                  </select>
+                  <br>
+                </div>
+                <div class="col s12 sinPadding">
+                  <label class="enfasisB">Filtrar por departamento</label>
+                  <select class="browser-default filtroDep" >
+                    <option value="" disabled selected>Selecciona un departamento</option>
+                    <option value="all" >Ver todas</option>
+                    {% for btd in busqueda_tiendas_dep %}
+                      <option value="{{btd.id}}">{{btd.name}}</option>
+                    {% endfor %}
+                  </select>
+                  <br>
+                </div>
+                <div class="col s12 sinPadding">
+                  <label class="enfasisB">Organizar</label>
+                  <select class="browser-default filtroTFecha" >
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="ninguno">Ninguno</option>
+                    <option value="fechaMenos">Menos antiguedad SUNAT</option>
+                    <option value="fechaMas">Más antiguedad SUNAT</option>
+                  </select>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m12 l4 center hide white z-depth-1 " style="padding:10px 20px">
+          <div class="preloader-wrapper big active centrarForzado">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col l8 ajax_filtro_tiendas containerFiltroTiendas">
+        {% for tie in busqueda_tiendas %}
+            <div class="col s6 m4 l4 mix filtroTCatall filtroTCat{{tie.Tie_Categoria}} filtroDep{{tie.Tie_Departamento}} filtroDepall" data-idtienda="{{tie.Tie_IdTienda}}" data-fechasunat="{{tie.Tie_FechaInscripcion|date("Ymd")}}" itemscope itemtype="http://schema.org/Store">
+            <div class="card cardFix hoverable tiendasAll centrarForzado">
+            <a class="" href="https://{{tie.Tie_Subdominio}}.{{dominio}}">
+            <div class="card-content center sinPadding valign-wrapper">
+            <img itemprop="image" alt="{{tie.Tie_Nombre}} - pormayor.pe" title="{{tie.Tie_Nombre}}" src="{{ruta_img}}{{tie.Tie_Logo}}" class="centrarForzado responsive-img fixImg3 redondeo" style="padding: 5px;">
+            </div>
+            <div class="center tituloTienda valign-wrapper" >
+            <span itemprop="name" class="fontB2 anchoTotal">{{tie.Tie_Nombre|upper}}</span>
+            <img src="{{ruta_img}}holderTienda.webp" class="transition positionAbsolute bottom0">
+            </div>
+            <span class="hide" itemprop="description">{{tie.Tid_Descripcion|title}}</span>
+            <address class="hide" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">{{tie.Loc_Direccion|title}}</span>
+            <span itemprop="addressCountry">Péru</span>
+            </address>
+            </a>
+            </div>
+            <br><br>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="col s12 center ">
+          {# <a href="{{base_url()}}index/tiendas" class="btn pormayorUnico">Ver todas las tiendas</a> #}
+        </div>
+      {% else %}
+        <div class="col l12 s12 ajax_filtro_tiendas containerFiltroTiendas sinPadding">
+        {% for tie in busqueda_tiendas %}
+            <div class="col s6 m4 l4 mix filtroTCatall filtroTCat{{tie.Tie_Categoria}} filtroDep{{tie.Tie_Departamento}} filtroDepall" data-idtienda="{{tie.Tie_IdTienda}}" data-fechasunat="{{tie.Tie_FechaInscripcion|date("Ymd")}}" itemscope itemtype="http://schema.org/Store">
+            <div class="card cardFix hoverable tiendasAll centrarForzado">
+            <a class="" href="https://{{tie.Tie_Subdominio}}.{{dominio}}">
+            <div class="card-content center sinPadding valign-wrapper">
+            <img itemprop="image" alt="{{tie.Tie_Nombre}} - pormayor.pe" title="{{tie.Tie_Nombre}}" src="{{ruta_img}}{{tie.Tie_Logo}}" class="centrarForzado responsive-img fixImg3 redondeo" style="padding: 5px;">
+            </div>
+            <div class="center tituloTienda valign-wrapper" >
+            <span itemprop="name" class="fontB2 anchoTotal">{{tie.Tie_Nombre|upper}}</span>
+            <img src="{{ruta_img}}holderTienda.webp" class="transition positionAbsolute bottom0">
+            </div>
+            <span class="hide" itemprop="description">{{tie.Tid_Descripcion|title}}</span>
+            <address class="hide" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">{{tie.Loc_Direccion|title}}</span>
+            <span itemprop="addressCountry">Péru</span>
+            </address>
+            </a>
+            </div>
+            <br><br>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="col s12 center ">
+          {# <a href="{{base_url()}}index/tiendas" class="btn pormayorUnico">Ver todas las tiendas</a> #}
+        </div>
+      {% endif %}
+    </div>
+  </main>
+{% endblock %}
+
+{% block script %}
+  <script>var busqueda_flag = "{{busqueda_flag}}";</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="{{base_url('public/')}}js/productos/favoritos.js?v={{now|date('i:s')}}"></script>
+  <script src="{{base_url('public/')}}js/tienda/index_tiendas.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

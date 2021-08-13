@@ -1,0 +1,78 @@
+{% if usuario.rol == 1 %}
+{% set template = "layout/intranet/template_adm.twig" %}
+{% else %}
+{% set template = "layout/intranet/template_gc.twig" %}
+{% endif %}
+{% extends template %}
+
+{% block content %}
+    <!-- Page Layout here -->
+    <main class="container">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title center">Gestión de tiendas</span>
+            <div class="row">
+              <div class="col s12 m12 l12">                
+                  <table class="highlight centered bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>NOMBRE TIENDA</th>
+                        <th>RAZÓN SOCIAL</th>
+                        <th>FECHA DE REGISTRO</th>
+                        <th># PRODUCTO</th>
+                        <th>ACCIÓN</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% set nro = 1 %}
+                {% for tig in tiendas_gestor %}
+                      <tr>
+                        <td><b style="font-size:20px">{{nro}}</b></td>
+                        <td>
+                            <a href="https://{{tig.Tie_Subdominio}}.pormayor.pe" target="_blank">{{tig.Tie_Nombre}}</a>
+                          <br>{{tig.Per_Nombre}}<br><span>Correo: {{tig.Usu_Correo}}</span><br><span>                            
+                            <spam class="fontB">{{tig.Usu_LastLogin}}</spam>
+                        </td>
+                        <td>
+                          {{tig.Tie_RazonSocial}}
+                        </td>
+                        <td>
+                          {{tig.Tie_FechaRegistro|date("d/m/Y")}}
+                        </td>
+                        <td>
+                          {% for cap in cantidad_producto %}
+                            {% if cap.Tie_IdTienda == tig.Tie_IdTienda %}
+                              {{cap.Cantidad}}                            
+                            {% endif %}
+                          {% endfor %}
+                        </td>
+                        <td>
+                          {% if tig.Per_Telefono %}
+                              {% if tig.Per_Telefono|length == 9 %}
+                              <a class="btn green" href="https://api.whatsapp.com/send?phone=51{{tig.Per_Telefono}}"><img src="{{ruta_img}}wa.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">{{tig.Per_Telefono}}</a>
+                              <br><a class="btn hide-on-large-only" href="tel:{{tig.Per_Telefono}}">LLAMAR</a>
+                              {% endif %} 
+                            {% endif %}                            
+                            {% if tig.Per_Celular %}
+                              {% if tig.Per_Celular|length == 9 %}<br>
+                              <a class="btn green" href="https://api.whatsapp.com/send?phone=51{{tig.Per_Celular}}"><img src="{{ruta_img}}wa.png" height="25" style="top:5px;margin-right:10px" class="positionRelative left">{{tig.Per_Celular}}</a>
+                              <br><a class="btn hide-on-large-only" href="tel:{{tig.Per_Celular}}">LLAMAR</a>
+                              {% endif %}
+                            {% endif %}
+                        </td>                        
+                      </tr>
+                      {% set nro = nro + 1 %}
+                {% endfor %}
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    </main>
+{% endblock %}
+
+{% block script %} 
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "layout/intranet/template_usu.twig" %}
+
+{% block content %}
+    <main class="container">
+    	<div class="card">
+    		<div class="card-title center">COMPRAR</div>
+        	<div class="card-content center">
+            	<div class="row">
+            		
+            	</div>
+	      		<table class="bordered">
+	      			<thead>
+	      				<tr>
+	      					<th></th>
+	      					<th>Producto</th>
+	      					<th>Cantidad</th>
+	      					<th>Precio</th>
+	      					<th></th>
+	      				</tr>
+	      			</thead>
+	      			<tbody>
+	      				{% set monto = 0 %}
+	      				{% for cot in dcotizacion %}
+	      				<tr>
+	      					<td>
+	      						<img src="{{ruta_img}}{{cot.SKU_Img}}" height="50">
+	      					</td>
+	      					<td>
+	      						{{cot.Pro_Nombre}}</br>
+	    		   				{{cot.Var_Nombre}}: {{cot.Vao_Nombre}}</br>
+	    					</td>
+	      					<td>
+								{{cot.Cantidad_Cotizacion}} {{cot.Unm_Nombre}}
+	      					</td>
+	      					<td>S/ {{cot.Precio_Cotizacion}}</td>
+	      					<td>
+	      						<label>
+							        <input name="seleccione" class="with-gap" type="radio" value="1" checked />
+							        <span>Si</span>
+							    </label>	      						
+	      					</td>
+	      					<td>
+	      						<label>
+							        <input name="seleccione" class="with-gap" type="radio" value="0" />
+							        <span>No</span>
+							    </label>
+	      					</td>
+	      				</tr>
+	      				{% set monto = monto + cot.Precio_Cotizacion*cot.Cantidad_Cotizacion %}
+            		{% endfor %}
+	      			</tbody>
+	      			<tfoot>
+                		<tr>
+                			<td colspan="3" style="text-align:right">Total a pagar:</td>
+                			<td><h5>S/. {{monto}}</h5></td>
+                		</tr> 
+            		</tfoot>
+	      		</table>
+	      		<span style="font-size:0.8rem;color:grey">
+					Estos precios son validos por quince (15) dias de emitida la presente cotización.
+	      		</span>
+	      		<div class="row">
+	      			<div class="col l12">
+	      				<button class="btn nextBtn" style="background-color:{{configuracion.Con_ColorBtn}};">Procesar Compra</button>
+	      			</div>
+	      		</div>
+			</div>
+		</div>
+    </main>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

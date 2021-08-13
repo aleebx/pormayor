@@ -1,0 +1,546 @@
+{% extends "layout/intranet/template_adm.twig" %}
+{% block head %}
+
+  <style type="text/css">
+    .pagination{
+      padding-left: 40px !important;
+    }
+    .btn, .btn-large {
+      text-decoration: none;
+      color: #fff;
+      background-color: #353535;
+      text-align: left;
+      letter-spacing: .5px;
+      -webkit-transition: .1s ease-out;
+      transition: .1s ease-out;
+      cursor: pointer;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <main class="container fixContainer">
+  <div class="row centrarForzado">
+
+    {% if userAgent == "PC" %}
+        <div class="col s12 sinPadding">
+          <br>
+          <div class="row centrarForzado ">
+            <div class="col s12 center">
+              <h5 class="enasisA left">Editar Comprador</h5>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col s12 sinPadding" style="margin-top:-35px;">
+          <div class="card">
+            <div class="card-content sinPadding">
+              <div class="row cardContentFix"> 
+                <div class="input-field col s3">
+                  <input type="hidden" id="idUsuario" value="{{compradores.Usu_IdUsuario}}">
+                  <input type="hidden" id="idPersona" value="{{compradores.Per_IdPersona}}">
+                  <input type="hidden" id="regionOcult" value="{{compradores.Region_id}}">
+                  <input type="hidden" id="provinciaOcult" value="{{compradores.Provincia_id}}">
+                   <input type="hidden" id="departamentoOcult" value="{{compradores.Distrito_id}}">
+                  <input id="DNIORUC" name="DNIORUC" type="number" class="validate" value="{{compradores.Per_Dni}}">
+                  <label for="DNIORUC">D.N.I / OTROS</label>
+                </div>
+                 <div class="input-field col s3">
+                  <input placeholder="" id="nombreComprador" name="nombreComprador" type="text" class="validate" value="{{compradores.Per_Nombre}}">
+                  <label for="nombreTienda">Nombre del Comprador</label>
+                </div>
+                <div class="input-field col s3">
+                  <input placeholder="" id="tlf" name="tlf" type="number" class="validate" min="1" value="{{compradores.Per_Telefono}}">
+                  <label for="tlf">Teléfono Celular</label>
+                </div>
+                <div class="input-field col s3">
+                  <input placeholder="" id="correo" name="correo" type="email" class="validate" value="{{compradores.Per_Correo}}">
+                  <label for="correo">Correo Electrónico</label>
+                </div>
+                <div>
+                  {% if userAgent == "PC" %}
+                    <div class="col s4">
+                      <label for="" style="font-size:15px;">Departamento</label>
+                      <select name="selectRegion" id="selectRegion" class="browser-default" onchange="getProvinces()">
+                        <option value="0" disabled selected> Seleccione un departamento</option>
+                        {% for reg in region_tienda %}
+                          {% if compradores.Region_id == reg.id %}
+                            <option value="{{reg.id}}" selected>{{reg.name}}</option>
+                          {% else %}
+                            <option value="{{reg.id}}">{{reg.name}}</option>
+                          {% endif %}
+                          
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col s4">
+                      <label for="" style="font-size:15px;">Provincia</label>
+                      <select class="browser-default" id="selectProvincia" name="selectProvincia" onchange="getDistrito()"></select>
+                    </div>
+                    
+                    <div class="col s4">
+                      <label for="" style="font-size:15px;">Distrito</label>
+                      <select class="browser-default" id="selectDistritos" name="selectDistritos"></select>
+                    </div>
+                  {% else %}  
+                    <div class="col s12">
+                      <label for="" style="font-size:15px;">Departamento</label>
+                      <select name="selectRegion" id="selectRegion" class="browser-default" onchange="getProvinces()">
+                        <option value="0" disabled selected> Seleccione un departamento</option>
+                        {% for reg in region_tienda %}
+                          {% if inf_tienda.Region_id == reg.id %}
+                            <option value="{{reg.id}}" selected>{{reg.name}}</option>
+                          {% else %}
+                            <option value="{{reg.id}}">{{reg.name}}</option>
+                          {% endif %}
+                          
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col s12">
+                      <label for="" style="font-size:15px;">Provincia</label>
+                      <select class="browser-default" id="selectProvincia" name="selectProvincia" onchange="getDistrito()"></select>
+                    </div>
+                    
+                    <div class="col s12">
+                      <label for="" style="font-size:15px;">Distrito</label>
+                      <select class="browser-default" id="selectDistritos" name="selectDistritos"></select>
+                    </div>
+                  {% endif %}
+
+                  <div class="col s12">
+                    <br>
+                  </div>
+                  <div class="input-field col s12 l12" id="toHide">
+                    <input id="direccionComprador"  name="direccionComprador" type="text" class="validate" value="{{compradores.Per_Direccion}}">
+                    <label for="direccionComprador">Dirección</label>
+                  </div>
+                </div>
+                <div class="col s12 l12 center">
+                  <a class="btn-flat grey-text text-darken-4" type="button" href="{{base_url()}}admin/compradores">Atras</a>
+                  <button class="btn colorAccent" id="btnEditComprador" name="btnEditComprador">Guardar cambios</button>
+                  <br><br>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s6 sinPadding">
+          <div class="row centrarForzado ">
+            <div class="col s12 center">
+              <h5 class="enasisA left">Compras</h5>
+            </div>
+          </div>
+       
+          <ul class="collapsible col s12" data-collapsible="accordion" style="margin-top:-5px;font-size:14px;">
+            {% if compras %} 
+             {% set nro = 1 %}
+                {% for comp in compras %}
+                  <li>
+                    <div class="collapsible-header">
+                      <table class="table" width="100%">
+                        <tr>
+                          <th><i class="material-icons" style="color:green;">storage</i></th>
+                          <th>Monto</th>
+                          <th>Fecha</th>
+                        </tr>
+                        <tr>
+                          <td>{{comp.Pac_IdPago_Compra}}</td>
+                          <td>S/ {{comp.Pac_Total}}</td>
+                          <td>{{comp.Pac_FechaRegistro}}</td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="collapsible-body" style="background:#F8F8F8;font-size:14px;">
+                      <table class="table" width="100%">
+                        <tr>
+                          <th width="60%">Producto</th>
+                          <th width="20%" class="center">Cantidad</th>
+                          <th width="20%" class="center">Monto</th>
+                        </tr>
+
+                        {% for compD in comp.comprasdetalle %}
+                          <tr>
+                            <td class="muayuscula">{{compD.Pro_Nombre}} {% if compD.SKU_Color != ' ' and compD.SKU_Color %}({{compD.SKU_Color}}){% endif %}</td>
+                            <td class="center">{{compD.Pcd_Cantidad}}</td>
+                            <td class="center">S/ {{compD.Pcd_Importe}}</td>
+                          </tr>
+                        {% endfor %}      
+                      </table>
+                    </div>
+                  </li>
+                {% set nro = nro + 1 %}
+              {% endfor %} 
+            {% else %} 
+                <li>
+                  <div class="collapsible-header">
+                    <table class="table">
+                      <tr>
+                         <th><i class="material-icons" style="color:green;">storage</i></th>
+                          <th></th>
+                          <th></th>
+                      </tr>
+                      <tr>
+                        <td colspan="3" class="center">No tiene compras...</td>
+                      </tr>
+                    </table>
+                  </div>
+                </li> 
+              {% endif %}         
+          </ul>
+        </div>
+
+        <div class="col s6 sinPadding">
+          <div class="row centrarForzado ">
+            <div class="col s12 center">
+              <h5 class="enasisA left">Favoritos</h5>
+            </div>
+          </div>
+       
+          <ul class="collapsible col s12" data-collapsible="accordion"  style="margin-top:-5px;font-size:14px;">
+            {% if favoritos %}
+              {% set nro = 1 %}
+                  {% for fav in favoritos %}
+                    <li>
+                      <div class="collapsible-header">
+                        <table class="table">
+                          <tr>
+                            <th width="80%"><i class="material-icons" style="color:red;">favorite</i></th>
+                            <th width="20%" class="center">Fecha</th>
+                          </tr>
+                          <tr>
+                            <td class="muayuscula">{{fav.Pro_Nombre}}</td>
+                            <td class="center">{{fav.Prf_FechaRegistro}}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </li>
+                  {% set nro = nro + 1 %}
+                {% endfor %}
+              {% else %} 
+                <li>
+                  <div class="collapsible-header">
+                    <table class="table">
+                      <tr>
+                        <th><i class="material-icons" style="color:red;">favorite</i></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="center">No tiene favoritos...</td>
+                      </tr>
+                    </table>
+                  </div>
+                </li> 
+              {% endif %}      
+          </ul>
+        </div>
+
+        {% if compras|length > 1 %}
+          <div class="col s6 sinPadding">&nbsp;&nbsp;</div>
+        {% endif %}
+          
+        <div class="col s6 sinPadding">
+          <div class="row centrarForzado ">
+            <div class="col s12 center">
+              <h5 class="enasisA left">Grupos</h5>
+            </div>
+          </div>
+       
+          <ul class="collapsible col s12" data-collapsible="accordion"  style="margin-top:-5px;font-size:14px;">
+            {% if grupos %}
+              {% set nro = 1 %}
+                  {% for gru in grupos %}
+                    <li>
+                      <div class="collapsible-header">
+                        <table class="table">
+                          <tr>
+                            <th width="60%"><i class="material-icons" style="color:blue;">group</i></th>
+                            <th width="20%" class="center">Precio</th>
+                            <th width="20%" class="center">Estatus</th>
+                          </tr>
+                          <tr>
+                            <td class="muayuscula">{{gru.Pro_Nombre}}</td>
+                            <td class="center">S/ {{gru.Prg_Precio}}</td>
+                            <td class="center">{% if gru.Prg_Estado == 0 %}SIN COMPLETAR{% else %}COMPLETADO{% endif %}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </li>
+                  {% set nro = nro + 1 %}
+                {% endfor %}
+              {% else %} 
+                <li>
+                  <div class="collapsible-header">
+                    <table class="table">
+                      <tr>
+                        <th><i class="material-icons" style="color:blue;">group</i></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="center">No tiene grupos...</td>
+                      </tr>
+                    </table>
+                  </div>
+                </li> 
+              {% endif %}      
+          </ul>
+        </div>
+    {% else %}  
+
+    <div class="col s12 sinPadding">
+          <br>
+          <div class="row centrarForzado ">
+            <div class="col s12 center">
+              <h5 class="enasisA left">Editar Comprador</h5>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col s12 sinPadding" style="margin-top:-35px;">
+          <div class="card">
+            <div class="card-content sinPadding">
+              <div class="row cardContentFix"> 
+                <div class="input-field col s12">
+                  <input type="hidden" id="idUsuario" value="{{compradores.Usu_IdUsuario}}">
+                  <input type="hidden" id="idPersona" value="{{compradores.Per_IdPersona}}">
+                  <input type="hidden" id="regionOcult" value="{{compradores.Region_id}}">
+                  <input type="hidden" id="provinciaOcult" value="{{compradores.Provincia_id}}">
+                   <input type="hidden" id="departamentoOcult" value="{{compradores.Distrito_id}}">
+                  <input id="DNIORUC" name="DNIORUC" type="number" class="validate" value="{{compradores.Per_Dni}}">
+                  <label for="DNIORUC">D.N.I / OTROS</label>
+                </div>
+                 <div class="input-field col s12">
+                  <input placeholder="" id="nombreComprador" name="nombreComprador" type="text" class="validate" value="{{compradores.Per_Nombre}}">
+                  <label for="nombreTienda">Nombre del Comprador</label>
+                </div>
+                <div class="input-field col s12">
+                  <input placeholder="" id="tlf" name="tlf" type="number" class="validate" min="1" value="{{compradores.Per_Telefono}}">
+                  <label for="tlf">Teléfono Celular</label>
+                </div>
+                <div class="input-field col s12">
+                  <input placeholder="" id="correo" name="correo" type="email" class="validate" value="{{compradores.Per_Correo}}">
+                  <label for="correo">Correo Electrónico</label>
+                </div>
+
+                <div>
+                 
+                <div class="col s12">
+                  <label for="" style="font-size:15px;">Departamento</label>
+                  <select name="selectRegion" id="selectRegion" class="browser-default" onchange="getProvinces()">
+                    <option value="0" disabled selected> Seleccione un departamento</option>
+                    {% for reg in region_tienda %}
+                      {% if compradores.Region_id == reg.id %}
+                        <option value="{{reg.id}}" selected>{{reg.name}}</option>
+                      {% else %}
+                        <option value="{{reg.id}}">{{reg.name}}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+                
+                <div class="col s12">
+                  <label for="" style="font-size:15px;">Provincia</label>
+                  <select class="browser-default" id="selectProvincia" name="selectProvincia" onchange="getDistrito()"></select>
+                </div>
+                    
+                <div class="col s12">
+                  <label for="" style="font-size:15px;">Distrito</label>
+                  <select class="browser-default" id="selectDistritos" name="selectDistritos"></select>
+                </div>
+                  
+                <div class="col s12">
+                  <br>
+                </div>
+                
+                <div class="input-field col s12 l12" id="toHide">
+                  <input id="direccionComprador"  name="direccionComprador" type="text" class="validate" value="{{compradores.Per_Direccion}}">
+                  <label for="direccionComprador">Dirección</label>
+                </div>
+                </div>
+                <div class="col s12 l12 center">
+                  <a class="btn-flat grey-text text-darken-4" type="button" href="http://localhost/betapormayor/admin/compradores">Atras</a>
+                  <button class="btn colorAccent" id="btnEditComprador" name="btnEditComprador">Guardar cambios</button>
+                  <br><br>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 sinPadding">
+          <div class="row centrarForzado ">
+            <div class="col s12 center">
+              <h5 class="enasisA left">Favoritos</h5>
+            </div>
+          </div>
+       
+          <ul class="collapsible col s12" data-collapsible="accordion"  style="margin-top:-5px;font-size:14px;">
+            {% if favoritos %}
+              {% set nro = 1 %}
+                  {% for fav in favoritos %}
+                    <li>
+                      <div class="collapsible-header">
+                        <table class="table">
+                          <tr>
+                            <th width="70%"><i class="material-icons" style="color:red;">favorite</i></th>
+                            <th width="30%" class="center">Fecha</th>
+                          </tr>
+                          <tr>
+                            <td class="muayuscula">{{fav.Pro_Nombre}}</td>
+                            <td class="center">{{fav.Prf_FechaRegistro}}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </li>
+                  {% set nro = nro + 1 %}
+                {% endfor %}
+              {% else %} 
+                <li>
+                  <div class="collapsible-header">
+                    <table class="table">
+                      <tr>
+                        <th><i class="material-icons" style="color:red;">favorite</i></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="center">No tiene favoritos...</td>
+                      </tr>
+                    </table>
+                  </div>
+                </li> 
+              {% endif %}      
+          </ul>
+        </div>
+
+        <div class="col s12 sinPadding">
+          <div class="row centrarForzado ">
+            <div class="col s12 center">
+              <h5 class="enasisA left">Grupos</h5>
+            </div>
+          </div>
+       
+          <ul class="collapsible col s12" data-collapsible="accordion"  style="margin-top:-5px;font-size:14px;">
+            {% if grupos %}
+              {% set nro = 1 %}
+                  {% for gru in grupos %}
+                    <li>
+                      <div class="collapsible-header">
+                        <table class="table">
+                          <tr>
+                            <th width="50%"><i class="material-icons" style="color:blue;">group</i></th>
+                            <th width="25%" class="center">Precio</th>
+                            <th width="25%" class="center">Estatus</th>
+                          </tr>
+                          <tr>
+                            <td class="muayuscula">{{gru.Pro_Nombre}}</td>
+                            <td class="center">S/ {{gru.Prg_Precio}}</td>
+                            <td class="center">{% if gru.Prg_Estado == 0 %}SIN COMPLETAR{% else %}COMPLETADO{% endif %}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </li>
+                  {% set nro = nro + 1 %}
+                {% endfor %}
+              {% else %} 
+                <li>
+                  <div class="collapsible-header">
+                    <table class="table">
+                      <tr>
+                        <th><i class="material-icons" style="color:blue;">group</i></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="center">No tiene grupos...</td>
+                      </tr>
+                    </table>
+                  </div>
+                </li> 
+              {% endif %}      
+          </ul>
+        </div>
+
+        <div class="col s12 sinPadding">
+          <div class="row centrarForzado ">
+            <div class="col s12 center">
+              <h5 class="enasisA left">Compras</h5>
+            </div>
+          </div>
+       
+          <ul class="collapsible col s12" data-collapsible="accordion"  style="margin-top:-5px;font-size:14px;">
+            {% if compras %} 
+             {% set nro = 1 %}
+                {% for comp in compras %}
+                  <li>
+                    <div class="collapsible-header">
+                      <table class="table">
+                        <tr>
+                          <th width="20%"><i class="material-icons" style="color:green;">storage</i></th>
+                          <th width="40%" class="center">Monto</th>
+                          <th width="40%" class="center">Fecha</th>
+                        </tr>
+                        <tr>
+                          <td>{{comp.Pac_IdPago_Compra}}</td>
+                          <td class="center">S/ {{comp.Pac_Total}}</td>
+                          <td class="center">{{comp.Pac_FechaRegistro}}</td>
+                        </tr>
+                      </table>
+                    </div>
+                     <div class="collapsible-body" style="background:#F8F8F8;font-size:14px;">
+                      <table class="table" width="100%">
+                        <tr>
+                          <th width="50%">Producto</th>
+                          <th width="20%" class="center">Cantidad</th>
+                          <th width="30%" class="center">Monto</th>
+                        </tr>
+
+                        {% for compD in comp.comprasdetalle %}
+                          <tr>
+                            <td class="muayuscula">{{compD.Pro_Nombre}} {% if compD.SKU_Color != ' ' and compD.SKU_Color %}({{compD.SKU_Color}}){% endif %}</td>
+                            <td class="center">{{compD.Pcd_Cantidad}}</td>
+                            <td class="center">S/ {{compD.Pcd_Importe}}</td>
+                          </tr>
+                        {% endfor %}      
+                      </table>
+                    </div>
+                  </li>
+                {% set nro = nro + 1 %}
+              {% endfor %} 
+            {% else %} 
+                <li>
+                  <div class="collapsible-header">
+                    <table class="table">
+                      <tr>
+                         <th><i class="material-icons" style="color:green;">storage</i></th>
+                          <th></th>
+                          <th></th>
+                      </tr>
+                      <tr>
+                        <td colspan="3" class="center">No tiene compras...</td>
+                      </tr>
+                    </table>
+                  </div>
+                </li> 
+              {% endif %}         
+          </ul>
+        </div>
+
+    
+    {% endif %}    
+      </div>
+  </main>
+
+{% endblock %}
+
+{% block script %}
+  <script>
+    // var flagVariaciones = {{flagVariaciones}};
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="{{base_url('public/js/admin/compradores/')}}index.js" type="text/javascript"></script>
+  {% if compradores.Region_id %}
+    <script>
+      //Cargar Provincias Principales
+      getProvinces();
+    </script>
+  {% endif %}
+{% endblock %}

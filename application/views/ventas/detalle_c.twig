@@ -1,0 +1,177 @@
+{% extends "layout/intranet/template_ven.twig" %}
+{% block head %}
+	<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/gestion_pedido.css')}}"  media="screen,projection"/>
+	<style type="text/css">
+		blockquote{
+			border-left: 5px solid #121212;
+			font-size: 16px;
+		}
+		table thead tr th{
+			border-radius: 0px;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+    <main class="container fixContainer">
+    	<div class="card">
+        	<div class="card-content ">
+        		<div class="row sinBordeBottom">
+	    			<h5 class="center card-title">DETALLE DE VENTA</h5>
+	    			<div class="divider"></div> <br>
+	    			<div class="row">
+	    				<div class="row infoDetalle centrarForzado">
+	    					<div class="col s12 m6 l6 center">
+	  						<div class="anchoTotal grey lighten-2 valign-wrapper redondeo negrita grey-text text-darken-2" ><i class="material-icons  left">person</i>{{usuario.Per_Nombre}}</div>
+	    						<br>
+		    				</div>
+		    				<div class="col s12 m6 l6 center">
+		    					<div class="anchoTotal grey lighten-2 valign-wrapper redondeo negrita grey-text text-darken-2" ><i class="material-icons  left">phone</i>{{compra_info.Pci_Telefono}}</div>
+		    					<br>
+		    				</div>
+		    			</div>	
+	    			</div>
+	    			<div class="row">
+	    			{# {% if compra.Pac_Banco == "BCP" %} #}
+	    			 {% if compra.Pac_Banco == "Culqi" %}
+	    				<div class="row infoDetalle centrarForzado">
+		    				<div class="col s12 m6 l6 center">
+		    					<div class="anchoTotal grey lighten-2 valign-wrapper redondeo negrita grey-text text-darken-2" ><i class="material-icons  left">lock</i> ORDEN # COMPRA &nbsp;<span class="pormayorUnico-text">{{compra.Pac_CodPago}}</span></div>
+	    						<br>
+		    				</div>
+		    				<div class="col s12 m6 l6 center">
+		    					<div class="anchoTotal green lighten-3  valign-wrapper redondeo negrita grey-text" ><i class="material-icons green-text text-darken-2 left">account_balance</i><b class="green-text text-darken-2">COMPRA PROCESADA</b></div>
+		    					<br>
+		    				</div>
+		    			</div>	 
+					{% else %}
+	    				<div class="row infoDetalle centrarForzado">
+	    					<div class="col s12 m6 l6 center">
+	  						<div class="anchoTotal grey lighten-2 valign-wrapper redondeo negrita grey-text text-darken-2" ><i class="material-icons left">payment</i> COMPRA SEGURA</div>
+	    						<br>
+		    				</div>
+		    				<div class="col s12 m6 l6 center">
+		    					<div class="anchoTotal grey lighten-2 valign-wrapper redondeo negrita grey-text text-darken-2" ><i class="material-icons  left">account_balance</i>{{compra.Pac_Banco}}</div>
+		    					<br>
+		    				</div>
+		    				<div class="col s12 m6 l6 center">
+		    					<div class="anchoTotal grey lighten-2 valign-wrapper redondeo negrita grey-text text-darken-2" ><i class="material-icons  left">lock</i> CODIGO COMPRA &nbsp;<span class="pormayorUnico-text">{{compra.Pac_CodPago}}</span></div>
+	    						<br>
+		    				</div>
+		    				<div class="col s12 m6 l6 center">
+		    					{% set fechaVencimiento = compra.Pac_FechaRegistro|date_modify("+3 day")|date("d/m/Y") %}
+		    					{% set fechaHOY = "now"|date("d/m/Y") %}
+		    						{# {% if fechaHOY < fechaVencimiento %} #}
+		    					<div class="anchoTotal grey lighten-2 valign-wrapper redondeo negrita grey-text text-darken-2" ><i class="material-icons  left">update</i> VENCIMIENTO &nbsp;<span class="pormayorUnico-text">{{fechaVencimiento}}</span></div>
+		    						{# {% else %} #}
+		    					{# <div class="anchoTotal red darken-2 lighten-2 valign-wrapper redondeo negrita grey-text text-darken-2" ><i class="material-icons white-text left">update</i> <span class="white-text">CÓDIGO VENCIDO</span> &nbsp;<span class="white-text">{{fechaVencimiento}}</span></div> #}
+		    						{# {% endif %} #}
+	    						<br>
+		    				</div>
+		    			</div>	    			
+	    			{% endif %}
+	    				<div class="row infoDetalle centrarForzado">
+	    					<div class="col s12 m6 l6 center">
+	  							<div class="anchoTotal grey lighten-2 valign-wrapper redondeo grey-text text-darken-2" ><i class="material-icons left">location_city</i>{{compra_info.region|upper}}, {{compra_info.provincia|upper}} - {{compra_info.distrito|upper}}</div>
+	    						<br>
+		    				</div>
+		    				<div class="col s12 m6 l6 center">
+		    					<div class="anchoTotal grey lighten-2 valign-wrapper redondeo grey-text text-darken-2" ><i class="material-icons left">location_on</i>{{compra_info.Pci_Direccion|title}} {% if compra_info.Pci_Urbanizacion %} - {{compra_info.Pci_Urbanizacion|title}}{% endif %}{% if compra_info.Pci_Referencia %}, {{compra_info.Pci_Referencia}}{% endif %}</div>
+	    						<br>
+		    				</div>
+		    			</div>	
+	    				<div class="col s12 l12">
+				      		<table class="bordered anchoTotal">
+				      			<thead style="table-layout:fixed" class="pormayor">
+				      				<tr>
+				      					<th style="width:20%">Tienda</th>
+				      					<th style="width:30%">Producto</th>
+				      					<th style="width:25%">Precio</th>
+				      					<th style="width:25%">Importe S/</th>
+				      				</tr>
+				      			</thead>
+				      			<tbody>
+				      				{% set total = 3 %}
+				      				{% set total2 = 0 %}
+				      				{% for com in compra_detalle %}
+					      				<tr>
+					      					<td><a class="waves-effect waves-light btn-flat modal-trigger" data-idtie="{{com.Tie_IdTienda}}" href="#inf_tienda"><b>{{com.Tie_Nombre}}</b></a></td>
+					      					<td>
+					      						<span class="enfasisB fontB2">{{com.Pro_Nombre}}</span></br>
+					    		   				<span class="enfasisB fontB2">{{com.Var_Nombre}} {{com.Vao_Nombre}}</span>
+					    		   				<b>{{com.Pcd_Cantidad}} unid(s)</b></br>
+					    					</td>
+					      					<td>
+					      						{% set precioventa = com.Pcd_Precio %}
+					      						<span class="precioventa" id="precioventa{{ved.Pcd_IdSKU}}">{{precioventa|number_format(2, '.', ' ')}}</span>
+					      					</td>
+					      					<td id="tdimporte{{com.Pcd_IdSKU}}">
+					      						<span id="importe{{com.Pcd_IdSKU}}">{{com.Pcd_Importe|number_format(2, '.', ' ')}}</span>
+					      					</td>
+					      				</tr>
+					      				{% set total = total + com.Pcd_Importe %}
+					      				{% set total2 = total2 + com.Pcd_Importe %}
+				            		{% endfor %}
+			                		<tr>
+			                			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
+			                			<td colspan="2" class="fontA center">
+			                			Total a pagar
+			                			<td class="center fontA " colspan="2">
+			                				<b>S/{{total2|number_format(2, '.', ' ')}}</b>
+			                			</td>
+			                		</tr>
+				      			</tbody>
+				      		</table>
+	    				</div>
+	    			</div>
+    			</div>
+			</div>
+		</div>
+    </main>
+
+	  <!-- Modal Structure -->
+
+{% endblock %}
+
+{% block modal %} 
+	  <div id="inf_tienda" class="modal">
+	    <div class="modal-content" >
+	      <div class="preloadInfo"></div>
+	    </div>
+	    <div class="modal-footer">
+	      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+	    </div>
+	  </div>
+{% endblock %}  
+
+{% block script %}
+	<script>
+	 $('#inf_tienda').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: 0.8, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        // alert("Ready");
+       var Tie_IdTienda = trigger[0]['dataset']['idtie'];
+ 		
+ 		$.ajax({
+	          data:{
+	          	Tie_IdTienda: Tie_IdTienda
+	          },
+	          type: "POST",
+	          url: base_url+'ventas/compras/infoTienda',
+	          beforeSend:function()
+	          {
+	            $(".preloadInfo").html('<br><br><br><br><br><div class="progress"><div class="indeterminate blue"></div></div>');
+	          },
+	          success: function(data){
+	            $(".preloadInfo").html(data);
+	        	}	
+	        });	
+    }
+    });
+	</script>
+{% endblock %}

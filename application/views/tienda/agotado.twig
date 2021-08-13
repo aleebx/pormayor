@@ -1,0 +1,94 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+{% endblock %}
+{% block content %}
+  <main class="container fixContainer">
+    <br class="hide-on-large-only"><br class="hide-on-large-only">
+    <div class="row centrarForzado">      
+      <div class="col s12 m12 l12 sinPadding" style="margin-bottom:50px">
+        <div class="row centrarForzado containerProductos ajax_filtro_tiendas">
+         {% for pro in productos %}
+          <a itemprop="url" href="" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+              <div class="col s12 m4 l3 black-text divAgotado">
+                <div class="card hoverable">
+                <span class="centered"><b>AGOTADO</b></span>
+                  <div class="center" style="height:190px;">
+                    <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy" data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+                  </div>
+                  <div class="card-content center" style="height:100px;">
+                    <p>
+                      <b class="truncate">{{pro.Pro_Nombre}}</b>
+                      {% if pro.Pro_Saldo == 1 %}
+                        <span class="fontA">S/ {{pro.Pro_PrecioMinimo}}</span><span class="new badge red">Remate</span>
+                      {% else %}
+                        <span class="fontA">S/ {{pro.Pro_PrecioMaximo}}</span> <label>S/ {{pro.Pro_PrecioMinimo}}</label>
+                      {% endif %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </a>
+          {% endfor %}
+        </div>       
+      </div>       
+    </div>
+  </main>
+           
+{% endblock %} 
+
+{% block script %}
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+    <script>
+      $(window).on("load", function() {
+        $('.smallInfo div.l3 .sideB').slideUp();
+          var bLazy = new Blazy({
+               loadInvisible: true,
+               offset: 100
+            });
+      });
+
+(function () {
+        function logElementEvent(eventName, element) {
+          console.log(Date.now(), eventName, element.getAttribute("data-src"));
+        }
+
+        var callback_enter = function (element) {
+          logElementEvent("🔑 ENTERED", element);
+        };
+        var callback_exit = function (element) {
+          logElementEvent("🚪 EXITED", element);
+        };
+        var callback_loading = function (element) {
+          logElementEvent("⌚ LOADING", element);
+        };
+        var callback_loaded = function (element) {
+          logElementEvent("👍 LOADED", element);
+        };
+        var callback_error = function (element) {
+          logElementEvent("💀 ERROR", element);
+          element.src = "https://via.placeholder.com/440x560/?text=Error+Placeholder";
+        };
+        var callback_finish = function () {
+          logElementEvent("✔️ FINISHED", document.documentElement);
+        };
+        var callback_cancel = function (element) {
+          logElementEvent("🔥 CANCEL", element);
+        };
+
+        var ll = new LazyLoad({
+          class_applied: "lz-applied",
+          class_loading: "lz-loading",
+          class_loaded: "lz-loaded",
+          class_error: "lz-error",
+          // Assign the callbacks defined above
+          callback_enter: callback_enter,
+          callback_exit: callback_exit,
+          callback_cancel: callback_cancel,
+          callback_loading: callback_loading,
+          callback_loaded: callback_loaded,
+          callback_error: callback_error,
+          callback_finish: callback_finish
+        });
+      })();
+    </script>
+{% endblock %}

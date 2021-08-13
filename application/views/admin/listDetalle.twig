@@ -1,0 +1,33 @@
+<select id="detallenuevo">
+    <option disabled="">Seleccionar</option>
+{% for des in detalle %}
+    <option value="{{des.Des_IdDetalle_SubCategoria}}">{{des.Des_Nombre}}</option>
+{% endfor %}
+</select>
+{% block script %}
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+	<script>
+	$(document).ready(function(){
+        $('select').material_select();
+
+        // $("#detallenuevo").change(function(){
+        // var Des_IdDetalle_SubCategoria = $(this).val();
+        //  $.ajax({
+        //     data:{
+        //     'Des_IdDetalle_SubCategoria' : Des_IdDetalle_SubCategoria
+        //     },
+          //   type: "POST",
+          //   url: base_url+'admin/generar/variaciones_categorias', 
+          //   dataType: "json",
+          //   success: function(data){
+          //       console.log(data);
+          //       $('#divVarCat').load(base_url+'admin/generar/var_cat',{datos:data,Des_IdDetalle_SubCategoria:Des_IdDetalle_SubCategoria});
+          //   },
+          //   error: function(data) {
+          //     alert('error 2');
+          //   }
+          // });
+    // });
+
+	});
+ {% endblock %}

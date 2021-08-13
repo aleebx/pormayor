@@ -1,0 +1,108 @@
+{% extends "layout/intranet/template_adm.twig" %}
+{% block head %}
+  <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"  media="screen,projection"/>
+{% endblock %}
+{% block content %}
+    <main class="">
+      <div class="card">
+        <div class="card-content sinPadding">
+          <div class="row cardContentFix">
+            <h5 class="enasisA center centrarForzado">Inventario de Productos</h5>        
+              {% if producto %}
+                <div class="col s12 l12 l12 {% if userAgent == "PC" %}left{% else %}center{% endif %} sinPadding">
+                    <a data-target="containerPro" class="btn large negrita" href="{{base_url()}}admin/tiendas"><i class="material-icons left">keyboard_return</i>Volver al listado de tiendas</a>
+                    <br><br>
+                </div>
+                <h5 class="enasisA left centrarForzado">Tienda {{inf_tienda.Tie_Nombre}}</h5> 
+                <div class="col s12 l12 sinPadding">
+                  <table id="tablaTienda_Productos"  class="display" style="width:100%">
+                    <thead>
+                    <tr>
+                      {% if userAgent == 'PC' %}
+                        <th>Imagen</th>
+                      {% endif %}  
+
+                      <th>Producto</th>
+                      <th class="center">Visualización</th>
+                      <th class="center">Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      {% for pro in producto %} 
+                      <tr>
+                         {% if userAgent == 'PC' %}
+                            <td align="left">
+                              <img class="redondeo" src="{{ruta_img}}{{pro.Prf_Img}}" height="60">
+                            </td>
+                          {% endif %}  
+                        <td>  
+                            {{pro.Pro_Nombre|title}}
+                             {% if pro.Pro_Estado == 1 or pro.Pro_Estado == 3 %}
+                                <br><br>
+                                <span> {% if pro.Pro_Estado == 1 %} <i style="top: 4px;" class="positionRelative material-icons orange-text">warning</i> <b class="orange-text">&nbsp;&nbsp;EN REVISIÓN</b>{% elseif pro.Pro_Estado == 3 %}<i style="top: 4px;" class="positionRelative material-icons red-text">not_interested</i> <b class="red-text">&nbsp;&nbsp;RECHAZADO</b> {% endif %}</span> 
+                            {% endif %}
+                        </td>
+                        <td class="center">
+                          <b>{{pro.Pro_Vista}}</b> vistas <br>
+                          <a data-idpro="{{pro.Pro_IdProducto}}" data-est="{{pro.Pro_Estado}}" class="btn-flat estP {% if pro.Pro_Estado == 4 %}green lighten-5">Activar{% else %}red lighten-5">Desactivar{% endif %}</a> 
+                        </td>
+                        <td class="center">
+                            <button data-idpro="{{pro.Pro_IdProducto}}" class="waves-effect red waves-light btn btnDeleteGen" ><i class="material-icons">delete</i></button>
+                        </td>
+                      </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              {% else %}
+                <div class="center col s12 m12 l12" style="margin-top: 20px;">
+                  <img src="{{ruta_img}}emptyProductos.webp" height="150"></img>
+                </div>
+                <div class="center col s12 m12 l12">
+                  <h5>Sin productos agregados</h5>
+                  <p class="enfasisB">Esta comprobado que mientras más productos agregues más ventas podrás realizar ¿Qué estas esperando para impulsar tu negocio?</p>
+                  <br>
+                </div>
+                  <div class="col s12 l12 l12 {% if userAgent == "PC" %}center{% else %}center{% endif %} sinPadding">
+                    <a data-target="containerPro" class="btn large negrita" href="{{base_url()}}admin/tiendas"><i class="material-icons left">keyboard_return</i>Volver al listado de tiendas</a>
+                    <br><br>
+                </div>
+              {% endif %}  
+        </div> 
+      </div> 
+    </main>
+{% endblock %}
+{% block script %}
+    <script>     
+    $( "#cargar" ).submit(function( event ) {
+        alert("¡Carga Exitosa!");
+        event.preventDefault();
+      });
+    var agent = {{userAgent|json_encode()}};
+
+      $('#tablaTienda_Productos').DataTable({
+        "order": [[ 0, 'asc' ], [ 0, 'desc' ]],
+          "language": {
+              "lengthMenu": "",
+              "zeroRecords": "No se encontro nada",
+              "info": "Página _PAGE_ de _PAGES_",
+              "infoEmpty": "No hay registros disponibles",
+          "emptyTable":     "No hay información en la tabla",
+          "infoFiltered":   "(filtrado de _MAX_ ventas)",
+          "infoPostFix":    "",
+          "thousands":      ",",
+          "loadingRecords": "Cargando...",
+          "processing":     "Procesando...",
+          "search":         "Buscar:",
+          "paginate": {
+              "first":      "Primero",
+              "last":       "Último",
+              "next":       "Siguiente",
+              "previous":   "Anterior"
+                }
+         }
+    });
+
+    </script>
+    <script src="{{base_url('public/js/admin/tiendas/')}}index.js" type="text/javascript"></script>
+{% endblock %}

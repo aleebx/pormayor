@@ -1,0 +1,85 @@
+{% extends "layout/intranet/template_gc.twig" %}
+
+{% block content %}
+    <!-- Page Layout here -->
+    <main class="container">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title center">Comisión de tiendas</span>
+          <div class="divider"></div>
+          <div class="section">
+            <div class="row center">
+              <div class="col s12 m4 l4">
+                Sueldo Básido Mensual   
+                <h4>S/ <b>950</b></h4>
+              </div>
+              <div class="col s12 m4 l4">
+                Bono Semanal por cumplimiento de meta minima semanal de 10 tiendas con 10 o más productos creados <h4>S/ <b>50</b></h4>
+              </div>
+              <div class="col s12 m4 l4">
+              A partir de la tienda 41 comisión de <h4>S/ <b>20</b></h4> por tienda
+              </div>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col s12 m12 l12"> 
+                 <ul class="collapsible" data-collapsible="accordion">
+                  {% for met in mesestienda %}                    
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{meses['nombre'][met.Tie_FechaRegistro|date("m")]}}</div>
+                      <div class="collapsible-body">
+                        <table class="highlight centered bordered">
+                          <thead>
+                            <tr>
+                              <th># TIENDAS</th>
+                              <th>BONO S/</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% set tiendas = 0 %}
+                              {% for tig in tiendas_gestor %}
+                                {% if met.Tie_FechaRegistro|date("m") == tig.Tie_FechaRegistro|date("m") %}  
+                                  {% for cap in cantidad_producto %} 
+                                    {% if cap.Tie_IdTienda == tig.Tie_IdTienda %}                                
+                                      {% if cap.Cantidad > 10 %}
+                                        {% set tiendas = tiendas + 1 %}                                      
+                                      {% else %}
+                                        {% set tiendas = tiendas %}                                      
+                                      {% endif %}
+                                    {% endif %}
+                                  {% endfor %}
+                                {% endif %}
+                              {% endfor %}
+                              <tr>
+                                <td>
+                                  {% if tiendas >= 41 %}
+                                    {{tiendas}}
+                                  {% else %}
+                                  Sin tiendas válidas    
+                                  {% endif %}                                  
+                                </td>
+                                <td>
+                                {% if tiendas >= 10 %}
+                                  50
+                                {% else %}
+                                  0    
+                                {% endif %}
+                                 
+                                </td>
+                              </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </li>
+                  {% endfor %}
+                </ul>               
+              </div>
+            </div>
+        </div>
+      </div>
+    </main>
+{% endblock %}
+
+{% block script %} 
+{% endblock %}
