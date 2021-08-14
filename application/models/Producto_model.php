@@ -765,7 +765,7 @@
                 INNER JOIN categoriap as cat on cat.Cat_IdCategoria = prc.Cat_IdCategoria
                 INNER JOIN subcategoriap as suc on suc.Suc_IdSubCategoria = prc.Suc_IdSubCategoria
                 INNER JOIN detalle_subcategoriap as des on des.subcategoria_Suc_IdSubCategoria = prc.Suc_IdSubCategoria 
-                WHERE pro.Pro_PM = 1 AND pro.Pro_Nombre LIKE '%$nombre_producto%' GROUP BY pro.Pro_IdProducto HAVING SKU_StockDisponible >= 3";
+                WHERE pro.Pro_PM = 1 AND pro.Pro_Nombre LIKE '%$nombre_producto%' GROUP BY pro.Pro_IdProducto HAVING SKU_StockDisponible >= 1";
             $query = $this->db->query($sql);
             return $query->result();
         }
@@ -979,7 +979,7 @@
             $this->db->from('producto as pro');
             $this->db->where('pro.Pro_PM',1);
             $this->db->order_by('pro.Pro_FechaModificacion','DESC');
-            $this->db->having('SKU_StockDisponible >=', 3);
+            $this->db->having('SKU_StockDisponible >=', 1);
             $query = $this->db->get();
             return $query->result();
         }
