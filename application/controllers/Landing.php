@@ -15,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$data['vista_carrito4'] = true;
 	      	$data['vista_carrito_compra'] = true;
 	      	$data['nofooter'] = true;
+	      	redirect('');
 
 			$this->twig->parse('landing/landing_vendedor.twig', $data);
 		}
