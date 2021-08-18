@@ -1,0 +1,55 @@
+{% extends "layout/intranet/template_ven.twig" %}
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+{% endblock %}
+{% block content %}
+  <main class="">
+    <div class="card">
+      <div class="card-content">
+      {# <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> #}
+        <h4>STOCK DE PRODUCTOS</h4>
+        <table id="listado">
+          <thead>
+            <tr>
+                <th></th>
+                <th>PRODUCTO</th>
+                <th>VARIACIÓN</th>
+                <th>PRECIO</th>
+                <th>DISPONIBLE</th>
+                <th>RESERVADO</th>
+            </tr>
+            {# pro.Pro_IdProducto, pro.Pro_Nombre, sku.SKU_Color, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.SKU_StockDisponible, sku.Sku_StockReservado,pro.Pro_PrecioMinimo'); #}
+          </thead>
+          <tbody>
+              {% for pro in productos %}
+                <tr>
+                  <td><img class="redondeo" src="{{ruta_img}}{{pro.Prf_Img}}" height="50"></td>
+                  <td>{{pro.Pro_Nombre}}</td>
+                  <td>{{pro.SKU_Color}}</td>
+                  <td class="fontD2">S/ {{pro.Pro_PrecioMinimo}}</td>
+                  <td>{{pro.SKU_StockDisponible}}</td>
+                  <td>{{pro.SKU_Reservado}}</td>
+                </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <div id="modalGes" class="modal" style="z-index:9999 !important;width: 50%!important;">
+      <div class="modal-content" id="loadEdit"></div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+  <script>
+  $(document).ready( function () {
+      $('#listado').DataTable({
+        "responsive": true
+      });
+    });
+  </script>
+{% endblock %}

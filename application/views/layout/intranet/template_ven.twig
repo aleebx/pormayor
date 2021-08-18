@@ -106,11 +106,14 @@
           <a href="{{base_url()}}"><img alt="Pormayor.pe - Vende facilito, Compra segurito" src="{{ruta_img}}LogoPositivo.svg" class="valign-wrapper" height="40"></a>
         </div>
       </li>
+      <li class="itemMenu {% if pag == 'perfil' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/perfil"><i class="material-icons">sentiment_very_satisfied</i>Mi Perfil</a></li>
       <li class="itemMenu {% if pag == 'crear' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/crear"><i class="material-icons">person_add</i>Crear cliente</a></li>
       <li class="itemMenu {% if pag == 'listado' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/listado"><i class="material-icons">person_outline</i>Mis clientes</a></li>
+      <li class="itemMenu {% if pag == 'misventas' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/misventas"><i class="material-icons">person_outline</i>Mis ventas</a></li>
       <li class="itemMenu {% if pag == 'listado_clientes' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/listado_clientes"><i class="material-icons">group</i>Clientes registrados</a></li>
       <li class="itemMenu {% if pag == 'ventas' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/ventas"><i class="material-icons">money</i>Ventas</a></li>
       <li class="itemMenu {% if pag == 'hoy' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/hoy"><i class="material-icons">speaker_notes</i>Hoy</a></li>
+      <li class="itemMenu {% if pag == 'stock' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/stock"><i class="material-icons">grid_on</i>Stock</a></li>
       <li class="itemMenu {% if pag == 'reporte' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/reporte"><i class="material-icons">list</i>Reporte</a></li>
       <li class="containerAvatar valign-wrapper">
         <div class="avatarComprador" style="top: 2px;">

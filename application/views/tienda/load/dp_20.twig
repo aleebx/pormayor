@@ -204,7 +204,7 @@
             <div style="max-height:325px; overflow-y:auto;">
             {% if producto.Cat_IdCategoria != 12 and producto.Cat_IdCategoria != 2 and producto.Suc_IdSubCategoria != 41 %}
             {% for key, sku in SKU %}  
-                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible > 2 %}
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible >= 1 %}
                 {% set colorActual = sku.SKU_Color %}
                     <div class="row centrarForzado">
                       <div class="col l5 left-align">
@@ -239,7 +239,7 @@
                           {% set count = 0 %}
                           {% set break = false %}
                           {% for skub in SKUB|sort('asc') if not break  %}                        
-                              {% if colorActual == skub.SKU_Color and skub.SKU_StockDisponible > 2 %}
+                              {% if colorActual == skub.SKU_Color and skub.SKU_StockDisponible >= 1 %}
                                   <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="{{skub.SKU_StockDisponible}}" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
                               {% else %}
                                 {% set break = false %} 
@@ -263,7 +263,7 @@
               {% endfor %}
               {% else %}
                 {% for key, sku in SKU %}  
-                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible > 2 %}
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible >= 1 %}
                 {% set colorActual = sku.SKU_Color %}
                     <div class="row centrarForzado">
                       <div class="col l5 left-align">
@@ -433,7 +433,7 @@
                 </div>             
               {% if producto.Cat_IdCategoria != 12 and producto.Cat_IdCategoria != 2 and producto.Suc_IdSubCategoria != 41 %}
             {% for key, sku in SKU %}  
-                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible > 2 %}
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible >= 1 %}
                 {% set colorActual = sku.SKU_Color %}
                     <div class="row centrarForzado">
                       <div class="col s5 left-align">
@@ -457,7 +457,7 @@
                           {% set count = 0 %}
                           {% set break = false %}
                           {% for skub in SKUB|sort('asc') if not break  %}                        
-                              {% if colorActual == skub.SKU_Color and skub.SKU_StockDisponible > 2 %}
+                              {% if colorActual == skub.SKU_Color and skub.SKU_StockDisponible >= 1 %}
                                   <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
                               {% else %}
                                 {% set break = false %} 
@@ -481,7 +481,7 @@
               {% endfor %}
             {% else %}
               {% for key, sku in SKU %}  
-                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible > 5 %}
+                {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible >= 1 %}
                 {% set colorActual = sku.SKU_Color %}
                     <div class="row centrarForzado">
                       <div class="col S5 left-align">
@@ -518,7 +518,7 @@
                               {% set count = 0 %}
                               {% set break = false %}
                               {% for skub in SKUB|sort('asc') if not break  %}                        
-                                  {% if colorActual == skub.SKU_Color  and skub.SKU_StockDisponible > 2 %}
+                                  {% if colorActual == skub.SKU_Color  and skub.SKU_StockDisponible >= 1 %}
                                       <span class="fontB2" for="{{skub.SKU_IdSku}}">Talla {{skub.Vao_Nombre}}</span>
                                         <div class="input-group input-number-group">
                                           <div class="input-group-button">

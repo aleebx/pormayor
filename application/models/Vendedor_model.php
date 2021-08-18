@@ -93,6 +93,15 @@ class Vendedor_model extends CI_Model
         return $query->result();
     }
 
+    function stock_vendedor(){
+        $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, sku.SKU_Color, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.SKU_StockDisponible, sku.SKU_Reservado,pro.Pro_PrecioMinimo');
+        $this->db->from('producto as pro');
+        $this->db->join('sku as sku','sku.producto_Pro_IdProducto = pro.Pro_IdProducto');
+        $this->db->order_by('pro.Pro_FechaModificacion','DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function get_clientes_ventas($id_vendedor){
         $this->db->select('usu.Usu_IdUsuario, pac.Pac_Estado, count(pac.Pac_IdPago_Compra) as ventas, pac.Pac_FechaRegistro');
         $this->db->from('usuario as usu');
@@ -118,6 +127,18 @@ class Vendedor_model extends CI_Model
         $this->db->where('Usu_IdUsuario',$id);    
         $query = $this->db->get();
         return $query->result();
+    } 
+
+    function buscar_correo($correo){
+        $this->db->select('*');
+        $this->db->from('usuario');
+        $this->db->where('Usu_Correo',$correo);    
+        $query = $this->db->get();
+        if($query->num_rows() > 0){
+          return 1;
+        } else {
+          return null;
+        }
     } 
 
     function reporte_gestion($id_vendedor,$mes){
@@ -214,6 +235,15 @@ class Vendedor_model extends CI_Model
         FROM pago_compra as pac 
         INNER JOIN usuario as usu ON usu.Usu_IdUsuario = pac.Usu_IdUsuario 
         INNER JOIN persona as per on per.Per_IdPersona = usu.Per_IdPersona";
+        $query = $this->db->query($sql);   
+        return $query->result();
+    }
+
+    function get_ventas_vendedor($id_vendedor)
+    {   
+        $sql="SELECT pac.Pac_IdPago_Compra, usu.Usu_IdUsuario,per.Per_Nombre, pac.Pac_Total, pac.Pac_Envio, pac.Pac_Banco, pac.Pac_FechaRegistro, pac.Pac_Estado,pac.Pac_CodPago,per.Per_Telefono FROM pago_compra as pac 
+        INNER JOIN usuario as usu ON usu.Usu_IdUsuario = pac.Usu_IdUsuario 
+        INNER JOIN persona as per on per.Per_IdPersona = usu.Per_IdPersona WHERE usu.Usu_IdUsuario_Ven = $id_vendedor";
         $query = $this->db->query($sql);   
         return $query->result();
     }

@@ -5,8 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function __construct()
 		{
 			parent::__construct();
+			$this->ci =& get_instance();
 			$this->load->model("Vendedor_model", "vendedorModel");
 			$this->load->model("Gestion_model", "gestionModel");
+			$this->ci->load->library('session');
 		}
 
 		function crear()
@@ -28,6 +30,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$data['gestionc'] = $this->vendedorModel->get_gestion_all();
 			$data['pag'] = "listado";
 			$this->twig->parse('vendedor/listado.twig', $data);
+			}else{
+				redirect ('');
+			}
+		}
+
+		function registro($idvendedor)
+		{
+			$data = $this->acl->load_datos();
+			if (empty($data['usuario']['rol'])) {
+			$url = explode("-", $idvendedor);
+			$data['id_vendedor'] = $url[1];
+			$this->twig->parse('registro.twig', $data);
+			}else{
+				redirect ('');
+			}
+		}
+
+		function stock()
+		{
+			$data = $this->acl->load_datos();
+			if ($data['usuario']['rol'] == 5) {
+			$data['productos'] = $this->vendedorModel->stock_vendedor();
+			$data['pag'] = "stock";
+			$this->twig->parse('vendedor/stock.twig', $data);
 			}else{
 				redirect ('');
 			}
@@ -67,6 +93,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				redirect ('');
 			}
 		}
+
+		function misventas()
+		{
+			$data = $this->acl->load_datos();
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
+			// $data['pagos']=$this->vendedorModel->get_ventas_pm();
+			$data['pag'] = "misventas";
+			$this->twig->parse('vendedor/ventas2.twig', $data);
+			}else{
+				redirect ('');
+			}
+		}
+
 		public function cambio_clave()
 	    {
 	         if($this->input->is_ajax_request()) {
@@ -79,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	        }
 	    } 
 
-		public function detalle_q($Pac_IdPago_Compra=false)
+			public function detalle_q($Pac_IdPago_Compra=false)
         {
 			
         	if($Pac_IdPago_Compra) {
@@ -98,18 +137,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         		show_404();
         	}
         }
+
         public function delete_detalle()
         {
-		if ($this->input->is_ajax_request()) {
-		$Id_Venta_Detalle = $this->input->post('id_venta_Detalle');
-		$SKU_IdSku = $this->input->post('id_sku');
-		$Cantidad = $this->input->post('cant');
-		$registro = $this->gestionModel->delete_detalle($Id_Venta_Detalle,$SKU_IdSku,$Cantidad);
-		echo $registro;
-		}
+					if ($this->input->is_ajax_request()) {
+					$Id_Venta_Detalle = $this->input->post('id_venta_Detalle');
+					$SKU_IdSku = $this->input->post('id_sku');
+					$Cantidad = $this->input->post('cant');
+					$registro = $this->gestionModel->delete_detalle($Id_Venta_Detalle,$SKU_IdSku,$Cantidad);
+					echo $registro;
+					}
         }
+
+        public function updatePedido()
+        {
+					if ($this->input->is_ajax_request()) {
+					$Pac_IdPago_Compra = $this->input->post('Pac_IdPago_Compra');
+					$Usu_IdUsuario = $this->input->post('Usu_IdUsuario');
+					$nombre = $this->input->post('nombre');
+					$dni = $this->input->post('dni');
+					$telefono = $this->input->post('telefono');
+					$ruc = $this->input->post('ruc');
+					$direccion = $this->input->post('direccion');
+					$referencia = $this->input->post('referencia');
+					$agencia = $this->input->post('agencia');
+					$estado = $this->input->post('estado');
+					$Pac_Envio = $this->input->post('Pac_Envio');
+					$registro = $this->gestionModel->updatePedido($Pac_IdPago_Compra,$Usu_IdUsuario,$nombre,$dni,$telefono,$ruc,$direccion,$referencia,$agencia,$estado,$Pac_Envio);
+					echo $registro;
+					}
+        }
+
         public function api_factura()
-		{
+			{
 
 			if ($this->input->is_ajax_request()) {
 				$hoy = date("Y-m-d");
@@ -374,6 +434,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           echo json_encode($results);
         }
 
+		public function listadopedidos2()
+        {      
+          $data = $this->acl->load_datos();
+					$id_vendedor = $data['usuario']['id_usuario'] ;
+          $d = $this->vendedorModel->get_ventas_vendedor($id_vendedor);
+          $c=0;
+            foreach ($d as $key => $value) {
+                $dat[$c]["Pac_IdPago_Compra"] = $value->Pac_IdPago_Compra;
+                $dat[$c]["Usu_IdUsuario"] = $value->Usu_IdUsuario;
+                $dat[$c]["Per_Nombre"] = $value->Per_Nombre;
+                $dat[$c]["Pac_Total"] = $value->Pac_Total;
+                $dat[$c]["Pac_Envio"] = $value->Pac_Envio;
+                if ($value->Pac_Banco == 'NO') {
+                $dat[$c]["Pac_Banco"] = 'CONTRAENTREGA';
+                }else if($value->Pac_Banco == 'TIENDA'){
+                $dat[$c]["Pac_Banco"] = 'RETIRO TIENDA';
+                }else{
+                $dat[$c]["Pac_Banco"] = 'DEPOSITO/TRANSFERENCIA';
+                }
+                $dat[$c]["Pac_FechaRegistro"] = $value->Pac_FechaRegistro;
+                if ($value->Pac_Estado == 1) {
+                $dat[$c]["Pac_Estado"] = 'NUEVA';
+                }else if($value->Pac_Estado == 2){
+                $dat[$c]["Pac_Estado"] = 'CONFIRMADA';
+                }else if($value->Pac_Estado == 5){
+                $dat[$c]["Pac_Estado"] = 'ENTREGADO';
+                }else if($value->Pac_Estado == 6){
+                $dat[$c]["Pac_Estado"] = 'ANULADO';
+                }else{
+                $dat[$c]["Pac_Estado"] = 'OTRO';
+                }
+                $dat[$c]["Pac_CodPago"] = $value->Pac_CodPago;
+                $dat[$c]["Per_Telefono"] = $value->Per_Telefono;
+                $dat[$c]["Cliente"] = $value->Per_Nombre.'|'.$value->Per_Telefono;
+                $c++;
+            }
+
+          $results = ["sEcho" => 1,
+                "iTotalRecords" => count($dat),
+                "iTotalDisplayRecords" => count($dat),
+                "aaData" => $dat ];
+     
+          echo json_encode($results);
+        }
+
 
 		public function gestion()
 		{
@@ -547,6 +652,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 $this->correo->enviar($correoA, "Bienvenido(a) a PorMayor.pe" .$nombre, $contenido_correo);
 	        	redirect ('vnd/listado');
+			}
+		}
+		function registrar2(){
+			$data = $this->acl->load_datos();
+			$this->load->library('correo');
+			$nombre = $_POST['nombre'];
+			$dni = $_POST['dni'];
+			$correoA = $_POST['correoA'];
+			$celular = $_POST['celular'];
+			$clave = $_POST['clave'];
+			$id_vendedor = $_POST['vendedor'];
+			$hashed_password = password_hash($clave,PASSWORD_DEFAULT);
+			$validarcorreo = $this->vendedorModel->buscar_correo($correoA);
+			if ($validarcorreo != 1) {
+				if (strlen($celular) == 9) {
+				$id_usuario = $this->vendedorModel->crear_comprador($nombre,$dni,$correoA,$celular,$hashed_password,$id_vendedor);
+				if ($id_usuario) {
+					$this->ci->session->set_userdata(array(
+							'id_usuario' => $id_usuario,
+							'nombre_usuario' => $nombre,
+							'rol_usuario' => 4,
+							'tienda_usuario' => NULL,
+							'logueado' =>1
+						));
+
+	                $datos['nombre'] = $nombre;
+	                $datos['correo'] = $correoA;
+	                $datos['clave'] = $clave;
+
+	                $contenido_correo = $this->twig->parse('correo/correo_comprador.twig', $datos, true);
+
+	                $this->correo->enviar($correoA, "Bienvenido(a) a PorMayor.pe" .$nombre, $contenido_correo);
+		        	redirect ('');
+				
+					}
+				}else{
+					$data['errors'] = "NUMERO DE TELÉFONO INVALIDO DEBE TENER 9 DIGITOS ". $celular;
+					$data['id_vendedor'] = $id_vendedor;
+					$this->twig->parse('registro.twig', $data);
+				}
+			}else{
+				$data['errors'] = "CORREO YA REGISTRADO ". $correoA;
+				$data['id_vendedor'] = $id_vendedor;
+				$this->twig->parse('registro.twig', $data);
 			}
 		}
 

@@ -158,6 +158,14 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
       </li>
       <li class=\"itemMenu ";
         // line 109
+        if ((($context["pag"] ?? null) == "perfil")) {
+            echo "pormayor black-text";
+        }
+        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+        echo base_url();
+        echo "vnd/perfil\"><i class=\"material-icons\">sentiment_very_satisfied</i>Mi Perfil</a></li>
+      <li class=\"itemMenu ";
+        // line 110
         if ((($context["pag"] ?? null) == "crear")) {
             echo "pormayor black-text";
         }
@@ -165,7 +173,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/crear\"><i class=\"material-icons\">person_add</i>Crear cliente</a></li>
       <li class=\"itemMenu ";
-        // line 110
+        // line 111
         if ((($context["pag"] ?? null) == "listado")) {
             echo "pormayor black-text";
         }
@@ -173,7 +181,15 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/listado\"><i class=\"material-icons\">person_outline</i>Mis clientes</a></li>
       <li class=\"itemMenu ";
-        // line 111
+        // line 112
+        if ((($context["pag"] ?? null) == "misventas")) {
+            echo "pormayor black-text";
+        }
+        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+        echo base_url();
+        echo "vnd/misventas\"><i class=\"material-icons\">person_outline</i>Mis ventas</a></li>
+      <li class=\"itemMenu ";
+        // line 113
         if ((($context["pag"] ?? null) == "listado_clientes")) {
             echo "pormayor black-text";
         }
@@ -181,7 +197,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/listado_clientes\"><i class=\"material-icons\">group</i>Clientes registrados</a></li>
       <li class=\"itemMenu ";
-        // line 112
+        // line 114
         if ((($context["pag"] ?? null) == "ventas")) {
             echo "pormayor black-text";
         }
@@ -189,7 +205,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/ventas\"><i class=\"material-icons\">money</i>Ventas</a></li>
       <li class=\"itemMenu ";
-        // line 113
+        // line 115
         if ((($context["pag"] ?? null) == "hoy")) {
             echo "pormayor black-text";
         }
@@ -197,7 +213,15 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/hoy\"><i class=\"material-icons\">speaker_notes</i>Hoy</a></li>
       <li class=\"itemMenu ";
-        // line 114
+        // line 116
+        if ((($context["pag"] ?? null) == "stock")) {
+            echo "pormayor black-text";
+        }
+        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+        echo base_url();
+        echo "vnd/stock\"><i class=\"material-icons\">grid_on</i>Stock</a></li>
+      <li class=\"itemMenu ";
+        // line 117
         if ((($context["pag"] ?? null) == "reporte")) {
             echo "pormayor black-text";
         }
@@ -207,7 +231,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
       <li class=\"containerAvatar valign-wrapper\">
         <div class=\"avatarComprador\" style=\"top: 2px;\">
           <a class=\"sinPadding\"href=\"";
-        // line 117
+        // line 120
         echo base_url();
         echo "usuario/perfil\">
             <i style=\"font-size: 50px; color: rgba(255,255,255,0.8)\" class=\"material-icons\">account_circle</i>
@@ -215,7 +239,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div>
         <div class=\"avatarContainerComprador flow-text\" style=\"top: 15px;\">
           <span class=\"avatarText1\">";
-        // line 122
+        // line 125
         echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
         echo "</span>
         </div>
@@ -224,13 +248,13 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
     </ul>
 
   ";
-        // line 128
+        // line 131
         $this->displayBlock('content', $context, $blocks);
         echo " 
 
   <footer class=\"inner page-footer grey darken-4 text-white\">
       ";
-        // line 131
+        // line 134
         if ((($context["userAgent"] ?? null) == "PC")) {
             echo "         
         <div class=\"footer-copyright pormayorAccent center\">
@@ -240,7 +264,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div>
       ";
         } else {
-            // line 138
+            // line 141
             echo "        <div class=\"footerMovil\">         
         </div>
         <div class=\"footer-copyright pormayorAccent center\">
@@ -248,26 +272,26 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div> 
       ";
         }
-        // line 144
+        // line 147
         echo "    </footer>
 
   ";
-        // line 146
+        // line 149
         $this->displayBlock('modal', $context, $blocks);
         echo "  
   ";
-        // line 148
+        // line 151
         echo "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 149
+        // line 152
         echo base_url("public/intranet/js/jquery.validate.min.js");
         echo "\"></script> 
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 150
+        // line 153
         echo base_url("public/intranet/js/materialize.js");
         echo "\"></script>
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 151
+        // line 154
         echo base_url("public/intranet/js/jquery-confirm.min.js");
         echo "\"></script> 
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js\"></script>
@@ -353,14 +377,14 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
   </script>
   <script> var base_url = \"";
-        // line 234
+        // line 237
         echo base_url();
         echo "\";</script>
   ";
-        // line 236
+        // line 239
         echo "  ";
         $this->displayBlock('script', $context, $blocks);
-        // line 237
+        // line 240
         echo "  </body>
 </html>";
     }
@@ -371,19 +395,19 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo " ";
     }
 
-    // line 128
+    // line 131
     public function block_content($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 146
+    // line 149
     public function block_modal($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 236
+    // line 239
     public function block_script($context, array $blocks = array())
     {
         echo " ";
@@ -401,7 +425,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
     public function getDebugInfo()
     {
-        return array (  387 => 236,  381 => 146,  375 => 128,  369 => 72,  364 => 237,  361 => 236,  357 => 234,  271 => 151,  267 => 150,  263 => 149,  260 => 148,  256 => 146,  252 => 144,  244 => 138,  234 => 131,  228 => 128,  219 => 122,  211 => 117,  201 => 114,  193 => 113,  185 => 112,  177 => 111,  169 => 110,  161 => 109,  153 => 106,  148 => 103,  137 => 87,  133 => 86,  125 => 81,  115 => 73,  113 => 72,  51 => 13,  45 => 12,  41 => 11,  34 => 7,  30 => 6,  23 => 1,);
+        return array (  411 => 239,  405 => 149,  399 => 131,  393 => 72,  388 => 240,  385 => 239,  381 => 237,  295 => 154,  291 => 153,  287 => 152,  284 => 151,  280 => 149,  276 => 147,  268 => 141,  258 => 134,  252 => 131,  243 => 125,  235 => 120,  225 => 117,  217 => 116,  209 => 115,  201 => 114,  193 => 113,  185 => 112,  177 => 111,  169 => 110,  161 => 109,  153 => 106,  148 => 103,  137 => 87,  133 => 86,  125 => 81,  115 => 73,  113 => 72,  51 => 13,  45 => 12,  41 => 11,  34 => 7,  30 => 6,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -414,6 +438,6 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "layout/intranet/template_ven.twig", "C:\\xampp\\htdocs\\pormayor2021\\application\\views\\layout\\intranet\\template_ven.twig");
+        return new Twig_Source("", "layout/intranet/template_ven.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\layout\\intranet\\template_ven.twig");
     }
 }

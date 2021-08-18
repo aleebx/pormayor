@@ -249,3 +249,50 @@ $(document).on('click', '.addpedido', function(){
         }
     });
 });
+
+$(document).on('click', '.updateCliente', function(){
+    var Usu_IdUsuario = $(this).data('usu');
+    var Pac_IdPago_Compra = $(this).data('idp');
+    var nombre = $('.nomV').text();
+    var dni = $('.dniV').text();
+    var telefono = $('.tlfV').text();
+    var ruc = $('.rucV').text();
+    var direccion = $('.dirV').text();
+    var referencia = $('.refV').text();
+    var agencia = $('.ageV').text();
+    var estado = $('.selecEstado :selected').val();
+    var Pac_Envio = $('.envioV').text();
+
+
+    $.ajax({
+        data:{
+        'Pac_IdPago_Compra' : Pac_IdPago_Compra,    
+        'Usu_IdUsuario' : Usu_IdUsuario,    
+        'nombre' : nombre,    
+        'dni' : dni,    
+        'telefono' : telefono,    
+        'ruc' : ruc,    
+        'direccion' : direccion, 
+        'referencia' : referencia,
+        'agencia' : agencia,
+        'estado' : estado,
+        'Pac_Envio' : Pac_Envio,
+        },
+        type: "POST",
+        url: base_url+'vnd/updatePedido',
+        dataType: "json",
+        beforeSend: function(){
+            $(this).addClass('disabled');
+            loading_screen = pleaseWait({
+              logo: '',
+              backgroundColor: "#FEC00F",
+              loadingHtml: "<img src='{{ruta_img}}logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
+            });
+        },
+        success: function(data){
+            location.reload(true);
+            $(this).removeClass('disabled');
+            loading_screen.finish();
+        }
+    });
+});

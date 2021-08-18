@@ -33,13 +33,20 @@
 	    					<span style="padding:5px;border-radius:4px;" class="negrita black-text fontA {% if venta.Pac_Estado == 1 %}green accent-4">NUEVA VENTA{% elseif venta.Pac_Estado == 2 %}light-green accent-4">VENTA CONFIRMADA{% elseif venta.Pac_Estado == 3 %}lime accent-2">LISTO PARA RECOGO{% elseif venta.Pac_Estado == 4 %}deep-orange accent-2">EN EL CORRIER{% elseif venta.Pac_Estado == 5 %} green darken-4">ENTREGADO{% elseif venta.Pac_Estado == 6 %}red">ANULADO{% endif %}</span>
 	    					<br/>
 	    				</div>
+	    				{% if (venta.Pac_Banco == 'TIENDA') or vauche and (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) %}
 	    				<div class="col s12 m4 l4">
 	    					<a class="btn negrita blue" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR ROTULADO</a>
 	    				</div>	    				
 	    				<div class="col s12 m4 l4">
 	    					<a class="btn negrita green" onclick="printJS('printJS-form2', 'html')" style="width:100%;"><i class="material-icons left">list</i>IMPRIMIR VENTA</a>
 	    				</div>	    				
+	    				{% endif %}
 	    				<div class="col s12 l12">
+	    				<select  class="selecEstado browser-default">
+    						<option value="NO" {% if venta.Pac_Banco == 'NO' %}selected {% endif %}>CONTRAENTREGA</option>
+    						<option value="TIENDA" {% if venta.Pac_Banco == 'TIENDA' %}selected {% endif %}>RECOGO EN TIENDA</option>
+    						<option value="TDO" {% if venta.Pac_Banco == 'TDO' %}selected{% endif %}>PROVINCIA - DEPOSITO/TRANSFERENCIA</option>
+	    				</select>
 	    				{% if venta.Pac_Banco == 'NO' %}
 	    					<ul class="collection with-header">
 	    						<li class="collection-item pSmall center purple"><span class="fontA"><b>MÉTODO DE PAGO: PAGO CONTRA ENTREGA</b></span></li>
@@ -58,7 +65,71 @@
 	    					</ul>
 	    				{% endif %}
 	    				</div>
-	    				<div class="col s12 l6">
+	    				{# DATOS CLIENTE #}
+	    				<div class="col s12 l6"> 
+		    				<table class="bordered striped">
+		    					<tr>
+		    						<td class="negrita">CLIENTE</td>
+		    						<td class="nomV" contenteditable="true">{{venta.Per_Nombre}}</td>
+		    					</tr>
+		    					<tr>
+		    						<td class="negrita">DNI/CE/OTRO</td>
+		    						<td class="dniV" contenteditable="true">{{venta.Per_Dni}}</td>
+		    					</tr>
+		    					<tr>
+		    						<td class="negrita">TELÉFONO</td>
+		    						<td class="tlfV" contenteditable="true">{{compra_info.Pci_Telefono}}</b> <a href="https://api.whatsapp.com/send?phone=51{{compra_info.Pci_Telefono}}&text=Hola,%20por%20favor%20confirme%20su%20compra%20en%20PorMayor.pe%20para%20realizar%20el%20envío."><img src="{{ruta_img}}/wa.png" height="25" class="positionRelative right"></a></td>
+		    					</tr>
+		    					<tr>
+		    						<td class="negrita">FECHA COMPRA</td>
+		    						<td class="">{{venta.Pac_FechaRegistro}}</td>
+		    					</tr>
+		    					{% if compra_info.Pci_Ruc %}
+		    					<tr>
+		    						<td class="negrita">SOLICITO FACTURA - RUC</td>
+		    						<td class="rucV" contenteditable="true">{{compra_info.Pci_Ruc}}</td>
+		    					</tr>
+		    					{% endif %}
+		    					<tr>
+		    						<td class="negrita">VENDEDOR</td>
+		    						<td class="">{{venta.vendedor}}</td>
+		    					</tr>
+		    				</table>
+		    				<div class=" center">
+	    					<a class="btn green updateCliente" data-usu="{{venta.Usu_IdUsuario}}" data-idp="{{idventa}}" >Guardar cambios</a>		    				
+		    			</div>
+		    			</div>	
+	    				<div class="col s12 l6" style="padding-bottom: 10px;">
+	    				<table class="bordered striped">
+	    					<tr>
+	    						<td class="negrita">DEPARTEMANTO</td>
+	    						<td class="">{{compra_info.region}}</td>
+	    					</tr>
+	    					<tr>
+	    						<td class="negrita">PROVINCIA</td>
+	    						<td class="">{{compra_info.provincia}}</td>
+	    					</tr>
+	    					<tr>
+	    						<td class="negrita">DISTRITO</td>
+	    						<td class="">{{compra_info.distrito}}</td>
+	    					</tr>
+	    					<tr>
+	    						<td class="negrita">DIRECCIÓN</td>
+	    						<td class="dirV" contenteditable="true">{% if venta.Pac_Banco == 'TIENDA' %} <b>RETIRO EN TIENDA </b> {% endif %} {{compra_info.Pci_Direccion}}</td>
+	    					</tr>
+	    					<tr>
+	    						<td class="negrita">REFERENCIA</td>
+	    						<td class="refV" contenteditable="true">{{compra_info.Pci_Referencia}}</td>
+	    					</tr>
+	    					<tr>
+	    						<td class="negrita">AGENCIA</td>
+	    						<td class="ageV" contenteditable="true">{{compra_info.Pci_Lote}}</td>
+	    					</tr>
+	    				</table>
+		    			</div>
+		    			
+		    			{# ----- #}
+{# 		    			<div class="col s12 l6">
 	    					<ul class="collection with-header">
 	    						<li class="collection-header colorPrincipal"><h6><b><i class="material-icons left">person</i>DATOS CLIENTE</b></h6></li>
 	    						<li class="collection-item pSmall"><b>NOMBRE COMPLETO:</b> {% if venta.Per_Nombre %}{{venta.Per_Nombre}}{% else %}{{venta.nombr}}{% endif %}</li>
@@ -80,8 +151,8 @@
 	    						<li class="collection-item pSmall"><b>DISTRITO:</b> {{compra_info.distrito}}</li>
 	    						<li class="collection-item pSmall"><b>DIRECCIÓN:</b>{% if venta.Pac_Banco == 'TIENDA' %} <b>RETIRO EN TIENDA </b> {% endif %} {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}</li>
 	    					</ul>
-		    			</div>
-		    			<div class="col s12 l12 green lighten-5">		    				
+		    			</div> #}
+		    			<div class="col s12 l12 green lighten-5" >		    				
 			    			<table class="bordered centered">
 			            <thead>
 			            	<tr>
@@ -176,8 +247,8 @@
 			                			<td colspan="4" class="right-align sinPadding">
 			                				TOTAL ENVÍO
 			                			</td>
-			                			<td class="center-align" colspan="2">
-			                				<span>{{venta.Pac_Envio|number_format(2, '.', ' ')}}</span>
+			                			<td class="center-align envioV" colspan="2" contenteditable="true">
+			                				{{venta.Pac_Envio}}
 			                			</td>
 			                		</tr>
 			                		<tr>

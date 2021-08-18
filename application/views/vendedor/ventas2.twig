@@ -1,0 +1,112 @@
+{% extends "layout/intranet/template_ven.twig" %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
+    {# <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/stars_rating.css')}}"  media="screen,projection"/> #}
+{% endblock %}
+
+{% block content %}
+   	<main class="">
+    	<div class="card">
+        	<div class="card-content">
+        	<h4>MIS VENTAS</h4> 
+				<table id="lventas" style="width:100%">
+			        <thead>
+				         <tr>
+				           	<th>FECHA PEDIDO</th>
+				            <th>COD PEDIDO</th>
+				            <th>CLIENTE</th>
+				            <th>TIPO DE VENTA</th>
+				            <th>ESTADO</th>
+				        </tr>
+			        </thead>
+			        <tbody>
+		        </tbody>
+		    	</table>
+          	</div>
+		</div>
+    </main>
+    <div id="modalEdit" class="modal" style="z-index:9999 !important;width: 50%!important;">
+	    <div class="modal-content" id="loadEdit"></div>
+	</div>
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+	<script type="text/javascript">
+var table = $('#lventas').DataTable({
+"responsive": true,
+"order": [[0, "desc" ]],
+"language": {
+"lengthMenu": "",
+"zeroRecords": "No se encontro nada",
+"info": "Página _PAGE_ de _PAGES_",
+"infoEmpty": "No hay registros disponibles",
+"emptyTable":     "No hay información en la tabla",
+"infoFiltered":   "(filtrado de _MAX_ ventas)",
+"infoPostFix":    "",
+"thousands":      ",",
+"loadingRecords": "Cargando...",
+"processing":     "Procesando...",
+"search":         "Buscar:",
+"paginate": {
+	"first":      "Primero",
+	"last":       "Último",
+	"next":       "Siguiente",
+	"previous":   "Anterior"
+}
+},
+"bProcessing": true,
+"sAjaxSource": base_url + "vnd/listadopedidos2",
+"aoColumns": [
+	{ mData: 'Pac_FechaRegistro' },
+	{ mData: 'Pac_CodPago' },
+	{ mData: 'Cliente' },
+	{ mData: 'Pac_Banco' },
+	{ mData: 'Pac_Estado' },
+],
+retrieve: true,
+dom: 'Blfrtip',
+createdRow: function( row, data, dataIndex ) {
+	var estado = $(row).find('td:eq(4)').text();
+	console.log(estado);
+	if(estado == "NUEVA"){
+		$(row).find('td:eq(4)').addClass('yellow btn black-text');
+	}else if(estado == "CONFIRMADA"){
+		$(row).find('td:eq(4)').addClass('blue btn black-text');
+	}else if(estado == "ENTREGADO"){
+		$(row).find('td:eq(4)').addClass('green btn black-text');
+	}else if(estado == "ANULADO"){
+		$(row).find('td:eq(4)').addClass('red btn black-text');
+	}
+	$(row).find('td:eq(5)').addClass('negrita');
+}
+});
+
+ $('#lventas tbody').on('click', 'tr', function () {
+    var data = table.row( this ).data();
+    window.open( base_url+'vnd/detalle_q/'+data['Pac_IdPago_Compra'], '_blank');
+} );
+
+
+$(document).ready(function(){
+$('#modalEdit').modal({
+       dismissible:true, // Modal can be dismissed by clicking outside of the modal
+       opacity:.8, // Opacity of modal background
+       inDuration:300, // Transition in duration
+       outDuration:200, // Transition out duration
+       startingTop:'5%', // Starting top style attribute
+       endingTop:'10%', // Ending top style attribute
+        ready:function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+           var est=trigger[0]['accessKey'];
+           var idv=trigger[0]['id'];
+           $('#loadEdit').load(base_url+'usuario/venta/vista_edit_estado',{id:idv,est:est});
+        },
+	    complete: function() {
+	    } // Callback for Modal close
+    });
+});
+
+	</script>
+{% endblock %}
