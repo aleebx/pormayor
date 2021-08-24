@@ -109,7 +109,7 @@
       <li class="itemMenu {% if pag == 'perfil' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/perfil"><i class="material-icons">sentiment_very_satisfied</i>Mi Perfil</a></li>
       <li class="itemMenu {% if pag == 'crear' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/crear"><i class="material-icons">person_add</i>Crear cliente</a></li>
       <li class="itemMenu {% if pag == 'listado' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/listado"><i class="material-icons">person_outline</i>Mis clientes</a></li>
-      <li class="itemMenu {% if pag == 'misventas' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/misventas"><i class="material-icons">person_outline</i>Mis ventas</a></li>
+      <li class="itemMenu {% if pag == 'misventas' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/misventas"><i class="material-icons">person_outline</i>Mis ventas <span class="new badge red ventaN"></span></a></li>
       <li class="itemMenu {% if pag == 'listado_clientes' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/listado_clientes"><i class="material-icons">group</i>Clientes registrados</a></li>
       <li class="itemMenu {% if pag == 'ventas' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/ventas"><i class="material-icons">money</i>Ventas</a></li>
       <li class="itemMenu {% if pag == 'hoy' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/hoy"><i class="material-icons">speaker_notes</i>Hoy</a></li>
@@ -154,7 +154,22 @@
   <script language="JavaScript" type="text/javascript" src="{{base_url('public/intranet/js/jquery-confirm.min.js')}}"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
+    <script type="text/javascript">
+  function actualizar(){
+  var  Pro_IdProducto = 1;
+       $.ajax({
+          data:{'Pro_IdProducto':Pro_IdProducto},
+          type:"POST",
+          url:base_url+'vnd/cantidad_ventas', 
+          dataType:"json",
+          success:function(data){
+            console.log(data);
+            $('.ventaN').text(data);
+          }
+        });
+     }
+  setInterval("actualizar()",10000);
+</script>
   <script type="text/javascript">
     //Cambio Footer
     $('.footerSecundario').removeClass('hide');

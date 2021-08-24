@@ -82,6 +82,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+		function cantidad_ventas()
+		{
+			$data = $this->acl->load_datos();
+			if ($this->input->is_ajax_request()) {
+	      $cantidad = $this->vendedorModel->cantidad_ventas($data['usuario']['id_usuario']);
+	      print_r($cantidad->cantidad);
+			}
+		}
+
 		function ventas()
 		{
 			$data = $this->acl->load_datos();

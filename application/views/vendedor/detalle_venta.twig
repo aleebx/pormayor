@@ -22,25 +22,17 @@
 {% endblock %}
 
 {% block content %}
-    <main class="container" style="width:95%">
+    <main class="" style="width:95%">
     	<div class="card">
         	<div class="card-content sinPadding">
         		<div class="row cardContentFix">
         			<h5 class="center card-title"><b>DETALLE DE VENTA</b></h5>
 	    			<div class="divider"></div><br>
 	    			<div class="row">
-	    				<div class="col s12 m4 l4 center">
-	    					<span style="padding:5px;border-radius:4px;" class="negrita black-text fontA {% if venta.Pac_Estado == 1 %}green accent-4">NUEVA VENTA{% elseif venta.Pac_Estado == 2 %}light-green accent-4">VENTA CONFIRMADA{% elseif venta.Pac_Estado == 3 %}lime accent-2">LISTO PARA RECOGO{% elseif venta.Pac_Estado == 4 %}deep-orange accent-2">EN EL CORRIER{% elseif venta.Pac_Estado == 5 %} green darken-4">ENTREGADO{% elseif venta.Pac_Estado == 6 %}red">ANULADO{% endif %}</span>
+	    				<div class="col s12 m12 l12 center">
+	    					<span style="padding:5px;border-radius:4px;" class="negrita black-text fontA {% if venta.Pac_Estado == 1 %}yellow">NUEVA VENTA{% elseif venta.Pac_Estado == 2 %}blue">VENTA CONFIRMADA{% elseif venta.Pac_Estado == 3 %}lime accent-2">LISTO PARA RECOGO{% elseif venta.Pac_Estado == 4 %}deep-orange accent-2">EN EL CORRIER{% elseif venta.Pac_Estado == 5 %} green">ENTREGADO{% elseif venta.Pac_Estado == 6 %}red">ANULADO{% endif %}</span>
 	    					<br/>
-	    				</div>
-	    				{% if (venta.Pac_Banco == 'TIENDA') or vauche and (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) %}
-	    				<div class="col s12 m4 l4">
-	    					<a class="btn negrita blue" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR ROTULADO</a>
 	    				</div>	    				
-	    				<div class="col s12 m4 l4">
-	    					<a class="btn negrita green" onclick="printJS('printJS-form2', 'html')" style="width:100%;"><i class="material-icons left">list</i>IMPRIMIR VENTA</a>
-	    				</div>	    				
-	    				{% endif %}
 	    				<div class="col s12 l12">
 	    				<select  class="selecEstado browser-default">
     						<option value="NO" {% if venta.Pac_Banco == 'NO' %}selected {% endif %}>CONTRAENTREGA</option>
@@ -164,7 +156,8 @@
 			            		<th></th>
 			            	</tr>
 			            </thead>
-			            <tbody>            	
+			            <tbody>    
+			            {% set tocom = 0 %}        	
 			            	{% for v in vauche %}
 			            		<tr>
 			            			<td>{{v.Pvoc_MedioPago}}</td>
@@ -174,6 +167,7 @@
 			            			<td>{{v.Pvoc_FechaComprobante}}</td>
 			            			<td><img src="{{ruta_img}}/vauche/{{v.Pvoc_LogoPago}}" class="materialboxed" width="30px"></td>
 			            		</tr>
+			            		{% set tocom = tocom + v.Pvoc_Monto %}
 			            	{% endfor %}
 			            </tbody>
 		            </table><br>
@@ -187,9 +181,7 @@
 	    					<a data-target="modalBoleta" class="btn-flat modal-trigger"><i class="material-icons left">list</i>Boleta</a>
 	    					<a class="btn-flat right red-text modal-trigger" data-target="modalAnula"><i class="material-icons left">clear</i>ANULAR VENTA</a>
 	    					{% endif %}
-	    					{% if (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) and vauche %}
-	    					<a class="btn-flat right green-text modal-trigger" data-target="modalConfirma"><i class="material-icons left">check</i>ENTREGADA</a>
-	    					{% endif %}
+	    					
 				      		<table class="bordered"; style="width: 100%;">
 				      			<thead class="colorPrincipal">
 				      				<tr class="pormayor black-text">
@@ -262,6 +254,23 @@
 			            		</tfoot>
 				      		</table>
 	    				</div>
+	    				{% if tocom == totalPagar %}
+							{% if vauche and (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) %}
+								<div class="col s4 m4 l4">
+									<a class="btn negrita blue" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR ROTULADO {{venta.Per_Nombre}}</a>
+								</div>	    				
+								<div class="col s4 m4 l4">
+									<a class="btn negrita green" onclick="printJS('printJS-form2', 'html')" style="width:100%;"><i class="material-icons left">list</i>IMPRIMIR VENTA {{venta.Per_Nombre}}</a>
+								</div>
+								<div class="col s4 l4 center">
+									<a class="btn-large green modal-trigger" data-target="modalConfirma"><i class="material-icons left">check</i>ENTREGADA {{venta.Per_Nombre}}</a>
+								</div>
+			    			{% endif %}
+						{% else %}
+					    <div class="col s12 m12 l12 card-panel orange center">
+					    	<span class="fontA">SOLO PUEDES IMPRIMIR PEDIDO Y ROTULADO CUANDO CARGUES MEDIO DE PAGO Y SI EL PEDIDO ES NUEVO/CONFIRMADO</span>
+					    </div>				
+		    			{% endif %}
 	    			</div>
     			</div>
 			</div>

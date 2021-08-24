@@ -187,7 +187,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         }
         echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
         echo base_url();
-        echo "vnd/misventas\"><i class=\"material-icons\">person_outline</i>Mis ventas</a></li>
+        echo "vnd/misventas\"><i class=\"material-icons\">person_outline</i>Mis ventas <span class=\"new badge red ventaN\"></span></a></li>
       <li class=\"itemMenu ";
         // line 113
         if ((($context["pag"] ?? null) == "listado_clientes")) {
@@ -296,7 +296,22 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo "\"></script> 
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js\"></script>
   <script src=\"https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js\"></script>
-
+    <script type=\"text/javascript\">
+  function actualizar(){
+  var  Pro_IdProducto = 1;
+       \$.ajax({
+          data:{'Pro_IdProducto':Pro_IdProducto},
+          type:\"POST\",
+          url:base_url+'vnd/cantidad_ventas', 
+          dataType:\"json\",
+          success:function(data){
+            console.log(data);
+            \$('.ventaN').text(data);
+          }
+        });
+     }
+  setInterval(\"actualizar()\",10000);
+</script>
   <script type=\"text/javascript\">
     //Cambio Footer
     \$('.footerSecundario').removeClass('hide');
@@ -377,14 +392,14 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
   </script>
   <script> var base_url = \"";
-        // line 237
+        // line 252
         echo base_url();
         echo "\";</script>
   ";
-        // line 239
+        // line 254
         echo "  ";
         $this->displayBlock('script', $context, $blocks);
-        // line 240
+        // line 255
         echo "  </body>
 </html>";
     }
@@ -407,7 +422,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo " ";
     }
 
-    // line 239
+    // line 254
     public function block_script($context, array $blocks = array())
     {
         echo " ";
@@ -425,7 +440,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
     public function getDebugInfo()
     {
-        return array (  411 => 239,  405 => 149,  399 => 131,  393 => 72,  388 => 240,  385 => 239,  381 => 237,  295 => 154,  291 => 153,  287 => 152,  284 => 151,  280 => 149,  276 => 147,  268 => 141,  258 => 134,  252 => 131,  243 => 125,  235 => 120,  225 => 117,  217 => 116,  209 => 115,  201 => 114,  193 => 113,  185 => 112,  177 => 111,  169 => 110,  161 => 109,  153 => 106,  148 => 103,  137 => 87,  133 => 86,  125 => 81,  115 => 73,  113 => 72,  51 => 13,  45 => 12,  41 => 11,  34 => 7,  30 => 6,  23 => 1,);
+        return array (  426 => 254,  420 => 149,  414 => 131,  408 => 72,  403 => 255,  400 => 254,  396 => 252,  295 => 154,  291 => 153,  287 => 152,  284 => 151,  280 => 149,  276 => 147,  268 => 141,  258 => 134,  252 => 131,  243 => 125,  235 => 120,  225 => 117,  217 => 116,  209 => 115,  201 => 114,  193 => 113,  185 => 112,  177 => 111,  169 => 110,  161 => 109,  153 => 106,  148 => 103,  137 => 87,  133 => 86,  125 => 81,  115 => 73,  113 => 72,  51 => 13,  45 => 12,  41 => 11,  34 => 7,  30 => 6,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

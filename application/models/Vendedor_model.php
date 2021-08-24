@@ -188,6 +188,15 @@ class Vendedor_model extends CI_Model
         return $query->result();
     } 
 
+    function cantidad_ventas($id_usuario){
+        $this->db->select('count(pac.Pac_IdPago_Compra) as cantidad');
+        $this->db->from('pago_compra as pac');
+        $this->db->join('usuario as usu','usu.Usu_IdUsuario = pac.Usu_IdUsuario');
+        $this->db->where("(pac.Pac_Estado = 1 AND usu.Usu_IdUsuario_Ven = $id_usuario)", NULL, FALSE);
+        $query = $this->db->get();
+        return $query->row();
+    } 
+
     function asignarCliente($Usu_IdUsuario,$id_vendedor){
         $this->db->set('Usu_IdUsuario_Ven', $id_vendedor);
         $this->db->where('Usu_IdUsuario', $Usu_IdUsuario);
