@@ -157,7 +157,9 @@
 			            	</tr>
 			            </thead>
 			            <tbody>    
-			            {% set tocom = 0 %}        	
+			            {% set tocom = 0 %}
+			            {% set cantVauche = vauche|length %}         	
+			            {% set veriV = 0 %}         	
 			            	{% for v in vauche %}
 			            		<tr>
 			            			<td>{{v.Pvoc_MedioPago}}</td>
@@ -167,6 +169,7 @@
 			            			<td>{{v.Pvoc_FechaComprobante}}</td>
 			            			<td><img src="{{ruta_img}}/vauche/{{v.Pvoc_LogoPago}}" class="materialboxed" width="30px"></td>
 			            		</tr>
+			            		{% set veriV = veriV + v.Pvoc_EstadoComprobante %}
 			            		{% set tocom = tocom + v.Pvoc_Monto %}
 			            	{% endfor %}
 			            </tbody>
@@ -181,13 +184,14 @@
 	    					<a data-target="modalBoleta" class="btn-flat modal-trigger"><i class="material-icons left">list</i>Boleta</a>
 	    					<a class="btn-flat right red-text modal-trigger" data-target="modalAnula"><i class="material-icons left">clear</i>ANULAR VENTA</a>
 	    					{% endif %}
+	    					<a data-target="modalGuia" class="btn-flat modal-trigger"><i class="material-icons left">description</i>Guia Remisión</a>
 	    					
 				      		<table class="bordered"; style="width: 100%;">
 				      			<thead class="colorPrincipal">
 				      				<tr class="pormayor black-text">
 				      					<th></th>
-				      					<th>Producto</th>
 				      					<th class="center">Cantidad</th>
+				      					<th>Producto</th>
 				      					<th class="center">Precio S/</th>
 				      					<th class="center">Importe S/</th>
 				      					<th class="center"></th>
@@ -199,14 +203,14 @@
 				      				{% for ved in venta_detalle %}
 					      				<tr>
 					      					<td>
-					      						<img class="redondeo centrarForzado" src="{{ruta_img}}{% if ved.SKU_Img %}{{ved.SKU_Img}}{% else %}{{ved.Prf_Img}}{% endif %}" height="50">
+					      						<img class="" src="{{ruta_img}}{% if ved.SKU_Img %}{{ved.SKU_Img}}{% else %}{{ved.Prf_Img}}{% endif %}" height="50">
 					      					</td>
+					    					<td class="center">
+					      						<b class="center" style="font-size:20px;">{{ved.Pcd_Cantidad}}</b>
+					    					</td>
 					      					<td>
 					      						{{ved.Pro_Nombre}}</br>
 					    		   				<span class="enfasisB black-text">{{ved.SKU_Color}}</span></br>
-					    					</td>
-					    					<td class="center">
-					      						<span class="center">{{ved.Pcd_Cantidad}}</span></br>
 					    					</td>
 					      					<td class="center">
 					      						<span class="precioventa" id="precioventa{{ved.SKU_IdSKU}}">{{ved.Pcd_Precio|number_format(2, '.', ' ')}}</span>
@@ -254,23 +258,25 @@
 			            		</tfoot>
 				      		</table>
 	    				</div>
-	    				{% if tocom == totalPagar %}
-							{% if vauche and (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) %}
-								<div class="col s4 m4 l4">
-									<a class="btn negrita blue" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR ROTULADO {{venta.Per_Nombre}}</a>
-								</div>	    				
-								<div class="col s4 m4 l4">
-									<a class="btn negrita green" onclick="printJS('printJS-form2', 'html')" style="width:100%;"><i class="material-icons left">list</i>IMPRIMIR VENTA {{venta.Per_Nombre}}</a>
-								</div>
-								<div class="col s4 l4 center">
-									<a class="btn-large green modal-trigger" data-target="modalConfirma"><i class="material-icons left">check</i>ENTREGADA {{venta.Per_Nombre}}</a>
-								</div>
+	    				{% if cantVauche == veriV %}
+		    				{% if tocom == totalPagar %}
+								{% if vauche and (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) %}
+									<div class="col s4 m4 l4">
+										<a class="btn negrita blue" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR ROTULADO {{venta.Per_Nombre}}</a>
+									</div>	    				
+									<div class="col s4 m4 l4">
+										<a class="btn negrita green" onclick="printJS('printJS-form2', 'html')" style="width:100%;"><i class="material-icons left">list</i>IMPRIMIR VENTA {{venta.Per_Nombre}}</a>
+									</div>
+									<div class="col s4 l4 center">
+										<a class="btn-large green modal-trigger" data-target="modalConfirma"><i class="material-icons left">check</i>ENTREGADA {{venta.Per_Nombre}}</a>
+									</div>
+				    			{% endif %}
+							{% else %}
+						    <div class="col s12 m12 l12 card-panel orange center">
+						    	<span class="fontA">SOLO PUEDES IMPRIMIR PEDIDO Y ROTULADO CUANDO CARGUES MEDIO DE PAGO Y SI EL PEDIDO ES NUEVO/CONFIRMADO</span>
+						    </div>				
 			    			{% endif %}
-						{% else %}
-					    <div class="col s12 m12 l12 card-panel orange center">
-					    	<span class="fontA">SOLO PUEDES IMPRIMIR PEDIDO Y ROTULADO CUANDO CARGUES MEDIO DE PAGO Y SI EL PEDIDO ES NUEVO/CONFIRMADO</span>
-					    </div>				
-		    			{% endif %}
+	    				{% endif %}
 	    			</div>
     			</div>
 			</div>
@@ -310,6 +316,45 @@
 	        <div class="input-field col s12">
 	        	<a class="btn gFact green" data-idv="{{idventa}}">GENERAR FACTURA</a>
 	        	<a class="btn impB2 orange" href="" disabled>IMPRIMIR BOLETA</a>
+	       	</div>
+	      </div>
+        </div>
+    </div>
+    <div id="modalGuia" class="modal" style="z-index:9999 !important;width: 50%!important;">
+        <div class="modal-content">
+        	<span class="card-title">GENERAR GUIA DEL CLIENTE {{venta.Per_Nombre}}</span>
+          <div class="row">
+	        <div class="input-field col s6">
+	          <input id="desGuia" type="text" class="validate" value="{{venta.Per_Nombre}}">
+	          <label for="desGuia">Destinatario</label>
+	        </div>
+	        <div class="input-field col s6">
+	          <input type="text" id="dniGuia" class="validate" value="{{venta.Per_Dni}}">
+	          <label for="dniGuia">DNI Destinatario</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="correoGuia" class="validate">
+	          <label for="correoGuia">Correo Electronico</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="tlfGuia" class="validate" value="{{compra_info.Pci_Telefono}}">
+	          <label for="tlfGuia">Teléfono</label>
+	        </div>
+	        <div class="input-field col s4">
+	          <input type="text" id="ubigeoGuia" class="validate" value="{{compra_info.iddistrito}}" disabled>
+	          <label for="ubigeoGuia">UBIGEO</label>
+	        </div>
+	        <div class="input-field col s12">
+	          <input type="text" id="dirEnvio" class="validate" maxlength="100" value="{{compra_info.Pci_Lote|title}} - {{compra_info.provincia}} {{compra_info.distrito}} ">
+	          <label for="direccion">Dirección a Enviar (NOMBRE DE LA AGENCIA CON PROVINCIA Y DISTRITO)</label>
+	        </div>
+	        <div class="input-field col s12">
+	          <input type="text" id="dirGuia" class="validate" value="{{compra_info.Pci_Direccion}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} Referencia: {{compra_info.Pci_Referencia}}">
+	          <label for="direccion">Dirección Cliente</label>
+	        </div>
+	        <div class="input-field col s12">
+	        	<a class="btn gGuia green" data-idv="{{idventa}}">GENERAR GUIA</a>
+	        	<a class="btn impB3 orange" href="http://pormayor.cocos.net.pe/dispatches" target="_blank" disabled>IR A GUIAS</a>
 	       	</div>
 	      </div>
         </div>
@@ -434,6 +479,7 @@
     				RUC: 20603706804
     				JIRÓN ANDAHUAYLAS 251, INTERIOR 208-209<br> CERDADO DE LIMA, LIMA.<br>
     				+51 923500413
+    				<span style="font-size: 10px;">Vendedor:{{venta.vendedor}}</span>
     			</td>
     			<td style="padding:5px;">
     				<div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
@@ -443,11 +489,12 @@
 						<b>D.N.I:</b> {% if venta.Per_Dni %}{{venta.Per_Dni}}{% else %}{{venta.dni}}{% endif %} <br>
 						<b>Teléfono</b> {{compra_info.Pci_Telefono}} <br>
 						<b>Código:</b> <b>{{venta.Pac_CodPago}}</b>  <br>
+						<span style="font-size: 10px;">Vendedor: {{venta.vendedor}}</span>  <br>
 		    		</div><br>
 		 			<div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
 				 		<b>DIRECCIÓN CLIENTE</b><br>
 				 		AGENCIA: {{compra_info.Pci_Lote}}<br>
-		 				<b>Departamento:</b> {{compra_info.region}} <br> <b>Provincia:</b> {{compra_info.provincia}} <br> <b>Distrito:</b> {{compra_info.distrito}} <br> <b>Dirección:</b> {{compra_info.Pci_Direccion}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}
+		 				<b style="font-size:35px"> {{compra_info.distrito}} </b><br> <b>Dirección:</b> {{compra_info.Pci_Direccion}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}
 		 			</div>
 		 		</td>
     		</tr>
@@ -490,8 +537,8 @@
   				<tr>
   					<th style="border-bottom: 1px solid;border-top: 1px solid"></th>
   					<th style="border-bottom: 1px solid;border-top: 1px solid"></th>
-  					<th style="border-bottom: 1px solid;border-top: 1px solid">Producto</th>
   					<th style="border-bottom: 1px solid;border-top: 1px solid">Cantidad</th>
+  					<th style="border-bottom: 1px solid;border-top: 1px solid">Producto</th>
   					<th style="border-bottom: 1px solid;border-top: 1px solid">Precio S/</th>
   					<th style="border-bottom: 1px solid;border-top: 1px solid">Importe S/</th>
   				</tr>
@@ -508,13 +555,12 @@
       					<td class="">
       						<img class="redondeo centrarForzado" src="{{ruta_img}}{% if ved.SKU_Img %}{{ved.SKU_Img}}{% else %}{{ved.Prf_Img}}{% endif %}" height="30">
       					</td>
+    					<td align="center">
+      						<span class="center" style="font-size:20px;">{{ved.Pcd_Cantidad}}</span></br>
+    					</td>
       					<td>
       						{{ved.Pro_Nombre}}</br>
     		   				<span class="enfasisB black-text">{{ved.SKU_Color}}</span></br>
-    					</td>
-
-    					<td align="center">
-      						<span class="center">{{ved.Pcd_Cantidad}}</span></br>
     					</td>
       					<td class="center">
 

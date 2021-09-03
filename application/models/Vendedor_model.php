@@ -195,6 +195,19 @@ class Vendedor_model extends CI_Model
         $this->db->where("(pac.Pac_Estado = 1 AND usu.Usu_IdUsuario_Ven = $id_usuario)", NULL, FALSE);
         $query = $this->db->get();
         return $query->row();
+    }
+
+    function meta($id_usuario){
+        $mes = date("Y-m");
+        $this->db->select('SUM(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as monto');
+        $this->db->from('pago_compra as pac');
+        $this->db->join('usuario as usu','usu.Usu_IdUsuario = pac.Usu_IdUsuario');
+        $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
+        $this->db->where("(pac.Pac_Estado = 5 AND usu.Usu_IdUsuario_Ven = $id_usuario)", NULL, FALSE);
+        $this->db->like("pac.Pac_FechaModificado", $mes);
+        $query = $this->db->get();
+        return $query->row();
+
     } 
 
     function asignarCliente($Usu_IdUsuario,$id_vendedor){

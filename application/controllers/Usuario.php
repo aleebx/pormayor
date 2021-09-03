@@ -742,7 +742,7 @@
                 }
                 else if ($this->tank_auth->get_rol() == 5) 
                 {
-                    redirect('vnd/ventas');
+                    redirect('vnd/misventas');
                 }
                 else if ($this->tank_auth->get_rol() == 6)  
                 {

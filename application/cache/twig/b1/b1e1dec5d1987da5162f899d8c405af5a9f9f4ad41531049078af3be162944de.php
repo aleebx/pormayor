@@ -166,7 +166,7 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                 echo "                    <div class=\"col s12 m12 l12 center sinPadding\">
                       ";
                 // line 121
-                if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
+                if (($this->getAttribute(($context["usuario"] ?? null), "logueado", array()) && ($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 4))) {
                     // line 122
                     echo "                        ";
                     if ((($context["unidPe"] ?? null) >= 100)) {
@@ -410,7 +410,7 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
             echo "          <div class=\"col s12 center sinPadding\">
             ";
             // line 303
-            if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
+            if (($this->getAttribute(($context["usuario"] ?? null), "logueado", array()) && ($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 4))) {
                 // line 304
                 echo "              ";
                 if ((($context["unidPe"] ?? null) >= 100)) {
@@ -726,6 +726,6 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "tienda/resumen.twig", "C:\\xampp\\htdocs\\pormayor2021\\application\\views\\tienda\\resumen.twig");
+        return new Twig_Source("", "tienda/resumen.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\tienda\\resumen.twig");
     }
 }

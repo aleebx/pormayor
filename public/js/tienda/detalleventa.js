@@ -112,6 +112,46 @@ $(document).on('click', '.gFact', function(){
         });
 });
 
+$(document).on('click', '.gGuia', function(){
+    var Pac_IdPago_Compra = $(this).data('idv');
+    var razonSocial = $('#desGuia').val();
+    var ruc = $('#dniGuia').val();
+    var email = $('#correoGuia').val();
+    var tlf = $('#tlfGuia').val();
+    var ubigeo = $('#ubigeoGuia').val();
+    var direcionEnvio = $('#dirEnvio').val();
+    var direccion = $('#dirGuia').val();
+    $(this).addClass('disabled');
+
+     $.ajax({
+            data:{
+            'Pac_IdPago_Compra' : Pac_IdPago_Compra,
+            'razonSocial' : razonSocial,
+            'ruc' : ruc,
+            'email' : email,
+            'tlf' : tlf,
+            'ubigeo' : ubigeo,
+            'direccion' : direccion,
+            'direcionEnvio' : direcionEnvio
+            },
+            type: "POST",
+            url: base_url+'vnd/api_guiaremision',
+            dataType: "json",
+            beforeSend: function(){
+                loading_screen = pleaseWait({
+              logo: '',
+              backgroundColor: "#FEC00F",
+              loadingHtml: "<img src='{{ruta_img}}logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
+            });
+                $(this).addClass('disabled');
+            },
+            success: function(data){
+                $('.impB3').attr('disabled',false);                         
+                loading_screen.finish();
+            }
+        });
+});
+
 $(document).on('click', '.gBoleta', function(){
     var Pac_IdPago_Compra = $(this).data('idv');
     var razonSocial = $('#razonSocial2').val();

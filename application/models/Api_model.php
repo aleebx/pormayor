@@ -182,8 +182,8 @@
             $query = $this->db->get();
             $stock = $query->row();
             // $this->db->set('SKU_StockDisponible', $stock->SKU_StockDisponible - $val);
-            $this->db->set('SKU_StockReal', $stock->SKU_StockDisponible - $val);
-            $this->db->set('SKU_Reservado', $stock->SKU_StockDisponible - $val);
+            $this->db->set('SKU_StockReal', $stock->SKU_StockReal - $val);
+            $this->db->set('SKU_Reservado', $stock->SKU_Reservado - $val);
             $this->db->where('SKU_IdSKU', $sk);
             $this->db->update('sku');
             }
@@ -213,7 +213,7 @@
             $query = $this->db->get();
             $stock = $query->row();
             $this->db->set('SKU_StockDisponible', $stock->SKU_StockDisponible - $val);
-            $this->db->set('SKU_Reservado', $stock->SKU_StockReal - $val);
+            $this->db->set('SKU_Reservado', $stock->SKU_Reservado - $val);
             $this->db->where('SKU_IdSKU', $sk);
             $this->db->update('sku');
             }

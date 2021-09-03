@@ -91,6 +91,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+		function meta()
+		{
+			$data = $this->acl->load_datos();
+			if ($this->input->is_ajax_request()) {
+	      $meta = $this->vendedorModel->meta($data['usuario']['id_usuario']);
+	      if ($meta) {
+	      print_r($meta->monto);
+	      }else{
+	      	echo 0;
+	      }
+			}
+		}
+
 		function ventas()
 		{
 			$data = $this->acl->load_datos();
@@ -205,7 +218,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		       		$t_igv =  $pro->Pcd_Importe - $base_igv;
 		       		$total1 = $pro->Pcd_Importe;
 		       		$proL = array(
-		       		  "codigo_interno"=> $pro->SKU_IdSKU,
+		       		 "codigo_interno"=> $pro->SKU_IdSKU,
 				      "descripcion"=>$pro->Pro_Nombre,
 				      "codigo_producto_sunat"=> "",
 				      "unidad_de_medida"=> "NIU",
@@ -245,6 +258,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						"correo_electronico"=>$correo,
 						"telefono"=>$telefono
 					),
+					"codigo_condicion_de_pago"=>"01",
 					"totales"=>array(
 						"total_exportacion"=> "0.00",
 					    "total_operaciones_gravadas"=> $totalG,
@@ -356,6 +370,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						"correo_electronico"=>$correo,
 						"telefono"=>$telefono
 					),
+					"codigo_condicion_de_pago"=>"01",
 					"totales"=>array(
 						"total_exportacion"=> "0.00",
 					    "total_operaciones_gravadas"=> $totalG,
@@ -378,6 +393,115 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				curl_setopt_array($curl, array(
 				  CURLOPT_URL => 'http://pormayor.cocos.net.pe/api/documents',
+				  CURLOPT_RETURNTRANSFER => true,
+				  CURLOPT_ENCODING => '',
+				  CURLOPT_MAXREDIRS => 10,
+				  CURLOPT_TIMEOUT => 0,
+				  CURLOPT_FOLLOWLOCATION => true,
+				  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				  CURLOPT_CUSTOMREQUEST => 'POST',
+				  CURLOPT_POSTFIELDS => json_encode($miArray),
+				  CURLOPT_HTTPHEADER => array(
+				    'Authorization: Bearer vIGThv1V8D5RWp4WU1DY3BD4qlk6MRZmKOywXLosp9xnva0Dp8',
+				    'Content-Type: application/json'
+				  ),
+				));
+
+				$response = curl_exec($curl);
+
+				curl_close($curl);
+				echo $response;
+			}
+		}
+
+		public function api_guiaremision()
+		{
+
+			if ($this->input->is_ajax_request()) {
+				$hoy = date("Y-m-d");
+				$hora = date("h:i:s");
+				$fvenc = date("Y-m-d",strtotime($hoy."+ 3 days")); 
+     			$Pac_IdPago_Compra = $this->input->post('Pac_IdPago_Compra');
+     			$ruc = $this->input->post('ruc');
+     			$razonSocial = $this->input->post('razonSocial');
+     			$ubigeo = $this->input->post('ubigeo2');
+     			$correo = $this->input->post('email');
+     			$telefono = $this->input->post('tlf');
+     			$direccion = $this->input->post('direccion');
+     			$direccionEnvio = $this->input->post('direcionEnvio');
+     			$tipod = 1;
+		       	$producto = $this->gestionModel->get_detalle_venta_q($Pac_IdPago_Compra);
+		       	$arrayP = array();
+		       	foreach($producto as $pro){
+		       		$proL = array(
+		       		"codigo_interno"=> $pro->SKU_IdSKU,
+				      "cantidad"=> $pro->Pcd_Cantidad
+		       		);
+		       		array_push($arrayP,$proL);
+		       	}
+
+				
+				$miArray = array(
+					"serie_documento"=>"T001", 
+					"numero_documento"=>"#", 
+					"fecha_de_emision"=>$hoy,
+					"hora_de_emision"=>$hora,
+					"codigo_tipo_documento"=>"09",
+					"datos_del_emisor"=>array(
+						"codigo_pais"=>"PE",
+						"ubigeo"=>"150101",
+						"direccion"=>"JR. ANDAHUAYLAS NRO. 251 URB. BARRIOS ALTOS",
+						"correo_electronico"=>"ventas@pormayor.pe",
+						"telefono"=>"914646673",
+						"codigo_del_domicilio_fiscal" => "0000"
+					),					
+					"datos_del_cliente_o_receptor"=>array(
+						"codigo_tipo_documento_identidad" => $tipod,
+				    "numero_documento" => $ruc,
+				    "apellidos_y_nombres_o_razon_social"=> $razonSocial,
+				    "nombre_comercial"=>  $razonSocial,
+				    "codigo_pais"=> "PE",
+				    "ubigeo"=> $ubigeo,
+				    "direccion"=> $direccion,
+				    "correo_electronico"=> $correo,
+				    "telefono"=> $telefono
+					),
+					"observaciones" => "Venta",
+				  "codigo_modo_transporte" => "01",
+				  "codigo_motivo_traslado" => "01",
+				  "descripcion_motivo_traslado" => "El cliente solicito envio",
+				  "fecha_de_traslado" => $hoy,
+				  "codigo_de_puerto" => "",
+				  "indicador_de_transbordo" => false,
+				  "unidad_peso_total" => "KGM",
+				  "peso_total" => 10.00,
+				  "numero_de_bultos" => 1,
+				  "numero_de_contenedor" => "",
+				  "direccion_partida" => array(
+				    "ubigeo" => "150101",
+				    "direccion" => "JR. ANDAHUAYLAS NRO. 251 URB. BARRIOS ALTOS"
+				  ),
+				  "direccion_llegada" =>  array(
+				    "ubigeo" => "150101",
+				    "direccion" => $direccionEnvio
+				  ),
+				  "transportista" =>  array(
+				    "codigo_tipo_documento_identidad" => "0",
+				    "numero_documento" => "0",
+				    "apellidos_y_nombres_o_razon_social" => "0"
+				  ),
+				  "chofer" =>  array(
+				    "codigo_tipo_documento_identidad" => "0",
+				    "numero_documento" => "0"
+				  ),
+				  "numero_de_placa" => "000000",
+					"items"=>$arrayP
+				);
+
+				$curl = curl_init();
+
+				curl_setopt_array($curl, array(
+				  CURLOPT_URL => 'http://pormayor.cocos.net.pe/api/dispatches',
 				  CURLOPT_RETURNTRANSFER => true,
 				  CURLOPT_ENCODING => '',
 				  CURLOPT_MAXREDIRS => 10,

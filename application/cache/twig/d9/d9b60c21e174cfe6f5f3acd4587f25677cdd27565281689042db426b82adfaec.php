@@ -113,7 +113,16 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         $this->displayBlock('head', $context, $blocks);
         // line 73
         echo "   </head>
-  <body> 
+  <body>
+  <nav>
+    <div class=\"navbar-fixed\">
+      <nav class=\"pormayor center\">
+        <div class=\"nav-wrapper\">
+          <span class=\"fontA black-text metaVnd\"></span>
+        </div>
+      </nav>
+    </div>
+  </nav>  
   <header>
     <div class=\"navbar-fixed hide-on-large-only\" id=\"inicio\">
       <nav class=\"nav-extended pormayor\" data-color=\"#fff159\">
@@ -121,7 +130,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
           <div class=\"col s2 m2 l2 center hide-on-large-only colMenuButton sinPadding\" style=\"height:56px\">
             <a href=\"#\" data-activates=\"slide-out\" class=\"centrarForzado button-collapse\">
               <img src=\"";
-        // line 81
+        // line 90
         echo ($context["ruta_img"] ?? null);
         echo "menuIcon.svg\" width=\"35\">
             </a>
@@ -129,11 +138,11 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
           <div class=\"col s3 m2 l2 center colMenuLogo sinPadding\" >
             <div class=\"logoNegativo\">
               <a href=\"";
-        // line 86
+        // line 95
         echo base_url();
         echo "\">
                 <img alt=\"Pormayor.pe - Vende facilito, Compra segurito\" src=\"";
-        // line 87
+        // line 96
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg\" type=\"image/svg+xml\" class=\"\">
               </a>
@@ -144,12 +153,12 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
     </div> 
   </header>
 ";
-        // line 103
+        // line 112
         echo "    <ul id=\"slide-out\" class=\"side-nav fixed grey darken-4 z-depth-3 menuTex\" style=\"z-index:500;\"> 
       <li class=\"headerMenu center valign-wrapper\">
         <div class=\"logoIcon\">
           <a href=\"";
-        // line 106
+        // line 115
         echo base_url();
         echo "\"><img alt=\"Pormayor.pe - Vende facilito, Compra segurito\" src=\"";
         echo ($context["ruta_img"] ?? null);
@@ -157,7 +166,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div>
       </li>
       <li class=\"itemMenu ";
-        // line 109
+        // line 118
         if ((($context["pag"] ?? null) == "perfil")) {
             echo "pormayor black-text";
         }
@@ -165,7 +174,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/perfil\"><i class=\"material-icons\">sentiment_very_satisfied</i>Mi Perfil</a></li>
       <li class=\"itemMenu ";
-        // line 110
+        // line 119
         if ((($context["pag"] ?? null) == "crear")) {
             echo "pormayor black-text";
         }
@@ -173,7 +182,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/crear\"><i class=\"material-icons\">person_add</i>Crear cliente</a></li>
       <li class=\"itemMenu ";
-        // line 111
+        // line 120
         if ((($context["pag"] ?? null) == "listado")) {
             echo "pormayor black-text";
         }
@@ -181,7 +190,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/listado\"><i class=\"material-icons\">person_outline</i>Mis clientes</a></li>
       <li class=\"itemMenu ";
-        // line 112
+        // line 121
         if ((($context["pag"] ?? null) == "misventas")) {
             echo "pormayor black-text";
         }
@@ -189,7 +198,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/misventas\"><i class=\"material-icons\">person_outline</i>Mis ventas <span class=\"new badge red ventaN\"></span></a></li>
       <li class=\"itemMenu ";
-        // line 113
+        // line 122
         if ((($context["pag"] ?? null) == "listado_clientes")) {
             echo "pormayor black-text";
         }
@@ -197,7 +206,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/listado_clientes\"><i class=\"material-icons\">group</i>Clientes registrados</a></li>
       <li class=\"itemMenu ";
-        // line 114
+        // line 123
         if ((($context["pag"] ?? null) == "ventas")) {
             echo "pormayor black-text";
         }
@@ -205,7 +214,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/ventas\"><i class=\"material-icons\">money</i>Ventas</a></li>
       <li class=\"itemMenu ";
-        // line 115
+        // line 124
         if ((($context["pag"] ?? null) == "hoy")) {
             echo "pormayor black-text";
         }
@@ -213,7 +222,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/hoy\"><i class=\"material-icons\">speaker_notes</i>Hoy</a></li>
       <li class=\"itemMenu ";
-        // line 116
+        // line 125
         if ((($context["pag"] ?? null) == "stock")) {
             echo "pormayor black-text";
         }
@@ -221,7 +230,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/stock\"><i class=\"material-icons\">grid_on</i>Stock</a></li>
       <li class=\"itemMenu ";
-        // line 117
+        // line 126
         if ((($context["pag"] ?? null) == "reporte")) {
             echo "pormayor black-text";
         }
@@ -231,7 +240,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
       <li class=\"containerAvatar valign-wrapper\">
         <div class=\"avatarComprador\" style=\"top: 2px;\">
           <a class=\"sinPadding\"href=\"";
-        // line 120
+        // line 129
         echo base_url();
         echo "usuario/perfil\">
             <i style=\"font-size: 50px; color: rgba(255,255,255,0.8)\" class=\"material-icons\">account_circle</i>
@@ -239,7 +248,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div>
         <div class=\"avatarContainerComprador flow-text\" style=\"top: 15px;\">
           <span class=\"avatarText1\">";
-        // line 125
+        // line 134
         echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
         echo "</span>
         </div>
@@ -248,13 +257,13 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
     </ul>
 
   ";
-        // line 131
+        // line 140
         $this->displayBlock('content', $context, $blocks);
         echo " 
 
   <footer class=\"inner page-footer grey darken-4 text-white\">
       ";
-        // line 134
+        // line 143
         if ((($context["userAgent"] ?? null) == "PC")) {
             echo "         
         <div class=\"footer-copyright pormayorAccent center\">
@@ -264,7 +273,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div>
       ";
         } else {
-            // line 141
+            // line 150
             echo "        <div class=\"footerMovil\">         
         </div>
         <div class=\"footer-copyright pormayorAccent center\">
@@ -272,31 +281,35 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div> 
       ";
         }
-        // line 147
+        // line 156
         echo "    </footer>
 
   ";
-        // line 149
+        // line 158
         $this->displayBlock('modal', $context, $blocks);
         echo "  
   ";
-        // line 151
+        // line 160
         echo "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 152
+        // line 161
         echo base_url("public/intranet/js/jquery.validate.min.js");
         echo "\"></script> 
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 153
+        // line 162
         echo base_url("public/intranet/js/materialize.js");
         echo "\"></script>
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 154
+        // line 163
         echo base_url("public/intranet/js/jquery-confirm.min.js");
         echo "\"></script> 
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js\"></script>
   <script src=\"https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js\"></script>
-    <script type=\"text/javascript\">
+  <script> var base_url = \"";
+        // line 166
+        echo base_url();
+        echo "\";</script>
+  <script type=\"text/javascript\">
   function actualizar(){
   var  Pro_IdProducto = 1;
        \$.ajax({
@@ -310,47 +323,62 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
           }
         });
      }
-  setInterval(\"actualizar()\",10000);
-</script>
-  <script type=\"text/javascript\">
-    //Cambio Footer
-    \$('.footerSecundario').removeClass('hide');
-    \$('.footerPrincipal').addClass('hide');
-     \$('.inicioBtn').not('[href=\"#\"]').click(function(event) {
-    if (location.pathname.replace(/^\\//, '') == this.pathname.replace(/^\\//, '') && location.hostname == this.hostname) {
-      var target = \$(this.hash);
-      target = target.length ? target : \$('[name=' + this.hash.slice(1) + ']');
-      if (target.length) {
-        event.preventDefault();
-        \$('html, body').animate({
-          scrollTop: target.offset().top - 100
-        }, 2000, function() {
-          var \$target = \$(target);
-          \$target.focus();
-          if (\$target.is(\":focus\")) {
-            return false;
-          } else {
-            \$target.attr('tabindex','-1');
-            \$target.focus();
-          };
-        });
-      }
-    }
-  });
-    \$(document).ready(function(){
-      \$('.button-collapse').sideNav({
-        menuWidth: 300, // Default is 300
-        edge: 'left', // Choose the horizontal origin
-        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-        draggable: true, // Choose whether you can drag to open on touch screens,
+  setInterval(\"actualizar()\",100000);
+  function meta(){
+       \$.ajax({
+        data:{'Pro_IdProducto':Pro_IdProducto},
+        type:\"POST\",
+        url:base_url+'vnd/cantidad_ventas', 
+        dataType:\"json\",
+        success:function(data){
+          console.log(data);
+          \$('.ventaN').text(data);
         }
-      );
-      //Funciones Side-Bar
-      \$(\".itemMenu\").mouseover(function(){
-        \$(this).find(\".acentBar\").css(\"background-color\",\$('.nav-extended').data('color'));
       });
-      \$(\".itemMenu\").mouseout(function(){
-        \$(this).find(\".acentBar\").css(\"background-color\",\"rgba(0,0,0,0.0)\");
+  }
+  setInterval(\"meta()\",100000);
+    \$(document).ready(function(){
+      var xx = 0;
+        \$.ajax({
+        data:{'xx':xx},
+        type:\"POST\",
+        url:base_url+'vnd/meta', 
+        dataType:\"json\",
+          success:function(data){
+            console.log(data);
+              var c1 = 0;
+              var c2 = 0;
+              var c3 = 0;
+              var c4 = 0;
+              var comision = 0;
+            if (data <= 29999){
+              \$('.metaVnd').text('AUN NO COMISIONAS :( TÚ PUEDES CREO EN TI <3');
+            }else if(data >= 30000 && data <= 40000){
+              c1 = data * 0.005;
+              \$('.metaVnd').text('S/'+c1);
+            }else if(data >= 40001 && data <= 80000){
+              c1 = 40000 * 0.005;
+              data2 = data - 40000;
+              c2 = data2 * 0.03;
+              comision = c1 + c2;
+              \$('.metaVnd').text('S/' + comision);
+            }else if(data >= 80001 && data <= 120000){
+              c1 = 40000 * 0.005;
+              c2 = 40000 * 0.03;
+              data2 = data - 80000;
+              c3 = data2 * 0.04;
+              comision = c1 + c2 + c3;
+              \$('.metaVnd').text('S/' + comision);
+            }else if(data >= 120001){
+              c1 = 40000 * 0.005;
+              c2 = 40000 * 0.03;
+              c3 = 40000 * 0.04;
+              data2 = data - 120000;
+              c4 = data2 * 0.05;
+              comision = c1 + c2 + c3 + c4;
+              \$('.metaVnd').text('S/' + comision);
+            }
+        }
       });
       \$(\".cerrarSesionBtn\").click(function() {
         \$.confirm({
@@ -374,32 +402,12 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
             }
         })
       });
-
-      //FOOTER
-      var flagFooter = false;
-      \$(\".footerSecundario .collapsible-header\").click(function() {
-          if (flagFooter == false) {
-              \$('.footerSecundario .iconSide').text('expand_less');
-              \$('.footerSecundario .sideB').slideUp(500);
-              flagFooter = true;
-          }else if (flagFooter == true){
-              \$('.footerSecundario .iconSide').text('expand_more');
-              \$('.footerSecundario .sideB').slideDown(200);
-              flagFooter = false;
-          }
-      });
     });
-
   </script>
-  <script> var base_url = \"";
-        // line 252
-        echo base_url();
-        echo "\";</script>
   ";
-        // line 254
-        echo "  ";
+        // line 262
         $this->displayBlock('script', $context, $blocks);
-        // line 255
+        // line 263
         echo "  </body>
 </html>";
     }
@@ -410,19 +418,19 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo " ";
     }
 
-    // line 131
+    // line 140
     public function block_content($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 149
+    // line 158
     public function block_modal($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 254
+    // line 262
     public function block_script($context, array $blocks = array())
     {
         echo " ";
@@ -440,7 +448,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
     public function getDebugInfo()
     {
-        return array (  426 => 254,  420 => 149,  414 => 131,  408 => 72,  403 => 255,  400 => 254,  396 => 252,  295 => 154,  291 => 153,  287 => 152,  284 => 151,  280 => 149,  276 => 147,  268 => 141,  258 => 134,  252 => 131,  243 => 125,  235 => 120,  225 => 117,  217 => 116,  209 => 115,  201 => 114,  193 => 113,  185 => 112,  177 => 111,  169 => 110,  161 => 109,  153 => 106,  148 => 103,  137 => 87,  133 => 86,  125 => 81,  115 => 73,  113 => 72,  51 => 13,  45 => 12,  41 => 11,  34 => 7,  30 => 6,  23 => 1,);
+        return array (  434 => 262,  428 => 158,  422 => 140,  416 => 72,  411 => 263,  409 => 262,  310 => 166,  304 => 163,  300 => 162,  296 => 161,  293 => 160,  289 => 158,  285 => 156,  277 => 150,  267 => 143,  261 => 140,  252 => 134,  244 => 129,  234 => 126,  226 => 125,  218 => 124,  210 => 123,  202 => 122,  194 => 121,  186 => 120,  178 => 119,  170 => 118,  162 => 115,  157 => 112,  146 => 96,  142 => 95,  134 => 90,  115 => 73,  113 => 72,  51 => 13,  45 => 12,  41 => 11,  34 => 7,  30 => 6,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
