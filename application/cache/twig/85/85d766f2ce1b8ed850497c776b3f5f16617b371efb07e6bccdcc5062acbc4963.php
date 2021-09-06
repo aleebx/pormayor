@@ -340,22 +340,26 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
             // line 157
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "</span>
-\t\t              \t";
+\t\t              \t<small>COD: ";
             // line 158
+            echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
+            echo "</small><br>
+\t\t              \t";
+            // line 159
             if (($this->getAttribute($context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 159
+                // line 160
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x mayor<span class=\"new badge blue left\">PRE-VENTA</span>
 \t\t              \t";
             } else {
-                // line 161
+                // line 162
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x mayor</label>
 \t\t              \t";
             }
-            // line 163
+            // line 164
             echo "\t\t              </p>
 \t\t            </div>
 \t\t          </div>
@@ -366,35 +370,35 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 169
+        // line 170
         echo "\t    </div>
 \t</main>\t
 ";
     }
 
-    // line 172
+    // line 173
     public function block_script($context, array $blocks = array())
     {
-        // line 173
+        // line 174
         echo "\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 \t\t<script src=\"https://unpkg.com/swiper/swiper-bundle.min.js\"></script>
 \t\t<script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
 \t    <script>
 \t      var base_url = \"";
-        // line 177
+        // line 178
         echo base_url();
         echo "\";
 \t      var loading_screen = pleaseWait({
 \t          logo: '',
 \t          backgroundColor: \"#FEC00F\",
 \t          loadingHtml: \"<img src='";
-        // line 181
+        // line 182
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
 \t        });
 \t    </script>
 \t\t<script src=\"";
-        // line 184
+        // line 185
         echo base_url("public/");
         echo "js/index.js?v=5\"></script>
 ";
@@ -412,7 +416,7 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
 
     public function getDebugInfo()
     {
-        return array (  398 => 184,  392 => 181,  385 => 177,  379 => 173,  376 => 172,  370 => 169,  359 => 163,  353 => 161,  347 => 159,  345 => 158,  341 => 157,  329 => 153,  323 => 150,  312 => 149,  308 => 148,  305 => 147,  297 => 142,  293 => 141,  288 => 139,  284 => 138,  277 => 134,  273 => 133,  268 => 131,  264 => 130,  254 => 124,  250 => 121,  242 => 116,  238 => 115,  233 => 113,  229 => 112,  224 => 110,  220 => 109,  215 => 107,  211 => 106,  206 => 104,  202 => 103,  192 => 97,  188 => 94,  186 => 93,  182 => 91,  173 => 85,  169 => 84,  163 => 80,  157 => 76,  147 => 70,  143 => 69,  140 => 68,  130 => 61,  126 => 60,  123 => 59,  121 => 58,  112 => 52,  108 => 51,  101 => 47,  95 => 46,  92 => 45,  90 => 44,  85 => 41,  83 => 40,  80 => 39,  77 => 38,  54 => 18,  48 => 15,  46 => 14,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  402 => 185,  396 => 182,  389 => 178,  383 => 174,  380 => 173,  374 => 170,  363 => 164,  357 => 162,  351 => 160,  349 => 159,  345 => 158,  341 => 157,  329 => 153,  323 => 150,  312 => 149,  308 => 148,  305 => 147,  297 => 142,  293 => 141,  288 => 139,  284 => 138,  277 => 134,  273 => 133,  268 => 131,  264 => 130,  254 => 124,  250 => 121,  242 => 116,  238 => 115,  233 => 113,  229 => 112,  224 => 110,  220 => 109,  215 => 107,  211 => 106,  206 => 104,  202 => 103,  192 => 97,  188 => 94,  186 => 93,  182 => 91,  173 => 85,  169 => 84,  163 => 80,  157 => 76,  147 => 70,  143 => 69,  140 => 68,  130 => 61,  126 => 60,  123 => 59,  121 => 58,  112 => 52,  108 => 51,  101 => 47,  95 => 46,  92 => 45,  90 => 44,  85 => 41,  83 => 40,  80 => 39,  77 => 38,  54 => 18,  48 => 15,  46 => 14,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -425,6 +429,6 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "index3.twig", "C:\\xampp\\htdocs\\pormayor2021\\application\\views\\index3.twig");
+        return new Twig_Source("", "index3.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\index3.twig");
     }
 }

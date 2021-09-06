@@ -148,7 +148,7 @@
             <a href="//pormayor.pe/categorias/{{producto.urlCategoria}}" class="pormayorUnico-text breadcrumb">{{producto.Cat_Nombre|title}}</a>
             <a href="//pormayor.pe/subcategoria/{{producto.urlSubCategoria}}" class="centrarForzado pormayorUnico-text breadcrumb">{{producto.Suc_Nombre}}</a>
             <a href="//pormayor.pe/detalle/{{producto.urlDetalle}}" class="centrarForzado pormayorUnico-text breadcrumb">{{producto.Des_Nombre}}</a>
-            <h4 class="centrarForzado muayuscula">{{producto.Pro_Nombre|title}} {% if producto.Pro_Preventa == 1 %} (PRE-VENTA) <span class="new badge blue">PRE-VENTA</span> {% endif %}</h4>
+            <h4 class="centrarForzado muayuscula">{{producto.Pro_Nombre|title}} {% if producto.Pro_Preventa == 1 %} (PRE-VENTA) <span class="new badge blue">PRE-VENTA</span> {% endif %}<small>COD: {{pro.Pro_IdProducto}}</small></h4>
           </div>
         </div>
       </div>

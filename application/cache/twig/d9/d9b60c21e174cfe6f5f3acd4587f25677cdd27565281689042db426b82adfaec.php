@@ -324,19 +324,6 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         });
      }
   setInterval(\"actualizar()\",100000);
-  function meta(){
-       \$.ajax({
-        data:{'Pro_IdProducto':Pro_IdProducto},
-        type:\"POST\",
-        url:base_url+'vnd/cantidad_ventas', 
-        dataType:\"json\",
-        success:function(data){
-          console.log(data);
-          \$('.ventaN').text(data);
-        }
-      });
-  }
-  setInterval(\"meta()\",100000);
     \$(document).ready(function(){
       var xx = 0;
         \$.ajax({
@@ -405,9 +392,9 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
     });
   </script>
   ";
-        // line 262
+        // line 249
         $this->displayBlock('script', $context, $blocks);
-        // line 263
+        // line 250
         echo "  </body>
 </html>";
     }
@@ -430,7 +417,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo " ";
     }
 
-    // line 262
+    // line 249
     public function block_script($context, array $blocks = array())
     {
         echo " ";
@@ -448,7 +435,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
     public function getDebugInfo()
     {
-        return array (  434 => 262,  428 => 158,  422 => 140,  416 => 72,  411 => 263,  409 => 262,  310 => 166,  304 => 163,  300 => 162,  296 => 161,  293 => 160,  289 => 158,  285 => 156,  277 => 150,  267 => 143,  261 => 140,  252 => 134,  244 => 129,  234 => 126,  226 => 125,  218 => 124,  210 => 123,  202 => 122,  194 => 121,  186 => 120,  178 => 119,  170 => 118,  162 => 115,  157 => 112,  146 => 96,  142 => 95,  134 => 90,  115 => 73,  113 => 72,  51 => 13,  45 => 12,  41 => 11,  34 => 7,  30 => 6,  23 => 1,);
+        return array (  421 => 249,  415 => 158,  409 => 140,  403 => 72,  398 => 250,  396 => 249,  310 => 166,  304 => 163,  300 => 162,  296 => 161,  293 => 160,  289 => 158,  285 => 156,  277 => 150,  267 => 143,  261 => 140,  252 => 134,  244 => 129,  234 => 126,  226 => 125,  218 => 124,  210 => 123,  202 => 122,  194 => 121,  186 => 120,  178 => 119,  170 => 118,  162 => 115,  157 => 112,  146 => 96,  142 => 95,  134 => 90,  115 => 73,  113 => 72,  51 => 13,  45 => 12,  41 => 11,  34 => 7,  30 => 6,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

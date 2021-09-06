@@ -55,82 +55,69 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
     public function block_content($context, array $blocks = array())
     {
         // line 25
-        echo "    <main class=\"container\" style=\"width:95%\">
+        echo "    <main class=\"\" style=\"width:95%\">
     \t<div class=\"card\">
         \t<div class=\"card-content sinPadding\">
         \t\t<div class=\"row cardContentFix\">
         \t\t\t<h5 class=\"center card-title\"><b>DETALLE DE VENTA</b></h5>
 \t    \t\t\t<div class=\"divider\"></div><br>
 \t    \t\t\t<div class=\"row\">
-\t    \t\t\t\t<div class=\"col s12 m4 l4 center\">
+\t    \t\t\t\t<div class=\"col s12 m12 l12 center\">
 \t    \t\t\t\t\t<span style=\"padding:5px;border-radius:4px;\" class=\"negrita black-text fontA ";
         // line 33
         if (($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 1)) {
-            echo "green accent-4\">NUEVA VENTA";
+            echo "yellow\">NUEVA VENTA";
         } elseif (($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 2)) {
-            echo "light-green accent-4\">VENTA CONFIRMADA";
+            echo "blue\">VENTA CONFIRMADA";
         } elseif (($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 3)) {
             echo "lime accent-2\">LISTO PARA RECOGO";
         } elseif (($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 4)) {
             echo "deep-orange accent-2\">EN EL CORRIER";
         } elseif (($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 5)) {
-            echo " green darken-4\">ENTREGADO";
+            echo " green\">ENTREGADO";
         } elseif (($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 6)) {
             echo "red\">ANULADO";
         }
         echo "</span>
 \t    \t\t\t\t\t<br/>
-\t    \t\t\t\t</div>
-\t    \t\t\t\t";
-        // line 36
-        if ((($this->getAttribute(($context["venta"] ?? null), "Pac_Banco", array()) == "TIENDA") || (($context["vauche"] ?? null) && (($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 1) || ($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 2))))) {
-            // line 37
-            echo "\t    \t\t\t\t<div class=\"col s12 m4 l4\">
-\t    \t\t\t\t\t<a class=\"btn negrita blue\" onclick=\"printJS('printJS-form', 'html')\" style=\"width:100%;\"><i class=\"material-icons left\">print</i>IMPRIMIR ROTULADO</a>
 \t    \t\t\t\t</div>\t    \t\t\t\t
-\t    \t\t\t\t<div class=\"col s12 m4 l4\">
-\t    \t\t\t\t\t<a class=\"btn negrita green\" onclick=\"printJS('printJS-form2', 'html')\" style=\"width:100%;\"><i class=\"material-icons left\">list</i>IMPRIMIR VENTA</a>
-\t    \t\t\t\t</div>\t    \t\t\t\t
-\t    \t\t\t\t";
-        }
-        // line 44
-        echo "\t    \t\t\t\t<div class=\"col s12 l12\">
+\t    \t\t\t\t<div class=\"col s12 l12\">
 \t    \t\t\t\t<select  class=\"selecEstado browser-default\">
     \t\t\t\t\t\t<option value=\"NO\" ";
-        // line 46
+        // line 38
         if (($this->getAttribute(($context["venta"] ?? null), "Pac_Banco", array()) == "NO")) {
             echo "selected ";
         }
         echo ">CONTRAENTREGA</option>
     \t\t\t\t\t\t<option value=\"TIENDA\" ";
-        // line 47
+        // line 39
         if (($this->getAttribute(($context["venta"] ?? null), "Pac_Banco", array()) == "TIENDA")) {
             echo "selected ";
         }
         echo ">RECOGO EN TIENDA</option>
     \t\t\t\t\t\t<option value=\"TDO\" ";
-        // line 48
+        // line 40
         if (($this->getAttribute(($context["venta"] ?? null), "Pac_Banco", array()) == "TDO")) {
             echo "selected";
         }
         echo ">PROVINCIA - DEPOSITO/TRANSFERENCIA</option>
 \t    \t\t\t\t</select>
 \t    \t\t\t\t";
-        // line 50
+        // line 42
         if (($this->getAttribute(($context["venta"] ?? null), "Pac_Banco", array()) == "NO")) {
-            // line 51
+            // line 43
             echo "\t    \t\t\t\t\t<ul class=\"collection with-header\">
 \t    \t\t\t\t\t\t<li class=\"collection-item pSmall center purple\"><span class=\"fontA\"><b>MÉTODO DE PAGO: PAGO CONTRA ENTREGA</b></span></li>
 \t    \t\t\t\t\t</ul>
 \t    \t\t\t\t";
-        } elseif (($this->getAttribute(        // line 54
+        } elseif (($this->getAttribute(        // line 46
 ($context["venta"] ?? null), "Pac_Banco", array()) == "TIENDA")) {
             echo "\t    \t\t\t\t    
 \t    \t\t\t\t\t<ul class=\"collection with-header\">
 \t    \t\t\t\t\t\t<li class=\"collection-item pSmall center yellow\"><span class=\"fontA\"><b>RETIRO EN TIENDA</b></span></li>
 \t    \t\t\t\t\t</ul>
 \t    \t\t\t\t";
-        } elseif (($this->getAttribute(        // line 58
+        } elseif (($this->getAttribute(        // line 50
 ($context["venta"] ?? null), "Pac_Banco", array()) == "Visanet")) {
             echo "   
 \t    \t\t\t\t\t<ul class=\"collection with-header\">
@@ -138,37 +125,37 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t    \t\t\t\t\t</ul>
 \t    \t\t\t\t";
         } else {
-            // line 62
+            // line 54
             echo "   
 \t    \t\t\t\t\t<ul class=\"collection with-header\">
 \t    \t\t\t\t\t\t<li class=\"collection-item pSmall center red\"><span class=\"fontA\"><b>MÉTODO DE PAGO: DEPOSITO/TRANSFERENCIA</b></span></li>
 \t    \t\t\t\t\t</ul>
 \t    \t\t\t\t";
         }
-        // line 67
+        // line 59
         echo "\t    \t\t\t\t</div>
 \t    \t\t\t\t";
-        // line 69
+        // line 61
         echo "\t    \t\t\t\t<div class=\"col s12 l6\"> 
 \t\t    \t\t\t\t<table class=\"bordered striped\">
 \t\t    \t\t\t\t\t<tr>
 \t\t    \t\t\t\t\t\t<td class=\"negrita\">CLIENTE</td>
 \t\t    \t\t\t\t\t\t<td class=\"nomV\" contenteditable=\"true\">";
-        // line 73
+        // line 65
         echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
         echo "</td>
 \t\t    \t\t\t\t\t</tr>
 \t\t    \t\t\t\t\t<tr>
 \t\t    \t\t\t\t\t\t<td class=\"negrita\">DNI/CE/OTRO</td>
 \t\t    \t\t\t\t\t\t<td class=\"dniV\" contenteditable=\"true\">";
-        // line 77
+        // line 69
         echo $this->getAttribute(($context["venta"] ?? null), "Per_Dni", array());
         echo "</td>
 \t\t    \t\t\t\t\t</tr>
 \t\t    \t\t\t\t\t<tr>
 \t\t    \t\t\t\t\t\t<td class=\"negrita\">TELÉFONO</td>
 \t\t    \t\t\t\t\t\t<td class=\"tlfV\" contenteditable=\"true\">";
-        // line 81
+        // line 73
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Telefono", array());
         echo "</b> <a href=\"https://api.whatsapp.com/send?phone=51";
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Telefono", array());
@@ -179,35 +166,35 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t    \t\t\t\t\t<tr>
 \t\t    \t\t\t\t\t\t<td class=\"negrita\">FECHA COMPRA</td>
 \t\t    \t\t\t\t\t\t<td class=\"\">";
-        // line 85
+        // line 77
         echo $this->getAttribute(($context["venta"] ?? null), "Pac_FechaRegistro", array());
         echo "</td>
 \t\t    \t\t\t\t\t</tr>
 \t\t    \t\t\t\t\t";
-        // line 87
+        // line 79
         if ($this->getAttribute(($context["compra_info"] ?? null), "Pci_Ruc", array())) {
-            // line 88
+            // line 80
             echo "\t\t    \t\t\t\t\t<tr>
 \t\t    \t\t\t\t\t\t<td class=\"negrita\">SOLICITO FACTURA - RUC</td>
 \t\t    \t\t\t\t\t\t<td class=\"rucV\" contenteditable=\"true\">";
-            // line 90
+            // line 82
             echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Ruc", array());
             echo "</td>
 \t\t    \t\t\t\t\t</tr>
 \t\t    \t\t\t\t\t";
         }
-        // line 93
+        // line 85
         echo "\t\t    \t\t\t\t\t<tr>
 \t\t    \t\t\t\t\t\t<td class=\"negrita\">VENDEDOR</td>
 \t\t    \t\t\t\t\t\t<td class=\"\">";
-        // line 95
+        // line 87
         echo $this->getAttribute(($context["venta"] ?? null), "vendedor", array());
         echo "</td>
 \t\t    \t\t\t\t\t</tr>
 \t\t    \t\t\t\t</table>
 \t\t    \t\t\t\t<div class=\" center\">
 \t    \t\t\t\t\t<a class=\"btn green updateCliente\" data-usu=\"";
-        // line 99
+        // line 91
         echo $this->getAttribute(($context["venta"] ?? null), "Usu_IdUsuario", array());
         echo "\" data-idp=\"";
         echo ($context["idventa"] ?? null);
@@ -219,28 +206,28 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t    \t\t\t\t\t<tr>
 \t    \t\t\t\t\t\t<td class=\"negrita\">DEPARTEMANTO</td>
 \t    \t\t\t\t\t\t<td class=\"\">";
-        // line 106
+        // line 98
         echo $this->getAttribute(($context["compra_info"] ?? null), "region", array());
         echo "</td>
 \t    \t\t\t\t\t</tr>
 \t    \t\t\t\t\t<tr>
 \t    \t\t\t\t\t\t<td class=\"negrita\">PROVINCIA</td>
 \t    \t\t\t\t\t\t<td class=\"\">";
-        // line 110
+        // line 102
         echo $this->getAttribute(($context["compra_info"] ?? null), "provincia", array());
         echo "</td>
 \t    \t\t\t\t\t</tr>
 \t    \t\t\t\t\t<tr>
 \t    \t\t\t\t\t\t<td class=\"negrita\">DISTRITO</td>
 \t    \t\t\t\t\t\t<td class=\"\">";
-        // line 114
+        // line 106
         echo $this->getAttribute(($context["compra_info"] ?? null), "distrito", array());
         echo "</td>
 \t    \t\t\t\t\t</tr>
 \t    \t\t\t\t\t<tr>
 \t    \t\t\t\t\t\t<td class=\"negrita\">DIRECCIÓN</td>
 \t    \t\t\t\t\t\t<td class=\"dirV\" contenteditable=\"true\">";
-        // line 118
+        // line 110
         if (($this->getAttribute(($context["venta"] ?? null), "Pac_Banco", array()) == "TIENDA")) {
             echo " <b>RETIRO EN TIENDA </b> ";
         }
@@ -251,14 +238,14 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t    \t\t\t\t\t<tr>
 \t    \t\t\t\t\t\t<td class=\"negrita\">REFERENCIA</td>
 \t    \t\t\t\t\t\t<td class=\"refV\" contenteditable=\"true\">";
-        // line 122
+        // line 114
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Referencia", array());
         echo "</td>
 \t    \t\t\t\t\t</tr>
 \t    \t\t\t\t\t<tr>
 \t    \t\t\t\t\t\t<td class=\"negrita\">AGENCIA</td>
 \t    \t\t\t\t\t\t<td class=\"ageV\" contenteditable=\"true\">";
-        // line 126
+        // line 118
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Lote", array());
         echo "</td>
 \t    \t\t\t\t\t</tr>
@@ -266,7 +253,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t    \t\t\t</div>
 \t\t    \t\t\t
 \t\t    \t\t\t";
-        // line 155
+        // line 147
         echo "\t\t    \t\t\t<div class=\"col s12 l12 green lighten-5\" >\t\t    \t\t\t\t
 \t\t\t    \t\t\t<table class=\"bordered centered\">
 \t\t\t            <thead>
@@ -279,24 +266,35 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t\t            \t\t<th></th>
 \t\t\t            \t</tr>
 \t\t\t            </thead>
-\t\t\t            <tbody>            \t
+\t\t\t            <tbody>    
+\t\t\t            ";
+        // line 160
+        $context["tocom"] = 0;
+        // line 161
+        echo "\t\t\t            ";
+        $context["cantVauche"] = twig_length_filter($this->env, ($context["vauche"] ?? null));
+        echo "         \t
+\t\t\t            ";
+        // line 162
+        $context["veriV"] = 0;
+        echo "         \t
 \t\t\t            \t";
-        // line 168
+        // line 163
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["vauche"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["v"]) {
-            // line 169
+            // line 164
             echo "\t\t\t            \t\t<tr>
 \t\t\t            \t\t\t<td>";
-            // line 170
+            // line 165
             echo $this->getAttribute($context["v"], "Pvoc_MedioPago", array());
             echo "</td>
 \t\t\t            \t\t\t<td>";
-            // line 171
+            // line 166
             echo $this->getAttribute($context["v"], "Pvoc_Monto", array());
             echo "</td>
 \t\t\t            \t\t\t<td>";
-            // line 172
+            // line 167
             if (($this->getAttribute($context["v"], "Pvoc_EstadoComprobante", array()) == 0)) {
                 echo "<span class=\"new badge red\">PENDIENTE</span>";
             } else {
@@ -304,35 +302,42 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
             }
             echo "</td>
 \t\t\t            \t\t\t<td>";
-            // line 173
+            // line 168
             echo $this->getAttribute($context["v"], "Pvoc_NumComprobante", array());
             echo "</td>
 \t\t\t            \t\t\t<td>";
-            // line 174
+            // line 169
             echo $this->getAttribute($context["v"], "Pvoc_FechaComprobante", array());
             echo "</td>
 \t\t\t            \t\t\t<td><img src=\"";
-            // line 175
+            // line 170
             echo ($context["ruta_img"] ?? null);
             echo "/vauche/";
             echo $this->getAttribute($context["v"], "Pvoc_LogoPago", array());
             echo "\" class=\"materialboxed\" width=\"30px\"></td>
 \t\t\t            \t\t</tr>
-\t\t\t            \t";
+\t\t\t            \t\t";
+            // line 172
+            $context["veriV"] = (($context["veriV"] ?? null) + $this->getAttribute($context["v"], "Pvoc_EstadoComprobante", array()));
+            // line 173
+            echo "\t\t\t            \t\t";
+            $context["tocom"] = (($context["tocom"] ?? null) + $this->getAttribute($context["v"], "Pvoc_Monto", array()));
+            // line 174
+            echo "\t\t\t            \t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 178
+        // line 175
         echo "\t\t\t            </tbody>
 \t\t            </table><br>
 \t\t    \t\t\t</div>
 
 \t    \t\t\t\t<div class=\"col s12 l12\">
 \t    \t\t\t\t\t";
-        // line 183
+        // line 180
         if ((($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 1) || ($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 2))) {
-            // line 184
+            // line 181
             echo "\t    \t\t\t\t\t<a data-target=\"modalProducto\" class=\"btn-flat modal-trigger\"><i class=\"material-icons left\">add</i>Agregar producto</a>
 \t    \t\t\t\t\t<a data-target=\"modalVocher\" class=\"btn-flat modal-trigger\"><i class=\"material-icons left\">add</i>Pagos</a>
 \t    \t\t\t\t\t<a data-target=\"modalFactura\" class=\"btn-flat modal-trigger\"><i class=\"material-icons left\">list</i>Factura</a>
@@ -340,20 +345,15 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t    \t\t\t\t\t<a class=\"btn-flat right red-text modal-trigger\" data-target=\"modalAnula\"><i class=\"material-icons left\">clear</i>ANULAR VENTA</a>
 \t    \t\t\t\t\t";
         }
-        // line 190
-        echo "\t    \t\t\t\t\t";
-        if (((($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 1) || ($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 2)) && ($context["vauche"] ?? null))) {
-            // line 191
-            echo "\t    \t\t\t\t\t<a class=\"btn-flat right green-text modal-trigger\" data-target=\"modalConfirma\"><i class=\"material-icons left\">check</i>ENTREGADA</a>
-\t    \t\t\t\t\t";
-        }
-        // line 193
-        echo "\t\t\t\t      \t\t<table class=\"bordered\"; style=\"width: 100%;\">
+        // line 187
+        echo "\t    \t\t\t\t\t<a data-target=\"modalGuia\" class=\"btn-flat modal-trigger\"><i class=\"material-icons left\">description</i>Guia Remisión</a>
+\t    \t\t\t\t\t
+\t\t\t\t      \t\t<table class=\"bordered\"; style=\"width: 100%;\">
 \t\t\t\t      \t\t\t<thead class=\"colorPrincipal\">
 \t\t\t\t      \t\t\t\t<tr class=\"pormayor black-text\">
 \t\t\t\t      \t\t\t\t\t<th></th>
-\t\t\t\t      \t\t\t\t\t<th>Producto</th>
 \t\t\t\t      \t\t\t\t\t<th class=\"center\">Cantidad</th>
+\t\t\t\t      \t\t\t\t\t<th>Producto</th>
 \t\t\t\t      \t\t\t\t\t<th class=\"center\">Precio S/</th>
 \t\t\t\t      \t\t\t\t\t<th class=\"center\">Importe S/</th>
 \t\t\t\t      \t\t\t\t\t<th class=\"center\"></th>
@@ -361,21 +361,21 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t\t\t      \t\t\t</thead>
 \t\t\t\t      \t\t\t<tbody>
 \t\t\t\t      \t\t\t\t";
-        // line 205
+        // line 201
         $context["total2"] = 0;
-        // line 206
+        // line 202
         echo "\t\t\t\t      \t\t\t\t";
         $context["totalEnvio"] = 0;
-        // line 207
+        // line 203
         echo "\t\t\t\t      \t\t\t\t";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["venta_detalle"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["ved"]) {
-            // line 208
+            // line 204
             echo "\t\t\t\t\t      \t\t\t\t<tr>
 \t\t\t\t\t      \t\t\t\t\t<td>
-\t\t\t\t\t      \t\t\t\t\t\t<img class=\"redondeo centrarForzado\" src=\"";
-            // line 210
+\t\t\t\t\t      \t\t\t\t\t\t<img class=\"\" src=\"";
+            // line 206
             echo ($context["ruta_img"] ?? null);
             if ($this->getAttribute($context["ved"], "SKU_Img", array())) {
                 echo $this->getAttribute($context["ved"], "SKU_Img", array());
@@ -384,36 +384,36 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
             }
             echo "\" height=\"50\">
 \t\t\t\t\t      \t\t\t\t\t</td>
+\t\t\t\t\t    \t\t\t\t\t<td class=\"center\">
+\t\t\t\t\t      \t\t\t\t\t\t<b class=\"center\" style=\"font-size:20px;\">";
+            // line 209
+            echo $this->getAttribute($context["ved"], "Pcd_Cantidad", array());
+            echo "</b>
+\t\t\t\t\t    \t\t\t\t\t</td>
 \t\t\t\t\t      \t\t\t\t\t<td>
 \t\t\t\t\t      \t\t\t\t\t\t";
-            // line 213
+            // line 212
             echo $this->getAttribute($context["ved"], "Pro_Nombre", array());
             echo "</br>
 \t\t\t\t\t    \t\t   \t\t\t\t<span class=\"enfasisB black-text\">";
-            // line 214
+            // line 213
             echo $this->getAttribute($context["ved"], "SKU_Color", array());
-            echo "</span></br>
-\t\t\t\t\t    \t\t\t\t\t</td>
-\t\t\t\t\t    \t\t\t\t\t<td class=\"center\">
-\t\t\t\t\t      \t\t\t\t\t\t<span class=\"center\">";
-            // line 217
-            echo $this->getAttribute($context["ved"], "Pcd_Cantidad", array());
             echo "</span></br>
 \t\t\t\t\t    \t\t\t\t\t</td>
 \t\t\t\t\t      \t\t\t\t\t<td class=\"center\">
 \t\t\t\t\t      \t\t\t\t\t\t<span class=\"precioventa\" id=\"precioventa";
-            // line 220
+            // line 216
             echo $this->getAttribute($context["ved"], "SKU_IdSKU", array());
             echo "\">";
             echo twig_number_format_filter($this->env, $this->getAttribute($context["ved"], "Pcd_Precio", array()), 2, ".", " ");
             echo "</span>
 \t\t\t\t\t      \t\t\t\t\t</td>
 \t\t\t\t\t      \t\t\t\t\t<td id=\"tdimporte";
-            // line 222
+            // line 218
             echo $this->getAttribute($context["ved"], "SKU_IdSKU", array());
             echo "\" class=\"center\">
 \t\t\t\t\t      \t\t\t\t\t\t<span id=\"importe";
-            // line 223
+            // line 219
             echo $this->getAttribute($context["ved"], "SKU_IdSKU", array());
             echo "\">";
             echo twig_number_format_filter($this->env, $this->getAttribute($context["ved"], "Pcd_Importe", array()), 2, ".", " ");
@@ -421,11 +421,11 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t\t\t\t      \t\t\t\t\t</td>
 \t\t\t\t\t      \t\t\t\t\t<td>
 \t\t\t\t\t      \t\t\t\t\t\t";
-            // line 226
+            // line 222
             if ((twig_length_filter($this->env, ($context["venta_detalle"] ?? null)) > 1)) {
                 echo " 
 \t\t\t\t\t      \t\t\t\t\t\t<a class=\"btn-flat delPro\" data-idvd=\"";
-                // line 227
+                // line 223
                 echo $this->getAttribute($context["ved"], "Pcd_IdPago_Compra_Detalle", array());
                 echo "\" data-ids=\"";
                 echo $this->getAttribute($context["ved"], "SKU_IdSKU", array());
@@ -434,38 +434,38 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
                 echo "\"><i class=\"material-icons red-text\">clear</i></a>
 \t\t\t\t\t      \t\t\t\t\t\t";
             }
-            // line 229
+            // line 225
             echo "\t\t\t\t\t      \t\t\t\t\t</td>
 \t\t\t\t\t      \t\t\t\t</tr>
 \t\t\t\t\t      \t\t\t\t";
-            // line 231
+            // line 227
             $context["total2"] = (($context["total2"] ?? null) + $this->getAttribute($context["ved"], "Pcd_Importe", array()));
-            // line 232
+            // line 228
             echo "\t\t\t\t\t      \t\t\t\t";
             $context["totalEnvio"] = (($context["totalEnvio"] ?? null) + $this->getAttribute($context["ved"], "Pce_CostoEnvio", array()));
-            // line 233
+            // line 229
             echo "\t\t\t\t            \t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ved'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 234
+        // line 230
         echo "\t\t\t\t      \t\t\t</tbody>
 \t\t\t\t      \t\t\t<tfoot>
 \t\t\t\t      \t\t\t\t";
-        // line 236
+        // line 232
         $context["totalEnvio"] = twig_round($this->getAttribute(($context["venta"] ?? null), "Pac_Envio", array()));
-        // line 237
+        // line 233
         echo "\t\t\t\t      \t\t\t\t";
         $context["totalPagar"] = (($context["total2"] ?? null) + ($context["totalEnvio"] ?? null));
-        // line 238
+        // line 234
         echo "\t\t\t\t      \t\t\t\t<tr>
 \t\t\t                \t\t\t<td colspan=\"4\" class=\"right-align sinPadding\">
 \t\t\t                \t\t\t \tTOTAL IMPORTE
 \t\t\t                \t\t\t</td>
 \t\t\t                \t\t\t<td class=\"center-align\" colspan=\"2\">
 \t\t\t                \t\t\t\t<span>";
-        // line 243
+        // line 239
         echo twig_number_format_filter($this->env, ($context["total2"] ?? null), 2, ".", " ");
         echo "</span>
 \t\t\t                \t\t\t</td>
@@ -476,7 +476,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t\t                \t\t\t</td>
 \t\t\t                \t\t\t<td class=\"center-align envioV\" colspan=\"2\" contenteditable=\"true\">
 \t\t\t                \t\t\t\t";
-        // line 251
+        // line 247
         echo $this->getAttribute(($context["venta"] ?? null), "Pac_Envio", array());
         echo "
 \t\t\t                \t\t\t</td>
@@ -487,7 +487,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t\t                \t\t\t</td>
 \t\t\t                \t\t\t<td class=\"center-align\" colspan=\"2\">
 \t\t\t                \t\t\t\t<b style=\"font-size:2em;\">";
-        // line 259
+        // line 255
         echo twig_number_format_filter($this->env, ($context["totalPagar"] ?? null), 2, ".", " ");
         echo "</b>
 \t\t\t                \t\t\t</td>
@@ -495,7 +495,50 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t\t            \t\t</tfoot>
 \t\t\t\t      \t\t</table>
 \t    \t\t\t\t</div>
-\t    \t\t\t</div>
+\t    \t\t\t\t";
+        // line 261
+        if ((($context["cantVauche"] ?? null) == ($context["veriV"] ?? null))) {
+            // line 262
+            echo "\t\t    \t\t\t\t";
+            if ((($context["tocom"] ?? null) == ($context["totalPagar"] ?? null))) {
+                // line 263
+                echo "\t\t\t\t\t\t\t\t";
+                if ((($context["vauche"] ?? null) && (($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 1) || ($this->getAttribute(($context["venta"] ?? null), "Pac_Estado", array()) == 2)))) {
+                    // line 264
+                    echo "\t\t\t\t\t\t\t\t\t<div class=\"col s4 m4 l4\">
+\t\t\t\t\t\t\t\t\t\t<a class=\"btn negrita blue\" onclick=\"printJS('printJS-form', 'html')\" style=\"width:100%;\"><i class=\"material-icons left\">print</i>IMPRIMIR ROTULADO ";
+                    // line 265
+                    echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
+                    echo "</a>
+\t\t\t\t\t\t\t\t\t</div>\t    \t\t\t\t
+\t\t\t\t\t\t\t\t\t<div class=\"col s4 m4 l4\">
+\t\t\t\t\t\t\t\t\t\t<a class=\"btn negrita green\" onclick=\"printJS('printJS-form2', 'html')\" style=\"width:100%;\"><i class=\"material-icons left\">list</i>IMPRIMIR VENTA ";
+                    // line 268
+                    echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
+                    echo "</a>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t<div class=\"col s4 l4 center\">
+\t\t\t\t\t\t\t\t\t\t<a class=\"btn-large green modal-trigger\" data-target=\"modalConfirma\"><i class=\"material-icons left\">check</i>ENTREGADA ";
+                    // line 271
+                    echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
+                    echo "</a>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t    \t\t\t";
+                }
+                // line 274
+                echo "\t\t\t\t\t\t\t";
+            } else {
+                // line 275
+                echo "\t\t\t\t\t\t    <div class=\"col s12 m12 l12 card-panel orange center\">
+\t\t\t\t\t\t    \t<span class=\"fontA\">SOLO PUEDES IMPRIMIR PEDIDO Y ROTULADO CUANDO CARGUES MEDIO DE PAGO Y SI EL PEDIDO ES NUEVO/CONFIRMADO</span>
+\t\t\t\t\t\t    </div>\t\t\t\t
+\t\t\t    \t\t\t";
+            }
+            // line 279
+            echo "\t    \t\t\t\t";
+        }
+        // line 280
+        echo "\t    \t\t\t</div>
     \t\t\t</div>
 \t\t\t</div>
 \t\t</div>
@@ -506,23 +549,24 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
     <div id=\"modalFactura\" class=\"modal\" style=\"z-index:9999 !important;width: 50%!important;\">
         <div class=\"modal-content\">
         \t<span class=\"card-title\">GENERAR FACTURA DEL CLIENTE ";
-        // line 275
+        // line 290
         echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
         echo "</span>
           <div class=\"row\">
 \t        <div class=\"input-field col s6\">
 \t          <input id=\"razonSocial\" type=\"text\" class=\"validate\" value=\"";
-        // line 278
+        // line 293
         echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
         echo "\">
 \t          <label for=\"razonSocial\">Razón Social</label>
 \t        </div>
 \t        <div class=\"input-field col s6\">
 \t          <input type=\"text\" id=\"ruc\" class=\"validate\" value=\"";
-        // line 282
+        // line 297
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Ruc", array());
         echo "\">
 \t          <label for=\"ruc\">RUC</label>
+\t          <a class=\"btn buscarDatos\" data-tipo=\"6\">SUNAT</a>
 \t        </div>
 \t        <div class=\"input-field col s4\">
 \t          <input type=\"text\" id=\"email\" class=\"validate\">
@@ -530,21 +574,21 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t        </div>
 \t        <div class=\"input-field col s4\">
 \t          <input type=\"text\" id=\"tlf\" class=\"validate\" value=\"";
-        // line 290
+        // line 306
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Telefono", array());
         echo "\">
 \t          <label for=\"tlf\">Teléfono</label>
 \t        </div>
 \t        <div class=\"input-field col s4\">
 \t          <input type=\"text\" id=\"ubigeo\" class=\"validate\" value=\"";
-        // line 294
+        // line 310
         echo $this->getAttribute(($context["compra_info"] ?? null), "iddistrito", array());
-        echo "\" disabled>
+        echo "\">
 \t          <label for=\"ubigeo\">UBIGEO</label>
 \t        </div>
 \t        <div class=\"input-field col s12\">
 \t          <input type=\"text\" id=\"direccion\" class=\"validate\" value=\"";
-        // line 298
+        // line 314
         if (($this->getAttribute(($context["venta"] ?? null), "Pac_Banco", array()) == "TIENDA")) {
             echo "RETIRO EN TIENDA ";
         }
@@ -563,7 +607,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t        </div>
 \t        <div class=\"input-field col s12\">
 \t        \t<a class=\"btn gFact green\" data-idv=\"";
-        // line 302
+        // line 318
         echo ($context["idventa"] ?? null);
         echo "\">GENERAR FACTURA</a>
 \t        \t<a class=\"btn impB2 orange\" href=\"\" disabled>IMPRIMIR BOLETA</a>
@@ -571,10 +615,83 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t      </div>
         </div>
     </div>
+    <div id=\"modalGuia\" class=\"modal\" style=\"z-index:9999 !important;width: 50%!important;\">
+        <div class=\"modal-content\">
+        \t<span class=\"card-title\">GENERAR GUIA DEL CLIENTE ";
+        // line 326
+        echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
+        echo "</span>
+          <div class=\"row\">
+\t        <div class=\"input-field col s6\">
+\t          <input id=\"desGuia\" type=\"text\" class=\"validate\" value=\"";
+        // line 329
+        echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
+        echo "\">
+\t          <label for=\"desGuia\">Destinatario</label>
+\t        </div>
+\t        <div class=\"input-field col s6\">
+\t          <input type=\"text\" id=\"dniGuia\" class=\"validate\" value=\"";
+        // line 333
+        echo $this->getAttribute(($context["venta"] ?? null), "Per_Dni", array());
+        echo "\">
+\t          <label for=\"dniGuia\">DNI Destinatario</label>
+\t        </div>
+\t        <div class=\"input-field col s4\">
+\t          <input type=\"text\" id=\"correoGuia\" class=\"validate\">
+\t          <label for=\"correoGuia\">Correo Electronico</label>
+\t        </div>
+\t        <div class=\"input-field col s4\">
+\t          <input type=\"text\" id=\"tlfGuia\" class=\"validate\" value=\"";
+        // line 341
+        echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Telefono", array());
+        echo "\">
+\t          <label for=\"tlfGuia\">Teléfono</label>
+\t        </div>
+\t        <div class=\"input-field col s4\">
+\t          <input type=\"text\" id=\"ubigeoGuia\" class=\"validate\" value=\"";
+        // line 345
+        echo $this->getAttribute(($context["compra_info"] ?? null), "iddistrito", array());
+        echo "\" disabled>
+\t          <label for=\"ubigeoGuia\">UBIGEO</label>
+\t        </div>
+\t        <div class=\"input-field col s12\">
+\t          <input type=\"text\" id=\"dirEnvio\" class=\"validate\" maxlength=\"100\" value=\"";
+        // line 349
+        echo twig_title_string_filter($this->env, $this->getAttribute(($context["compra_info"] ?? null), "Pci_Lote", array()));
+        echo " - ";
+        echo $this->getAttribute(($context["compra_info"] ?? null), "provincia", array());
+        echo " ";
+        echo $this->getAttribute(($context["compra_info"] ?? null), "distrito", array());
+        echo " \">
+\t          <label for=\"direccion\">Dirección a Enviar (NOMBRE DE LA AGENCIA CON PROVINCIA Y DISTRITO)</label>
+\t        </div>
+\t        <div class=\"input-field col s12\">
+\t          <input type=\"text\" id=\"dirGuia\" class=\"validate\" value=\"";
+        // line 353
+        echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Direccion", array());
+        echo " ";
+        echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_DtoInt", array());
+        echo " ";
+        echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Urbanizacion", array());
+        echo " Referencia: ";
+        echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Referencia", array());
+        echo "\">
+\t          <label for=\"direccion\">Dirección Cliente</label>
+\t        </div>
+\t        <div class=\"input-field col s12\">
+\t        \t<a class=\"btn gGuia green\" data-idv=\"";
+        // line 357
+        echo ($context["idventa"] ?? null);
+        echo "\">GENERAR GUIA</a>
+\t        \t<a class=\"btn impB3 orange\" href=\"http://pormayor.cocos.net.pe/dispatches\" target=\"_blank\" disabled>IR A GUIAS</a>
+\t       \t</div>
+\t      </div>
+        </div>
+    </div>
     <div id=\"modalBoleta\" class=\"modal\" style=\"z-index:9999 !important;width: 50%!important;\">
         <div class=\"modal-content\">
         \t<span class=\"card-title\">GENERAR BOLETA DEL CLIENTE ";
-        // line 310
+        // line 365
         echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
         echo "</span>
           <div class=\"row\">
@@ -588,14 +705,15 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t        </div>
 \t        <div class=\"input-field col s4\">
 \t          <input type=\"text\" id=\"numerodoc\" class=\"validate\" value=\"";
-        // line 321
+        // line 376
         echo $this->getAttribute(($context["venta"] ?? null), "Per_Dni", array());
         echo "\">
 \t          <label for=\"numerodoc\">Número Documento</label>
+\t           <a class=\"btn buscarDatos\" data-tipo=\"1\">RENIEC</a>
 \t        </div>
 \t        <div class=\"input-field col s4\">
 \t          <input id=\"razonSocial2\" type=\"text\" class=\"validate\" value=\"";
-        // line 325
+        // line 381
         echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
         echo "\">
 \t          <label for=\"razonSocial2\">Nombre</label>
@@ -606,21 +724,21 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t        </div>
 \t        <div class=\"input-field col s4\">
 \t          <input type=\"text\" id=\"tlf\" class=\"validate\" value=\"";
-        // line 333
+        // line 389
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Telefono", array());
         echo "\">
 \t          <label for=\"tlf\">Teléfono</label>
 \t        </div>
 \t        <div class=\"input-field col s4\">
 \t          <input type=\"text\" id=\"ubigeo\" class=\"validate\" value=\"";
-        // line 337
+        // line 393
         echo $this->getAttribute(($context["compra_info"] ?? null), "iddistrito", array());
         echo "\" disabled>
 \t          <label for=\"ubigeo\">UBIGEO</label>
 \t        </div>
 \t        <div class=\"input-field col s12\">
 \t          <input type=\"text\" id=\"direccion\" class=\"validate\" value=\"";
-        // line 341
+        // line 397
         if (($this->getAttribute(($context["venta"] ?? null), "Pac_Banco", array()) == "TIENDA")) {
             echo "RETIRO EN TIENDA ";
         }
@@ -639,7 +757,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t        </div>
 \t        <div class=\"input-field col s12\">
 \t        \t<a class=\"btn gBoleta green\" data-idv=\"";
-        // line 345
+        // line 401
         echo ($context["idventa"] ?? null);
         echo "\">GENERAR BOLETA</a>
 \t        \t<a class=\"btn impB orange\" href=\"\" disabled>IMPRIMIR BOLETA</a>
@@ -652,7 +770,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         \t<p> SOLO DE CONFIRMAR CUANDO SE HAYA ENTREGADO LA COMPRA AL CLIENTE Y SE HAYA VERIFICADO QUE TODOS LOS PRODUCTOS ENTREGADOS
         SON LOS QUE APRECEN EN SU COMPRA. SI ES ASÍ DAR CLICK EN <b>CONFIRMAR</b>.</p>
         \t<a class=\"btn green confV\" data-idv=\"";
-        // line 355
+        // line 411
         echo ($context["idventa"] ?? null);
         echo "\">CONFIRMAR</a>
         </div>
@@ -661,7 +779,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         <div class=\"modal-content center\">
         \t<p>SOLO DE ANULAR CUANDO SE HAYA CONFIRMADO LA CANCELACIÓN POR PARTE DEL CLIENTE O HAYAN PASADO 24 HORAS DE REALIZO LA COMPRA Y NO HUBIESE COMUNICACIÓN. SI ES ASÍ DAR CLICK EN <b>ANULAR</b></p>
         \t<a class=\"btn red anuV\" data-idv=\"";
-        // line 361
+        // line 417
         echo ($context["idventa"] ?? null);
         echo "\">ANULAR</a>
         </div>
@@ -674,11 +792,11 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
                   <select class=\"browser-default select2\" id=\"selProducto\">
                   \t<option value=\"0\" selected> Seleccione el producto</option>
                     ";
-        // line 371
+        // line 427
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["productos"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 372
+            // line 428
             echo "                      <option value=\"";
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "\" data-pre=\"";
@@ -699,7 +817,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 374
+        // line 430
         echo "                  </select><br><br>
             </div>
             <div class=\"col s4\">
@@ -741,7 +859,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
             </div>
             <div class=\"col s12\">
             \t<a class=\"btn green btn-lg btn-block addpedido\" data-idv=\"";
-        // line 414
+        // line 470
         echo ($context["idventa"] ?? null);
         echo "\"><i class=\"material-icons left\">add_box</i>AGREGAR AL PEDIDO</a>
             </div>
@@ -752,7 +870,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
     \t\t<tr>
     \t\t\t<td style=\"padding:50px;\">
     \t\t\t\t<img src=\"";
-        // line 422
+        // line 478
         echo ($context["ruta_img"] ?? null);
         echo "logoPM.jpg\">
     \t\t\t\t<b>WWW.PORMAYOR.PE</b><br>
@@ -760,16 +878,20 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
     \t\t\t\tRUC: 20603706804
     \t\t\t\tJIRÓN ANDAHUAYLAS 251, INTERIOR 208-209<br> CERDADO DE LIMA, LIMA.<br>
     \t\t\t\t+51 923500413
+    \t\t\t\t<span style=\"font-size: 10px;\">Vendedor:";
+        // line 484
+        echo $this->getAttribute(($context["venta"] ?? null), "vendedor", array());
+        echo "</span>
     \t\t\t</td>
     \t\t\t<td style=\"padding:5px;\">
     \t\t\t\t<div style=\"font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;\">
     \t\t\t\t\t";
-        // line 431
+        // line 488
         echo $this->getAttribute(($context["venta"] ?? null), "Pac_FechaRegistro", array());
         echo "<br>
 \t\t\t\t \t\t<b>DATOS CLIENTE</b><br>
 \t\t\t\t\t\t<b>Nombre Completo:</b> ";
-        // line 433
+        // line 490
         if ($this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array())) {
             echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
         } else {
@@ -777,7 +899,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         }
         echo "<br>
 \t\t\t\t\t\t<b>D.N.I:</b> ";
-        // line 434
+        // line 491
         if ($this->getAttribute(($context["venta"] ?? null), "Per_Dni", array())) {
             echo $this->getAttribute(($context["venta"] ?? null), "Per_Dni", array());
         } else {
@@ -785,27 +907,29 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         }
         echo " <br>
 \t\t\t\t\t\t<b>Teléfono</b> ";
-        // line 435
+        // line 492
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Telefono", array());
         echo " <br>
 \t\t\t\t\t\t<b>Código:</b> <b>";
-        // line 436
+        // line 493
         echo $this->getAttribute(($context["venta"] ?? null), "Pac_CodPago", array());
         echo "</b>  <br>
+\t\t\t\t\t\t<span style=\"font-size: 10px;\">Vendedor: ";
+        // line 494
+        echo $this->getAttribute(($context["venta"] ?? null), "vendedor", array());
+        echo "</span>  <br>
 \t\t    \t\t</div><br>
 \t\t \t\t\t<div style=\"font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;\">
 \t\t\t\t \t\t<b>DIRECCIÓN CLIENTE</b><br>
-\t\t \t\t\t\t<b>Departamento:</b> ";
-        // line 440
-        echo $this->getAttribute(($context["compra_info"] ?? null), "region", array());
-        echo " <br> <b>Provincia:</b> ";
-        echo $this->getAttribute(($context["compra_info"] ?? null), "provincia", array());
-        echo " <br> <b>Distrito:</b> ";
-        echo $this->getAttribute(($context["compra_info"] ?? null), "distrito", array());
-        echo " <br> <b>Dirección:</b> ";
-        echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Direccion", array());
-        echo " ";
+\t\t\t\t \t\tAGENCIA: ";
+        // line 498
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Lote", array());
+        echo "<br>
+\t\t \t\t\t\t<b style=\"font-size:35px\"> ";
+        // line 499
+        echo $this->getAttribute(($context["compra_info"] ?? null), "distrito", array());
+        echo " </b><br> <b>Dirección:</b> ";
+        echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Direccion", array());
         echo " ";
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_DtoInt", array());
         echo " ";
@@ -827,7 +951,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
     \t\t<tr>
     \t\t\t<td align=\"center\">
     \t\t\t\t<b>DETALLE DE VENTA ";
-        // line 454
+        // line 513
         echo $this->getAttribute(($context["venta"] ?? null), "Pac_CodPago", array());
         echo "</b> 
 \t\t \t\t</td>
@@ -837,12 +961,12 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
     \t\t\t<td width=\"50%\" align=\"\">
     \t\t\t\t<div style=\"font-size:14px;padding:5px;font-family: Arial, Helvetica, sans-serif;\">
     \t\t\t\t\tFecha de venta: ";
-        // line 461
+        // line 520
         echo $this->getAttribute(($context["venta"] ?? null), "Pac_FechaRegistro", array());
         echo "<br>
 \t\t\t\t \t\t<b>DATOS CLIENTE</b><br>
 \t\t\t\t\t\t<b>Nombre Completo:</b> ";
-        // line 463
+        // line 522
         if ($this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array())) {
             echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
         } else {
@@ -850,7 +974,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         }
         echo "<br>
 \t\t\t\t\t\t<b>D.N.I:</b> ";
-        // line 464
+        // line 523
         if ($this->getAttribute(($context["venta"] ?? null), "Per_Dni", array())) {
             echo $this->getAttribute(($context["venta"] ?? null), "Per_Dni", array());
         } else {
@@ -858,11 +982,11 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         }
         echo " <br>
 \t\t\t\t\t\t<b>Teléfono</b> ";
-        // line 465
+        // line 524
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Telefono", array());
         echo " <br>
 \t\t\t\t\t\t<b>Código:</b> <b>";
-        // line 466
+        // line 525
         echo $this->getAttribute(($context["venta"] ?? null), "Pac_CodPago", array());
         echo "</b>  <br>
 \t\t    \t\t</div><br>
@@ -871,7 +995,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t \t\t\t<div style=\"font-size:14px;padding:5px;font-family: Arial, Helvetica, sans-serif;\">
 \t\t\t\t \t\t<b>DIRECCIÓN CLIENTE</b><br>
 \t\t \t\t\t\t<b>Departamento:</b> ";
-        // line 472
+        // line 531
         echo $this->getAttribute(($context["compra_info"] ?? null), "region", array());
         echo " <br> <b>Provincia:</b> ";
         echo $this->getAttribute(($context["compra_info"] ?? null), "provincia", array());
@@ -889,7 +1013,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         echo $this->getAttribute(($context["compra_info"] ?? null), "Pci_Referencia", array());
         echo "<br>
 \t\t \t\t\t\tVendedor:<b>";
-        // line 473
+        // line 532
         echo $this->getAttribute(($context["venta"] ?? null), "vendedor", array());
         echo "</b>
 \t\t \t\t\t</div>
@@ -901,33 +1025,33 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
   \t\t\t\t<tr>
   \t\t\t\t\t<th style=\"border-bottom: 1px solid;border-top: 1px solid\"></th>
   \t\t\t\t\t<th style=\"border-bottom: 1px solid;border-top: 1px solid\"></th>
-  \t\t\t\t\t<th style=\"border-bottom: 1px solid;border-top: 1px solid\">Producto</th>
   \t\t\t\t\t<th style=\"border-bottom: 1px solid;border-top: 1px solid\">Cantidad</th>
+  \t\t\t\t\t<th style=\"border-bottom: 1px solid;border-top: 1px solid\">Producto</th>
   \t\t\t\t\t<th style=\"border-bottom: 1px solid;border-top: 1px solid\">Precio S/</th>
   \t\t\t\t\t<th style=\"border-bottom: 1px solid;border-top: 1px solid\">Importe S/</th>
   \t\t\t\t</tr>
   \t\t\t</thead>
   \t\t\t<tbody>
   \t\t\t\t";
-        // line 491
+        // line 550
         echo "  \t\t\t\t";
         $context["total2"] = 0;
-        // line 492
+        // line 551
         echo "  \t\t\t\t";
         $context["totalEnvio"] = 0;
-        // line 493
+        // line 552
         echo "  \t\t\t\t";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["venta_detalle"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["ved"]) {
-            // line 494
+            // line 553
             echo "      \t\t\t\t<tr>
       \t\t\t\t\t<td class=\"\">
       \t\t\t\t\t\t<input type=\"checkbox\" name=\"\"> 
       \t\t\t\t\t</td>
       \t\t\t\t\t<td class=\"\">
       \t\t\t\t\t\t<img class=\"redondeo centrarForzado\" src=\"";
-            // line 499
+            // line 558
             echo ($context["ruta_img"] ?? null);
             if ($this->getAttribute($context["ved"], "SKU_Img", array())) {
                 echo $this->getAttribute($context["ved"], "SKU_Img", array());
@@ -936,38 +1060,37 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
             }
             echo "\" height=\"30\">
       \t\t\t\t\t</td>
+    \t\t\t\t\t<td align=\"center\">
+      \t\t\t\t\t\t<span class=\"center\" style=\"font-size:20px;\">";
+            // line 561
+            echo $this->getAttribute($context["ved"], "Pcd_Cantidad", array());
+            echo "</span></br>
+    \t\t\t\t\t</td>
       \t\t\t\t\t<td>
       \t\t\t\t\t\t";
-            // line 502
+            // line 564
             echo $this->getAttribute($context["ved"], "Pro_Nombre", array());
             echo "</br>
     \t\t   \t\t\t\t<span class=\"enfasisB black-text\">";
-            // line 503
+            // line 565
             echo $this->getAttribute($context["ved"], "SKU_Color", array());
-            echo "</span></br>
-    \t\t\t\t\t</td>
-
-    \t\t\t\t\t<td align=\"center\">
-      \t\t\t\t\t\t<span class=\"center\">";
-            // line 507
-            echo $this->getAttribute($context["ved"], "Pcd_Cantidad", array());
             echo "</span></br>
     \t\t\t\t\t</td>
       \t\t\t\t\t<td class=\"center\">
 
       \t\t\t\t\t\t<span class=\"precioventa\" id=\"precioventa";
-            // line 511
+            // line 569
             echo $this->getAttribute($context["ved"], "SKU_IdSKU", array());
             echo "\">";
             echo twig_number_format_filter($this->env, $this->getAttribute($context["ved"], "Pcd_Precio", array()), 2, ".", " ");
             echo "</span>
       \t\t\t\t\t</td>
       \t\t\t\t\t<td id=\"tdimporte";
-            // line 513
+            // line 571
             echo $this->getAttribute($context["ved"], "SKU_IdSKU", array());
             echo "\" class=\"center\">
       \t\t\t\t\t\t<span id=\"importe";
-            // line 514
+            // line 572
             echo $this->getAttribute($context["ved"], "SKU_IdSKU", array());
             echo "\">";
             echo twig_number_format_filter($this->env, $this->getAttribute($context["ved"], "Pcd_Importe", array()), 2, ".", " ");
@@ -975,65 +1098,65 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
       \t\t\t\t\t</td>
       \t\t\t\t</tr>
       \t\t\t\t";
-            // line 517
+            // line 575
             $context["total2"] = (($context["total2"] ?? null) + $this->getAttribute($context["ved"], "Pcd_Importe", array()));
-            // line 518
+            // line 576
             echo "      \t\t\t\t";
             $context["totalEnvio"] = (($context["totalEnvio"] ?? null) + $this->getAttribute($context["ved"], "Pce_CostoEnvio", array()));
-            // line 519
+            // line 577
             echo "        \t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ved'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 520
+        // line 578
         echo "  \t\t\t</tbody>
   \t\t\t<tfoot>
   \t\t\t\t";
-        // line 522
+        // line 580
         $context["totalEnvio"] = twig_round($this->getAttribute(($context["venta"] ?? null), "Pac_Envio", array()));
-        // line 523
+        // line 581
         echo "  \t\t\t\t";
         $context["totalPagar"] = (($context["total2"] ?? null) + ($context["totalEnvio"] ?? null));
-        // line 524
+        // line 582
         echo "  \t\t\t\t<tr>
         \t\t\t<input type=\"hidden\" value=\"";
-        // line 525
+        // line 583
         echo ($context["monto_cotizado"] ?? null);
         echo "\" id=\"totalDscto_\">
         \t\t\t<td colspan=\"5\" style=\"border-bottom: 1px solid;\">
         \t\t\t\t<b>TOTAL IMPORTE</b> 
         \t\t\t<td style=\"border-bottom: 1px solid;\">
         \t\t\t\t<b>S/ <span class=\"fontA\">";
-        // line 529
+        // line 587
         echo twig_number_format_filter($this->env, ($context["total2"] ?? null), 2, ".", " ");
         echo "</span></b>
         \t\t\t</td>
         \t\t</tr>
         \t\t<tr>
         \t\t\t<input type=\"hidden\" value=\"";
-        // line 533
+        // line 591
         echo ($context["monto_cotizado"] ?? null);
         echo "\" id=\"totalDscto_\">
         \t\t\t<td colspan=\"5\" style=\"border-bottom: 1px solid;\">
         \t\t\t\t<b>TOTAL ENVÍO</b> 
         \t\t\t<td style=\"border-bottom: 1px solid;\">
         \t\t\t\t<b>S/ <span class=\"fontA\">";
-        // line 537
+        // line 595
         echo twig_number_format_filter($this->env, $this->getAttribute(($context["venta"] ?? null), "Pac_Envio", array()), 2, ".", " ");
         echo "</span></b>
         \t\t\t</td>
         \t\t</tr>
         \t\t<tr>
         \t\t\t<input type=\"hidden\" value=\"";
-        // line 541
+        // line 599
         echo ($context["monto_cotizado"] ?? null);
         echo "\" id=\"totalDscto_\">
         \t\t\t<td colspan=\"5\" style=\"border-bottom: 1px solid;\">
         \t\t\t\t<b>TOTAL A PAGAR</b> 
         \t\t\t<td style=\"border-bottom: 1px solid;\">
         \t\t\t\t<b>S/ <span class=\"fontA\">";
-        // line 545
+        // line 603
         echo twig_number_format_filter($this->env, ($context["totalPagar"] ?? null), 2, ".", " ");
         echo "</span></b>
         \t\t\t</td>
@@ -1053,26 +1176,26 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         </thead>
         <tbody>
         ";
-        // line 562
+        // line 620
         $context["montV"] = 0;
         echo "          \t
         \t";
-        // line 563
+        // line 621
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["vauche"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["v"]) {
-            // line 564
+            // line 622
             echo "        \t\t<tr>
         \t\t\t<td style=\"border-bottom:1px solid black;\">";
-            // line 565
+            // line 623
             echo $this->getAttribute($context["v"], "Pvoc_MedioPago", array());
             echo "</td>
         \t\t\t<td style=\"border-bottom:1px solid black;\">";
-            // line 566
+            // line 624
             echo $this->getAttribute($context["v"], "Pvoc_Monto", array());
             echo "</td>
         \t\t\t<td style=\"border-bottom:1px solid black;\">";
-            // line 567
+            // line 625
             if (($this->getAttribute($context["v"], "Pvoc_EstadoComprobante", array()) == 0)) {
                 echo "<span class=\"new badge red\">PENDIENTE</span>";
             } else {
@@ -1080,28 +1203,28 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
             }
             echo "</td>
         \t\t\t<td style=\"border-bottom:1px solid black;\">";
-            // line 568
+            // line 626
             echo $this->getAttribute($context["v"], "Pvoc_NumComprobante", array());
             echo "</td>
         \t\t\t<td style=\"border-bottom:1px solid black;\">";
-            // line 569
+            // line 627
             echo $this->getAttribute($context["v"], "Pvoc_FechaComprobante", array());
             echo "</td>
         \t\t\t";
-            // line 570
+            // line 628
             $context["montV"] = (($context["montV"] ?? null) + $this->getAttribute($context["v"], "Pvoc_Monto", array()));
-            // line 571
+            // line 629
             echo "        \t\t</tr>
         \t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 573
+        // line 631
         echo "        </tbody>
       </table><br>
         <h4 style=\"color: red;\">";
-        // line 575
+        // line 633
         if ((($context["montV"] ?? null) == ($context["totalPagar"] ?? null))) {
             echo "PEDIDO PROCESADO CON ÉXITO - ENTREGAR";
         } else {
@@ -1120,7 +1243,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t</table>
     </div>
     <div id=\"modalVocher\" class=\"modal\" style=\"z-index:9999 !important;";
-        // line 587
+        // line 645
         if ((($context["userAgent"] ?? null) != "PC")) {
             echo "width: 100%!important;";
         } else {
@@ -1141,7 +1264,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
                 </div>
                 <div class=\"input-field col s12 m6 l4\">
                     <input type=\"number\" id=\"montoV\" class=\"validate\" name=\"montoV\" required=\"\" value=\"";
-        // line 601
+        // line 659
         echo twig_number_format_filter($this->env, ($context["totalPagar"] ?? null), 2, ".", " ");
         echo "\">
                     <label for=\"montoV\" class=\"active\">MONTO</label>
@@ -1180,22 +1303,22 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t            </thead>
 \t            <tbody>            \t
 \t            \t";
-        // line 637
+        // line 695
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["vauche"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["v"]) {
-            // line 638
+            // line 696
             echo "\t            \t\t<tr>
 \t            \t\t\t<td>";
-            // line 639
+            // line 697
             echo $this->getAttribute($context["v"], "Pvoc_MedioPago", array());
             echo "</td>
 \t            \t\t\t<td>";
-            // line 640
+            // line 698
             echo $this->getAttribute($context["v"], "Pvoc_Monto", array());
             echo "</td>
 \t            \t\t\t<td>";
-            // line 641
+            // line 699
             if (($this->getAttribute($context["v"], "Pvoc_EstadoComprobante", array()) == 0)) {
                 echo "<span class=\"new badge red\">PENDIENTE</span>";
             } else {
@@ -1203,15 +1326,15 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
             }
             echo "</td>
 \t            \t\t\t<td>";
-            // line 642
+            // line 700
             echo $this->getAttribute($context["v"], "Pvoc_NumComprobante", array());
             echo "</td>
 \t            \t\t\t<td>";
-            // line 643
+            // line 701
             echo $this->getAttribute($context["v"], "Pvoc_FechaComprobante", array());
             echo "</td>
 \t            \t\t\t<td><img src=\"";
-            // line 644
+            // line 702
             echo ($context["ruta_img"] ?? null);
             echo "/vauche/";
             echo $this->getAttribute($context["v"], "Pvoc_LogoPago", array());
@@ -1222,14 +1345,14 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 647
+        // line 705
         echo "\t            </tbody>
             </table>
 \t    </div>
 \t    <div class=\"modal-footer\">               
 \t    \t\t<a class=\"btn black-text white modal-action modal-close waves-effect waves-red btn-flat\">CERRAR</a>
                 <a id=\"btnRegistrarComprobante\" data-idv=\"";
-        // line 652
+        // line 710
         echo ($context["idventa"] ?? null);
         echo "\" class=\"btn green white-text\">Cargar pago</a>
          </div>
@@ -1237,25 +1360,29 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 ";
     }
 
-    // line 657
+    // line 715
     public function block_script($context, array $blocks = array())
     {
-        // line 658
+        // line 716
         echo "\t<script src=\"https://printjs-4de6.kxcdn.com/print.min.js\"></script>
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 \t<script src=\"https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js\"></script>
 \t<script src=\"";
-        // line 661
+        // line 719
         echo base_url("public/");
         echo "js/tienda/detalleventa.js?v=2506\"></script>
 \t<script src=\"";
-        // line 662
+        // line 720
         echo base_url("public/");
         echo "js/tienda/pago_pedido.js?v=0607\"></script>
 \t<script src=\"";
-        // line 663
+        // line 721
         echo base_url("public/");
         echo "js/vauche.js\"></script>
+\t<script src=\"";
+        // line 722
+        echo base_url("public/");
+        echo "js/apidatos.js\"></script>
 ";
     }
 
@@ -1271,7 +1398,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 
     public function getDebugInfo()
     {
-        return array (  1257 => 663,  1253 => 662,  1249 => 661,  1244 => 658,  1241 => 657,  1233 => 652,  1226 => 647,  1215 => 644,  1211 => 643,  1207 => 642,  1199 => 641,  1195 => 640,  1191 => 639,  1188 => 638,  1184 => 637,  1145 => 601,  1124 => 587,  1105 => 575,  1101 => 573,  1094 => 571,  1092 => 570,  1088 => 569,  1084 => 568,  1076 => 567,  1072 => 566,  1068 => 565,  1065 => 564,  1061 => 563,  1057 => 562,  1037 => 545,  1030 => 541,  1023 => 537,  1016 => 533,  1009 => 529,  1002 => 525,  999 => 524,  996 => 523,  994 => 522,  990 => 520,  984 => 519,  981 => 518,  979 => 517,  971 => 514,  967 => 513,  960 => 511,  953 => 507,  946 => 503,  942 => 502,  931 => 499,  924 => 494,  919 => 493,  916 => 492,  913 => 491,  893 => 473,  875 => 472,  866 => 466,  862 => 465,  854 => 464,  846 => 463,  841 => 461,  831 => 454,  800 => 440,  793 => 436,  789 => 435,  781 => 434,  773 => 433,  768 => 431,  756 => 422,  745 => 414,  703 => 374,  682 => 372,  678 => 371,  665 => 361,  656 => 355,  643 => 345,  624 => 341,  617 => 337,  610 => 333,  599 => 325,  592 => 321,  578 => 310,  567 => 302,  548 => 298,  541 => 294,  534 => 290,  523 => 282,  516 => 278,  510 => 275,  491 => 259,  480 => 251,  469 => 243,  462 => 238,  459 => 237,  457 => 236,  453 => 234,  447 => 233,  444 => 232,  442 => 231,  438 => 229,  429 => 227,  425 => 226,  417 => 223,  413 => 222,  406 => 220,  400 => 217,  394 => 214,  390 => 213,  379 => 210,  375 => 208,  370 => 207,  367 => 206,  365 => 205,  351 => 193,  347 => 191,  344 => 190,  336 => 184,  334 => 183,  327 => 178,  316 => 175,  312 => 174,  308 => 173,  300 => 172,  296 => 171,  292 => 170,  289 => 169,  285 => 168,  270 => 155,  262 => 126,  255 => 122,  244 => 118,  237 => 114,  230 => 110,  223 => 106,  211 => 99,  204 => 95,  200 => 93,  194 => 90,  190 => 88,  188 => 87,  183 => 85,  172 => 81,  165 => 77,  158 => 73,  152 => 69,  149 => 67,  142 => 62,  134 => 58,  127 => 54,  122 => 51,  120 => 50,  113 => 48,  107 => 47,  101 => 46,  97 => 44,  88 => 37,  86 => 36,  68 => 33,  58 => 25,  55 => 24,  33 => 4,  30 => 3,  11 => 1,);
+        return array (  1384 => 722,  1380 => 721,  1376 => 720,  1372 => 719,  1367 => 716,  1364 => 715,  1356 => 710,  1349 => 705,  1338 => 702,  1334 => 701,  1330 => 700,  1322 => 699,  1318 => 698,  1314 => 697,  1311 => 696,  1307 => 695,  1268 => 659,  1247 => 645,  1228 => 633,  1224 => 631,  1217 => 629,  1215 => 628,  1211 => 627,  1207 => 626,  1199 => 625,  1195 => 624,  1191 => 623,  1188 => 622,  1184 => 621,  1180 => 620,  1160 => 603,  1153 => 599,  1146 => 595,  1139 => 591,  1132 => 587,  1125 => 583,  1122 => 582,  1119 => 581,  1117 => 580,  1113 => 578,  1107 => 577,  1104 => 576,  1102 => 575,  1094 => 572,  1090 => 571,  1083 => 569,  1076 => 565,  1072 => 564,  1066 => 561,  1055 => 558,  1048 => 553,  1043 => 552,  1040 => 551,  1037 => 550,  1017 => 532,  999 => 531,  990 => 525,  986 => 524,  978 => 523,  970 => 522,  965 => 520,  955 => 513,  930 => 499,  926 => 498,  919 => 494,  915 => 493,  911 => 492,  903 => 491,  895 => 490,  890 => 488,  883 => 484,  874 => 478,  863 => 470,  821 => 430,  800 => 428,  796 => 427,  783 => 417,  774 => 411,  761 => 401,  742 => 397,  735 => 393,  728 => 389,  717 => 381,  709 => 376,  695 => 365,  684 => 357,  671 => 353,  660 => 349,  653 => 345,  646 => 341,  635 => 333,  628 => 329,  622 => 326,  611 => 318,  592 => 314,  585 => 310,  578 => 306,  566 => 297,  559 => 293,  553 => 290,  541 => 280,  538 => 279,  532 => 275,  529 => 274,  523 => 271,  517 => 268,  511 => 265,  508 => 264,  505 => 263,  502 => 262,  500 => 261,  491 => 255,  480 => 247,  469 => 239,  462 => 234,  459 => 233,  457 => 232,  453 => 230,  447 => 229,  444 => 228,  442 => 227,  438 => 225,  429 => 223,  425 => 222,  417 => 219,  413 => 218,  406 => 216,  400 => 213,  396 => 212,  390 => 209,  379 => 206,  375 => 204,  370 => 203,  367 => 202,  365 => 201,  349 => 187,  341 => 181,  339 => 180,  332 => 175,  326 => 174,  323 => 173,  321 => 172,  314 => 170,  310 => 169,  306 => 168,  298 => 167,  294 => 166,  290 => 165,  287 => 164,  283 => 163,  279 => 162,  274 => 161,  272 => 160,  257 => 147,  249 => 118,  242 => 114,  231 => 110,  224 => 106,  217 => 102,  210 => 98,  198 => 91,  191 => 87,  187 => 85,  181 => 82,  177 => 80,  175 => 79,  170 => 77,  159 => 73,  152 => 69,  145 => 65,  139 => 61,  136 => 59,  129 => 54,  121 => 50,  114 => 46,  109 => 43,  107 => 42,  100 => 40,  94 => 39,  88 => 38,  68 => 33,  58 => 25,  55 => 24,  33 => 4,  30 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

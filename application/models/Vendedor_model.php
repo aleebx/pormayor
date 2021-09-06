@@ -93,6 +93,15 @@ class Vendedor_model extends CI_Model
         return $query->result();
     }
 
+    function datos_vendedor($id_vendedor){
+        $this->db->select('usu.Usu_IdUsuario,per.Per_Nombre,per.Per_Telefono');
+        $this->db->from('usuario as usu');
+        $this->db->join('persona as per','per.Per_IdPersona = usu.Per_IdPersona');
+        $this->db->where('usu.Usu_IdUsuario', $id_vendedor);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
     function stock_vendedor(){
         $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, sku.SKU_Color, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.SKU_StockDisponible, sku.SKU_Reservado,pro.Pro_PrecioMinimo');
         $this->db->from('producto as pro');

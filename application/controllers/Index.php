@@ -18,18 +18,13 @@
     {
       header("Cache-Control: no-cache,must-revalidate"); 
       $data=$this->acl->load_datos(); 
-      $data['index']=true;
+      $data['index'] = true;
       $data['pagina']['extrabtn']='NO';
       $data['pagina']['tipo']='principal';
       $data['pagina']['titulo']='PorMayor.pe - Crece con nosotros';
       $data['productos']=$this->productoModel->productos_principal2();
       foreach ($data['productos'] as $valor) {
         $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
-      }
-      if(isset($data['usuario']['logueado']))
-      {
-        $data['noticoments'] = $this->cotizacionModel->get_comentarios_usuario_noti($data['usuario']['id_usuario']);
-        $data['noticotiza'] = $this->cotizacionModel->get_cotizacion_usuario_noti($data['usuario']['id_usuario']);
       }
       $this->twig->parse('index3.twig',$data);
     }

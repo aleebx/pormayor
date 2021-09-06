@@ -296,6 +296,7 @@
 	        <div class="input-field col s6">
 	          <input type="text" id="ruc" class="validate" value="{{compra_info.Pci_Ruc}}">
 	          <label for="ruc">RUC</label>
+	          <a class="btn buscarDatos" data-tipo="6">SUNAT</a>
 	        </div>
 	        <div class="input-field col s4">
 	          <input type="text" id="email" class="validate">
@@ -306,7 +307,7 @@
 	          <label for="tlf">Teléfono</label>
 	        </div>
 	        <div class="input-field col s4">
-	          <input type="text" id="ubigeo" class="validate" value="{{compra_info.iddistrito}}" disabled>
+	          <input type="text" id="ubigeo" class="validate" value="{{compra_info.iddistrito}}">
 	          <label for="ubigeo">UBIGEO</label>
 	        </div>
 	        <div class="input-field col s12">
@@ -374,6 +375,7 @@
 	        <div class="input-field col s4">
 	          <input type="text" id="numerodoc" class="validate" value="{{venta.Per_Dni}}">
 	          <label for="numerodoc">Número Documento</label>
+	           <a class="btn buscarDatos" data-tipo="1">RENIEC</a>
 	        </div>
 	        <div class="input-field col s4">
 	          <input id="razonSocial2" type="text" class="validate" value="{{venta.Per_Nombre}}">
@@ -717,4 +719,5 @@
 	<script src="{{base_url('public/')}}js/tienda/detalleventa.js?v=2506"></script>
 	<script src="{{base_url('public/')}}js/tienda/pago_pedido.js?v=0607"></script>
 	<script src="{{base_url('public/')}}js/vauche.js"></script>
+	<script src="{{base_url('public/')}}js/apidatos.js"></script>
 {% endblock %}

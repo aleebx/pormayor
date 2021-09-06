@@ -23,68 +23,21 @@
  </style>
 {% endblock %}
 {% block content %}
-{#   <main class="container">
-    <div class="card">
-      <div class="card-content">
-        <span class="fontD red-text center">{{errors}}</span>
-        <span class="card-title">REGISTRO DE EMPRENDEDOR</span>
-        <form id="form-registro" method="POST" action="{{base_url()}}vnd/registrar2" autocomplete="off">                
-          <div class="row validarTienda centrarForzado card-content">
-            <div class="input-field col s12 l6">
-              <i class="material-icons prefix transitionB">person</i>
-              <input type="text" name="nombre" id="nombre" placeholder="Nombre Completo" required> 
-              <label for="nombre">Nombre Completo</label>
-            </div>
-            <div class="input-field col s12 l6">
-              <i class="material-icons prefix transitionB">chrome_reader_mode</i>
-              <input name="dni" id="dni" type="number" placeholder="Ingresa tu DNI/CE/OTRO" required>
-              <label for="dni">DNI/CE/OTRO</label>
-            </div>
-            <div class="col s12 m12 l6 input-field positionRelative">
-              <i class="material-icons prefix transitionB">email</i>
-              <input name="correoA" id="correoA" type="email"  placeholder="Ingresa tu correo de registro" required>
-              <label for="correoA">Correo electrónico</label>
-            </div>
-            <div class="col s12 m12 l6 input-field positionRelative">
-              <i class="material-icons prefix transitionB">phone</i>
-              <input name="celular" id="celular" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==9) return false;" placeholder="Ingresa tu celular de contacto" required>
-              <label for="icon_prefix">Teléfono</label>
-            </div>
-            <div class="input-field col s12 l12">
-              <i class="material-icons prefix transitionB">lock</i>
-              <input name="clave" type="password" id="clave"  autocomplete="new-password" required>
-              <label for="clave">Contraseña para <b>pormayor.pe</b></label>
-            </div>
-            <div class="input-field col s12 l12">
-              <i class="material-icons prefix transitionB">lock</i>
-              <input name="clave2" type="password" id="clave2"  autocomplete="new-password" required>
-              <label for="clave2">Confirmar Contraseña</label>
-            </div>
-            <div class="input-field col s12 l12 hide">
-              <i class="material-icons prefix transitionB">star</i>
-              <input name="vendedor" type="text" id="vendedor" value="{{id_vendedor}}">
-              <label for="clave2">Codigo Emprendedor</label>
-            </div>
-            <div class="col l12 center">
-              <button class="btn pormayor">Registrar cliente</button>
-            </div>
-          </form>
-      </div>
-    </div>
-  </main> #}
   <div  id="main">
   <div class="content-wrapper-before gradient-45deg-yellow"></div>
   <main class="container fixContainer">
     <br class="hide-on-large-only"><br class="hide-on-large-only">
+    {% if noVer == false %}
         <div class="row ">
-            <div class="col s12 m12 l8 offset-l2">
+            <div class="col s12 m12 l8">
                 <div class="card">                  
                   <div class="card-content">
-
                     <form id="form-registro" method="POST" action="{{base_url()}}vnd/registrar2" autocomplete="off">                
                       <div class="row validarTienda centrarForzado card-content">
                         <span class="card-title center">REGISTRATE EN <b>PORMAYOR.PE</b></span>
-                        <h6 class="center">Emprende con nosotros, puedes llevarte cualquier producto a precio por mayor con una compra mínima de S/100</h6>
+                        <h6 class="center fontB2">Hola, amigo emprededor. Me llamo <b>{{vendedor.Per_Nombre}}</b> y será tu asesor de ventas en PorMayor.pe. Si tienes alguna duda o consulta puedes llamarme al <a class="green-text fontA" href="tel:+51{{vendedor.Per_Telefono}}">{{vendedor.Per_Telefono}}</a></h6>
+                        <h6 class="center negrita">Completa todos los datos para que disfrutes de estos grandiosos precios</h6>
+                        <span class="card-title red-text">{{errors}}</span>
                         <div class="col s12">
                           <div class="divider dividerMargin"></div>
                         </div>
@@ -125,17 +78,46 @@
                         </div>
                         <div class="col l12 center">
                           <button class="btn pormayor black-text">Guardar</button>
+                        <h6 class="center">Emprende con nosotros, puedes llevarte cualquier producto a precio por mayor con una compra mínima de S/100</h6>
                         </div>
                       </form>
                   </div>                
                 </div>
             </div>
         </div>
+    {% endif %}
+        <div class="row">
+        {% for pro in productos %}
+        <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+            <div class="col s6 m6 l2 black-text" style="padding:5px" data-cd="{{pro.Pro_PM}}">
+              <div class="card hoverable z-depth-0">
+                <div class="center" style="height:190px;">
+                  <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo"data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+                </div>
+                <div class="card-content center" style="height:100px;">
+                  <p>
+                    <span class="truncate">{{pro.Pro_Nombre}}</span>
+                    {% if pro.Pro_Preventa == 1 %}
+                    <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x mayor<span class="new badge blue left">PRE-VENTA</span>
+                    {% else %}
+                    <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x mayor</label>
+                    {% endif %}
+                  </p>
+                </div>
+              </div>
+            </div>
+        </a>
+        {% endfor %}
+      </div>
 </main>
 </div>
 {% endblock %}
 
 {% block script %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+
   <script src="{{base_url('public/js/vendedor/')}}login.js?v={{now|date('i:s')}}"></script>
+    <script src="{{base_url('public/')}}js/index.js?v=5"></script>
+
 {% endblock %}

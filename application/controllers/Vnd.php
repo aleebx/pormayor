@@ -38,12 +38,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function registro($idvendedor)
 		{
 			$data = $this->acl->load_datos();
-			if (empty($data['usuario']['rol'])) {
 			$url = explode("-", $idvendedor);
+			if (empty($data['usuario']['rol'])) {
+			$data['noVer'] = false;
 			$data['id_vendedor'] = $url[1];
+			$data['vendedor']=$this->vendedorModel->datos_vendedor($url[1]);
+			$data['productos']=$this->productoModel->productos_principal2();
+      foreach ($data['productos'] as $valor) {
+        $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
+      }
 			$this->twig->parse('registro.twig', $data);
 			}else{
-				redirect ('');
+				$data['noVer'] = true;
+				$data['id_vendedor'] = $url[1];
+			$data['vendedor']=$this->vendedorModel->datos_vendedor($url[1]);
+			$data['productos']=$this->productoModel->productos_principal2();
+      foreach ($data['productos'] as $valor) {
+        $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
+      }
+				$this->twig->parse('registro.twig', $data);
 			}
 		}
 
@@ -769,7 +782,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->library('correo');
 			$nombre = $_POST['nombre'];
 			$dni = $_POST['dni'];
-			$correoA = $_POST['correoA'];
+			$correoA = strtolower($_POST['correoA']);
 			$celular = $_POST['celular'];
 			$clave = $_POST['clave'];
 			$hashed_password = password_hash($clave,PASSWORD_DEFAULT);
@@ -792,10 +805,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->library('correo');
 			$nombre = $_POST['nombre'];
 			$dni = $_POST['dni'];
-			$correoA = $_POST['correoA'];
+			$correoA = strtolower($_POST['correoA']);
 			$celular = $_POST['celular'];
 			$clave = $_POST['clave'];
+			$clave2 = $_POST['clave2'];
 			$id_vendedor = $_POST['vendedor'];
+			if ($clave != $clave2) {
+				$data['errors'] = "CONTRASEÑAS NO COINCIDEN";
+				$data['id_vendedor'] = $id_vendedor;
+				$this->twig->parse('registro.twig', $data);
+			}
 			$hashed_password = password_hash($clave,PASSWORD_DEFAULT);
 			$validarcorreo = $this->vendedorModel->buscar_correo($correoA);
 			if ($validarcorreo != 1) {
@@ -809,16 +828,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							'tienda_usuario' => NULL,
 							'logueado' =>1
 						));
-
-	                $datos['nombre'] = $nombre;
-	                $datos['correo'] = $correoA;
-	                $datos['clave'] = $clave;
-
-	                $contenido_correo = $this->twig->parse('correo/correo_comprador.twig', $datos, true);
-
-	                $this->correo->enviar($correoA, "Bienvenido(a) a PorMayor.pe" .$nombre, $contenido_correo);
-		        	redirect ('');
-				
+            $datos['nombre'] = $nombre;
+            $datos['correo'] = $correoA;
+            $datos['clave'] = $clave;
+            $contenido_correo = $this->twig->parse('correo/correo_comprador.twig', $datos, true);
+            $this->correo->enviar($correoA, "Bienvenido(a) a PorMayor.pe" .$nombre, $contenido_correo);
+	        	redirect ('vnd/registro/emprendedor-'.$id_vendedor);			
 					}
 				}else{
 					$data['errors'] = "NUMERO DE TELÉFONO INVALIDO DEBE TENER 9 DIGITOS ". $celular;
@@ -853,6 +868,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				}
 			}
 		}
+		 public function buildSlugValue($string) {
+      $table=array(
+        'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
+        'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+        'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O',
+        'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss',
+        'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e',
+        'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o',
+        'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
+        'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r', '/' => '-', ' ' => '-'
+    );
+
+    // -- Remove duplicated spaces
+    $stripped=preg_replace(array('/\s{2,}/','/[\t\n]/'),' ',$string);
+    $string=str_replace(',','',$string);
+    $string=str_replace('.','',$string);
+
+    // -- Returns the slug
+    return strtolower(strtr($string, $table));
+    }
 	
 	}
 
