@@ -77,6 +77,7 @@
       <nav class="pormayor center">
         <div class="nav-wrapper">
           <span class="fontA black-text metaVnd"></span>
+          <span class="fontA black-text llevo"></span>
         </div>
       </nav>
     </div>
@@ -124,6 +125,7 @@
       <li class="itemMenu {% if pag == 'hoy' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/hoy"><i class="material-icons">speaker_notes</i>Hoy</a></li>
       <li class="itemMenu {% if pag == 'stock' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/stock"><i class="material-icons">grid_on</i>Stock</a></li>
       <li class="itemMenu {% if pag == 'reporte' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/reporte"><i class="material-icons">list</i>Reporte</a></li>
+      <li class="itemMenu {% if pag == 'comision' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/comision"><i class="material-icons">star</i>Comisiones</a></li>
       <li class="containerAvatar valign-wrapper">
         <div class="avatarComprador" style="top: 2px;">
           <a class="sinPadding"href="{{base_url()}}usuario/perfil">
@@ -193,6 +195,7 @@
               var c3 = 0;
               var c4 = 0;
               var comision = 0;
+              $('.llevo').text('Llevas S/'+data);
             if (data <= 29999){
               $('.metaVnd').text('AUN NO COMISIONAS :( TÚ PUEDES CREO EN TI <3');
             }else if(data >= 30000 && data <= 40000){

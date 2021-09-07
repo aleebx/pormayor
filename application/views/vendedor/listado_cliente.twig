@@ -30,10 +30,8 @@
                   <td>{{c.compras}}</td>
                   {% if c.Usu_IdUsuario_Ven == 0 %}
                   <td id="td{{c.Usu_IdUsuario}}"><a class="btn btn-primary assCliente" data-idu="{{c.Usu_IdUsuario}}">ASIGNARME</a></td>
-                  {% elseif c.Usu_IdUsuario_Ven == usuario.id_usuario %}
-                  <td>CLIENTE</td>
                   {% else %}
-                  <td>NO DISPONIBLE</td>
+                  <td>{{c.vendedor}}</td>
                   {% endif %}
                   <td><a class="btn blue modal-trigger" id="{{c.Usu_IdUsuario}}" accessKey="{{c.Usu_Correo}}" href="#modalGes">Clave</a></td>
                 </tr>

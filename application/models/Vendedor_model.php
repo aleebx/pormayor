@@ -73,7 +73,7 @@ class Vendedor_model extends CI_Model
     }
 
     function get_clientes_all(){
-        $this->db->select('usu.Usu_IdUsuario,per.Per_Nombre,per.Per_Telefono,(SELECT reg.name from regions as reg where reg.id = pdu.Pag_idregion) AS dep,(SELECT dis.name from districts as dis where dis.id = pdu.Pag_iddistrito) AS dis, (SELECT count(Pac_IdPago_Compra) FROM pago_compra as pac where pac.Usu_IdUsuario = usu.Usu_IdUsuario) as compras, usu.Usu_IdUsuario_Ven, usu.Usu_Created, usu.Usu_Correo');
+        $this->db->select('usu.Usu_IdUsuario,per.Per_Nombre,per.Per_Telefono,(SELECT reg.name from regions as reg where reg.id = pdu.Pag_idregion) AS dep,(SELECT dis.name from districts as dis where dis.id = pdu.Pag_iddistrito) AS dis, (SELECT count(Pac_IdPago_Compra) FROM pago_compra as pac where pac.Usu_IdUsuario = usu.Usu_IdUsuario) as compras, usu.Usu_IdUsuario_Ven, usu.Usu_Created, usu.Usu_Correo,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as vendedor');
         $this->db->from('usuario as usu');
         $this->db->join('persona as per','per.Per_IdPersona = usu.Per_IdPersona');
         $this->db->join('pago_direccion_usu as pdu','pdu.Usu_IdUsuario = usu.Usu_IdUsuario','left');
@@ -208,14 +208,16 @@ class Vendedor_model extends CI_Model
 
     function meta($id_usuario){
         $mes = date("Y-m");
-        $this->db->select('SUM(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as monto');
+        $this->db->select('DATE_FORMAT(pac.Pac_FechaRegistro, "%Y-%m-%d") as fecha, SUM(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as total');
         $this->db->from('pago_compra as pac');
         $this->db->join('usuario as usu','usu.Usu_IdUsuario = pac.Usu_IdUsuario');
         $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
         $this->db->where("(pac.Pac_Estado = 5 AND usu.Usu_IdUsuario_Ven = $id_usuario)", NULL, FALSE);
-        $this->db->like("pac.Pac_FechaModificado", $mes);
+        $this->db->where('DATE_FORMAT(pac.Pac_FechaRegistro, "%Y-%m") =',$mes);
+        $this->db->group_by('DATE_FORMAT(pac.Pac_FechaRegistro, "%Y-%m-%d")');
+        $this->db->order_by('pac.Pac_FechaRegistro', 'DESC');
         $query = $this->db->get();
-        return $query->row();
+        return $query->result();
 
     } 
 

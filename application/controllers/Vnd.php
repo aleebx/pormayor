@@ -83,6 +83,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+		function comision()
+		{
+			$data = $this->acl->load_datos();
+			if ($data['usuario']['rol'] == 5) {
+			$data['pag'] = "comision";
+			$mes = date("Y-m");
+			$mes = '2021-06';
+	    $data['ventas'] = $this->vendedorModel->reporte_ventas($data['usuario']['id_usuario'], $mes);
+			$this->twig->parse('vendedor/comision.twig', $data);
+			}else{
+				redirect ('');
+			}
+		}
+
 		function reporte_mes()
 		{
 			$data = $this->acl->load_datos();
@@ -110,7 +124,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			if ($this->input->is_ajax_request()) {
 	      $meta = $this->vendedorModel->meta($data['usuario']['id_usuario']);
 	      if ($meta) {
-	      print_r($meta->monto);
+	      	$voy = 0;
+	      	foreach ($meta as $key => $value) {
+	      		$voy = $voy + $value->total;
+	      	}
+	      print_r($voy);
 	      }else{
 	      	echo 0;
 	      }
