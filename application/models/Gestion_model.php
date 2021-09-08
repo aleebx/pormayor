@@ -49,7 +49,7 @@
         }
          function get_detalle_venta_q($Pac_IdPago_Compra)
         {
-            $sql = "SELECT pcd.Pcd_IdPago_Compra_Detalle, pro.Pro_Nombre, pcd.Pcd_Precio, pcd.Pcd_Cantidad,pcd.Pcd_Importe,pcd.Pcd_Documento, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.Sku_Img,sku.SKU_Color, sku.SKU_IdSKU
+            $sql = "SELECT pcd.Pcd_IdPago_Compra_Detalle, pro.Pro_IdProducto, pro.Pro_Nombre, pcd.Pcd_Precio, pcd.Pcd_Cantidad,pcd.Pcd_Importe,pcd.Pcd_Documento, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.Sku_Img,sku.SKU_Color, sku.SKU_IdSKU
                 from pago_compra_detalle as pcd 
                 INNER JOIN sku as sku ON sku.SKU_IdSKU = pcd.Pcd_IdSku
                 INNER JOIN producto as pro ON pro.Pro_IdProducto = sku.producto_Pro_IdProducto

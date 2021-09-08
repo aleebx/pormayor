@@ -209,8 +209,8 @@
 					      						<b class="center" style="font-size:20px;">{{ved.Pcd_Cantidad}}</b>
 					    					</td>
 					      					<td>
-					      						{{ved.Pro_Nombre}}</br>
-					    		   				<span class="enfasisB black-text">{{ved.SKU_Color}}</span></br>
+					      						<b style="font-size:12px;">COD.{{ved.Pro_IdProducto}}</b> - {{ved.Pro_Nombre|upper}}</br>
+					    		   				<b class="enfasisB black-text">{{ved.SKU_Color}}</b></br>
 					    					</td>
 					      					<td class="center">
 					      						<span class="precioventa" id="precioventa{{ved.SKU_IdSKU}}">{{ved.Pcd_Precio|number_format(2, '.', ' ')}}</span>
@@ -561,8 +561,8 @@
       						<span class="center" style="font-size:20px;">{{ved.Pcd_Cantidad}}</span></br>
     					</td>
       					<td>
-      						{{ved.Pro_Nombre}}</br>
-    		   				<span class="enfasisB black-text">{{ved.SKU_Color}}</span></br>
+      						<b style="font-size:12px">COD.{{ved.Pro_IdProducto}}</b> - {{ved.Pro_Nombre|upper}}</br>
+    		   				<b class="enfasisB black-text">{{ved.SKU_Color}}</b></br>
     					</td>
       					<td class="center">
 

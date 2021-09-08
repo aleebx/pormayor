@@ -39,56 +39,24 @@ class __TwigTemplate_1ef368a8b8ff30a8f5c0071f1bb19b64e9f174ead4c80b6e5e6f0373cc2
     <div class=\"card\">
       <div class=\"card-content\">
         <h4>Comisiones</h4>
+        <div class=\"input-field\">         
         <input type=\"number\" name=\"monto\" id=\"monto\" value=\"\">
-        <table>
-        <thead>
-          <tr>
-            <th>FECHA</th>
-            <th>VENTA</th>
-          </tr>
-        </thead>
-        <tbody>          
-        ";
-        // line 18
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["ventas"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["v"]) {
-            // line 19
-            echo "          <tr>
-            <td>";
-            // line 20
-            echo $this->getAttribute($context["v"], "fecha", array());
-            echo "</td>
-            <td>";
-            // line 21
-            echo $this->getAttribute($context["v"], "total", array());
-            echo "</td>
-          </tr>
-        ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['v'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 24
-        echo "        </tbody>
-        </table>
+        <label for=\"monto\">SI VENDO:</label>
+        </div>
+        <span class=\"cuanto fontD\"></span>
       </div>
     </div>
   </main>
 ";
     }
 
-    // line 31
+    // line 19
     public function block_script($context, array $blocks = array())
     {
-        // line 32
+        // line 20
         echo "  <script src=\"";
         echo base_url("public/");
-        echo "js/vendedor/lcliente.js?v=12\" type=\"text/javascript\"></script>
-  <script src=\"";
-        // line 33
-        echo base_url("public/");
-        echo "js/reporte.js\" type=\"text/javascript\"></script>
+        echo "js/comisiones.js\" type=\"text/javascript\"></script>
 ";
     }
 
@@ -104,7 +72,7 @@ class __TwigTemplate_1ef368a8b8ff30a8f5c0071f1bb19b64e9f174ead4c80b6e5e6f0373cc2
 
     public function getDebugInfo()
     {
-        return array (  90 => 33,  85 => 32,  82 => 31,  73 => 24,  64 => 21,  60 => 20,  57 => 19,  53 => 18,  38 => 5,  35 => 4,  30 => 2,  11 => 1,);
+        return array (  57 => 20,  54 => 19,  38 => 5,  35 => 4,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

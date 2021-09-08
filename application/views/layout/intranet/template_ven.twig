@@ -3,7 +3,7 @@
   <head>      
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> {{pag|title}} | PorMayor.pe</title>
+    <title> {% if venta.Per_Nombre %} {{ venta.Per_Nombre }} {% else %} {{pag|title}} {% endif %}| PorMayor.pe</title>
     <link rel="icon" type="image/png"  href="{{ruta_img}}logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -110,7 +110,7 @@
     <button class="alert-btn" id="notify-button">Allow</button>
   </div>
 </div> #}
-    <ul id="slide-out" class="side-nav fixed grey darken-4 z-depth-3 menuTex" style="z-index:500;"> 
+    <ul id="slide-out" class="side-nav fixed grey darken-4 z-depth-3 menuTex" style="z-index:9000;"> 
       <li class="headerMenu center valign-wrapper">
         <div class="logoIcon">
           <a href="{{base_url()}}"><img alt="Pormayor.pe - Vende facilito, Compra segurito" src="{{ruta_img}}LogoPositivo.svg" class="valign-wrapper" height="40"></a>
@@ -182,6 +182,7 @@
      }
   setInterval("actualizar()",100000);
     $(document).ready(function(){
+      $(".button-collapse").sideNav();
       var xx = 0;
         $.ajax({
         data:{'xx':xx},

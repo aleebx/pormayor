@@ -6,29 +6,17 @@
     <div class="card">
       <div class="card-content">
         <h4>Comisiones</h4>
+        <div class="input-field">         
         <input type="number" name="monto" id="monto" value="">
-        <table>
-        <thead>
-          <tr>
-            <th>FECHA</th>
-            <th>VENTA</th>
-          </tr>
-        </thead>
-        <tbody>          
-        {% for v in ventas %}
-          <tr>
-            <td>{{v.fecha}}</td>
-            <td>{{v.total}}</td>
-          </tr>
-        {% endfor %}
-        </tbody>
-        </table>
+        <label for="monto">SI VENDO:</label>
+        </div>
+        <span class="cuanto fontD"></span><br>
+        <span class="xdia fontD"></span>
       </div>
     </div>
   </main>
 {% endblock %}
 
 {% block script %}
-  <script src="{{base_url('public/')}}js/vendedor/lcliente.js?v=12" type="text/javascript"></script>
-  <script src="{{base_url('public/')}}js/reporte.js" type="text/javascript"></script>
+  <script src="{{base_url('public/')}}js/comisiones.js" type="text/javascript"></script>
 {% endblock %}
