@@ -208,7 +208,9 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
         if (($this->getAttribute(($context["producto"] ?? null), "Pro_Preventa", array()) == 1)) {
             echo " (PRE-VENTA) <span class=\"new badge blue\">PRE-VENTA</span> ";
         }
-        echo "</h4>
+        echo "<small>COD: ";
+        echo $this->getAttribute(($context["pro"] ?? null), "Pro_IdProducto", array());
+        echo "</small></h4>
           </div>
         </div>
       </div>
@@ -348,7 +350,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     echo "  
                 ";
                     // line 207
-                    if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) > 2))) {
+                    if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
                         // line 208
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
@@ -488,7 +490,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                 echo "                        
                               ";
                                 // line 242
-                                if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) > 2))) {
+                                if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) >= 1))) {
                                     // line 243
                                     echo "                                  <input type=\"number\" min=\"";
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
@@ -602,7 +604,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     echo "  
                 ";
                     // line 266
-                    if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) > 2))) {
+                    if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
                         // line 267
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
@@ -925,10 +927,9 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                 echo "<b>OFERTA</b>";
             }
             echo "</a></div>
-                  <div class=\"col s12\">
-                    <p>Recuerde que solo puede seleccionar por unidad si vas a hacer una compra de S/100 ya que todos los productos te salen a precio por mayor.</p>
-                  </div>
-                  <div class=\"col s12 \"><br>
+";
+            // line 368
+            echo "                  <div class=\"col s12 \"><br>
                    <span class=\"grey-text\"><i class=\"material-icons green-text left\">shopping_bag</i>";
             // line 369
             $context["vent"] = (0.5 * $this->getAttribute(($context["producto"] ?? null), "Pro_Vista", array()));
@@ -1074,7 +1075,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     echo "  
                 ";
                     // line 436
-                    if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) > 2))) {
+                    if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
                         // line 437
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
@@ -1174,7 +1175,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                 echo "                        
                               ";
                                 // line 460
-                                if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) > 2))) {
+                                if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) >= 1))) {
                                     // line 461
                                     echo "                                  <input type=\"number\" min=\"";
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
@@ -1286,7 +1287,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     echo "  
                 ";
                     // line 484
-                    if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) > 5))) {
+                    if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
                         // line 485
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
@@ -1432,7 +1433,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                 echo "                        
                                   ";
                                 // line 521
-                                if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) > 2))) {
+                                if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) >= 1))) {
                                     // line 522
                                     echo "                                      <span class=\"fontB2\" for=\"";
                                     echo $this->getAttribute($context["skub"], "SKU_IdSku", array());
@@ -1573,10 +1574,9 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
             }
             // line 561
             echo "                </div>
-                 <div class=\"col s12\">
-                  <p>Recuerde que solo puede seleccionar por unidad si vas a hacer una compra de S/100 ya que todos los productos te salen a precio por mayor.</p>
-                </div>
-              </div>         
+";
+            // line 565
+            echo "              </div>         
           </div>
         </div>
       </div>
@@ -2027,7 +2027,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
 
     public function getDebugInfo()
     {
-        return array (  2010 => 751,  2004 => 750,  1996 => 745,  1992 => 744,  1988 => 743,  1984 => 742,  1979 => 740,  1976 => 739,  1973 => 738,  1961 => 729,  1954 => 726,  1943 => 717,  1934 => 713,  1924 => 705,  1922 => 704,  1914 => 698,  1899 => 691,  1895 => 690,  1883 => 686,  1869 => 682,  1865 => 681,  1861 => 679,  1853 => 674,  1848 => 671,  1846 => 670,  1840 => 666,  1837 => 665,  1831 => 662,  1823 => 661,  1820 => 660,  1817 => 659,  1805 => 656,  1797 => 655,  1794 => 654,  1791 => 653,  1779 => 650,  1771 => 649,  1768 => 648,  1765 => 647,  1753 => 644,  1745 => 643,  1742 => 642,  1739 => 641,  1733 => 638,  1729 => 636,  1726 => 635,  1723 => 634,  1718 => 631,  1714 => 630,  1711 => 629,  1709 => 628,  1704 => 625,  1702 => 624,  1698 => 622,  1694 => 620,  1691 => 619,  1685 => 618,  1682 => 617,  1676 => 615,  1673 => 614,  1670 => 613,  1667 => 612,  1662 => 611,  1660 => 610,  1655 => 607,  1649 => 604,  1645 => 602,  1642 => 601,  1636 => 598,  1632 => 596,  1629 => 595,  1623 => 592,  1619 => 590,  1617 => 589,  1604 => 579,  1590 => 572,  1586 => 570,  1575 => 561,  1570 => 559,  1566 => 558,  1563 => 557,  1557 => 553,  1555 => 552,  1552 => 551,  1549 => 550,  1543 => 549,  1535 => 544,  1531 => 542,  1524 => 537,  1517 => 536,  1515 => 535,  1512 => 534,  1506 => 533,  1448 => 527,  1437 => 522,  1435 => 521,  1427 => 520,  1424 => 519,  1422 => 518,  1417 => 517,  1414 => 516,  1412 => 515,  1403 => 508,  1396 => 507,  1393 => 506,  1390 => 505,  1387 => 504,  1384 => 503,  1382 => 502,  1379 => 501,  1373 => 500,  1370 => 499,  1367 => 498,  1365 => 497,  1360 => 496,  1339 => 494,  1320 => 492,  1318 => 491,  1301 => 490,  1299 => 489,  1294 => 486,  1291 => 485,  1289 => 484,  1282 => 483,  1279 => 482,  1273 => 481,  1265 => 476,  1261 => 474,  1252 => 467,  1245 => 466,  1243 => 465,  1240 => 464,  1234 => 463,  1179 => 461,  1177 => 460,  1169 => 459,  1166 => 458,  1164 => 457,  1156 => 452,  1148 => 448,  1127 => 446,  1108 => 444,  1106 => 443,  1089 => 442,  1087 => 441,  1082 => 438,  1079 => 437,  1077 => 436,  1070 => 435,  1068 => 434,  1062 => 431,  1054 => 425,  1048 => 424,  1045 => 423,  1036 => 420,  1033 => 419,  1030 => 418,  1027 => 417,  1023 => 416,  1016 => 411,  1002 => 399,  991 => 397,  987 => 396,  970 => 381,  959 => 379,  955 => 378,  950 => 376,  934 => 369,  922 => 364,  919 => 363,  914 => 361,  910 => 360,  904 => 357,  892 => 347,  886 => 343,  884 => 342,  873 => 336,  868 => 333,  865 => 332,  859 => 331,  851 => 326,  847 => 324,  840 => 319,  833 => 318,  831 => 317,  828 => 316,  822 => 315,  764 => 309,  753 => 304,  751 => 303,  743 => 302,  740 => 301,  738 => 300,  733 => 299,  730 => 298,  728 => 297,  719 => 290,  712 => 289,  709 => 288,  706 => 287,  703 => 286,  700 => 285,  698 => 284,  695 => 283,  689 => 282,  686 => 281,  683 => 280,  681 => 279,  676 => 278,  655 => 276,  636 => 274,  634 => 273,  617 => 272,  615 => 271,  610 => 268,  607 => 267,  605 => 266,  598 => 265,  595 => 264,  589 => 263,  581 => 258,  577 => 256,  568 => 249,  561 => 248,  559 => 247,  556 => 246,  550 => 245,  493 => 243,  491 => 242,  483 => 241,  480 => 240,  478 => 239,  470 => 234,  465 => 231,  458 => 230,  455 => 229,  452 => 228,  449 => 227,  446 => 226,  444 => 225,  441 => 224,  435 => 223,  432 => 222,  429 => 221,  427 => 220,  422 => 219,  401 => 217,  382 => 215,  380 => 214,  363 => 213,  361 => 212,  356 => 209,  353 => 208,  351 => 207,  344 => 206,  342 => 205,  329 => 194,  326 => 193,  320 => 192,  317 => 191,  307 => 187,  299 => 186,  296 => 185,  293 => 184,  290 => 183,  285 => 182,  276 => 178,  270 => 177,  267 => 176,  265 => 175,  261 => 173,  251 => 169,  246 => 168,  243 => 167,  234 => 163,  230 => 162,  227 => 161,  225 => 160,  219 => 156,  217 => 155,  206 => 151,  200 => 150,  194 => 149,  188 => 148,  177 => 139,  174 => 138,  41 => 9,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  2010 => 751,  2004 => 750,  1996 => 745,  1992 => 744,  1988 => 743,  1984 => 742,  1979 => 740,  1976 => 739,  1973 => 738,  1961 => 729,  1954 => 726,  1943 => 717,  1934 => 713,  1924 => 705,  1922 => 704,  1914 => 698,  1899 => 691,  1895 => 690,  1883 => 686,  1869 => 682,  1865 => 681,  1861 => 679,  1853 => 674,  1848 => 671,  1846 => 670,  1840 => 666,  1837 => 665,  1831 => 662,  1823 => 661,  1820 => 660,  1817 => 659,  1805 => 656,  1797 => 655,  1794 => 654,  1791 => 653,  1779 => 650,  1771 => 649,  1768 => 648,  1765 => 647,  1753 => 644,  1745 => 643,  1742 => 642,  1739 => 641,  1733 => 638,  1729 => 636,  1726 => 635,  1723 => 634,  1718 => 631,  1714 => 630,  1711 => 629,  1709 => 628,  1704 => 625,  1702 => 624,  1698 => 622,  1694 => 620,  1691 => 619,  1685 => 618,  1682 => 617,  1676 => 615,  1673 => 614,  1670 => 613,  1667 => 612,  1662 => 611,  1660 => 610,  1655 => 607,  1649 => 604,  1645 => 602,  1642 => 601,  1636 => 598,  1632 => 596,  1629 => 595,  1623 => 592,  1619 => 590,  1617 => 589,  1604 => 579,  1590 => 572,  1586 => 570,  1579 => 565,  1576 => 561,  1571 => 559,  1567 => 558,  1564 => 557,  1558 => 553,  1556 => 552,  1553 => 551,  1550 => 550,  1544 => 549,  1536 => 544,  1532 => 542,  1525 => 537,  1518 => 536,  1516 => 535,  1513 => 534,  1507 => 533,  1449 => 527,  1438 => 522,  1436 => 521,  1428 => 520,  1425 => 519,  1423 => 518,  1418 => 517,  1415 => 516,  1413 => 515,  1404 => 508,  1397 => 507,  1394 => 506,  1391 => 505,  1388 => 504,  1385 => 503,  1383 => 502,  1380 => 501,  1374 => 500,  1371 => 499,  1368 => 498,  1366 => 497,  1361 => 496,  1340 => 494,  1321 => 492,  1319 => 491,  1302 => 490,  1300 => 489,  1295 => 486,  1292 => 485,  1290 => 484,  1283 => 483,  1280 => 482,  1274 => 481,  1266 => 476,  1262 => 474,  1253 => 467,  1246 => 466,  1244 => 465,  1241 => 464,  1235 => 463,  1180 => 461,  1178 => 460,  1170 => 459,  1167 => 458,  1165 => 457,  1157 => 452,  1149 => 448,  1128 => 446,  1109 => 444,  1107 => 443,  1090 => 442,  1088 => 441,  1083 => 438,  1080 => 437,  1078 => 436,  1071 => 435,  1069 => 434,  1063 => 431,  1055 => 425,  1049 => 424,  1046 => 423,  1037 => 420,  1034 => 419,  1031 => 418,  1028 => 417,  1024 => 416,  1017 => 411,  1003 => 399,  992 => 397,  988 => 396,  971 => 381,  960 => 379,  956 => 378,  951 => 376,  935 => 369,  932 => 368,  924 => 364,  921 => 363,  916 => 361,  912 => 360,  906 => 357,  894 => 347,  888 => 343,  886 => 342,  875 => 336,  870 => 333,  867 => 332,  861 => 331,  853 => 326,  849 => 324,  842 => 319,  835 => 318,  833 => 317,  830 => 316,  824 => 315,  766 => 309,  755 => 304,  753 => 303,  745 => 302,  742 => 301,  740 => 300,  735 => 299,  732 => 298,  730 => 297,  721 => 290,  714 => 289,  711 => 288,  708 => 287,  705 => 286,  702 => 285,  700 => 284,  697 => 283,  691 => 282,  688 => 281,  685 => 280,  683 => 279,  678 => 278,  657 => 276,  638 => 274,  636 => 273,  619 => 272,  617 => 271,  612 => 268,  609 => 267,  607 => 266,  600 => 265,  597 => 264,  591 => 263,  583 => 258,  579 => 256,  570 => 249,  563 => 248,  561 => 247,  558 => 246,  552 => 245,  495 => 243,  493 => 242,  485 => 241,  482 => 240,  480 => 239,  472 => 234,  467 => 231,  460 => 230,  457 => 229,  454 => 228,  451 => 227,  448 => 226,  446 => 225,  443 => 224,  437 => 223,  434 => 222,  431 => 221,  429 => 220,  424 => 219,  403 => 217,  384 => 215,  382 => 214,  365 => 213,  363 => 212,  358 => 209,  355 => 208,  353 => 207,  346 => 206,  344 => 205,  331 => 194,  328 => 193,  322 => 192,  319 => 191,  309 => 187,  301 => 186,  298 => 185,  295 => 184,  292 => 183,  287 => 182,  278 => 178,  272 => 177,  269 => 176,  267 => 175,  263 => 173,  253 => 169,  248 => 168,  245 => 167,  236 => 163,  232 => 162,  229 => 161,  227 => 160,  221 => 156,  219 => 155,  206 => 151,  200 => 150,  194 => 149,  188 => 148,  177 => 139,  174 => 138,  41 => 9,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -2040,6 +2040,6 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "tienda/load/dp_20.twig", "C:\\xampp\\htdocs\\pormayor2021\\application\\views\\tienda\\load\\dp_20.twig");
+        return new Twig_Source("", "tienda/load/dp_20.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\tienda\\load\\dp_20.twig");
     }
 }
