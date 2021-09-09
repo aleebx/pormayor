@@ -182,6 +182,7 @@
 	    					<a data-target="modalVocher" class="btn-flat modal-trigger"><i class="material-icons left">add</i>Pagos</a>
 	    					<a data-target="modalFactura" class="btn-flat modal-trigger"><i class="material-icons left">list</i>Factura</a>
 	    					<a data-target="modalBoleta" class="btn-flat modal-trigger"><i class="material-icons left">list</i>Boleta</a>
+	    					<a data-target="modalCambio" class="btn-flat modal-trigger"><i class="material-icons left">autorenew</i>Cambio Producto</a>
 	    					<a class="btn-flat right red-text modal-trigger" data-target="modalAnula"><i class="material-icons left">clear</i>ANULAR VENTA</a>
 	    					{% endif %}
 	    					<a data-target="modalGuia" class="btn-flat modal-trigger"><i class="material-icons left">description</i>Guia Remisión</a>
@@ -201,7 +202,7 @@
 				      				{% set total2 = 0 %}
 				      				{% set totalEnvio = 0 %}
 				      				{% for ved in venta_detalle %}
-					      				<tr>
+					      				<tr {% if ved.Pcd_Cambio == 1 %}class="red lighten-4"{% endif %}>
 					      					<td>
 					      						<img class="" src="{{ruta_img}}{% if ved.SKU_Img %}{{ved.SKU_Img}}{% else %}{{ved.Prf_Img}}{% endif %}" height="50">
 					      					</td>
@@ -423,7 +424,7 @@
         	<span class="modal-title">AGREGAR PRODUCTO</span>
         	<div class="col s12 l12">
                   <select class="browser-default select2" id="selProducto">
-                  	<option value="0" selected> Seleccione el producto</option>
+                  	<option value="0" selected>Seleccione el producto</option>
                     {% for pro in productos %}
                       <option value="{{pro.Pro_IdProducto}}" data-pre="{{pro.Pro_PrecioMinimo}}" data-ids="{{pro.SKU_IdSKU}}" data-var="{{pro.SKU_Color}}" data-dispo="{{pro.SKU_StockDisponible}}">{{pro.Pro_Nombre}} {{pro.SKU_Color}}</option>
                     {% endfor %}
@@ -444,7 +445,7 @@
             <div class="col s4">
               <div class="form-group">
                 <label for="precioP">Precio</label>
-                <input class="form-control" type="number" id="precioP" value="0">
+                <input class="form-control" type="number" id="precioP" value="0" disabled>
               </div>
             </div>
             <div class="col s12">
@@ -468,6 +469,60 @@
             </div>
             <div class="col s12">
             	<a class="btn green btn-lg btn-block addpedido" data-idv="{{idventa}}"><i class="material-icons left">add_box</i>AGREGAR AL PEDIDO</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalCambio" class="modal" style="z-index:9999 !important;width: 70%!important;">
+        <div class="modal-content row">
+        	<span class="modal-title">AGREGAR CAMBIO PRODUCTO</span>
+        	<div class="col s12 l12">
+                  <select class="browser-default select2" id="selProducto2">
+                  	<option value="0" selected>Seleccione el producto</option>
+                    {% for pro in productos %}
+                      <option value="{{pro.Pro_IdProducto}}" data-pre="{{pro.Pro_PrecioMinimo}}" data-ids="{{pro.SKU_IdSKU}}" data-var="{{pro.SKU_Color}}" data-dispo="{{pro.SKU_StockDisponible}}">{{pro.Pro_Nombre}} {{pro.SKU_Color}}</option>
+                    {% endfor %}
+                  </select><br><br>
+            </div>
+            <div class="col s4">
+              <div class="form-group">
+                <label for="stockD">STOCK DISPONIBLE</label>
+                <input class="form-control" type="number" id="stockD2" value="" disabled>
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="form-group">
+                <label for="cantP">Cantidad</label>
+                <input class="form-control" type="number" id="cantP2" value="1">
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="form-group">
+                <label for="precioP">Precio</label>
+                <input class="form-control" type="number" id="precioP2" value="0">
+              </div>
+            </div>
+            <div class="col s12">
+            	<a class="btn btn-success btn-lg btn-block add-row3"><i class="material-icons left">add</i>AGREGAR CAMBIO PRODUCTO</a>
+            </div>            
+            <div class="col s12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>PRODUCTO</th>
+                      <th>CANTIDAD</th>
+                      <th>PRECIO</th>
+                      <th>SUBTOTAL</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablaCambio" class="grey lighten-4">                   
+                  </tbody>
+                </table>
+            </div>
+            <div class="col s12">
+            	<a class="btn green btn-lg btn-block addCambio" data-idv="{{idventa}}"><i class="material-icons left">add_box</i>AGREGAR AL PEDIDO</a>
             </div>
         </div>
     </div>

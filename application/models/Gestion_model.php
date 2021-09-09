@@ -49,7 +49,7 @@
         }
          function get_detalle_venta_q($Pac_IdPago_Compra)
         {
-            $sql = "SELECT pcd.Pcd_IdPago_Compra_Detalle, pro.Pro_IdProducto, pro.Pro_Nombre, pcd.Pcd_Precio, pcd.Pcd_Cantidad,pcd.Pcd_Importe,pcd.Pcd_Documento, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.Sku_Img,sku.SKU_Color, sku.SKU_IdSKU
+            $sql = "SELECT pcd.Pcd_IdPago_Compra_Detalle, pro.Pro_IdProducto, pro.Pro_Nombre, pcd.Pcd_Precio, pcd.Pcd_Cantidad,pcd.Pcd_Importe,pcd.Pcd_Cambio, pcd.Pcd_Documento, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.Sku_Img,sku.SKU_Color, sku.SKU_IdSKU
                 from pago_compra_detalle as pcd 
                 INNER JOIN sku as sku ON sku.SKU_IdSKU = pcd.Pcd_IdSku
                 INNER JOIN producto as pro ON pro.Pro_IdProducto = sku.producto_Pro_IdProducto
@@ -187,6 +187,32 @@
             $this->db->set('Pcd_Precio', $Precio[$i]);
             $this->db->set('Pcd_Cantidad', $Cantidad[$i]);
             $this->db->set('Pcd_Importe', (float)$Precio[$i] * (int)$Cantidad[$i]);
+            $this->db->insert('pago_compra_detalle');
+            }
+            return true;
+        }
+
+         function addproductopedidocambio($Pac_IdPago_Compra,$SKU_IdSku,$Cantidad,$Precio){
+
+            for ($i=0; $i < count($SKU_IdSku); $i++) {
+            $this->db->select('SKU_StockDisponible,SKU_StockReal,SKU_Reservado');
+            $this->db->from('sku');
+            $this->db->where('SKU_IdSKU',$SKU_IdSku[$i]);;
+            $query = $this->db->get();
+            $stock = $query->row();
+
+
+            $this->db->set('SKU_StockDisponible', $stock->SKU_StockDisponible - $Cantidad[$i]);
+            $this->db->set('SKU_Reservado', $stock->SKU_Reservado + $Cantidad[$i]);
+            $this->db->where('SKU_IdSKU', $SKU_IdSku[$i]);
+            $this->db->update('sku');
+            
+            $this->db->set('Pac_IdPago_Compra', $Pac_IdPago_Compra);
+            $this->db->set('Pcd_IdSKU', $SKU_IdSku[$i]);
+            $this->db->set('Pcd_Precio', $Precio[$i]);
+            $this->db->set('Pcd_Cantidad', $Cantidad[$i]);
+            $this->db->set('Pcd_Importe', (float)$Precio[$i] * (int)$Cantidad[$i]);
+            $this->db->set('Pcd_Cambio', 1);
             $this->db->insert('pago_compra_detalle');
             }
             return true;

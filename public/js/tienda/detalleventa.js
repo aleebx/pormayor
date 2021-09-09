@@ -40,6 +40,15 @@ $(document).ready(function(){
         $('#stockD').val(stoc);
     });
 
+    $('#selProducto2').change(function(){
+        // var precio = $(this).find(':selected').data('pre');
+        var stoc = $(this).find(':selected').data('dispo');
+        // console.log(precio);
+
+        // $('#precioP2').val(precio);
+        $('#stockD2').val(stoc);
+    });
+
     var i = 1;
     $(".add-row").click(function(){
         var nombrep = $("#selProducto option:selected").text();
@@ -55,6 +64,31 @@ $(document).ready(function(){
             if (nombrep && id_producto != 0 && precio && cantidad) { 
                     var markup = "<tr id='tr"+i+"'><td>" + i + "</td><td class='proList' data-id='"+id_producto+"' data-sku='"+id_sku+"' data-col='"+variacion+"' >"+ nombrep +"</td><td class='cantList'>" + cantidad +"</td><td class='precioList'>" + precio +"</td><td>" + subtotal +"</td><td><button type='submit' class='btn btn-primary delete-row' data-id='"+i+"' data-pre='" + subtotal +"'>Eliminar</button></td></tr>";
                     $("#tablaListado").append(markup);
+                    i = i + 1;
+                    var dispo = stock - cantidad; 
+                    $("#selProducto").val(0);
+                    $("#precioP").val(0);
+                    $("#cantP").val(0);
+                    $("#stockD").val(dispo);
+                }
+        }
+
+    }); 
+
+    $(".add-row3").click(function(){
+        var nombrep = $("#selProducto2 option:selected").text();
+        var id_producto = $("#selProducto2 option:selected").val();
+        var id_sku = $("#selProducto2 option:selected").data('ids');
+        var variacion = $("#selProducto2 option:selected").data('var');
+        var precio = $("#precioP2").val();
+        var cantidad = parseInt($("#cantP2").val());
+        var stock = parseInt($("#stockD2").val());
+        var subtotal = parseFloat(precio) * parseInt(cantidad);
+        console.log(cantidad,'>=',stock);
+        if (cantidad <= stock) {
+            if (nombrep && id_producto != 0 && precio && cantidad) { 
+                    var markup = "<tr id='tr"+i+"'><td>" + i + "</td><td class='proList' data-id='"+id_producto+"' data-sku='"+id_sku+"' data-col='"+variacion+"' >"+ nombrep +"</td><td class='cantList'>" + cantidad +"</td><td class='precioList'>" + precio +"</td><td>" + subtotal +"</td><td><button type='submit' class='btn btn-primary delete-row' data-id='"+i+"' data-pre='" + subtotal +"'>Eliminar</button></td></tr>";
+                    $("#tablaCambio").append(markup);
                     i = i + 1;
                     var dispo = stock - cantidad; 
                     $("#selProducto").val(0);
@@ -273,6 +307,52 @@ $(document).on('click', '.addpedido', function(){
         },
         type: "POST",
         url: base_url+'vnd/addproductopedido',
+        dataType: "json",
+        beforeSend: function(){
+            $(this).addClass('disabled');
+            loading_screen = pleaseWait({
+              logo: '',
+              backgroundColor: "#FEC00F",
+              loadingHtml: "<img src='{{ruta_img}}logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
+            });
+        },
+        success: function(data){
+            $(this).removeClass('disabled');
+            location.reload(true);
+            loading_screen.finish();
+        }
+    });
+});
+
+$(document).on('click', '.addCambio', function(){
+    var Pac_IdPago_Compra = $(this).data('idv');
+    var idps = [];
+    var nombresP = [];
+    var cantsP = [];
+    var skus = [];
+    var colores = [];
+    var preciosP = [];
+    $.each($(".proList"), function(){
+        idps.push($(this).data("id"));
+        nombresP.push($(this).text());
+        skus.push($(this).data('sku'));
+        colores.push($(this).data('col'));
+    });
+    $.each($(".cantList"), function(){
+        cantsP.push($(this).text());
+    });
+    $.each($(".precioList"), function(){
+        preciosP.push($(this).text());
+    });
+    $.ajax({
+        data:{
+        'Pac_IdPago_Compra' : Pac_IdPago_Compra,    
+        'skus' : skus,    
+        'cantsP' : cantsP, 
+        'preciosP' : preciosP
+        },
+        type: "POST",
+        url: base_url+'vnd/addproductopedidocambio',
         dataType: "json",
         beforeSend: function(){
             $(this).addClass('disabled');

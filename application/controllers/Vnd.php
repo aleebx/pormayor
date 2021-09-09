@@ -783,6 +783,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         		show_404();
         	}
         }
+
  public function addproductopedido()
         {
 
@@ -793,6 +794,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      			$Precio = $this->input->post('preciosP');
                 $registro = $this->gestionModel->addproductopedido($Pac_IdPago_Compra,$SKU_IdSku,$Cantidad,$Precio);
           		echo $registro;
+			}
+        } 
+
+ public function addproductopedidocambio()
+        {
+
+        	if ($this->input->is_ajax_request()) {
+     			$Pac_IdPago_Compra = $this->input->post('Pac_IdPago_Compra');
+     			$SKU_IdSku = $this->input->post('skus');
+     			$Cantidad = $this->input->post('cantsP');
+     			$Precio = $this->input->post('preciosP');
+          $registro = $this->gestionModel->addproductopedidocambio($Pac_IdPago_Compra,$SKU_IdSku,$Cantidad,$Precio);
+          echo $registro;
 			}
         }
 		function registrar(){
