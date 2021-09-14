@@ -118,6 +118,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+		function top_ventas()
+		{
+			$data = $this->acl->load_datos();
+			if ($this->input->is_ajax_request()) {
+	      $cantidad = $this->vendedorModel->top_ventas();
+	      if ($cantidad) {
+	      	print_r(json_encode($cantidad));
+	      }
+			}
+		}
+
 		function meta()
 		{
 			$data = $this->acl->load_datos();
@@ -248,22 +259,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		       		$base_igv = $pro->Pcd_Cantidad * $valoru;
 		       		$t_igv =  $pro->Pcd_Importe - $base_igv;
 		       		$total1 = $pro->Pcd_Importe;
+		       		$total_item = $pro->Pcd_Precio * $pro->Pcd_Cantidad;
 		       		$proL = array(
-		       		 "codigo_interno"=> $pro->SKU_IdSKU,
+		       		"codigo_interno"=> $pro->SKU_IdSKU,
 				      "descripcion"=>$pro->Pro_Nombre,
 				      "codigo_producto_sunat"=> "",
 				      "unidad_de_medida"=> "NIU",
 				      "cantidad"=> $pro->Pcd_Cantidad,
 				      "valor_unitario"=> number_format($valoru, 2, '.', ''),
 				      "codigo_tipo_precio"=> "01",
-				      "precio_unitario"=> $pro->Pcd_Precio,
+				      "precio_unitario"=> number_format($pro->Pcd_Precio, 2, '.', ''),
 				      "codigo_tipo_afectacion_igv"=> "10",
-				      "total_base_igv"=> $base_igv,
+				      "total_base_igv"=> number_format($base_igv, 2, '.', ''),
 				      "porcentaje_igv"=> 18,
-				      "total_igv"=> $t_igv,
-				      "total_impuestos"=> $t_igv,
-				      "total_valor_item"=> number_format($valoru, 2, '.', ''),
-				      "total_item"=> $pro->Pcd_Importe
+				      "total_igv"=> number_format($t_igv,2, '.', ''),
+				      "total_impuestos"=> number_format($t_igv,2, '.', ''),
+				      "total_valor_item"=> number_format($base_igv, 2, '.', ''),
+				      "total_item"=>  number_format($total_item, 2, '.', '')
 		       		);
 		       		array_push($arrayP,$proL);
 		       	}
@@ -296,10 +308,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					    "total_operaciones_inafectas"=> "0.00",
 					    "total_operaciones_exoneradas"=> "0.00",
 					    "total_operaciones_gratuitas"=> "0.00",
-					    "total_igv"=> $totalIGV,
-					    "total_impuestos"=> $totalIGV,
-					    "total_valor"=> $totalG,
-					    "total_venta"=> $total
+					    "total_igv"=> number_format($totalIGV, 2, '.', ''),
+					    "total_impuestos"=> number_format($totalIGV, 2, '.', ''),
+					    "total_valor"=> number_format($totalG, 2, '.', ''),
+					    "total_venta"=> number_format($total, 2, '.', ''),
 					),
 					"items"=>$arrayP,
 					"informacion_adicional"=> "Forma de pago:Efectivo|Caja: 1"
@@ -361,19 +373,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		       		$t_igv =  $pro->Pcd_Importe - $base_igv;
 		       		$total1 = $pro->Pcd_Importe;
 		       		$proL = array(
-		       		  "codigo_interno"=> $pro->SKU_IdSKU,
+		       		"codigo_interno"=> $pro->SKU_IdSKU,
 				      "descripcion"=>$pro->Pro_Nombre,
 				      "codigo_producto_sunat"=> "",
 				      "unidad_de_medida"=> "NIU",
 				      "cantidad"=> $pro->Pcd_Cantidad,
 				      "valor_unitario"=> number_format($valoru, 2, '.', ''),
 				      "codigo_tipo_precio"=> "01",
-				      "precio_unitario"=> $pro->Pcd_Precio,
+				      "precio_unitario"=> number_format($pro->Pcd_Precio,2, '.', ''),
 				      "codigo_tipo_afectacion_igv"=> "10",
-				      "total_base_igv"=> $base_igv,
+				      "total_base_igv"=> number_format($base_igv,2, '.', ''),
 				      "porcentaje_igv"=> 18,
-				      "total_igv"=> $t_igv,
-				      "total_impuestos"=> $t_igv,
+				      "total_igv"=> number_format($t_igv,2, '.', ''),
+				      "total_impuestos"=> number_format($t_igv,2, '.', ''),
 				      "total_valor_item"=> number_format($valoru, 2, '.', ''),
 				      "total_item"=> $pro->Pcd_Importe
 		       		);

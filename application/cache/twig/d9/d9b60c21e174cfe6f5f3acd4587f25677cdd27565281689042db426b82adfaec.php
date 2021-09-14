@@ -27,8 +27,16 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
     <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
     <title> ";
         // line 6
-        echo twig_title_string_filter($this->env, ($context["pag"] ?? null));
-        echo " | PorMayor.pe</title>
+        if ($this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array())) {
+            echo " ";
+            echo $this->getAttribute(($context["venta"] ?? null), "Per_Nombre", array());
+            echo " ";
+        } else {
+            echo " ";
+            echo twig_title_string_filter($this->env, ($context["pag"] ?? null));
+            echo " ";
+        }
+        echo "| PorMayor.pe</title>
     <link rel=\"icon\" type=\"image/png\"  href=\"";
         // line 7
         echo ($context["ruta_img"] ?? null);
@@ -155,7 +163,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
   </header>
 ";
         // line 113
-        echo "    <ul id=\"slide-out\" class=\"side-nav fixed grey darken-4 z-depth-3 menuTex\" style=\"z-index:500;\"> 
+        echo "    <ul id=\"slide-out\" class=\"side-nav fixed grey darken-4 z-depth-3 menuTex\" style=\"z-index:9000;\"> 
       <li class=\"headerMenu center valign-wrapper\">
         <div class=\"logoIcon\">
           <a href=\"";
@@ -246,10 +254,13 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
         echo base_url();
         echo "vnd/comision\"><i class=\"material-icons\">star</i>Comisiones</a></li>
+      <li class=\"itemMenu\">
+        
+      </li>
       <li class=\"containerAvatar valign-wrapper\">
         <div class=\"avatarComprador\" style=\"top: 2px;\">
           <a class=\"sinPadding\"href=\"";
-        // line 131
+        // line 134
         echo base_url();
         echo "usuario/perfil\">
             <i style=\"font-size: 50px; color: rgba(255,255,255,0.8)\" class=\"material-icons\">account_circle</i>
@@ -257,7 +268,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div>
         <div class=\"avatarContainerComprador flow-text\" style=\"top: 15px;\">
           <span class=\"avatarText1\">";
-        // line 136
+        // line 139
         echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
         echo "</span>
         </div>
@@ -266,13 +277,13 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
     </ul>
 
   ";
-        // line 142
+        // line 145
         $this->displayBlock('content', $context, $blocks);
         echo " 
 
   <footer class=\"inner page-footer grey darken-4 text-white\">
       ";
-        // line 145
+        // line 148
         if ((($context["userAgent"] ?? null) == "PC")) {
             echo "         
         <div class=\"footer-copyright pormayorAccent center\">
@@ -282,7 +293,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div>
       ";
         } else {
-            // line 152
+            // line 155
             echo "        <div class=\"footerMovil\">         
         </div>
         <div class=\"footer-copyright pormayorAccent center\">
@@ -290,32 +301,32 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div> 
       ";
         }
-        // line 158
+        // line 161
         echo "    </footer>
 
   ";
-        // line 160
+        // line 163
         $this->displayBlock('modal', $context, $blocks);
         echo "  
   ";
-        // line 162
+        // line 165
         echo "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 163
+        // line 166
         echo base_url("public/intranet/js/jquery.validate.min.js");
         echo "\"></script> 
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 164
+        // line 167
         echo base_url("public/intranet/js/materialize.js");
         echo "\"></script>
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 165
+        // line 168
         echo base_url("public/intranet/js/jquery-confirm.min.js");
         echo "\"></script> 
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js\"></script>
   <script src=\"https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js\"></script>
   <script> var base_url = \"";
-        // line 168
+        // line 171
         echo base_url();
         echo "\";</script>
   <script type=\"text/javascript\">
@@ -335,6 +346,16 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
   setInterval(\"actualizar()\",100000);
     \$(document).ready(function(){
       var xx = 0;
+      \$.ajax({
+          data:{'xx':xx},
+          type:\"POST\",
+          url:base_url+'vnd/top_ventas', 
+          dataType:\"json\",
+          success:function(data){
+            console.log(data);
+          }
+        });
+      \$(\".button-collapse\").sideNav();
         \$.ajax({
         data:{'xx':xx},
         type:\"POST\",
@@ -402,9 +423,9 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
     });
   </script>
   ";
-        // line 252
+        // line 265
         $this->displayBlock('script', $context, $blocks);
-        // line 253
+        // line 266
         echo "  </body>
 </html>";
     }
@@ -415,19 +436,19 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo " ";
     }
 
-    // line 142
+    // line 145
     public function block_content($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 160
+    // line 163
     public function block_modal($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 252
+    // line 265
     public function block_script($context, array $blocks = array())
     {
         echo " ";
@@ -445,7 +466,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
     public function getDebugInfo()
     {
-        return array (  431 => 252,  425 => 160,  419 => 142,  413 => 72,  408 => 253,  406 => 252,  319 => 168,  313 => 165,  309 => 164,  305 => 163,  302 => 162,  298 => 160,  294 => 158,  286 => 152,  276 => 145,  270 => 142,  261 => 136,  253 => 131,  243 => 128,  235 => 127,  227 => 126,  219 => 125,  211 => 124,  203 => 123,  195 => 122,  187 => 121,  179 => 120,  171 => 119,  163 => 116,  158 => 113,  147 => 97,  143 => 96,  135 => 91,  115 => 73,  113 => 72,  51 => 13,  45 => 12,  41 => 11,  34 => 7,  30 => 6,  23 => 1,);
+        return array (  452 => 265,  446 => 163,  440 => 145,  434 => 72,  429 => 266,  427 => 265,  330 => 171,  324 => 168,  320 => 167,  316 => 166,  313 => 165,  309 => 163,  305 => 161,  297 => 155,  287 => 148,  281 => 145,  272 => 139,  264 => 134,  251 => 128,  243 => 127,  235 => 126,  227 => 125,  219 => 124,  211 => 123,  203 => 122,  195 => 121,  187 => 120,  179 => 119,  171 => 116,  166 => 113,  155 => 97,  151 => 96,  143 => 91,  123 => 73,  121 => 72,  59 => 13,  53 => 12,  49 => 11,  42 => 7,  30 => 6,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

@@ -126,6 +126,9 @@
       <li class="itemMenu {% if pag == 'stock' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/stock"><i class="material-icons">grid_on</i>Stock</a></li>
       <li class="itemMenu {% if pag == 'reporte' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/reporte"><i class="material-icons">list</i>Reporte</a></li>
       <li class="itemMenu {% if pag == 'comision' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/comision"><i class="material-icons">star</i>Comisiones</a></li>
+      <li class="itemMenu">
+        <div id="topVentas" class="white-text center"></div>
+      </li>
       <li class="containerAvatar valign-wrapper">
         <div class="avatarComprador" style="top: 2px;">
           <a class="sinPadding"href="{{base_url()}}usuario/perfil">
@@ -182,8 +185,24 @@
      }
   setInterval("actualizar()",100000);
     $(document).ready(function(){
-      $(".button-collapse").sideNav();
       var xx = 0;
+      $.ajax({
+          data:{'xx':xx},
+          type:"POST",
+          url:base_url+'vnd/top_ventas', 
+          dataType:"json",
+          success:function(person){
+            let txt = "";
+            let c = 1;
+            for (let x in person) {
+            txt += c  + " " +person[x].vendedor + " : " + person[x].total + " </br>";
+            c = c + 1;
+            };
+            document.getElementById("topVentas").innerHTML = txt;
+            // $('.topVentas').text(txt);
+          }
+        });
+      $(".button-collapse").sideNav();
         $.ajax({
         data:{'xx':xx},
         type:"POST",
