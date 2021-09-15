@@ -176,7 +176,7 @@
 
 
 			    	$select = '<select class="browser-default fontD2 cantCarrito">';
-			        for ($i=1; $i < $items["cantmin"]; $i++) { 
+			        for ($i=1; $i <= $items["cantmin"]; $i++) { 
 			        	 $select.= '<option value="'.$i.'">'.$i.'</option>';
 			        }
 			        $select .= '</select>';
@@ -215,7 +215,7 @@
 			    	$tiendaInfo = $this->tiendaModel->get_tienda_x_id($items["idtienda"]);		
 
 			    	$select = '<select class="browser-default fontD2 cantCarrito">';
-			        for ($i=1; $i < $items["cantmin"]; $i++) {  
+			        for ($i=1; $i <= $items["cantmin"]; $i++) {  
 			        	 $select.= '<option value="'.$i.'">'.$i.'</option>';
 			        }
 			        $select .= '</select>';
