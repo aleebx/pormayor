@@ -10,7 +10,11 @@ $(document).ready(function() {
        dataType: "json",
        success: function(data){
         console.log(data);
+        if (data == 1) {
           $('#td'+id_usuario).text('CLIENTE');
+        }else{
+          $('#td'+id_usuario).text('YA ESTA ASIGNADO A OTRO VENDEDOR');          
+        }
        },
        error: function(data) {
          alert('error');

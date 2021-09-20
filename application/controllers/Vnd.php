@@ -772,8 +772,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			if ($this->input->is_ajax_request()){
 				$data = $this->acl->load_datos();
 		      	$id_usuario = $this->input->post('id_usuario');
+		      	$cliente = $this->vendedorModel->cliente_id($id_usuario);
+		      	if ($cliente->Usu_IdUsuario_Ven == 0) {
 		      	$registro = $this->vendedorModel->asignarCliente($id_usuario,$data['usuario']['id_usuario']);
 		      	echo 1;
+		      	}else{
+		      	echo 2;		      	
+		      	}
 		    }
 		}
 

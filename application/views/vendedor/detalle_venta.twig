@@ -220,7 +220,7 @@
 					      						<span id="importe{{ved.SKU_IdSKU}}">{{ved.Pcd_Importe|number_format(2, '.', ' ')}}</span>
 					      					</td>
 					      					<td>
-					      						{% if venta_detalle|length > 1 %} 
+					      						{% if venta_detalle|length > 1 and (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) %} 
 					      						<a class="btn-flat delPro" data-idvd="{{ved.Pcd_IdPago_Compra_Detalle}}" data-ids="{{ved.SKU_IdSKU}}" data-cant="{{ved.Pcd_Cantidad}}"><i class="material-icons red-text">clear</i></a>
 					      						{% endif %}
 					      					</td>
@@ -347,7 +347,7 @@
 	          <label for="ubigeoGuia">UBIGEO</label>
 	        </div>
 	        <div class="input-field col s12">
-	          <input type="text" id="dirEnvio" class="validate" maxlength="100" value="{{compra_info.Pci_Lote|title}} - {{compra_info.provincia}} {{compra_info.distrito}} ">
+	          <input type="text" id="dirEnvio" class="validate" maxlength="100" value="{{compra_info.Pci_Lote|title}} - {{compra_info.provincia}} / {{compra_info.distrito}} ">
 	          <label for="direccion">Dirección a Enviar (NOMBRE DE LA AGENCIA CON PROVINCIA Y DISTRITO)</label>
 	        </div>
 	        <div class="input-field col s12">
