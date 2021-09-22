@@ -268,8 +268,8 @@ class CI_Cart {
 
 		// Re-create the entry, just to make sure our index contains only the data from this submission
 		$items['rowid'] = $rowid;
-		$items['qty'] += $old_quantity;
-		$items['price'] += $old_price;
+		// $items['qty'] += $old_quantity;
+		// $items['price'] += $old_price;
 		$this->_cart_contents[$rowid] = $items;
 
 		return $rowid;

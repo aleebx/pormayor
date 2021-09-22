@@ -183,56 +183,38 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
       <div class=\"col l12\">
         <div class=\"\">
           <div class=\"\">
-            <a href=\"//pormayor.pe/categorias/";
-        // line 148
-        echo $this->getAttribute(($context["producto"] ?? null), "urlCategoria", array());
-        echo "\" class=\"pormayorUnico-text breadcrumb\">";
-        echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Cat_Nombre", array()));
-        echo "</a>
-            <a href=\"//pormayor.pe/subcategoria/";
-        // line 149
-        echo $this->getAttribute(($context["producto"] ?? null), "urlSubCategoria", array());
-        echo "\" class=\"centrarForzado pormayorUnico-text breadcrumb\">";
-        echo $this->getAttribute(($context["producto"] ?? null), "Suc_Nombre", array());
-        echo "</a>
-            <a href=\"//pormayor.pe/detalle/";
-        // line 150
-        echo $this->getAttribute(($context["producto"] ?? null), "urlDetalle", array());
-        echo "\" class=\"centrarForzado pormayorUnico-text breadcrumb\">";
-        echo $this->getAttribute(($context["producto"] ?? null), "Des_Nombre", array());
-        echo "</a>
             <h4 class=\"centrarForzado muayuscula\">";
-        // line 151
+        // line 148
         echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array()));
         echo " ";
         if (($this->getAttribute(($context["producto"] ?? null), "Pro_Preventa", array()) == 1)) {
             echo " (PRE-VENTA) <span class=\"new badge blue\">PRE-VENTA</span> ";
         }
         echo "<small>COD: ";
-        echo $this->getAttribute(($context["pro"] ?? null), "Pro_IdProducto", array());
+        echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
         echo "</small></h4>
           </div>
         </div>
       </div>
       ";
-        // line 155
+        // line 152
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 156
-            echo "      <div class=\"col l4\">
+            // line 153
+            echo "      <div class=\"col m6 l6\">
         <div class=\"card\" style=\"height:508.5px;\">
           <div class=\"card-content row sinPadding\">
             <div class=\"col l12 center\" id=\"imagenesPro\" >
               ";
-            // line 160
+            // line 157
             if (twig_test_empty(($context["fotos"] ?? null))) {
-                // line 161
+                // line 158
                 echo "                <div class=\"easyzoom easyzoom--overlay easyzoom--with-thumbnails redondeo white\">
                   <a href=\"";
-                // line 162
+                // line 159
                 echo ($context["ruta_img"] ?? null);
                 echo "pronoimg.webp\">
                     <img alt=\"";
-                // line 163
+                // line 160
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                 echo " al pormayor\" src=\"";
                 echo ($context["ruta_img"] ?? null);
@@ -241,15 +223,15 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 </div>
               ";
             } else {
-                // line 167
+                // line 164
                 echo "                <div class=\"easyzoom easyzoom--overlay easyzoom--with-thumbnails redondeo white\">
                   <a href=\"";
-                // line 168
+                // line 165
                 echo ($context["ruta_img"] ?? null);
                 echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                 echo "\">
                     <img alt=\"";
-                // line 169
+                // line 166
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                 echo " al pormayor\" src=\"";
                 echo ($context["ruta_img"] ?? null);
@@ -259,22 +241,22 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 </div>
               ";
             }
-            // line 173
+            // line 170
             echo "              <div class=\"center\">
                 <ul class=\"thumbnails\">
                   ";
-            // line 175
+            // line 172
             if (twig_test_empty(($context["fotos"] ?? null))) {
-                // line 176
+                // line 173
                 echo "                    <li class=\"col\">
                       <a href=\"";
-                // line 177
+                // line 174
                 echo ($context["ruta_img"] ?? null);
                 echo "pronoimg.webp\" data-standard=\"";
                 echo ($context["ruta_img"] ?? null);
                 echo "pronoimg.webp\">
                         <img alt=\"";
-                // line 178
+                // line 175
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                 echo " al pormayor\" src=\"";
                 echo ($context["ruta_img"] ?? null);
@@ -283,21 +265,21 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     </li>
                   ";
             } else {
-                // line 182
+                // line 179
                 echo "                      ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["fotos"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["fot"]) {
-                    // line 183
+                    // line 180
                     echo "                        ";
                     if (($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "producto_Pro_IdProducto", array()))) {
-                        // line 184
+                        // line 181
                         echo "                          ";
                         if ((twig_lower_filter($this->env, twig_slice($this->env, $this->getAttribute($context["fot"], "Prf_Img", array()), 0, 5)) != "nopic")) {
-                            // line 185
+                            // line 182
                             echo "                          <li class=\"col\">
                             <a href=\"";
-                            // line 186
+                            // line 183
                             echo ($context["ruta_img"] ?? null);
                             echo $this->getAttribute($context["fot"], "Prf_Img", array());
                             echo "\" data-standard=\"";
@@ -305,7 +287,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                             echo $this->getAttribute($context["fot"], "Prf_Img", array());
                             echo "\">
                               <img alt=\"";
-                            // line 187
+                            // line 184
                             echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                             echo " al pormayor\" src=\"";
                             echo ($context["ruta_img"] ?? null);
@@ -315,117 +297,69 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                           </li>
                           ";
                         }
-                        // line 191
+                        // line 188
                         echo "                        ";
                     }
-                    // line 192
+                    // line 189
                     echo "                      ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['fot'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 193
+                // line 190
                 echo "                  ";
             }
-            // line 194
+            // line 191
             echo "                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>      
-      <div class=\"col l4\">
+      <div class=\"col m6 l6\">
         <div class=\"card\">          
-          <div class=\"card-content\" style=\"padding: 24px 24px 21px 24px;\">
-            <span class=\"card-title\">Opciones</span>
-            <div style=\"max-height:325px; overflow-y:auto;\">
+          <div class=\"card-content center\">
+            <a class=\"btn-large fontD pormayor black-text\" >S/ ";
+            // line 200
+            echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
+            echo " x mayor</a><br><br>
+            <span class=\"card-title\">Seleccione la variación de su producto</span>
+            <div>
             ";
-            // line 205
+            // line 203
             if (((($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) != 12) && ($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) != 2)) && ($this->getAttribute(($context["producto"] ?? null), "Suc_IdSubCategoria", array()) != 41))) {
-                // line 206
+                // line 204
                 echo "            ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["SKU"] ?? null));
                 foreach ($context['_seq'] as $context["key"] => $context["sku"]) {
                     echo "  
                 ";
-                    // line 207
+                    // line 205
                     if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
-                        // line 208
+                        // line 206
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
-                        // line 209
+                        // line 207
                         echo "                    <div class=\"row centrarForzado\">
-                      <div class=\"col l5 left-align\">
+                      <div class=\"col l5 right-align\">
                         <div class=\"positionRelative\">
-                          ";
-                        // line 212
-                        if ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) == ""))) {
-                            // line 213
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" class=\" materialboxed fixImg4 redondeo\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo "nofoto.png\" >
-                          ";
-                        } elseif ((($this->getAttribute(                        // line 214
-$context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) != ""))) {
-                            // line 215
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" class=\" materialboxed fixImg4 redondeo\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                            echo "\" >
+                        ";
+                        // line 215
+                        echo "                          ";
+                        if ((($context["colorActual"] ?? null) == "")) {
+                            // line 216
+                            echo "                          <span class=\"fontA\">UNICO</span>  
                           ";
                         } else {
-                            // line 217
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
+                            // line 218
+                            echo "                          <span class=\"fontA\">";
                             echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" data-nom=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" class=\" materialboxed fixImg4 redondeo\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo $this->getAttribute($context["sku"], "SKU_Img", array());
-                            echo "\" >
+                            echo "</span>
                           ";
                         }
-                        // line 219
-                        echo "                          <label>";
-                        echo ($context["colorActual"] ?? null);
-                        echo "</label>
-                        ";
                         // line 220
+                        echo "                        ";
                         $context["colorUnico"] = "";
                         // line 221
                         echo "                        ";
@@ -471,17 +405,19 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                         // line 234
                         echo $context["key"];
                         echo "\">
-                        <div class=\"input-group input-number-group\">
+                      ";
+                        // line 236
+                        echo "                        <div class=\"input-group input-number-group\">
                           <div class=\"input-group-button\">
                             <span class=\"input-number-decrement\">-</span>
                           </div>
                           ";
-                        // line 239
-                        $context["count"] = 0;
                         // line 240
+                        $context["count"] = 0;
+                        // line 241
                         echo "                          ";
                         $context["break"] = false;
-                        // line 241
+                        // line 242
                         echo "                          ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(twig_sort_filter(($context["SKUB"] ?? null), "asc"));
@@ -489,9 +425,9 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                             if ( !($context["break"] ?? null)) {
                                 echo "                        
                               ";
-                                // line 242
+                                // line 243
                                 if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) >= 1))) {
-                                    // line 243
+                                    // line 244
                                     echo "                                  <input type=\"number\" min=\"";
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
                                     echo "\" name=\"cantidad\" value=\"0\" max=\"";
@@ -509,16 +445,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                         echo "unico";
                                     }
                                     echo "\" data-foto=\"";
-                                    if ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) == ""))) {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo "nofoto.png";
-                                    } elseif ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) != ""))) {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                                    } else {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo $this->getAttribute($context["sku"], "SKU_Img", array());
-                                    }
+                                    echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                                     echo "\"  data-productname=\"";
                                     echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                                     echo "\" data-productid=\"";
@@ -530,11 +457,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                     echo "\" data-variacion=\"";
                                     echo $this->getAttribute($context["skub"], "Vao_Nombre", array());
                                     echo "\" data-img=\"";
-                                    if ($this->getAttribute($context["skub"], "SKU_Img", array())) {
-                                        echo $this->getAttribute($context["skub"], "SKU_Img", array());
-                                    } else {
-                                        echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                                    }
+                                    echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                                     echo "\" data-unidad=\"";
                                     echo $this->getAttribute($context["skub"], "Unm_Nombre", array());
                                     echo "\" data-dispo=\"";
@@ -548,25 +471,25 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                     echo "\" onkeydown=\"javascript: return event.keyCode == 69 ? false : true\" readonly>
                               ";
                                 } else {
-                                    // line 245
+                                    // line 246
                                     echo "                                ";
                                     $context["break"] = false;
                                     echo " 
                               ";
                                 }
-                                // line 246
+                                // line 247
                                 echo " 
                           ";
-                                // line 247
-                                $context["count"] = (($context["count"] ?? null) + 1);
                                 // line 248
+                                $context["count"] = (($context["count"] ?? null) + 1);
+                                // line 249
                                 echo "                          ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['skub'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 249
+                        // line 250
                         echo "                          <div class=\"input-group-button\">
                             <span class=\"input-number-increment\">+</span>
                           </div>
@@ -575,11 +498,11 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     </div>
                     ";
                     } else {
-                        // line 256
+                        // line 257
                         echo "                    <div class=\"row centrarForzado\">
-                      <div class=\"col s12 center red\">
+                      <div class=\"col s12 center grey\">
                         <b class=\"fontA\">";
-                        // line 258
+                        // line 259
                         echo $this->getAttribute($context["sku"], "SKU_Color", array());
                         echo " AGOTADO</b>
                       </div>
@@ -587,137 +510,85 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     </div>
                     ";
                     }
-                    // line 263
+                    // line 264
                     echo "              ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['key'], $context['sku'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 264
+                // line 265
                 echo "              ";
             } else {
-                // line 265
+                // line 266
                 echo "                ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["SKU"] ?? null));
                 foreach ($context['_seq'] as $context["key"] => $context["sku"]) {
                     echo "  
                 ";
-                    // line 266
+                    // line 267
                     if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
-                        // line 267
+                        // line 268
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
-                        // line 268
+                        // line 269
                         echo "                    <div class=\"row centrarForzado\">
-                      <div class=\"col l5 left-align\">
-                        <div class=\"positionRelative\">
-                          ";
-                        // line 271
-                        if ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) == ""))) {
-                            // line 272
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" class=\"materialboxed fixImg4 redondeo\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo "nofoto.png\" >
-                          ";
-                        } elseif ((($this->getAttribute(                        // line 273
-$context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) != ""))) {
-                            // line 274
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" class=\"materialboxed fixImg4 redondeo\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                            echo "\" >
+                      <div class=\"col l5 right-align\">
+                        <div class=\"positionRelative\">                          
+                         ";
+                        // line 277
+                        echo "                        ";
+                        if ((($context["colorActual"] ?? null) == "")) {
+                            // line 278
+                            echo "                          <span class=\"fontA\">UNICO</span>  
                           ";
                         } else {
-                            // line 276
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
+                            // line 280
+                            echo "                          <span class=\"fontA\">";
                             echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" data-nom=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" class=\"materialboxed fixImg4 redondeo\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo $this->getAttribute($context["sku"], "SKU_Img", array());
-                            echo "\" >
+                            echo "</span>
                           ";
                         }
-                        // line 278
-                        echo "                          <label>";
-                        echo ($context["colorActual"] ?? null);
-                        echo "</label>
-                        ";
-                        // line 279
+                        // line 282
+                        echo "                        ";
                         $context["colorUnico"] = "";
-                        // line 280
+                        // line 283
                         echo "                        ";
                         $context["colorHex"] = "";
-                        // line 281
+                        // line 284
                         echo "                        ";
                         $context["break"] = false;
-                        // line 282
+                        // line 285
                         echo "                        ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(($context["colores"] ?? null));
                         foreach ($context['_seq'] as $context["_key"] => $context["col"]) {
                             if ( !($context["break"] ?? null)) {
-                                // line 283
+                                // line 286
                                 echo "                          ";
                                 if (($this->getAttribute($context["col"], "SKU_Color", array()) == ($context["colorActual"] ?? null))) {
-                                    // line 284
-                                    echo "                            ";
-                                    // line 285
-                                    echo "                            ";
-                                    $context["colorUnico"] = $this->getAttribute($context["col"], "Col_Nombre", array());
-                                    // line 286
-                                    echo "                            ";
-                                    $context["colorHex"] = $this->getAttribute($context["col"], "Col_Hex", array());
                                     // line 287
                                     echo "                            ";
-                                    $context["break"] = true;
                                     // line 288
+                                    echo "                            ";
+                                    $context["colorUnico"] = $this->getAttribute($context["col"], "Col_Nombre", array());
+                                    // line 289
+                                    echo "                            ";
+                                    $context["colorHex"] = $this->getAttribute($context["col"], "Col_Hex", array());
+                                    // line 290
+                                    echo "                            ";
+                                    $context["break"] = true;
+                                    // line 291
                                     echo "                          ";
                                 }
-                                // line 289
+                                // line 292
                                 echo "                        ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['col'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 290
+                        // line 293
                         echo "                        </div>
                         <br>
                       </div> 
@@ -726,22 +597,22 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                           <div class=\"col s12 l12 sinPadding \">
                           </div>
                             ";
-                        // line 297
+                        // line 300
                         $context["count"] = 0;
-                        // line 298
+                        // line 301
                         echo "                            ";
                         $context["break"] = false;
-                        // line 299
+                        // line 302
                         echo "                          <div class=\"col l12 sinPadding  centrarForzado row filaCant";
                         echo $context["key"];
                         echo "\">
                               ";
-                        // line 300
+                        // line 303
                         $context["count"] = 0;
-                        // line 301
+                        // line 304
                         echo "                              ";
                         $context["break"] = false;
-                        // line 302
+                        // line 305
                         echo "                              ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(twig_sort_filter(($context["SKUB"] ?? null), "asc"));
@@ -749,9 +620,9 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                             if ( !($context["break"] ?? null)) {
                                 echo "                        
                                   ";
-                                // line 303
+                                // line 306
                                 if ((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array()))) {
-                                    // line 304
+                                    // line 307
                                     echo "                                      <span class=\"fontB2\" for=\"";
                                     echo $this->getAttribute($context["skub"], "SKU_IdSku", array());
                                     echo "\">Talla ";
@@ -762,7 +633,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                             <span class=\"input-number-decrement\">-</span>
                                           </div>
                                             <input type=\"number\" min=\"";
-                                    // line 309
+                                    // line 312
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
                                     echo "\" name=\"cantidad\" value=\"0\" max=\"5\" class=\"input-number browser-default cantSku cant";
                                     echo $this->getAttribute($context["skub"], "SKU_IdSku", array());
@@ -777,16 +648,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                         echo "unico";
                                     }
                                     echo "\" data-foto=\"";
-                                    if ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) == ""))) {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo "nofoto.png";
-                                    } elseif ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) != ""))) {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                                    } else {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo $this->getAttribute($context["sku"], "SKU_Img", array());
-                                    }
+                                    echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                                     echo "\"  data-productname=\"";
                                     echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                                     echo "\" data-productid=\"";
@@ -798,11 +660,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                     echo "\" data-variacion=\"";
                                     echo $this->getAttribute($context["skub"], "Vao_Nombre", array());
                                     echo "\" data-img=\"";
-                                    if ($this->getAttribute($context["skub"], "SKU_Img", array())) {
-                                        echo $this->getAttribute($context["skub"], "SKU_Img", array());
-                                    } else {
-                                        echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                                    }
+                                    echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                                     echo "\" data-unidad=\"";
                                     echo $this->getAttribute($context["skub"], "Unm_Nombre", array());
                                     echo "\" data-dispo=\"";
@@ -820,36 +678,36 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                         </div>
                                   ";
                                 } else {
-                                    // line 315
+                                    // line 318
                                     echo "                                    ";
                                     $context["break"] = false;
                                     echo " 
                                   ";
                                 }
-                                // line 316
+                                // line 319
                                 echo " 
                               ";
-                                // line 317
+                                // line 320
                                 $context["count"] = (($context["count"] ?? null) + 1);
-                                // line 318
+                                // line 321
                                 echo "                              ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['skub'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 319
+                        // line 322
                         echo "                          </div>
                         </div>
                       </div>
                     </div>
                     ";
                     } else {
-                        // line 324
+                        // line 327
                         echo "                    <div class=\"row centrarForzado\">
-                      <div class=\"col s12 center red\">
+                      <div class=\"col s12 center grey\">
                         <b class=\"fontA\">";
-                        // line 326
+                        // line 329
                         echo $this->getAttribute($context["sku"], "SKU_Color", array());
                         echo " AGOTADO</b>
                       </div>
@@ -857,21 +715,21 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     </div>
                     ";
                     }
-                    // line 331
+                    // line 334
                     echo "              ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['key'], $context['sku'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 332
+                // line 335
                 echo "              ";
             }
-            // line 333
+            // line 336
             echo "              </div>
                 <div class=\"row sinPadding bottom0\" style=\"margin-bottom: 0px;\">
                   <div class=\"col l6 sinPadding center\">
                     <a class=\"btn-large add_cart green\" data-totalc=\"";
-            // line 336
+            // line 339
             echo ($context["totalc"] ?? null);
             echo "\" data-pmin=\"";
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
@@ -882,45 +740,45 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     <p class=\"fontC\">S/<span class=\"totalPago negrita\">0</span></p>
                   </div>
                   ";
-            // line 342
+            // line 345
             if ((twig_length_filter($this->env, ($context["SKU"] ?? null)) >= 2)) {
-                // line 343
+                // line 346
                 echo "                    <div class=\"col l12 center\">
                       <b class=\"red-text\">Tenga presente que puede variar los colores según disponibilidad</b>
                     </div>
                   ";
             }
-            // line 347
+            // line 350
             echo "                </div>
               </div>
               
             </div>
           </div>
-          <div class=\"col l4\">
+          <div class=\"col l12 hide\">
             <div class=\"card\">
               <div class=\"card-content\">
                 <div class=\"row\">
                 <div class=\"col s12 center\">
                   <span class=\"fontD \">s/ ";
-            // line 357
+            // line 360
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
             echo " x mayor</span>
                 </div>                
                 <div class=\"col s12 center\">
                   ";
-            // line 360
+            // line 363
             if (($this->getAttribute(($context["producto"] ?? null), "Pro_Preventa", array()) == 1)) {
                 echo " <br>
                     <p class=\"fontA\">FECHA DE LLEGADA DE LA MERCANCÍA ";
-                // line 361
+                // line 364
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_FechaPreventa", array());
                 echo " </p> <br>
                   ";
             }
-            // line 363
+            // line 366
             echo "                </div>
                   <div class=\"card-badge\"><a class=\"white-text\">";
-            // line 364
+            // line 367
             if (($this->getAttribute(($context["producto"] ?? null), "Pro_Preventa", array()) == 1)) {
                 echo "PRE-VENTA";
             } else {
@@ -928,10 +786,10 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
             }
             echo "</a></div>
 ";
-            // line 368
+            // line 371
             echo "                  <div class=\"col s12 \"><br>
                    <span class=\"grey-text\"><i class=\"material-icons green-text left\">shopping_bag</i>";
-            // line 369
+            // line 372
             $context["vent"] = (0.5 * $this->getAttribute(($context["producto"] ?? null), "Pro_Vista", array()));
             if ((($context["vent"] ?? null) > 1)) {
                 echo twig_round(($context["vent"] ?? null));
@@ -942,98 +800,32 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
             echo "</span>
                   </div>
                 </div>
-                <div class=\"cardContentFix\" id=\"visualizas\" style=\"display:none;\"></div>
-                <div id=\"visualizarEnvio\" style=\"display:none;\">
-                  <div class=\"row sinPadding\">
-                    <div class=\"col l6\">
-                      <select id=\"selecRegion\" class=\"browser-default\" data-valor=\"";
-            // line 376
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_idregion", array());
-            echo "\">
-                      <option value=\"0\" disabled selected>Departamento</option>
-                      ";
-            // line 378
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(($context["region"] ?? null));
-            foreach ($context['_seq'] as $context["_key"] => $context["reg"]) {
-                // line 379
-                echo "                        <option value=\"";
-                echo $this->getAttribute($context["reg"], "id", array());
-                echo "\">";
-                echo $this->getAttribute($context["reg"], "name", array());
-                echo "</option>
-                      ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reg'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 381
-            echo "                      </select>
-                    </div>
-                    <div id=\"provincia\" class=\"col l6\">
-                      <select  disabled class=\"browser-default\">
-                        <option value=\"0\" disabled selected> Seleccione una provincia</option>
-                      </select>
-                    </div>
-                    <div id=\"distrito\" class=\"col l6\">
-                      <select disabled class=\"browser-default\">
-                        <option value=\"0\" disabled selected> Seleccione un distrito</option>
-                      </select>
-                    </div>
-                    <div class=\"col l6\">
-                      <select id=\"cantEnvio\" class=\"browser-default\">
-                      <option value=\"0\" disabled selected>Cantidad</option>
-                        ";
-            // line 396
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(range(1, 100));
-            foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-                // line 397
-                echo "                          <option value=\"";
-                echo $context["i"];
-                echo "\">";
-                echo $context["i"];
-                echo "</option>
-                        ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 399
-            echo "                      </select>
-                    </div>
-                  </div>
-                  <div class=\"row sinPadding\">
-                    <div class=\"col l12 black-text negrita noenv tiempoEntrega\" style=\"text-align: left;font-size:16px;\">Tiempo de entrega de 2 a 3 días (Lima y Callao)</div>
-                    <div class=\"col l12\" style=\"text-align: right;\">S/ <span class=\"cEnv fontC negrita\">0.00</span></div>
-                  </div>
-                </div>
             </div> 
         </div>
       </div>
     ";
         } else {
-            // line 411
+            // line 379
             echo "      <div class=\"col s12\">
         <div class=\"card\">
           <div class=\"card-image\">
               <div class=\"wrapperSliderImgMobile transition\">
                 <div class=\"sliderMobile \">
                   ";
-            // line 416
+            // line 384
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["fotos"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["fot"]) {
-                // line 417
+                // line 385
                 echo "                    ";
                 if (($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "producto_Pro_IdProducto", array()))) {
-                    // line 418
+                    // line 386
                     echo "                      ";
                     if ((twig_lower_filter($this->env, twig_slice($this->env, $this->getAttribute($context["fot"], "Prf_Img", array()), 0, 5)) != "nopic")) {
-                        // line 419
+                        // line 387
                         echo "                        <div>
                           <img alt=\"";
-                        // line 420
+                        // line 388
                         echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                         echo " al pormayor\" class=\"redondeo centrarForzado\" src=\"";
                         echo ($context["ruta_img"] ?? null);
@@ -1042,118 +834,69 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                         </div>
                       ";
                     }
-                    // line 423
+                    // line 391
                     echo "                    ";
                 }
-                // line 424
+                // line 392
                 echo "                  ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['fot'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 425
+            // line 393
             echo "                </div>
               </div>
           </div>
           <div class=\"card-content\">     
                 <div class=\"row\">
-                  <div class=\"col s12 center\">
-                    <span class=\"fontD \">s/ ";
-            // line 431
+                  <div class=\"col s12 center\"><br>
+                     <a class=\"btn-large fontD pormayor black-text\" >S/ ";
+            // line 399
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
-            echo " x mayor</span>
-                  </div>
+            echo " x mayor</a><br>
+                    ";
+            // line 401
+            echo "                  </div>
                 </div>             
               ";
-            // line 434
+            // line 403
             if (((($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) != 12) && ($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) != 2)) && ($this->getAttribute(($context["producto"] ?? null), "Suc_IdSubCategoria", array()) != 41))) {
-                // line 435
+                // line 404
                 echo "            ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["SKU"] ?? null));
                 foreach ($context['_seq'] as $context["key"] => $context["sku"]) {
                     echo "  
                 ";
-                    // line 436
+                    // line 405
                     if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
-                        // line 437
+                        // line 406
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
-                        // line 438
+                        // line 407
                         echo "                    <div class=\"row centrarForzado\">
-                      <div class=\"col s5 left-align\">
+                      <div class=\"col s5 right-align\">
                         <div class=\"positionRelative\">
-                          ";
-                        // line 441
-                        if ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) == ""))) {
-                            // line 442
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" class=\" materialboxed redondeo\" height=\"40px\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo "nofoto.png\" >
-                          ";
-                        } elseif ((($this->getAttribute(                        // line 443
-$context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) != ""))) {
-                            // line 444
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" class=\" materialboxed redondeo\" height=\"40px\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                            echo "\" >
+                        ";
+                        // line 417
+                        echo "                          ";
+                        if ((($context["colorActual"] ?? null) == "")) {
+                            // line 418
+                            echo "                          <span class=\"fontA\">UNICO</span>  
                           ";
                         } else {
-                            // line 446
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
+                            // line 420
+                            echo "                          <span class=\"fontA\">";
                             echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" data-nom=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" class=\" materialboxed redondeo\" height=\"40px\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo $this->getAttribute($context["sku"], "SKU_Img", array());
-                            echo "\" >
+                            echo "</span>
                           ";
                         }
-                        // line 448
-                        echo "                          <label>";
-                        echo ($context["colorActual"] ?? null);
-                        echo "</label> 
-                        </div>
+                        // line 422
+                        echo "                        </div>
                         <br>
                       </div> 
                       <div class=\"col s7 valign-wrapper filaCant";
-                        // line 452
+                        // line 425
                         echo $context["key"];
                         echo "\">
                         <div class=\"input-group input-number-group\">
@@ -1161,12 +904,12 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                             <span class=\"input-number-decrement\">-</span>
                           </div>
                           ";
-                        // line 457
+                        // line 430
                         $context["count"] = 0;
-                        // line 458
+                        // line 431
                         echo "                          ";
                         $context["break"] = false;
-                        // line 459
+                        // line 432
                         echo "                          ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(twig_sort_filter(($context["SKUB"] ?? null), "asc"));
@@ -1174,9 +917,9 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                             if ( !($context["break"] ?? null)) {
                                 echo "                        
                               ";
-                                // line 460
+                                // line 433
                                 if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) >= 1))) {
-                                    // line 461
+                                    // line 434
                                     echo "                                  <input type=\"number\" min=\"";
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
                                     echo "\" name=\"cantidad\" value=\"0\" max=\"5\" class=\"input-number browser-default cantSku cant";
@@ -1192,16 +935,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                         echo "unico";
                                     }
                                     echo "\" data-foto=\"";
-                                    if ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) == ""))) {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo "nofoto.png";
-                                    } elseif ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) != ""))) {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                                    } else {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo $this->getAttribute($context["sku"], "SKU_Img", array());
-                                    }
+                                    echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                                     echo "\"  data-productname=\"";
                                     echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                                     echo "\" data-productid=\"";
@@ -1213,11 +947,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                     echo "\" data-variacion=\"";
                                     echo $this->getAttribute($context["skub"], "Vao_Nombre", array());
                                     echo "\" data-img=\"";
-                                    if ($this->getAttribute($context["skub"], "SKU_Img", array())) {
-                                        echo $this->getAttribute($context["skub"], "SKU_Img", array());
-                                    } else {
-                                        echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                                    }
+                                    echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                                     echo "\" data-unidad=\"";
                                     echo $this->getAttribute($context["skub"], "Unm_Nombre", array());
                                     echo "\" data-dispo=\"";
@@ -1231,25 +961,25 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                     echo "\" onkeydown=\"javascript: return event.keyCode == 69 ? false : true\" readonly>
                               ";
                                 } else {
-                                    // line 463
+                                    // line 436
                                     echo "                                ";
                                     $context["break"] = false;
                                     echo " 
                               ";
                                 }
-                                // line 464
+                                // line 437
                                 echo " 
                           ";
-                                // line 465
+                                // line 438
                                 $context["count"] = (($context["count"] ?? null) + 1);
-                                // line 466
+                                // line 439
                                 echo "                          ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['skub'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 467
+                        // line 440
                         echo "                          <div class=\"input-group-button\">
                             <span class=\"input-number-increment\">+</span>
                           </div>
@@ -1258,11 +988,11 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     </div>
                     ";
                     } else {
-                        // line 474
+                        // line 447
                         echo "                    <div class=\"row centrarForzado\">
-                      <div class=\"col s12 center red\">
+                      <div class=\"col s12 center grey\">
                         <b class=\"fontA\">";
-                        // line 476
+                        // line 449
                         echo $this->getAttribute($context["sku"], "SKU_Color", array());
                         echo " AGOTADO</b>
                       </div>
@@ -1270,137 +1000,85 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     </div>
                     ";
                     }
-                    // line 481
+                    // line 454
                     echo "              ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['key'], $context['sku'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 482
+                // line 455
                 echo "            ";
             } else {
-                // line 483
+                // line 456
                 echo "              ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["SKU"] ?? null));
                 foreach ($context['_seq'] as $context["key"] => $context["sku"]) {
                     echo "  
                 ";
-                    // line 484
+                    // line 457
                     if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
-                        // line 485
+                        // line 458
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
-                        // line 486
+                        // line 459
                         echo "                    <div class=\"row centrarForzado\">
-                      <div class=\"col S5 left-align\">
+                      <div class=\"col S5 right-align\">
                         <div class=\"positionRelative\">
-                          ";
-                        // line 489
-                        if ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) == ""))) {
-                            // line 490
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" class=\"materialboxed fixImg4 redondeo\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo "nofoto.png\" width=\"60px\">
-                          ";
-                        } elseif ((($this->getAttribute(                        // line 491
-$context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) != ""))) {
-                            // line 492
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" class=\"materialboxed fixImg4 redondeo\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                            echo "\" width=\"60px\">
+                         ";
+                        // line 469
+                        echo "                          ";
+                        if ((($context["colorActual"] ?? null) == "")) {
+                            // line 470
+                            echo "                          <span class=\"fontA\">UNICO</span>  
                           ";
                         } else {
-                            // line 494
-                            echo "                            <img alt=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " al pormayor\" id=\"skuImg";
+                            // line 472
+                            echo "                          <span class=\"fontA\">";
                             echo ($context["colorActual"] ?? null);
-                            echo "\" data-color=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "-";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array());
-                            echo "\" data-caption=\"";
-                            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
-                            echo " ";
-                            echo twig_title_string_filter($this->env, ($context["colorActual"] ?? null));
-                            echo "\" data-nom=\"";
-                            echo ($context["colorActual"] ?? null);
-                            echo "\" class=\"materialboxed fixImg4 redondeo\" width=\"60px\" src=\"";
-                            echo ($context["ruta_img"] ?? null);
-                            echo $this->getAttribute($context["sku"], "SKU_Img", array());
-                            echo "\" >
+                            echo "</span>
                           ";
                         }
-                        // line 496
-                        echo "                          <label>";
-                        echo ($context["colorActual"] ?? null);
-                        echo "</label>
-                        ";
-                        // line 497
+                        // line 474
+                        echo "                        ";
                         $context["colorUnico"] = "";
-                        // line 498
+                        // line 475
                         echo "                        ";
                         $context["colorHex"] = "";
-                        // line 499
+                        // line 476
                         echo "                        ";
                         $context["break"] = false;
-                        // line 500
+                        // line 477
                         echo "                        ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(($context["colores"] ?? null));
                         foreach ($context['_seq'] as $context["_key"] => $context["col"]) {
                             if ( !($context["break"] ?? null)) {
-                                // line 501
+                                // line 478
                                 echo "                          ";
                                 if (($this->getAttribute($context["col"], "SKU_Color", array()) == ($context["colorActual"] ?? null))) {
-                                    // line 502
+                                    // line 479
                                     echo "                            ";
-                                    // line 503
+                                    // line 480
                                     echo "                            ";
                                     $context["colorUnico"] = $this->getAttribute($context["col"], "Col_Nombre", array());
-                                    // line 504
+                                    // line 481
                                     echo "                            ";
                                     $context["colorHex"] = $this->getAttribute($context["col"], "Col_Hex", array());
-                                    // line 505
+                                    // line 482
                                     echo "                            ";
                                     $context["break"] = true;
-                                    // line 506
+                                    // line 483
                                     echo "                          ";
                                 }
-                                // line 507
+                                // line 484
                                 echo "                        ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['col'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 508
+                        // line 485
                         echo "                        </div>
                         <br>
                       </div> 
@@ -1409,22 +1087,22 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                           <div class=\"col s12 sinPadding\">
                           </div>
                             ";
-                        // line 515
+                        // line 492
                         $context["count"] = 0;
-                        // line 516
+                        // line 493
                         echo "                            ";
                         $context["break"] = false;
-                        // line 517
+                        // line 494
                         echo "                          <div class=\"col l12 sinPadding  centrarForzado row filaCant";
                         echo $context["key"];
                         echo "\">
                               ";
-                        // line 518
+                        // line 495
                         $context["count"] = 0;
-                        // line 519
+                        // line 496
                         echo "                              ";
                         $context["break"] = false;
-                        // line 520
+                        // line 497
                         echo "                              ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(twig_sort_filter(($context["SKUB"] ?? null), "asc"));
@@ -1432,9 +1110,9 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                             if ( !($context["break"] ?? null)) {
                                 echo "                        
                                   ";
-                                // line 521
+                                // line 498
                                 if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) >= 1))) {
-                                    // line 522
+                                    // line 499
                                     echo "                                      <span class=\"fontB2\" for=\"";
                                     echo $this->getAttribute($context["skub"], "SKU_IdSku", array());
                                     echo "\">Talla ";
@@ -1445,7 +1123,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                             <span class=\"input-number-decrement\">-</span>
                                           </div>
                                             <input type=\"number\" min=\"";
-                                    // line 527
+                                    // line 504
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
                                     echo "\" name=\"cantidad\" value=\"0\" max=\"5\" class=\"input-number browser-default cantSku cant";
                                     echo $this->getAttribute($context["skub"], "SKU_IdSku", array());
@@ -1460,16 +1138,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                         echo "unico";
                                     }
                                     echo "\" data-foto=\"";
-                                    if ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) == ""))) {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo "nofoto.png";
-                                    } elseif ((($this->getAttribute($context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["producto"] ?? null), "Prf_Img", array()) != ""))) {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                                    } else {
-                                        echo ($context["ruta_img"] ?? null);
-                                        echo $this->getAttribute($context["sku"], "SKU_Img", array());
-                                    }
+                                    echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                                     echo "\"  data-productname=\"";
                                     echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                                     echo "\" data-productid=\"";
@@ -1481,11 +1150,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                     echo "\" data-variacion=\"";
                                     echo $this->getAttribute($context["skub"], "Vao_Nombre", array());
                                     echo "\" data-img=\"";
-                                    if ($this->getAttribute($context["skub"], "SKU_Img", array())) {
-                                        echo $this->getAttribute($context["skub"], "SKU_Img", array());
-                                    } else {
-                                        echo $this->getAttribute(($context["producto"] ?? null), "Prf_Img", array());
-                                    }
+                                    echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                                     echo "\" data-unidad=\"";
                                     echo $this->getAttribute($context["skub"], "Unm_Nombre", array());
                                     echo "\" data-dispo=\"";
@@ -1503,36 +1168,36 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                                         </div>
                                   ";
                                 } else {
-                                    // line 533
+                                    // line 510
                                     echo "                                    ";
                                     $context["break"] = false;
                                     echo " 
                                   ";
                                 }
-                                // line 534
+                                // line 511
                                 echo " 
                               ";
-                                // line 535
+                                // line 512
                                 $context["count"] = (($context["count"] ?? null) + 1);
-                                // line 536
+                                // line 513
                                 echo "                              ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['skub'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 537
+                        // line 514
                         echo "                          </div>
                         </div>
                       </div>
                     </div>
                                     ";
                     } else {
-                        // line 542
+                        // line 519
                         echo "                    <div class=\"row centrarForzado\">
-                      <div class=\"col s12 center red\">
+                      <div class=\"col s12 center grey\">
                         <b class=\"fontA\">";
-                        // line 544
+                        // line 521
                         echo $this->getAttribute($context["sku"], "SKU_Color", array());
                         echo " AGOTADO</b>
                       </div>
@@ -1540,53 +1205,57 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     </div>
                     ";
                     }
-                    // line 549
+                    // line 526
                     echo "              ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['key'], $context['sku'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 550
+                // line 527
                 echo "            ";
             }
-            // line 551
-            echo "              <div class=\"row\">
-                ";
-            // line 552
-            if ((twig_length_filter($this->env, ($context["SKU"] ?? null)) >= 2)) {
-                // line 553
-                echo "                    <div class=\"col l12 center\">
-                      <b class=\"red-text\">Tenga presente que puede variar los colores según disponibilidad</b>
-                    </div>
-                ";
-            }
-            // line 557
-            echo "                <div class=\"col s12 center\">
+            // line 528
+            echo "              <div class=\"row pormayorUnico\">
+                  <div class=\"col s6 sinPadding center\">
+                    <span class=\"totalPro fontC\">0</span> UNID
+                  </div>
+                  <div class=\"col s6 sinPadding center\">
+                    <span class=\"fontC white-text\"><b>S/<span class=\"totalPago white-text\">0</span></b></span>
+                  </div>
+                  <div class=\"col s12 sinPadding\">
+                    <a  class=\"btn-large green add_cart anchoTotal\"  data-totalc=\"";
+            // line 536
+            echo ($context["totalc"] ?? null);
+            echo "\" data-pmin=\"";
+            echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
+            echo "\">COMPRAR</a>
+                  </div>
+                <div class=\"col s12 center\">
                   ";
-            // line 558
+            // line 539
             if (($this->getAttribute(($context["producto"] ?? null), "Pro_Preventa", array()) == 1)) {
                 echo " <br>
                     <p class=\"fontA\">FECHA DE LLEGADA DE LA MERCANCÍA ";
-                // line 559
+                // line 540
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_FechaPreventa", array());
                 echo " </p> <br>
                   ";
             }
-            // line 561
+            // line 542
             echo "                </div>
 ";
-            // line 565
+            // line 546
             echo "              </div>         
           </div>
         </div>
       </div>
     ";
         }
-        // line 570
+        // line 551
         echo "    </div>
         <div class=\"row\">
           <div class=\"col s12 ";
-        // line 572
+        // line 553
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Video", array())) {
             echo "l6";
         } else {
@@ -1600,7 +1269,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
               </ul>
             </div>
             <div id=\"dPro\" class=\"col s12\">";
-        // line 579
+        // line 560
         echo $this->getAttribute(($context["producto"] ?? null), "Pro_Descripcion", array());
         echo "</div>
             <div id=\"cPro\" class=\"col s12\">
@@ -1613,135 +1282,135 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                 </thead>
                 <tbody>
                   ";
-        // line 589
+        // line 570
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Marca", array())) {
-            // line 590
+            // line 571
             echo "                    <tr>
                       <td class=\"enfasisB\">Marca</td>
                       <td>";
-            // line 592
+            // line 573
             echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_Marca", array()));
             echo "</td>
                     </tr>
                   ";
         }
-        // line 595
+        // line 576
         echo "                  ";
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Garantia", array())) {
-            // line 596
+            // line 577
             echo "                    <tr>
                       <td class=\"enfasisB\">Garantía</td>
                       <td>";
-            // line 598
+            // line 579
             echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_Garantia", array()));
             echo "</td>
                     </tr>
                   ";
         }
-        // line 601
+        // line 582
         echo "                  ";
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_EdoGarantia", array())) {
-            // line 602
+            // line 583
             echo "                    <tr>
                       <td class=\"enfasisB\">Estado Producto</td>
                       <td>";
-            // line 604
+            // line 585
             echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_EdoGarantia", array()));
             echo "</td>
                     </tr>
                   ";
         }
-        // line 607
+        // line 588
         echo "                  <tr>
                     <td  class=\"enfasisB\">Colores</td>
                     <td >
                       ";
-        // line 610
+        // line 591
         $context["arrayColores"] = array();
-        // line 611
+        // line 592
         echo "                      ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["colores"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["col"]) {
-            // line 612
+            // line 593
             echo "                        ";
             if (($this->getAttribute($context["col"], "producto_Pro_IdProducto", array()) == $this->getAttribute(($context["pro"] ?? null), "Pro_IdProducto", array()))) {
-                // line 613
+                // line 594
                 echo "                         ";
                 if (!twig_in_filter($this->getAttribute($context["col"], "Col_Hex", array()), ($context["arrayColores"] ?? null))) {
-                    // line 614
+                    // line 595
                     echo "                         ";
                     $context["arrayColores"] = twig_array_merge(($context["arrayColores"] ?? null), array(0 => $this->getAttribute($context["col"], "Col_Hex", array())));
-                    // line 615
+                    // line 596
                     echo "                            ";
                     echo twig_title_string_filter($this->env, $this->getAttribute($context["col"], "Col_Nombre", array()));
                     echo ", 
                          ";
                 }
-                // line 617
+                // line 598
                 echo "                        ";
             }
-            // line 618
+            // line 599
             echo "                      ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['col'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 619
+        // line 600
         echo "                      ";
         if (twig_test_empty(($context["arrayColores"] ?? null))) {
-            // line 620
+            // line 601
             echo "                        <span class=\"flow-text notFlow enfasisB\"><i>Producto único</i></span>
                       ";
         }
-        // line 622
+        // line 603
         echo "                    </td>
                   </tr>
                   ";
-        // line 624
+        // line 605
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Documento", array())) {
-            // line 625
+            // line 606
             echo "                    <tr>
                       <td  class=\"enfasisB\">Documento pago</td>
                       <td >
                         ";
-            // line 628
+            // line 609
             if (($this->getAttribute(($context["producto"] ?? null), "Pro_Documento", array()) == 1)) {
-                // line 629
+                // line 610
                 echo "                          Boleta
                         ";
-            } elseif (($this->getAttribute(            // line 630
+            } elseif (($this->getAttribute(            // line 611
 ($context["producto"] ?? null), "Pro_Documento", array()) == 2)) {
                 echo " Boleta o Factura ";
             }
-            // line 631
+            // line 612
             echo "                      </td>
                     </tr>
                   ";
         }
-        // line 634
+        // line 615
         echo "                  ";
         if (($context["producto_ficha"] ?? null)) {
-            // line 635
+            // line 616
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo1", array())) {
-                // line 636
+                // line 617
                 echo "                      <tr>
                         <td class=\"enfasisB\">Dimensiones <br>(largo x ancho x alto)</td>
                         <td>";
-                // line 638
+                // line 619
                 echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo1", array()));
                 echo "</td>
                       </tr>
                     ";
             }
-            // line 641
+            // line 622
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo2", array())) {
-                // line 642
+                // line 623
                 echo "                      <tr>
                         <td class=\"enfasisB\">";
-                // line 643
+                // line 624
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo "¿Qué contiene la caja? ";
                 } else {
@@ -1749,7 +1418,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                 }
                 echo "</td>
                         <td>";
-                // line 644
+                // line 625
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo2", array()));
                 } else {
@@ -1761,13 +1430,13 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                       </tr>
                     ";
             }
-            // line 647
+            // line 628
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array())) {
-                // line 648
+                // line 629
                 echo "                      <tr>
                         <td class=\"enfasisB\">";
-                // line 649
+                // line 630
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo "Peso ";
                 } else {
@@ -1775,7 +1444,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                 }
                 echo "</td>
                         <td>";
-                // line 650
+                // line 631
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array()));
                     echo " Kg.";
@@ -1787,13 +1456,13 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                       </tr>
                     ";
             }
-            // line 653
+            // line 634
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo4", array())) {
-                // line 654
+                // line 635
                 echo "                      <tr>
                         <td class=\"enfasisB\">";
-                // line 655
+                // line 636
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo "Potencia ";
                 } else {
@@ -1801,7 +1470,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                 }
                 echo "</td>
                         <td>";
-                // line 656
+                // line 637
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo4", array()));
                     echo " ws. ";
@@ -1813,13 +1482,13 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                       </tr>
                     ";
             }
-            // line 659
+            // line 640
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo5", array())) {
-                // line 660
+                // line 641
                 echo "                      <tr>
                         <td class=\"enfasisB\">";
-                // line 661
+                // line 642
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo "Material ";
                 } else {
@@ -1827,29 +1496,29 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                 }
                 echo "</td>
                         <td>";
-                // line 662
+                // line 643
                 echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo5", array()));
                 echo "</td>
                       </tr>
                     ";
             }
-            // line 665
+            // line 646
             echo "                  ";
         }
-        // line 666
+        // line 647
         echo "                </tbody>
               </table>
             </div>
           </div>
           ";
-        // line 670
+        // line 651
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Video", array())) {
-            // line 671
+            // line 652
             echo "          <div class=\"col s12 l6\">
              
                   <div class=\"video-container\">
                     <iframe width=\"853\" height=\"480\" src=\"";
-            // line 674
+            // line 655
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_Video", array());
             echo "\" frameborder=\"0\" allowfullscreen></iframe>
                   </div>
@@ -1857,15 +1526,15 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
           </div>
           ";
         }
-        // line 679
+        // line 660
         echo "          <div class=\"col s12 l12\">
             <div class=\"row\">
               ";
-        // line 681
+        // line 662
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["producto_subcategoria"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 682
+            // line 663
             echo "              <a itemprop=\"url\" href=\"";
             echo base_url();
             echo "productos/dp/";
@@ -1879,7 +1548,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                     <div class=\"card hoverable\">
                       <div class=\"center\" style=\"height:190px;\">
                         <img alt=\"";
-            // line 686
+            // line 667
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -1891,11 +1560,11 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
                       <div class=\"card-content center\" style=\"height:100px;\">
                         <p>
                           <b class=\"truncate\">";
-            // line 690
+            // line 671
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "</b>
                             <span class=\"fontA\">S/ ";
-            // line 691
+            // line 672
             echo $this->getAttribute($context["pro"], "Pro_PrecioMaximo", array());
             echo "</span> <label>S/ ";
             echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
@@ -1910,7 +1579,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 698
+        // line 679
         echo "            </div>
           </div>
       </div>
@@ -1918,28 +1587,14 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
 </div>
 
   ";
-        // line 704
+        // line 685
         if ((($context["userAgent"] ?? null) != "PC")) {
-            // line 705
-            echo "    <div class=\"bottom0 anchoTotal row centrarForzado pormayorUnico white-text mobileBottomBtn\" style=\"position:fixed;z-index: 100\">
-      <div class=\"col s6 sinPadding center\">
-        <span class=\"totalPro fontC\">0</span> UNID
-      </div>
-      <div class=\"col s6 sinPadding center\">
-        <span class=\"fontC white-text\"><b>S/<span class=\"totalPago white-text\">0</span></b></span>
-      </div>
-      <div class=\"col s12 sinPadding\">
-        <a  class=\"btn-large green add_cart anchoTotal\"  data-totalc=\"";
-            // line 713
-            echo ($context["totalc"] ?? null);
-            echo "\" data-pmin=\"";
-            echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
-            echo "\">COMPRAR</a>
-      </div>
-    </div>
-  ";
+            // line 686
+            echo "   ";
+            // line 697
+            echo "  ";
         }
-        // line 717
+        // line 698
         echo "  <!-- Aviso de agregado -->
   <div id=\"modal_aviso\" class=\"modal\">
     <div class=\"modal-content validar sinPadding white\">
@@ -1950,14 +1605,14 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
           <br>
           <div class=\"center col s12 m12 l12\">
             <img class=\"redondeo\" height=\"200px\" src=\"";
-        // line 726
+        // line 707
         echo ($context["ruta_img"] ?? null);
         echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
         echo "\"> 
           </div>
           <div class=\"center col s12 m12 l12\">
             <a class=\"btn pormayorUnico center verCarrito\" href=\"";
-        // line 729
+        // line 710
         echo base_url();
         echo "productos/carrito\">Ir al carrito</a>
             <a class=\"btn-flat center modal-close \"><u>Seguir comprando</u></a>
@@ -1969,30 +1624,30 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
 ";
     }
 
-    // line 738
+    // line 719
     public function block_script($context, array $blocks = array())
     {
-        // line 739
+        // line 720
         echo "  <script>
   rando_precio = ";
-        // line 740
+        // line 721
         echo twig_jsonencode_filter(($context["precios"] ?? null));
         echo ";
   flagVariaciones = false;
   dim = ";
-        // line 742
+        // line 723
         echo twig_jsonencode_filter($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo1", array()));
         echo ";
   pes = ";
-        // line 743
+        // line 724
         echo twig_jsonencode_filter($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array()));
         echo "; 
   TiedaId = ";
-        // line 744
+        // line 725
         echo twig_jsonencode_filter($this->getAttribute(($context["producto"] ?? null), "Tie_IdTienda", array()));
         echo "; 
   Remate = ";
-        // line 745
+        // line 726
         echo twig_jsonencode_filter($this->getAttribute(($context["producto"] ?? null), "Pro_Saldo", array()));
         echo "; 
   </script>
@@ -2000,13 +1655,13 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
   <script src=\"https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/dist/easyzoom.min.js\"></script>
   <script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
   <script src=\"";
-        // line 750
+        // line 731
         echo base_url("public/");
         echo "js/tienda/dpro.js?v=";
         echo twig_date_format_filter($this->env, ($context["now"] ?? null), "i:s");
         echo "\"></script>
   <script src=\"";
-        // line 751
+        // line 732
         echo base_url("public/");
         echo "js/productos/favoritos.js?v=";
         echo twig_date_format_filter($this->env, ($context["now"] ?? null), "i:s");
@@ -2027,7 +1682,7 @@ $context["sku"], "SKU_Img", array()) == "") && ($this->getAttribute(($context["p
 
     public function getDebugInfo()
     {
-        return array (  2010 => 751,  2004 => 750,  1996 => 745,  1992 => 744,  1988 => 743,  1984 => 742,  1979 => 740,  1976 => 739,  1973 => 738,  1961 => 729,  1954 => 726,  1943 => 717,  1934 => 713,  1924 => 705,  1922 => 704,  1914 => 698,  1899 => 691,  1895 => 690,  1883 => 686,  1869 => 682,  1865 => 681,  1861 => 679,  1853 => 674,  1848 => 671,  1846 => 670,  1840 => 666,  1837 => 665,  1831 => 662,  1823 => 661,  1820 => 660,  1817 => 659,  1805 => 656,  1797 => 655,  1794 => 654,  1791 => 653,  1779 => 650,  1771 => 649,  1768 => 648,  1765 => 647,  1753 => 644,  1745 => 643,  1742 => 642,  1739 => 641,  1733 => 638,  1729 => 636,  1726 => 635,  1723 => 634,  1718 => 631,  1714 => 630,  1711 => 629,  1709 => 628,  1704 => 625,  1702 => 624,  1698 => 622,  1694 => 620,  1691 => 619,  1685 => 618,  1682 => 617,  1676 => 615,  1673 => 614,  1670 => 613,  1667 => 612,  1662 => 611,  1660 => 610,  1655 => 607,  1649 => 604,  1645 => 602,  1642 => 601,  1636 => 598,  1632 => 596,  1629 => 595,  1623 => 592,  1619 => 590,  1617 => 589,  1604 => 579,  1590 => 572,  1586 => 570,  1579 => 565,  1576 => 561,  1571 => 559,  1567 => 558,  1564 => 557,  1558 => 553,  1556 => 552,  1553 => 551,  1550 => 550,  1544 => 549,  1536 => 544,  1532 => 542,  1525 => 537,  1518 => 536,  1516 => 535,  1513 => 534,  1507 => 533,  1449 => 527,  1438 => 522,  1436 => 521,  1428 => 520,  1425 => 519,  1423 => 518,  1418 => 517,  1415 => 516,  1413 => 515,  1404 => 508,  1397 => 507,  1394 => 506,  1391 => 505,  1388 => 504,  1385 => 503,  1383 => 502,  1380 => 501,  1374 => 500,  1371 => 499,  1368 => 498,  1366 => 497,  1361 => 496,  1340 => 494,  1321 => 492,  1319 => 491,  1302 => 490,  1300 => 489,  1295 => 486,  1292 => 485,  1290 => 484,  1283 => 483,  1280 => 482,  1274 => 481,  1266 => 476,  1262 => 474,  1253 => 467,  1246 => 466,  1244 => 465,  1241 => 464,  1235 => 463,  1180 => 461,  1178 => 460,  1170 => 459,  1167 => 458,  1165 => 457,  1157 => 452,  1149 => 448,  1128 => 446,  1109 => 444,  1107 => 443,  1090 => 442,  1088 => 441,  1083 => 438,  1080 => 437,  1078 => 436,  1071 => 435,  1069 => 434,  1063 => 431,  1055 => 425,  1049 => 424,  1046 => 423,  1037 => 420,  1034 => 419,  1031 => 418,  1028 => 417,  1024 => 416,  1017 => 411,  1003 => 399,  992 => 397,  988 => 396,  971 => 381,  960 => 379,  956 => 378,  951 => 376,  935 => 369,  932 => 368,  924 => 364,  921 => 363,  916 => 361,  912 => 360,  906 => 357,  894 => 347,  888 => 343,  886 => 342,  875 => 336,  870 => 333,  867 => 332,  861 => 331,  853 => 326,  849 => 324,  842 => 319,  835 => 318,  833 => 317,  830 => 316,  824 => 315,  766 => 309,  755 => 304,  753 => 303,  745 => 302,  742 => 301,  740 => 300,  735 => 299,  732 => 298,  730 => 297,  721 => 290,  714 => 289,  711 => 288,  708 => 287,  705 => 286,  702 => 285,  700 => 284,  697 => 283,  691 => 282,  688 => 281,  685 => 280,  683 => 279,  678 => 278,  657 => 276,  638 => 274,  636 => 273,  619 => 272,  617 => 271,  612 => 268,  609 => 267,  607 => 266,  600 => 265,  597 => 264,  591 => 263,  583 => 258,  579 => 256,  570 => 249,  563 => 248,  561 => 247,  558 => 246,  552 => 245,  495 => 243,  493 => 242,  485 => 241,  482 => 240,  480 => 239,  472 => 234,  467 => 231,  460 => 230,  457 => 229,  454 => 228,  451 => 227,  448 => 226,  446 => 225,  443 => 224,  437 => 223,  434 => 222,  431 => 221,  429 => 220,  424 => 219,  403 => 217,  384 => 215,  382 => 214,  365 => 213,  363 => 212,  358 => 209,  355 => 208,  353 => 207,  346 => 206,  344 => 205,  331 => 194,  328 => 193,  322 => 192,  319 => 191,  309 => 187,  301 => 186,  298 => 185,  295 => 184,  292 => 183,  287 => 182,  278 => 178,  272 => 177,  269 => 176,  267 => 175,  263 => 173,  253 => 169,  248 => 168,  245 => 167,  236 => 163,  232 => 162,  229 => 161,  227 => 160,  221 => 156,  219 => 155,  206 => 151,  200 => 150,  194 => 149,  188 => 148,  177 => 139,  174 => 138,  41 => 9,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  1665 => 732,  1659 => 731,  1651 => 726,  1647 => 725,  1643 => 724,  1639 => 723,  1634 => 721,  1631 => 720,  1628 => 719,  1616 => 710,  1609 => 707,  1598 => 698,  1595 => 697,  1593 => 686,  1591 => 685,  1583 => 679,  1568 => 672,  1564 => 671,  1552 => 667,  1538 => 663,  1534 => 662,  1530 => 660,  1522 => 655,  1517 => 652,  1515 => 651,  1509 => 647,  1506 => 646,  1500 => 643,  1492 => 642,  1489 => 641,  1486 => 640,  1474 => 637,  1466 => 636,  1463 => 635,  1460 => 634,  1448 => 631,  1440 => 630,  1437 => 629,  1434 => 628,  1422 => 625,  1414 => 624,  1411 => 623,  1408 => 622,  1402 => 619,  1398 => 617,  1395 => 616,  1392 => 615,  1387 => 612,  1383 => 611,  1380 => 610,  1378 => 609,  1373 => 606,  1371 => 605,  1367 => 603,  1363 => 601,  1360 => 600,  1354 => 599,  1351 => 598,  1345 => 596,  1342 => 595,  1339 => 594,  1336 => 593,  1331 => 592,  1329 => 591,  1324 => 588,  1318 => 585,  1314 => 583,  1311 => 582,  1305 => 579,  1301 => 577,  1298 => 576,  1292 => 573,  1288 => 571,  1286 => 570,  1273 => 560,  1259 => 553,  1255 => 551,  1248 => 546,  1245 => 542,  1240 => 540,  1236 => 539,  1228 => 536,  1218 => 528,  1215 => 527,  1209 => 526,  1201 => 521,  1197 => 519,  1190 => 514,  1183 => 513,  1181 => 512,  1178 => 511,  1172 => 510,  1127 => 504,  1116 => 499,  1114 => 498,  1106 => 497,  1103 => 496,  1101 => 495,  1096 => 494,  1093 => 493,  1091 => 492,  1082 => 485,  1075 => 484,  1072 => 483,  1069 => 482,  1066 => 481,  1063 => 480,  1061 => 479,  1058 => 478,  1052 => 477,  1049 => 476,  1046 => 475,  1043 => 474,  1037 => 472,  1033 => 470,  1030 => 469,  1025 => 459,  1022 => 458,  1020 => 457,  1013 => 456,  1010 => 455,  1004 => 454,  996 => 449,  992 => 447,  983 => 440,  976 => 439,  974 => 438,  971 => 437,  965 => 436,  923 => 434,  921 => 433,  913 => 432,  910 => 431,  908 => 430,  900 => 425,  895 => 422,  889 => 420,  885 => 418,  882 => 417,  877 => 407,  874 => 406,  872 => 405,  865 => 404,  863 => 403,  859 => 401,  855 => 399,  847 => 393,  841 => 392,  838 => 391,  829 => 388,  826 => 387,  823 => 386,  820 => 385,  816 => 384,  809 => 379,  793 => 372,  790 => 371,  782 => 367,  779 => 366,  774 => 364,  770 => 363,  764 => 360,  752 => 350,  746 => 346,  744 => 345,  733 => 339,  728 => 336,  725 => 335,  719 => 334,  711 => 329,  707 => 327,  700 => 322,  693 => 321,  691 => 320,  688 => 319,  682 => 318,  637 => 312,  626 => 307,  624 => 306,  616 => 305,  613 => 304,  611 => 303,  606 => 302,  603 => 301,  601 => 300,  592 => 293,  585 => 292,  582 => 291,  579 => 290,  576 => 289,  573 => 288,  571 => 287,  568 => 286,  562 => 285,  559 => 284,  556 => 283,  553 => 282,  547 => 280,  543 => 278,  540 => 277,  535 => 269,  532 => 268,  530 => 267,  523 => 266,  520 => 265,  514 => 264,  506 => 259,  502 => 257,  493 => 250,  486 => 249,  484 => 248,  481 => 247,  475 => 246,  431 => 244,  429 => 243,  421 => 242,  418 => 241,  416 => 240,  410 => 236,  406 => 234,  401 => 231,  394 => 230,  391 => 229,  388 => 228,  385 => 227,  382 => 226,  380 => 225,  377 => 224,  371 => 223,  368 => 222,  365 => 221,  362 => 220,  356 => 218,  352 => 216,  349 => 215,  344 => 207,  341 => 206,  339 => 205,  332 => 204,  330 => 203,  324 => 200,  313 => 191,  310 => 190,  304 => 189,  301 => 188,  291 => 184,  283 => 183,  280 => 182,  277 => 181,  274 => 180,  269 => 179,  260 => 175,  254 => 174,  251 => 173,  249 => 172,  245 => 170,  235 => 166,  230 => 165,  227 => 164,  218 => 160,  214 => 159,  211 => 158,  209 => 157,  203 => 153,  201 => 152,  188 => 148,  177 => 139,  174 => 138,  41 => 9,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

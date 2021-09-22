@@ -145,15 +145,12 @@
       <div class="col l12">
         <div class="">
           <div class="">
-            <a href="//pormayor.pe/categorias/{{producto.urlCategoria}}" class="pormayorUnico-text breadcrumb">{{producto.Cat_Nombre|title}}</a>
-            <a href="//pormayor.pe/subcategoria/{{producto.urlSubCategoria}}" class="centrarForzado pormayorUnico-text breadcrumb">{{producto.Suc_Nombre}}</a>
-            <a href="//pormayor.pe/detalle/{{producto.urlDetalle}}" class="centrarForzado pormayorUnico-text breadcrumb">{{producto.Des_Nombre}}</a>
-            <h4 class="centrarForzado muayuscula">{{producto.Pro_Nombre|title}} {% if producto.Pro_Preventa == 1 %} (PRE-VENTA) <span class="new badge blue">PRE-VENTA</span> {% endif %}<small>COD: {{pro.Pro_IdProducto}}</small></h4>
+            <h4 class="centrarForzado muayuscula">{{producto.Pro_Nombre|title}} {% if producto.Pro_Preventa == 1 %} (PRE-VENTA) <span class="new badge blue">PRE-VENTA</span> {% endif %}<small>COD: {{producto.Pro_IdProducto}}</small></h4>
           </div>
         </div>
       </div>
       {% if userAgent == "PC" %}
-      <div class="col l4">
+      <div class="col m6 l6">
         <div class="card" style="height:508.5px;">
           <div class="card-content row sinPadding">
             <div class="col l12 center" id="imagenesPro" >
@@ -197,26 +194,29 @@
           </div>
         </div>
       </div>      
-      <div class="col l4">
+      <div class="col m6 l6">
         <div class="card">          
-          <div class="card-content" style="padding: 24px 24px 21px 24px;">
-            <span class="card-title">Opciones</span>
-            <div style="max-height:325px; overflow-y:auto;">
+          <div class="card-content center">
+            <a class="btn-large fontD pormayor black-text" >S/ {{producto.Pro_PrecioMinimo}} x mayor</a><br><br>
+            <span class="card-title">Seleccione la variación de su producto</span>
+            <div>
             {% if producto.Cat_IdCategoria != 12 and producto.Cat_IdCategoria != 2 and producto.Suc_IdSubCategoria != 41 %}
             {% for key, sku in SKU %}  
                 {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible >= 1 %}
                 {% set colorActual = sku.SKU_Color %}
                     <div class="row centrarForzado">
-                      <div class="col l5 left-align">
+                      <div class="col l5 right-align">
                         <div class="positionRelative">
-                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
-                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}nofoto.png" >
-                          {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
-                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}" >
+                        {#   {% if sku.SKU_Img == '' %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}{{fotos[0].Prf_Img}}" >
                           {% else %}
                             <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class=" materialboxed fixImg4 redondeo" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                          {% endif %} #}
+                          {% if colorActual == '' %}
+                          <span class="fontA">UNICO</span>  
+                          {% else %}
+                          <span class="fontA">{{colorActual}}</span>
                           {% endif %}
-                          <label>{{colorActual}}</label>
                         {% set colorUnico = "" %}
                         {% set colorHex = " " %}
                         {% set break = false %}
@@ -232,6 +232,7 @@
                         <br>
                       </div> 
                       <div class="col l7 valign-wrapper filaCant{{key}}">
+                      {# <span class="fontA">{{colorActual}}</span> #}
                         <div class="input-group input-number-group">
                           <div class="input-group-button">
                             <span class="input-number-decrement">-</span>
@@ -240,7 +241,7 @@
                           {% set break = false %}
                           {% for skub in SKUB|sort('asc') if not break  %}                        
                               {% if colorActual == skub.SKU_Color and skub.SKU_StockDisponible >= 1 %}
-                                  <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="{{skub.SKU_StockDisponible}}" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                                  <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="{{skub.SKU_StockDisponible}}" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{{fotos[0].Prf_Img}}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{{fotos[0].Prf_Img}}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
                               {% else %}
                                 {% set break = false %} 
                               {% endif %} 
@@ -254,7 +255,7 @@
                     </div>
                     {% else %}
                     <div class="row centrarForzado">
-                      <div class="col s12 center red">
+                      <div class="col s12 center grey">
                         <b class="fontA">{{sku.SKU_Color}} AGOTADO</b>
                       </div>
                       <br><br>
@@ -266,16 +267,18 @@
                 {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible >= 1 %}
                 {% set colorActual = sku.SKU_Color %}
                     <div class="row centrarForzado">
-                      <div class="col l5 left-align">
-                        <div class="positionRelative">
-                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
-                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}nofoto.png" >
-                          {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
-                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}" >
+                      <div class="col l5 right-align">
+                        <div class="positionRelative">                          
+                         {#  {% if sku.SKU_Img %}
+                            <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}{{fotos[0].Prf_Img}}" >
                           {% else %}
                             <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                          {% endif %} #}
+                        {% if colorActual == '' %}
+                          <span class="fontA">UNICO</span>  
+                          {% else %}
+                          <span class="fontA">{{colorActual}}</span>
                           {% endif %}
-                          <label>{{colorActual}}</label>
                         {% set colorUnico = "" %}
                         {% set colorHex = "" %}
                         {% set break = false %}
@@ -306,7 +309,7 @@
                                           <div class="input-group-button">
                                             <span class="input-number-decrement">-</span>
                                           </div>
-                                            <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                                            <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{{fotos[0].Prf_Img}}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{{fotos[0].Prf_Img}}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
                                           <div class="input-group-button">
                                             <span class="input-number-increment">+</span>
                                           </div>
@@ -322,7 +325,7 @@
                     </div>
                     {% else %}
                     <div class="row centrarForzado">
-                      <div class="col s12 center red">
+                      <div class="col s12 center grey">
                         <b class="fontA">{{sku.SKU_Color}} AGOTADO</b>
                       </div>
                       <br><br>
@@ -349,7 +352,7 @@
               
             </div>
           </div>
-          <div class="col l4">
+          <div class="col l12 hide">
             <div class="card">
               <div class="card-content">
                 <div class="row">
@@ -367,41 +370,6 @@
                   </div> #}
                   <div class="col s12 "><br>
                    <span class="grey-text"><i class="material-icons green-text left">shopping_bag</i>{% set vent = 0.5 * producto.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}</span>
-                  </div>
-                </div>
-                <div class="cardContentFix" id="visualizas" style="display:none;"></div>
-                <div id="visualizarEnvio" style="display:none;">
-                  <div class="row sinPadding">
-                    <div class="col l6">
-                      <select id="selecRegion" class="browser-default" data-valor="{{direccion_usuario.Pag_idregion}}">
-                      <option value="0" disabled selected>Departamento</option>
-                      {% for reg in region %}
-                        <option value="{{reg.id}}">{{reg.name}}</option>
-                      {% endfor %}
-                      </select>
-                    </div>
-                    <div id="provincia" class="col l6">
-                      <select  disabled class="browser-default">
-                        <option value="0" disabled selected> Seleccione una provincia</option>
-                      </select>
-                    </div>
-                    <div id="distrito" class="col l6">
-                      <select disabled class="browser-default">
-                        <option value="0" disabled selected> Seleccione un distrito</option>
-                      </select>
-                    </div>
-                    <div class="col l6">
-                      <select id="cantEnvio" class="browser-default">
-                      <option value="0" disabled selected>Cantidad</option>
-                        {% for i in 1..100 %}
-                          <option value="{{i}}">{{i}}</option>
-                        {% endfor %}
-                      </select>
-                    </div>
-                  </div>
-                  <div class="row sinPadding">
-                    <div class="col l12 black-text negrita noenv tiempoEntrega" style="text-align: left;font-size:16px;">Tiempo de entrega de 2 a 3 días (Lima y Callao)</div>
-                    <div class="col l12" style="text-align: right;">S/ <span class="cEnv fontC negrita">0.00</span></div>
                   </div>
                 </div>
             </div> 
@@ -427,8 +395,9 @@
           </div>
           <div class="card-content">     
                 <div class="row">
-                  <div class="col s12 center">
-                    <span class="fontD ">s/ {{producto.Pro_PrecioMinimo}} x mayor</span>
+                  <div class="col s12 center"><br>
+                     <a class="btn-large fontD pormayor black-text" >S/ {{producto.Pro_PrecioMinimo}} x mayor</a><br>
+                    {# <span class="card-title">Seleccione la variación de su producto</span> #}
                   </div>
                 </div>             
               {% if producto.Cat_IdCategoria != 12 and producto.Cat_IdCategoria != 2 and producto.Suc_IdSubCategoria != 41 %}
@@ -436,16 +405,20 @@
                 {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible >= 1 %}
                 {% set colorActual = sku.SKU_Color %}
                     <div class="row centrarForzado">
-                      <div class="col s5 left-align">
+                      <div class="col s5 right-align">
                         <div class="positionRelative">
-                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+                        {#   {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
                             <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed redondeo" height="40px" src="{{ruta_img}}nofoto.png" >
                           {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
                             <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class=" materialboxed redondeo" height="40px" src="{{ruta_img}}{{producto.Prf_Img}}" >
                           {% else %}
                             <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class=" materialboxed redondeo" height="40px" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                          {% endif %} #}
+                          {% if colorActual == '' %}
+                          <span class="fontA">UNICO</span>  
+                          {% else %}
+                          <span class="fontA">{{colorActual}}</span>
                           {% endif %}
-                          <label>{{colorActual}}</label> 
                         </div>
                         <br>
                       </div> 
@@ -458,7 +431,7 @@
                           {% set break = false %}
                           {% for skub in SKUB|sort('asc') if not break  %}                        
                               {% if colorActual == skub.SKU_Color and skub.SKU_StockDisponible >= 1 %}
-                                  <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                                  <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{{fotos[0].Prf_Img}}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{{fotos[0].Prf_Img}}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
                               {% else %}
                                 {% set break = false %} 
                               {% endif %} 
@@ -472,7 +445,7 @@
                     </div>
                     {% else %}
                     <div class="row centrarForzado">
-                      <div class="col s12 center red">
+                      <div class="col s12 center grey">
                         <b class="fontA">{{sku.SKU_Color}} AGOTADO</b>
                       </div>
                       <br><br>
@@ -484,16 +457,20 @@
                 {% if producto.Pro_IdProducto == sku.Producto_Pro_IdProducto and sku.SKU_StockDisponible >= 1 %}
                 {% set colorActual = sku.SKU_Color %}
                     <div class="row centrarForzado">
-                      <div class="col S5 left-align">
+                      <div class="col S5 right-align">
                         <div class="positionRelative">
-                          {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
+                         {#  {% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}
                             <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}nofoto.png" width="60px">
                           {% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}
                             <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" class="materialboxed fixImg4 redondeo" src="{{ruta_img}}{{producto.Prf_Img}}" width="60px">
                           {% else %}
                             <img alt="{{producto.Pro_Nombre}} al pormayor" id="skuImg{{colorActual}}" data-color="{{colorActual}}-{{producto.Pro_IdProducto}}" data-caption="{{producto.Pro_Nombre}} {{colorActual|title}}" data-nom="{{colorActual}}" class="materialboxed fixImg4 redondeo" width="60px" src="{{ruta_img}}{{sku.SKU_Img}}" >
+                          {% endif %} #}
+                          {% if colorActual == '' %}
+                          <span class="fontA">UNICO</span>  
+                          {% else %}
+                          <span class="fontA">{{colorActual}}</span>
                           {% endif %}
-                          <label>{{colorActual}}</label>
                         {% set colorUnico = "" %}
                         {% set colorHex = "" %}
                         {% set break = false %}
@@ -524,7 +501,7 @@
                                           <div class="input-group-button">
                                             <span class="input-number-decrement">-</span>
                                           </div>
-                                            <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{% if  sku.SKU_Img == '' and producto.Prf_Img == '' %}{{ruta_img}}nofoto.png{% elseif sku.SKU_Img == '' and producto.Prf_Img != '' %}{{ruta_img}}{{producto.Prf_Img}}{% else %}{{ruta_img}}{{sku.SKU_Img}}{% endif %}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{% if skub.SKU_Img %}{{skub.SKU_Img}}{% else %}{{producto.Prf_Img}}{% endif %}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                                            <input type="number" min="{{precios[0].Prp_Desde}}" name="cantidad" value="0" max="5" class="input-number browser-default cantSku cant{{skub.SKU_IdSku}}" placeholder="Cantidad" id="{{skub.SKU_IdSku}}" data-idpro="{{producto.Pro_IdProducto}}" data-colresumen="{% if colorHex %}{{colorHex}}{% else %}unico{% endif %}" data-foto="{{fotos[0].Prf_Img}}"  data-productname="{{producto.Pro_Nombre}}" data-productid="{{skub.SKU_IdSku}}" data-price="" xd="" data-tipovariacion="{{skub.Var_Nombre}}" data-color="{{skub.SKU_Color}}" data-variacion="{{skub.Vao_Nombre}}" data-img="{{fotos[0].Prf_Img}}" data-unidad="{{skub.Unm_Nombre}}" data-dispo="{{skub.SKU_StockDisponible}}" data-idtienda="{{producto.Tie_IdTienda}}" data-minventa="{{skub.SKU_StockDisponible}}" data-preciounit="" data-documento="{{producto.Pro_Documento}}" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
                                           <div class="input-group-button">
                                             <span class="input-number-increment">+</span>
                                           </div>
@@ -540,7 +517,7 @@
                     </div>
                                     {% else %}
                     <div class="row centrarForzado">
-                      <div class="col s12 center red">
+                      <div class="col s12 center grey">
                         <b class="fontA">{{sku.SKU_Color}} AGOTADO</b>
                       </div>
                       <br><br>
@@ -548,12 +525,16 @@
                     {% endif %}
               {% endfor %}
             {% endif %}
-              <div class="row">
-                {% if SKU|length >= 2 %}
-                    <div class="col l12 center">
-                      <b class="red-text">Tenga presente que puede variar los colores según disponibilidad</b>
-                    </div>
-                {% endif %}
+              <div class="row pormayorUnico">
+                  <div class="col s6 sinPadding center">
+                    <span class="totalPro fontC">0</span> UNID
+                  </div>
+                  <div class="col s6 sinPadding center">
+                    <span class="fontC white-text"><b>S/<span class="totalPago white-text">0</span></b></span>
+                  </div>
+                  <div class="col s12 sinPadding">
+                    <a  class="btn-large green add_cart anchoTotal"  data-totalc="{{totalc}}" data-pmin="{{producto.Pro_PrecioMinimo}}">COMPRAR</a>
+                  </div>
                 <div class="col s12 center">
                   {% if producto.Pro_Preventa == 1 %} <br>
                     <p class="fontA">FECHA DE LLEGADA DE LA MERCANCÍA {{producto.Pro_FechaPreventa}} </p> <br>
@@ -702,7 +683,7 @@
 </div>
 
   {% if userAgent != "PC" %}
-    <div class="bottom0 anchoTotal row centrarForzado pormayorUnico white-text mobileBottomBtn" style="position:fixed;z-index: 100">
+   {#  <div class="bottom0 anchoTotal row centrarForzado pormayorUnico white-text mobileBottomBtn" style="position:fixed;z-index: 100">
       <div class="col s6 sinPadding center">
         <span class="totalPro fontC">0</span> UNID
       </div>
@@ -712,7 +693,7 @@
       <div class="col s12 sinPadding">
         <a  class="btn-large green add_cart anchoTotal"  data-totalc="{{totalc}}" data-pmin="{{producto.Pro_PrecioMinimo}}">COMPRAR</a>
       </div>
-    </div>
+    </div> #}
   {% endif %}
   <!-- Aviso de agregado -->
   <div id="modal_aviso" class="modal">

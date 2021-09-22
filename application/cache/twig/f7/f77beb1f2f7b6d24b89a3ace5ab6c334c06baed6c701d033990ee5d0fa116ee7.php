@@ -147,89 +147,185 @@ class __TwigTemplate_e1ae5bce752996115bb692068d5e7f64687aef84f89fcb30dfdc3557665
                   <th style=\"padding: 12px 10px; font-size: 12px;text-align:center;font-family: Arial, sans-serif;border-bottom:1px solid #CBCBCB\" width=\"60\" valign=\"middle\">IMPORTE</th>
               </tr>
             </thead>
-            <tbody >
+            ";
+        // line 109
+        if ((($context["descuento"] ?? null) == 0)) {
+            // line 110
+            echo "            <tbody >
               ";
-        // line 110
-        $context["total"] = 0;
-        // line 111
-        echo "              ";
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["dataCarrito"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["itemsInterno"]) {
+            // line 111
+            $context["total"] = 0;
             // line 112
-            echo "                ";
-            if ((($context["Tie_IdTienda"] ?? null) == $this->getAttribute($context["itemsInterno"], "idtienda", array()))) {
+            echo "              ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["dataCarrito"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["itemsInterno"]) {
                 // line 113
-                echo "                  ";
-                $context["preUni"] = ($this->getAttribute($context["itemsInterno"], "price", array()) / $this->getAttribute($context["itemsInterno"], "qty", array()));
-                // line 114
-                echo "                  <tr>
+                echo "                ";
+                if ((($context["Tie_IdTienda"] ?? null) == $this->getAttribute($context["itemsInterno"], "idtienda", array()))) {
+                    // line 114
+                    echo "                  ";
+                    $context["preUni"] = ($this->getAttribute($context["itemsInterno"], "price", array()) / $this->getAttribute($context["itemsInterno"], "qty", array()));
+                    // line 115
+                    echo "                  <tr>
                     <td style=\"border-bottom: 1px solid #CBCBCB; padding: 0px;\" valign=\"top\">
                       <div style=\"margin:0 auto; margin:5px; width:50px; height: 50px;  border-radius: 10px;\"><img style=\"top: 5px;position: relative;width: 100%; height: 40px; object-fit: contain;\" src=\"http://pormayor.pe/img/";
-                // line 116
-                echo $this->getAttribute($context["itemsInterno"], "img", array());
-                echo "\"></div>
+                    // line 117
+                    echo $this->getAttribute($context["itemsInterno"], "img", array());
+                    echo "\"></div>
                     </td>
                     <td style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB;border-right:1px solid #CBCBCB; padding: 5px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">
                       ";
-                // line 119
-                echo twig_title_string_filter($this->env, $this->getAttribute($context["itemsInterno"], "name", array()));
-                echo " ";
-                if ($this->getAttribute($context["itemsInterno"], "color", array())) {
-                    echo " - <span style=\"color:rgba(0,0,0,0.5)\">";
-                    echo twig_title_string_filter($this->env, $this->getAttribute($context["itemsInterno"], "color", array()));
-                    echo "</span> ";
-                }
-                echo " ";
-                if (($this->getAttribute($context["itemsInterno"], "tipovariacion", array()) != " ")) {
-                    echo " / ";
-                    echo twig_upper_filter($this->env, $this->getAttribute($context["itemsInterno"], "tipovariacion", array()));
+                    // line 120
+                    echo twig_title_string_filter($this->env, $this->getAttribute($context["itemsInterno"], "name", array()));
                     echo " ";
-                }
-                // line 120
-                echo "                    </td>
+                    if ($this->getAttribute($context["itemsInterno"], "color", array())) {
+                        echo " - <span style=\"color:rgba(0,0,0,0.5)\">";
+                        echo twig_title_string_filter($this->env, $this->getAttribute($context["itemsInterno"], "color", array()));
+                        echo "</span> ";
+                    }
+                    echo " ";
+                    if (($this->getAttribute($context["itemsInterno"], "tipovariacion", array()) != " ")) {
+                        echo " / ";
+                        echo twig_upper_filter($this->env, $this->getAttribute($context["itemsInterno"], "tipovariacion", array()));
+                        echo " ";
+                    }
+                    // line 121
+                    echo "                    </td>
                     <td style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">
                       ";
-                // line 122
-                echo $this->getAttribute($context["itemsInterno"], "qty", array());
-                echo "<br>unid(s)
+                    // line 123
+                    echo $this->getAttribute($context["itemsInterno"], "qty", array());
+                    echo "<br>unid(s)
                     </td>
                     <td style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">
                       ";
-                // line 125
-                echo ($context["preUni"] ?? null);
-                echo "
+                    // line 126
+                    echo ($context["preUni"] ?? null);
+                    echo "
                     </td>
                     <td style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">
                     S/ ";
-                // line 128
-                echo $this->getAttribute($context["itemsInterno"], "price", array());
-                echo "
+                    // line 129
+                    echo $this->getAttribute($context["itemsInterno"], "price", array());
+                    echo "
                     </td>
                   </tr>
                   ";
-                // line 131
-                $context["total"] = (($context["total"] ?? null) + $this->getAttribute($context["itemsInterno"], "price", array()));
-                // line 132
-                echo "                ";
+                    // line 132
+                    $context["total"] = (($context["total"] ?? null) + $this->getAttribute($context["itemsInterno"], "price", array()));
+                    // line 133
+                    echo "                ";
+                }
+                // line 134
+                echo "              ";
             }
-            // line 133
-            echo "              ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['itemsInterno'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 134
-        echo "          
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['itemsInterno'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 135
+            echo "          
                 <tr>
                   <td colspan=\"3\" style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 15px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">TOTAL A PAGAR</td>
                   <td colspan=\"2\" style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\"><b>S/. ";
-        // line 137
-        echo twig_number_format_filter($this->env, ($context["total"] ?? null), 2, ".", " ");
-        echo "</b></td>
+            // line 138
+            echo twig_number_format_filter($this->env, ($context["total"] ?? null), 2, ".", " ");
+            echo "</b></td>
                 </tr>
             </tbody>
-          </table>
+            ";
+        } else {
+            // line 141
+            echo "              
+            <tbody >
+              ";
+            // line 143
+            $context["total"] = 0;
+            // line 144
+            echo "              ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["dataCarrito"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["itemsInterno"]) {
+                // line 145
+                echo "                ";
+                if ((($context["Tie_IdTienda"] ?? null) == $this->getAttribute($context["itemsInterno"], "idtienda", array()))) {
+                    // line 146
+                    echo "                  ";
+                    $context["preUni"] = $this->getAttribute($context["itemsInterno"], "price_min", array());
+                    // line 147
+                    echo "                  <tr>
+                    <td style=\"border-bottom: 1px solid #CBCBCB; padding: 0px;\" valign=\"top\">
+                      <div style=\"margin:0 auto; margin:5px; width:50px; height: 50px;  border-radius: 10px;\"><img style=\"top: 5px;position: relative;width: 100%; height: 40px; object-fit: contain;\" src=\"http://pormayor.pe/img/";
+                    // line 149
+                    echo $this->getAttribute($context["itemsInterno"], "img", array());
+                    echo "\"></div>
+                    </td>
+                    <td style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB;border-right:1px solid #CBCBCB; padding: 5px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">
+                      ";
+                    // line 152
+                    echo twig_title_string_filter($this->env, $this->getAttribute($context["itemsInterno"], "name", array()));
+                    echo " ";
+                    if ($this->getAttribute($context["itemsInterno"], "color", array())) {
+                        echo " - <span style=\"color:rgba(0,0,0,0.5)\">";
+                        echo twig_title_string_filter($this->env, $this->getAttribute($context["itemsInterno"], "color", array()));
+                        echo "</span> ";
+                    }
+                    echo " ";
+                    if (($this->getAttribute($context["itemsInterno"], "tipovariacion", array()) != " ")) {
+                        echo " / ";
+                        echo twig_upper_filter($this->env, $this->getAttribute($context["itemsInterno"], "tipovariacion", array()));
+                        echo " ";
+                    }
+                    // line 153
+                    echo "                    </td>
+                    <td style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">
+                      ";
+                    // line 155
+                    echo $this->getAttribute($context["itemsInterno"], "qty", array());
+                    echo "<br>unid(s)
+                    </td>
+                    <td style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">
+                      ";
+                    // line 158
+                    echo ($context["preUni"] ?? null);
+                    echo "
+                    </td>
+                    <td style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 14px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">
+                      ";
+                    // line 161
+                    $context["subtotal22"] = ($this->getAttribute($context["itemsInterno"], "price_min", array()) * $this->getAttribute($context["itemsInterno"], "qty", array()));
+                    // line 162
+                    echo "                        S/ ";
+                    echo ($context["subtotal22"] ?? null);
+                    echo "
+                    </td>
+                  </tr>
+                  ";
+                    // line 165
+                    $context["total"] = (($context["total"] ?? null) + ($context["subtotal22"] ?? null));
+                    // line 166
+                    echo "                ";
+                }
+                // line 167
+                echo "              ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['itemsInterno'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 168
+            echo "          
+                <tr>
+                  <td colspan=\"3\" style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 15px; font-size: 15px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\">TOTAL A PAGAR</td>
+                  <td colspan=\"2\" style=\"vertical-align: middle;border-bottom: 1px solid #CBCBCB; padding: 0px; font-size: 20px;text-align:center;font-family: Arial, sans-serif;  color:rgba(0,0,0,0.7);\" valign=\"top\"><b>S/. ";
+            // line 171
+            echo twig_number_format_filter($this->env, ($context["total"] ?? null), 2, ".", " ");
+            echo "</b></td>
+                </tr>
+            </tbody>
+            ";
+        }
+        // line 175
+        echo "          </table>
         </td>
       </tr>
       
@@ -253,7 +349,7 @@ class __TwigTemplate_e1ae5bce752996115bb692068d5e7f64687aef84f89fcb30dfdc3557665
 
     public function getDebugInfo()
     {
-        return array (  228 => 137,  223 => 134,  217 => 133,  214 => 132,  212 => 131,  206 => 128,  200 => 125,  194 => 122,  190 => 120,  176 => 119,  170 => 116,  166 => 114,  163 => 113,  160 => 112,  155 => 111,  153 => 110,  118 => 78,  107 => 72,  95 => 63,  37 => 8,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  328 => 175,  321 => 171,  316 => 168,  310 => 167,  307 => 166,  305 => 165,  298 => 162,  296 => 161,  290 => 158,  284 => 155,  280 => 153,  266 => 152,  260 => 149,  256 => 147,  253 => 146,  250 => 145,  245 => 144,  243 => 143,  239 => 141,  232 => 138,  227 => 135,  221 => 134,  218 => 133,  216 => 132,  210 => 129,  204 => 126,  198 => 123,  194 => 121,  180 => 120,  174 => 117,  170 => 115,  167 => 114,  164 => 113,  159 => 112,  157 => 111,  154 => 110,  152 => 109,  118 => 78,  107 => 72,  95 => 63,  37 => 8,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -266,6 +362,6 @@ class __TwigTemplate_e1ae5bce752996115bb692068d5e7f64687aef84f89fcb30dfdc3557665
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "correo/correo_compra_dot_tienda.twig", "C:\\xampp\\htdocs\\pormayor2019\\application\\views\\correo\\correo_compra_dot_tienda.twig");
+        return new Twig_Source("", "correo/correo_compra_dot_tienda.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\correo\\correo_compra_dot_tienda.twig");
     }
 }

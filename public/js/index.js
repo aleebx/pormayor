@@ -106,7 +106,7 @@ $(window).on("load", function() {
 
 (function () {
         function logElementEvent(eventName, element) {
-          console.log(Date.now(), eventName, element.getAttribute("data-src"));
+          // console.log(Date.now(), eventName, element.getAttribute("data-src"));
         }
 
         var callback_enter = function (element) {

@@ -78,7 +78,7 @@
 			       	"price_min" => $_POST["price_min"][$i],
 			       	"documento" => $_POST["documento"][$i],
 			       	"tipodoc" => 'Boleta',
-			       	"idtienda" => $_POST["idtienda"][$i],
+			       	"idtienda" => 227,
 			       	"flagVariaciones" =>  $_POST["flagVariaciones"],
 			       	"id_sku" =>  $id_sku,
 			       	"pvo" => $pvo,
@@ -442,18 +442,13 @@
 			if (!isset($Pro_IdProducto)) {
 				header("Location: https://pormayor.pe");
 			}
-
 			$Producto = explode("-", $Pro_IdProducto);
 			$Pro_IdProducto = (int)$Producto[1];
-
 			$Pro_Nombres = [];
-			$data['region'] = $this->localModel->region();
-
 			for ($i=2; $i < count($Producto) ; $i++)
 			{
 				array_push($Pro_Nombres,(string)$Producto[$i]);
 			}
-
 			$Pro_Nombre = implode(" ", $Pro_Nombres);
 			$data['pagina']['titulo'] = $Pro_Nombre.' en PorMayor.Pe';
 	      	$data['totalc'] = count($data['carrito']);
@@ -465,62 +460,27 @@
       		$data['comments']= true;
       		$data['pagina_producto']= true;
       		$data['producto_detalle']= true;
-	      	$data['producto'] = $this->productoModel->productos_dp2("WHERE pro.Pro_IdProducto = '".$Pro_IdProducto."'");
+	      	$data['producto'] = $this->productoModel->productos_dp2($Pro_IdProducto);
 	      	if (empty($data['producto'])) {
 	      		header("Location: https://pormayor.pe");
 	      	}else{
-				$data['vista'] = $this->productoModel->registroVista($Pro_IdProducto);
-		      	//URL categoria
-				$data['producto']->urlCategoria =  $this->buildSlugValue($data['producto']->Cat_Nombre)."-al-por-mayor-".$data['producto']->Cat_IdCategoria;
-				$data['producto']->urlSubCategoria =  $this->buildSlugValue($data['producto']->Suc_Nombre)."-al-por-mayor-".$data['producto']->Suc_IdSubCategoria;
-				$data['producto']->urlDetalle =  $this->buildSlugValue($data['producto']->Suc_Nombre)."-".$this->buildSlugValue($data['producto']->Des_Nombre)."-al-por-mayor-".$data['producto']->Des_IdDetalle_SubCategoria;
-
-				// if ($data['producto']->Cat_IdCategoria == 6 or $data['producto']->Cat_IdCategoria == 7) {
-					# code...
+				$data['vista'] = $this->productoModel->registroVista($Pro_IdProducto);	
 				$data['producto_ficha'] = $this->productoModel->productos_ficha("WHERE producto_Pro_IdProducto = '".$Pro_IdProducto."'");
-				// }
-
 		      	$data['fotos'] = $this->productoModel->get_fotos_producto($Pro_IdProducto);
 		      	$data['SKU'] = $this->productoModel->get_sku_producto($Pro_IdProducto);
 			    $data['tallas'] = $this->productoModel->get_sku_producto_vao($Pro_IdProducto);
 		      	$data['colores'] = $this->configuracionModel->get_coloresProducto2($Pro_IdProducto);
 		      	$data['range_producto'] = $this->productoModel->reputacion_producto($Pro_IdProducto);
 		      	$data['precios'] = $this->productoModel->precios_producto($Pro_IdProducto);
-		      	//print_r($data['precios']);
-		      	$data['subdominio_tienda'] = 1;
-			    $data['producto_subcategoria'] = $this->productoModel->producto_subcategoria($data['producto']->Suc_IdSubCategoria);
-			    foreach ($data['producto_subcategoria'] as $valor) {
-		        	$valor->url =  "pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
-		      	}
-		      	// print_r($data['range_producto']);
-		      	$data['datos_tienda'] = $this->tiendaModel->get_tiendas_contacto(" WHERE tie.Tie_IdTienda = ".$data['producto']->Tie_IdTienda);
-		      	// exit();
+		      	$data['subdominio_tienda'] = 1;	
 		      	if (empty($data['SKU'])) {
 		      		$data['nomvar'] =  " ";
 		      	}else{
-		      		$data['nomvar'] =  $data['SKU'][0]->Var_Nombre;	
-		      	}
+		      		$data['nomvar'] =  $data['SKU'][0]->Var_Nombre;			      	}
 		      	
-			    $data['SKUB'] = $this->productoModel->get_skuB($Pro_IdProducto);
-		      	$data['comentarios_respuestas'] = $this->productoModel->get_comentarios_respuestas($Pro_IdProducto);
-		      	$data['btn_comentario'] = 1;
-
-		      	//Panel de notificacion
-	      
-		      	if(isset($data['usuario']['logueado']))
-			    {
-			    	$data['producto_favorito'] = $this->productoFavoritoModel->verificar_favorito_x_usuario_x_persona($data['usuario']['id_usuario'], $Pro_IdProducto)->a;
-					$data['noticoments'] = $this->cotizacionModel->get_comentarios_usuario_noti($data['usuario']['id_usuario']);
-			        $data['noticotiza'] = $this->cotizacionModel->get_cotizacion_usuario_noti($data['usuario']['id_usuario']);
-	      			$data['direccion_usuario'] = $this->usuarioModel->get_usuario_direccion($data['usuario']['id_usuario']);
-			    }
-			    if ($data['datos_tienda']->Tie_Estado == 2) {			    	
-			    	$this->twig->parse('tienda/load/dp_20.twig', $data);
-			    }else{
-			    	header("Location: https://pormayor.pe");
-			    }
+			    $data['SKUB'] = $this->productoModel->get_skuB($Pro_IdProducto);			    	
+			    $this->twig->parse('tienda/load/dp_20.twig', $data);	
 			}
-	      	// $this->twig->parse('tienda/load/dp.twig', $data);
 		}
 		//CAPTURA DE PROVINCIA DESDE BASE DE DTATOS SEGÚN EL ID DE LA REGION
 		public function load_provincia()

@@ -831,7 +831,7 @@ class __TwigTemplate_9923be579f7c5dcc8e36ee348e8425d2a90d872be28aecb3d4a96d5bf47
   <script src=\"";
         // line 494
         echo base_url("public/");
-        echo "js/tienda/cart_pago.js?v=3006\"></script>
+        echo "js/tienda/cart_pago.js?v=2706\"></script>
 ";
     }
 
@@ -860,6 +860,6 @@ class __TwigTemplate_9923be579f7c5dcc8e36ee348e8425d2a90d872be28aecb3d4a96d5bf47
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "tienda/pago_vista.twig", "C:\\xampp\\htdocs\\pormayor2021\\application\\views\\tienda\\pago_vista.twig");
+        return new Twig_Source("", "tienda/pago_vista.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\tienda\\pago_vista.twig");
     }
 }
