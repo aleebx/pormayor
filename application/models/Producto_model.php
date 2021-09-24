@@ -971,7 +971,6 @@
             $this->db->where('pro.Pro_PM',1);
             $this->db->order_by('pro.Pro_FechaModificacion','DESC');
             $this->db->having('SKU_StockDisponible >=', 3);
-            $this->db->limit(5);
             $query = $this->db->get();
             return $query->result();
         }
@@ -984,7 +983,6 @@
             $this->db->order_by('pro.Pro_Nombre','RANDOM');
             $this->db->having('SKU_StockDisponible >=', 3);
             $this->db->having('Cat_IdCategoria', $Id_Categoria);
-            $this->db->limit(5);
             $query = $this->db->get();
             return $query->result();
         }

@@ -14,28 +14,6 @@
       $this->load->model("Producto_Favorito_model","productoFavoritoModel");
     }
 
-    public function index1()
-    {
-      header("Cache-Control: no-cache,must-revalidate"); 
-      $data=$this->acl->load_datos(); 
-      $data['index'] = true;
-      $data['pagina']['extrabtn']='NO';
-      $data['pagina']['tipo']='principal';
-      $data['pagina']['titulo']='PorMayor.pe - Crece con nosotros';
-      $data['productos']=$this->productoModel->productos_principal2();
-      $data['belleza']=$this->productoModel->pcategoria(1);
-      $data['hogar']=$this->productoModel->pcategoria(8);
-      $data['deporte']=$this->productoModel->pcategoria(5);
-      $data['tecnologia']=$this->productoModel->pcategoria(14);
-      $data['reposteria']=$this->productoModel->pcategoria(16);
-      $data['mascota']=$this->productoModel->pcategoria(15);
-      $data['automovil']=$this->productoModel->pcategoria(18);
-      foreach ($data['productos'] as $valor) {
-        $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
-      }
-      $this->twig->parse('inicio.twig',$data);
-    }
-
     public function index()
     {
       header("Cache-Control: no-cache,must-revalidate"); 
@@ -50,6 +28,28 @@
       }
       $this->twig->parse('index3.twig',$data);
     }
+
+    // public function index1()
+    // {
+    //   header("Cache-Control: no-cache,must-revalidate"); 
+    //   $data=$this->acl->load_datos(); 
+    //   $data['index'] = true;
+    //   $data['pagina']['extrabtn']='NO';
+    //   $data['pagina']['tipo']='principal';
+    //   $data['pagina']['titulo']='PorMayor.pe - Crece con nosotros';
+    //   $data['productos']=$this->productoModel->productos_principal2();
+    //   $data['belleza']=$this->productoModel->pcategoria(1);
+    //   $data['hogar']=$this->productoModel->pcategoria(8);
+    //   $data['deporte']=$this->productoModel->pcategoria(5);
+    //   $data['tecnologia']=$this->productoModel->pcategoria(14);
+    //   $data['reposteria']=$this->productoModel->pcategoria(16);
+    //   $data['mascota']=$this->productoModel->pcategoria(15);
+    //   $data['automovil']=$this->productoModel->pcategoria(18);
+    //   foreach ($data['productos'] as $valor) {
+    //     $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
+    //   }
+    //   $this->twig->parse('inicio.twig',$data);
+    // }
 
     public function index2()
     {
