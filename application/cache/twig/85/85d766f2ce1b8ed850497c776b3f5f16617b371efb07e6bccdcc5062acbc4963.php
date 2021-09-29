@@ -187,128 +187,111 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
             // line 94
             echo "\t\t\t<div class=\"swiper-container swBanner\">
 \t\t\t    <div class=\"swiper-wrapper\">
-\t\t\t      ";
-            // line 97
-            echo "\t\t\t      <div class=\"swiper-slide\"><img alt=\"Pormayor.pe\" src=\"";
+\t\t\t      <div class=\"swiper-slide\"><img alt=\"Pormayor.pe\" src=\"";
+            // line 96
             echo ($context["ruta_img"] ?? null);
             echo "webpm.webp\" class=\"responsive-img\"></div>
 \t\t\t    </div>
 \t\t\t    <div class=\"swiper-pagination\"></div>
 \t\t\t</div>
-\t\t\t<div class=\"row\">
-\t\t\t\t<div class=\"col s12 center\">
-\t\t\t\t\t<a href=\"";
-            // line 103
-            echo base_url();
-            echo "categorias/deportes-al-mayor-5\">
-\t\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" class=\"lazy\" data-src=\"";
-            // line 104
-            echo ($context["ruta_img"] ?? null);
-            echo "1DEPORTES.png\">
-\t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"";
-            // line 106
-            echo base_url();
-            echo "categorias/electrohogar-al-mayor-6\">
-\t\t\t\t\t\t<img alt=\"Productos de electrohogar al por mayor\" title=\"Productos de electrohogar al por mayor\" class=\"lazy\" data-src=\"";
-            // line 107
-            echo ($context["ruta_img"] ?? null);
-            echo "2ELECTROHOGAR.png\">
-\t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"";
-            // line 109
-            echo base_url();
-            echo "categorias/audio-video-al-mayor-14\">
-\t\t\t\t\t\t<img alt=\"Productos de accesorios al por mayor\" title=\"Productos de accesorios al por mayor\" class=\"lazy\" data-src=\"";
-            // line 110
-            echo ($context["ruta_img"] ?? null);
-            echo "3TVAUDIO.png\">
-\t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"";
-            // line 112
-            echo base_url();
-            echo "categorias/hogar-al-mayor-8\">
-\t\t\t\t\t\t<img alt=\"Productos de hogar mayor\" title=\"Productos de hogar mayor\" class=\"lazy\" data-src=\"";
-            // line 113
-            echo ($context["ruta_img"] ?? null);
-            echo "4HOGAR.png\">
-\t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"";
-            // line 115
-            echo base_url();
-            echo "categorias/belleza-al-mayor-1\">
-\t\t\t\t\t\t<img alt=\"Productos de belleza al por mayor\" title=\"Productos de belleza al por mayor\" class=\"lazy\" data-src=\"";
-            // line 116
-            echo ($context["ruta_img"] ?? null);
-            echo "5BELLEZA.png\">
-\t\t\t\t\t</a>
-\t\t\t\t</div>
-\t\t\t</div>
 \t\t";
         } else {
-            // line 121
+            // line 101
             echo "\t\t\t<div class=\"swiper-container swBanner\">
 \t\t\t    <div class=\"swiper-wrapper\">
-\t\t\t      ";
-            // line 124
-            echo "\t\t\t      <div class=\"swiper-slide\"><img alt=\"Pormayor.pe\" src=\"";
+\t\t\t      <div class=\"swiper-slide\"><img alt=\"Pormayor.pe\" src=\"";
+            // line 103
             echo ($context["ruta_img"] ?? null);
             echo "cel-pm.webp\" class=\"responsive-img\"></div>
 \t\t\t    </div>
 \t\t\t    <div class=\"swiper-pagination\"></div>
-\t\t\t</div>
-\t\t\t<div class=\"row\">
-\t\t\t\t<div class=\"col s6\">
-\t\t\t\t\t<a href=\"";
-            // line 130
-            echo base_url();
-            echo "categorias/deportes-al-mayor-5\">
-\t\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" data-src=\"";
-            // line 131
-            echo ($context["ruta_img"] ?? null);
-            echo "DEPMOVIL.png\" class=\"responsive-img lazy\">
-\t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"";
-            // line 133
-            echo base_url();
-            echo "categorias/electrohogar-al-mayor-6\">
-\t\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" data-src=\"";
-            // line 134
-            echo ($context["ruta_img"] ?? null);
-            echo "EHMOVIL.png\" class=\"responsive-img lazy\">
-\t\t\t\t\t</a>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col s6\">
-\t\t\t\t\t<a href=\"";
-            // line 138
-            echo base_url();
-            echo "categorias/deportes-al-mayor-5\">
-\t\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" data-src=\"";
-            // line 139
-            echo ($context["ruta_img"] ?? null);
-            echo "ACCMOVIL.png\" class=\"responsive-img lazy\">
-\t\t\t\t\t</a>
-\t\t\t\t\t<a href=\"";
-            // line 141
-            echo base_url();
-            echo "categorias/belleza-al-mayor-1\">\t\t\t\t
-\t\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" data-src=\"";
-            // line 142
-            echo ($context["ruta_img"] ?? null);
-            echo "BELLEZAMOVIL.png\" class=\"responsive-img lazy\">
-\t\t\t\t\t</a>
-\t\t\t\t</div>
-\t\t\t</div>
+\t\t\t</div>\t\t
 \t\t";
         }
-        // line 147
+        // line 108
         echo "\t\t<div class=\"row\">
+\t\t\t<div class=\"col l12 center\">
+\t\t\t\t<a href=\"";
+        // line 110
+        echo base_url();
+        echo "categorias/deportes-al-mayor-5\">
+\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" class=\"lazy\" data-src=\"";
+        // line 111
+        echo ($context["ruta_img"] ?? null);
+        echo "banner/c_mascota.png\">
+\t\t\t\t</a>
+\t\t\t\t<a href=\"";
+        // line 113
+        echo base_url();
+        echo "categorias/electrohogar-al-mayor-6\">
+\t\t\t\t\t<img alt=\"Productos de electrohogar al por mayor\" title=\"Productos de electrohogar al por mayor\" class=\"lazy\" data-src=\"";
+        // line 114
+        echo ($context["ruta_img"] ?? null);
+        echo "banner/c_hogar.png\">
+\t\t\t\t</a>
+\t\t\t\t<a href=\"";
+        // line 116
+        echo base_url();
+        echo "categorias/audio-video-al-mayor-14\">
+\t\t\t\t\t<img alt=\"Productos de accesorios al por mayor\" title=\"Productos de accesorios al por mayor\" class=\"lazy\" data-src=\"";
+        // line 117
+        echo ($context["ruta_img"] ?? null);
+        echo "banner/c_deporte.png\">
+\t\t\t\t</a>
+\t\t\t\t<a href=\"";
+        // line 119
+        echo base_url();
+        echo "categorias/hogar-al-mayor-8\">
+\t\t\t\t\t<img alt=\"Productos de hogar mayor\" title=\"Productos de hogar mayor\" class=\"lazy\" data-src=\"";
+        // line 120
+        echo ($context["ruta_img"] ?? null);
+        echo "banner/c_belleza.png\">
+\t\t\t\t</a>
+\t\t\t\t<a href=\"";
+        // line 122
+        echo base_url();
+        echo "categorias/deportes-al-mayor-5\">
+\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" class=\"lazy\" data-src=\"";
+        // line 123
+        echo ($context["ruta_img"] ?? null);
+        echo "banner/c_reposteria.png\">
+\t\t\t\t</a>
+\t\t\t\t<a href=\"";
+        // line 125
+        echo base_url();
+        echo "categorias/electrohogar-al-mayor-6\">
+\t\t\t\t\t<img alt=\"Productos de electrohogar al por mayor\" title=\"Productos de electrohogar al por mayor\" class=\"lazy\" data-src=\"";
+        // line 126
+        echo ($context["ruta_img"] ?? null);
+        echo "banner/c_tecno.png\">
+\t\t\t\t</a>
+\t\t\t\t<a href=\"";
+        // line 128
+        echo base_url();
+        echo "categorias/audio-video-al-mayor-14\">
+\t\t\t\t\t<img alt=\"Productos de accesorios al por mayor\" title=\"Productos de accesorios al por mayor\" class=\"lazy\" data-src=\"";
+        // line 129
+        echo ($context["ruta_img"] ?? null);
+        echo "banner/c_auto.png\">
+\t\t\t\t</a>
+\t\t\t\t<a href=\"";
+        // line 131
+        echo base_url();
+        echo "categorias/hogar-al-mayor-8\">
+\t\t\t\t\t<img alt=\"Productos de hogar mayor\" title=\"Productos de hogar mayor\" class=\"lazy\" data-src=\"";
+        // line 132
+        echo ($context["ruta_img"] ?? null);
+        echo "banner/c_bebe.png\">
+\t\t\t\t</a>
+\t\t\t</div>
+\t\t</div>
+\t\t<div class=\"row\">
 \t\t  \t";
-        // line 148
+        // line 137
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["productos"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 149
+            // line 138
             echo "\t\t  \t<a itemprop=\"url\" href=\"";
             echo base_url();
             echo "productos/dp/";
@@ -319,13 +302,13 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "\">
 \t\t        <div class=\"col s6 m6 l2 black-text\" style=\"padding:5px\" data-cd=\"";
-            // line 150
+            // line 139
             echo $this->getAttribute($context["pro"], "Pro_PM", array());
             echo "\">
 \t\t          <div class=\"card hoverable z-depth-0\">
 \t\t            <div class=\"center\" style=\"height:190px;\">
 \t\t              <img alt=\"";
-            // line 153
+            // line 142
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -337,29 +320,29 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
 \t\t            <div class=\"card-content center\" style=\"height:100px;\">
 \t\t              <p>
 \t\t              \t<span class=\"truncate\">";
-            // line 157
+            // line 146
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "</span>
 \t\t              \t<small>COD: ";
-            // line 158
+            // line 147
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "</small><br>
 \t\t              \t";
-            // line 159
+            // line 148
             if (($this->getAttribute($context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 160
+                // line 149
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x mayor<span class=\"new badge blue left\">PRE-VENTA</span>
 \t\t              \t";
             } else {
-                // line 162
+                // line 151
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x mayor</label>
 \t\t              \t";
             }
-            // line 164
+            // line 153
             echo "\t\t              </p>
 \t\t            </div>
 \t\t          </div>
@@ -370,35 +353,35 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 170
+        // line 159
         echo "\t    </div>
 \t</main>\t
 ";
     }
 
-    // line 173
+    // line 162
     public function block_script($context, array $blocks = array())
     {
-        // line 174
+        // line 163
         echo "\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 \t\t<script src=\"https://unpkg.com/swiper/swiper-bundle.min.js\"></script>
 \t\t<script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
 \t    <script>
 \t      var base_url = \"";
-        // line 178
+        // line 167
         echo base_url();
         echo "\";
 \t      var loading_screen = pleaseWait({
 \t          logo: '',
 \t          backgroundColor: \"#FEC00F\",
 \t          loadingHtml: \"<img src='";
-        // line 182
+        // line 171
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
 \t        });
 \t    </script>
 \t\t<script src=\"";
-        // line 185
+        // line 174
         echo base_url("public/");
         echo "js/index.js?v=5\"></script>
 ";
@@ -416,7 +399,7 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
 
     public function getDebugInfo()
     {
-        return array (  402 => 185,  396 => 182,  389 => 178,  383 => 174,  380 => 173,  374 => 170,  363 => 164,  357 => 162,  351 => 160,  349 => 159,  345 => 158,  341 => 157,  329 => 153,  323 => 150,  312 => 149,  308 => 148,  305 => 147,  297 => 142,  293 => 141,  288 => 139,  284 => 138,  277 => 134,  273 => 133,  268 => 131,  264 => 130,  254 => 124,  250 => 121,  242 => 116,  238 => 115,  233 => 113,  229 => 112,  224 => 110,  220 => 109,  215 => 107,  211 => 106,  206 => 104,  202 => 103,  192 => 97,  188 => 94,  186 => 93,  182 => 91,  173 => 85,  169 => 84,  163 => 80,  157 => 76,  147 => 70,  143 => 69,  140 => 68,  130 => 61,  126 => 60,  123 => 59,  121 => 58,  112 => 52,  108 => 51,  101 => 47,  95 => 46,  92 => 45,  90 => 44,  85 => 41,  83 => 40,  80 => 39,  77 => 38,  54 => 18,  48 => 15,  46 => 14,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  385 => 174,  379 => 171,  372 => 167,  366 => 163,  363 => 162,  357 => 159,  346 => 153,  340 => 151,  334 => 149,  332 => 148,  328 => 147,  324 => 146,  312 => 142,  306 => 139,  295 => 138,  291 => 137,  283 => 132,  279 => 131,  274 => 129,  270 => 128,  265 => 126,  261 => 125,  256 => 123,  252 => 122,  247 => 120,  243 => 119,  238 => 117,  234 => 116,  229 => 114,  225 => 113,  220 => 111,  216 => 110,  212 => 108,  204 => 103,  200 => 101,  192 => 96,  188 => 94,  186 => 93,  182 => 91,  173 => 85,  169 => 84,  163 => 80,  157 => 76,  147 => 70,  143 => 69,  140 => 68,  130 => 61,  126 => 60,  123 => 59,  121 => 58,  112 => 52,  108 => 51,  101 => 47,  95 => 46,  92 => 45,  90 => 44,  85 => 41,  83 => 40,  80 => 39,  77 => 38,  54 => 18,  48 => 15,  46 => 14,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

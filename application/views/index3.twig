@@ -91,59 +91,52 @@ src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
 	</div>
 	<main>
 		{% if userAgent == 'PC' %}
-			<div class="swiper-container swBanner">
-			    <div class="swiper-wrapper">
-			      {# <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}banner_navidad_w.webp" class="responsive-img"></div> #}
-			      <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}webpm.webp" class="responsive-img"></div>
-			    </div>
-			    <div class="swiper-pagination"></div>
-			</div>
 			<div class="row">
-				<div class="col s12 center">
-					<a href="{{base_url()}}categorias/deportes-al-mayor-5">
-						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" class="lazy" data-src="{{ruta_img}}1DEPORTES.png">
-					</a>
-					<a href="{{base_url()}}categorias/electrohogar-al-mayor-6">
-						<img alt="Productos de electrohogar al por mayor" title="Productos de electrohogar al por mayor" class="lazy" data-src="{{ruta_img}}2ELECTROHOGAR.png">
-					</a>
-					<a href="{{base_url()}}categorias/audio-video-al-mayor-14">
-						<img alt="Productos de accesorios al por mayor" title="Productos de accesorios al por mayor" class="lazy" data-src="{{ruta_img}}3TVAUDIO.png">
-					</a>
-					<a href="{{base_url()}}categorias/hogar-al-mayor-8">
-						<img alt="Productos de hogar mayor" title="Productos de hogar mayor" class="lazy" data-src="{{ruta_img}}4HOGAR.png">
-					</a>
-					<a href="{{base_url()}}categorias/belleza-al-mayor-1">
-						<img alt="Productos de belleza al por mayor" title="Productos de belleza al por mayor" class="lazy" data-src="{{ruta_img}}5BELLEZA.png">
-					</a>
+				<div class="col l12 center">
+					<div class="swiper-container swBanner">
+					    <div class="swiper-wrapper">
+					      <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}webpm.webp" class="responsive-img"></div>
+					    </div>
+					    <div class="swiper-pagination"></div>
+					</div>
 				</div>
 			</div>
 		{% else %}
 			<div class="swiper-container swBanner">
 			    <div class="swiper-wrapper">
-			      {# <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}banner_navidad_m.webp" class="responsive-img"></div> #}
 			      <div class="swiper-slide"><img alt="Pormayor.pe" src="{{ruta_img}}cel-pm.webp" class="responsive-img"></div>
 			    </div>
 			    <div class="swiper-pagination"></div>
-			</div>
-			<div class="row">
-				<div class="col s6">
-					<a href="{{base_url()}}categorias/deportes-al-mayor-5">
-						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" data-src="{{ruta_img}}DEPMOVIL.png" class="responsive-img lazy">
-					</a>
-					<a href="{{base_url()}}categorias/electrohogar-al-mayor-6">
-						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" data-src="{{ruta_img}}EHMOVIL.png" class="responsive-img lazy">
-					</a>
-				</div>
-				<div class="col s6">
-					<a href="{{base_url()}}categorias/deportes-al-mayor-5">
-						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" data-src="{{ruta_img}}ACCMOVIL.png" class="responsive-img lazy">
-					</a>
-					<a href="{{base_url()}}categorias/belleza-al-mayor-1">				
-						<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" data-src="{{ruta_img}}BELLEZAMOVIL.png" class="responsive-img lazy">
-					</a>
-				</div>
-			</div>
+			</div>		
 		{% endif %}
+		<div class="row">
+			<div class="col l12 center">
+				<a href="{{base_url()}}categorias/mascota-al-mayor-15">
+					<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" class="lazy" data-src="{{ruta_img}}banner/c_mascota.png">
+				</a>
+				<a href="{{base_url()}}categorias/hogar-al-mayor-8">
+					<img alt="Productos de electrohogar al por mayor" title="Productos de electrohogar al por mayor" class="lazy" data-src="{{ruta_img}}banner/c_hogar.png">
+				</a>
+				<a href="{{base_url()}}categorias/deporte-al-mayor-5">
+					<img alt="Productos de accesorios al por mayor" title="Productos de accesorios al por mayor" class="lazy" data-src="{{ruta_img}}banner/c_deporte.png">
+				</a>
+				<a href="{{base_url()}}categorias/belleza-al-mayor-1">
+					<img alt="Productos de hogar mayor" title="Productos de hogar mayor" class="lazy" data-src="{{ruta_img}}banner/c_belleza.png">
+				</a>
+				<a href="{{base_url()}}categorias/reposteria-al-mayor-16">
+					<img alt="Productos de deporte al por mayor" title="Productos de deporte al por mayor" class="lazy" data-src="{{ruta_img}}banner/c_reposteria.png">
+				</a>
+				<a href="{{base_url()}}categorias/tecnologia-al-mayor-14">
+					<img alt="Productos de electrohogar al por mayor" title="Productos de electrohogar al por mayor" class="lazy" data-src="{{ruta_img}}banner/c_tecno.png">
+				</a>
+				<a href="{{base_url()}}categorias/auto-bicicleta-al-mayor-18">
+					<img alt="Productos de accesorios al por mayor" title="Productos de accesorios al por mayor" class="lazy" data-src="{{ruta_img}}banner/c_auto.png">
+				</a>
+				<a href="{{base_url()}}categorias/pequenos-al-mayor-9">
+					<img alt="Productos de hogar mayor" title="Productos de hogar mayor" class="lazy" data-src="{{ruta_img}}banner/c_bebe.png">
+				</a>
+			</div>
+		</div>
 		<div class="row">
 		  	{% for pro in productos %}
 		  	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">

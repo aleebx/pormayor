@@ -16,7 +16,7 @@
 
     public function index()
     {
-      header("Cache-Control: no-cache,must-revalidate"); 
+      // header("Cache-Control: no-cache,must-revalidate"); 
       $data=$this->acl->load_datos(); 
       $data['index'] = true;
       $data['pagina']['extrabtn']='NO';

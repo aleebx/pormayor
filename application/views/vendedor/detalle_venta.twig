@@ -613,7 +613,8 @@
       						<img class="redondeo centrarForzado" src="{{ruta_img}}{% if ved.SKU_Img %}{{ved.SKU_Img}}{% else %}{{ved.Prf_Img}}{% endif %}" height="30">
       					</td>
     					<td align="center">
-      						<span class="center" style="font-size:20px;">{{ved.Pcd_Cantidad}}</span></br>
+      						<span class="center" style="font-size:20px;">{{ved.Pcd_Cantidad}}</span>
+      						<input type="checkbox" name=""> 
     					</td>
       					<td>
       						<b style="font-size:12px">COD.{{ved.Pro_IdProducto}}</b> - {{ved.Pro_Nombre|upper}}</br>
@@ -636,7 +637,7 @@
   				{% set totalPagar = total2 + totalEnvio %}
   				<tr>
         			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
-        			<td colspan="5" style="border-bottom: 1px solid;">
+        			<td colspan="6" style="border-bottom: 1px solid;">
         				<b>TOTAL IMPORTE</b> 
         			<td style="border-bottom: 1px solid;">
         				<b>S/ <span class="fontA">{{total2|number_format(2, '.', ' ')}}</span></b>
@@ -644,7 +645,7 @@
         		</tr>
         		<tr>
         			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
-        			<td colspan="5" style="border-bottom: 1px solid;">
+        			<td colspan="6" style="border-bottom: 1px solid;">
         				<b>TOTAL ENVÍO</b> 
         			<td style="border-bottom: 1px solid;">
         				<b>S/ <span class="fontA">{{venta.Pac_Envio|number_format(2, '.', ' ')}}</span></b>
@@ -652,7 +653,7 @@
         		</tr>
         		<tr>
         			<input type="hidden" value="{{monto_cotizado}}" id="totalDscto_">
-        			<td colspan="5" style="border-bottom: 1px solid;">
+        			<td colspan="6" style="border-bottom: 1px solid;">
         				<b>TOTAL A PAGAR</b> 
         			<td style="border-bottom: 1px solid;">
         				<b>S/ <span class="fontA">{{totalPagar|number_format(2, '.', ' ')}}</span></b>
