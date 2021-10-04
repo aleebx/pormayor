@@ -1,0 +1,187 @@
+{% extends "layout/intranet/template_adm.twig" %}
+
+{% block content %}
+    <main class="">
+      <div class="row card-panel">
+        <div class="col s12">
+            <div class="row">
+                {# <form action="{{base_url()}}export/entregas" method="post">
+                <div class="col s12 l3">
+                    <label class="col-form-label" for="date1">De</label>
+                    <input class="form-control" type="date" id="date1" name="date1">
+                </div>
+                <div class="col s12 l3">
+                    <label class="col-form-label" for="date2">Hasta</label>
+                    <input class="form-control" type="date" id="date2" name="date2">
+                </div>
+                <div class="col s4 l3"> 
+                    <a class="btn btn-lg resum">Buscar</a>
+                    <button class="btn btn-lg btn-secondary" type="submit">ventas</button>
+                </div>                
+                </form> #}
+                <div class="col s12 l12"> 
+                <form action="{{base_url()}}export/ventas_mes" method="post">
+                    <label class="col-form-label" for="mes">MES</label>
+                    <input class="form-control" type="month" id="mes" name="mes">
+                    <button class="btn btn-lg btn-secondary" type="submit">MES</button>                
+                </form>
+                </div>                
+                {# <div class="col s4 l12"> 
+                    <form action="{{base_url()}}export/stock" method="post">
+                    <button class="btn btn-lg btn-secondary col" type="submit">stock</button>
+                    </form>                   
+                </div>  #}               
+            </div>
+        </div>
+        <div class="col s12 l12" id="resumenV">
+            <table>
+                <thead>
+                  <tr>
+                      <th>FECHA REGISTRO</th>
+                      <th>FECHA MODIFICACIÓN</th>
+                      <th>CLIENTE</th>
+                      <th>TIPO</th>
+                      <th>ESTADO</th>
+                      <th>METODO PAGO</th>
+                      <th>ENVIO</th>
+                      <th>MONTO PRODUCTOS</th>
+                      <th>TOTAL</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                {% set total1 = 0 %}
+                {% set total = 0 %}
+                {% set totalNueva = 0 %}
+                {% set totalConf = 0 %}
+                {% set totalE = 0 %}
+                {% set totalAnu = 0 %}
+                {% set totalRT = 0 %}
+                {% set totalBCP = 0 %}
+                {% set tEfectivo = 0 %}
+                {% set tSco = 0 %}
+                {% set tBCP = 0 %}
+                {% set tInt = 0 %}                
+                {% set tEfectivo2 = 0 %}
+                {% set tSco2 = 0 %}
+                {% set tBCP2 = 0 %}
+                {% set tInt2 = 0 %}
+                {% for v in ventas %}
+                  <tr>
+                    {% set total1 = v.pago_productos + v.Pac_Envio %}
+                    <td>{{v.Pac_FechaRegistro}}</td>
+                    <td>{{v.Pac_FechaModificado}}</td>
+                    <td>{{v.Pac_IdPago_Compra}}</a> - {{v.Per_Nombre}}</td>
+                    <td>
+                    {% if v.Pac_Banco == "NO" %}
+                        CONTRAENTREGA
+                    {% elseif v.Pac_Banco == "TIENDA" %}
+                    {% if v.Pac_Estado == 5 %}
+                    {% set totalRT = totalRT + total1 %}
+                    {% endif %}
+                        RETIRO EN TIENDA
+                    {% elseif v.Pac_Banco == "Visanet" %}
+                        TARJETA DE CRÉDITO/DÉBITO
+                    {% else %}
+                        DEPÓSITO o TRANSFERENCIA                                            
+                    {% endif %}
+                    </td>
+                    <td>
+                        <span id="estV{{v.Pac_IdPago_Compra}}" class="new badge black-text negrita 
+                        {% if v.Pac_Estado == 1 %}green accent-4">NUEVA {% set totalNueva = totalNueva + total1 %}
+                        {% elseif v.Pac_Estado == 2 %}light-green accent-4">CONFIRMADA {% set totalConf = totalConf + total1 %}
+                        {% elseif v.Pac_Estado == 5 %} green darken-4">ENTREGADO {% set totalE = totalE + total1%}
+                        {% elseif v.Pac_Estado == 6 %}red darken-3">ANULADO {% set totalAnu = totalAnu + total1%}
+                        {% endif %}
+                        </span>
+                    </td>
+                    <td>{{v.Pvoc_MedioPago}} - {{v.Pvoc_Monto}} {% if v.Pvoc_EstadoComprobante == 1 %}<span class="new badge blue">VERIFICADO</span>{% else %}<span class="new badge orange">PENDIENTE</span>{% endif %}</td>
+                    {% if v.Pvoc_MedioPago == "EFECTIVO" %}
+                        {% if v.Pvoc_EstadoComprobante == 1 %}
+                            {% set tEfectivo = tEfectivo + v.Pvoc_Monto %}
+                        {% else %}
+                            {% set tEfectivo2 = tEfectivo2 + v.Pvoc_Monto %}
+                        {% endif %}
+                    {% endif %}
+                    {% if v.Pvoc_MedioPago == "SCOTIABANK" %}
+                        {% if v.Pvoc_EstadoComprobante == 1 %}
+                            {% set tSco = tSco + v.Pvoc_Monto %}
+                        {% else %}
+                            {% set tSco2 = tSco2 + v.Pvoc_Monto %}
+                        {% endif %}
+                    {% endif %}
+                    {% if v.Pvoc_MedioPago == "BCP" %}
+                        {% if v.Pvoc_EstadoComprobante == 1 %}
+                            {% set tBCP = tBCP + v.Pvoc_Monto %}
+                        {% else %}
+                            {% set tBCP2 = tBCP2 + v.Pvoc_Monto %}
+                        {% endif %}
+                    {% endif %}
+                    {% if v.Pvoc_MedioPago == "INTERBANK" %}
+                        {% if v.Pvoc_EstadoComprobante == 1 %}
+                            {% set tInt = tInt + v.Pvoc_Monto %}
+                        {% else %}
+                            {% set tInt2 = tInt2 + v.Pvoc_Monto %}
+                        {% endif %}
+                    {% endif %}
+                    <td>{{v.Pac_Envio}}</td>
+                    <td>{{v.pago_productos}}</td>
+                    <td>{{total1}}</td>
+                  </tr>
+                  {% set total = total + total1 %}
+                {% endfor %}
+
+                </tbody>
+            </table>
+            <table class="bordered">
+                <tr>
+                    <th>EFECTIVO VERIFICADO</th>
+                    <th>BCP VERIFICADO</th>
+                    <th>SCOTIABANK VERIFICADO</th>
+                    <th>INTERBANK VERIFICADO</th>
+                    <th>EFECTIVO PENDIENTE</th>
+                    <th>BCP PENDIENTE</th>
+                    <th>SCOTIABANK PENDIENTE</th>
+                    <th>INTERBANK PENDIENTE</th>
+                </tr>
+                <tr>
+                    <td>S/{{tEfectivo}}</td>
+                    <td>S/{{tBCP}}</td>
+                    <td>S/{{tSco}}</td>
+                    <td>S/{{tInt}}</td>
+                    <td>S/{{tEfectivo2}}</td>
+                    <td>S/{{tBCP2}}</td>
+                    <td>S/{{tSco2}}</td>
+                    <td>S/{{tInt2}}</td>
+                </tr>
+            </table>
+        </div> 
+      </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).on('click', '.resum', function(){
+        var fecha_i = $('#date1').val();
+        var fecha_f = $('#date2').val();
+        console.log(fecha_i, fecha_f);
+            $.ajax({
+                 data:{
+                 fecha_i : fecha_i,
+                 fecha_f : fecha_f
+                 },
+                 type: "POST",
+                 url: base_url+'reportes/resumen_venta', 
+                 dataType: "json",
+                 success: function(data){
+                    // console.log(data);
+                    $('#resumenV').load(base_url+'reportes/vista_resumen',{datos:data});
+                 },
+                 error: function(data) {
+
+                 }
+            });
+    });
+    </script>
+{% endblock %}

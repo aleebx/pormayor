@@ -5,6 +5,7 @@ $('.buscarDatos').click(function(){
       }else{
       var numerodoc = $("#ruc").val();
       }
+      console.log(tipo,numerodoc);
       $.ajax({
         data:{
           numerodoc : numerodoc,
@@ -12,9 +13,10 @@ $('.buscarDatos').click(function(){
         },
         type:"POST",
         dataType:"json",
-        url:base_url+'apidatos/datoscliente', 
+        url:base_url+'apidatos/datoscliente2', 
         success: function(r) 
         {
+            console.log(r);
             if (r.success == true) {
               if(tipo == 1){                
               $('#razonSocial2').val(r.data.nombre_completo);

@@ -7,16 +7,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			parent::__construct();
 		}
 
-		function datoscliente()
+		function datoscliente2()
 		{
 			if ($this->input->is_ajax_request()) {		
 				$number = $this->input->post('numerodoc');
 				$tipo = $this->input->post('tipo');
+				// print_r($number);
+				// print_r($tipo);
 				if($tipo == 1){
 					$url = "https://apiperu.dev/api/dni/".$number;
 				}else{
 					$url = "https://apiperu.dev/api/ruc/".$number;
 				}
+
 				$curl = curl_init();
 
 				curl_setopt_array($curl, array(
@@ -30,14 +33,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				  CURLOPT_CUSTOMREQUEST => 'GET',
 				  CURLOPT_HTTPHEADER => array(
 				    'Authorization: Bearer fae165c7ed874652f431c260c5536784fc5e416c7835f1af964fa4c7534839dd',
-				    'Cookie: XSRF-TOKEN=eyJpdiI6IkZpRkV2Nkg5TFpLbU5yZkM0Qzd2Vmc9PSIsInZhbHVlIjoiTCtmNUJ1QWtrQ2ZnM243eE5tNytEZUcrNHdYUEp6eXlaTkswWXZNV1A2dXU1ZXFvZnR4ZXF4N2xqaVpndFQzVHM3bWZ1YmVRSTRicFExN2ZVam1CaU5MaEw5TnhJcHBoVmxaRFdqeG5ZbkMvVWRxWjdIditxWWg0SFI4Q1ArTGMiLCJtYWMiOiJiZTE3ZmY1MDhjYTM0MWQyZGI1ZjA5MGU1MGI5NTZiYzViNDQ3YzM0ZmVmYzVkMjk3NmNiNDUwYmViOGE2ZTVmIn0%3D; apiperu_session=eyJpdiI6InFOazBBa0M3STVMMDZrSzFZdk9sV3c9PSIsInZhbHVlIjoiNmcrK1pDWm5Yd3loaDAwMU51bVpjR0ludlREQ0g1b1VhQkdPUVhxUngyTUN5WjVpazdVVzVjdmFHQ044S21RbmFDVjMwTVZ6WXNCZ3d4MWh0dFFhL1NlZ2FIbUNTWUk1RlNjVzA2a1lvdE51UDU3MzNIYnczam9xSTFPcFNnem8iLCJtYWMiOiIzNzE2ZDY2ZDFiYjg2MTQzOTJkNzE2YmIxMzc2OGRjNDExM2E4MDdjYWVkZmUxMmYxYTk1OTUyZDdhMmE0NTQzIn0%3D'
+				    'Cookie: XSRF-TOKEN=eyJpdiI6InFNclZLYkRFWVB2WUNIVGhGTUdzUlE9PSIsInZhbHVlIjoiODdMQzlIZU8xajNRNVR5anZlMUNyc2cvaGpQMVZ0dGl4VmNGNmNrYytlTGhEZ2ZNMVVPN0RSYy9zUkdVL05BMm4yQUh0Z3F4dlY5NHdLZzMrWEorNGc5U2M3VU5GNEJMSzhCMlJyTnJMOFZsdHBKK2g2Y2R2ZExtRzlaTDZiWmkiLCJtYWMiOiI3NzVjOWUyMGUzNjQ4NmY4YzY3ODMwZWJjZTM3OGRhZWNjM2IzNDJjZDkyNDQ0YWYwNGY5ZjAzNWE2MDE5MWM4In0%3D; apiperu_session=eyJpdiI6ImkzSGcwLzVmZGRqU0RFLzROVFFsZHc9PSIsInZhbHVlIjoienozelZ6OGpsVTRQYkp1cnQrbXkzeEgrdWFzV1BLTUVKY2NIbnBjd1QyeVNZM01WWGhSeklzbytHVG5CaHcwdTNiUlBpNnZBa2JOaUlIMU1UY0kreHNBMytQSVp2YTJnNlRRQjlVc085d0c4QXBxZmMrWGc4THY4Q1BHMm9ETjciLCJtYWMiOiI5MDQ0MDA1MmE0Y2ZmYzJiZDI0NjQ0NmI4ZTE0MDhkMDAxYzAwNGM4YjcxNmRiNDdhNmM0ZDcxNTg0YTkyMmEwIn0%3D'
 				  ),
 				));
 
 				$response = curl_exec($curl);
 
 				curl_close($curl);
-
 				echo $response;
 			}
 		}

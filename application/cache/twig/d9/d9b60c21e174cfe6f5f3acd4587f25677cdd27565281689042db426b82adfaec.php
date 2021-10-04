@@ -255,7 +255,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo base_url();
         echo "vnd/comision\"><i class=\"material-icons\">star</i>Comisiones</a></li>
       <li class=\"itemMenu\">
-        
+        <div id=\"topVentas\" class=\"white-text center\"></div>
       </li>
       <li class=\"containerAvatar valign-wrapper\">
         <div class=\"avatarComprador\" style=\"top: 2px;\">
@@ -351,8 +351,15 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
           type:\"POST\",
           url:base_url+'vnd/top_ventas', 
           dataType:\"json\",
-          success:function(data){
-            console.log(data);
+          success:function(person){
+            let txt = \"\";
+            let c = 1;
+            for (let x in person) {
+            txt += c  + \" \" +person[x].vendedor + \" : \" + person[x].total + \" </br>\";
+            c = c + 1;
+            };
+            document.getElementById(\"topVentas\").innerHTML = txt;
+            // \$('.topVentas').text(txt);
           }
         });
       \$(\".button-collapse\").sideNav();
@@ -423,9 +430,9 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
     });
   </script>
   ";
-        // line 265
+        // line 272
         $this->displayBlock('script', $context, $blocks);
-        // line 266
+        // line 273
         echo "  </body>
 </html>";
     }
@@ -448,7 +455,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo " ";
     }
 
-    // line 265
+    // line 272
     public function block_script($context, array $blocks = array())
     {
         echo " ";
@@ -466,7 +473,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
     public function getDebugInfo()
     {
-        return array (  452 => 265,  446 => 163,  440 => 145,  434 => 72,  429 => 266,  427 => 265,  330 => 171,  324 => 168,  320 => 167,  316 => 166,  313 => 165,  309 => 163,  305 => 161,  297 => 155,  287 => 148,  281 => 145,  272 => 139,  264 => 134,  251 => 128,  243 => 127,  235 => 126,  227 => 125,  219 => 124,  211 => 123,  203 => 122,  195 => 121,  187 => 120,  179 => 119,  171 => 116,  166 => 113,  155 => 97,  151 => 96,  143 => 91,  123 => 73,  121 => 72,  59 => 13,  53 => 12,  49 => 11,  42 => 7,  30 => 6,  23 => 1,);
+        return array (  459 => 272,  453 => 163,  447 => 145,  441 => 72,  436 => 273,  434 => 272,  330 => 171,  324 => 168,  320 => 167,  316 => 166,  313 => 165,  309 => 163,  305 => 161,  297 => 155,  287 => 148,  281 => 145,  272 => 139,  264 => 134,  251 => 128,  243 => 127,  235 => 126,  227 => 125,  219 => 124,  211 => 123,  203 => 122,  195 => 121,  187 => 120,  179 => 119,  171 => 116,  166 => 113,  155 => 97,  151 => 96,  143 => 91,  123 => 73,  121 => 72,  59 => 13,  53 => 12,  49 => 11,  42 => 7,  30 => 6,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
