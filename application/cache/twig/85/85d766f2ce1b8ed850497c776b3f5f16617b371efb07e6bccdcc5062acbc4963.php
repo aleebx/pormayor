@@ -214,12 +214,12 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
         }
         // line 112
         echo "\t\t<div class=\"row\">
-\t\t\t<div class=\"col l12 center\">
+\t\t\t<div class=\"col s6 l12 center\">
 \t\t\t\t<a href=\"";
         // line 114
         echo base_url();
         echo "categorias/mascota-al-mayor-15\">
-\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" class=\"lazy\" data-src=\"";
+\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" class=\"lazy responsive-img\" data-src=\"";
         // line 115
         echo ($context["ruta_img"] ?? null);
         echo "banner/c_mascota.png\">
@@ -228,7 +228,7 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
         // line 117
         echo base_url();
         echo "categorias/hogar-al-mayor-8\">
-\t\t\t\t\t<img alt=\"Productos de electrohogar al por mayor\" title=\"Productos de electrohogar al por mayor\" class=\"lazy\" data-src=\"";
+\t\t\t\t\t<img alt=\"Productos de electrohogar al por mayor\" title=\"Productos de electrohogar al por mayor\" class=\"lazy responsive-img\" data-src=\"";
         // line 118
         echo ($context["ruta_img"] ?? null);
         echo "banner/c_hogar.png\">
@@ -237,7 +237,7 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
         // line 120
         echo base_url();
         echo "categorias/deporte-al-mayor-5\">
-\t\t\t\t\t<img alt=\"Productos de accesorios al por mayor\" title=\"Productos de accesorios al por mayor\" class=\"lazy\" data-src=\"";
+\t\t\t\t\t<img alt=\"Productos de accesorios al por mayor\" title=\"Productos de accesorios al por mayor\" class=\"lazy responsive-img\" data-src=\"";
         // line 121
         echo ($context["ruta_img"] ?? null);
         echo "banner/c_deporte.png\">
@@ -246,56 +246,81 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
         // line 123
         echo base_url();
         echo "categorias/belleza-al-mayor-1\">
-\t\t\t\t\t<img alt=\"Productos de hogar mayor\" title=\"Productos de hogar mayor\" class=\"lazy\" data-src=\"";
+\t\t\t\t\t<img alt=\"Productos de hogar mayor\" title=\"Productos de hogar mayor\" class=\"lazy responsive-img\" data-src=\"";
         // line 124
         echo ($context["ruta_img"] ?? null);
         echo "banner/c_belleza.png\">
 \t\t\t\t</a>
+\t\t\t</div>
+\t\t\t<div class=\"col s6 l12 center\">
 \t\t\t\t<a href=\"";
-        // line 126
+        // line 128
         echo base_url();
         echo "categorias/reposteria-al-mayor-16\">
-\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" class=\"lazy\" data-src=\"";
-        // line 127
+\t\t\t\t\t<img alt=\"Productos de deporte al por mayor\" title=\"Productos de deporte al por mayor\" class=\"lazy responsive-img\" data-src=\"";
+        // line 129
         echo ($context["ruta_img"] ?? null);
         echo "banner/c_reposteria.png\">
 \t\t\t\t</a>
 \t\t\t\t<a href=\"";
-        // line 129
+        // line 131
         echo base_url();
         echo "categorias/tecnologia-al-mayor-14\">
-\t\t\t\t\t<img alt=\"Productos de electrohogar al por mayor\" title=\"Productos de electrohogar al por mayor\" class=\"lazy\" data-src=\"";
-        // line 130
+\t\t\t\t\t<img alt=\"Productos de electrohogar al por mayor\" title=\"Productos de electrohogar al por mayor\" class=\"lazy responsive-img\" data-src=\"";
+        // line 132
         echo ($context["ruta_img"] ?? null);
         echo "banner/c_tecno.png\">
 \t\t\t\t</a>
 \t\t\t\t<a href=\"";
-        // line 132
+        // line 134
         echo base_url();
         echo "categorias/auto-bicicleta-al-mayor-18\">
-\t\t\t\t\t<img alt=\"Productos de accesorios al por mayor\" title=\"Productos de accesorios al por mayor\" class=\"lazy\" data-src=\"";
-        // line 133
+\t\t\t\t\t<img alt=\"Productos de accesorios al por mayor\" title=\"Productos de accesorios al por mayor\" class=\"lazy responsive-img\" data-src=\"";
+        // line 135
         echo ($context["ruta_img"] ?? null);
         echo "banner/c_auto.png\">
 \t\t\t\t</a>
 \t\t\t\t<a href=\"";
-        // line 135
+        // line 137
         echo base_url();
         echo "categorias/pequenos-al-mayor-9\">
-\t\t\t\t\t<img alt=\"Productos de hogar mayor\" title=\"Productos de hogar mayor\" class=\"lazy\" data-src=\"";
-        // line 136
+\t\t\t\t\t<img alt=\"Productos de hogar mayor\" title=\"Productos de hogar mayor\" class=\"lazy responsive-img\" data-src=\"";
+        // line 138
         echo ($context["ruta_img"] ?? null);
         echo "banner/c_bebe.png\">
 \t\t\t\t</a>
 \t\t\t</div>
 \t\t</div>
 \t\t<div class=\"row\">
+\t\t\t<div class=\"col l12 center\">|
+\t\t\t\t";
+        // line 144
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["vendedores"] ?? null));
+        foreach ($context['_seq'] as $context["_key"] => $context["v"]) {
+            // line 145
+            echo "\t\t\t\t\t<span class=\"fontA\"><i class=\"material-icons\">headset_mic</i>";
+            echo $this->getAttribute($context["v"], "Usu_Nombre", array());
+            echo " <a href=\"https://api.whatsapp.com/send?phone=51";
+            echo $this->getAttribute($context["v"], "Per_Telefono", array());
+            echo "&text=Hola,%20quiero%20mas%20informacion.\">";
+            echo $this->getAttribute($context["v"], "Per_Telefono", array());
+            echo "</a>|</span>
+\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['v'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 147
+        echo "\t\t\t</div>
+\t\t</div>
+\t\t<div class=\"row\">
 \t\t  \t";
-        // line 141
+        // line 150
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["productos"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 142
+            // line 151
             echo "\t\t  \t<a itemprop=\"url\" href=\"";
             echo base_url();
             echo "productos/dp/";
@@ -306,13 +331,13 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "\">
 \t\t        <div class=\"col s6 m6 l2 black-text\" style=\"padding:5px\" data-cd=\"";
-            // line 143
+            // line 152
             echo $this->getAttribute($context["pro"], "Pro_PM", array());
             echo "\">
 \t\t          <div class=\"card hoverable z-depth-0\">
 \t\t            <div class=\"center\" style=\"height:190px;\">
 \t\t              <img alt=\"";
-            // line 146
+            // line 155
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -324,29 +349,29 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
 \t\t            <div class=\"card-content center\" style=\"height:100px;\">
 \t\t              <p>
 \t\t              \t<span class=\"truncate\">";
-            // line 150
+            // line 159
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "</span>
 \t\t              \t<small>COD: ";
-            // line 151
+            // line 160
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "</small><br>
 \t\t              \t";
-            // line 152
+            // line 161
             if (($this->getAttribute($context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 153
+                // line 162
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x mayor<span class=\"new badge blue left\">PRE-VENTA</span>
 \t\t              \t";
             } else {
-                // line 155
+                // line 164
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x mayor</label>
 \t\t              \t";
             }
-            // line 157
+            // line 166
             echo "\t\t              </p>
 \t\t            </div>
 \t\t          </div>
@@ -357,35 +382,35 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 163
+        // line 172
         echo "\t    </div>
 \t</main>\t
 ";
     }
 
-    // line 166
+    // line 175
     public function block_script($context, array $blocks = array())
     {
-        // line 167
+        // line 176
         echo "\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 \t\t<script src=\"https://unpkg.com/swiper/swiper-bundle.min.js\"></script>
 \t\t<script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
 \t    <script>
 \t      var base_url = \"";
-        // line 171
+        // line 180
         echo base_url();
         echo "\";
 \t      var loading_screen = pleaseWait({
 \t          logo: '',
 \t          backgroundColor: \"#FEC00F\",
 \t          loadingHtml: \"<img src='";
-        // line 175
+        // line 184
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
 \t        });
 \t    </script>
 \t\t<script src=\"";
-        // line 178
+        // line 187
         echo base_url("public/");
         echo "js/index.js?v=5\"></script>
 ";
@@ -403,7 +428,7 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
 
     public function getDebugInfo()
     {
-        return array (  389 => 178,  383 => 175,  376 => 171,  370 => 167,  367 => 166,  361 => 163,  350 => 157,  344 => 155,  338 => 153,  336 => 152,  332 => 151,  328 => 150,  316 => 146,  310 => 143,  299 => 142,  295 => 141,  287 => 136,  283 => 135,  278 => 133,  274 => 132,  269 => 130,  265 => 129,  260 => 127,  256 => 126,  251 => 124,  247 => 123,  242 => 121,  238 => 120,  233 => 118,  229 => 117,  224 => 115,  220 => 114,  216 => 112,  208 => 107,  204 => 105,  194 => 98,  188 => 94,  186 => 93,  182 => 91,  173 => 85,  169 => 84,  163 => 80,  157 => 76,  147 => 70,  143 => 69,  140 => 68,  130 => 61,  126 => 60,  123 => 59,  121 => 58,  112 => 52,  108 => 51,  101 => 47,  95 => 46,  92 => 45,  90 => 44,  85 => 41,  83 => 40,  80 => 39,  77 => 38,  54 => 18,  48 => 15,  46 => 14,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  414 => 187,  408 => 184,  401 => 180,  395 => 176,  392 => 175,  386 => 172,  375 => 166,  369 => 164,  363 => 162,  361 => 161,  357 => 160,  353 => 159,  341 => 155,  335 => 152,  324 => 151,  320 => 150,  315 => 147,  302 => 145,  298 => 144,  289 => 138,  285 => 137,  280 => 135,  276 => 134,  271 => 132,  267 => 131,  262 => 129,  258 => 128,  251 => 124,  247 => 123,  242 => 121,  238 => 120,  233 => 118,  229 => 117,  224 => 115,  220 => 114,  216 => 112,  208 => 107,  204 => 105,  194 => 98,  188 => 94,  186 => 93,  182 => 91,  173 => 85,  169 => 84,  163 => 80,  157 => 76,  147 => 70,  143 => 69,  140 => 68,  130 => 61,  126 => 60,  123 => 59,  121 => 58,  112 => 52,  108 => 51,  101 => 47,  95 => 46,  92 => 45,  90 => 44,  85 => 41,  83 => 40,  80 => 39,  77 => 38,  54 => 18,  48 => 15,  46 => 14,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

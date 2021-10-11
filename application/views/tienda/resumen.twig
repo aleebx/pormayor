@@ -244,6 +244,26 @@
                       <div class="divider"></div>
                       <br>
                     </div>
+                     <div class="col s12 center sinPadding">
+                      {% if usuario.logueado %}
+                        {% if usuario.rol == 4 %}
+                          {% if unidPe >= 100 %}
+                            <a href="{{base_url()}}productos/despacho" class="btn-large anchoTotal pormayorUnico">Comprar</a>
+                          {% else %}
+                            <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
+                          {% endif %}
+                        {% else %}
+                            <span class="red-text">NO PUEDES HACER COMPRA CON ESTE USUARIO</span>
+                        {% endif %}
+                      {% else %}
+                        {% if unidPe >= 100 %}
+                          <a class="waves-effect waves-light btn anchoTotal pormayorUnico modal-trigger comprar_popup" data-flag="{{flag_login}}" href="#sesion_popup">Comprar</a> 
+                        {% else %}
+                          <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
+                        {% endif %}
+                      {% endif %}
+                      <br><br>
+                    </div>
                     <div class="col s6 center">
                       <img class="" src="{{ruta_img}}safety_pay.webp" height="40">
                     </div>       
@@ -286,43 +306,9 @@
                 <br><br>
               </div>
           {% endif %}
-        </div>  
-        <div class="row centrarForzado bottom0 anchoTotal white left0 setbuttonMobile transitionB">
-          <div class="col s4 valign-wrapper" style="height:45px">
-            &nbsp;&nbsp;&nbsp;<span class="fontA"><b class="cantResumen"></b></span>&nbsp;&nbsp;<span class="enfasisB">Unidades</span>
-          </div>
-          <div class="totalN1 col s4 right-align" style="height:45px">
-            <span >S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen"></b></span></span>
-          </div>
-          <div class="totalB1 hide col s4 right-align" style="height:45px">
-            <span >S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen2"></b></span></span>
-          </div>
-          <div class="col s12">
-            <div class="divider"></div>
-          </div>
-          {# <div class="col s4 sinPadding center valign-wrapper" style="height:54px">
-            <a href="{{base_url()}}productos/pedido" class="centrarForzado btn-flat">Cotizar</a>
-          </div> #}
-          <div class="col s12 center sinPadding">
-            {% if usuario.logueado %}
-              {% if usuario.rol == 4 %}
-                {% if unidPe >= 100 %}
-                  <a href="{{base_url()}}productos/despacho" class="btn anchoTotal pormayorUnico">Comprar</a>
-                {% else %}
-                  <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
-                {% endif %}
-              {% else %}
-                  <span class="red-text">NO PUEDES HACER COMPRA CON ESTE USUARIO</span>
-              {% endif %}
-            {% else %}
-              {% if unidPe >= 100 %}
-                <a class="waves-effect waves-light btn anchoTotal pormayorUnico modal-trigger comprar_popup" data-flag="{{flag_login}}" href="#sesion_popup">Comprar</a> 
-              {% else %}
-                <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
-              {% endif %}
-            {% endif %}
-          </div>
-        </div>
+         </div>
+        <br>
+        <br>
       {% endif %}
 
       <div id="sesion_popup" class="modal white">

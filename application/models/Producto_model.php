@@ -24,15 +24,22 @@
             return $query->result();
         }
 
-       function getProCount() {
-            
-                $this->db->select("COUNT(*) as num_row");
-                $this->db->from('producto');
-                $this->db->order_by('Pro_FechaModificacion');
-                $query = $this->db->get();
-                $result = $query->result();
-                return $result[0]->num_row;
+       function getProCount() {            
+            $this->db->select("COUNT(*) as num_row");
+            $this->db->from('producto');
+            $this->db->order_by('Pro_FechaModificacion');
+            $query = $this->db->get();
+            $result = $query->result();
+            return $result[0]->num_row;
+        }
 
+       function vendedores() {            
+            $this->db->select("usu.Usu_Nombre, per.Per_Telefono");
+            $this->db->from('usuario as usu');
+            $this->db->join('persona as per','per.Per_IdPersona = usu.Per_IdPersona');
+            $this->db->where('usu.Rol_IdRol',5);            
+            $query = $this->db->get();
+            return $query->result();
         }
 
         function productos_agotados()
