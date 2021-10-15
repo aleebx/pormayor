@@ -1,122 +1,90 @@
 {% extends "layout/intranet/template_almacen.twig" %}
 {% block head %}
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 {% endblock %}
 {% block content %}
-  <main class="">
-    <div class="card">
-      <div class="card-content">
-      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-        <span class="cart-title">Listado de productos</span>
-        <table id="listado">
-          <thead>
-            <tr>
-                <th></th>
-                <th>Cod | Producto</th>
-                <th>Cantidad Cajas</th>
-                <th>Cantidad Unidades</th>
-                <th>Ultimo Movimiento</th>
-                <th>Fecha</th>
-                <th></th>
-            </tr>
-          </thead>
-          <tbody>
-              {% for p in productos %}
-                <tr>
-                  <td><img src="{{ruta_img}}{{p.img_producto}}" height="40px"></td>
-                  <td>{{p.nombre_producto}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
-  <div id="modalAlm" class="modal" style="z-index:9999 !important;width: 50%!important;">
-      <div class="modal-content" id="loadEdit">
-        
-        
-      </div>
+<main>
+  <div class="card">
+    <div class="card-content row">
+        <div class="col s12 m6 l3">
+          <label>PRODUCTOS</label>
+          <select class="browser-default select2" id="selProducto">
+            <option value="0" selected disabled="">SELECCIONE PRODUCTO</option>
+            {% for pro in productos %}
+              <option value="{{pro.Pro_IdProducto}}" data-codc="{{pro.Ppv_CodigoCaja}}">{{pro.Pro_Nombre}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="input-field col s12 m6 l3">
+            <input type="text" name="codCaja" id="codCaja">
+            <label for="codCaja">Código de Caja</label>
+        </div>
+        <div class="input-field col s12 m6 l3">
+          <input type="number" name="cantC" id="cantC">
+          <label for="cantC">Cantidad Caja</label>
+
+        </div>
+        <div class="input-field col s12 m6 l3">
+          <input type="number" name="cantUni" id="cantUni">
+          <label for="cantUni">Unidades Caja</label>
+        </div>
+        <div class="col s12 m6 l6">
+          <label>MOVIMIENTO EN</label>
+            <select class="browser-default select2" id="selMovimiento">
+            <option value="0" selected disabled="">SELECCIONE LUGAR INICIO</option>
+            <option value="DEPOSITO">DEPOSITO</option>
+            <option value="TIENDA">TIENDA</option>
+          </select>
+        </div>
+        <div class="col s12 m6 l6">
+          <label>MOVIMIENTO A</label>
+            <select class="browser-default select2" id="selMovimiento2">
+            <option value="0" selected disabled="">SELECCIONE LUGAR LLEGADA</option>
+            <option value="TIENDA">TIENDA</option>
+            <option value="DEPOSITO">DEPOSITO</option>
+          </select>
+        </div>
+        <div class="col s12 m12 l12 center"><br>
+         <a class="btn-large addMovimiento black-text" style="width:100%;"><i class="material-icons left">add_circle</i>AGREGAR</a>
+        </div>
+    </div> 
   </div>
+  <div class="card">
+    <div class="card-content">
+      <table id="lmov">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Producto</th>
+            <th>Codigo</th>
+            <th>Caja</th>
+            <th>Unidades</th>
+            <th>De</th>
+            <th>Hasta</th>
+          </tr>
+        </thead>
+        <tbody id="lmovD">
+        {% for m in movimientos %}
+          <tr>            
+            <td>{{m.Alp_FechaRegistro|date("d-m-Y")}}</td>
+            <td>{{m.Pro_Nombre}}</td>
+            <td>{{m.Alp_CodigoCaja}}</td>
+            <td>{{m.Alp_Caja}}</td>
+            <td>{{m.Alp_Unidades}}</td>
+            <td>{{m.Alp_EstadoInicial}}</td>
+            <td>{{m.Alp_Traslado}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
 {% endblock %}
-
 {% block script %}
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
-  <script>
-  $(document).ready( function () {
-    $('#listado').DataTable({
-      "responsive": true,
-      "language": {
-          "lengthMenu": "",
-          "zeroRecords": "No se encontro nada",
-          "info": "Página _PAGE_ de _PAGES_",
-          "infoEmpty": "No hay registros disponibles",
-          "emptyTable":     "No hay información en la tabla",
-          "infoFiltered":   "(filtrado de _MAX_ ventas)",
-          "infoPostFix":    "",
-          "thousands":      ",",
-          "loadingRecords": "Cargando...",
-          "processing":     "Procesando...",
-          "search":         "Buscar:",
-          "paginate": {
-              "first":      "Primero",
-              "last":       "Último",
-              "next":       "Siguiente",
-              "previous":   "Anterior"
-                  }
-      }
-    });
-
-    $('.quitar').click(function(){
-  var id_usuario = $(this).data('idu');
-   $.ajax({
-       data:{
-        id_usuario : id_usuario
-       },
-       type: "POST",
-       url: base_url+'vnd/cambiar_estado', 
-       dataType: "json",
-       beforeSend:function(){
-        loading_screen = pleaseWait({
-            logo:"",
-            backgroundColor: '#fff',
-            loadingHtml: "<img src='{{ruta_img}}logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
-            });
-       },
-       success: function(data){
-        $('.trt'+id_usuario).addClass('hide');
-        loading_screen.finish();
-       },
-       error: function(data) {
-         alert('error');
-         console.log(data);
-       }
-    });
- });
-  
-    $('#modalAlm').modal({
-             dismissible:true, // Modal can be dismissed by clicking outside of the modal
-             opacity:.8, // Opacity of modal background
-             inDuration:300, // Transition in duration
-             outDuration:200, // Transition out duration
-             startingTop:'5%', // Starting top style attribute
-             endingTop:'10%', // Ending top style attribute
-              ready:function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-                 var est=trigger[0]['accessKey'];
-                 var idv=trigger[0]['id'];
-                 var xd=trigger[0]['attributes'][3]['nodeValue'];
-                 // $('#loadEdit').load(base_url+'vnd/gestion',{id:idv,est:est,xd:xd});
-                },
-              complete: function() {
-              } // Callback for Modal close
-          });
-
-  } );
+  <script type="text/javascript">    
+    $('#lmov').DataTable();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="{{base_url('public/')}}js/movimiento.js"></script>
 {% endblock %}

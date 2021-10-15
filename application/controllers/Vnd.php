@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function crear()
 		{
 			$data = $this->acl->load_datos();
-			if ($data['usuario']['rol'] == 5) {
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 				$data['pag'] = "crear";
 				$this->twig->parse('vendedor/login.twig', $data);
 			}else{
@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function listado()
 		{
 			$data = $this->acl->load_datos();
-			if ($data['usuario']['rol'] == 5) {
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$data['clientes'] = $this->vendedorModel->get_clientes($data['usuario']['id_usuario']);
 			$data['gestionc'] = $this->vendedorModel->get_gestion_all();
 			$data['pag'] = "listado";
@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function stock()
 		{
 			$data = $this->acl->load_datos();
-			if ($data['usuario']['rol'] == 5) {
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$data['productos'] = $this->vendedorModel->stock_vendedor();
 			$data['pag'] = "stock";
 			$this->twig->parse('vendedor/stock.twig', $data);
@@ -75,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function reporte()
 		{
 			$data = $this->acl->load_datos();
-			if ($data['usuario']['rol'] == 5) {
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$data['pag'] = "reporte";
 			$this->twig->parse('vendedor/reportes.twig', $data);
 			}else{
@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function comision()
 		{
 			$data = $this->acl->load_datos();
-			if ($data['usuario']['rol'] == 5) {
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$data['pag'] = "comision";
 			$mes = date("Y-m");
 			$mes = '2021-06';
@@ -706,7 +706,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		public function hoy()
 		{
  			$data = $this->acl->load_datos();
-			if ($data['usuario']['rol'] == 5) {
+			if (isset($data['usuario']) and $data['usuario']['rol'] == 5) {
 			$data['pag'] = "hoy";
 			$data['gestion']=$this->vendedorModel->gestion_vendedor($data['usuario']['id_usuario']);
 			$this->twig->parse('vendedor/hoy.twig', $data);
@@ -746,7 +746,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function listado_clientes()
 		{
 			$data = $this->acl->load_datos();
-			if ($data['usuario']['rol'] == 5) {
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$data['clientes'] = $this->vendedorModel->get_clientes_all();
 			// print_r($data);
 			$data['pag'] = "listado_clientes";
@@ -759,7 +759,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function cliente($id_cliente)
 		{
 			$data = $this->acl->load_datos();
-			if ($data['usuario']['rol'] == 5) {
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$data['compras'] = $this->vendedorModel->get_cliente($id_cliente);
 				$this->twig->parse('vendedor/detalle_cliente.twig', $data);
 			}else{
