@@ -133,7 +133,8 @@ class Vendedor_model extends CI_Model
     function get_gestion($id){
         $this->db->select('*');
         $this->db->from('gestion_cliente');
-        $this->db->where('Usu_IdUsuario',$id);    
+        $this->db->where('Usu_IdUsuario',$id);  
+        $this->db->order_by('Ges_FechaRegistro','DESC');
         $query = $this->db->get();
         return $query->result();
     } 
@@ -192,7 +193,18 @@ class Vendedor_model extends CI_Model
         $this->db->select('*');
         $this->db->from('gestion_cliente'); 
         $this->db->group_by('Usu_IdUsuario');
-        $this->db->order_by('Ges_FechaProgramar','DESC');
+        $this->db->order_by('Ges_FechaRegistro','DESC');
+        $query = $this->db->get();
+        return $query->result();
+    } 
+
+    function get_gestion_all_v($id_vendedor){
+        $this->db->select('*');
+        $this->db->from('gestion_cliente as ges');
+        $this->db->join('usuario as usu','usu.Usu_IdUsuario = ges.Usu_IdUsuario');
+        $this->db->where('usu.Usu_IdUsuario_Ven',$id_vendedor);
+        $this->db->group_by('ges.Usu_IdUsuario');
+        $this->db->order_by('ges.Ges_FechaRegistro','DESC');
         $query = $this->db->get();
         return $query->result();
     } 
@@ -257,7 +269,7 @@ class Vendedor_model extends CI_Model
         $this->db->select('(SELECT Per_Nombre FROM persona WHERE persona.Per_IdPersona = usu.Per_IdPersona) AS Per_Nombre, (SELECT Per_Telefono FROM persona WHERE persona.Per_IdPersona = usu.Per_IdPersona) AS Per_Telefono, ges.Ges_FechaProgramar, ges.Ges_TipoCliente, usu.Usu_IdUsuario,ges.Ges_FechaRegistro, ges.Ges_Detalle, ges.Ges_Accion, ges.Ges_Motivo');
         $this->db->from('usuario as usu');
         $this->db->join('gestion_cliente as ges','ges.Usu_IdUsuario = usu.Usu_IdUsuario');
-        $this->db->where("(usu.Usu_Activated = 1 OR usu.Usu_IdUsuario_Ven = $id_vendedor)", NULL, FALSE);
+        $this->db->where("(usu.Usu_Activated = 1 and usu.Usu_IdUsuario_Ven = $id_vendedor)", NULL, FALSE);
         $this->db->where('ges.Ges_FechaProgramar', $hoy);
         $this->db->group_by('usu.Usu_IdUsuario');
         $this->db->order_by('ges.Ges_FechaProgramar','DESC');

@@ -14,7 +14,7 @@
   </div>
   <div class="input-field col s12">
     {# <label for="fechaaccion">Fecha de Acción</label> #}
-    <input id="fechaaccion" type="date" class="validate">
+    <input id="fechaaccion" type="date" class="validate" value="{{ yourDate|date_modify("+1 day")|date("Y-m-d") }}">
   </div>
 </div>
 <div class="row">
@@ -27,6 +27,7 @@
 </div>
 <table class="bordered">
 <tr>
+  <th>FE. REGISTRO</th>
   <th>TIPO</th>
   <th>MOTIVO</th>
   <th>RESULTADO</th>
@@ -36,7 +37,8 @@
 <tbody id="tableGes">  
   {% for g in gestion %}
   <tr>
-  	<td>{{g.Ges_TipoCliente}}</td>
+  	<td>{{g.Ges_FechaRegistro}}</td>
+    <td>{{g.Ges_TipoCliente}}</td>
     <td>{{g.Ges_Motivo}}</td>
   	<td>{{g.Ges_Detalle}}</td>
   	<td>{{g.Ges_Accion}}</td>

@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$data = $this->acl->load_datos();
 			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$data['clientes'] = $this->vendedorModel->get_clientes($data['usuario']['id_usuario']);
-			$data['gestionc'] = $this->vendedorModel->get_gestion_all();
+			$data['gestionc'] = $this->vendedorModel->get_gestion_all_v($data['usuario']['id_usuario']);
 			$data['pag'] = "listado";
 			$this->twig->parse('vendedor/listado.twig', $data);
 			}else{
