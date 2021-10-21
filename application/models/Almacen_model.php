@@ -31,7 +31,6 @@
             $this->db->from('producto as pro');
             $this->db->where('pro.Pro_PM',1);
             $this->db->order_by('pro.Pro_FechaModificacion','DESC');
-            $this->db->having('SKU_StockDisponible >=', 3);
             $query = $this->db->get();
             return $query->result();
         }

@@ -1,5 +1,6 @@
 {% extends "layout/intranet/template_ven.twig" %}
 {% block head %}
+  <link type="text/css" rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css"  media="screen,projection"/>
 {% endblock %}
 {% block content %}
   <main class="">
@@ -9,6 +10,68 @@
         <input type="month" name="meses" id="meses" value="{{'now'|date('Y-m')}}">
         <a class="btn green buscarV">Buscar</a>
         {# <a class="btn green notificarR">notificar</a> #}
+        <div class="card-panel row">
+        <a class="btn negrita blue" onclick="printJS('tablaCartera', 'html')" style="width:100%;">DESCARGAR ESTADO CARTERA DE HOY</a>
+          <div class="col s12 m12 l12" id="tablaCartera">
+           <table class="striped centered">
+            <thead>
+              <tr>
+                <th>VIGENTE</th>
+                <th>REGISTRADO</th>
+                <th>INACTIVO +10</th>
+                <th>INACTIVO +20</th>
+                <th>INACTIVO +30</th>
+                <th>INACTIVO +40</th>
+                <th>TOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% set vig = 0 %}
+            {% set reg = 0 %}
+            {% set r10 = 0 %}
+            {% set r20 = 0 %}
+            {% set r30 = 0 %}
+            {% set r40 = 0 %}
+            {% set totR = 0 %}
+            {% for c in cartera %}
+              {% set startDate = c.ultimo_pedido|date("Y-m-d") %}
+                  {% set endDate = "now"|date("Y-m-d") %}
+                  {% set difference = date(endDate).diff(date(startDate)) %}
+                  {% set leftDays = difference.days %}
+                  {% if leftDays%}
+                   {% if leftDays <= 10 or leftDays == 0 %}
+                    {% set vig = vig + 1 %}
+                  {% elseif leftDays >= 11 and leftDays <= 20 %}
+                    {% set r10 = r10 + 1 %}
+                  {% elseif leftDays >= 21 and leftDays <= 30 %}
+                    {% set r20 = r20 + 1 %}
+                  {% elseif leftDays >= 31 and leftDays <= 40 %}
+                    {% set r30 = r30 + 1 %}
+                  {% elseif leftDays >= 41  %}
+                    {% set r40 = r40 + 1 %}
+                  {% endif %}
+                  {% else %}
+                    {% if c.entregado > 1 %}
+                      {% set vig = vig + 1 %}
+                    {% else %}
+                      {% set reg = reg + 1 %}
+                    {% endif %}
+                  {% endif %}
+            {% endfor %}
+              {% set totR = vig + reg + r10 + r20 + r30 + r40 %} 
+              <tr>
+                <td class="fontA" style="border:1px solid black;">{{vig}}</td>
+                <td class="fontA" style="border:1px solid black;">{{reg}}</td>
+                <td class="fontA" style="border:1px solid black;">{{r10}}</td>
+                <td class="fontA" style="border:1px solid black;">{{r20}}</td>
+                <td class="fontA" style="border:1px solid black;">{{r30}}</td>
+                <td class="fontA" style="border:1px solid black;">{{r40}}</td>
+                <td class="fontA" style="border:1px solid black;">{{totR}}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
         <div id="contReporte" class="row"></div>
       </div>
     </div>
@@ -18,4 +81,5 @@
 {% block script %}
   <script src="{{base_url('public/')}}js/vendedor/lcliente.js?v=12" type="text/javascript"></script>
   <script src="{{base_url('public/')}}js/reporte.js" type="text/javascript"></script>
+  <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 {% endblock %}

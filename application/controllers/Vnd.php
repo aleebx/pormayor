@@ -77,6 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$data = $this->acl->load_datos();
 			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$data['pag'] = "reporte";
+			$data['cartera'] = $this->vendedorModel->get_carteracliente($data['usuario']['id_usuario']);
 			$this->twig->parse('vendedor/reportes.twig', $data);
 			}else{
 				redirect ('');
@@ -101,11 +102,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		{
 			$data = $this->acl->load_datos();
 			if ($this->input->is_ajax_request()) {
-	            $mes = $this->input->post('mes');
-	            $data['gestion'] = $this->vendedorModel->reporte_gestion($data['usuario']['id_usuario'], $mes);
-	            $data['ventas'] = $this->vendedorModel->reporte_ventas($data['usuario']['id_usuario'], $mes);
-	            $data['cantidad'] = $this->vendedorModel->reporte_ventas_c($data['usuario']['id_usuario'], $mes);
-	            $this->twig->parse('vendedor/reporte_mes.twig', $data);
+        $mes = $this->input->post('mes');
+        $data['gestion'] = $this->vendedorModel->reporte_gestion($data['usuario']['id_usuario'], $mes);
+        $data['ventas'] = $this->vendedorModel->reporte_ventas($data['usuario']['id_usuario'], $mes);
+        $data['cantidad'] = $this->vendedorModel->reporte_ventas_c($data['usuario']['id_usuario'], $mes);
+        $this->twig->parse('vendedor/reporte_mes.twig', $data);
 			}
 		}
 
@@ -234,7 +235,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function api_factura()
 			{
-
 			if ($this->input->is_ajax_request()) {
 				$hoy = date("Y-m-d");
 				$hora = date("h:i:s");

@@ -291,8 +291,8 @@
         	<span class="card-title">GENERAR FACTURA DEL CLIENTE {{venta.Per_Nombre}}</span>
           <div class="row">
 	        <div class="input-field col s6">
-	          <input id="razonSocial" type="text" class="validate" value="{{venta.Per_Nombre}}">
-	          <label for="razonSocial">Razón Social</label>
+	          <input id="rSocial" type="text" class="validate" value="{{venta.Per_Nombre}}">
+	          <label for="rSocial">Razón Social</label>
 	        </div>
 	        <div class="input-field col s6">
 	          <input type="text" id="ruc" class="validate" value="{{compra_info.Pci_Ruc}}">
@@ -308,12 +308,12 @@
 	          <label for="tlf">Teléfono</label>
 	        </div>
 	        <div class="input-field col s4">
-	          <input type="text" id="ubigeo" class="validate" value="{{compra_info.iddistrito}}">
-	          <label for="ubigeo">UBIGEO</label>
+	          <input type="text" id="ubigeoFac" class="validate" value="{{compra_info.iddistrito}}">
+	          <label for="ubigeoFac">UBIGEO</label>
 	        </div>
 	        <div class="input-field col s12">
-	          <input type="text" id="direccion" class="validate" value="{% if venta.Pac_Banco == 'TIENDA' %}RETIRO EN TIENDA {% endif %} {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} Referencia: {{compra_info.Pci_Referencia}}">
-	          <label for="direccion">Dirección</label>
+	          <input type="text" id="direccionFac" class="validate" value="{% if venta.Pac_Banco == 'TIENDA' %}RETIRO EN TIENDA {% endif %} {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} Referencia: {{compra_info.Pci_Referencia}}">
+	          <label for="direccionFac">Dirección</label>
 	        </div>
 	        <div class="input-field col s12">
 	        	<a class="btn gFact green" data-idv="{{idventa}}">GENERAR FACTURA</a>

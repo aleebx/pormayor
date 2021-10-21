@@ -21,9 +21,9 @@ $('.buscarDatos').click(function(){
               if(tipo == 1){                
               $('#razonSocial2').val(r.data.nombre_completo);
               }else{
-              $('#razonSocial').val(r.data.nombre_o_razon_social);
-              $('#ubigeo').val(r.data.ubigeo[2]);
-              $('#direccion').val(r.data.direccion_completa);
+              $('#rSocial').val(r.data.nombre_o_razon_social);
+              $('#ubigeoFac').val(r.data.ubigeo[2]);
+              $('#direccionFac').val(r.data.direccion_completa);
               }
             }
         }

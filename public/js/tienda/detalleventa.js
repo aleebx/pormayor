@@ -109,14 +109,15 @@ $(document).on('click', '.delete-row', function(){
 
 $(document).on('click', '.gFact', function(){
     var Pac_IdPago_Compra = $(this).data('idv');
-    var razonSocial = $('#razonSocial').val();
+    var razonSocial = $('#rSocial').val();
     var ruc = $('#ruc').val();
     var email = $('#email').val();
     var tlf = $('#tlf').val();
-    var ubigeo = $('#ubigeo').val();
-    var direccion = $('#direccion').val();
+    var ubigeo = $('#ubigeoFac').val();
+    var direccion = $('#direccionFac').val();
     $(this).addClass('disabled');
-
+    console.log(Pac_IdPago_Compra,razonSocial,ruc,email,tlf,ubigeo,direccion);
+    // exit();
      $.ajax({
             data:{
             'Pac_IdPago_Compra' : Pac_IdPago_Compra,
