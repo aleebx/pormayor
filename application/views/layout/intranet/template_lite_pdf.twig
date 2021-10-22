@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>      
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{% if categoriaFlag == true %}{{categoria_seo.Cat_Nombre|title}} al Por Mayor en PorMayor.pe - Crece con nosotros {% elseif subcategoriaFlag == true %}{{subcategoria_seo.Suc_Nombre|title}} al Por Mayor en PorMayor.pe - Crece con nosotros{% elseif  detalleFlag == true %}{{detalle_seo.Suc_Nombre|title}} - {{detalle_seo.Des_Nombre}} al Por Mayor en PorMayor.pe - Crece con nosotros{% else %}{{pagina.titulo|title}}{% endif %}</title>
+<meta name="google-site-verification" content="MZNqZwO63SqZWJMD-S5PwzQhXBJoFBLp8BmwSgYAexM" />
+<meta property="fb:app_id" content="2623619600997776" />
+<meta property="og:title" content="{{producto.Pro_Nombre|upper}}" />
+<meta property="og:description" content="Precio Normal: S/{{producto.Pro_PrecioMaximo}}"/>
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://pormayor.pe/img/{{producto.Prf_Thumb}}" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="300" />
+<meta name="description" content="{% if categoriaFlag == true %}{% if categoria_seo.Cat_Meta_Description %}{{categoria_seo.Cat_Meta_Description}}{% else %}{{categoria_seo.Cat_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% elseif subcategoriaFlag == true %}{% if subcategoria_seo.Suc_Meta_Description %}{{subcategoria_seo.Suc_Meta_Description}}{% else %}{{subcategoria_seo.Suc_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% elseif detalleFlag == true %}{% if detalle_seo.Des_Meta_Description %}{{detalle_seo.Des_Meta_Description}}{% else %}{{detalle_seo.Des_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% else %}Compra y vende al por mayor en Lima.Crea tu propia tienda virtual mayorista o compra al por mayor para tu negocio fácil y rápido aquí.{% endif %}">
+<meta name="keywords" content="{% if categoriaFlag == true %}{% if categoria_seo.Cat_Keywords %}{{categoria_seo.Cat_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %}{% elseif subcategoriaFlag == true %}{% if subcategoria_seo.Suc_Keywords %}{{subcategoria_seo.Suc_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %}{% elseif detalleFlag == true %}{% if detalle_seo.Des_Keywords %}{{detalle_seo.Des_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %} {% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima,{% endif %}">
+<link rel="icon" href="{{ruta_img}}logo.png">
+<script data-ad-client="ca-pub-6014646385337670" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+{# <link rel="canonical" href="https://pormayor.pe"/> #}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen">
+<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/materialize.min.css')}}"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/templates.min.css')}}"  media="screen"/>
+  </style>
+</head>
+<body id="inicio" class="grey lighten-4">      
+      {% block content %} {% endblock %}
+</body>
+    {% block modal %} {% endblock %}
+      <script> var base_url = "{{base_url()}}";</script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    {% block script %} {% endblock %}
+   </body>
+
+</html>

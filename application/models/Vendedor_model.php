@@ -62,6 +62,25 @@ class Vendedor_model extends CI_Model
         return NULL;
     }
 
+    function guardar_cartera($id_usuario,$vig,$reg,$r10,$r20,$r30,$r40,$Tot){
+        $hoy = date("Y-m-d");
+        $info = array(
+            'Esc_Vigente' => $vig,
+            'Esc_Registrado' => $reg,
+            'Esc_I10' => $r10, 
+            'Esc_I20' => $r20, 
+            'Esc_I30' => $r30,
+            'Esc_I40' => $r40,
+            'Esc_Total' => $Tot,
+            'Usu_IdUsuario' => $id_usuario,
+            'Fecha_Registro' => $hoy
+        );
+
+        $this->db->replace('estado_cartera', $info);
+
+        echo $id_usuario;
+    }
+
     function get_clientes($id_vendedor){
         $this->db->select('(SELECT count(Pac_IdPago_Compra) FROM pago_compra WHERE Pac_Estado = 5 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario) AS entregado, (SELECT count(Pac_IdPago_Compra) FROM pago_compra WHERE Pac_Estado = 6 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario) AS rechazado, usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Telefono, (SELECT Pac_FechaRegistro FROM pago_compra WHERE pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario  order by Pac_FechaRegistro DESC limit 1) AS ultimo_pedido, (SELECT Pac_Estado FROM pago_compra WHERE pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario order by Pac_FechaRegistro DESC limit 1) AS ultimo_estado,usu.Usu_Created,(SELECT sum(Pac_Total) FROM pago_compra WHERE Pac_Estado = 5 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario) AS monto_entregado');
         $this->db->from('usuario as usu');
@@ -77,6 +96,13 @@ class Vendedor_model extends CI_Model
         $this->db->from('usuario as usu');
         $this->db->where('usu.Usu_IdUsuario_Ven', $id_vendedor);
         $this->db->where('usu.Usu_Activated', 1);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function get_carteracliente_lista($id_vendedor){
+        $this->db->select('*');
+        $this->db->from('estado_cartera');
+        $this->db->where('Usu_IdUsuario', $id_vendedor);
         $query = $this->db->get();
         return $query->result();
     }

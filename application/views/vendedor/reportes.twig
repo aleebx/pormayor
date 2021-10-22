@@ -11,8 +11,8 @@
         <a class="btn green buscarV">Buscar</a>
         {# <a class="btn green notificarR">notificar</a> #}
         <div class="card-panel row">
-        <a class="btn negrita blue" onclick="printJS('tablaCartera', 'html')" style="width:100%;">DESCARGAR ESTADO CARTERA DE HOY</a>
-          <div class="col s12 m12 l12" id="tablaCartera">
+        <a class="btn negrita blue gReporte" style="width:100%;">GUARDAR REPORTE CARTERA</a>
+          <div class="col s12 m5 l5" id="tablaCartera">
            <table class="striped centered">
             <thead>
               <tr>
@@ -60,14 +60,45 @@
             {% endfor %}
               {% set totR = vig + reg + r10 + r20 + r30 + r40 %} 
               <tr>
-                <td class="fontA" style="border:1px solid black;">{{vig}}</td>
-                <td class="fontA" style="border:1px solid black;">{{reg}}</td>
-                <td class="fontA" style="border:1px solid black;">{{r10}}</td>
-                <td class="fontA" style="border:1px solid black;">{{r20}}</td>
-                <td class="fontA" style="border:1px solid black;">{{r30}}</td>
-                <td class="fontA" style="border:1px solid black;">{{r40}}</td>
-                <td class="fontA" style="border:1px solid black;">{{totR}}</td>
+                <td class="fontA rVig">{{vig}}</td>
+                <td class="fontA rReg">{{reg}}</td>
+                <td class="fontA rR10">{{r10}}</td>
+                <td class="fontA rR20">{{r20}}</td>
+                <td class="fontA rR30">{{r30}}</td>
+                <td class="fontA rR40">{{r40}}</td>
+                <td class="fontA rTot">{{totR}}</td>
               </tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="col s12 m7 l7">
+            <table class="striped centered">
+            <thead>
+              <tr>
+                <th>FECHA</th>
+                <th>VIGENTE</th>
+                <th>REGISTRADO</th>
+                <th>INACTIVO +10</th>
+                <th>INACTIVO +20</th>
+                <th>INACTIVO +30</th>
+                <th>INACTIVO +40</th>
+                <th>TOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            {% for l in listado %}
+             <tr>
+                <td class="fontA">{{l.Fecha_Registro|date("d-m-Y")}}</td>
+                <td class="fontA">{{l.Esc_Vigente}}</td>
+                <td class="fontA">{{l.Esc_Registrado}}</td>
+                <td class="fontA">{{l.Esc_I10}}</td>
+                <td class="fontA">{{l.Esc_I20}}</td>
+                <td class="fontA">{{l.Esc_I30}}</td>
+                <td class="fontA">{{l.Esc_I40}}</td>
+                <td class="fontA">{{l.Esc_Total}}</td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
           </div>
@@ -81,5 +112,6 @@
 {% block script %}
   <script src="{{base_url('public/')}}js/vendedor/lcliente.js?v=12" type="text/javascript"></script>
   <script src="{{base_url('public/')}}js/reporte.js" type="text/javascript"></script>
+  <script src="{{base_url('public/')}}js/cartera.js" type="text/javascript"></script>
   <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 {% endblock %}

@@ -77,6 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$data = $this->acl->load_datos();
 			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$data['pag'] = "reporte";
+			$data['listado'] = $this->vendedorModel->get_carteracliente_lista($data['usuario']['id_usuario']);
 			$data['cartera'] = $this->vendedorModel->get_carteracliente($data['usuario']['id_usuario']);
 			$this->twig->parse('vendedor/reportes.twig', $data);
 			}else{
@@ -529,13 +530,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				    "direccion" => $direccionEnvio
 				  ),
 				  "transportista" =>  array(
-				    "codigo_tipo_documento_identidad" => "0",
-				    "numero_documento" => "0",
-				    "apellidos_y_nombres_o_razon_social" => "0"
+				    "codigo_tipo_documento_identidad" => "0000",
+				    "numero_documento" => "0000",
+				    "apellidos_y_nombres_o_razon_social" => "0000"
 				  ),
 				  "chofer" =>  array(
-				    "codigo_tipo_documento_identidad" => "0",
-				    "numero_documento" => "0"
+				    "codigo_tipo_documento_identidad" => "0000",
+				    "numero_documento" => "00000"
 				  ),
 				  "numero_de_placa" => "000000",
 					"items"=>$arrayP
@@ -666,6 +667,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$data['gestion'] = $this->vendedorModel->get_gestion($id);
 				$data['xd']=$this->input->post('xd');				
 	        	$this->twig->parse('vendedor/gestion.twig',$data);
+			}
+		}
+		public function guardar_cartera()
+		{
+ 			$data = $this->acl->load_datos();
+ 			if($this->input->is_ajax_request()) {				
+				$vig = $this->input->post('vig');				
+				$reg = $this->input->post('reg');		
+				$r10 = $this->input->post('r10');		
+				$r20 = $this->input->post('r20');		
+				$r30 = $this->input->post('r30');		
+				$r40 = $this->input->post('r40');		
+				$Tot = $this->input->post('Tot');		
+				$registro = $this->vendedorModel->guardar_cartera($data['usuario']['id_usuario'],$vig,$reg,$r10,$r20,$r30,$r40,$Tot);
+				echo $registro;
 			}
 		}
 

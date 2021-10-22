@@ -981,6 +981,17 @@
             $query = $this->db->get();
             return $query->result();
         }
+      
+        function productos_principal3()
+        {
+            $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, pro.Pro_Descripcion, pro.Pro_PrecioMaximo, pro.Pro_PrecioMinimo,pro.Pro_PM,(SELECT Prf_Thumb FROM producto_foto as prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Thumb, (SELECT SUM(SKU_StockDisponible) FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as SKU_StockDisponible ,pro.Pro_Saldo,pro.Pro_Preventa, pro.Pro_Descripcion');
+            $this->db->from('producto as pro');
+            $this->db->where('pro.Pro_PM',1);
+            $this->db->order_by('pro.Pro_FechaModificacion','DESC');
+            $this->db->having('SKU_StockDisponible >=', 3);
+            $query = $this->db->get();
+            return $query->result();
+        }
 
         function pcategoria($Id_Categoria)
         {

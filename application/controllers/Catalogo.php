@@ -25,6 +25,14 @@
 
     }    
 
+    public function pdf()
+    {
+    $data = $this->acl->load_datos();
+     $data['productos']=$this->productoModel->productos_principal3();
+    $this->twig->parse('catalogo_pdf.twig', $data);
+
+    }    
+
     public function vnd($vend = false)
     {
     $data = $this->acl->load_datos();
