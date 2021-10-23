@@ -530,12 +530,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				    "direccion" => $direccionEnvio
 				  ),
 				  "transportista" =>  array(
-				    "codigo_tipo_documento_identidad" => "0000",
+				    "codigo_tipo_documento_identidad" => "0",
 				    "numero_documento" => "0000",
 				    "apellidos_y_nombres_o_razon_social" => "0000"
 				  ),
 				  "chofer" =>  array(
-				    "codigo_tipo_documento_identidad" => "0000",
+				    "codigo_tipo_documento_identidad" => "0",
 				    "numero_documento" => "00000"
 				  ),
 				  "numero_de_placa" => "000000",
