@@ -752,6 +752,10 @@
                 {
                     redirect('almacen/listado');
                 }
+                else if ($this->tank_auth->get_rol() == 8)
+                {
+                    redirect('vnd/referido');
+                }
                 else
                 {
                     redirect('');

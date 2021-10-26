@@ -1,0 +1,20 @@
+{% extends "layout/intranet/template_ven.twig" %}
+{% block head %}
+  <link type="text/css" rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css"  media="screen,projection"/>
+{% endblock %}
+{% block content %}
+  <main class="">
+    <div class="card">
+      <div class="card-content">
+        <h4>Reporte de Ventas - Gestión</h4>
+        <input type="month" name="meses" id="meses" value="{{'now'|date('Y-m')}}">
+        <a class="btn green buscarRef">Buscar</a>
+        <div id="contReporte" class="row"></div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block script %}
+  <script src="{{base_url('public/')}}js/reporte_referido.js" type="text/javascript"></script>
+{% endblock %}

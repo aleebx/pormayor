@@ -35,6 +35,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+		function referido()
+		{
+			$data = $this->acl->load_datos();
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 8) {
+			$data['usuario']['id_usuario'] = 521;
+			$data['clientes'] = $this->vendedorModel->get_clientes_referido($data['usuario']['id_usuario']);
+			$data['pag'] = "referido";
+			$this->twig->parse('vendedor/referido.twig', $data);
+			}else{
+				redirect ('');
+			}
+		}
+
+		function reporte_referido()
+		{
+			$data = $this->acl->load_datos();
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 8) {
+			// $data['usuario']['id_usuario'] = 521;
+			$data['pag'] = "reporte2";
+			$this->twig->parse('vendedor/reporte_referido.twig', $data);
+			}else{
+				redirect ('');
+			}
+		}
+
 		function registro($idvendedor)
 		{
 			$data = $this->acl->load_datos();
@@ -108,6 +133,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $data['ventas'] = $this->vendedorModel->reporte_ventas($data['usuario']['id_usuario'], $mes);
         $data['cantidad'] = $this->vendedorModel->reporte_ventas_c($data['usuario']['id_usuario'], $mes);
         $this->twig->parse('vendedor/reporte_mes.twig', $data);
+			}
+		}
+
+		function reporte_ref()
+		{
+			$data = $this->acl->load_datos();
+			if ($this->input->is_ajax_request()) {
+        $mes = $this->input->post('mes');
+				$data['usuario']['id_usuario'] = 521;
+        $data['clientes'] = $this->vendedorModel->get_clientes_referido_mes($data['usuario']['id_usuario'],$mes);
+        $this->twig->parse('vendedor/reporte_ref.twig', $data);
 			}
 		}
 

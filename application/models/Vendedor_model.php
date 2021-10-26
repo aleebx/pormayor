@@ -91,6 +91,28 @@ class Vendedor_model extends CI_Model
         return $query->result();
     }
 
+    function get_clientes_referido($id_vendedor){
+        $this->db->select('usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Telefono, usu.Usu_Created,(SELECT Pac_Total FROM pago_compra WHERE Pac_Estado = 5 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario order by Pac_FechaRegistro ASC LIMIT 1) AS monto_entregado,(SELECT Pac_FechaRegistro FROM pago_compra WHERE Pac_Estado = 5 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario order by Pac_FechaRegistro ASC LIMIT 1) AS Fecha');
+        $this->db->from('usuario as usu');
+        $this->db->join('persona as per','per.Per_IdPersona = usu.Per_IdPersona');
+        $this->db->where('usu.Usu_IdUsuario_Ven', $id_vendedor);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function get_clientes_referido_mes($id_vendedor,$mes){
+        $this->db->select('usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Telefono, usu.Usu_Created,pac.Pac_Total,pac.Pac_FechaRegistro');
+        $this->db->from('usuario as usu');
+        $this->db->join('persona as per','per.Per_IdPersona = usu.Per_IdPersona');
+        $this->db->join('pago_compra as pac','pac.Usu_IdUsuario = usu.Usu_IdUsuario');
+        $this->db->where('usu.Usu_IdUsuario_Ven', $id_vendedor);
+        $this->db->where('pac.Pac_Estado', 5);
+        $this->db->like('pac.Pac_FechaRegistro', $mes);
+        $this->db->group_by('usu.Usu_IdUsuario');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function get_carteracliente($id_vendedor){
         $this->db->select('(SELECT Pac_FechaRegistro FROM pago_compra WHERE pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario  order by Pac_FechaRegistro DESC limit 1) AS ultimo_pedido');
         $this->db->from('usuario as usu');

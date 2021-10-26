@@ -1,0 +1,20 @@
+ <table id="listado">
+  <thead>
+    <tr>
+        <th>Fecha Creado</th>
+        <th>Cliente</th>
+        <th>Fecha Compra</th>
+        <th>Monto</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for c in clientes %}
+        <tr class="trt{{c.Usu_IdUsuario}}">
+          <td>{{c.Usu_Created|date("Y/m/d")}}</td>
+          <td>{{c.Per_Nombre}} - {{c.Per_Telefono}}</td>
+          <td>{{c.Pac_FechaRegistro}}</td>
+          <td>{{c.Pac_Total}}</td>
+        </tr>
+      {% endfor %}
+  </tbody>
+</table>

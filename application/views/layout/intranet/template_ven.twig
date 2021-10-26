@@ -102,20 +102,13 @@
       </nav> 
     </div> 
   </header>
-{# <div class="notify-alert-box yellow shadow-1">
-  <img src="https://pormayor.pe/img/LogoPositivo.svg">
-  <p>We'd like to send you notifications of the latest posts and updates.</p>
-  <div class="buttons">
-    <button class="alert-btn" id="notify-cancel-button">Cancel</button>
-    <button class="alert-btn" id="notify-button">Allow</button>
-  </div>
-</div> #}
     <ul id="slide-out" class="side-nav fixed grey darken-4 z-depth-3 menuTex" style="z-index:9000;"> 
       <li class="headerMenu center valign-wrapper">
         <div class="logoIcon">
           <a href="{{base_url()}}"><img alt="Pormayor.pe - Vende facilito, Compra segurito" src="{{ruta_img}}LogoPositivo.svg" class="valign-wrapper" height="40"></a>
         </div>
       </li>
+      {% if usuario.rol == 5 %}
       <li class="itemMenu {% if pag == 'perfil' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/perfil"><i class="material-icons">sentiment_very_satisfied</i>Mi Perfil</a></li>
       <li class="itemMenu {% if pag == 'crear' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/crear"><i class="material-icons">person_add</i>Crear cliente</a></li>
       <li class="itemMenu {% if pag == 'listado' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/listado"><i class="material-icons">person_outline</i>Mis clientes</a></li>
@@ -129,6 +122,10 @@
       <li class="itemMenu">
         <div id="topVentas" class="white-text center"></div>
       </li>
+      {% else %}
+      <li class="itemMenu {% if pag == 'referidos' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/referido"><i class="material-icons">star</i>Referidos</a></li>
+      <li class="itemMenu {% if pag == 'reporte2' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/reporte_referido"><i class="material-icons">list</i>Reporte Referido</a></li>
+      {% endif %}
       <li class="containerAvatar valign-wrapper">
         <div class="avatarComprador" style="top: 2px;">
           <a class="sinPadding"href="{{base_url()}}usuario/perfil">
@@ -185,7 +182,9 @@
      }
   setInterval("actualizar()",100000);
     $(document).ready(function(){
+      var rol = {{ usuario.rol|json_encode() }};
       var xx = 0;
+      if (rol == 5){
       $.ajax({
           data:{'xx':xx},
           type:"POST",
@@ -267,6 +266,7 @@
             }
         })
       });
+          }
     });
   </script>
   {% block script %} {% endblock %}
