@@ -265,7 +265,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					$agencia = $this->input->post('agencia');
 					$estado = $this->input->post('estado');
 					$Pac_Envio = $this->input->post('Pac_Envio');
-					$registro = $this->gestionModel->updatePedido($Pac_IdPago_Compra,$Usu_IdUsuario,$nombre,$dni,$telefono,$ruc,$direccion,$referencia,$agencia,$estado,$Pac_Envio);
+					$observacion = $this->input->post('observacion');
+					$registro = $this->gestionModel->updatePedido($Pac_IdPago_Compra,$Usu_IdUsuario,$nombre,$dni,$telefono,$ruc,$direccion,$referencia,$agencia,$estado,$Pac_Envio,$observacion);
 					echo $registro;
 					}
         }

@@ -161,106 +161,128 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
       </nav> 
     </div> 
   </header>
-";
-        // line 113
-        echo "    <ul id=\"slide-out\" class=\"side-nav fixed grey darken-4 z-depth-3 menuTex\" style=\"z-index:9000;\"> 
+    <ul id=\"slide-out\" class=\"side-nav fixed grey darken-4 z-depth-3 menuTex\" style=\"z-index:9000;\"> 
       <li class=\"headerMenu center valign-wrapper\">
         <div class=\"logoIcon\">
           <a href=\"";
-        // line 116
+        // line 108
         echo base_url();
         echo "\"><img alt=\"Pormayor.pe - Vende facilito, Compra segurito\" src=\"";
         echo ($context["ruta_img"] ?? null);
         echo "LogoPositivo.svg\" class=\"valign-wrapper\" height=\"40\"></a>
         </div>
       </li>
+      ";
+        // line 111
+        if (($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 5)) {
+            // line 112
+            echo "      <li class=\"itemMenu ";
+            if ((($context["pag"] ?? null) == "perfil")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/perfil\"><i class=\"material-icons\">sentiment_very_satisfied</i>Mi Perfil</a></li>
       <li class=\"itemMenu ";
-        // line 119
-        if ((($context["pag"] ?? null) == "perfil")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/perfil\"><i class=\"material-icons\">sentiment_very_satisfied</i>Mi Perfil</a></li>
+            // line 113
+            if ((($context["pag"] ?? null) == "crear")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/crear\"><i class=\"material-icons\">person_add</i>Crear cliente</a></li>
       <li class=\"itemMenu ";
-        // line 120
-        if ((($context["pag"] ?? null) == "crear")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/crear\"><i class=\"material-icons\">person_add</i>Crear cliente</a></li>
+            // line 114
+            if ((($context["pag"] ?? null) == "listado")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/listado\"><i class=\"material-icons\">person_outline</i>Mis clientes</a></li>
       <li class=\"itemMenu ";
-        // line 121
-        if ((($context["pag"] ?? null) == "listado")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/listado\"><i class=\"material-icons\">person_outline</i>Mis clientes</a></li>
+            // line 115
+            if ((($context["pag"] ?? null) == "misventas")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/misventas\"><i class=\"material-icons\">person_outline</i>Mis ventas <span class=\"new badge red ventaN\"></span></a></li>
       <li class=\"itemMenu ";
-        // line 122
-        if ((($context["pag"] ?? null) == "misventas")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/misventas\"><i class=\"material-icons\">person_outline</i>Mis ventas <span class=\"new badge red ventaN\"></span></a></li>
+            // line 116
+            if ((($context["pag"] ?? null) == "listado_clientes")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/listado_clientes\"><i class=\"material-icons\">group</i>Clientes registrados</a></li>
       <li class=\"itemMenu ";
-        // line 123
-        if ((($context["pag"] ?? null) == "listado_clientes")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/listado_clientes\"><i class=\"material-icons\">group</i>Clientes registrados</a></li>
+            // line 117
+            if ((($context["pag"] ?? null) == "ventas")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/ventas\"><i class=\"material-icons\">money</i>Ventas</a></li>
       <li class=\"itemMenu ";
-        // line 124
-        if ((($context["pag"] ?? null) == "ventas")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/ventas\"><i class=\"material-icons\">money</i>Ventas</a></li>
+            // line 118
+            if ((($context["pag"] ?? null) == "hoy")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/hoy\"><i class=\"material-icons\">speaker_notes</i>Hoy</a></li>
       <li class=\"itemMenu ";
-        // line 125
-        if ((($context["pag"] ?? null) == "hoy")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/hoy\"><i class=\"material-icons\">speaker_notes</i>Hoy</a></li>
+            // line 119
+            if ((($context["pag"] ?? null) == "stock")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/stock\"><i class=\"material-icons\">grid_on</i>Stock</a></li>
       <li class=\"itemMenu ";
-        // line 126
-        if ((($context["pag"] ?? null) == "stock")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/stock\"><i class=\"material-icons\">grid_on</i>Stock</a></li>
+            // line 120
+            if ((($context["pag"] ?? null) == "reporte")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/reporte\"><i class=\"material-icons\">list</i>Reporte</a></li>
       <li class=\"itemMenu ";
-        // line 127
-        if ((($context["pag"] ?? null) == "reporte")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/reporte\"><i class=\"material-icons\">list</i>Reporte</a></li>
-      <li class=\"itemMenu ";
-        // line 128
-        if ((($context["pag"] ?? null) == "comision")) {
-            echo "pormayor black-text";
-        }
-        echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
-        echo base_url();
-        echo "vnd/comision\"><i class=\"material-icons\">star</i>Comisiones</a></li>
+            // line 121
+            if ((($context["pag"] ?? null) == "comision")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/comision\"><i class=\"material-icons\">star</i>Comisiones</a></li>
       <li class=\"itemMenu\">
         <div id=\"topVentas\" class=\"white-text center\"></div>
       </li>
-      <li class=\"containerAvatar valign-wrapper\">
+      ";
+        } else {
+            // line 126
+            echo "      <li class=\"itemMenu ";
+            if ((($context["pag"] ?? null) == "referidos")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/referido\"><i class=\"material-icons\">star</i>Referidos</a></li>
+      <li class=\"itemMenu ";
+            // line 127
+            if ((($context["pag"] ?? null) == "reporte2")) {
+                echo "pormayor black-text";
+            }
+            echo "\"><div class=\"acentBar\"></div><a class=\"waves-effect\" href=\"";
+            echo base_url();
+            echo "vnd/reporte_referido\"><i class=\"material-icons\">list</i>Reporte Referido</a></li>
+      ";
+        }
+        // line 129
+        echo "      <li class=\"containerAvatar valign-wrapper\">
         <div class=\"avatarComprador\" style=\"top: 2px;\">
           <a class=\"sinPadding\"href=\"";
-        // line 134
+        // line 131
         echo base_url();
         echo "usuario/perfil\">
             <i style=\"font-size: 50px; color: rgba(255,255,255,0.8)\" class=\"material-icons\">account_circle</i>
@@ -268,7 +290,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div>
         <div class=\"avatarContainerComprador flow-text\" style=\"top: 15px;\">
           <span class=\"avatarText1\">";
-        // line 139
+        // line 136
         echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
         echo "</span>
         </div>
@@ -277,13 +299,13 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
     </ul>
 
   ";
-        // line 145
+        // line 142
         $this->displayBlock('content', $context, $blocks);
         echo " 
 
   <footer class=\"inner page-footer grey darken-4 text-white\">
       ";
-        // line 148
+        // line 145
         if ((($context["userAgent"] ?? null) == "PC")) {
             echo "         
         <div class=\"footer-copyright pormayorAccent center\">
@@ -293,7 +315,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div>
       ";
         } else {
-            // line 155
+            // line 152
             echo "        <div class=\"footerMovil\">         
         </div>
         <div class=\"footer-copyright pormayorAccent center\">
@@ -301,32 +323,32 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         </div> 
       ";
         }
-        // line 161
+        // line 158
         echo "    </footer>
 
   ";
-        // line 163
+        // line 160
         $this->displayBlock('modal', $context, $blocks);
         echo "  
   ";
-        // line 165
+        // line 162
         echo "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 166
+        // line 163
         echo base_url("public/intranet/js/jquery.validate.min.js");
         echo "\"></script> 
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 167
+        // line 164
         echo base_url("public/intranet/js/materialize.js");
         echo "\"></script>
   <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 168
+        // line 165
         echo base_url("public/intranet/js/jquery-confirm.min.js");
         echo "\"></script> 
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js\"></script>
   <script src=\"https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js\"></script>
   <script> var base_url = \"";
-        // line 171
+        // line 168
         echo base_url();
         echo "\";</script>
   <script type=\"text/javascript\">
@@ -345,7 +367,12 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
      }
   setInterval(\"actualizar()\",100000);
     \$(document).ready(function(){
+      var rol = ";
+        // line 185
+        echo twig_jsonencode_filter($this->getAttribute(($context["usuario"] ?? null), "rol", array()));
+        echo ";
       var xx = 0;
+      if (rol == 5){
       \$.ajax({
           data:{'xx':xx},
           type:\"POST\",
@@ -427,6 +454,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
             }
         })
       });
+          }
     });
   </script>
   ";
@@ -443,13 +471,13 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
         echo " ";
     }
 
-    // line 145
+    // line 142
     public function block_content($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 163
+    // line 160
     public function block_modal($context, array $blocks = array())
     {
         echo " ";
@@ -473,7 +501,7 @@ class __TwigTemplate_2bb4b7ba7234709cc7fb705a89e1845aeddba32811ec6beab75b7f6608d
 
     public function getDebugInfo()
     {
-        return array (  459 => 272,  453 => 163,  447 => 145,  441 => 72,  436 => 273,  434 => 272,  330 => 171,  324 => 168,  320 => 167,  316 => 166,  313 => 165,  309 => 163,  305 => 161,  297 => 155,  287 => 148,  281 => 145,  272 => 139,  264 => 134,  251 => 128,  243 => 127,  235 => 126,  227 => 125,  219 => 124,  211 => 123,  203 => 122,  195 => 121,  187 => 120,  179 => 119,  171 => 116,  166 => 113,  155 => 97,  151 => 96,  143 => 91,  123 => 73,  121 => 72,  59 => 13,  53 => 12,  49 => 11,  42 => 7,  30 => 6,  23 => 1,);
+        return array (  487 => 272,  481 => 160,  475 => 142,  469 => 72,  464 => 273,  462 => 272,  372 => 185,  352 => 168,  346 => 165,  342 => 164,  338 => 163,  335 => 162,  331 => 160,  327 => 158,  319 => 152,  309 => 145,  303 => 142,  294 => 136,  286 => 131,  282 => 129,  273 => 127,  264 => 126,  252 => 121,  244 => 120,  236 => 119,  228 => 118,  220 => 117,  212 => 116,  204 => 115,  196 => 114,  188 => 113,  179 => 112,  177 => 111,  169 => 108,  155 => 97,  151 => 96,  143 => 91,  123 => 73,  121 => 72,  59 => 13,  53 => 12,  49 => 11,  42 => 7,  30 => 6,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

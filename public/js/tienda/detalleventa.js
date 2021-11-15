@@ -383,6 +383,7 @@ $(document).on('click', '.updateCliente', function(){
     var agencia = $('.ageV').text();
     var estado = $('.selecEstado :selected').val();
     var Pac_Envio = $('.envioV').text();
+    var observacion = $('#pObservacion').val();
 
 
     $.ajax({
@@ -398,6 +399,7 @@ $(document).on('click', '.updateCliente', function(){
         'agencia' : agencia,
         'estado' : estado,
         'Pac_Envio' : Pac_Envio,
+        'observacion' : observacion
         },
         type: "POST",
         url: base_url+'vnd/updatePedido',

@@ -86,10 +86,7 @@
 		    						<td class="negrita">VENDEDOR</td>
 		    						<td class="">{{venta.vendedor}}</td>
 		    					</tr>
-		    				</table>
-		    				<div class=" center">
-	    					<a class="btn green updateCliente" data-usu="{{venta.Usu_IdUsuario}}" data-idp="{{idventa}}" >Guardar cambios</a>		    				
-		    			</div>
+		    				</table>		    				
 		    			</div>	
 	    				<div class="col s12 l6" style="padding-bottom: 10px;">
 	    				<table class="bordered striped">
@@ -119,63 +116,51 @@
 	    					</tr>
 	    				</table>
 		    			</div>
-		    			
-		    			{# ----- #}
-{# 		    			<div class="col s12 l6">
-	    					<ul class="collection with-header">
-	    						<li class="collection-header colorPrincipal"><h6><b><i class="material-icons left">person</i>DATOS CLIENTE</b></h6></li>
-	    						<li class="collection-item pSmall"><b>NOMBRE COMPLETO:</b> {% if venta.Per_Nombre %}{{venta.Per_Nombre}}{% else %}{{venta.nombr}}{% endif %}</li>
-	    						<li class="collection-item pSmall"><b>D.N.I:</b> {% if venta.Per_Dni %}{{venta.Per_Dni}}{% else %}{{venta.dni}}{% endif %}</li>
-	    						<li class="collection-item pSmall"><b>TELÉFONO: {{compra_info.Pci_Telefono}}</b> <a href="https://api.whatsapp.com/send?phone=51{{compra_info.Pci_Telefono}}&text=Hola,%20por%20favor%20confirme%20su%20compra%20en%20PorMayor.pe%20para%20realizar%20el%20envío."><img src="{{ruta_img}}/wa.png" height="25" class="positionRelative right"></a></li>
-	    						<li class="collection-item pSmall"><b>FECHA:</b> {{venta.Pac_FechaRegistro}}</li>
-	    						{% if compra_info.Pci_Ruc %}
-	    						<li class="collection-item green center">SOLICITO FACTURA</li>
-	    						<li class="collection-item pSmall"><b>RUC:</b> {{compra_info.Pci_Ruc}}</li>
-	    						{% endif %}
-	    						<li class="collection-item pSmall">Vendedor:<b>{{venta.vendedor}}</b></li>
-	    					</ul>
-		    			</div>	
-	    				<div class="col s12 l6">
-	    					<ul class="collection with-header">
-	    						<li class="collection-header colorPrincipal"><h6><b><i class="material-icons left">local_shipping</i>DIRECCIÓN DE ENVIO</b></h6></li>
-	    						<li class="collection-item pSmall"><b>DEPARTEMANTO:</b> {{compra_info.region}}</li>
-	    						<li class="collection-item pSmall"><b>PROVINCIA:</b> {{compra_info.provincia}}</li>
-	    						<li class="collection-item pSmall"><b>DISTRITO:</b> {{compra_info.distrito}}</li>
-	    						<li class="collection-item pSmall"><b>DIRECCIÓN:</b>{% if venta.Pac_Banco == 'TIENDA' %} <b>RETIRO EN TIENDA </b> {% endif %} {{compra_info.Pci_Direccion}} {{compra_info.Pci_Lote}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}</li>
-	    					</ul>
-		    			</div> #}
+		    			<div class="row">
+						    <form class="col s12">
+						      <div class="row">
+						        <div class="input-field col s12">
+						          <textarea id="pObservacion" class="materialize-textarea">{{ venta.Pac_Observacion }}</textarea>
+						          <label for="textarea1">OBSERVACIÓN DEL PEDIDO</label>
+						        </div>
+						      </div>
+						    </form>
+						    <div class=" center">
+	    						<a class="btn green updateCliente" data-usu="{{venta.Usu_IdUsuario}}" data-idp="{{idventa}}" >Guardar cambios</a>  				
+		    				</div>
+						</div>
 		    			<div class="col s12 l12 green lighten-5" >		    				
-			    			<table class="bordered centered">
-			            <thead>
-			            	<tr>
-			            		<th>Medio</th>
-			            		<th>Monto</th>
-			            		<th>Estado</th>
-			            		<th>#</th>
-			            		<th>Fecha</th>
-			            		<th></th>
-			            	</tr>
-			            </thead>
-			            <tbody>    
-			            {% set tocom = 0 %}
-			            {% set cantVauche = vauche|length %}         	
-			            {% set veriV = 0 %}         	
-			            	{% for v in vauche %}
-			            		<tr>
-			            			<td>{{v.Pvoc_MedioPago}}</td>
-			            			<td>{{v.Pvoc_Monto}}</td>
-			            			<td>{% if v.Pvoc_EstadoComprobante == 0 %}<span class="new badge red">PENDIENTE</span>{% else %}<span class="new badge green">VERIFICADO</span>{% endif %}</td>
-			            			<td>{{v.Pvoc_NumComprobante}}</td>
-			            			<td>{{v.Pvoc_FechaComprobante}}</td>
-			            			<td><img src="{{ruta_img}}/vauche/{{v.Pvoc_LogoPago}}" class="materialboxed" width="30px"></td>
-			            		</tr>
-			            		{% set veriV = veriV + v.Pvoc_EstadoComprobante %}
-			            		{% set tocom = tocom + v.Pvoc_Monto %}
-			            	{% endfor %}
-			            </tbody>
-		            </table><br>
+			    		<table class="bordered centered">
+				            <thead>
+				            	<tr>
+				            		<th>Medio</th>
+				            		<th>Monto</th>
+				            		<th>Estado</th>
+				            		<th>#</th>
+				            		<th>Fecha</th>
+				            		<th></th>
+				            	</tr>
+				            </thead>
+				            <tbody>    
+				            {% set tocom = 0 %}
+				            {% set cantVauche = vauche|length %}
+				            {% set veriV = 0 %}         	
+				            	{% for v in vauche %}
+				            		<tr>
+				            			<td>{{v.Pvoc_MedioPago}}</td>
+				            			<td>{{v.Pvoc_Monto}}</td>
+				            			<td>{% if v.Pvoc_EstadoComprobante == 0 %}<span class="new badge red">PENDIENTE</span>{% else %}<span class="new badge green">VERIFICADO</span>{% endif %}</td>
+				            			<td>{{v.Pvoc_NumComprobante}}</td>
+				            			<td>{{v.Pvoc_FechaComprobante}}</td>
+				            			<td><img src="{{ruta_img}}/vauche/{{v.Pvoc_LogoPago}}" class="materialboxed" width="30px"></td>
+				            		</tr>
+				            		{% set veriV = veriV + v.Pvoc_EstadoComprobante %}
+				            		{% set tocom = tocom + v.Pvoc_Monto %}
+				            	{% endfor %}
+				            </tbody>
+		            	</table>
+		            	<br>
 		    			</div>
-
 	    				<div class="col s12 l12">
 	    					{% if venta.Pac_Estado == 1 or venta.Pac_Estado == 2 %}
 	    					<a data-target="modalProducto" class="btn-flat modal-trigger"><i class="material-icons left">add</i>Agregar producto</a>

@@ -11,7 +11,7 @@
 
         function get_compra_directa_q($Pac_IdPago_Compra)
         {
-            $this->db->select('Pac_Banco, Pac_CodPago, Pac_Estado, Pac_Envio, Pac_FechaRegistro, Pac_IdPago_Compra, Pac_Total, usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Dni,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as vendedor');
+            $this->db->select('Pac_Banco, Pac_CodPago, Pac_Estado, Pac_Envio, pac.Pac_Observacion,Pac_FechaRegistro, Pac_IdPago_Compra, Pac_Total, usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Dni,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as vendedor');
             $this->db->from('pago_compra as pac');
             $this->db->join('usuario as usu','ON usu.Usu_IdUsuario = pac.Usu_IdUsuario', 'left');
             $this->db->join('persona as per','ON per.Per_IdPersona = usu.Per_IdPersona', 'left');
@@ -90,7 +90,7 @@
 
         }       
 
-        function updatePedido($Pac_IdPago_Compra,$Usu_IdUsuario,$nombre,$dni,$telefono,$ruc,$direccion,$referencia,$agencia,$estado,$Pac_Envio){
+        function updatePedido($Pac_IdPago_Compra,$Usu_IdUsuario,$nombre,$dni,$telefono,$ruc,$direccion,$referencia,$agencia,$estado,$Pac_Envio,$observacion){
 
             $this->db->select('Per_IdPersona');
             $this->db->from('usuario');
@@ -106,6 +106,7 @@
 
             $this->db->set('Pac_Banco', $estado);
             $this->db->set('Pac_Envio', $Pac_Envio);
+            $this->db->set('Pac_Observacion', $observacion);
             $this->db->where('Pac_IdPago_Compra', $Pac_IdPago_Compra);
             $this->db->update('pago_compra');
 
