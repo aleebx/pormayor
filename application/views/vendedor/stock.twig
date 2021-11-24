@@ -16,6 +16,7 @@
                 <th>PRODUCTO</th>
                 <th>VARIACIÓN</th>
                 <th>PRECIO</th>
+                <th>PRECIO CAJÓN</th>
                 <th>DISPONIBLE</th>
                 <th>RESERVADO</th>
             </tr>
@@ -28,6 +29,9 @@
                   <td><a href="https://pormayor.pe/productos/dp/pormayor-{{pro.Pro_IdProducto}}" target="_blank" class="negrita">{{pro.Pro_Nombre}}</a></td>
                   <td>{{pro.SKU_Color}}</td>
                   <td class="fontD2">S/ {{pro.Pro_PrecioMinimo}}</td>
+                  {% set gan = pro.Pro_PrecioMinimo -  pro.PrecioCompra %}
+                  {% set porc = (gan * 100) / pro.Pro_PrecioMinimo %}
+                  <td class="fontD2">{{porc|round}}</td>
                   <td>{{pro.SKU_StockDisponible}}</td>
                   <td>{{pro.SKU_Reservado}}</td>
                 </tr>

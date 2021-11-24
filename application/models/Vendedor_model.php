@@ -160,7 +160,7 @@ class Vendedor_model extends CI_Model
     }
 
     function stock_vendedor(){
-        $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, sku.SKU_Color, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.SKU_StockDisponible, sku.SKU_Reservado,pro.Pro_PrecioMinimo');
+        $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, sku.SKU_Color, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.SKU_StockDisponible, sku.SKU_Reservado,pro.Pro_PrecioMinimo,(SELECT Ppv_PrecioUnitarioCompra FROM producto_proveedor prp WHERE prp.Pro_IdProducto = pro.Pro_IdProducto ORDER BY prp.Ppv_FechaRegistro DESC LIMIT 1) as PrecioCompra');
         $this->db->from('producto as pro');
         $this->db->join('sku as sku','sku.producto_Pro_IdProducto = pro.Pro_IdProducto');
         $this->db->order_by('pro.Pro_FechaModificacion','DESC');
