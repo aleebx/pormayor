@@ -140,12 +140,17 @@ src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
 			</div>
 		</div>
 		<div class="row">
+			<div class="col l12 center">
+				<a href="https://wa.link/etc87p" class="negrita black-text" style="font-size: 3em;">COTIZA CON NOSOTROS COMPRAS POR VOLUMEN 900719941</a></span>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col l12 center">|
 				{% for v in vendedores %}
 					<span class="fontA"><i class="material-icons">headset_mic</i>{{ v.Usu_Nombre }} <a href="https://api.whatsapp.com/send?phone=51{{v.Per_Telefono}}&text=Hola,%20quiero%20mas%20informacion.">{{ v.Per_Telefono }}</a>|</span>
 				{% endfor %}
 			</div>
-		</div>
+		</div>		
 		<div class="row">
 		  	{% for pro in productos %}
 		  	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
