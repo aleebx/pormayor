@@ -292,13 +292,18 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
 \t\t\t</div>
 \t\t</div>
 \t\t<div class=\"row\">
+\t\t\t<div class=\"col l12 center\">
+\t\t\t\t<a href=\"https://wa.link/etc87p\" class=\"negrita black-text\" style=\"font-size: 3em;\">COTIZA CON NOSOTROS COMPRAS POR VOLUMEN 900719941</a></span>
+\t\t\t</div>
+\t\t</div>
+\t\t<div class=\"row\">
 \t\t\t<div class=\"col l12 center\">|
 \t\t\t\t";
-        // line 144
+        // line 149
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["vendedores"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["v"]) {
-            // line 145
+            // line 150
             echo "\t\t\t\t\t<span class=\"fontA\"><i class=\"material-icons\">headset_mic</i>";
             echo $this->getAttribute($context["v"], "Usu_Nombre", array());
             echo " <a href=\"https://api.whatsapp.com/send?phone=51";
@@ -311,16 +316,16 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 147
+        // line 152
         echo "\t\t\t</div>
-\t\t</div>
+\t\t</div>\t\t
 \t\t<div class=\"row\">
 \t\t  \t";
-        // line 150
+        // line 155
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["productos"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 151
+            // line 156
             echo "\t\t  \t<a itemprop=\"url\" href=\"";
             echo base_url();
             echo "productos/dp/";
@@ -331,13 +336,19 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "\">
 \t\t        <div class=\"col s6 m6 l2 black-text\" style=\"padding:5px\" data-cd=\"";
-            // line 152
+            // line 157
             echo $this->getAttribute($context["pro"], "Pro_PM", array());
             echo "\">
 \t\t          <div class=\"card hoverable z-depth-0\">
-\t\t            <div class=\"center\" style=\"height:190px;\">
+\t\t          \t";
+            // line 159
+            if (($this->getAttribute($context["pro"], "Pro_Saldo", array()) == 1)) {
+                echo "<span class=\"badge red white-text\">OFERTA</span>";
+            }
+            // line 160
+            echo "\t\t            <div class=\"center\" style=\"height:190px;\">
 \t\t              <img alt=\"";
-            // line 155
+            // line 161
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -349,29 +360,29 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
 \t\t            <div class=\"card-content center\" style=\"height:100px;\">
 \t\t              <p>
 \t\t              \t<span class=\"truncate\">";
-            // line 159
+            // line 165
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "</span>
 \t\t              \t<small>COD: ";
-            // line 160
+            // line 166
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "</small><br>
 \t\t              \t";
-            // line 161
+            // line 167
             if (($this->getAttribute($context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 162
+                // line 168
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x mayor<span class=\"new badge blue left\">PRE-VENTA</span>
 \t\t              \t";
             } else {
-                // line 164
+                // line 170
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x mayor</label>
 \t\t              \t";
             }
-            // line 166
+            // line 172
             echo "\t\t              </p>
 \t\t            </div>
 \t\t          </div>
@@ -382,35 +393,35 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 172
+        // line 178
         echo "\t    </div>
 \t</main>\t
 ";
     }
 
-    // line 175
+    // line 181
     public function block_script($context, array $blocks = array())
     {
-        // line 176
+        // line 182
         echo "\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 \t\t<script src=\"https://unpkg.com/swiper/swiper-bundle.min.js\"></script>
 \t\t<script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
 \t    <script>
 \t      var base_url = \"";
-        // line 180
+        // line 186
         echo base_url();
         echo "\";
 \t      var loading_screen = pleaseWait({
 \t          logo: '',
 \t          backgroundColor: \"#FEC00F\",
 \t          loadingHtml: \"<img src='";
-        // line 184
+        // line 190
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
 \t        });
 \t    </script>
 \t\t<script src=\"";
-        // line 187
+        // line 193
         echo base_url("public/");
         echo "js/index.js?v=5\"></script>
 ";
@@ -428,7 +439,7 @@ src=\"https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1\"
 
     public function getDebugInfo()
     {
-        return array (  414 => 187,  408 => 184,  401 => 180,  395 => 176,  392 => 175,  386 => 172,  375 => 166,  369 => 164,  363 => 162,  361 => 161,  357 => 160,  353 => 159,  341 => 155,  335 => 152,  324 => 151,  320 => 150,  315 => 147,  302 => 145,  298 => 144,  289 => 138,  285 => 137,  280 => 135,  276 => 134,  271 => 132,  267 => 131,  262 => 129,  258 => 128,  251 => 124,  247 => 123,  242 => 121,  238 => 120,  233 => 118,  229 => 117,  224 => 115,  220 => 114,  216 => 112,  208 => 107,  204 => 105,  194 => 98,  188 => 94,  186 => 93,  182 => 91,  173 => 85,  169 => 84,  163 => 80,  157 => 76,  147 => 70,  143 => 69,  140 => 68,  130 => 61,  126 => 60,  123 => 59,  121 => 58,  112 => 52,  108 => 51,  101 => 47,  95 => 46,  92 => 45,  90 => 44,  85 => 41,  83 => 40,  80 => 39,  77 => 38,  54 => 18,  48 => 15,  46 => 14,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  425 => 193,  419 => 190,  412 => 186,  406 => 182,  403 => 181,  397 => 178,  386 => 172,  380 => 170,  374 => 168,  372 => 167,  368 => 166,  364 => 165,  352 => 161,  349 => 160,  345 => 159,  340 => 157,  329 => 156,  325 => 155,  320 => 152,  307 => 150,  303 => 149,  289 => 138,  285 => 137,  280 => 135,  276 => 134,  271 => 132,  267 => 131,  262 => 129,  258 => 128,  251 => 124,  247 => 123,  242 => 121,  238 => 120,  233 => 118,  229 => 117,  224 => 115,  220 => 114,  216 => 112,  208 => 107,  204 => 105,  194 => 98,  188 => 94,  186 => 93,  182 => 91,  173 => 85,  169 => 84,  163 => 80,  157 => 76,  147 => 70,  143 => 69,  140 => 68,  130 => 61,  126 => 60,  123 => 59,  121 => 58,  112 => 52,  108 => 51,  101 => 47,  95 => 46,  92 => 45,  90 => 44,  85 => 41,  83 => 40,  80 => 39,  77 => 38,  54 => 18,  48 => 15,  46 => 14,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
