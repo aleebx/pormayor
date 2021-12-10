@@ -156,7 +156,7 @@ src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
 		  	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
 		        <div class="col s6 m6 l2 black-text" style="padding:5px" data-cd="{{pro.Pro_PM}}">
 		          <div class="card hoverable z-depth-0">
-		          	{% if pro.Pro_Saldo == 1 %}<span class="badge red white-text">OFERTA</span>{% endif %}
+		          	{# {% if pro.Pro_Saldo == 1 %}<span class="badge red white-text">OFERTA</span>{% endif %} #}
 		            <div class="center" style="height:190px;">
 		              <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo"data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
 		            </div>
