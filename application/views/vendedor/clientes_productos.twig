@@ -1,0 +1,51 @@
+{% extends "layout/intranet/template_ven.twig" %}
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
+{% endblock %}
+{% block content %}
+  <main class="">
+    <div class="card">
+      <div class="card-content">
+      {# <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> #}
+        <h4>PRODUCTOS SEGUN CLIENTES</h4>
+        <table id="listado">
+          <thead>
+            <tr>
+                <th>CLIENTE - TLF</th>
+                <th>PRODUCTO</th>
+                {# <th>VENTAS REALIZADAS</th> #}
+                {# <th>CANTIDAD COMPRADA</th> #}
+            </tr>
+            {# su.Usu_IdUsuario, per.Per_Nombre, per.Per_Telefono,pro.Pro_Nombre, sum(pcd.Pcd_Cantidad) as total, count(pac.Pac_IdPago_Compra) as cantidadV #}
+          </thead>
+          <tbody>
+              {% for pro in productos %}
+                <tr>
+                  <td>{{pro.Per_Nombre}} | {{pro.Per_Telefono}}</td>
+                  <td>{{pro.Pro_Nombre}}</td>
+                  {# <td>{{pro.total}}</td> #}
+                  {# <td>{{pro.cantidadV}}</td> #}
+                </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <div id="modalGes" class="modal" style="z-index:9999 !important;width: 50%!important;">
+      <div class="modal-content" id="loadEdit"></div>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+  <script>
+  $(document).ready( function () {
+      $('#listado').DataTable({
+        "responsive": true
+      });
+    });
+  </script>
+{% endblock %}

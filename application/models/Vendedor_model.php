@@ -100,6 +100,20 @@ class Vendedor_model extends CI_Model
         return $query->result();
     }
 
+    function get_clientes_productos($id_vendedor){
+        $this->db->select('usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Telefono,pro.Pro_Nombre');
+        $this->db->from('usuario as usu');
+        $this->db->join('persona as per','per.Per_IdPersona = usu.Per_IdPersona');
+        $this->db->from('pago_compra as pac','pac.Usu_IdUsuario = usu.Usu_IdUsuario');
+        $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
+        $this->db->join('sku as sku','sku.SKU_IdSKU = pcd.Pcd_IdSKU');
+        $this->db->join('producto as pro','pro.Pro_IdProducto = sku.producto_Pro_IdProducto');
+        $this->db->where('usu.Usu_IdUsuario_Ven', $id_vendedor);
+        // $this->db->group_by('usu.Usu_IdUsuario');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function get_clientes_referido_mes($id_vendedor,$mes){
         $this->db->select('usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Telefono, usu.Usu_Created,pac.Pac_Total,pac.Pac_FechaRegistro');
         $this->db->from('usuario as usu');

@@ -48,6 +48,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+		function clientes_productos()
+		{
+			$data = $this->acl->load_datos();
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
+			// $data['usuario']['id_usuario'] = 521;
+			$data['productos'] = $this->vendedorModel->get_clientes_productos($data['usuario']['id_usuario']);
+			$data['pag'] = "productos";
+			$this->twig->parse('vendedor/clientes_productos.twig', $data);
+			}else{
+				redirect ('');
+			}
+		}
+
 		function reporte_referido()
 		{
 			$data = $this->acl->load_datos();
