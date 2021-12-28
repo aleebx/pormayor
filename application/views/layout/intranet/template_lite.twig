@@ -19,11 +19,9 @@
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://pormayor.pe/img/logoPM2.jpg" />
 {% endif %}
-<script data-ad-client="ca-pub-6014646385337670" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <meta name="description" content="{% if categoriaFlag == true %}{% if categoria_seo.Cat_Meta_Description %}{{categoria_seo.Cat_Meta_Description}}{% else %}{{categoria_seo.Cat_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% elseif subcategoriaFlag == true %}{% if subcategoria_seo.Suc_Meta_Description %}{{subcategoria_seo.Suc_Meta_Description}}{% else %}{{subcategoria_seo.Suc_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% elseif detalleFlag == true %}{% if detalle_seo.Des_Meta_Description %}{{detalle_seo.Des_Meta_Description}}{% else %}{{detalle_seo.Des_Nombre}} al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. {% endif %}{% else %}Compra y vende al por mayor en Lima.Crea tu propia tienda virtual mayorista o compra al por mayor para tu negocio fácil y rápido aquí.{% endif %}">
 <meta name="keywords" content="{% if categoriaFlag == true %}{% if categoria_seo.Cat_Keywords %}{{categoria_seo.Cat_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %}{% elseif subcategoriaFlag == true %}{% if subcategoria_seo.Suc_Keywords %}{{subcategoria_seo.Suc_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %}{% elseif detalleFlag == true %}{% if detalle_seo.Des_Keywords %}{{detalle_seo.Des_Keywords}}{% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima{% endif %} {% else %}Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima,{% endif %}">
 <link rel="icon" href="{{ruta_img}}logo.png">
-{# <link rel="canonical" href="https://pormayor.pe"/> #}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen">
 <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/materialize.min.css')}}"  media="screen"/>
 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"  media="screen"/>
@@ -61,7 +59,6 @@ src="https://www.facebook.com/tr?id=258247118783393&ev=PageView&noscript=1"
 <!-- DO NOT MODIFY -->
 <!-- End Facebook Pixel Code -->
 {% block head %} {% endblock %}
-<script data-ad-client="ca-pub-6014646385337670" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <style type="text/css">
   .autocomplete-content{width: 40vw!important;}
   .w100 {width:200% !important}
@@ -70,17 +67,6 @@ src="https://www.facebook.com/tr?id=258247118783393&ev=PageView&noscript=1"
   .autocomplete-content{width: 80vw!important;}
   }
   </style>
-  <!-- Hotjar Tracking Code for https://pormayor.pe -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1159548,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
 </head>
 <body id="inicio" class="">
   <div id="api-chat-bot"></div>
@@ -124,12 +110,10 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1"
 /></noscript>
 <!-- Messenger plugin de chat Code -->
-    <div id="fb-root"></div>
-
+<div id="fb-root"></div>
     <!-- Your plugin de chat code -->
     <div id="fb-customer-chat" class="fb-customerchat">
     </div>
-
     <script>
       var chatbox = document.getElementById('fb-customer-chat');
       chatbox.setAttribute("page_id", "283998535780000");
@@ -141,7 +125,6 @@ src="https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1"
           version          : 'v11.0'
         });
       };
-
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -150,9 +133,6 @@ src="https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1"
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-
-{# <img src = "https://tracker.metricool.com/c3po.jpg?hash=4962aa1e73ea9db953ec57616e950bc3" /> #}
-<!-- End Facebook Pixel Code -->
 <div class="inner">
     <ul id='dropdown1' class='dropdown-content'>
       {% if usuario.rol == 1 %}
@@ -1057,7 +1037,7 @@ src="https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1"
       <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js"></script>
-      <script src="{{base_url('public/js/template-lite.js?v=2.0')}}" defer></script>
+      <script src="{{base_url('public/js/template-lite.js?v=1512')}}" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     {% block script %} {% endblock %}
    </body>

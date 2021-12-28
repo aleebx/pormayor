@@ -22,7 +22,7 @@ $(window).on("load", function() {
 	      	subTotal2 = subTotal2 + parseFloat($(this).text());
 	    });
 
-	    if (subTotal2 >= 100) {
+	    if (subTotal2 >= 1) {
         // $('.totalResumen2').text(subTotal2.toFixed(2));
         // $('.descT').removeClass('hide');
         // $('.totalD1').removeClass('hide');

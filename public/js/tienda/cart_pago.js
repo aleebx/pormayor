@@ -24,7 +24,7 @@ $(window).on("load", function() {
         subTotal2=subTotal2 + parseFloat($(this).text());
     });
 monto_producto= subTotal2;
-    if (subTotal2 >= 100){
+    if (subTotal2 >= 1){
       descuento = 1;
       $('.totalD').removeClass('hide');
       $('.noTDC').addClass('hide');
