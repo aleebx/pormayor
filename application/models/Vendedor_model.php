@@ -144,12 +144,11 @@ class Vendedor_model extends CI_Model
     }
 
     function get_clientes_all(){
-        $this->db->select('usu.Usu_IdUsuario,per.Per_Nombre,per.Per_Telefono,(SELECT reg.name from regions as reg where reg.id = pdu.Pag_idregion) AS dep,(SELECT dis.name from districts as dis where dis.id = pdu.Pag_iddistrito) AS dis, (SELECT count(Pac_IdPago_Compra) FROM pago_compra as pac where pac.Usu_IdUsuario = usu.Usu_IdUsuario) as compras, usu.Usu_IdUsuario_Ven, usu.Usu_Created, usu.Usu_Correo,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as vendedor');
+        $this->db->select('usu.Usu_IdUsuario,per.Per_Nombre,per.Per_Telefono,(SELECT reg.name from regions as reg where reg.id = pdu.Pag_idregion) AS dep,(SELECT dis.name from districts as dis where dis.id = pdu.Pag_iddistrito) AS dis, (SELECT count(Pac_IdPago_Compra) FROM pago_compra as pac where pac.Usu_IdUsuario = usu.Usu_IdUsuario) as compras, usu.Usu_IdUsuario_Ven, usu.Usu_Created, usu.Usu_Correo,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as vendedor, usu.Usu_Activated');
         $this->db->from('usuario as usu');
         $this->db->join('persona as per','per.Per_IdPersona = usu.Per_IdPersona');
         $this->db->join('pago_direccion_usu as pdu','pdu.Usu_IdUsuario = usu.Usu_IdUsuario','left');
         $this->db->where('usu.Rol_IdRol', 4);
-        $this->db->where('usu.Usu_Activated', 1);
         $query = $this->db->get();
         return $query->result();
     }
@@ -325,6 +324,21 @@ class Vendedor_model extends CI_Model
         $this->db->update('usuario');
 
         return true;
+    } 
+
+    function estado_usuario($Usu_IdUsuario,$Usu_Activated){
+        
+        if ($Usu_Activated == 1) {
+            $this->db->set('Usu_Activated', 2);
+            $this->db->where('Usu_IdUsuario', $Usu_IdUsuario);
+            $this->db->update('usuario');
+            return true;
+        } else {
+            $this->db->set('Usu_Activated', 1);
+            $this->db->where('Usu_IdUsuario', $Usu_IdUsuario);
+            $this->db->update('usuario');
+            return true;
+        }
     } 
        
     function cambiar_estado_usu($Usu_IdUsuario){

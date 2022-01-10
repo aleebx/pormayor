@@ -848,6 +848,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    }
 		}
 
+		function estado_usuario()
+		{
+			if ($this->input->is_ajax_request()){
+				$data = $this->acl->load_datos();
+		      	$Usu_IdUsuario = $this->input->post('Usu_IdUsuario');
+		      	$Usu_Activated = $this->vendedorModel->cliente_id($Usu_Activated);
+		      	$registro = $this->vendedorModel->estado_usuario($Usu_IdUsuario,$Usu_Activated);
+		      	if ($registro) {
+		      	echo 1;	      	
+		      		}
+		    }
+		}
+
         public function detalle($Pac_IdPago_Compra=false)
         {
         	if($Pac_IdPago_Compra) {

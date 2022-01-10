@@ -3,7 +3,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 {% endblock %}
 {% block content %}
-  <main class="container">
+  <main class="">
     <div class="card">
       <div class="card-content">
         <h4>Listado de clientes - Todos los clientes registrado en PorMayor</h4>
@@ -17,6 +17,7 @@
                 <th>Teléfono</th>
                 <th>Ventas</th>
                 <th>Estado</th>
+                <th></th>
                 <th></th>
             </tr>
           </thead>
@@ -34,6 +35,14 @@
                   <td>{{c.vendedor}}</td>
                   {% endif %}
                   <td><a class="btn blue modal-trigger" id="{{c.Usu_IdUsuario}}" accessKey="{{c.Usu_Correo}}" href="#modalGes">Clave</a></td>
+                  <td>
+                  <div class="switch orange-text">
+                    <label>
+                      <input type="checkbox" class="estadoP" data-id="{{c.Usu_IdUsuario}}" data-sa="{{c.Usu_Activated}}" {% if c.Usu_Activated == 1 %}checked{% endif %} />
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                </td>
                 </tr>
               {% endfor %}
           </tbody>
@@ -91,5 +100,25 @@
               } // Callback for Modal close
           });
 });
+
+     $('.estadoP').on("click", function(){
+      console.log("data");
+        var Usu_IdUsuario = $(this).data('id');
+        var Usu_Activated = $(this).data('sa');
+         $.ajax({
+            data:{
+            'Usu_IdUsuario' : Usu_IdUsuario,
+            'Usu_Activated' : Usu_Activated
+            },
+              type: "POST",
+              url: base_url+'vnd/estado_usuario', 
+              dataType: "json",
+              success: function(data){
+                console.log(data);
+                // location.reload(true);
+             },
+            });
+      
+    });
   </script>
 {% endblock %}
