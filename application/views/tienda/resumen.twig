@@ -120,7 +120,7 @@
                     <div class="col s12 m12 l12 center sinPadding">
                       {% if usuario.logueado %}
                         {% if usuario.rol == 4 %}
-                          {% if unidPe >= 1 %}
+                          {% if unidPe >= 100 %}
                           <a href="{{base_url()}}productos/despacho" class="btn anchoTotal pormayorUnico">Comprar</a>
                           {% else %}
                             <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
@@ -129,7 +129,7 @@
                             <span class="red-text">NO PUEDES HACER COMPRA CON ESTE USUARIO</span>
                         {% endif %}
                     {% else %}
-                        {% if unidPe >= 1 %}
+                        {% if unidPe >= 100 %}
                         <a class="waves-effect waves-light btn anchoTotal pormayorUnico modal-trigger comprar_popup" data-flag="{{flag_login}}" href="#sesion_popup">Comprar</a> 
                         {% else %}
                           <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
@@ -247,7 +247,7 @@
                      <div class="col s12 center sinPadding">
                       {% if usuario.logueado %}
                         {% if usuario.rol == 4 %}
-                          {% if unidPe >= 1 %}
+                          {% if unidPe >= 100 %}
                             <a href="{{base_url()}}productos/despacho" class="btn-large anchoTotal pormayorUnico">Comprar</a>
                           {% else %}
                             <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
@@ -256,7 +256,7 @@
                             <span class="red-text">NO PUEDES HACER COMPRA CON ESTE USUARIO</span>
                         {% endif %}
                       {% else %}
-                        {% if unidPe >= 1 %}
+                        {% if unidPe >= 100 %}
                           <a class="waves-effect waves-light btn anchoTotal pormayorUnico modal-trigger comprar_popup" data-flag="{{flag_login}}" href="#sesion_popup">Comprar</a> 
                         {% else %}
                           <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
