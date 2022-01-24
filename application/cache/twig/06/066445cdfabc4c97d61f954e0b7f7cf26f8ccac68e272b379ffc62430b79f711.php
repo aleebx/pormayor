@@ -86,9 +86,7 @@ class __TwigTemplate_9dd9fc1a53d39c7e08a64c397e7d8acefee90715d7d3da380e56fe6bb30
 ";
         }
         // line 22
-        echo "<script data-ad-client=\"ca-pub-6014646385337670\" async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-<meta name=\"description\" content=\"";
-        // line 23
+        echo "<meta name=\"description\" content=\"";
         if ((($context["categoriaFlag"] ?? null) == true)) {
             if ($this->getAttribute(($context["categoria_seo"] ?? null), "Cat_Meta_Description", array())) {
                 echo $this->getAttribute(($context["categoria_seo"] ?? null), "Cat_Meta_Description", array());
@@ -115,7 +113,7 @@ class __TwigTemplate_9dd9fc1a53d39c7e08a64c397e7d8acefee90715d7d3da380e56fe6bb30
         }
         echo "\">
 <meta name=\"keywords\" content=\"";
-        // line 24
+        // line 23
         if ((($context["categoriaFlag"] ?? null) == true)) {
             if ($this->getAttribute(($context["categoria_seo"] ?? null), "Cat_Keywords", array())) {
                 echo $this->getAttribute(($context["categoria_seo"] ?? null), "Cat_Keywords", array());
@@ -140,25 +138,23 @@ class __TwigTemplate_9dd9fc1a53d39c7e08a64c397e7d8acefee90715d7d3da380e56fe6bb30
         }
         echo "\">
 <link rel=\"icon\" href=\"";
-        // line 25
+        // line 24
         echo ($context["ruta_img"] ?? null);
         echo "logo.png\">
-";
-        // line 27
-        echo "<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\" media=\"screen\">
+<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\" media=\"screen\">
 <link type=\"text/css\" rel=\"stylesheet\" href=\"";
-        // line 28
+        // line 26
         echo base_url("public/intranet/css/materialize.min.css");
         echo "\"  media=\"screen\"/>
 <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css\"  media=\"screen\"/>
 <link type=\"text/css\" rel=\"stylesheet\" href=\"";
-        // line 30
+        // line 28
         echo base_url("public/intranet/css/templates.min.css");
         echo "\"  media=\"screen\"/>
 ";
-        // line 31
+        // line 29
         $this->displayBlock('analytics', $context, $blocks);
-        // line 32
+        // line 30
         echo "<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-129372100-1\"></script>
 <script>
@@ -191,11 +187,10 @@ src=\"https://www.facebook.com/tr?id=258247118783393&ev=PageView&noscript=1\"
 <!-- DO NOT MODIFY -->
 <!-- End Facebook Pixel Code -->
 ";
-        // line 63
+        // line 61
         $this->displayBlock('head', $context, $blocks);
-        // line 64
-        echo "<script data-ad-client=\"ca-pub-6014646385337670\" async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-  <style type=\"text/css\">
+        // line 62
+        echo "  <style type=\"text/css\">
   .autocomplete-content{width: 40vw!important;}
   .w100 {width:200% !important}
   @media only screen and (max-width: 600px) {
@@ -203,24 +198,13 @@ src=\"https://www.facebook.com/tr?id=258247118783393&ev=PageView&noscript=1\"
   .autocomplete-content{width: 80vw!important;}
   }
   </style>
-  <!-- Hotjar Tracking Code for https://pormayor.pe -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1159548,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
 </head>
 <body id=\"inicio\" class=\"\">
   <div id=\"api-chat-bot\"></div>
 ";
-        // line 87
+        // line 73
         $this->displayBlock('messenger', $context, $blocks);
-        // line 88
+        // line 74
         echo "<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-P6LFJ9S\"
 height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>
@@ -260,12 +244,10 @@ fbq('track', 'PageView');
 src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
 /></noscript>
 <!-- Messenger plugin de chat Code -->
-    <div id=\"fb-root\"></div>
-
+<div id=\"fb-root\"></div>
     <!-- Your plugin de chat code -->
     <div id=\"fb-customer-chat\" class=\"fb-customerchat\">
     </div>
-
     <script>
       var chatbox = document.getElementById('fb-customer-chat');
       chatbox.setAttribute(\"page_id\", \"283998535780000\");
@@ -277,7 +259,6 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
           version          : 'v11.0'
         });
       };
-
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -286,36 +267,32 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-
-";
-        // line 155
-        echo "<!-- End Facebook Pixel Code -->
 <div class=\"inner\">
     <ul id='dropdown1' class='dropdown-content'>
       ";
-        // line 158
+        // line 138
         if (($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 1)) {
-            // line 159
+            // line 139
             echo "        <li><a href=\"";
             echo base_url();
             echo "admin/tiendas\"><i class=\"material-icons left\">settings</i>Panel</a></li>
       ";
-        } elseif (($this->getAttribute(        // line 160
+        } elseif (($this->getAttribute(        // line 140
 ($context["usuario"] ?? null), "rol", array()) == 5)) {
-            // line 161
+            // line 141
             echo "        <li><a href=\"";
             echo base_url();
             echo "vnd/ventas\"><i class=\"material-icons left\">settings</i>Panel Gestor</a></li>
       ";
         } else {
-            // line 163
+            // line 143
             echo "        <li><a href=\"";
             echo base_url();
             echo "comprador/index/\"><i class=\"material-icons left\">account_circle</i>Perfil de Usuario</a></li>
         ";
-            // line 164
+            // line 144
             if ((($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 2) || ($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 3))) {
-                // line 165
+                // line 145
                 echo "          <li><a href=\"https://";
                 echo ($context["subdominio_tienda"] ?? null);
                 echo ".";
@@ -323,24 +300,24 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 echo "/usuario/inventario/lProductos\"><i class=\"material-icons left\">settings</i>Panel Tienda</a></li>
         ";
             }
-            // line 167
+            // line 147
             echo "      ";
         }
-        // line 168
+        // line 148
         echo "      <li class=\"divider\"></li>
       <li><a class=\"cerrarSesionBtn\"><i class=\"material-icons left\">power_settings_new</i>Cerrar sesión</a></li>
     </ul>
     <ul id='dropdown2' class='dropdown-content'>
       ";
-        // line 172
+        // line 152
         if (( !twig_test_empty(($context["noticoments"] ?? null)) ||  !twig_test_empty(($context["noticotiza"] ?? null)))) {
-            // line 173
+            // line 153
             echo "        ";
             if ( !twig_test_empty(($context["noticoments"] ?? null))) {
-                // line 174
+                // line 154
                 echo "          <li style=\"width: 320px\">
             <a  href=\"";
-                // line 175
+                // line 155
                 echo base_url();
                 echo "comprador/index/respuesta_comentario\">
               <i class=\"material-icons left\">comment</i>Tu comentario <b>fue respondido </b><span class=\"pormayorUnico-text\">(Ver)</span>
@@ -348,13 +325,13 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
           </li>
         ";
             }
-            // line 180
+            // line 160
             echo "        ";
             if ( !twig_test_empty(($context["noticotiza"] ?? null))) {
-                // line 181
+                // line 161
                 echo "          <li style=\"width: 320px\">
             <a  href=\"";
-                // line 182
+                // line 162
                 echo base_url();
                 echo "comprador/index/pedidos\">
               <i class=\"material-icons left\">comment</i><b>Respondieron</b> tu cotización <span class=\"pormayorUnico-text\">(Ver)</span>
@@ -362,10 +339,10 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
           </li>
         ";
             }
-            // line 187
+            // line 167
             echo "      ";
         } else {
-            // line 188
+            // line 168
             echo "          <li >
             <a  href=\"#\">
               <span class=\"enfasisC\">No tienes notificaciones</span>
@@ -373,76 +350,74 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
           </li>
       ";
         }
-        // line 194
+        // line 174
         echo "    </ul>
 </div>
     <div class=\"navbar-fixed inner\">
       <nav class=\"z-depth-2 pormayor nav-extended\">
         <div  class=\"sinBordeBottom nav-wrapper row navRowMobile\">
           ";
-        // line 199
+        // line 179
         if ((($context["userAgent"] ?? null) == "movil")) {
-            // line 200
+            // line 180
             echo "            <div class=\"col s2 m2 l2 center hide-on-large-only colMenuButton ocultarSearch sinPadding\" style=\"height:56px\">
               <a data-activates=\"mobile-pormayor\" class=\"button-collapse centrarForzado\">
                 <img alt=\"\" src=\"";
-            // line 202
+            // line 182
             echo ($context["ruta_img"] ?? null);
             echo "menuIcon.svg\" width=\"35\">
                 ";
-            // line 203
+            // line 183
             if (( !twig_test_empty(($context["noticoments"] ?? null)) ||  !twig_test_empty(($context["noticotiza"] ?? null)))) {
-                // line 204
+                // line 184
                 echo "                  <span class=\"pormayorUnico pulse\"></span>
                 ";
             }
-            // line 206
+            // line 186
             echo "              </a>
             </div>
           ";
         }
-        // line 209
+        // line 189
         echo "          <div class=\"col s3 m2 l2 colMenuLogo ocultarSearch valign-wrapper hide-on-small-only\">
             <a href=\"";
-        // line 210
+        // line 190
         echo base_url();
         echo "\" class=\"valign-wrapper anchoTotal\">
               <img alt=\"Pomayor.pe - Vende facilito, Compra segurito\" src=\"";
-        // line 211
+        // line 191
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg\" class=\"centrarForzado\">
             </a>
           </div>     
           ";
-        // line 214
+        // line 194
         if ((($context["userAgent"] ?? null) == "PC")) {
             echo "     
               ";
-            // line 215
+            // line 195
             if ( !($context["vista_carrito_compra"] ?? null)) {
-                // line 216
+                // line 196
                 echo "          <div class=\"col l2 ocultarSearch colMenuPc sinPadding\">
             <ul>
               <li>          
- ";
-                // line 247
-                echo "              </li>
-";
-                // line 255
-                echo "            </ul>
+ 
+              </li>
+
+            </ul>
           </div>
           ";
             }
-            // line 257
+            // line 204
             echo " 
           ";
         }
-        // line 258
+        // line 205
         echo "  
           ";
-        // line 259
+        // line 206
         if ( !($context["vista_carrito_compra"] ?? null)) {
-            // line 260
+            // line 207
             echo "            <div class=\"col ";
             if ((($this->getAttribute(($context["pagina"] ?? null), "tipo", array()) == "principal") || ($this->getAttribute(($context["pagina"] ?? null), "tipo", array()) == "carrito"))) {
                 echo " m6 s8 sinPadding ";
@@ -457,44 +432,44 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             </div>
           ";
         } else {
-            // line 267
+            // line 214
             echo "            ";
             if ((($context["userAgent"] ?? null) == "PC")) {
-                // line 268
+                // line 215
                 echo "              <div class=\"col l4 fontA center grey-text text-darken-3\" > 
                 ";
-                // line 270
+                // line 217
                 echo "               </div>
             ";
             } else {
-                // line 272
+                // line 219
                 echo "              <div class=\"col s7 fontD2 center grey-text text-darken-3\" > 
                 ";
-                // line 274
+                // line 221
                 echo "               </div> 
             ";
             }
-            // line 276
+            // line 223
             echo "          ";
         }
-        // line 277
+        // line 224
         echo "          ";
         if (($this->getAttribute(($context["pagina"] ?? null), "tipo", array()) == "carrito")) {
-            // line 278
+            // line 225
             echo "            ";
             if ((($context["userAgent"] ?? null) != "PC")) {
-                // line 279
+                // line 226
                 echo "              ";
                 if ( !($context["producto_detalle"] ?? null)) {
-                    // line 280
+                    // line 227
                     echo "                <div class=\"colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only\">
                   <div class=\"cartAnimacion positionRelative\">
                     <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                    // line 282
+                    // line 229
                     echo ($context["totalc"] ?? null);
                     echo "\" ><span class=\"cantidad white-text\">0</span></span>
                     <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                    // line 283
+                    // line 230
                     echo base_url();
                     echo "productos/carrito\"><i class=\"black-text material-icons\">shopping_cart</i></a>
                     <div class=\"pormayorUnico redondeo positionAbsolute center sinUser transition hide cartTotalPointer\">
@@ -505,18 +480,18 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 </div>
               ";
                 } else {
-                    // line 291
+                    // line 238
                     echo "                ";
                     if (($this->getAttribute(($context["usuario"] ?? null), "id_tienda", array()) != $this->getAttribute(($context["producto"] ?? null), "Tie_IdTienda", array()))) {
-                        // line 292
+                        // line 239
                         echo "                  <div class=\"colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only positionRelative\">
                     <div class=\"cartAnimacion positionRelative\">
                       <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                        // line 294
+                        // line 241
                         echo ($context["totalc"] ?? null);
                         echo "\" ><span class=\"cantidad white-text\">0</span></span>
                       <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                        // line 295
+                        // line 242
                         echo base_url();
                         echo "productos/carrito\"><i class=\"black-text material-icons\">shopping_cart</i></a>
                     </div>
@@ -527,39 +502,39 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                   </div>
                 ";
                     } else {
-                        // line 303
+                        // line 250
                         echo "                  <div class=\"col center s2 m2 l2 sinPadding colMenuButton ocultarSearch\" >
                     <a class=\"waves-effect waves-black addHome anchoTotal\"><i class=\"material-icons pormayorAccent-text\">group_add</i></a>
                   </div>  
                 ";
                     }
-                    // line 307
+                    // line 254
                     echo "              ";
                 }
-                // line 308
+                // line 255
                 echo "            ";
             }
-            // line 309
+            // line 256
             echo "          ";
         }
-        // line 310
+        // line 257
         echo "         ";
         if (($this->getAttribute(($context["pagina"] ?? null), "tipo", array()) == "principal")) {
-            // line 311
+            // line 258
             echo "          ";
             if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
-                // line 312
+                // line 259
                 echo "            ";
                 if ((($context["userAgent"] ?? null) == "movil")) {
-                    // line 313
+                    // line 260
                     echo "              <div class=\"colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only positionRelative\">
                 <div class=\"cartAnimacion positionRelative\">
                   <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                    // line 315
+                    // line 262
                     echo ($context["totalc"] ?? null);
                     echo "\" ><span class=\"cantidad white-text\">0</span></span>
                   <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                    // line 316
+                    // line 263
                     echo base_url();
                     echo "productos/carrito\"><i class=\"black-text material-icons\">shopping_cart</i></a>
                 </div>
@@ -570,51 +545,51 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
               </div>
             ";
                 }
-                // line 324
+                // line 271
                 echo "          ";
             } else {
-                // line 325
+                // line 272
                 echo "            ";
                 if ((($context["userAgent"] ?? null) == "movil")) {
-                    // line 326
+                    // line 273
                     echo "              <div class=\"col center s2 m2 l2 sinPadding colMenuButton ocultarSearch\" >
                   <a class=\"waves-effect waves-black addHome anchoTotal\"><i class=\"material-icons pormayorAccent-text\">group_add</i></a>
               </div>
             ";
                 }
-                // line 330
+                // line 277
                 echo "          ";
             }
-            // line 331
+            // line 278
             echo "        ";
         }
         echo "   
           <div class=\"col s2 m3 l6 ocultarSearch colMenuPcII hide-on-med-and-down\">
             ";
-        // line 333
+        // line 280
         if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
-            // line 334
+            // line 281
             echo "                <ul  class=\"right\">
               ";
-            // line 335
+            // line 282
             if ((((($this->getAttribute(($context["pagina"] ?? null), "extrabtn", array()) == "SI") && ($this->getAttribute(($context["pagina"] ?? null), "titulo", array()) != "Tiendas")) && (($context["commentsNot"] ?? null) == false)) && (($context["comments"] ?? null) == true))) {
-                // line 336
+                // line 283
                 echo "                  <li>
                     <a class=\"comentsBtn waves-effect waves-light black-text \" href=\"#comentsBlock\">Comentarios</a>
                   </li>
               ";
             }
-            // line 340
+            // line 287
             echo "                ";
             if ( !($context["producto_detalle"] ?? null)) {
-                // line 341
+                // line 288
                 echo "                  <li class=\"hide-on-med-and-down cartAnimacion positionRelative\">
                     <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                // line 342
+                // line 289
                 echo ($context["totalc"] ?? null);
                 echo "\" ><span class=\"cantidad white-text\">0</span></span>
                     <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                // line 343
+                // line 290
                 echo base_url();
                 echo "productos/carrito\"><i class=\"black-text material-icons left\">shopping_cart</i>Mi compra</a>
                     <div class=\"pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide\">
@@ -624,17 +599,17 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                   </li>
                 ";
             } else {
-                // line 350
+                // line 297
                 echo "                  ";
                 if (($this->getAttribute(($context["usuario"] ?? null), "id_tienda", array()) != $this->getAttribute(($context["producto"] ?? null), "Tie_IdTienda", array()))) {
-                    // line 351
+                    // line 298
                     echo "                    <li class=\"hide-on-med-and-down cartAnimacion positionRelative\">
                       <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                    // line 352
+                    // line 299
                     echo ($context["totalc"] ?? null);
                     echo "\" ><span class=\"cantidad white-text\">0</span></span>
                       <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                    // line 353
+                    // line 300
                     echo base_url();
                     echo "productos/carrito\"><i class=\"black-text material-icons left\">shopping_cart</i>Mi compra</a>
                       <div class=\"pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide\">
@@ -644,34 +619,34 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                     </li>
                   ";
                 }
-                // line 360
+                // line 307
                 echo "                ";
             }
-            // line 361
+            // line 308
             echo "              ";
             if (($context["reputacion_volver"] ?? null)) {
-                // line 362
+                // line 309
                 echo "                <li class=\"positionRelative\">
                     <a class=\"black-text\" href=\"";
-                // line 363
+                // line 310
                 echo ($context["url_actual"] ?? null);
                 echo "\"><i class=\"material-icons left\">arrow_back</i> Regresar</a>
                   </li> 
               ";
             }
-            // line 366
+            // line 313
             echo "                  <li class=\"positionRelative\">
                     ";
-            // line 367
+            // line 314
             if (( !twig_test_empty(($context["noticoments"] ?? null)) ||  !twig_test_empty(($context["noticotiza"] ?? null)))) {
-                // line 368
+                // line 315
                 echo "                      <span class=\"pormayorUnico pulse\" style=\"top: 15px;right: 0px;left: 28px;\"></span>
                     ";
             }
-            // line 370
+            // line 317
             echo "                    <a class=\"dropdown-trigger black-text\" href=\"#!\"  data-activates=\"dropdown2\">
                       <i class=\"material-icons\">";
-            // line 371
+            // line 318
             if (( !twig_test_empty(($context["noticoments"] ?? null)) ||  !twig_test_empty(($context["noticotiza"] ?? null)))) {
                 echo "notifications";
             } else {
@@ -681,63 +656,63 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                     </a>
                   </li> 
                   ";
-            // line 374
+            // line 321
             if ( !($context["vista_carrito_compra"] ?? null)) {
-                // line 375
+                // line 322
                 echo "                  <li>
                     <a class=\"dropdown-trigger black-text\" href=\"#!\" data-activates=\"dropdown1\">";
-                // line 376
+                // line 323
                 echo (((twig_length_filter($this->env, twig_title_string_filter($this->env, $this->getAttribute(($context["usuario"] ?? null), "nombre", array()))) > 7)) ? ((twig_slice($this->env, twig_title_string_filter($this->env, $this->getAttribute(($context["usuario"] ?? null), "nombre", array())), 0, 7) . "...")) : ($this->getAttribute(($context["usuario"] ?? null), "nombre", array())));
                 echo "<i class=\"material-icons right\">account_circle</i></a>
                   </li> 
                   ";
             }
-            // line 379
+            // line 326
             echo "                  ";
             if (($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 4)) {
-                // line 380
+                // line 327
                 echo "                    ";
-                // line 381
+                // line 328
                 echo "                      ";
-                // line 382
+                // line 329
                 echo "                      ";
-                // line 383
+                // line 330
                 echo "                    ";
-                // line 384
+                // line 331
                 echo "                  ";
             }
-            // line 385
+            // line 332
             echo "                </ul>      
             ";
         } else {
-            // line 387
+            // line 334
             echo "              <ul class=\"right\">
                 ";
-            // line 388
+            // line 335
             if ((((($this->getAttribute(($context["pagina"] ?? null), "extrabtn", array()) == "SI") && ($this->getAttribute(($context["pagina"] ?? null), "titulo", array()) != "Tiendas")) && (($context["commentsNot"] ?? null) == false)) && (($context["comments"] ?? null) == true))) {
-                // line 389
+                // line 336
                 echo "                  <li class=\"\">
                     <a class=\"comentsBtn waves-effect waves-light black-text \" href=\"#comentsBlock\">Comentarios</a>
                   </li>
                 ";
             }
-            // line 392
+            // line 339
             echo " 
                 ";
-            // line 393
+            // line 340
             if (($context["vista_carrito_compra"] ?? null)) {
-                // line 394
+                // line 341
                 echo "                  <li><a class=\"black-text\" onclick=\"javascript:history.back()\"><i class=\"material-icons left\">arrow_back</i>Regresar</a></li>
                 ";
             }
-            // line 396
+            // line 343
             echo "                <li class=\"hide-on-med-and-down cartAnimacion positionRelative\">
                   <span class=\"pormayorUnico counterCont positionAbsolute center\" data-totalc=\"";
-            // line 397
+            // line 344
             echo ($context["totalc"] ?? null);
             echo "\"><span class=\"cantidad\">0</span></span>
                   <a class=\"grey-text text-darken-4 cartTopPC verCarrito\" href=\"";
-            // line 398
+            // line 345
             echo base_url();
             echo "productos/carrito\"><i class=\"material-icons left\" style=\"font-size:30px\">shopping_cart</i>Mi compra</a>
                   <div class=\"pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide\">
@@ -746,28 +721,28 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                   </div>
                 </li>
 ";
-            // line 408
+            // line 355
             echo "                <li>
                   <a class=\"black-text hide-on-med-and-up\" href=\"";
-            // line 409
+            // line 356
             echo base_url();
             echo "usuario/login\"><i class=\"material-icons\">account_circle</i></a>
                   <a href=\"";
-            // line 410
+            // line 357
             echo base_url();
             echo "usuario/login\" class=\"black-text tooltipped\" data-position=\"bottom\" data-delay=\"50\" data-tooltip=\"Iniciar Sesión\"><i class=\"material-icons green-text text-darken-4\" style=\"font-size:30px\">account_circle</i></a>
                 </li>
               </ul>
             ";
         }
-        // line 414
+        // line 361
         echo "          </div>
           <a class=\"backSearch positionAbsolute lineHeight0 comoBoton \"><i class=\"material-icons grey-text sinUser lineHeight0\">arrow_back</i></a>
         </div>
         ";
-        // line 417
+        // line 364
         if (((($this->getAttribute(($context["pagina"] ?? null), "extrabtn", array()) == "SI") && ($context["producto_detalle"] ?? null)) && (($context["commentsNot"] ?? null) == false))) {
-            // line 418
+            // line 365
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\" >
               <div class=\"menuMobileSec2 hide col s3 center sinPadding\">
@@ -782,9 +757,9 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             </div>
           </div>
         ";
-        } elseif (        // line 431
+        } elseif (        // line 378
 ($context["filtro_movil_tiendas"] ?? null)) {
-            // line 432
+            // line 379
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
               <div class=\"col s4 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -792,11 +767,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                   <option value=\"\" disabled selected>CATEGORÍA</option>
                   <option value=\"all\">Todos</option>
                   ";
-            // line 438
+            // line 385
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_cat"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["btc"]) {
-                // line 439
+                // line 386
                 echo "                    <option value=\"";
                 echo $this->getAttribute($context["btc"], "Cat_IdCategoria", array());
                 echo "\">";
@@ -809,7 +784,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btc'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 441
+            // line 388
             echo "                </select>
               </div>
               <div class=\"col s5 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -817,11 +792,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                   <option value=\"\" disabled selected>DEPARTAMENTO</option>
                   <option value=\"all\" >Ver todas</option>
                   ";
-            // line 447
+            // line 394
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_dep"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["btd"]) {
-                // line 448
+                // line 395
                 echo "                    <option value=\"";
                 echo $this->getAttribute($context["btd"], "id", array());
                 echo "\">";
@@ -834,7 +809,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btd'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 450
+            // line 397
             echo "                </select>
               </div>
               <div class=\"col s3 center sinPadding\"> 
@@ -848,16 +823,16 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             </div>
           </div>
         ";
-        } elseif ((        // line 462
+        } elseif ((        // line 409
 ($context["filtro_movil"] ?? null) &&  !($context["solo_tienda"] ?? null))) {
-            // line 463
+            // line 410
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 464
+                // line 411
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosA ";
-                // line 466
+                // line 413
                 if (($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
@@ -867,7 +842,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                   </div>
                   <div class=\"col s7 center sinPadding\"> 
                     <select class=\"browser-default simpleSelect filtroProductoCat grey-text text-darken-3\" ";
-                // line 471
+                // line 418
                 if (($context["filtro_categorias"] ?? null)) {
                     echo "disabled";
                 }
@@ -875,11 +850,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>FILTRAR POR CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 474
+                // line 421
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_cat"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
-                    // line 475
+                    // line 422
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["cat"], "Cat_IdCategoria", array());
                     echo "\">";
@@ -890,18 +865,18 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 477
+                // line 424
                 echo "                    </select>
                   </div>
                 </div>
                 <div class=\"containerFiltrosB ";
-                // line 480
+                // line 427
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
                 echo "\">
                   <div class=\"col ";
-                // line 481
+                // line 428
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -912,11 +887,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>MARCA</option>
                       <option value=\"all\">Todas</option>
                       ";
-                // line 485
+                // line 432
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_marcas"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 486
+                    // line 433
                     echo "                          <option value=\"";
                     echo twig_replace_filter(twig_title_string_filter($this->env, $this->getAttribute($context["prm"], "Pro_Marca", array())), array(" " => "", "\"" => "", "'" => ""));
                     echo "\">";
@@ -927,11 +902,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 488
+                // line 435
                 echo "                    </select>
                   </div>
                   <div class=\"col ";
-                // line 490
+                // line 437
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -956,7 +931,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                     </select>
                   </div>
                   ";
-                // line 508
+                // line 455
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " 
                     <div class=\"col s2 sinPadding menosFiltros center \">
@@ -964,7 +939,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                     </div>
                   ";
                 }
-                // line 513
+                // line 460
                 echo "                </div>
                 <div class=\"containerFiltrosC hide\">
                   <div class=\"col s4 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -972,11 +947,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 519
+                // line 466
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_cat"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["btc"]) {
-                    // line 520
+                    // line 467
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["btc"], "Cat_IdCategoria", array());
                     echo "\">";
@@ -987,7 +962,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btc'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 522
+                // line 469
                 echo "                    </select>
                   </div>
                   <div class=\"col s5 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -995,11 +970,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>DEPARTAMENTOS</option>
                       <option value=\"all\" >Ver todas</option>
                       ";
-                // line 528
+                // line 475
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_dep"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["btd"]) {
-                    // line 529
+                    // line 476
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["btd"], "id", array());
                     echo "\">";
@@ -1010,7 +985,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btd'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 531
+                // line 478
                 echo "                    </select>
                   </div>
                   <div class=\"col s3 center sinPadding\"> 
@@ -1026,13 +1001,13 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             </div>
           ";
             }
-            // line 545
+            // line 492
             echo "        ";
         } elseif ((($context["filtro_movil"] ?? null) && ($context["solo_tienda"] ?? null))) {
-            // line 546
+            // line 493
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 547
+                // line 494
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosC\">
@@ -1041,11 +1016,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 554
+                // line 501
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_cat"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["btc"]) {
-                    // line 555
+                    // line 502
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["btc"], "Cat_IdCategoria", array());
                     echo "\">";
@@ -1056,7 +1031,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btc'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 557
+                // line 504
                 echo "                    </select>
                   </div>
                   <div class=\"col s5 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -1064,11 +1039,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>DEPARTAMENTOS</option>
                       <option value=\"all\" >Ver todas</option>
                       ";
-                // line 563
+                // line 510
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_dep"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["btd"]) {
-                    // line 564
+                    // line 511
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["btd"], "id", array());
                     echo "\">";
@@ -1079,7 +1054,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btd'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 566
+                // line 513
                 echo "                    </select>
                   </div>
                   <div class=\"col s3 center sinPadding\"> 
@@ -1095,13 +1070,13 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             </div>
           ";
             }
-            // line 580
+            // line 527
             echo "        ";
         } elseif (($context["filtro_movil_especial"] ?? null)) {
-            // line 581
+            // line 528
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 582
+                // line 529
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltros\">
@@ -1110,11 +1085,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>MARCA</option>
                       <option value=\"all\">Todas</option>
                       ";
-                // line 589
+                // line 536
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_marcas"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 590
+                    // line 537
                     echo "                          <option value=\"";
                     echo twig_replace_filter(twig_title_string_filter($this->env, $this->getAttribute($context["prm"], "Pro_Marca", array())), array(" " => "", "\"" => "", "'" => ""));
                     echo "\">";
@@ -1125,7 +1100,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 592
+                // line 539
                 echo "                    </select>
                   </div>
                   <div class=\"col s4 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -1151,17 +1126,17 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             </div>
           ";
             }
-            // line 616
+            // line 563
             echo "        ";
         } elseif (($context["filtro_movil_ultimos"] ?? null)) {
-            // line 617
+            // line 564
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 618
+                // line 565
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosA ";
-                // line 620
+                // line 567
                 if (($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
@@ -1171,7 +1146,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                   </div>
                   <div class=\"col s7 center sinPadding\"> 
                     <select class=\"browser-default simpleSelect filtroProductoCat grey-text text-darken-3\" ";
-                // line 625
+                // line 572
                 if (($context["filtro_categorias"] ?? null)) {
                     echo "disabled";
                 }
@@ -1179,11 +1154,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>FILTRAR POR CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 628
+                // line 575
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_cat"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
-                    // line 629
+                    // line 576
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["cat"], "Cat_IdCategoria", array());
                     echo "\">";
@@ -1194,18 +1169,18 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 631
+                // line 578
                 echo "                    </select>
                   </div>
                 </div>
                 <div class=\"containerFiltrosB ";
-                // line 634
+                // line 581
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
                 echo "\">
                   <div class=\"col ";
-                // line 635
+                // line 582
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -1216,11 +1191,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>MARCA</option>
                       <option value=\"all\">Todas</option>
                       ";
-                // line 639
+                // line 586
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_marcas"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 640
+                    // line 587
                     echo "                          <option value=\"";
                     echo twig_replace_filter(twig_title_string_filter($this->env, $context["prm"]), array(" " => "", "\"" => "", "'" => ""));
                     echo "\">";
@@ -1231,11 +1206,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 642
+                // line 589
                 echo "                    </select>
                   </div>
                   <div class=\"col ";
-                // line 644
+                // line 591
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -1260,7 +1235,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                     </select>
                   </div>
                   ";
-                // line 662
+                // line 609
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " 
                     <div class=\"col s2 sinPadding menosFiltros center \">
@@ -1268,23 +1243,23 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                     </div>
                   ";
                 }
-                // line 667
+                // line 614
                 echo "                </div>
               </div>
             </div>
           ";
             }
-            // line 671
+            // line 618
             echo "        ";
         } elseif (($context["filtro_movil_popular"] ?? null)) {
-            // line 672
+            // line 619
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 673
+                // line 620
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosA ";
-                // line 675
+                // line 622
                 if (($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
@@ -1294,7 +1269,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                   </div>
                   <div class=\"col s7 center sinPadding\"> 
                     <select class=\"browser-default simpleSelect filtroProductoCat grey-text text-darken-3\" ";
-                // line 680
+                // line 627
                 if (($context["filtro_categorias"] ?? null)) {
                     echo "disabled";
                 }
@@ -1302,46 +1277,46 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>FILTRAR POR CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 683
+                // line 630
                 $context["array_cat"] = array();
-                // line 684
+                // line 631
                 echo "                      ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_popular"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
-                    // line 685
+                    // line 632
                     echo "                        ";
                     if (!twig_in_filter(twig_title_string_filter($this->env, $this->getAttribute($context["cat"], "Cat_Nombre", array())), ($context["array_cat"] ?? null))) {
-                        // line 686
+                        // line 633
                         echo "                           <option value=\"";
                         echo $this->getAttribute($context["cat"], "Cat_IdCategoria", array());
                         echo "\">";
                         echo $this->getAttribute($context["cat"], "Cat_Nombre", array());
                         echo "</option>
                            ";
-                        // line 687
+                        // line 634
                         $context["array_cat"] = twig_array_merge(($context["array_cat"] ?? null), array(0 => twig_title_string_filter($this->env, $this->getAttribute($context["cat"], "Cat_Nombre", array()))));
-                        // line 688
+                        // line 635
                         echo "                        ";
                     }
-                    // line 689
+                    // line 636
                     echo "                      ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 690
+                // line 637
                 echo "                    </select>
                   </div>
                 </div>
                 <div class=\"containerFiltrosB ";
-                // line 693
+                // line 640
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
                 echo "\">
                   <div class=\"col ";
-                // line 694
+                // line 641
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -1352,37 +1327,37 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                       <option value=\"\" disabled selected>MARCA</option>
                       <option value=\"all\">Todas</option>
                       ";
-                // line 698
+                // line 645
                 $context["array_marcas"] = array();
-                // line 699
+                // line 646
                 echo "                      ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_popular"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 700
+                    // line 647
                     echo "                        ";
                     if (!twig_in_filter(twig_title_string_filter($this->env, $this->getAttribute($context["prm"], "Pro_Marca", array())), ($context["array_marcas"] ?? null))) {
-                        // line 701
+                        // line 648
                         echo "                          ";
                         $context["array_marcas"] = twig_array_merge(($context["array_marcas"] ?? null), array(0 => twig_title_string_filter($this->env, $this->getAttribute($context["prm"], "Pro_Marca", array()))));
-                        // line 702
+                        // line 649
                         echo "                        ";
                     }
-                    // line 703
+                    // line 650
                     echo "                      ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 704
+                // line 651
                 echo "                      ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["array_marcas"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 705
+                    // line 652
                     echo "                        ";
                     if ($context["prm"]) {
-                        // line 706
+                        // line 653
                         echo "                          <option value=\"";
                         echo twig_replace_filter($context["prm"], array(" " => "", "\"" => "", "'" => ""));
                         echo "\">";
@@ -1390,17 +1365,17 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                         echo "</option>
                         ";
                     }
-                    // line 708
+                    // line 655
                     echo "                      ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 709
+                // line 656
                 echo "                    </select>
                   </div>
                   <div class=\"col ";
-                // line 711
+                // line 658
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -1425,7 +1400,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                     </select>
                   </div>
                   ";
-                // line 729
+                // line 676
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " 
                     <div class=\"col s2 sinPadding menosFiltros center \">
@@ -1433,19 +1408,19 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                     </div>
                   ";
                 }
-                // line 734
+                // line 681
                 echo "                </div>
               </div>
             </div>
           ";
             }
-            // line 738
+            // line 685
             echo "        ";
         } elseif (($context["crear_tienda"] ?? null)) {
-            // line 739
+            // line 686
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 740
+                // line 687
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosB \">
@@ -1463,10 +1438,10 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             </div>
           ";
             }
-            // line 756
+            // line 703
             echo "        ";
         } elseif ((($this->getAttribute(($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["legales"] ?? null) == true))) {
-            // line 757
+            // line 704
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
                 <div class=\"col s12 center\"> 
@@ -1496,9 +1471,9 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
               </div>
           </div>
         ";
-        } elseif ((($this->getAttribute(        // line 785
+        } elseif ((($this->getAttribute(        // line 732
 ($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["privacidad"] ?? null) == true))) {
-            // line 786
+            // line 733
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
                 <div class=\"col s12 center\"> 
@@ -1520,9 +1495,9 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
               </div>
           </div>
         ";
-        } elseif ((($this->getAttribute(        // line 806
+        } elseif ((($this->getAttribute(        // line 753
 ($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["compra_segura"] ?? null) == true))) {
-            // line 807
+            // line 754
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
                 <div class=\"col s12 center\"> 
@@ -1542,9 +1517,9 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
               </div>
           </div>
         ";
-        } elseif ((($this->getAttribute(        // line 825
+        } elseif ((($this->getAttribute(        // line 772
 ($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["centro_general"] ?? null) == true))) {
-            // line 826
+            // line 773
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
               <div class=\"col s12 center\" style=\"margin-bottom:5px\"> 
@@ -1553,9 +1528,9 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             </div>
           </div>
         ";
-        } elseif ((($this->getAttribute(        // line 833
+        } elseif ((($this->getAttribute(        // line 780
 ($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["reputacion_volver"] ?? null) == true))) {
-            // line 834
+            // line 781
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
               <div class=\"col s12 center\" style=\"margin-bottom:5px\"> 
@@ -1565,13 +1540,13 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
           </div>
         ";
         }
-        // line 842
+        // line 789
         echo "        ";
         if ((($context["userAgent"] ?? null) != "PC")) {
-            // line 843
+            // line 790
             echo "          ";
             if (($context["vista_carrito"] ?? null)) {
-                // line 844
+                // line 791
                 echo "            <div class=\"nav-content white\">
               <div class=\"row centrarForzado navCompra\">
                 <div class=\"col s4 sinUser center fontB2 pormayorUnico white-text\">
@@ -1586,13 +1561,13 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
               </div>
             </div>
           ";
-            } elseif (            // line 857
+            } elseif (            // line 804
 ($context["vista_carrito2"] ?? null)) {
-                // line 858
+                // line 805
                 echo "            <div class=\"nav-content white\">
               <div class=\"row centrarForzado navCompra\">
                 <a href=\"";
-                // line 860
+                // line 807
                 echo base_url();
                 echo "productos/carrito\">
                   <div class=\"col s4 sinUser center fontB2 enfasisD\">
@@ -1608,13 +1583,13 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
               </div>
             </div>
           ";
-            } elseif (            // line 873
+            } elseif (            // line 820
 ($context["vista_carrito3"] ?? null)) {
-                // line 874
+                // line 821
                 echo "            <div class=\"nav-content white\">
               <div class=\"row centrarForzado navCompra\">
                 <a href=\"";
-                // line 876
+                // line 823
                 echo base_url();
                 echo "productos/carrito\">
                   <div class=\"col s4 sinUser center fontB2 enfasisD\">
@@ -1622,7 +1597,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                   </div>
                 </a>
                 <a href=\"";
-                // line 881
+                // line 828
                 echo base_url();
                 echo "productos/despacho\">
                   <div class=\"col s4 sinUser enfasisD center fontB2\">
@@ -1635,9 +1610,9 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
               </div>
             </div>
           ";
-            } elseif (            // line 891
+            } elseif (            // line 838
 ($context["vista_carrito4"] ?? null)) {
-                // line 892
+                // line 839
                 echo "            <div class=\"nav-content pormayorUnico\">
               <div class=\"row centrarForzado navCompra\">
                 <div class=\"col s12 sinUser center fontB2 enfasisD white-text\">
@@ -1646,63 +1621,63 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
               </div>
             </div>
           ";
-            } elseif (            // line 899
+            } elseif (            // line 846
 ($context["vista_carrito5"] ?? null)) {
-                // line 900
+                // line 847
                 echo "          ";
             }
-            // line 901
+            // line 848
             echo "        ";
         }
-        // line 902
+        // line 849
         echo "      </nav>
     </div>
     <!-- HEADER -->
         ";
-        // line 905
+        // line 852
         if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
-            // line 906
+            // line 853
             echo "            <ul class=\"side-nav grey darken-4 z-depth-3 menuTex\" id=\"mobile-pormayor\">
               <li class=\"headerMenu center valign-wrapper\">
                 ";
-            // line 908
+            // line 855
             if ((($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 2) || ($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 3))) {
-                // line 909
+                // line 856
                 echo "                  <a class=\"btn centrarForzado pormayor pormayorAccent-text\" href=\"http://";
                 echo ($context["subdominio_tienda"] ?? null);
                 echo ".";
                 echo ($context["dominio"] ?? null);
                 echo "/usuario/inventario/lProductos\" style=\"padding: 0 16px;\">Perfil Tienda</a>
                 ";
-            } elseif (($this->getAttribute(            // line 910
+            } elseif (($this->getAttribute(            // line 857
 ($context["usuario"] ?? null), "rol", array()) == 5)) {
-                // line 911
+                // line 858
                 echo "                  <a class=\"btn centrarForzado pormayor pormayorAccent-text\" href=\"";
                 echo base_url();
                 echo "vnd/ventas\" style=\"padding: 0 16px;\">GESTOR</a>
                 ";
             }
-            // line 913
+            // line 860
             echo "                <a href=\"";
             echo base_url();
             echo "comprador/index/pedidos\" class=\"btn centrarForzado pormayorUnico white-text\" style=\"padding: 0 16px;\">Perfil Usuario</a>
               </li>
               <li class=\"sinUser itemMenu white-text\" style=\"margin: 5px 20px 5px 20px;\">Hola, <b>";
-            // line 915
+            // line 862
             echo (((twig_length_filter($this->env, twig_title_string_filter($this->env, $this->getAttribute(($context["usuario"] ?? null), "nombre", array()))) > 15)) ? ((twig_slice($this->env, twig_title_string_filter($this->env, $this->getAttribute(($context["usuario"] ?? null), "nombre", array())), 0, 15) . "...")) : ($this->getAttribute(($context["usuario"] ?? null), "nombre", array())));
             echo "</b><a class=\"cerrarSesionBtn sesionBtn right\"><i class=\"material-icons red-text\">power_settings_new</i></a> 
               </li> 
               <li class=\"itemMenu\">
                 <a class=\"white-text\" href=\"";
-            // line 918
+            // line 865
             echo base_url();
             echo "\"><i class=\"material-icons \">home</i>Ir a Inicio</a>      
               </li>     
 ";
-            // line 923
+            // line 870
             echo "              <li class=\"itemMenu\">
                 <a class=\"white-text\" href=\"";
-            // line 924
+            // line 871
             echo base_url("remate");
             echo "\"><i class=\"material-icons\">attach_money</i>Remate</a>
               </li>
@@ -1710,13 +1685,13 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 <a class=\"notiBtn white-text\">Notificaciones
                   <i class=\"material-icons left\">notifications</i>
                   ";
-            // line 929
+            // line 876
             if (( !twig_test_empty(($context["noticoments"] ?? null)) ||  !twig_test_empty(($context["noticotiza"] ?? null)))) {
-                // line 930
+                // line 877
                 echo "                    <span style=\"font-weight:600\" class=\"new badge pormayor pormayorAccent-text\" data-badge-caption=\"Nueva\"></span>
                   ";
             }
-            // line 932
+            // line 879
             echo "                </a> 
               </li>     
               <li class=\"itemMenu\">
@@ -1725,7 +1700,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                     <a class=\"collapsible-header fixHeaderSideMobile waves-effect white-text\" href=\"#\" style=\"padding: 0 32px\">Categorias <i class=\"material-icons right\">keyboard_arrow_down</i></a>
                     <div class=\"collapsible-body\">
                       <ul class=\"grey darken-4\">";
-            // line 939
+            // line 886
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["categorias"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
@@ -1789,7 +1764,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 940
+            // line 887
             echo "                      </ul>
                     </div>
                   </li>
@@ -1798,47 +1773,43 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
             </ul>         
         ";
         } else {
-            // line 946
+            // line 893
             echo "  
             <ul class=\"side-nav grey darken-4 z-depth-3 menuTex\" id=\"mobile-pormayor\">
               <li class=\"headerMenu center valign-wrapper\">
                 <a class=\"btn centrarForzado\" href=\"";
-            // line 949
+            // line 896
             echo base_url();
             echo "usuario/login\" style=\"padding: 0 16px;\">Iniciar sesión</a>
                 ";
-            // line 951
+            // line 898
             echo "              </li>     
               <li class=\"itemMenu\">
                 <a class=\"white-text\" href=\"";
-            // line 953
+            // line 900
             echo base_url();
             echo "\"><i class=\"material-icons \">home</i>Inicio</a>      
               </li>
               <li class=\"itemMenu\">
                 ";
-            // line 959
-            echo "              </li>    
-";
-            // line 977
-            echo "            </ul>
+            // line 906
+            echo "              </li> 
+            </ul>
         ";
         }
-        // line 979
+        // line 909
         echo "      <div class=\"overlayBody hide\"></div>      
       ";
-        // line 980
+        // line 910
         $this->displayBlock('content', $context, $blocks);
-        // line 981
+        // line 911
         echo "        <footer class=\"page-footer grey darken-4 black-text ";
         if (($context["nofooter"] ?? null)) {
             echo "hide";
         }
         echo "\">
           <div class=\"container\">
-";
-        // line 1005
-        echo "              <div class=\"row white-text\">
+              <div class=\"row white-text\">
               <div class=\"col l3 s12\">
                 <h5 class=\"amber-text\">PorMayor.pe</h5>
                 <p>Somos el primer ecommerce mayorista del Perú, dónde encontras novedades al mejor precio y puedas emprender tu negocio con solo S/100</p>
@@ -1847,19 +1818,19 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 <h5 class=\"amber-text\">MI CUENTA</h5>
                 <ul>
                   <li><a class=\"\" href=\"";
-        // line 1013
+        // line 921
         echo base_url();
         echo "usuario/login\">Registrarte</a></li>
                   <li><a class=\"\" href=\"";
-        // line 1014
+        // line 922
         echo base_url();
         echo "usuario/login\">Iniciar Sesión</a></li>
                   <li><a class=\"\" href=\"";
-        // line 1015
+        // line 923
         echo base_url();
         echo "usuario/olvido_contrasenia\">Recuperar Contraseña</a></li>
                   <li><a class=\"\" href=\"";
-        // line 1016
+        // line 924
         echo base_url();
         echo "contacto\">Contacto</a></li>
                 </ul>
@@ -1868,16 +1839,16 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 <h5 class=\"amber-text\">SERVICIO AL CLIENTE</h5>
                 <ul>
                   ";
-        // line 1023
+        // line 931
         echo "                  <li><a class=\"\" href=\"";
         echo base_url();
         echo "legal\">Terminos y condiciones</a></li>
                   <li><a class=\"\" href=\"";
-        // line 1024
+        // line 932
         echo base_url();
         echo "legal/devolucionesycambios\">Politicas de Devoluciones y Cambios</a></li>
                   ";
-        // line 1026
+        // line 934
         echo "                  <li><a class=\"\" href=\"";
         echo base_url();
         echo "reclamo\">Libro de Reclamaciones <i class=\"material-icons\">menu_book</i></a></li>
@@ -1887,11 +1858,11 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
                 <h5 class=\"amber-text\">ESCRÍBENOS</h5>
                 <ul>
                 ";
-        // line 1032
+        // line 940
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["vendedores"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["v"]) {
-            // line 1033
+            // line 941
             echo "                  <li><a href=\"tel:51";
             echo $this->getAttribute($context["v"], "Per_Telefono", array());
             echo "\">";
@@ -1904,7 +1875,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 1035
+        // line 943
         echo "                  <li><a href=\"mailto:contacto@pormayor.pe\">contacto@pormayor.pe</a></li>
                   <li>Horario de Atención:<br>
                     Lunes a Viernes: 10:00 AM a 6:00 PM<br>
@@ -1917,23 +1888,23 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
           <div class=\"footer-copyright\">
             <div class=\"row container\">
               <div class=\"col l6 center\">
-                © 2018 Derechos Reservados <a href=\"";
-        // line 1047
+                © 2018-2022 Derechos Reservados <a href=\"";
+        // line 955
         echo base_url();
         echo "\">PorMayor.pe S.A.</a>
               </div>
               <div class=\"col l2\">
                 <a href=\"https://www.camaralima.org.pe/principal\"><img src=\"";
-        // line 1050
+        // line 958
         echo ($context["ruta_img"] ?? null);
         echo "LOGO-CCL-2019.png\" title=\"REGISTRADOS EN LA CAMARA DE COMERCIO DE LIMA\"></a>
               </div>
           </div>
         </footer>      
     ";
-        // line 1054
+        // line 962
         $this->displayBlock('modal', $context, $blocks);
-        // line 1055
+        // line 963
         echo "      <script> var base_url = \"";
         echo base_url();
         echo "\";</script>
@@ -1942,48 +1913,48 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
       <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\"></script>
       <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js\"></script>
       <script src=\"";
-        // line 1060
-        echo base_url("public/js/template-lite.js?v=2.0");
+        // line 968
+        echo base_url("public/js/template-lite.min.js?v=1512");
         echo "\" defer></script>
       <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js\"></script>
     ";
-        // line 1062
+        // line 970
         $this->displayBlock('script', $context, $blocks);
-        // line 1063
+        // line 971
         echo "   </body>
 
 </html>";
     }
 
-    // line 31
+    // line 29
     public function block_analytics($context, array $blocks = array())
     {
     }
 
-    // line 63
+    // line 61
     public function block_head($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 87
+    // line 73
     public function block_messenger($context, array $blocks = array())
     {
     }
 
-    // line 980
+    // line 910
     public function block_content($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 1054
+    // line 962
     public function block_modal($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 1062
+    // line 970
     public function block_script($context, array $blocks = array())
     {
         echo " ";
@@ -2001,7 +1972,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
 
     public function getDebugInfo()
     {
-        return array (  1987 => 1062,  1981 => 1054,  1975 => 980,  1970 => 87,  1964 => 63,  1959 => 31,  1953 => 1063,  1951 => 1062,  1946 => 1060,  1937 => 1055,  1935 => 1054,  1928 => 1050,  1922 => 1047,  1908 => 1035,  1895 => 1033,  1891 => 1032,  1881 => 1026,  1877 => 1024,  1872 => 1023,  1863 => 1016,  1859 => 1015,  1855 => 1014,  1851 => 1013,  1841 => 1005,  1833 => 981,  1831 => 980,  1828 => 979,  1824 => 977,  1821 => 959,  1815 => 953,  1811 => 951,  1807 => 949,  1802 => 946,  1793 => 940,  1729 => 939,  1720 => 932,  1716 => 930,  1714 => 929,  1706 => 924,  1703 => 923,  1698 => 918,  1692 => 915,  1686 => 913,  1680 => 911,  1678 => 910,  1671 => 909,  1669 => 908,  1665 => 906,  1663 => 905,  1658 => 902,  1655 => 901,  1652 => 900,  1650 => 899,  1641 => 892,  1639 => 891,  1626 => 881,  1618 => 876,  1614 => 874,  1612 => 873,  1596 => 860,  1592 => 858,  1590 => 857,  1575 => 844,  1572 => 843,  1569 => 842,  1559 => 834,  1557 => 833,  1548 => 826,  1546 => 825,  1526 => 807,  1524 => 806,  1502 => 786,  1500 => 785,  1470 => 757,  1467 => 756,  1449 => 740,  1446 => 739,  1443 => 738,  1437 => 734,  1429 => 729,  1404 => 711,  1400 => 709,  1394 => 708,  1386 => 706,  1383 => 705,  1378 => 704,  1372 => 703,  1369 => 702,  1366 => 701,  1363 => 700,  1358 => 699,  1356 => 698,  1345 => 694,  1339 => 693,  1334 => 690,  1328 => 689,  1325 => 688,  1323 => 687,  1316 => 686,  1313 => 685,  1308 => 684,  1306 => 683,  1298 => 680,  1288 => 675,  1284 => 673,  1281 => 672,  1278 => 671,  1272 => 667,  1264 => 662,  1239 => 644,  1235 => 642,  1224 => 640,  1220 => 639,  1209 => 635,  1203 => 634,  1198 => 631,  1187 => 629,  1183 => 628,  1175 => 625,  1165 => 620,  1161 => 618,  1158 => 617,  1155 => 616,  1129 => 592,  1118 => 590,  1114 => 589,  1105 => 582,  1102 => 581,  1099 => 580,  1083 => 566,  1072 => 564,  1068 => 563,  1060 => 557,  1049 => 555,  1045 => 554,  1036 => 547,  1033 => 546,  1030 => 545,  1014 => 531,  1003 => 529,  999 => 528,  991 => 522,  980 => 520,  976 => 519,  968 => 513,  960 => 508,  935 => 490,  931 => 488,  920 => 486,  916 => 485,  905 => 481,  899 => 480,  894 => 477,  883 => 475,  879 => 474,  871 => 471,  861 => 466,  857 => 464,  854 => 463,  852 => 462,  838 => 450,  825 => 448,  821 => 447,  813 => 441,  800 => 439,  796 => 438,  788 => 432,  786 => 431,  771 => 418,  769 => 417,  764 => 414,  757 => 410,  753 => 409,  750 => 408,  741 => 398,  737 => 397,  734 => 396,  730 => 394,  728 => 393,  725 => 392,  719 => 389,  717 => 388,  714 => 387,  710 => 385,  707 => 384,  705 => 383,  703 => 382,  701 => 381,  699 => 380,  696 => 379,  690 => 376,  687 => 375,  685 => 374,  675 => 371,  672 => 370,  668 => 368,  666 => 367,  663 => 366,  657 => 363,  654 => 362,  651 => 361,  648 => 360,  638 => 353,  634 => 352,  631 => 351,  628 => 350,  618 => 343,  614 => 342,  611 => 341,  608 => 340,  602 => 336,  600 => 335,  597 => 334,  595 => 333,  589 => 331,  586 => 330,  580 => 326,  577 => 325,  574 => 324,  563 => 316,  559 => 315,  555 => 313,  552 => 312,  549 => 311,  546 => 310,  543 => 309,  540 => 308,  537 => 307,  531 => 303,  520 => 295,  516 => 294,  512 => 292,  509 => 291,  498 => 283,  494 => 282,  490 => 280,  487 => 279,  484 => 278,  481 => 277,  478 => 276,  474 => 274,  471 => 272,  467 => 270,  464 => 268,  461 => 267,  446 => 260,  444 => 259,  441 => 258,  437 => 257,  432 => 255,  429 => 247,  424 => 216,  422 => 215,  418 => 214,  412 => 211,  408 => 210,  405 => 209,  400 => 206,  396 => 204,  394 => 203,  390 => 202,  386 => 200,  384 => 199,  377 => 194,  369 => 188,  366 => 187,  358 => 182,  355 => 181,  352 => 180,  344 => 175,  341 => 174,  338 => 173,  336 => 172,  330 => 168,  327 => 167,  319 => 165,  317 => 164,  312 => 163,  306 => 161,  304 => 160,  299 => 159,  297 => 158,  292 => 155,  224 => 88,  222 => 87,  197 => 64,  195 => 63,  162 => 32,  160 => 31,  156 => 30,  151 => 28,  148 => 27,  144 => 25,  119 => 24,  92 => 23,  89 => 22,  84 => 19,  77 => 15,  74 => 14,  72 => 13,  63 => 12,  53 => 11,  34 => 8,  25 => 1,);
+        return array (  1958 => 970,  1952 => 962,  1946 => 910,  1941 => 73,  1935 => 61,  1930 => 29,  1924 => 971,  1922 => 970,  1917 => 968,  1908 => 963,  1906 => 962,  1899 => 958,  1893 => 955,  1879 => 943,  1866 => 941,  1862 => 940,  1852 => 934,  1848 => 932,  1843 => 931,  1834 => 924,  1830 => 923,  1826 => 922,  1822 => 921,  1806 => 911,  1804 => 910,  1801 => 909,  1796 => 906,  1790 => 900,  1786 => 898,  1782 => 896,  1777 => 893,  1768 => 887,  1704 => 886,  1695 => 879,  1691 => 877,  1689 => 876,  1681 => 871,  1678 => 870,  1673 => 865,  1667 => 862,  1661 => 860,  1655 => 858,  1653 => 857,  1646 => 856,  1644 => 855,  1640 => 853,  1638 => 852,  1633 => 849,  1630 => 848,  1627 => 847,  1625 => 846,  1616 => 839,  1614 => 838,  1601 => 828,  1593 => 823,  1589 => 821,  1587 => 820,  1571 => 807,  1567 => 805,  1565 => 804,  1550 => 791,  1547 => 790,  1544 => 789,  1534 => 781,  1532 => 780,  1523 => 773,  1521 => 772,  1501 => 754,  1499 => 753,  1477 => 733,  1475 => 732,  1445 => 704,  1442 => 703,  1424 => 687,  1421 => 686,  1418 => 685,  1412 => 681,  1404 => 676,  1379 => 658,  1375 => 656,  1369 => 655,  1361 => 653,  1358 => 652,  1353 => 651,  1347 => 650,  1344 => 649,  1341 => 648,  1338 => 647,  1333 => 646,  1331 => 645,  1320 => 641,  1314 => 640,  1309 => 637,  1303 => 636,  1300 => 635,  1298 => 634,  1291 => 633,  1288 => 632,  1283 => 631,  1281 => 630,  1273 => 627,  1263 => 622,  1259 => 620,  1256 => 619,  1253 => 618,  1247 => 614,  1239 => 609,  1214 => 591,  1210 => 589,  1199 => 587,  1195 => 586,  1184 => 582,  1178 => 581,  1173 => 578,  1162 => 576,  1158 => 575,  1150 => 572,  1140 => 567,  1136 => 565,  1133 => 564,  1130 => 563,  1104 => 539,  1093 => 537,  1089 => 536,  1080 => 529,  1077 => 528,  1074 => 527,  1058 => 513,  1047 => 511,  1043 => 510,  1035 => 504,  1024 => 502,  1020 => 501,  1011 => 494,  1008 => 493,  1005 => 492,  989 => 478,  978 => 476,  974 => 475,  966 => 469,  955 => 467,  951 => 466,  943 => 460,  935 => 455,  910 => 437,  906 => 435,  895 => 433,  891 => 432,  880 => 428,  874 => 427,  869 => 424,  858 => 422,  854 => 421,  846 => 418,  836 => 413,  832 => 411,  829 => 410,  827 => 409,  813 => 397,  800 => 395,  796 => 394,  788 => 388,  775 => 386,  771 => 385,  763 => 379,  761 => 378,  746 => 365,  744 => 364,  739 => 361,  732 => 357,  728 => 356,  725 => 355,  716 => 345,  712 => 344,  709 => 343,  705 => 341,  703 => 340,  700 => 339,  694 => 336,  692 => 335,  689 => 334,  685 => 332,  682 => 331,  680 => 330,  678 => 329,  676 => 328,  674 => 327,  671 => 326,  665 => 323,  662 => 322,  660 => 321,  650 => 318,  647 => 317,  643 => 315,  641 => 314,  638 => 313,  632 => 310,  629 => 309,  626 => 308,  623 => 307,  613 => 300,  609 => 299,  606 => 298,  603 => 297,  593 => 290,  589 => 289,  586 => 288,  583 => 287,  577 => 283,  575 => 282,  572 => 281,  570 => 280,  564 => 278,  561 => 277,  555 => 273,  552 => 272,  549 => 271,  538 => 263,  534 => 262,  530 => 260,  527 => 259,  524 => 258,  521 => 257,  518 => 256,  515 => 255,  512 => 254,  506 => 250,  495 => 242,  491 => 241,  487 => 239,  484 => 238,  473 => 230,  469 => 229,  465 => 227,  462 => 226,  459 => 225,  456 => 224,  453 => 223,  449 => 221,  446 => 219,  442 => 217,  439 => 215,  436 => 214,  421 => 207,  419 => 206,  416 => 205,  412 => 204,  401 => 196,  399 => 195,  395 => 194,  389 => 191,  385 => 190,  382 => 189,  377 => 186,  373 => 184,  371 => 183,  367 => 182,  363 => 180,  361 => 179,  354 => 174,  346 => 168,  343 => 167,  335 => 162,  332 => 161,  329 => 160,  321 => 155,  318 => 154,  315 => 153,  313 => 152,  307 => 148,  304 => 147,  296 => 145,  294 => 144,  289 => 143,  283 => 141,  281 => 140,  276 => 139,  274 => 138,  208 => 74,  206 => 73,  193 => 62,  191 => 61,  158 => 30,  156 => 29,  152 => 28,  147 => 26,  142 => 24,  117 => 23,  89 => 22,  84 => 19,  77 => 15,  74 => 14,  72 => 13,  63 => 12,  53 => 11,  34 => 8,  25 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

@@ -30,54 +30,7 @@ $(document).ready(function() {
     //
     $(".redirigirHome").click(function() {
         location.href = "https://pormayor.pe";
-    }); 
-    //*******BUSCADOR*******
-  //   var widthOriginal = $(".navbar-fixed").width() + "px";
-  //   var heightOriginal = 0;
-  //   if (mediaqueryPC.matches) {
-  //   }else{
-  //   $('.backSearch').click(function(){
-  //     $('.ocultarSearch').show(300);
-  //     $('.buscador').animate({ 
-  //       "width" : widthOriginal, 
-  //       "height": heightOriginal, 
-  //     }, 150, function() {
-  //         $('.backSearch').animate({ 
-  //           "top": -100
-  //         }, 150, function() {
-  //         });
-  //     });
-  //   });
-  //   $('.buscador').focus(function(){
-  //     widthOriginal = $(this).outerWidth();
-  //     heightOriginal = $(this).outerHeight();
-  //     $('.ocultarSearch').hide(300);
-  //     $(this).animate({ 
-  //       "width" : window.innerWidth, 
-  //       "height" : $(".navbar-fixed").height() + "px",
-  //       "left" : 0,
-  //       "top": 0
-  //     }, 350, function() {
-  //       $('.backSearch').animate({ 
-  //         "top": 30,
-  //       }, 300, function() {
-  //       });
-  //     });
-  //   });    
-  //   $('.buscador').blur(function(){
-  //     $('.ocultarSearch').show(300);
-  //     $(this).animate({ 
-  //       "width" : widthOriginal, 
-  //       "height": heightOriginal, 
-  //     }, 150, function() {
-  //         $('.backSearch').animate({ 
-  //           "top": "-=100"
-  //         }, 150, function() {
-  //         });
-  //     });
-  //   });
-  // }
-    //Buscar
+    });
   $('.buscador').keypress(function(e){
     var busqueda = $(this).val();
     if(e.which == 13 && busqueda != '') {

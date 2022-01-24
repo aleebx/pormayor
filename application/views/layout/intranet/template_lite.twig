@@ -196,42 +196,9 @@ src="https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1"
           <div class="col l2 ocultarSearch colMenuPc sinPadding">
             <ul>
               <li>          
- {#  <div class="megaMenuCategorias submenu">
-
-    <a class='black-text negrita' href='#'>Categorías</a>
-      <div class="containerCategorias centrarForzado white z-depth-2 sinPadding">
-        <div class="row sinBordeBottom">
-          <nav itemscope="" itemtype="http://www.schema.org/SiteNavigationElement" class="uniqueNav col l3 sinPadding categoriasBtn">
-              <div itemprop="name" class="center categoriaBtn transition pormayorUnico white-text comoBoton positionRelative col l12 sinPadding valign-wrapper"  data-idcateg="20"><a itemprop="url" href="#" class="anchoTotal especialBtn"></a></div>
-{% for cat in categorias %}{% if cat.Cat_IdCategoria != 16 %}{% if cat.Cat_IdCategoria != 15 and cat.Cat_IdCategoria != 10 %}<div itemprop="name" class="categoriaBtn transition comoBoton positionRelative col l12 sinPadding valign-wrapper" data-nomcate="{{cat.Cat_Nombre}}" data-idcateg="{{cat.Cat_IdCategoria}}"><a itemprop="url" href="{{base_url()}}categorias/{{cat.url}}" class="valign-wrapper"><img alt="{{cat.Cat_Nombre}} al pormayor" src="{{ruta_img}}{{cat.Cat_IconMobile}}" type="image/svg+xml" class="" width="23" height="23" />&nbsp;&nbsp;&nbsp;&nbsp;{{cat.Cat_Nombre}}</a></div>{% endif %}{% endif %}
-            {% endfor %}
-          </nav>
-          <div class="col l6 grey lighten-5">
-            <div class="containerSubcategorias">
-              <div class="subcategoria col l3 sinPadding anchoTotal defaultBanner">
-                <a class="sinPadding" href="{{base_url()}}/grupal">
-                <img alt="Pormayor.pe - Promocion 1 " class="b-lazy anchoTotal" data-src="{{ruta_img}}mbanner.webp"  alt="Categoria pormayor.pe">
-                </a>
-              </div>
-{% for cat in categorias %}{% if cat.Cat_IdCategoria != 16 %}{% if cat.Cat_IdCategoria != 15 and cat.Cat_IdCategoria != 10 %}<div class="subcategoria hide" id="categoria{{cat.Cat_IdCategoria}}" data-menu="{{cat.Cat_IdCategoria}}" itemscope="" itemtype="http://www.schema.org/SiteNavigationElement">{% set break = false %}{% for sub in subcategoria if not break %}{% if cat.Cat_IdCategoria == sub.categoria_Cat_IdCategoria %}<a itemprop="url" href="{{base_url()}}subcategoria/{{sub.url}}" class="subcategoriaFirst transition sinPadding" data-idsub="{{sub.Suc_IdSubCategoria}}" data-subnom="{{sub.Suc_Nombre}}" >{{sub.Suc_Nombre|trim}}</a>{% for suc in subcat_detalle if not break2 %}{% if suc.subcategoria_Suc_IdSubCategoria == sub.Suc_IdSubCategoria and cat.Cat_Nombre == "Ferretería" %}{% if suc.Des_Nombre == "Piedras y Enchapes" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% else %}<a  itemprop="url" class="transition"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% endif %}{% set count3 = count3 + 1 %}{% if count3 == 6 %}{% set break2 = true %}{% endif %}{% elseif suc.subcategoria_Suc_IdSubCategoria == sub.Suc_IdSubCategoria and cat.Cat_Nombre != "Ferretería" %}{% if suc.Des_Nombre == "Botas y botines" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Cortador de Cabello" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Otros Accesorios" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_IdDetalle_SubCategoria == "38" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Accesorios" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Calefacción" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Calzado para Niño" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Textiles de Comedor" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Agendas" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Maletas de viaje" %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_IdDetalle_SubCategoria == 97 %} <a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Equipos Ortopédicos" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% elseif suc.Des_Nombre == "Audio Profesional" %}<a itemprop="url" class="transition fillerDeS"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% else %}<a itemprop="url" class="transition"  href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% endif %}{% endif %}{% endfor %}{% set count2 = count2 + 1 %}{% if count2 == 8 %}{% set break = true %}{% endif %}{% endif %}{% endfor %}{% set count2 = 0 %}</div>{% endif %}{% endif %}{% endfor %}
-            </div> 
-          </div>
-          <div class="col l3 sinPadding bannerVertical bannerCat20"><a class="sinPadding lineHeight0" href="{{base_url()}}especial/verano-de-ofertas"><img data-src="{{ruta_img}}gb_m.webp" class="b-lazy anchoTotal " alt="Banner campaña pormayor.pe"></a></div>
-{% for cat in categorias %}{% if cat.Cat_IdCategoria != 15 and cat.Cat_IdCategoria != 10 and cat.Cat_IdCategoria != 16  and cat.Cat_IdCategoria != 18  %}
-<div class="col l3 sinPadding bannerVertical hide bannerCat{{cat.Cat_IdCategoria}}">
-<a class="sinPadding lineHeight0" href="{{base_url()}}categorias/{{cat.url}}"><img data-src="{{ruta_img}}b_{{cat.Cat_IdCategoria}}.webp" class="b-lazy anchoTotal " alt="{{cat.Cat_Nombre}} en pormayor.pe"></a></div>
-{% endif %}{% endfor %}
-                    </div>
-                  </div>
-                </div> #}
+ 
               </li>
-{# <li>
 
-  <a class='black-text negrita' style="padding-left:4px;" href='{{base_url()}}grupal'>Grupos</a>
-</li> #}
-{# <li>
-  <a class='black-text negrita' style="padding-left:4px;" href='{{base_url()}}remate'>Remate</a>
-</li> #}
             </ul>
           </div>
           {% endif %} 
@@ -936,52 +903,13 @@ src="https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1"
                 {# <p class="white-text">
                   Empieza tu propio negocio. Llévate todo a surtido a precio por mayor por una compra mínima de 300 soles.
                 </p> #}
-              </li>    
-{#               <li class="itemMenu">
-                <a class="white-text" href="{{base_url('grupal')}}"><i class="material-icons">group</i>Grupos</a>
-              </li> #}
-{#               <li class="itemMenu">
-                <a class="white-text" href="{{base_url()}}/blog"><i class="material-icons">description</i>Blog</a>
-              </li>      
-              <li class="itemMenu">
-                <ul class="collapsible collapsible-accordion containerCatMovil">
-                  <li class="submenu">
-                    <a class="collapsible-header fixHeaderSideMobile waves-effect white-text" href="#">Categorias <i class="material-icons right">keyboard_arrow_down</i></a>
-                    <div class="collapsible-body">
-                      <ul class="grey darken-4">{% for cat in categorias %}<ul class="collapsible collapsible-accordion"><li class="submenu"><a class="collapsible-header fixHeaderSideMobile" href="#"><img alt="{{cat.Cat_Nombre}} al pormayor" src="{{ruta_img}}{{cat.Cat_IconMobile}}" type="image/svg+xml" class="positionRelative" width="20" height="20" />&nbsp;&nbsp;&nbsp;&nbsp;{{cat.Cat_Nombre}}<i class="material-icons right">keyboard_arrow_down</i></a><div class="collapsible-body"><ul class="grey darken-3">{% for sub in subcategoria %}{% if cat.Cat_IdCategoria == sub.categoria_Cat_IdCategoria %}<li><a class="white-text" itemprop="url" href="{{base_url()}}subcategoria/{{sub.url}}" data-idsub="{{sub.Suc_IdSubCategoria}}" data-subnom="{{sub.Suc_Nombre}}"><b>{{sub.Suc_Nombre|trim}}</b> </a>{% for suc in subcat_detalle %}{% if suc.subcategoria_Suc_IdSubCategoria == sub.Suc_IdSubCategoria %}{% if suc.Des_IdDetalle_SubCategoria == 230 %}<a itemprop="url" style="height:60px;line-height:30px" href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% else %}<a itemprop="url" href="{{base_url()}}detalle/{{suc.url}}">{{suc.Des_Nombre}}</a>{% endif %}{% endif %}{% endfor %}</li>{% endif %}{% endfor %}</ul></div></li></ul>{% endfor %}
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </li> #}
+              </li> 
             </ul>
         {% endif %}
       <div class="overlayBody hide"></div>      
       {% block content %} {% endblock %}
         <footer class="page-footer grey darken-4 black-text {% if nofooter %}hide{% endif %}">
           <div class="container">
-{#             <div class="row pormayor">
-              <div class="col s12 l12">&nbsp;</div>
-              <div class="col s12 l12">
-                  <div class="row">
-                    <div class="col s12 l3 center-align input-field">
-                      <a href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="Instagram PorMayor.pe" title="Instagram PorMayor.pe" src="{{ruta_img}}instaW.png" height="30"></a>
-                      <a href="https://www.facebook.com/pormayoroficial/"><img alt="Facebook PorMayor.pe" title="Facebook PorMayor.pe" src="{{ruta_img}}faceW.png" height="30"></a>
-                      <a href="mailto:contacto@pormayor.pe"><img alt="Correo PorMayor.pe" title="Correo PorMayor.pe" src="{{ruta_img}}mailW.png" height="30"></a>
-                      <a href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber"><img alt="Youtube PorMayor.pe" title="Youtube PorMayor.pe" src="{{ruta_img}}youtubeW.png" height="30"></a>
-                    </div>
-                    <div class="col l4 input-field">
-                      <span>Recibe las últimas tendencias de PorMayor.pe e ideas únicas para regalar directamente en tu bandeja de entrada</span>
-                    </div>
-                    <div class="col s6 l3 input-field">
-                      <input type="email" id="email_subs" class="redondeo white" placeholder="Introduce tu correo electrónico">
-                    </div>
-                    <div class="col s6 l2 center-align input-field">
-                      <a class="btn subscribeBtn grey darken-4 pulse negrita">SUSCRIBIRME</a>  
-                    </div>                    
-                </div>
-              </div>
-              </div> #}
               <div class="row white-text">
               <div class="col l3 s12">
                 <h5 class="amber-text">PorMayor.pe</h5>
@@ -1024,7 +952,7 @@ src="https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1"
           <div class="footer-copyright">
             <div class="row container">
               <div class="col l6 center">
-                © 2018 Derechos Reservados <a href="{{base_url()}}">PorMayor.pe S.A.</a>
+                © 2018-2022 Derechos Reservados <a href="{{base_url()}}">PorMayor.pe S.A.</a>
               </div>
               <div class="col l2">
                 <a href="https://www.camaralima.org.pe/principal"><img src="{{ruta_img}}LOGO-CCL-2019.png" title="REGISTRADOS EN LA CAMARA DE COMERCIO DE LIMA"></a>
@@ -1037,7 +965,7 @@ src="https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1"
       <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js"></script>
-      <script src="{{base_url('public/js/template-lite.js?v=1512')}}" defer></script>
+      <script src="{{base_url('public/js/template-lite.min.js?v=1512')}}" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     {% block script %} {% endblock %}
    </body>

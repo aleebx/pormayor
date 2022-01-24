@@ -1,16 +1,11 @@
 <?php
-
   if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
   class Index extends CI_Controller
   {
     function __construct()
     {
       parent::__construct();
-
-      // $this->load->model("Producto_Favorito_model","productoFavoritoModel");
     }
-
     public function index()
     {
       $data=$this->acl->load_datos(); 
@@ -20,27 +15,28 @@
       $data['pagina']['titulo']='PorMayor.pe - Crece con nosotros';
       $data['vendedores']=$this->productoModel->vendedores();
       $data['productos']=$this->productoModel->productos_principal2();
+      $data['pro10']=$this->productoModel->productos10();
       foreach ($data['productos'] as $valor) {
+        $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
+      }
+      foreach ($data['pro10'] as $valor) {
         $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
       }
       $this->twig->parse('index3.twig',$data);
     }
-
     public function lista()
     {
       $data=$this->acl->load_datos();
       $data['producto']=$this->productoModel->productos_listado();  
       $this->twig->parse('lista.twig',$data);
     }
-
     public function about()
     {
       $data=$this->acl->load_datos(); 
       $data['pagina']['titulo']='Nosotros - PorMayor.pe';
       $data['vendedores']=$this->productoModel->vendedores();
       $this->twig->parse('about.twig',$data);
-    } 
-
+    }
     public function contactanos()
     {
       $data=$this->acl->load_datos(); 
@@ -51,7 +47,7 @@
         $data['noticoments']=$this->cotizacionModel->get_comentarios_usuario_noti($data['usuario']['id_usuario']);
       }
       $this->twig->parse('contactanos.twig',$data);
-    } 
+    }
 
     public function suscribete()
     {
