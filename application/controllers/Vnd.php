@@ -284,7 +284,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					}
         }
 
-        public function api_factura()
+      public function api_factura()
 			{
 			if ($this->input->is_ajax_request()) {
 				$hoy = date("Y-m-d");
@@ -880,9 +880,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         	}
         }
 
- public function addproductopedido()
+ 			public function addproductopedido()
         {
-
         	if ($this->input->is_ajax_request()) {
      			$Pac_IdPago_Compra = $this->input->post('Pac_IdPago_Compra');
      			$SKU_IdSku = $this->input->post('skus');
@@ -890,12 +889,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      			$Precio = $this->input->post('preciosP');
                 $registro = $this->gestionModel->addproductopedido($Pac_IdPago_Compra,$SKU_IdSku,$Cantidad,$Precio);
           		echo $registro;
-			}
-        } 
+				}
+			} 
 
- public function addproductopedidocambio()
-        {
-
+ 			public function addproductopedidocambio(){
         	if ($this->input->is_ajax_request()) {
      			$Pac_IdPago_Compra = $this->input->post('Pac_IdPago_Compra');
      			$SKU_IdSku = $this->input->post('skus');
@@ -903,8 +900,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      			$Precio = $this->input->post('preciosP');
           $registro = $this->gestionModel->addproductopedidocambio($Pac_IdPago_Compra,$SKU_IdSku,$Cantidad,$Precio);
           echo $registro;
-			}
-        }
+					}
+      }
 		function registrar(){
 			$data = $this->acl->load_datos();
 			$this->load->library('correo');

@@ -280,12 +280,13 @@
 	          <label for="rSocial">Razón Social</label>
 	        </div>
 	        <div class="input-field col s6">
-	          <input type="text" id="ruc" class="validate" value="{{compra_info.Pci_Ruc}}">
+	          <input type="number" id="ruc" class="validate" value="{{compra_info.Pci_Ruc}}" maxlength="11">
 	          <label for="ruc">RUC</label>
-	          <a class="btn buscarDatos" data-tipo="6">SUNAT</a>
+	          <a class="btn buscarRUC purple" data-tipo="6">BUSCAR SUNAT</a>
+	          <span class="red-text" id="errorRuc"></span>
 	        </div>
 	        <div class="input-field col s4">
-	          <input type="text" id="email" class="validate">
+	          <input type="text" id="email" class="validate" value="example@gmail.com">
 	          <label for="email">Correo Electronico</label>
 	        </div>
 	        <div class="input-field col s4">
@@ -361,14 +362,15 @@
 	        <div class="input-field col s4">
 	          <input type="text" id="numerodoc" class="validate" value="{{venta.Per_Dni}}">
 	          <label for="numerodoc">Número Documento</label>
-	           <a class="btn buscarDatos" data-tipo="1">RENIEC</a>
+	           <a class="btn buscarDNI orange" data-tipo="1">Buscar DNI</a>
+	           <span class="red-text" id="errorDNI"></span>
 	        </div>
 	        <div class="input-field col s4">
 	          <input id="razonSocial2" type="text" class="validate" value="{{venta.Per_Nombre}}">
 	          <label for="razonSocial2">Nombre</label>
 	        </div>
 	        <div class="input-field col s4">
-	          <input type="text" id="email" class="validate">
+	          <input type="text" id="email" class="validate" value="example@gmail.com">
 	          <label for="email">Correo Electronico</label>
 	        </div>
 	        <div class="input-field col s4">
