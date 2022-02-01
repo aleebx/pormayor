@@ -6,12 +6,12 @@
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("Configuracion_model", "configuracionModel");
-		$this->load->model("Grupal_model", "grupalModel");
-        $this->load->helper(array('form', 'url', 'security'));
-		$this->load->library(array('form_validation'));
-        $this->load->library('tank_auth');
-        $this->lang->load('tank_auth');
+		// $this->load->model("Configuracion_model", "configuracionModel");
+		// $this->load->model("Grupal_model", "grupalModel");
+  //       $this->load->helper(array('form', 'url', 'security'));
+		// $this->load->library(array('form_validation'));
+  //       $this->load->library('tank_auth');
+  //       $this->lang->load('tank_auth');
 	}
 
 	function index()
@@ -35,25 +35,25 @@
 
 	function update_estado()
 	{
-		$productos = $this->grupalModel->get_grupos_total();
-		$hoy = date('Y-m-d H:i:s');
-		foreach ($productos as $key => $value) {
-			if ($hoy >= $value->Fecha_Fin and $value->Gru_Estado == 0) {
-				$this->grupalModel->update_estado($value->Gru_IdGrupo);
-				$data['gCompleto'] = $this->grupalModel->mail_gruperos_update_precio($value->Gru_IdGrupo);
-				foreach ($data['gCompleto'] as $key){
-					$this->correoGrupoCompleto($key);
-				}
-			}
-		}
+		// $productos = $this->grupalModel->get_grupos_total();
+		// $hoy = date('Y-m-d H:i:s');
+		// foreach ($productos as $key => $value) {
+		// 	if ($hoy >= $value->Fecha_Fin and $value->Gru_Estado == 0) {
+		// 		$this->grupalModel->update_estado($value->Gru_IdGrupo);
+		// 		$data['gCompleto'] = $this->grupalModel->mail_gruperos_update_precio($value->Gru_IdGrupo);
+		// 		foreach ($data['gCompleto'] as $key){
+		// 			$this->correoGrupoCompleto($key);
+		// 		}
+		// 	}
+		// }
 
 	}
 
 	function mail()
 	{
-		$data = $this->acl->load_datos();
-		$data['inf'] = $this->grupalModel->usuario_grupo(267,1520);
-		$data['nombre_usuario'] = "aLEXIS BEQUIZAs";
+		// $data = $this->acl->load_datos();
+		// $data['inf'] = $this->grupalModel->usuario_grupo(267,1520);
+		// $data['nombre_usuario'] = "aLEXIS BEQUIZAs";
 
 		// $this->load->library('correo');
        	// $datos['inf'] = $datosusu;
@@ -62,61 +62,61 @@
 
         // $this->correo->enviar($data['inf']->Usu_Correo, $data['inf']->Per_Nombre.", tu grupo ha bajado el precio", $contenido_correo);
 
-		$this->twig->parse('mail.twig', $data);
+		// $this->twig->parse('mail.twig', $data);
 	}
 
 	function unirse()
 	{
-		$data = $this->acl->load_datos();
-		if ($this->input->is_ajax_request()) {
-			$Pro_IdProducto = (int)$this->input->post('Pro_IdProducto');
-			$Usu_IdUsuario = (int)$this->input->post('Usu_IdUsuario');
-			$Sku_IdSku = (int)$this->input->post('Sku_IdSku');
-			$variacion = (string)$this->input->post('variacion');
-			$unidad = (string)$this->input->post('unidad');
-			$color = (string)$this->input->post('color');
-			$tipovariacion = (string)$this->input->post('tipovariacion');
-			$idtienda = (int)$this->input->post('idtienda');
-			$documento = (string)$this->input->post('documento');
+		// $data = $this->acl->load_datos();
+		// if ($this->input->is_ajax_request()) {
+		// 	$Pro_IdProducto = (int)$this->input->post('Pro_IdProducto');
+		// 	$Usu_IdUsuario = (int)$this->input->post('Usu_IdUsuario');
+		// 	$Sku_IdSku = (int)$this->input->post('Sku_IdSku');
+		// 	$variacion = (string)$this->input->post('variacion');
+		// 	$unidad = (string)$this->input->post('unidad');
+		// 	$color = (string)$this->input->post('color');
+		// 	$tipovariacion = (string)$this->input->post('tipovariacion');
+		// 	$idtienda = (int)$this->input->post('idtienda');
+		// 	$documento = (string)$this->input->post('documento');
 
-			$Gru_IdGrupo = $this->grupalModel->registrarGrupo($Pro_IdProducto,$Usu_IdUsuario,$Sku_IdSku,$variacion,$unidad,$color,$tipovariacion,$idtienda,$documento);
-			$data['usu_info'] = $this->grupalModel->usuario_grupo($data['usuario']['id_usuario'],$Pro_IdProducto);
-			if ($Gru_IdGrupo == "nuevo") {
-				$this->correoUnidoGrupo($data['usu_info']);
-				$this->correoUnidoGrupoAdmin($data['usu_info']);
-				echo 1;
-			}else if ($Gru_IdGrupo == "mismo"){
-				$this->correoUnidoGrupo($data['usu_info']);
-				$this->correoUnidoGrupoAdmin($data['usu_info']);
-				echo 1;
-			}else{
-				$this->correoUnidoGrupo($data['usu_info']);
-				$this->correoUnidoGrupoAdmin($data['usu_info']);
-				$data['gCompleto'] = $this->grupalModel->mail_gruperos_update_precio($Gru_IdGrupo);
-				foreach ($data['gCompleto'] as $key){
-					$this->correo_update_precio($key);
-				}
-				echo 1;
-			}
-		}
+		// 	$Gru_IdGrupo = $this->grupalModel->registrarGrupo($Pro_IdProducto,$Usu_IdUsuario,$Sku_IdSku,$variacion,$unidad,$color,$tipovariacion,$idtienda,$documento);
+		// 	$data['usu_info'] = $this->grupalModel->usuario_grupo($data['usuario']['id_usuario'],$Pro_IdProducto);
+		// 	if ($Gru_IdGrupo == "nuevo") {
+		// 		$this->correoUnidoGrupo($data['usu_info']);
+		// 		$this->correoUnidoGrupoAdmin($data['usu_info']);
+		// 		echo 1;
+		// 	}else if ($Gru_IdGrupo == "mismo"){
+		// 		$this->correoUnidoGrupo($data['usu_info']);
+		// 		$this->correoUnidoGrupoAdmin($data['usu_info']);
+		// 		echo 1;
+		// 	}else{
+		// 		$this->correoUnidoGrupo($data['usu_info']);
+		// 		$this->correoUnidoGrupoAdmin($data['usu_info']);
+		// 		$data['gCompleto'] = $this->grupalModel->mail_gruperos_update_precio($Gru_IdGrupo);
+		// 		foreach ($data['gCompleto'] as $key){
+		// 			$this->correo_update_precio($key);
+		// 		}
+		// 		echo 1;
+		// 	}
+		// }
 	}
 
 	function abandonar()
 	{
-		$data = $this->acl->load_datos();
-		if ($this->input->is_ajax_request()) {
-			$Grp_IdGrupero = (int)$this->input->post('Grp_IdGrupero');
-			$Pro_IdProducto = (int)$this->input->post('Pro_IdProducto');
-			$Gru_IdGrupo = (int)$this->input->post('Gru_IdGrupo');
+		// $data = $this->acl->load_datos();
+		// if ($this->input->is_ajax_request()) {
+		// 	$Grp_IdGrupero = (int)$this->input->post('Grp_IdGrupero');
+		// 	$Pro_IdProducto = (int)$this->input->post('Pro_IdProducto');
+		// 	$Gru_IdGrupo = (int)$this->input->post('Gru_IdGrupo');
 
-			$registro = $this->grupalModel->abandonarGrupo($Grp_IdGrupero,$Pro_IdProducto,$Gru_IdGrupo);
+		// 	$registro = $this->grupalModel->abandonarGrupo($Grp_IdGrupero,$Pro_IdProducto,$Gru_IdGrupo);
 
-			if ($registro) {
-				echo 1;
-			}else{
-				echo 0;
-			}
-		}
+		// 	if ($registro) {
+		// 		echo 1;
+		// 	}else{
+		// 		echo 0;
+		// 	}
+		// }
 	}
 
 	function migrupo($Pro_IdProducto = false)
@@ -301,104 +301,104 @@
 
 	function _login($correo, $clave, $remember, $redirect=1, $url)
     {
-        $data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND  $this->config->item('use_username', 'tank_auth'));
-        $data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
+        // $data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND  $this->config->item('use_username', 'tank_auth'));
+        // $data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
 
-        if ($this->tank_auth->login($correo, $clave, $remember, $data['login_by_username'], $data['login_by_email'])) 
-        {
-        	if($redirect == 1)
-            {
-                $this->_redirigir_login($url);
-            }    
-        } 
-        else 
-        {
-            $errors = $this->tank_auth->get_error_message();
+        // if ($this->tank_auth->login($correo, $clave, $remember, $data['login_by_username'], $data['login_by_email'])) 
+        // {
+        // 	if($redirect == 1)
+        //     {
+        //         $this->_redirigir_login($url);
+        //     }    
+        // } 
+        // else 
+        // {
+        //     $errors = $this->tank_auth->get_error_message();
             
-            if (isset($errors['banned'])) 
-            {                               
-                $this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
-            }
-            elseif (isset($errors['not_activated'])) 
-            {               
-                redirect('/usuario/send_again/');
-            } 
-            else 
-            {                                                   
-                foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
-            }
-        }
+        //     if (isset($errors['banned'])) 
+        //     {                               
+        //         $this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
+        //     }
+        //     elseif (isset($errors['not_activated'])) 
+        //     {               
+        //         redirect('/usuario/send_again/');
+        //     } 
+        //     else 
+        //     {                                                   
+        //         foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
+        //     }
+        // }
     }
 
     function _redirigir_login($url)
     {
-        redirect($url);
+        // redirect($url);
     }
 
 
 	public function correoUnidoGrupo($datosusu)
 	{
-		$this->load->library('correo');
-       	$datos['inf'] = $datosusu;
+		// $this->load->library('correo');
+  //      	$datos['inf'] = $datosusu;
 
-       	// $correo = "bequizalexis@gmail.com";
+  //      	// $correo = "bequizalexis@gmail.com";
 
-        $contenido_correo = $this->twig->parse('correo/unir_grupo.twig', $datos, true);
+  //       $contenido_correo = $this->twig->parse('correo/unir_grupo.twig', $datos, true);
 
-        $this->correo->enviar($datosusu->Usu_Correo, $datosusu->Per_Nombre.", te haz unido a un GRUPO DE COMPRA", $contenido_correo);
+  //       $this->correo->enviar($datosusu->Usu_Correo, $datosusu->Per_Nombre.", te haz unido a un GRUPO DE COMPRA", $contenido_correo);
 	}
 
 	public function correoGrupoCompleto($datosusu)
 	{
-		$this->load->library('correo');
-       	$datos['inf'] = $datosusu;
+		// $this->load->library('correo');
+  //      	$datos['inf'] = $datosusu;
 
-        $contenido_correo = $this->twig->parse('correo/grupo_completo.twig', $datos, true);
+  //       $contenido_correo = $this->twig->parse('correo/grupo_completo.twig', $datos, true);
 
-        $this->correo->enviar($datosusu->Usu_Correo, $datosusu->Per_Nombre.", tu grupo se ha COMPLETADO", $contenido_correo);
+  //       $this->correo->enviar($datosusu->Usu_Correo, $datosusu->Per_Nombre.", tu grupo se ha COMPLETADO", $contenido_correo);
 	}
 
 	public function correo_update_precio($datosusu)
 	{
-		$this->load->library('correo');
-       	$datos['inf'] = $datosusu;
+		// $this->load->library('correo');
+  //      	$datos['inf'] = $datosusu;
 
-        $contenido_correo = $this->twig->parse('correo/update_precio.twig', $datos, true);
+  //       $contenido_correo = $this->twig->parse('correo/update_precio.twig', $datos, true);
 
-        $this->correo->enviar($datosusu->Usu_Correo, $datosusu->Per_Nombre.", tu grupo ha bajado el precio", $contenido_correo);
+  //       $this->correo->enviar($datosusu->Usu_Correo, $datosusu->Per_Nombre.", tu grupo ha bajado el precio", $contenido_correo);
 	}
 
 	public function correoUnidoGrupoAdmin($datosusu)
 	{
-		$this->load->library('correo');
-       	$datos['inf'] = $datosusu;
+		// $this->load->library('correo');
+  //      	$datos['inf'] = $datosusu;
 
-       	$correo = "alexis.bequiz@pormayor.pe";
+  //      	$correo = "alexis.bequiz@pormayor.pe";
 
-        $contenido_correo = $this->twig->parse('correo/unir_grupo.twig', $datos, true);
+  //       $contenido_correo = $this->twig->parse('correo/unir_grupo.twig', $datos, true);
 
-        $this->correo->enviar($correo, "Te haz unido a un Grupo de Compra ".$datosusu->Per_Nombre, $contenido_correo);
+  //       $this->correo->enviar($correo, "Te haz unido a un Grupo de Compra ".$datosusu->Per_Nombre, $contenido_correo);
 	}
 
 	public function buildSlugValue($string){
-      $table = array(
-            'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
-            'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
-            'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O',
-            'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss',
-            'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e',
-            'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o',
-            'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
-            'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r', '/' => '-', ' ' => '-'
-    );
+    //   $table = array(
+    //         'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
+    //         'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+    //         'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O',
+    //         'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss',
+    //         'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e',
+    //         'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o',
+    //         'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
+    //         'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r', '/' => '-', ' ' => '-'
+    // );
 
-    // -- Remove duplicated spaces
-    $stripped = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $string);
-    $string= str_replace(',', '', $string);
-    $string= str_replace('.', '', $string);
+    // // -- Remove duplicated spaces
+    // $stripped = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $string);
+    // $string= str_replace(',', '', $string);
+    // $string= str_replace('.', '', $string);
 
-    // -- Returns the slug
-    return strtolower(strtr($string, $table));
+    // // -- Returns the slug
+    // return strtolower(strtr($string, $table));
     }
 
 }
