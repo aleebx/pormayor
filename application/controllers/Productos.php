@@ -847,17 +847,9 @@
 			    	    array_push($precios,$newdata);					
 				}
 				if ($data['envio']->costo == 1) {
-					if ($total2 >= 300 or $cantidadProducto >= 6) {
-						$data['costoReal']=20;					
-					}else{
-						$data['costoReal']=10;
-					}
+					$data['costoReal']=20;					
 				}else if ($data['envio']->costo == 2){
-					if ($total2 >= 300 or $cantidadProducto >= 6) {
-						$data['costoReal']=30;
-					}else{
-						$data['costoReal']=15;
-					}
+					$data['costoReal']=30;
 				}else{
 					$data['costoReal']=10;
 				}
