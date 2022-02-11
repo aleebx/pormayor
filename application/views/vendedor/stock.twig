@@ -26,7 +26,7 @@
               {% for pro in productos %}
                 <tr>
                   <td><img class="redondeo" src="{{ruta_img}}{{pro.Prf_Img}}" height="50"></td>
-                  <td><a href="https://pormayor.pe/productos/dp/pormayor-{{pro.Pro_IdProducto}}" target="_blank" class="negrita">{{pro.Pro_Nombre}}</a></td>
+                  <td><a href="https://pormayor.pe/productos/dp/pormayor-{{pro.Pro_IdProducto}}" target="_blank" class="negrita">COD: {{pro.Pro_IdProducto}} | {{pro.Pro_Nombre}}</a></td>
                   <td>{{pro.SKU_Color}}</td>
                   <td class="fontD2">S/ {{pro.Pro_PrecioMinimo}}</td>
                   {% set gan = pro.Pro_PrecioMinimo -  pro.PrecioCompra %}
