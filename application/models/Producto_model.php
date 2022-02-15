@@ -1624,7 +1624,7 @@
             }
         }
 
-        function registrarAcuerdo($array_compra,$arryCompraDetalle,$Ven_Total,$Ven_Envio,$id_usuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$tienda_usuario, $array_id_tienda, $array_price_tienda_total, $tlf,$tipoPago,$Descuento){
+        function registrarAcuerdo($array_compra,$arryCompraDetalle,$Ven_Total,$Ven_Envio,$id_usuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$tienda_usuario, $array_id_tienda, $array_price_tienda_total, $tlf,$tipoPago,$Descuento,$Ven_IdVendedor){
 
             if($tipoPago=='ACUERDO'){
                 $Pac_Banco='NO';
@@ -1651,6 +1651,7 @@
             $CodPago="1".sprintf('%04d',$Pac_IdPago_Compra)."A";
 
             $this->db->set('Pac_CodPago',$CodPago);
+            $this->db->set('Ven_IdVendedor',$Ven_IdVendedor);
             $this->db->where('Pac_IdPago_Compra',$Pac_IdPago_Compra);
             $this->db->update('pago_compra');
 
@@ -1949,6 +1950,15 @@
             $this->db->select('costo');
             $this->db->from('districts');
             $this->db->where('id',$id_districts);
+            $query = $this->db->get();
+            return $query->row();
+        }
+
+        function asignar_vendedor($Usu_IdUsuario)
+        {
+            $this->db->select('Usu_IdUsuario_Ven');
+            $this->db->from('usuario');
+            $this->db->where('Usu_IdUsuario',$Usu_IdUsuario);
             $query = $this->db->get();
             return $query->row();
         }

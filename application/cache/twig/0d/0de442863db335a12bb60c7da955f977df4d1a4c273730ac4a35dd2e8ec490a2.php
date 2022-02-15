@@ -38,7 +38,7 @@ class __TwigTemplate_35934ccf430f1fa05098e8b5f5f753a1b2e0e3cee5c87fb73ff41848c48
     public function block_content($context, array $blocks = array())
     {
         // line 6
-        echo "  <main class=\"container\">
+        echo "  <main class=\"\">
     <div class=\"card\">
       <div class=\"card-content\">
         <h4>Listado de clientes - Todos los clientes registrado en PorMayor</h4>
@@ -53,73 +53,88 @@ class __TwigTemplate_35934ccf430f1fa05098e8b5f5f753a1b2e0e3cee5c87fb73ff41848c48
                 <th>Ventas</th>
                 <th>Estado</th>
                 <th></th>
+                <th></th>
             </tr>
           </thead>
           <tbody>
               ";
-        // line 24
+        // line 25
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["clientes"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["c"]) {
-            // line 25
+            // line 26
             echo "                <tr>
                   <td>";
-            // line 26
+            // line 27
             echo twig_date_format_filter($this->env, $this->getAttribute($context["c"], "Usu_Created", array()), "Y/m/d");
             echo "</td>
                   <td>";
-            // line 27
+            // line 28
             echo $this->getAttribute($context["c"], "Per_Nombre", array());
             echo " ";
             echo $this->getAttribute($context["c"], "Usu_Correo", array());
             echo "</td>
                   <td>";
-            // line 28
+            // line 29
             echo $this->getAttribute($context["c"], "dep", array());
             echo " - ";
             echo $this->getAttribute($context["c"], "dis", array());
             echo "</td>
                   <td>";
-            // line 29
+            // line 30
             echo $this->getAttribute($context["c"], "Per_Telefono", array());
             echo "</td>
                   <td>";
-            // line 30
+            // line 31
             echo $this->getAttribute($context["c"], "compras", array());
             echo "</td>
                   ";
-            // line 31
+            // line 32
             if (($this->getAttribute($context["c"], "Usu_IdUsuario_Ven", array()) == 0)) {
-                // line 32
+                // line 33
                 echo "                  <td id=\"td";
                 echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                 echo "\"><a class=\"btn btn-primary assCliente\" data-idu=\"";
                 echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                 echo "\">ASIGNARME</a></td>
                   ";
-            } elseif (($this->getAttribute(            // line 33
-$context["c"], "Usu_IdUsuario_Ven", array()) == $this->getAttribute(($context["usuario"] ?? null), "id_usuario", array()))) {
-                // line 34
-                echo "                  <td>CLIENTE</td>
-                  ";
             } else {
-                // line 36
-                echo "                  <td>NO DISPONIBLE</td>
+                // line 35
+                echo "                  <td>";
+                echo $this->getAttribute($context["c"], "vendedor", array());
+                echo "</td>
                   ";
             }
-            // line 38
+            // line 37
             echo "                  <td><a class=\"btn blue modal-trigger\" id=\"";
             echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
             echo "\" accessKey=\"";
             echo $this->getAttribute($context["c"], "Usu_Correo", array());
             echo "\" href=\"#modalGes\">Clave</a></td>
+                  <td>
+                  <div class=\"switch orange-text\">
+                    <label>
+                      <input type=\"checkbox\" class=\"estadoP\" data-id=\"";
+            // line 41
+            echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
+            echo "\" data-sa=\"";
+            echo $this->getAttribute($context["c"], "Usu_Activated", array());
+            echo "\" ";
+            if (($this->getAttribute($context["c"], "Usu_Activated", array()) == 1)) {
+                echo "checked";
+            }
+            echo " />
+                      <span class=\"lever\"></span>
+                    </label>
+                  </div>
+                </td>
                 </tr>
               ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['c'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 41
+        // line 48
         echo "          </tbody>
         </table>
       </div>
@@ -131,13 +146,13 @@ $context["c"], "Usu_IdUsuario_Ven", array()) == $this->getAttribute(($context["u
 ";
     }
 
-    // line 51
+    // line 58
     public function block_script($context, array $blocks = array())
     {
-        // line 52
+        // line 59
         echo "  <script type=\"text/javascript\" charset=\"utf8\" src=\"https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js\"></script>
   <script src=\"";
-        // line 53
+        // line 60
         echo base_url("public/");
         echo "js/vendedor/lcliente.js?v=12\" type=\"text/javascript\"></script>
   <script>
@@ -182,6 +197,26 @@ $context["c"], "Usu_IdUsuario_Ven", array()) == $this->getAttribute(($context["u
               } // Callback for Modal close
           });
 });
+
+     \$('.estadoP').on(\"click\", function(){
+      console.log(\"data\");
+        var Usu_IdUsuario = \$(this).data('id');
+        var Usu_Activated = \$(this).data('sa');
+         \$.ajax({
+            data:{
+            'Usu_IdUsuario' : Usu_IdUsuario,
+            'Usu_Activated' : Usu_Activated
+            },
+              type: \"POST\",
+              url: base_url+'vnd/estado_usuario', 
+              dataType: \"json\",
+              success: function(data){
+                console.log(data);
+                // location.reload(true);
+             },
+            });
+      
+    });
   </script>
 ";
     }
@@ -198,7 +233,7 @@ $context["c"], "Usu_IdUsuario_Ven", array()) == $this->getAttribute(($context["u
 
     public function getDebugInfo()
     {
-        return array (  141 => 53,  138 => 52,  135 => 51,  123 => 41,  111 => 38,  107 => 36,  103 => 34,  101 => 33,  94 => 32,  92 => 31,  88 => 30,  84 => 29,  78 => 28,  72 => 27,  68 => 26,  65 => 25,  61 => 24,  41 => 6,  38 => 5,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  156 => 60,  153 => 59,  150 => 58,  138 => 48,  119 => 41,  109 => 37,  103 => 35,  95 => 33,  93 => 32,  89 => 31,  85 => 30,  79 => 29,  73 => 28,  69 => 27,  66 => 26,  62 => 25,  41 => 6,  38 => 5,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -211,6 +246,6 @@ $context["c"], "Usu_IdUsuario_Ven", array()) == $this->getAttribute(($context["u
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "vendedor/listado_cliente.twig", "C:\\xampp\\htdocs\\pormayor2021\\application\\views\\vendedor\\listado_cliente.twig");
+        return new Twig_Source("", "vendedor/listado_cliente.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\vendedor\\listado_cliente.twig");
     }
 }

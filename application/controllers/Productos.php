@@ -1155,60 +1155,60 @@
 	    public function pago_compra(){
 	    	//Pago Compra
 			if ($this->input->is_ajax_request()){
-					$data = $this->acl->load_datos("no", "comprador");
-					// $array_compra = $this->input->post('array_compra');
-					$COD='NO';
-					$data['totalc'] = count($data['carrito']);
-					$Ven_Total = $this->input->post('total');
-					$Ven_Envio = $this->input->post('envio');
-	                $banco = $this->input->post('Vef_Banco'); 
+				$data = $this->acl->load_datos("no", "comprador");
+				// $array_compra = $this->input->post('array_compra');
+				$COD='NO';
+				$data['totalc'] = count($data['carrito']);
+				$Ven_Total = $this->input->post('total');
+				$Ven_Envio = $this->input->post('envio');
+                $banco = $this->input->post('Vef_Banco'); 
 
-					$correo = $_SESSION['inf_compra']['correo'];
-					$nombre = $_SESSION['inf_compra']['nombre'];
-					$tlf = $_SESSION['inf_compra']['tlf'];
+				$correo = $_SESSION['inf_compra']['correo'];
+				$nombre = $_SESSION['inf_compra']['nombre'];
+				$tlf = $_SESSION['inf_compra']['tlf'];
 
-					$region = $_SESSION['inf_compra']['region'];
-	                $provincia = $_SESSION['inf_compra']['provincia']; 
-	                $distrito = $_SESSION['inf_compra']['distrito'];
-	                $direccion = $_SESSION['inf_compra']['direccion'];
-					$referencia = $_SESSION['inf_compra']['referencia'];
-					$lote = $_SESSION['inf_compra']['lote'];
-					$dpint = $_SESSION['inf_compra']['dpint'];
-					$urbanizacion = $_SESSION['inf_compra']['urbanizacion'];
-					$ruc = $_SESSION['inf_compra']['ruc'];
-					$dniClient=$this->session->DNIcliente;
-					$razonSocial = $_SESSION['inf_compra']['razonSocial'];
-					$arryCompraDetalle=$this->session->ArrayDetalle;
-					$dir=$direccion.' '.$lote.' '.$dpint.' '.$urbanizacion.' '.$referencia;
+				$region = $_SESSION['inf_compra']['region'];
+                $provincia = $_SESSION['inf_compra']['provincia']; 
+                $distrito = $_SESSION['inf_compra']['distrito'];
+                $direccion = $_SESSION['inf_compra']['direccion'];
+				$referencia = $_SESSION['inf_compra']['referencia'];
+				$lote = $_SESSION['inf_compra']['lote'];
+				$dpint = $_SESSION['inf_compra']['dpint'];
+				$urbanizacion = $_SESSION['inf_compra']['urbanizacion'];
+				$ruc = $_SESSION['inf_compra']['ruc'];
+				$dniClient=$this->session->DNIcliente;
+				$razonSocial = $_SESSION['inf_compra']['razonSocial'];
+				$arryCompraDetalle=$this->session->ArrayDetalle;
+				$dir=$direccion.' '.$lote.' '.$dpint.' '.$urbanizacion.' '.$referencia;
 
-					$monto_cobrar='0.00';
-					$array_id_tienda = array();
+				$monto_cobrar='0.00';
+				$array_id_tienda = array();
 
-					$array_price_tienda = array();
+				$array_price_tienda = array();
 
-					foreach ($data['carrito'] as $cart) 
-					{
-						$array_id_tienda[] = $cart['idtienda'];	
-						$array_price_tienda[] = array($cart['idtienda'] => $cart['price'], );
-					}
+				foreach ($data['carrito'] as $cart) 
+				{
+					$array_id_tienda[] = $cart['idtienda'];	
+					$array_price_tienda[] = array($cart['idtienda'] => $cart['price'], );
+				}
 
-					$array_id_tienda = array_unique($array_id_tienda);
-					$array_price_tienda_total = array();
+				$array_id_tienda = array_unique($array_id_tienda);
+				$array_price_tienda_total = array();
 
-					foreach ($array_id_tienda as $key) {						
-						$pricios = 0;
-						for ($i=0; $i < count($array_price_tienda) ; $i++) { 
-							if ($key == key($array_price_tienda[$i])) {
-								$pricios += $array_price_tienda[$i][$key];
-							}
+				foreach ($array_id_tienda as $key) {						
+					$pricios = 0;
+					for ($i=0; $i < count($array_price_tienda) ; $i++) { 
+						if ($key == key($array_price_tienda[$i])) {
+							$pricios += $array_price_tienda[$i][$key];
 						}
-						$array_price_tienda_total[$key] = $pricios;
-					}		
-					
-					$tienda_usuario = $data['usuario']['id_tienda'];
-					$Usu_IdUsuario = $data['usuario']['id_usuario'];
+					}
+					$array_price_tienda_total[$key] = $pricios;
+				}		
+				
+				$tienda_usuario = $data['usuario']['id_tienda'];
+				$Usu_IdUsuario = $data['usuario']['id_usuario'];
 
-					$Pac_IdPago_Compra = $this->productoModel->registrarCompra($data['carrito'],$arryCompraDetalle,$Ven_Total,$Ven_Envio,$Usu_IdUsuario,$banco,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$razonSocial,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf);
+				$Pac_IdPago_Compra = $this->productoModel->registrarCompra($data['carrito'],$arryCompraDetalle,$Ven_Total,$Ven_Envio,$Usu_IdUsuario,$banco,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$razonSocial,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf);
 
 				if (is_null($Pac_IdPago_Compra))
 				{
@@ -1339,8 +1339,6 @@
 	    	//Pago ContraEntega
 			if ($this->input->is_ajax_request()){
 					$data = $this->acl->load_datos("no", "comprador");
-					
-					// $array_compra = $this->input->post('array_compra');
 					$COD='COD';
 					$data['totalc'] = count($data['carrito']);
 					$Ven_Total = $this->input->post('total');
@@ -1363,16 +1361,9 @@
 					$urbanizacion = $_SESSION['inf_compra']['urbanizacion'];
 					$tipoPago=$this->input->post('tipoPago');
 					$dir=$direccion.' '.$lote.' '.$dpint.' '.$urbanizacion.' '.$referencia;
-
-					//Api
 					$monto_cobrar=(($Ven_Total) + ($Ven_Envio));
-
-					//$Ven_Ubigeo=
-
 					$array_id_tienda = array();
-
 					$array_price_tienda = array();
-
 					foreach ($data['carrito'] as $cart) 
 					{
 						$array_id_tienda[] = $cart['idtienda'];	
@@ -1394,8 +1385,9 @@
 					
 					$tienda_usuario = $data['usuario']['id_tienda'];
 					$Usu_IdUsuario = $data['usuario']['id_usuario'];
+					$Ven_IdVendedor = $this->productoModel->asignar_vendedor($Usu_IdUsuario);
 
-					$Pac_IdPago_Compra = $this->productoModel->registrarAcuerdo($data['carrito'],$arryCompraDetalle,$Ven_Total,$Ven_Envio,$Usu_IdUsuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf,$tipoPago,$Descuento);
+					$Pac_IdPago_Compra = $this->productoModel->registrarAcuerdo($data['carrito'],$arryCompraDetalle,$Ven_Total,$Ven_Envio,$Usu_IdUsuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf,$tipoPago,$Descuento,$Ven_IdVendedor->Usu_IdUsuario_Ven);
 
 
 				if (is_null($Pac_IdPago_Compra))
@@ -1498,8 +1490,9 @@
 					
 					$tienda_usuario = $data['usuario']['id_tienda'];
 					$Usu_IdUsuario = $data['usuario']['id_usuario'];
+					$Ven_IdVendedor = $this->productoModel->asignar_vendedor($Usu_IdUsuario);
 
-					$Pac_IdPago_Compra = $this->productoModel->registrarAcuerdo($data['carrito'],$arryCompraDetalle,$Ven_Total,$Ven_Envio,$Usu_IdUsuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf,$tipoPago,$Descuento);
+					$Pac_IdPago_Compra = $this->productoModel->registrarAcuerdo($data['carrito'],$arryCompraDetalle,$Ven_Total,$Ven_Envio,$Usu_IdUsuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf,$tipoPago,$Descuento,$Ven_IdVendedor->Usu_IdUsuario_Ven);
 
 
 				if (is_null($Pac_IdPago_Compra))
@@ -1599,8 +1592,9 @@
 					
 				$tienda_usuario=$data['usuario']['id_tienda'];
 				$Usu_IdUsuario=$data['usuario']['id_usuario'];
+				$Ven_IdVendedor = $this->productoModel->asignar_vendedor($Usu_IdUsuario);
 
-				$Pac_IdPago_Compra=$this->productoModel->registrarAcuerdo($data['carrito'],$arryCompraDetalle,$Ven_Total,$Ven_Envio,$Usu_IdUsuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf,$tipoPago,$Descuento);
+				$Pac_IdPago_Compra=$this->productoModel->registrarAcuerdo($data['carrito'],$arryCompraDetalle,$Ven_Total,$Ven_Envio,$Usu_IdUsuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf,$tipoPago,$Descuento,$Ven_IdVendedor->Usu_IdUsuario_Ven);
 
 
 				if(is_null($Pac_IdPago_Compra)) {

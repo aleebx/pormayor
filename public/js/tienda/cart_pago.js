@@ -147,8 +147,6 @@ $(document).ready(function(){
           Continuar: {
             btnClass:'btn green',                    
             action:function () {
-              //ACUERDO DIRECTO CON TIENDA
-              //Guardando datos
               console.log(monto_pagar,monto_envio,tipoPago,descuento);
               $.ajax({
                 data:{

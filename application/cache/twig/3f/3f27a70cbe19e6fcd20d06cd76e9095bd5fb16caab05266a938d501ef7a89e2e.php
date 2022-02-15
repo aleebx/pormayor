@@ -139,7 +139,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
                     echo "+tu+familia+de+PorMayor.Pe+te+env%C3%ADa+un++saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+";
                     echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
                     echo "%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0AAprovechamos+para+informarle+que+hemos+incorporado+novedades+a+nuestra+pagina+web+y+puedes+conocerlas+ingresando+a+https%3A%2F%2Fpormayor.pe%2F+%0D%0ARecuerda+que+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0ANos+gustar%C3%ADa+conocer+tu+opini%C3%B3n+sobre+nuestros+nuevos+productos%F0%9F%98%8A\">";
-                    $context["tipo"] = "ACTIVO";
+                    $context["tipo"] = "VIGENTE";
                     echo ($context["tipo"] ?? null);
                     echo "</a>
                   ";
@@ -153,7 +153,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
                     echo "+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+";
                     echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
                     echo "%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla\">";
-                    $context["tipo"] = "INACTIVO +10 DIAS";
+                    $context["tipo"] = "INACTIVO +10";
                     echo ($context["tipo"] ?? null);
                     echo "</a>
                   ";
@@ -167,7 +167,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
                     echo "+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+";
                     echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
                     echo "%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla\">";
-                    $context["tipo"] = "INACTIVO +20 DIAS";
+                    $context["tipo"] = "INACTIVO +20";
                     echo ($context["tipo"] ?? null);
                     echo "</a>
                   ";
@@ -181,9 +181,9 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
                     echo "+tu+familia+de+PORMAYOR+te+env%C3%ADa+un+cordial+saludo.+%F0%9F%A4%97%0D%0ATe+escribe+";
                     echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
                     echo "%2C+Asesor+Comercial+de+la+empresa%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+PREFERIRNOS%0D%0ATe+informo+que+han+llegado+variedad+de+productos+novedosos+que+puedes+conocer+ingresando+a+nuestra+web+https%3A%2F%2Fpormayor.pe%2F%0D%0ARecuerda+que+ahora+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0ACrece+con+Nosotros+%F0%9F%A5%B3%F0%9F%A5%B3%F0%9F%A5%B3\">";
-                    $context["tipo"] = "INACTIVO +30 DIAS";
+                    $context["tipo"] = "INACTIVO +30";
                     echo ($context["tipo"] ?? null);
-                    echo "INACTIVO +30 DIAS</a>
+                    echo "</a>
                   ";
                 } elseif ((                // line 56
 ($context["leftDays"] ?? null) >= 41)) {
@@ -195,7 +195,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
                     echo "+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+";
                     echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
                     echo "%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla\">";
-                    $context["tipo"] = "INACTIVO +40 DIAS";
+                    $context["tipo"] = "INACTIVO +40";
                     echo ($context["tipo"] ?? null);
                     echo "</a>
                   ";
@@ -204,110 +204,127 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
                 echo "                  ";
             } else {
                 // line 60
-                echo "                    <a class=\"btn-flat blue\" href=\"https://wa.me/51";
-                echo $this->getAttribute($context["c"], "Per_Telefono", array());
-                echo "?text=Hola%2C+";
-                echo $this->getAttribute($context["c"], "Per_Nombre", array());
-                echo "+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0ATe+saluda+";
-                echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
-                echo "%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+TU+INTERES%0D%0AAprovechamos+para+informarle+sobre+nuestra+MODALIDAD+DE+VENTA+en+la+que+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFTe+gustar%C3%ADa+obtener+mayor+informaci%C3%B3n%3F%0D%0AHazme+saber+y+podemos+agendar+una+Reuni%C3%B3n+y+para+brindarte+una+Asesor%C3%ADa+Completa+%F0%9F%91%A9%F0%9F%92%BB\">";
-                $context["tipo"] = "REGISTRADO";
-                echo ($context["tipo"] ?? null);
-                echo "</a>
-                  ";
+                echo "                    ";
+                if (($this->getAttribute($context["c"], "entregado", array()) > 1)) {
+                    // line 61
+                    echo "                    <a class=\"btn-flat blue\" href=\"https://wa.me/51";
+                    echo $this->getAttribute($context["c"], "Per_Telefono", array());
+                    echo "?text=Hola%2C+";
+                    echo $this->getAttribute($context["c"], "Per_Nombre", array());
+                    echo "+queremos+enviarte+un+cordial+saludo\">";
+                    $context["tipo"] = "VIGENTE";
+                    echo ($context["tipo"] ?? null);
+                    echo "</a>
+                    ";
+                } else {
+                    // line 63
+                    echo "                       <a class=\"btn-flat blue\" href=\"https://wa.me/51";
+                    echo $this->getAttribute($context["c"], "Per_Telefono", array());
+                    echo "?text=Hola%2C+";
+                    echo $this->getAttribute($context["c"], "Per_Nombre", array());
+                    echo "+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0ATe+saluda+";
+                    echo $this->getAttribute(($context["usuario"] ?? null), "nombre", array());
+                    echo "%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+TU+INTERES%0D%0AAprovechamos+para+informarle+sobre+nuestra+MODALIDAD+DE+VENTA+en+la+que+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFTe+gustar%C3%ADa+obtener+mayor+informaci%C3%B3n%3F%0D%0AHazme+saber+y+podemos+agendar+una+Reuni%C3%B3n+y+para+brindarte+una+Asesor%C3%ADa+Completa+%F0%9F%91%A9%F0%9F%92%BB\">";
+                    $context["tipo"] = "REGISTRADO";
+                    echo ($context["tipo"] ?? null);
+                    echo "</a>
+                    ";
+                }
+                // line 65
+                echo "                  ";
             }
-            // line 62
+            // line 66
             echo "                  </td>
                   ";
-            // line 63
+            // line 67
             $context["break"] = false;
-            // line 64
+            // line 68
             echo "                    ";
             $context["tt"] = 0;
-            // line 65
+            // line 69
             echo "                  ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["gestionc"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["ges"]) {
                 if ( !($context["break"] ?? null)) {
-                    // line 66
+                    // line 70
                     echo "                    ";
                     if (($this->getAttribute($context["c"], "Usu_IdUsuario", array()) == $this->getAttribute($context["ges"], "Usu_IdUsuario", array()))) {
-                        // line 67
+                        // line 71
                         echo "                      <td class=\"gFe";
                         echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                         echo "\">";
                         echo $this->getAttribute($context["ges"], "Ges_FechaRegistro", array());
                         echo "</td>
                       <td class=\"gMo";
-                        // line 68
+                        // line 72
                         echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                         echo "\">";
                         echo $this->getAttribute($context["ges"], "Ges_Motivo", array());
                         echo "</td>
                       <td class=\"gDe";
-                        // line 69
+                        // line 73
                         echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                         echo "\">";
                         echo $this->getAttribute($context["ges"], "Ges_Detalle", array());
                         echo "</td>
                       <td class=\"gAc";
-                        // line 70
+                        // line 74
                         echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                         echo "\">";
                         echo $this->getAttribute($context["ges"], "Ges_Accion", array());
                         echo "</td>
                       <td class=\"gFp";
-                        // line 71
+                        // line 75
                         echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                         echo "\">";
                         echo $this->getAttribute($context["ges"], "Ges_FechaProgramar", array());
                         echo "</td>
                     ";
-                        // line 72
+                        // line 76
                         $context["tt"] = 1;
-                        // line 73
+                        // line 77
                         echo "                      ";
                         $context["break"] = true;
-                        // line 80
+                        // line 84
                         echo "                      ";
                     }
-                    // line 81
+                    // line 85
                     echo "                  ";
                 }
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ges'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 82
+            // line 86
             echo "                  ";
             if ((($context["tt"] ?? null) == 0)) {
-                // line 83
+                // line 87
                 echo "                      <td class=\"gFe";
                 echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                 echo "\"></td>
                       <td class=\"gMo";
-                // line 84
+                // line 88
                 echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                 echo "\"></td>
                       <td class=\"gDe";
-                // line 85
+                // line 89
                 echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                 echo "\"></td>
                       <td class=\"gAc";
-                // line 86
+                // line 90
                 echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                 echo "\"></td>
                       <td class=\"gFp";
-                // line 87
+                // line 91
                 echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
                 echo "\"></td> 
                   ";
             }
-            // line 88
+            // line 92
             echo "                 
                   ";
-            // line 90
+            // line 94
             echo "                  <td><a class=\"btn blue modal-trigger\" id=\"";
             echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
             echo "\" accessKey=\"";
@@ -316,7 +333,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
             echo ($context["tipo"] ?? null);
             echo "\" href=\"#modalGes\"><i class=\"material-icons\">update</i></a></td>
                   <td><a class=\"btn red quitar\" data-idu=\"";
-            // line 91
+            // line 95
             echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
             echo "\"><i class=\"material-icons\">delete</i></a></td>
                 </tr>
@@ -325,7 +342,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['c'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 94
+        // line 98
         echo "          </tbody>
         </table>
       </div>
@@ -337,10 +354,10 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
 ";
     }
 
-    // line 104
+    // line 108
     public function block_script($context, array $blocks = array())
     {
-        // line 105
+        // line 109
         echo "  <script type=\"text/javascript\" charset=\"utf8\" src=\"https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js\"></script>
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
   <script>
@@ -401,7 +418,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
             logo:\"\",
             backgroundColor: '#fff',
             loadingHtml: \"<img src='";
-        // line 164
+        // line 168
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
             });
@@ -432,7 +449,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
 
     public function getDebugInfo()
     {
-        return array (  405 => 164,  344 => 105,  341 => 104,  329 => 94,  320 => 91,  311 => 90,  308 => 88,  303 => 87,  299 => 86,  295 => 85,  291 => 84,  286 => 83,  283 => 82,  276 => 81,  273 => 80,  270 => 73,  268 => 72,  262 => 71,  256 => 70,  250 => 69,  244 => 68,  237 => 67,  234 => 66,  228 => 65,  225 => 64,  223 => 63,  220 => 62,  207 => 60,  204 => 59,  191 => 57,  189 => 56,  177 => 55,  175 => 54,  163 => 53,  161 => 52,  149 => 51,  147 => 50,  135 => 49,  132 => 48,  129 => 47,  126 => 46,  123 => 45,  120 => 44,  118 => 43,  112 => 41,  102 => 40,  98 => 39,  94 => 38,  90 => 37,  84 => 36,  80 => 35,  75 => 34,  71 => 33,  47 => 11,  42 => 7,  39 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  422 => 168,  361 => 109,  358 => 108,  346 => 98,  337 => 95,  328 => 94,  325 => 92,  320 => 91,  316 => 90,  312 => 89,  308 => 88,  303 => 87,  300 => 86,  293 => 85,  290 => 84,  287 => 77,  285 => 76,  279 => 75,  273 => 74,  267 => 73,  261 => 72,  254 => 71,  251 => 70,  245 => 69,  242 => 68,  240 => 67,  237 => 66,  234 => 65,  221 => 63,  210 => 61,  207 => 60,  204 => 59,  191 => 57,  189 => 56,  177 => 55,  175 => 54,  163 => 53,  161 => 52,  149 => 51,  147 => 50,  135 => 49,  132 => 48,  129 => 47,  126 => 46,  123 => 45,  120 => 44,  118 => 43,  112 => 41,  102 => 40,  98 => 39,  94 => 38,  90 => 37,  84 => 36,  80 => 35,  75 => 34,  71 => 33,  47 => 11,  42 => 7,  39 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -445,6 +462,6 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "vendedor/listado.twig", "C:\\xampp\\htdocs\\pormayor2021\\application\\views\\vendedor\\listado.twig");
+        return new Twig_Source("", "vendedor/listado.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\vendedor\\listado.twig");
     }
 }
