@@ -305,12 +305,12 @@ class Vendedor_model extends CI_Model
 
     function top_ventas(){
         $mes = date("Y-m");
-        $this->db->select('(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as vendedor, SUM(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as total');
+        $this->db->select('(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = pac.Ven_IdVendedor LIMIT 1) as vendedor, SUM(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as total');
         $this->db->from('pago_compra as pac');
         $this->db->join('usuario as usu','usu.Usu_IdUsuario = pac.Usu_IdUsuario');
         $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
         $this->db->where('pac.Pac_Estado = 5');
-        $this->db->like('pac.Pac_FechaRegistro',$mes);
+        $this->db->like('pac.Pac_FechaModificado',$mes);
         $this->db->group_by('vendedor');
         $this->db->order_by('total', 'DESC');
         $query = $this->db->get();
