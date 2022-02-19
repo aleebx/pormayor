@@ -411,7 +411,6 @@ class Vendedor_model extends CI_Model
         return true;  
     }
 
-
     function cliente_id($id)
     {
         $this->db->select('Usu_IdUsuario_Ven');
@@ -419,6 +418,106 @@ class Vendedor_model extends CI_Model
         $this->db->where('Usu_IdUsuario', $id);
         $query = $this->db->get();
         return $query->row();
+    }
+
+    function buscar_dni($dni)
+    {
+        $this->db->select('usu.Usu_IdUsuario, usu.Per_IdPersona, Usu_Correo, per.Per_Dni, per.Per_Nombre, per.Per_Sexo, per.Per_FechaNacimiento, per.Per_Telefono, per.Per_Celular, per.Per_Ocupacion, Tie_IdTienda, Rol_IdRol, per.Per_Direccion, per.Region_Id, per.Provincia_Id,usu.Usu_IdUsuario_Ven, per.Distrito_Id,pds.Pag_Direccion,pds.Pag_idregion,pds.Pag_idprovincia,pds.Pag_iddistrito,pds.Pag_Referencia,pds.Pag_Lote,pds.Pag_DtoInt,pds.Pag_Urbanizacion,pds.Pag_Telefono,(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as vendedor');
+        $this->db->from('usuario as usu');
+        $this->db->join('persona AS per', 'per.Per_IdPersona = usu.Per_IdPersona');
+        $this->db->join('pago_direccion_usu AS pds', 'pds.Usu_IdUsuario = usu.Usu_IdUsuario','left');
+        $this->db->where('per.Per_Dni', $dni);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    function buscar_telefono($tlf)
+    {
+        $this->db->select('usu.Usu_IdUsuario, usu.Per_IdPersona, Usu_Correo, per.Per_Dni, per.Per_Nombre, per.Per_Sexo, per.Per_FechaNacimiento, per.Per_Telefono, per.Per_Celular, per.Per_Ocupacion, Tie_IdTienda, Rol_IdRol, per.Per_Direccion, per.Region_Id, per.Provincia_Id, usu.Usu_IdUsuario_Ven,per.Distrito_Id,pds.Pag_Direccion,pds.Pag_idregion,pds.Pag_idprovincia,pds.Pag_iddistrito,pds.Pag_Referencia,pds.Pag_Lote,pds.Pag_DtoInt,pds.Pag_Urbanizacion,pds.Pag_Telefono,(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as vendedor');
+        $this->db->from('usuario as usu');
+        $this->db->join('persona AS per', 'per.Per_IdPersona = usu.Per_IdPersona');
+        $this->db->join('pago_direccion_usu AS pds', 'pds.Usu_IdUsuario = usu.Usu_IdUsuario','left');
+        $this->db->where('per.Per_Telefono', $tlf);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    function addpedido($SKU_IdSku,$Cantidad,$Precio,$id_usuario,$region,$provincia,$distrito,$direccion,$referencia,$lote,$dpint,$urbanizacion,$DNIcliente,$tlf,$delivery,$tipoVenta,$subtotBd,$Ven_IdVendedor){
+
+        $this->db->trans_start();
+        //registro compra
+        $this->db->set('Pac_Estado',1);
+        $this->db->set('Pac_Total',$subtotBd);
+        $this->db->set('Pac_Envio',$delivery);
+        $this->db->set('Pac_Banco',$tipoVenta);
+        $this->db->set('Usu_IdUsuario',$id_usuario);
+        $this->db->set('Pac_FechaVencimiento',date("Y-m-d H:i:s"));
+        if($this->db->insert('pago_compra')) {
+            $Pac_IdPago_Compra=$this->db->insert_id();
+        };
+
+        $CodPago="1".sprintf('%04d',$Pac_IdPago_Compra)."A";
+
+        $this->db->set('Pac_CodPago',$CodPago);
+        $this->db->set('Ven_IdVendedor',$Ven_IdVendedor);
+        $this->db->where('Pac_IdPago_Compra',$Pac_IdPago_Compra);
+        $this->db->update('pago_compra');
+
+         $data = array(
+            'Usu_IdUsuario' => $id_usuario,
+            'Pag_Direccion'  => $direccion,
+            'Pag_idregion'  => $region,
+            'Pag_idprovincia'  => $provincia,
+            'Pag_iddistrito'  => $distrito,
+            'Pag_Referencia'  => $referencia,
+            'Pag_Lote'  => $lote,
+            'Pag_DtoInt'  => $dpint,
+            'Pag_Urbanizacion'  => $urbanizacion,
+            'Pag_Telefono'  => $tlf
+        );
+        $this->db->replace('pago_direccion_usu', $data);
+
+        $this->db->set('Pci_Ruc',"");
+        $this->db->set('Pci_Lote',$lote);
+        $this->db->set('idregion',$region);
+        $this->db->set('Pci_DtoInt',$dpint);
+        $this->db->set('Pci_Telefono',$tlf);
+        $this->db->set('Pci_RazonSocial'," ");
+        $this->db->set('iddistrito',$distrito);
+        $this->db->set('idprovincia',$provincia);
+        $this->db->set('Pci_Direccion',$direccion);
+        $this->db->set('Pci_Referencia',$referencia);
+        $this->db->set('Pci_Urbanizacion',$urbanizacion);
+        $this->db->set('Pac_IdPago_Compra',$Pac_IdPago_Compra);
+        $this->db->insert('pago_compra_info');
+
+        for ($i=0; $i < count($SKU_IdSku); $i++) {
+        $this->db->select('SKU_StockDisponible,SKU_StockReal,SKU_Reservado');
+        $this->db->from('sku');
+        $this->db->where('SKU_IdSKU',$SKU_IdSku[$i]);;
+        $query = $this->db->get();
+        $stock = $query->row();
+
+
+        $this->db->set('SKU_StockDisponible', $stock->SKU_StockDisponible - $Cantidad[$i]);
+        $this->db->set('SKU_Reservado', $stock->SKU_Reservado + $Cantidad[$i]);
+        $this->db->where('SKU_IdSKU', $SKU_IdSku[$i]);
+        $this->db->update('sku');
+        
+        $this->db->set('Pac_IdPago_Compra', $Pac_IdPago_Compra);
+        $this->db->set('Pcd_IdSKU', $SKU_IdSku[$i]);
+        $this->db->set('Pcd_Precio', $Precio[$i]);
+        $this->db->set('Pcd_Cantidad', $Cantidad[$i]);
+        $this->db->set('Pcd_Importe', (float)$Precio[$i] * (int)$Cantidad[$i]);
+        $this->db->insert('pago_compra_detalle');
+        }
+
+        $this->db->trans_complete();
+        if($this->db->trans_status()) {
+           return $Pac_IdPago_Compra;
+        } else {
+            return null;                
+        }
     }
 
 

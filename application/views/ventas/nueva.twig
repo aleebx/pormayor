@@ -2,14 +2,175 @@
 {% block head %}
 {% endblock %}
 {% block content %}
-  <main class="container">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">REGISTRAR VENTA</span>        
+  <main class=" row">
+    <div class="col s12 center">
+      <h4>REGISTRO DE PEDIDO</h4>
+      SOLO CLIENTES REGISTRADOS
+    </div>
+    <div class="card col s5">
+      <div class="card-content sinPadding">
+        <div class="row">
+          <span class="card-title center black-text">Agregar Productos</span>
+          <br>
+          <div class="col s12 l12">
+                  <select class="browser-default select2" id="selProducto">
+                    <option value="0" selected>Seleccione el producto</option>
+                    {% for pro in productos %}
+                      <option value="{{pro.Pro_IdProducto}}" data-pre="{{pro.Pro_PrecioMinimo}}" data-ids="{{pro.SKU_IdSKU}}" data-var="{{pro.SKU_Color}}" data-dispo="{{pro.SKU_StockDisponible}}">COD: {{pro.Pro_IdProducto}} | {{pro.Pro_Nombre}} {{pro.SKU_Color}}</option>
+                    {% endfor %}
+                  </select><br><br>
+            </div>
+            <div class="col s4">
+              <div class="form-group">
+                <label for="stockD">STOCK DISPONIBLE</label>
+                <input class="form-control" type="number" id="stockD" value="0" disabled>
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="form-group">
+                <label for="cantP">Cantidad</label>
+                <input class="form-control" type="number" id="cantP" value="0">
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="form-group">
+                <label for="precioP">Precio</label>
+                <input class="form-control" type="number" id="precioP" value="0" disabled>
+              </div>
+            </div>
+            <div class="col s12">
+              <a class="btn purple btn-lg btn-block add-row"><i class="material-icons left">add</i>AGREGAR PRODUCTO</a>
+            </div>            
+            <div class="col s12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>PRODUCTO</th>
+                      <th>CANTIDAD</th>
+                      <th>PRECIO</th>
+                      <th>SUBTOTAL</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablaListado" class="grey lighten-4">                   
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>TOTAL</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th id="subT1">0</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th>DELIVERY</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th><input type="number" name="delivery" id="delivery" value="0"></th>
+                      <th></th>
+                    </tr>
+                  </tfoot>
+                </table>
+            </div>
+        </div>
       </div>
+    </div>
+    <div class="card col s7">
+      <div class="card-content sinPadding">
+        <div class="row"> 
+          <span class="card-title center black-text">Datos de Envio</span>
+          <br>
+          <div class="col s12 text-red center" id="preload"></div>
+
+          <div class="col s12 l4">
+            <a class="btn orange" href="{{base_url()}}vnd/crear" target="_blank" style="width:100%">REGISTRAR CLIENTE</a>
+          </div>
+          <div class="col s12 l8">
+              <select  class="browser-default" id="tipoVenta">
+                <option value="TIENDA">RETIRO EN TIENDA</option>
+                <option value="NO">CONTRAENTREGA</option>
+                <option value="TDO">PROVINCIA</option>
+              </select>      <br>    
+          </div>
+          <div class="input-field col s3">
+            <input id="DNIcliente" placeholder="" type="number" class="validate" value="">
+            <label for="DNIcliente">D.N.I</label>
+          </div>
+          <div class="input-field col s3">
+            <input id="tlf" placeholder="" type="number" class="validate" min="1" value="">
+            <label for="tlf">Teléfono Celular</label>
+          </div>
+          <div class="input-field col s3">
+            <input id="idcliente" placeholder="" type="number" class="validate" value="" readonly="">
+            <label for="idcliente">ID CLIENTE</label>
+          </div>
+          <div class="input-field col s3">
+            <input id="vendedor" placeholder="" type="text" class="validate" value="" readonly="">
+            <label for="vendedor">VENDEDOR</label>
+          </div>
+          <div class="input-field col s6">
+            <input placeholder=""  id="nombreComprador" type="text" class="validate" value="">
+            <label for="nombreComprador">Nombre Completo</label>
+          </div>
+          <div class="input-field col s6">
+            <input placeholder="" id="correo" type="email" class="validate" value="">
+            <label for="correo">Correo Electrónico</label>
+          </div>
+          <div id="direccionVista">
+            <div class="col s4">
+              <select id="selecRegion" class="browser-default" data-valor="">
+                <option value="0" disabled selected>Departamento</option>
+                {% for reg in region %}
+                  <option value="{{reg.id}}">{{reg.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div id="provincia" class="col s4" data-valor="">
+              <select  class="browser-default" id="selProvincia">
+                <option value="0" disabled selected> Seleccione una provincia</option>
+              </select>
+            </div>
+            <div id="distrito" class="col s4" data-valor="">
+              <select class="browser-default" id="selDistrito">
+                <option value="0" disabled selected> Seleccione un distrito</option>
+              </select>
+            </div>
+            <div class="col l12"><br></div>
+            <div class="input-field col s12 l12" id="toHide">
+              <input id="direccionComprador" type="text" class="validate" value="" placeholder="">
+              <label for="direccionComprador">Dirección</label>
+            </div>
+          </div>
+          <div class="input-field col s12 l4" id="toHide">
+            <input id="dintComprador" type="text" class="validate" value="" placeholder="">
+            <label for="dintComprador">Depto./Int</label>
+          </div>
+          <div class="input-field col s12 l4" id="toHide">
+            <input id="urbComprador" type="text" class="validate" value="" placeholder="">
+            <label for="urbComprador">Urbanización</label>
+          </div>
+          <div class="input-field col s12 l4" id="toHide">
+            <input id="referenciaComprador" type="text" class="validate" value="" placeholder="">
+            <label for="referenciaComprador">Referencia</label>
+          </div>
+          <div class="input-field col s12 l12" id="toHide">
+            <input id="nloteComprador" type="text" class="validate" value="" placeholder="">
+            <label for="nloteComprador">Agencia o Empresa de Transporte para enviar</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 center" id="preAddp">
+    </div>
+    <div class="col s12 center">
+      <a class="btn btn-large addPedido green" style="width:80%" data-idu="{{usuario.id_usuario}}">GUARDAR PEDIDO</a>
     </div>
   </main>
 {% endblock %}
 
 {% block script %}
+  <script src="{{base_url('public/')}}js/nuevav.js?v=2"></script>
 {% endblock %}

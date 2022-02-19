@@ -189,7 +189,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
 \t\t    \t\t\t\t\t\t<td class=\"\">";
         // line 87
         echo $this->getAttribute(($context["venta"] ?? null), "vendedor", array());
-        echo " <a class=\"btn\">ASIGNAR VENTA</a></td>
+        echo "</td>
 \t\t    \t\t\t\t\t</tr>
 \t\t    \t\t\t\t</table>\t\t    \t\t\t\t
 \t\t    \t\t\t</div>\t

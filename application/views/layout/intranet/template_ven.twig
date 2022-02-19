@@ -76,7 +76,7 @@
     <div class="navbar-fixed">
       <nav class="pormayor center">
         <div class="nav-wrapper">
-          <a class="btn">REGISTRAR NUEVA VENTA</a>
+          <a class="btn" href="{{base_url()}}venta/nueva" target="_blank" >REGISTRAR NUEVA VENTA</a>
         </div>
       </nav>
     </div>
@@ -110,6 +110,7 @@
       {% if usuario.rol == 5 %}
       <li class="itemMenu {% if pag == 'perfil' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/perfil"><i class="material-icons">sentiment_very_satisfied</i>Mi Perfil</a></li>
       <li class="itemMenu {% if pag == 'crear' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/crear"><i class="material-icons">person_add</i>Crear cliente</a></li>
+      <li class="itemMenu pormayor black-text"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}venta/nueva"><i class="material-icons">add</i>NUEVA VENTA</a></li>
       <li class="itemMenu {% if pag == 'listado' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/listado"><i class="material-icons">person_outline</i>Mis clientes</a></li>
       <li class="itemMenu {% if pag == 'misventas' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/misventas"><i class="material-icons">person_outline</i>Mis ventas <span class="new badge red ventaN"></span></a></li>
       <li class="itemMenu {% if pag == 'listado_clientes' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/listado_clientes"><i class="material-icons">group</i>Clientes registrados</a></li>
@@ -214,9 +215,9 @@
               var c4 = 0;
               var comision = 0;
               $('.llevo').text('Llevas S/'+data);
-            if (data <= 29999){
+            if (data <= 39999){
               $('.metaVnd').text('AUN NO COMISIONAS :( TÚ PUEDES CREO EN TI <3');
-            }else if(data >= 30000 && data <= 40000){
+            }else if(data >= 40000 && data <= 80000){
               c1 = data * 0.005;
               $('.metaVnd').text('S/'+c1);
             }else if(data >= 40001 && data <= 80000){

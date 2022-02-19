@@ -123,6 +123,6 @@ class __TwigTemplate_1bddea3809062e3e387a6c749a2b15d7858af9d9d999c12fc36d9297bd9
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "vendedor/login.twig", "C:\\xampp\\htdocs\\pormayor2021\\application\\views\\vendedor\\login.twig");
+        return new Twig_Source("", "vendedor/login.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\vendedor\\login.twig");
     }
 }
