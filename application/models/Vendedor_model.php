@@ -235,26 +235,26 @@ class Vendedor_model extends CI_Model
     }
 
     function reporte_ventas($id_vendedor,$mes){
-        $this->db->select('DATE_FORMAT(pac.Pac_FechaRegistro, "%Y-%m-%d") as fecha, SUM(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as total');
+        $this->db->select('DATE_FORMAT(pac.Pac_FechaModificado, "%Y-%m-%d") as fecha, SUM(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as total');
         $this->db->from('pago_compra as pac');
         $this->db->join('usuario as usu','usu.Usu_IdUsuario = pac.Usu_IdUsuario');
         $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
-        $this->db->where("(pac.Pac_Estado = 5 AND usu.Usu_IdUsuario_Ven = $id_vendedor)", NULL, FALSE);
-        $this->db->where('DATE_FORMAT(pac.Pac_FechaRegistro, "%Y-%m") =',$mes);
-        $this->db->group_by('DATE_FORMAT(pac.Pac_FechaRegistro, "%Y-%m-%d")');
-        $this->db->order_by('pac.Pac_FechaRegistro', 'DESC');
+        $this->db->where("(pac.Pac_Estado = 5 AND pac.Ven_IdVendedor = $id_vendedor)", NULL, FALSE);
+        $this->db->where('DATE_FORMAT(pac.Pac_FechaModificado, "%Y-%m") =',$mes);
+        $this->db->group_by('DATE_FORMAT(pac.Pac_FechaModificado, "%Y-%m-%d")');
+        $this->db->order_by('pac.Pac_FechaModificado', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }
 
     function reporte_ventas_c($id_vendedor,$mes){
-        $this->db->select('DATE_FORMAT(pac.Pac_FechaRegistro, "%Y-%m-%d") as fecha,(SELECT COUNT(pac.Pac_IdPago_Compra) from pago_compra_detalle as pcd where pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra group by pcd.Pac_IdPago_Compra) as cantidad');
+        $this->db->select('DATE_FORMAT(pac.Pac_FechaModificado, "%Y-%m-%d") as fecha,(SELECT COUNT(pac.Pac_IdPago_Compra) from pago_compra_detalle as pcd where pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra group by pcd.Pac_IdPago_Compra) as cantidad');
         $this->db->from('pago_compra as pac');
         $this->db->join('usuario as usu','usu.Usu_IdUsuario = pac.Usu_IdUsuario');
-        $this->db->where("(pac.Pac_Estado = 5 AND usu.Usu_IdUsuario_Ven = $id_vendedor)", NULL, FALSE);
-        $this->db->where('DATE_FORMAT(pac.Pac_FechaRegistro, "%Y-%m") =',$mes);
-        $this->db->group_by('DATE_FORMAT(pac.Pac_FechaRegistro, "%Y-%m-%d")');
-        $this->db->order_by('pac.Pac_FechaRegistro', 'DESC');
+        $this->db->where("(pac.Pac_Estado = 5 AND pac.Ven_IdVendedor = $id_vendedor)", NULL, FALSE);
+        $this->db->where('DATE_FORMAT(pac.Pac_FechaModificado, "%Y-%m") =',$mes);
+        $this->db->group_by('DATE_FORMAT(pac.Pac_FechaModificado, "%Y-%m-%d")');
+        $this->db->order_by('pac.Pac_FechaModificado', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -376,7 +376,7 @@ class Vendedor_model extends CI_Model
 
     function get_ventas_pm()
     {   
-        $sql="SELECT pac.Pac_IdPago_Compra, usu.Usu_IdUsuario,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as vendedor,per.Per_Nombre, pac.Pac_Total, pac.Pac_Envio, pac.Pac_Banco, pac.Pac_FechaRegistro, pac.Pac_Estado,pac.Pac_CodPago,per.Per_Telefono 
+        $sql="SELECT pac.Pac_IdPago_Compra, usu.Usu_IdUsuario,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as cartera,(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = pac.Ven_IdVendedor LIMIT 1) as vendedor,per.Per_Nombre, pac.Pac_Total, pac.Pac_Envio, pac.Pac_Banco, pac.Pac_FechaRegistro, pac.Pac_Estado,pac.Pac_CodPago,per.Per_Telefono 
         FROM pago_compra as pac 
         INNER JOIN usuario as usu ON usu.Usu_IdUsuario = pac.Usu_IdUsuario 
         INNER JOIN persona as per on per.Per_IdPersona = usu.Per_IdPersona";
@@ -388,7 +388,7 @@ class Vendedor_model extends CI_Model
     {   
         $sql="SELECT pac.Pac_IdPago_Compra, usu.Usu_IdUsuario,per.Per_Nombre, pac.Pac_Total, pac.Pac_Envio, pac.Pac_Banco, pac.Pac_FechaRegistro, pac.Pac_Estado,pac.Pac_CodPago,per.Per_Telefono FROM pago_compra as pac 
         INNER JOIN usuario as usu ON usu.Usu_IdUsuario = pac.Usu_IdUsuario 
-        INNER JOIN persona as per on per.Per_IdPersona = usu.Per_IdPersona WHERE usu.Usu_IdUsuario_Ven = $id_vendedor";
+        INNER JOIN persona as per on per.Per_IdPersona = usu.Per_IdPersona WHERE pac.Ven_IdVendedor = $id_vendedor";
         $query = $this->db->query($sql);   
         return $query->result();
     }

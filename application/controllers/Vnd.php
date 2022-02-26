@@ -649,6 +649,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $dat[$c]["Pac_CodPago"] = $value->Pac_CodPago;
                 $dat[$c]["Per_Telefono"] = $value->Per_Telefono;
                 $dat[$c]["Cliente"] = $value->Per_Nombre.'|'.$value->Per_Telefono;
+                $dat[$c]["Cartera"] = $value->cartera;
                 $dat[$c]["Vendedor"] = $value->vendedor;
                 $c++;
             }
