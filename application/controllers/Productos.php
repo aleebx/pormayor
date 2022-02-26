@@ -1287,8 +1287,9 @@
 					
 					$tienda_usuario = $data['usuario']['id_tienda'];
 					$Usu_IdUsuario = $data['usuario']['id_usuario'];
+					$Ven_IdVendedor = $this->productoModel->asignar_vendedor($Usu_IdUsuario);
 
-					$Pac_IdPago_Compra = $this->productoModel->registrarAcuerdo($data['carrito'],$arryCompraDetalle,$Ven_Total,$Usu_IdUsuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf,$tipoPago);
+					$Pac_IdPago_Compra = $this->productoModel->registrarAcuerdo($data['carrito'],$arryCompraDetalle,$Ven_Total,$Ven_Envio,$Usu_IdUsuario,$region,$provincia,$direccion,$distrito,$referencia,$lote,$dpint,$urbanizacion,$ruc,$tienda_usuario,$array_id_tienda,$array_price_tienda_total,$tlf,$tipoPago,$Descuento,$Ven_IdVendedor->Usu_IdUsuario_Ven);
 
 				if (is_null($Pac_IdPago_Compra))
 				{
