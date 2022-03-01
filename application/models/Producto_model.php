@@ -611,8 +611,13 @@
 
         function productos_categoria($Cat_IdCategoria)
         {
-            $sql = "SELECT pro.Pro_IdProducto,pro.Pro_Nombre, pro.Pro_Estado, pro.Pro_Oferta, pro.Pro_Valoracion, pro.Pro_PrecioRango, pro.Pro_MostrarPrecio, pro.Pro_PrecioMinimo, pro.Pro_PrecioMaximo, prf.Prf_Thumb, prf.Prf_Img ,pro.Pro_Caracteristicas,pro.Pro_Garantia,pro.Pro_EdoGarantia,pro.Pro_Documento,pro.Pro_Estado,pro.Pro_FechaCreacion,pro.Pro_Descripcion, pro.Pro_Marca,pro.Pro_Vista, (SELECT SUM(SKU_StockDisponible) FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as SKU_StockDisponible  FROM producto as pro INNER JOIN producto_foto AS prf ON prf.producto_Pro_IdProducto = pro.Pro_IdProducto INNER JOIN producto_categoria AS pca ON pca.producto_Pro_IdProducto = pro.Pro_IdProducto WHERE pca.Cat_IdCategoria = $Cat_IdCategoria AND pro.Pro_PM = 1  GROUP BY pro.Pro_IdProducto HAVING SKU_StockDisponible > 4 ORDER BY  pro.Pro_FechaCreacion DESC";
-            $query = $this->db->query($sql);
+            $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, pro.Pro_Descripcion, pro.Pro_FechaModificacion, pro.Pro_FechaCreacion, pro.Pro_PrecioMaximo, pro.Pro_PrecioMinimo, pro.Pro_PM,(SELECT Prf_Thumb FROM producto_foto as prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Thumb, (SELECT SUM(SKU_StockDisponible) FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as SKU_StockDisponible, pro.Pro_Saldo, pro.Pro_Preventa, (SELECT cat.Cat_IdCategoria FROM categoriap as cat INNER JOIN producto_categoria as prc ON prc.Cat_IdCategoria = cat.Cat_IdCategoria WHERE prc.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as idcategoria');
+            $this->db->from('producto as pro');
+            $this->db->where('pro.Pro_PM',1);
+            $this->db->order_by('pro.Pro_FechaModificacion','DESC');
+            $this->db->having('SKU_StockDisponible >=', 3);
+            $this->db->having('idcategoria =', $Cat_IdCategoria);
+            $query = $this->db->get();
             return $query->result();
         }
 
@@ -967,6 +972,16 @@
         {
             $this->db->select('*');
             $this->db->from('categoriap');
+            $query = $this->db->get();
+            return $query->result();
+        }
+            
+        function categorias_act()
+        {
+            $this->db->select('*');
+            $this->db->from('categoriap');
+            $this->db->where('Cat_Estado',1);
+            $this->db->order_by('Cat_Orden','ASC');
             $query = $this->db->get();
             return $query->result();
         }

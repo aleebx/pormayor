@@ -14,13 +14,17 @@
       $data['pagina']['tipo']='principal';
       $data['pagina']['titulo']='PorMayor.pe - Crece con nosotros';
       $data['vendedores']=$this->productoModel->vendedores();
-      $data['productos']=$this->productoModel->productos_principal2();
+      // $data['productos']=$this->productoModel->productos_principal2();
       $data['pro10']=$this->productoModel->productos10();
       foreach ($data['productos'] as $valor) {
         $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
       }
       foreach ($data['pro10'] as $valor) {
         $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
+      }
+      $data['categorias'] = $this->productoModel->categorias_act();
+      foreach($data['categorias'] as $valor) {
+      $valor->url=$this->buildSlugValue($valor->Cat_Nombre)."-".$valor->Cat_IdCategoria;
       }
       $this->twig->parse('index3.twig',$data);
     }
@@ -58,21 +62,14 @@
 
     public function categorias($Cat_IdCategoria=false)
     {
-    // header("Location: https://pormayor.pe");
       if($Cat_IdCategoria) {
         $data=$this->acl->load_datos();
         $categoria_completa=explode("-",$Cat_IdCategoria);
         $url_nombre=implode("-",$categoria_completa);
         $titulo_pag=implode(" ",$categoria_completa);
-
-        //Ver la ultima key con Cat_IdCategoria
         end($categoria_completa);
         $key=key($categoria_completa);
         $Cat_IdCategoria=(int)$categoria_completa[$key];
-        // $data['categoriaFlag']=true;
-        // $data['categoria_seo']=$this->productoModel->categoria_seo($Cat_IdCategoria);      
-        // $data['pagina']['extrabtn']='SI';
-        // $data['pagina']['tipo']="carrito";  
         $data['pagina']['titulo']=substr($titulo_pag, 0, -2);
         $data['producto']=$this->productoModel->productos_categoria($Cat_IdCategoria);
         foreach($data['producto'] as $valor) {
