@@ -34,46 +34,46 @@ class Acl
         $data['carrito'] = $this->CI->cart->contents();
         $data['totalc'] = count($data['carrito']);
 
-        if ($categorias == 'si')
-        {
-            $data['categorias'] = $this->CI->productoModel->get_Categoria2();
-            //URL categoria
-            foreach ($data['categorias'] as $valor) {
-              $valor->url =  $this->buildSlugValue($valor->Cat_Nombre)."-al-por-mayor-".$valor->Cat_IdCategoria;
-            }
+        // if ($categorias == 'si')
+        // {
+        //     $data['categorias'] = $this->CI->productoModel->get_Categoria2();
+        //     //URL categoria
+        //     foreach ($data['categorias'] as $valor) {
+        //       $valor->url =  $this->buildSlugValue($valor->Cat_Nombre)."-al-por-mayor-".$valor->Cat_IdCategoria;
+        //     }
 
-            $data['subcategoria'] = $this->CI->productoModel->get_subCategoria3();
-            foreach ($data['subcategoria'] as $valor) {
-              $valor->url =  $this->buildSlugValue($valor->Suc_Nombre)."-al-por-mayor-".$valor->Suc_IdSubCategoria;
-            }
+        //     $data['subcategoria'] = $this->CI->productoModel->get_subCategoria3();
+        //     foreach ($data['subcategoria'] as $valor) {
+        //       $valor->url =  $this->buildSlugValue($valor->Suc_Nombre)."-al-por-mayor-".$valor->Suc_IdSubCategoria;
+        //     }
 
-            $data['subcat_detalle'] = $this->CI->productoModel->get_subCategoria_detalle_todas();
-            foreach ($data['subcat_detalle'] as $valor) {
-              $valor->url =  $this->buildSlugValue($valor->Suc_Nombre)."-".$this->buildSlugValue($valor->Des_Nombre)."-al-por-mayor-".$valor->Des_IdDetalle_SubCategoria;
-            }
+        //     $data['subcat_detalle'] = $this->CI->productoModel->get_subCategoria_detalle_todas();
+        //     foreach ($data['subcat_detalle'] as $valor) {
+        //       $valor->url =  $this->buildSlugValue($valor->Suc_Nombre)."-".$this->buildSlugValue($valor->Des_Nombre)."-al-por-mayor-".$valor->Des_IdDetalle_SubCategoria;
+        //     }
 
 
-            //Reordenar ROPA
-            $this->move_to_top($data['categorias'], 11);
-            $this->mover($data['categorias'],2);
-        }
+        //     //Reordenar ROPA
+        //     $this->move_to_top($data['categorias'], 11);
+        //     $this->mover($data['categorias'],2);
+        // }
 
-        if($tiendas == 'si')
-        {
-            $data['tiendas'] = $this->CI->tiendaModel->get_Tiendas();
-            shuffle ($data['tiendas']);
+        // if($tiendas == 'si')
+        // {
+        //     $data['tiendas'] = $this->CI->tiendaModel->get_Tiendas();
+        //     shuffle ($data['tiendas']);
 
-            $data['tiendas2'] = $this->CI->tiendaModel->get_Tiendas4();
-            shuffle ($data['tiendas2']);
-        }
+        //     $data['tiendas2'] = $this->CI->tiendaModel->get_Tiendas4();
+        //     shuffle ($data['tiendas2']);
+        // }
         
         //VENDEDOR
 
         $redirect = true;
-        // $dominio = $_SERVER['SERVER_NAME'];
-        // $data['dominio'] = $this->dominio;
-        // $data['ruta_img']="http://".$data['dominio']."/img/";
-        $data['ruta_img']="https://pormayor.pe/img/";
+        $dominio = $_SERVER['SERVER_NAME'];
+        $data['dominio'] = $this->dominio;
+        $data['ruta_img']="http://".$data['dominio']."/img/";
+        // $data['ruta_img']="https://pormayor.pe/img/";
         // $data['ruta_img']="http://localhost/img/";
 
         if($this->CI->session->userdata('logueado'))
@@ -89,31 +89,31 @@ class Acl
                 $data['subdominio_tienda'] = $this->CI->tiendaModel->get_tienda($data['usuario']['id_tienda'])->Tie_Subdominio;
             }
 
-            if($intranet)
-            {   
-                if($intranet == "comprador")
-                {
-                    if($data['usuario']['rol'] != 1)
-                    {
-                        $redirect = false;
-                    }
-                }
-                else if($intranet == "admin")
-                {
-                    if($data['usuario']['rol'] == 1)
-                    {
-                        $redirect = false;
-                    }
-                }
-                else
-                {
-                    $redirect = false;
-                }              
-            }
-            else
-            {
-                $redirect = false;
-            }
+        //     if($intranet)
+        //     {   
+        //         if($intranet == "comprador")
+        //         {
+        //             if($data['usuario']['rol'] != 1)
+        //             {
+        //                 $redirect = false;
+        //             }
+        //         }
+        //         else if($intranet == "admin")
+        //         {
+        //             if($data['usuario']['rol'] == 1)
+        //             {
+        //                 $redirect = false;
+        //             }
+        //         }
+        //         else
+        //         {
+        //             $redirect = false;
+        //         }              
+        //     }
+        //     else
+        //     {
+        //         $redirect = false;
+        //     }
         }
         else
         {
@@ -123,48 +123,48 @@ class Acl
             }
         }
 
-        if($redirect)
-        {
-            redirect();
-        }
+        // if($redirect)
+        // {
+        //     redirect();
+        // }
 
         return $data;
  	}
-    public function buildSlugValue($string){
-      $table = array(
-            'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
-            'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
-            'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O',
-            'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss',
-            'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e',
-            'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o',
-            'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
-            'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r', '/' => '-', ' ' => '-'
-    );
-    $stripped = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $string);
-    $string= str_replace(',', '', $string);
-    $string= str_replace('.', '', $string);
-    $string= rtrim($string, '-');
-    return strtolower(strtr($string, $table));
-    }
-    public function move_to_top(&$array, $key) {
+    // public function buildSlugValue($string){
+    //   $table = array(
+    //         'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
+    //         'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+    //         'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O',
+    //         'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss',
+    //         'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e',
+    //         'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o',
+    //         'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
+    //         'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r', '/' => '-', ' ' => '-'
+    // );
+    // $stripped = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $string);
+    // $string= str_replace(',', '', $string);
+    // $string= str_replace('.', '', $string);
+    // $string= rtrim($string, '-');
+    // return strtolower(strtr($string, $table));
+    // }
+    // public function move_to_top(&$array, $key) {
         
-        if(!empty($array[$key])) {
-            $temp = array($key => $array[$key]);
-            unset($array[$key]);
-            $array = $temp + $array;
-        } else {
-            $array = $array;
-        }   
+    //     if(!empty($array[$key])) {
+    //         $temp = array($key => $array[$key]);
+    //         unset($array[$key]);
+    //         $array = $temp + $array;
+    //     } else {
+    //         $array = $array;
+    //     }   
        
-      }
-    public function mover($a,$x) {
-      if( $x > 0 and $x < count($a) ) {
-        $b = array_slice($a,0,($x-1),true);
-        $b[] = $a[$x];
-        $b[] = $a[$x-1];
-        $b += array_slice($a,($x+1),count($a),true);
-        return($b);
-      } else { return $a; }
-    }
+    //   }
+    // public function mover($a,$x) {
+    //   if( $x > 0 and $x < count($a) ) {
+    //     $b = array_slice($a,0,($x-1),true);
+    //     $b[] = $a[$x];
+    //     $b[] = $a[$x-1];
+    //     $b += array_slice($a,($x+1),count($a),true);
+    //     return($b);
+    //   } else { return $a; }+
+    // }
 }

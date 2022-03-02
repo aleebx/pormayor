@@ -16,9 +16,6 @@
       $data['vendedores']=$this->productoModel->vendedores();
       // $data['productos']=$this->productoModel->productos_principal2();
       $data['pro10']=$this->productoModel->productos10();
-      foreach ($data['productos'] as $valor) {
-        $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
-      }
       foreach ($data['pro10'] as $valor) {
         $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
       }

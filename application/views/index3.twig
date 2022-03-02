@@ -89,7 +89,7 @@ src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
 			</div>
 		{% endif %}
 	</div>
-	<main>
+	<main class="container">
 		<div class="row">
 			<div class="col s12">
 				 <div class="slider">
@@ -112,18 +112,22 @@ src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
 				</div>
 			</div>
 		</div>
+
 		<div class="row">
+			<div class="col s12 fontE">
+				<p>Últimos productos</p>
+			</div>
 		  	{% for pro in pro10 %}
 		  	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
-		        <div class="col s6 m6 l2 black-text" data-cd="{{pro.Pro_PM}}">
+		        <div class="col s6 m4 l3 black-text" data-cd="{{pro.Pro_PM}}">
 		          <div class="card hoverable z-depth-1">
 		          	<span class="badge red white-text" style="position:absolute;">Nuevo</span>
 		            <div class="center" style="height:190px;">
-		              <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo"data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+		              <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo" data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
 		            </div>
 		            <div class="card-content center" style="height:100px;">
 		              <p>
-		              	<span class="truncate">{{pro.Pro_Nombre}}</span>
+		              	<span class="truncate">{{pro.Pro_Nombre|upper}}</span>
 		              	<small>COD: {{pro.Pro_IdProducto}}</small><br>
 		              	<div class="divider"></div>
 		              	{% if pro.Pro_Preventa == 1 %}
@@ -138,10 +142,15 @@ src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
 		        </div>
 	    	</a>
 		  	{% endfor %}
-		  	{% for cat in categoria %}
-		  	<a itemprop="url" href="{{base_url()}}categoria/{{pro.url}}">
-		       <div class="col s6 l3">
-		       		{{ cat.Cat_Nombre }}
+			<div class="col s12 fontE">
+				<p>Categorías</p>
+			</div>
+		  	{% for cat in categorias %}
+		  	<a itemprop="url" href="{{base_url()}}categoria/{{cat.url}}">
+		       <div class="col s12 l3">
+		       	 	<div class="card-panel fontC center pormayor black-text">		       	 		
+		       			{{ cat.Cat_Nombre|upper }}
+		       	 	</div>
 		       </div>
 	    	</a>
 		  	{% endfor %}
