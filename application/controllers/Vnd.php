@@ -854,8 +854,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			if ($this->input->is_ajax_request()){
 				$data = $this->acl->load_datos();
 		      	$Usu_IdUsuario = $this->input->post('Usu_IdUsuario');
-		      	$Usu_Activated = $this->vendedorModel->cliente_id($Usu_Activated);
-		      	$registro = $this->vendedorModel->estado_usuario($Usu_IdUsuario,$Usu_Activated);
+		      	$Usu_Activated = $this->vendedorModel->cliente_id($Usu_IdUsuario);
+		      	$registro = $this->vendedorModel->estado_usuario($Usu_IdUsuario,$Usu_Activated->Usu_Activated);
 		      	if ($registro) {
 		      	echo 1;	      	
 		      		}

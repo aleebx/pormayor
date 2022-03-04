@@ -18,13 +18,13 @@
                 <th>Ventas</th>
                 <th>Estado</th>
                 <th></th>
-                <th></th>
+                {# <th></th> #}
             </tr>
           </thead>
           <tbody>
               {% for c in clientes %}
                 <tr>
-                  <td>{{c.Usu_Created|date("Y/m/d")}}</td>
+                  <td>{{c.Usu_Created|date("d-m-Y")}}</td>
                   <td>{{c.Per_Nombre}} {{c.Usu_Correo}}</td>
                   <td>{{c.dep}} - {{c.dis}}</td>
                   <td>{{c.Per_Telefono}}</td>
@@ -35,14 +35,14 @@
                   <td>{{c.vendedor}}</td>
                   {% endif %}
                   <td><a class="btn blue modal-trigger" id="{{c.Usu_IdUsuario}}" accessKey="{{c.Usu_Correo}}" href="#modalGes">Clave</a></td>
-                  <td>
+{#                   <td>
                   <div class="switch orange-text">
                     <label>
                       <input type="checkbox" class="estadoP" data-id="{{c.Usu_IdUsuario}}" data-sa="{{c.Usu_Activated}}" {% if c.Usu_Activated == 1 %}checked{% endif %} />
                       <span class="lever"></span>
                     </label>
                   </div>
-                </td>
+                </td> #}
                 </tr>
               {% endfor %}
           </tbody>

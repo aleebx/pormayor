@@ -413,7 +413,7 @@ class Vendedor_model extends CI_Model
 
     function cliente_id($id)
     {
-        $this->db->select('Usu_IdUsuario_Ven');
+        $this->db->select('Usu_Activated');
         $this->db->from('usuario');
         $this->db->where('Usu_IdUsuario', $id);
         $query = $this->db->get();
