@@ -137,6 +137,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+		function buscador()
+		{
+			$data = $this->acl->load_datos();
+			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
+			$data['pag'] = "buscador";
+			$this->twig->parse('vendedor/buscador.twig', $data);
+			}else{
+				redirect ('');
+			}
+		}
+
 		function reporte_mes()
 		{
 			$data = $this->acl->load_datos();

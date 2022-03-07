@@ -6,23 +6,23 @@
   <main class="">
     <div class="card">
       <div class="card-content">
-        <h4>Listado de clientes - Todos los clientes registrado en PorMayor</h4>
-        <small></small>
+        <h4>Buscador cliente</h4>
+        
         <table id="listado">
           <thead>
             <tr>
-                <th>Fecha Creado</th>
-                <th>Cliente</th>
+                <th>Fecha Registro</th>
+                <th>Datos cliente</th>
                 <th>Ubicación</th>
                 <th>Teléfono</th>
                 <th>Ventas</th>
                 <th>Estado</th>
+                <th>Catera</th>
                 <th></th>
-                {# <th></th> #}
             </tr>
           </thead>
           <tbody>
-              {% for c in clientes %}
+             {#  {% for c in clientes %}
                 <tr>
                   <td>{{c.Usu_Created|date("Y-m-d")}}</td>
                   <td>{{c.Per_Nombre}} {{c.Usu_Correo}}</td>
@@ -35,16 +35,8 @@
                   <td>{{c.vendedor}}</td>
                   {% endif %}
                   <td><a class="btn blue modal-trigger" id="{{c.Usu_IdUsuario}}" accessKey="{{c.Usu_Correo}}" href="#modalGes">Clave</a></td>
-{#                   <td>
-                  <div class="switch orange-text">
-                    <label>
-                      <input type="checkbox" class="estadoP" data-id="{{c.Usu_IdUsuario}}" data-sa="{{c.Usu_Activated}}" {% if c.Usu_Activated == 1 %}checked{% endif %} />
-                      <span class="lever"></span>
-                    </label>
-                  </div>
-                </td> #}
                 </tr>
-              {% endfor %}
+              {% endfor %} #}
           </tbody>
         </table>
       </div>
