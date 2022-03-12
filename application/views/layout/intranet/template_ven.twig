@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title> {% if venta.Per_Nombre %} {{ venta.Per_Nombre }} {% else %} {{pag|title}} {% endif %}| PorMayor.pe</title>
-    <link rel="icon" type="image/png"  href="{{ruta_img}}logo.png">
+    <link rel="icon" href="https://pormayor.pe/img/promo/lpm.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -114,6 +114,7 @@
       <li class="itemMenu {% if pag == 'listado' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/listado"><i class="material-icons">person_outline</i>Mis clientes</a></li>
       <li class="itemMenu {% if pag == 'misventas' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/misventas"><i class="material-icons">person_outline</i>Mis ventas <span class="new badge red ventaN"></span></a></li>
       <li class="itemMenu {% if pag == 'buscador' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/buscador"><i class="material-icons">search</i>Buscador de cliente</a></li>
+      <li class="itemMenu {% if pag == 'listado_clientes' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/listado_clientes"><i class="material-icons">person</i>Listado de Clientes</a></li>
       <li class="itemMenu {% if pag == 'ventas' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/ventas"><i class="material-icons">money</i>Ventas</a></li>
       <li class="itemMenu {% if pag == 'hoy' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/hoy"><i class="material-icons">speaker_notes</i>Hoy</a></li>
       <li class="itemMenu {% if pag == 'stock' %}pormayor black-text{% endif %}"><div class="acentBar"></div><a class="waves-effect" href="{{base_url()}}vnd/stock"><i class="material-icons">grid_on</i>Stock</a></li>
