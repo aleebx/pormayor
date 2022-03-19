@@ -148,6 +148,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+		function buscar_telefono()
+		{
+			if($this->input->is_ajax_request()) {
+        $tlf = $this->input->post('tlf');
+        $data['ventas'] = $this->vendedorModel->get_ventas_tlf($tlf);
+				$this->twig->parse('vendedor/vista_telefono.twig', $data);       	
+      }
+		}
+		function buscar_dni()
+		{
+			if($this->input->is_ajax_request()) {
+        $dni = $this->input->post('dni');
+        $data['ventas'] = $this->vendedorModel->get_ventas_dni($dni);
+				$this->twig->parse('vendedor/vista_telefono.twig', $data);       	
+      }
+		}
+
 		function reporte_mes()
 		{
 			$data = $this->acl->load_datos();

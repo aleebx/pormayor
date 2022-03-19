@@ -125,10 +125,10 @@ $(document).on('blur', '#DNIcliente', function(){
                     setTimeout(function(){ 
                         $('#provincia select').val(person['Pag_idprovincia']);
                         $("#selProvincia").trigger('change');
-                    }, 2000);
+                    }, 3000);
                     setTimeout(function(){ 
                         $('#distrito select').val(person['Pag_iddistrito']);
-                    }, 3000); 
+                    }, 5000); 
                 }         
             }else{
                 $('#preload').text("DNI no encontrado");

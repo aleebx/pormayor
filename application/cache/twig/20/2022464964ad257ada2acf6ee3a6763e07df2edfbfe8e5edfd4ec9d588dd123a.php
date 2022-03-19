@@ -185,7 +185,7 @@ class __TwigTemplate_1c5d87f8b33e7167281e22e070bb2351f9975f0e4a04ade8868d17b850b
         }
         // line 85
         echo "\t\t    \t\t\t\t\t<tr>
-\t\t    \t\t\t\t\t\t<td class=\"negrita\">VENDEDOR</td>
+\t\t    \t\t\t\t\t\t<td class=\"negrita\">VENTA DEL VENDEDOR:</td>
 \t\t    \t\t\t\t\t\t<td class=\"\">";
         // line 87
         echo $this->getAttribute(($context["venta"] ?? null), "vendedor", array());

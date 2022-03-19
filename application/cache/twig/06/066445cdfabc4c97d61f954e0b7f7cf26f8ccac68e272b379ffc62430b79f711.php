@@ -12,7 +12,6 @@ class __TwigTemplate_9dd9fc1a53d39c7e08a64c397e7d8acefee90715d7d3da380e56fe6bb30
         $this->blocks = array(
             'analytics' => array($this, 'block_analytics'),
             'head' => array($this, 'block_head'),
-            'messenger' => array($this, 'block_messenger'),
             'content' => array($this, 'block_content'),
             'modal' => array($this, 'block_modal'),
             'script' => array($this, 'block_script'),
@@ -52,7 +51,7 @@ class __TwigTemplate_9dd9fc1a53d39c7e08a64c397e7d8acefee90715d7d3da380e56fe6bb30
         // line 11
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array())) {
             echo twig_upper_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array()));
-            echo " - Hasta S/";
+            echo " - S/";
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
         } else {
             echo " PorMayor.pe - Crece con nosotros";
@@ -61,10 +60,10 @@ class __TwigTemplate_9dd9fc1a53d39c7e08a64c397e7d8acefee90715d7d3da380e56fe6bb30
 <meta property=\"og:description\" content=\"";
         // line 12
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array())) {
-            echo "Precio Normal: S/";
-            echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMaximo", array());
+            echo "Precio por mayor: S/";
+            echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
         } else {
-            echo "Ayudamos a crecer a todo los  nuevos emprendedores en iniciar su negocio. Llévate todo surtido y a precio por mayor por una compra mínima de 500 soles";
+            echo "Ayudamos a crecer a todo los nuevos emprendedores en iniciar su negocio. Llévate todo surtido y a precio por mayor por una compra mínima de 100 soles";
         }
         echo "\"/>
 ";
@@ -86,61 +85,9 @@ class __TwigTemplate_9dd9fc1a53d39c7e08a64c397e7d8acefee90715d7d3da380e56fe6bb30
 ";
         }
         // line 22
-        echo "<meta name=\"description\" content=\"";
-        if ((($context["categoriaFlag"] ?? null) == true)) {
-            if ($this->getAttribute(($context["categoria_seo"] ?? null), "Cat_Meta_Description", array())) {
-                echo $this->getAttribute(($context["categoria_seo"] ?? null), "Cat_Meta_Description", array());
-            } else {
-                echo $this->getAttribute(($context["categoria_seo"] ?? null), "Cat_Nombre", array());
-                echo " al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. ";
-            }
-        } elseif ((($context["subcategoriaFlag"] ?? null) == true)) {
-            if ($this->getAttribute(($context["subcategoria_seo"] ?? null), "Suc_Meta_Description", array())) {
-                echo $this->getAttribute(($context["subcategoria_seo"] ?? null), "Suc_Meta_Description", array());
-            } else {
-                echo $this->getAttribute(($context["subcategoria_seo"] ?? null), "Suc_Nombre", array());
-                echo " al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. ";
-            }
-        } elseif ((($context["detalleFlag"] ?? null) == true)) {
-            if ($this->getAttribute(($context["detalle_seo"] ?? null), "Des_Meta_Description", array())) {
-                echo $this->getAttribute(($context["detalle_seo"] ?? null), "Des_Meta_Description", array());
-            } else {
-                echo $this->getAttribute(($context["detalle_seo"] ?? null), "Des_Nombre", array());
-                echo " al por mayor con las mejores ofertas, solo aquí en PorMayor.pe. Cotiza ahora y abastece tu negocio fácil y rápido. ";
-            }
-        } else {
-            echo "Compra y vende al por mayor en Lima.Crea tu propia tienda virtual mayorista o compra al por mayor para tu negocio fácil y rápido aquí.";
-        }
-        echo "\">
-<meta name=\"keywords\" content=\"";
-        // line 23
-        if ((($context["categoriaFlag"] ?? null) == true)) {
-            if ($this->getAttribute(($context["categoria_seo"] ?? null), "Cat_Keywords", array())) {
-                echo $this->getAttribute(($context["categoria_seo"] ?? null), "Cat_Keywords", array());
-            } else {
-                echo "Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima";
-            }
-        } elseif ((($context["subcategoriaFlag"] ?? null) == true)) {
-            if ($this->getAttribute(($context["subcategoria_seo"] ?? null), "Suc_Keywords", array())) {
-                echo $this->getAttribute(($context["subcategoria_seo"] ?? null), "Suc_Keywords", array());
-            } else {
-                echo "Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima";
-            }
-        } elseif ((($context["detalleFlag"] ?? null) == true)) {
-            if ($this->getAttribute(($context["detalle_seo"] ?? null), "Des_Keywords", array())) {
-                echo $this->getAttribute(($context["detalle_seo"] ?? null), "Des_Keywords", array());
-            } else {
-                echo "Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima";
-            }
-            echo " ";
-        } else {
-            echo "Donde comprar ropa al por mayor en Lima, donde comprar zapatillas al por mayor en Lima, comprar ropa al por mayor en Lima peru, donde comprar maquillaje al por mayor en Lima, donde comprar carteras al por mayor en Lima,";
-        }
-        echo "\">
-<link rel=\"icon\" href=\"";
-        // line 24
-        echo ($context["ruta_img"] ?? null);
-        echo "logo.png\">
+        echo "<meta name=\"description\" content=\"Productos por cajón al mejor precio del mercado. Productos novedosos importados directamente desde China. Precio por mayor desde una unidad.\">
+<meta name=\"keywords\" content=\"Por mayor, cajón, productos novedosos, productos para el hogar, roperos de ropa, zapateras, compra por cajón\">
+<link rel=\"icon\" href=\"https://pormayor.pe/img/promo/lpm.ico\">
 <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\" media=\"screen\">
 <link type=\"text/css\" rel=\"stylesheet\" href=\"";
         // line 26
@@ -156,36 +103,6 @@ class __TwigTemplate_9dd9fc1a53d39c7e08a64c397e7d8acefee90715d7d3da380e56fe6bb30
         $this->displayBlock('analytics', $context, $blocks);
         // line 30
         echo "<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-129372100-1\"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-129372100-1');
-</script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-P6LFJ9S');</script>
-<!-- End Google Tag Manager -->
-<!-- Facebook Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '258247118783393');
-fbq('track', 'PageView');
-</script>
-<noscript><img height=\"1\" width=\"1\" style=\"display:none\"
-src=\"https://www.facebook.com/tr?id=258247118783393&ev=PageView&noscript=1\"
-/></noscript>
-<!-- DO NOT MODIFY -->
-<!-- End Facebook Pixel Code -->
 ";
         // line 61
         $this->displayBlock('head', $context, $blocks);
@@ -200,74 +117,9 @@ src=\"https://www.facebook.com/tr?id=258247118783393&ev=PageView&noscript=1\"
   </style>
 </head>
 <body id=\"inicio\" class=\"\">
-  <div id=\"api-chat-bot\"></div>
 ";
-        // line 73
-        $this->displayBlock('messenger', $context, $blocks);
-        // line 74
-        echo "<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-P6LFJ9S\"
-height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '2623619600997776',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v3.2'
-    });      
-    FB.AppEvents.logPageView();         
-  };
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = \"https://connect.facebook.net/es_ES/sdk.js\";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-<!-- Facebook Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '366482671192300');
-fbq('track', 'PageView');
-</script>
-<noscript><img height=\"1\" width=\"1\" style=\"display:none\"
-src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
-/></noscript>
-<!-- Messenger plugin de chat Code -->
-<div id=\"fb-root\"></div>
-    <!-- Your plugin de chat code -->
-    <div id=\"fb-customer-chat\" class=\"fb-customerchat\">
-    </div>
-    <script>
-      var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute(\"page_id\", \"283998535780000\");
-      chatbox.setAttribute(\"attribution\", \"biz_inbox\");
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'v11.0'
-        });
-      };
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-<div class=\"inner\">
+        // line 136
+        echo "<div class=\"inner\">
     <ul id='dropdown1' class='dropdown-content'>
       ";
         // line 138
@@ -1937,11 +1789,6 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
         echo " ";
     }
 
-    // line 73
-    public function block_messenger($context, array $blocks = array())
-    {
-    }
-
     // line 910
     public function block_content($context, array $blocks = array())
     {
@@ -1972,7 +1819,7 @@ src=\"https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1\"
 
     public function getDebugInfo()
     {
-        return array (  1958 => 970,  1952 => 962,  1946 => 910,  1941 => 73,  1935 => 61,  1930 => 29,  1924 => 971,  1922 => 970,  1917 => 968,  1908 => 963,  1906 => 962,  1899 => 958,  1893 => 955,  1879 => 943,  1866 => 941,  1862 => 940,  1852 => 934,  1848 => 932,  1843 => 931,  1834 => 924,  1830 => 923,  1826 => 922,  1822 => 921,  1806 => 911,  1804 => 910,  1801 => 909,  1796 => 906,  1790 => 900,  1786 => 898,  1782 => 896,  1777 => 893,  1768 => 887,  1704 => 886,  1695 => 879,  1691 => 877,  1689 => 876,  1681 => 871,  1678 => 870,  1673 => 865,  1667 => 862,  1661 => 860,  1655 => 858,  1653 => 857,  1646 => 856,  1644 => 855,  1640 => 853,  1638 => 852,  1633 => 849,  1630 => 848,  1627 => 847,  1625 => 846,  1616 => 839,  1614 => 838,  1601 => 828,  1593 => 823,  1589 => 821,  1587 => 820,  1571 => 807,  1567 => 805,  1565 => 804,  1550 => 791,  1547 => 790,  1544 => 789,  1534 => 781,  1532 => 780,  1523 => 773,  1521 => 772,  1501 => 754,  1499 => 753,  1477 => 733,  1475 => 732,  1445 => 704,  1442 => 703,  1424 => 687,  1421 => 686,  1418 => 685,  1412 => 681,  1404 => 676,  1379 => 658,  1375 => 656,  1369 => 655,  1361 => 653,  1358 => 652,  1353 => 651,  1347 => 650,  1344 => 649,  1341 => 648,  1338 => 647,  1333 => 646,  1331 => 645,  1320 => 641,  1314 => 640,  1309 => 637,  1303 => 636,  1300 => 635,  1298 => 634,  1291 => 633,  1288 => 632,  1283 => 631,  1281 => 630,  1273 => 627,  1263 => 622,  1259 => 620,  1256 => 619,  1253 => 618,  1247 => 614,  1239 => 609,  1214 => 591,  1210 => 589,  1199 => 587,  1195 => 586,  1184 => 582,  1178 => 581,  1173 => 578,  1162 => 576,  1158 => 575,  1150 => 572,  1140 => 567,  1136 => 565,  1133 => 564,  1130 => 563,  1104 => 539,  1093 => 537,  1089 => 536,  1080 => 529,  1077 => 528,  1074 => 527,  1058 => 513,  1047 => 511,  1043 => 510,  1035 => 504,  1024 => 502,  1020 => 501,  1011 => 494,  1008 => 493,  1005 => 492,  989 => 478,  978 => 476,  974 => 475,  966 => 469,  955 => 467,  951 => 466,  943 => 460,  935 => 455,  910 => 437,  906 => 435,  895 => 433,  891 => 432,  880 => 428,  874 => 427,  869 => 424,  858 => 422,  854 => 421,  846 => 418,  836 => 413,  832 => 411,  829 => 410,  827 => 409,  813 => 397,  800 => 395,  796 => 394,  788 => 388,  775 => 386,  771 => 385,  763 => 379,  761 => 378,  746 => 365,  744 => 364,  739 => 361,  732 => 357,  728 => 356,  725 => 355,  716 => 345,  712 => 344,  709 => 343,  705 => 341,  703 => 340,  700 => 339,  694 => 336,  692 => 335,  689 => 334,  685 => 332,  682 => 331,  680 => 330,  678 => 329,  676 => 328,  674 => 327,  671 => 326,  665 => 323,  662 => 322,  660 => 321,  650 => 318,  647 => 317,  643 => 315,  641 => 314,  638 => 313,  632 => 310,  629 => 309,  626 => 308,  623 => 307,  613 => 300,  609 => 299,  606 => 298,  603 => 297,  593 => 290,  589 => 289,  586 => 288,  583 => 287,  577 => 283,  575 => 282,  572 => 281,  570 => 280,  564 => 278,  561 => 277,  555 => 273,  552 => 272,  549 => 271,  538 => 263,  534 => 262,  530 => 260,  527 => 259,  524 => 258,  521 => 257,  518 => 256,  515 => 255,  512 => 254,  506 => 250,  495 => 242,  491 => 241,  487 => 239,  484 => 238,  473 => 230,  469 => 229,  465 => 227,  462 => 226,  459 => 225,  456 => 224,  453 => 223,  449 => 221,  446 => 219,  442 => 217,  439 => 215,  436 => 214,  421 => 207,  419 => 206,  416 => 205,  412 => 204,  401 => 196,  399 => 195,  395 => 194,  389 => 191,  385 => 190,  382 => 189,  377 => 186,  373 => 184,  371 => 183,  367 => 182,  363 => 180,  361 => 179,  354 => 174,  346 => 168,  343 => 167,  335 => 162,  332 => 161,  329 => 160,  321 => 155,  318 => 154,  315 => 153,  313 => 152,  307 => 148,  304 => 147,  296 => 145,  294 => 144,  289 => 143,  283 => 141,  281 => 140,  276 => 139,  274 => 138,  208 => 74,  206 => 73,  193 => 62,  191 => 61,  158 => 30,  156 => 29,  152 => 28,  147 => 26,  142 => 24,  117 => 23,  89 => 22,  84 => 19,  77 => 15,  74 => 14,  72 => 13,  63 => 12,  53 => 11,  34 => 8,  25 => 1,);
+        return array (  1805 => 970,  1799 => 962,  1793 => 910,  1787 => 61,  1782 => 29,  1776 => 971,  1774 => 970,  1769 => 968,  1760 => 963,  1758 => 962,  1751 => 958,  1745 => 955,  1731 => 943,  1718 => 941,  1714 => 940,  1704 => 934,  1700 => 932,  1695 => 931,  1686 => 924,  1682 => 923,  1678 => 922,  1674 => 921,  1658 => 911,  1656 => 910,  1653 => 909,  1648 => 906,  1642 => 900,  1638 => 898,  1634 => 896,  1629 => 893,  1620 => 887,  1556 => 886,  1547 => 879,  1543 => 877,  1541 => 876,  1533 => 871,  1530 => 870,  1525 => 865,  1519 => 862,  1513 => 860,  1507 => 858,  1505 => 857,  1498 => 856,  1496 => 855,  1492 => 853,  1490 => 852,  1485 => 849,  1482 => 848,  1479 => 847,  1477 => 846,  1468 => 839,  1466 => 838,  1453 => 828,  1445 => 823,  1441 => 821,  1439 => 820,  1423 => 807,  1419 => 805,  1417 => 804,  1402 => 791,  1399 => 790,  1396 => 789,  1386 => 781,  1384 => 780,  1375 => 773,  1373 => 772,  1353 => 754,  1351 => 753,  1329 => 733,  1327 => 732,  1297 => 704,  1294 => 703,  1276 => 687,  1273 => 686,  1270 => 685,  1264 => 681,  1256 => 676,  1231 => 658,  1227 => 656,  1221 => 655,  1213 => 653,  1210 => 652,  1205 => 651,  1199 => 650,  1196 => 649,  1193 => 648,  1190 => 647,  1185 => 646,  1183 => 645,  1172 => 641,  1166 => 640,  1161 => 637,  1155 => 636,  1152 => 635,  1150 => 634,  1143 => 633,  1140 => 632,  1135 => 631,  1133 => 630,  1125 => 627,  1115 => 622,  1111 => 620,  1108 => 619,  1105 => 618,  1099 => 614,  1091 => 609,  1066 => 591,  1062 => 589,  1051 => 587,  1047 => 586,  1036 => 582,  1030 => 581,  1025 => 578,  1014 => 576,  1010 => 575,  1002 => 572,  992 => 567,  988 => 565,  985 => 564,  982 => 563,  956 => 539,  945 => 537,  941 => 536,  932 => 529,  929 => 528,  926 => 527,  910 => 513,  899 => 511,  895 => 510,  887 => 504,  876 => 502,  872 => 501,  863 => 494,  860 => 493,  857 => 492,  841 => 478,  830 => 476,  826 => 475,  818 => 469,  807 => 467,  803 => 466,  795 => 460,  787 => 455,  762 => 437,  758 => 435,  747 => 433,  743 => 432,  732 => 428,  726 => 427,  721 => 424,  710 => 422,  706 => 421,  698 => 418,  688 => 413,  684 => 411,  681 => 410,  679 => 409,  665 => 397,  652 => 395,  648 => 394,  640 => 388,  627 => 386,  623 => 385,  615 => 379,  613 => 378,  598 => 365,  596 => 364,  591 => 361,  584 => 357,  580 => 356,  577 => 355,  568 => 345,  564 => 344,  561 => 343,  557 => 341,  555 => 340,  552 => 339,  546 => 336,  544 => 335,  541 => 334,  537 => 332,  534 => 331,  532 => 330,  530 => 329,  528 => 328,  526 => 327,  523 => 326,  517 => 323,  514 => 322,  512 => 321,  502 => 318,  499 => 317,  495 => 315,  493 => 314,  490 => 313,  484 => 310,  481 => 309,  478 => 308,  475 => 307,  465 => 300,  461 => 299,  458 => 298,  455 => 297,  445 => 290,  441 => 289,  438 => 288,  435 => 287,  429 => 283,  427 => 282,  424 => 281,  422 => 280,  416 => 278,  413 => 277,  407 => 273,  404 => 272,  401 => 271,  390 => 263,  386 => 262,  382 => 260,  379 => 259,  376 => 258,  373 => 257,  370 => 256,  367 => 255,  364 => 254,  358 => 250,  347 => 242,  343 => 241,  339 => 239,  336 => 238,  325 => 230,  321 => 229,  317 => 227,  314 => 226,  311 => 225,  308 => 224,  305 => 223,  301 => 221,  298 => 219,  294 => 217,  291 => 215,  288 => 214,  273 => 207,  271 => 206,  268 => 205,  264 => 204,  253 => 196,  251 => 195,  247 => 194,  241 => 191,  237 => 190,  234 => 189,  229 => 186,  225 => 184,  223 => 183,  219 => 182,  215 => 180,  213 => 179,  206 => 174,  198 => 168,  195 => 167,  187 => 162,  184 => 161,  181 => 160,  173 => 155,  170 => 154,  167 => 153,  165 => 152,  159 => 148,  156 => 147,  148 => 145,  146 => 144,  141 => 143,  135 => 141,  133 => 140,  128 => 139,  126 => 138,  122 => 136,  110 => 62,  108 => 61,  105 => 30,  103 => 29,  99 => 28,  94 => 26,  88 => 22,  83 => 19,  76 => 15,  73 => 14,  71 => 13,  62 => 12,  52 => 11,  33 => 8,  24 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

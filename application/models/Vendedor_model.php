@@ -149,7 +149,7 @@ class Vendedor_model extends CI_Model
         $this->db->join('persona as per','per.Per_IdPersona = usu.Per_IdPersona');
         $this->db->join('pago_direccion_usu as pdu','pdu.Usu_IdUsuario = usu.Usu_IdUsuario','left');
         $this->db->where('usu.Rol_IdRol', 4);
-        $this->db->where('usu.Usu_IdUsuario_Ven', '');
+        // $this->db->where('usu.Usu_IdUsuario_Ven', '');
         $query = $this->db->get();
         return $query->result();
     }
@@ -378,6 +378,20 @@ class Vendedor_model extends CI_Model
     function get_ventas_pm()
     {   
         $sql="SELECT pac.Pac_IdPago_Compra, usu.Usu_IdUsuario,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as cartera,(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = pac.Ven_IdVendedor LIMIT 1) as vendedor,per.Per_Nombre, pac.Pac_Total, pac.Pac_Envio, pac.Pac_Banco, pac.Pac_FechaRegistro, pac.Pac_Estado,pac.Pac_CodPago,per.Per_Telefono FROM pago_compra as pac INNER JOIN usuario as usu ON usu.Usu_IdUsuario = pac.Usu_IdUsuario INNER JOIN persona as per on per.Per_IdPersona = usu.Per_IdPersona ORDER BY pac.Pac_FechaRegistro DESC LIMIT 100";
+        $query = $this->db->query($sql);   
+        return $query->result();
+    }
+
+    function get_ventas_tlf($tlf)
+    {   
+        $sql="SELECT pac.Pac_IdPago_Compra, usu.Usu_IdUsuario,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as cartera,(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = pac.Ven_IdVendedor LIMIT 1) as vendedor,per.Per_Nombre, pac.Pac_Total, pac.Pac_Envio, pac.Pac_Banco, pac.Pac_FechaRegistro, pac.Pac_Estado,pac.Pac_CodPago,per.Per_Telefono FROM pago_compra as pac INNER JOIN usuario as usu ON usu.Usu_IdUsuario = pac.Usu_IdUsuario INNER JOIN persona as per on per.Per_IdPersona = usu.Per_IdPersona WHERE per.Per_Telefono like '%$tlf%' ORDER BY pac.Pac_FechaRegistro DESC LIMIT 100";
+        $query = $this->db->query($sql);   
+        return $query->result();
+    }
+
+    function get_ventas_dni($dni)
+    {   
+        $sql="SELECT pac.Pac_IdPago_Compra, usu.Usu_IdUsuario,(SELECT pe2.Per_Nombre FROM usuario as us2 INNER JOIN persona as pe2 on pe2.Per_IdPersona = us2.Per_IdPersona  WHERE us2.Usu_IdUsuario = usu.Usu_IdUsuario_Ven LIMIT 1) as cartera,(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = pac.Ven_IdVendedor LIMIT 1) as vendedor,per.Per_Nombre, pac.Pac_Total, pac.Pac_Envio, pac.Pac_Banco, pac.Pac_FechaRegistro, pac.Pac_Estado,pac.Pac_CodPago,per.Per_Telefono, per.Per_Dni FROM pago_compra as pac INNER JOIN usuario as usu ON usu.Usu_IdUsuario = pac.Usu_IdUsuario INNER JOIN persona as per on per.Per_IdPersona = usu.Per_IdPersona WHERE per.Per_Dni like '%$dni%' ORDER BY pac.Pac_FechaRegistro DESC LIMIT 100";
         $query = $this->db->query($sql);   
         return $query->result();
     }

@@ -53,7 +53,7 @@
                 from pago_compra_detalle as pcd 
                 INNER JOIN sku as sku ON sku.SKU_IdSKU = pcd.Pcd_IdSku
                 INNER JOIN producto as pro ON pro.Pro_IdProducto = sku.producto_Pro_IdProducto
-                WHERE pcd.Pac_IdPago_Compra = $Pac_IdPago_Compra";
+                WHERE pcd.Pac_IdPago_Compra = $Pac_IdPago_Compra order by pro.Pro_IdProducto";
 
             $query = $this->db->query($sql);
 
