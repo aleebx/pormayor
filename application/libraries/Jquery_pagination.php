@@ -114,7 +114,7 @@ class Jquery_pagination
        * @access	public
        * @return	string
        */	
-      function create_links()
+      function create_links2()
       {
       // If our item count or per-page total is zero there is no need to continue.
       if ($this->total_rows == 0 OR $this->per_page == 0)

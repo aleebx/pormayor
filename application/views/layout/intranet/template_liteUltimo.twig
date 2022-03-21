@@ -27,6 +27,37 @@
 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"  media="screen"/>
 <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/templates.min.css')}}"  media="screen"/>
 {% block analytics %}{% endblock %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+{# <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129372100-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129372100-1');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6LFJ9S');</script>
+<!-- End Google Tag Manager -->
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '258247118783393');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=258247118783393&ev=PageView&noscript=1"
+/></noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code --> #}
 {% block head %} {% endblock %}
   <style type="text/css">
   .autocomplete-content{width: 40vw!important;}
@@ -38,6 +69,70 @@
   </style>
 </head>
 <body id="inicio" class="">
+{#   <div id="api-chat-bot"></div>
+{% block messenger %}{% endblock %}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6LFJ9S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2623619600997776',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.2'
+    });      
+    FB.AppEvents.logPageView();         
+  };
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/es_ES/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '366482671192300');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=366482671192300&ev=PageView&noscript=1"
+/></noscript>
+<!-- Messenger plugin de chat Code -->
+<div id="fb-root"></div>
+    <!-- Your plugin de chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "283998535780000");
+      chatbox.setAttribute("attribution", "biz_inbox");
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v11.0'
+        });
+      };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script> #}
 <div class="inner">
     <ul id='dropdown1' class='dropdown-content'>
       {% if usuario.rol == 1 %}
@@ -95,7 +190,19 @@
             <a href="{{base_url()}}" class="valign-wrapper anchoTotal">
               <img alt="Pomayor.pe - Vende facilito, Compra segurito" src="{{ruta_img}}logoNegativo.svg" class="centrarForzado">
             </a>
-          </div>      
+          </div>     
+          {% if userAgent == "PC" %}     
+              {% if not vista_carrito_compra %}
+          <div class="col l2 ocultarSearch colMenuPc sinPadding">
+            <ul>
+              <li>          
+ 
+              </li>
+
+            </ul>
+          </div>
+          {% endif %} 
+          {% endif %}  
           {% if not vista_carrito_compra %}
             <div class="col {% if pagina.tipo == "principal" or pagina.tipo == "carrito" %} m6 s8 sinPadding {% else %} m8 s10 {% endif %} l2" style="padding-left:0px" >
               <div class="contentSearch contentSearchTienda positionRelative">
@@ -216,6 +323,12 @@
                     <a class="dropdown-trigger black-text" href="#!" data-activates="dropdown1">{{ usuario.nombre|title|length > 7 ? usuario.nombre|title|slice(0, 7) ~ '...' : usuario.nombre  }}<i class="material-icons right">account_circle</i></a>
                   </li> 
                   {% endif %}
+                  {% if usuario.rol == 4 %}
+                    {# <li> #}
+                      {# <a class="black-text hide-on-med-and-up" href="{{base_url()}}tienda/crear"><i class="material-icons">add_box</i></a> #}
+                      {# <a class="white-text pormayorUnico btn hide-on-med-only paddingEspecial" href="{{base_url()}}tienda/crear2">Crea tu tienda</a> #}
+                    {# </li>  #}
+                  {% endif %}
                 </ul>      
             {% else %}
               <ul class="right">
@@ -235,6 +348,10 @@
                     En total llevas <br><span class="totalActualCart negrita fontD2"></span>
                   </div>
                 </li>
+{#                 <li>
+                  <a class="black-text hide-on-med-and-up" href="{{base_url()}}tienda/crear"><i class="material-icons">add_box</i></a>
+                    <a class="white-text pormayorUnico btn hide-on-med-only paddingEspecial" href="{{base_url()}}tienda/crear">Crea tu tienda</a>
+                </li> #}
                 <li>
                   <a class="black-text hide-on-med-and-up" href="{{base_url()}}usuario/login"><i class="material-icons">account_circle</i></a>
                   <a href="{{base_url()}}usuario/login" class="black-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Iniciar Sesión"><i class="material-icons green-text text-darken-4" style="font-size:30px">account_circle</i></a>

@@ -1,17 +1,4 @@
-{% if usuario.logueado %}
-  {% set favorito = false %}
-  {% for prf in productos_favoritos if not favorito %}
-    {% if prf.Pro_IdProducto == pro.Pro_IdProducto %}
-      {% set favorito = true %}
-    {% endif %}
-  {% endfor %}
-  {% if favorito %}
-    <div class="star positionAbsolute transition" data-id_producto="{{pro.Pro_IdProducto}}" data-valor="1">
-      <img src="{{ruta_img}}fav.svg" type="image/svg+xml"></img>
-    </div>
-  {% else %}
-    <div class="star positionAbsolute transition" data-id_producto="{{pro.Pro_IdProducto}}" data-valor="0">
-      <img src="{{ruta_img}}fav.svg" type="image/svg+xml"></img>
-    </div>
-  {% endif %}
-{% endif %}
+{% for cat in categorias %}
+  {{ cat.Cat_Nombre|upper }}<br>
+https{{base_url()}}categoria/{{cat.url}} <br><br>
+{% endfor %}

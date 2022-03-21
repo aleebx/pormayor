@@ -290,36 +290,39 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 145
-        echo "\t\t\t<div class=\"col s12 fontE\">
-\t\t\t\t<p>Categorías</p>
+        echo "\t\t\t<div class=\"col s12 center\"><br>
+\t\t\t\t<a href=\"";
+        // line 146
+        echo ($context["base_url"] ?? null);
+        echo "pagina/productos\" class=\"btn btn-large\" style=\"font-size:2em;\"><b>VER TODOS LOS PRODUCTOS</b></a>
 \t\t\t</div>
+\t\t\t<div class=\"col s12 center\"><br><br>
 \t\t  \t";
-        // line 148
+        // line 149
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["categorias"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
-            // line 149
-            echo "\t\t  \t<a itemprop=\"url\" href=\"";
+            // line 150
+            echo "\t\t\t  \t<a itemprop=\"url\" href=\"";
             echo base_url();
             echo "categoria/";
             echo $this->getAttribute($context["cat"], "url", array());
             echo "\">
-\t\t       <div class=\"col s12 l3\">
-\t\t       \t \t<div class=\"card-panel fontC center pormayor black-text\">\t\t       \t \t\t
-\t\t       \t\t\t";
+\t\t\t       <div class=\"chip\">
+\t\t\t       \t\t";
             // line 152
             echo twig_upper_filter($this->env, $this->getAttribute($context["cat"], "Cat_Nombre", array()));
             echo "
-\t\t       \t \t</div>
-\t\t       </div>
-\t    \t</a>
+\t\t\t\t\t</div>
+\t\t    \t</a>
 \t\t  \t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 157
-        echo "\t    </div>
+        // line 156
+        echo "\t\t\t</div>
+\t    </div>
 \t</main>\t
 ";
     }
@@ -363,7 +366,7 @@ loadingHtml: \"<img src='";
 
     public function getDebugInfo()
     {
-        return array (  349 => 171,  343 => 168,  336 => 164,  331 => 161,  328 => 160,  322 => 157,  311 => 152,  302 => 149,  298 => 148,  293 => 145,  281 => 138,  275 => 136,  269 => 134,  267 => 133,  262 => 131,  258 => 130,  246 => 126,  239 => 122,  228 => 121,  224 => 120,  212 => 110,  206 => 108,  200 => 106,  198 => 105,  194 => 103,  188 => 101,  182 => 99,  180 => 98,  171 => 91,  162 => 85,  158 => 84,  152 => 80,  146 => 76,  136 => 70,  132 => 69,  129 => 68,  119 => 61,  115 => 60,  112 => 59,  110 => 58,  101 => 52,  97 => 51,  90 => 47,  84 => 46,  81 => 45,  79 => 44,  74 => 41,  72 => 40,  69 => 39,  66 => 38,  61 => 36,  56 => 18,  50 => 15,  48 => 14,  38 => 6,  35 => 4,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  352 => 171,  346 => 168,  339 => 164,  334 => 161,  331 => 160,  324 => 156,  314 => 152,  306 => 150,  302 => 149,  296 => 146,  293 => 145,  281 => 138,  275 => 136,  269 => 134,  267 => 133,  262 => 131,  258 => 130,  246 => 126,  239 => 122,  228 => 121,  224 => 120,  212 => 110,  206 => 108,  200 => 106,  198 => 105,  194 => 103,  188 => 101,  182 => 99,  180 => 98,  171 => 91,  162 => 85,  158 => 84,  152 => 80,  146 => 76,  136 => 70,  132 => 69,  129 => 68,  119 => 61,  115 => 60,  112 => 59,  110 => 58,  101 => 52,  97 => 51,  90 => 47,  84 => 46,  81 => 45,  79 => 44,  74 => 41,  72 => 40,  69 => 39,  66 => 38,  61 => 36,  56 => 18,  50 => 15,  48 => 14,  38 => 6,  35 => 4,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

@@ -2227,7 +2227,7 @@ height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></nos
               <div class=\"row white-text\">
               <div class=\"col l3 s12\">
                 <h5 class=\"amber-text\">PorMayor.pe</h5>
-                <p>Somos el primer ecommerce de Perú dónde se puede comprar de forma grupal, ahorrando hasta 50% del precio regular de los productos.</p>
+                <p>Somos el primer ecommerce mayoista del Perú, dónde encontras novedades al mejor precio y puedas emprender tu negocio.</p>
               </div>
               <div class=\"col l3 s12\">
                 <h5 class=\"amber-text\">MI CUENTA</h5>
@@ -2419,6 +2419,6 @@ height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></nos
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "layout/intranet/template_lite_2.twig", "C:\\xampp\\htdocs\\pormayor2019\\application\\views\\layout\\intranet\\template_lite_2.twig");
+        return new Twig_Source("", "layout/intranet/template_lite_2.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\layout\\intranet\\template_lite_2.twig");
     }
 }

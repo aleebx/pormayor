@@ -19,17 +19,17 @@
       foreach ($data['pro10'] as $valor) {
         $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
       }
-      $data['categorias'] = $this->productoModel->categorias_act();
-      foreach($data['categorias'] as $valor) {
-      $valor->url=$this->buildSlugValue($valor->Cat_Nombre)."-".$valor->Cat_IdCategoria;
-      }
+      // $data['categorias'] = $this->productoModel->categorias_act();
+      // foreach($data['categorias'] as $valor) {
+      // $valor->url=$this->buildSlugValue($valor->Cat_Nombre)."-".$valor->Cat_IdCategoria;
+      // }
       $this->twig->parse('index3.twig',$data);
     }
     public function lista()
     {
       $data=$this->acl->load_datos();
-      $data['producto']=$this->productoModel->productos_listado();  
-      $this->twig->parse('lista.twig',$data);
+      // $data['producto']=$this->productoModel->productos_listado();  
+      $this->twig->parse('layout/favoritos.twig',$data);
     }
     public function about()
     {

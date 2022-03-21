@@ -142,18 +142,20 @@ src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
 		        </div>
 	    	</a>
 		  	{% endfor %}
-			<div class="col s12 fontE">
-				<p>Categorías</p>
+			<div class="col s12 center"><br>
+				<a href="{{base_url}}pagina/productos" class="btn btn-large" style="font-size:2em;"><b>VER TODOS LOS PRODUCTOS</b></a>
 			</div>
+			<div class="col s12 center">
+			<p>Categorías</p>
+			<br><br>
 		  	{% for cat in categorias %}
-		  	<a itemprop="url" href="{{base_url()}}categoria/{{cat.url}}">
-		       <div class="col s12 l3">
-		       	 	<div class="card-panel fontC center pormayor black-text">		       	 		
-		       			{{ cat.Cat_Nombre|upper }}
-		       	 	</div>
-		       </div>
-	    	</a>
+			  	<a itemprop="url" href="{{base_url()}}categoria/{{cat.url}}">
+			       <div class="chip pormayor">
+			       		{{ cat.Cat_Nombre|upper }}
+					</div>
+		    	</a>
 		  	{% endfor %}
+			</div>
 	    </div>
 	</main>	
 {% endblock %}
