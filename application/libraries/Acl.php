@@ -1,4 +1,4 @@
- <?php if ( ! defined('BASEPATH')) exit('Acceso denegado'); 
+<?php if ( ! defined('BASEPATH')) exit('Acceso denegado'); 
 
 class Acl
 {
@@ -92,31 +92,31 @@ class Acl
                 $data['subdominio_tienda'] = $this->CI->tiendaModel->get_tienda($data['usuario']['id_tienda'])->Tie_Subdominio;
             }
 
-        //     if($intranet)
-        //     {   
-        //         if($intranet == "comprador")
-        //         {
-        //             if($data['usuario']['rol'] != 1)
-        //             {
-        //                 $redirect = false;
-        //             }
-        //         }
-        //         else if($intranet == "admin")
-        //         {
-        //             if($data['usuario']['rol'] == 1)
-        //             {
-        //                 $redirect = false;
-        //             }
-        //         }
-        //         else
-        //         {
-        //             $redirect = false;
-        //         }              
-        //     }
-        //     else
-        //     {
-        //         $redirect = false;
-        //     }
+            if($intranet)
+            {   
+                if($intranet == "comprador")
+                {
+                    if($data['usuario']['rol'] != 1)
+                    {
+                        $redirect = false;
+                    }
+                }
+                else if($intranet == "admin")
+                {
+                    if($data['usuario']['rol'] == 1)
+                    {
+                        $redirect = false;
+                    }
+                }
+                else
+                {
+                    $redirect = false;
+                }              
+            }
+            else
+            {
+                $redirect = false;
+            }
         }
         else
         {
@@ -126,10 +126,10 @@ class Acl
             }
         }
 
-        // if($redirect)
-        // {
-        //     redirect();
-        // }
+        if($redirect)
+        {
+            redirect();
+        }
 
         return $data;
  	}

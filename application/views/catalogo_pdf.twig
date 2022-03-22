@@ -3,36 +3,67 @@
 {% endblock %}
 
 {% block content %}
-<main id="main" class="blue darken-4">
+<main id="main" class="">
     <div class="row">
-      <div class="col l12 center">
-        <img src="{{ruta_img}}logoP2021.png">
+      <div class="col l12 center"><br>
+        <img src="{{ruta_img}}logoP2021.png" height="200px" >
       </div>
     </div>
-    <div class="row">
+{#     <div class="row">
       {% for pro in productos %}
       <a itemprop="url" href="{{base_url()}}productos/dp/pormayor-{{pro.Pro_IdProducto}}" class="black-text">
       <div class="col s12 m4 l4">
       <div class="card horizontal" style="height:300px;">
-        <div class="card-image">
-           <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" {# class="responsive-img fixImg3 redondeo" #} src="{{ruta_img}}{{pro.Prf_Thumb}}" data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+        <div class="card-image"><br>  
+           <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" class="center-align" title="{{pro.Pro_Nombre}}" src="{{ruta_img}}{{pro.Prf_Thumb}}" data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
         </div>
         <div class="card-stacked">
           <div class="card-content">
-            <p><span class="card-title negrita">{{pro.Pro_Nombre|upper}}</span> <br>
+              <span class="card-title negrita">{{pro.Pro_Nombre|title}}</span>
+            <p class="">
             {% set prod = pro.Pro_Descripcion|slice(0, 200) %}
            {{ prod|striptags }}
             </p>
           </div>
           <div class="card-action">
-            <span class="fontC new badge blue negrita">S/ {{pro.Pro_PrecioMinimo}}</span>
+            <span class="fontC">S/ <b>{{pro.Pro_PrecioMinimo}}</b></span>
           </div>
         </div>
       </div>
   </div>
   </a>
   {% endfor %}
-  </div>
+  </div> #}
+    <div class="row">
+      {% for pro in productos %}
+          <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+            <div class="col s6 m4 l2 black-text" data-cd="{{pro.Pro_PM}}">
+              <div class="card hoverable z-depth-1">
+                {# <span class="badge red white-text" style="position:absolute;">Nuevo</span> #}
+                <div class="center" style="height:190px;">
+                  <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="responsive-img fixImg3 redondeo" src="{{ruta_img}}{{pro.Prf_Thumb}}">
+                </div>
+                <div class="card-content center" >
+                  <p>
+                    <b class="truncate">{{pro.Pro_Nombre|upper}}</b>
+                    <small>COD: {{pro.Pro_IdProducto}}</small><br>
+                      {# {% set prod = pro.Pro_Descripcion|slice(0, 200) %} #}
+           {# {{ prod|striptags }} #}
+                    <div class="divider"></div>
+                    {% if pro.Pro_Preventa == 1 %}
+                    <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x mayor<span class="new badge blue left">PRE-VENTA</span>
+                    {% else %}
+                    <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x mayor</label>
+                    {% endif %}
+                    <br>
+                  </p>
+                </div>
+              </div>
+            </div>
+        </a>
+      {% endfor %}
+    </div>
+
   <div class="row">
   <div class="col s12 card-panel">
    <b>Política de devoluciones brindadas en Pormayor.pe</b><br>
