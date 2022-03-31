@@ -48,11 +48,11 @@
                     <p>
                       <span class="truncate">{{pro.Pro_Nombre|title}}</span>
                       {% if pro.Pro_Saldo == 1 %}
-                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x mayor<span class="new badge red">Remate</span>
+                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge red">Remate</span>
                       {% elseif pro.Pro_Preventa == 1 %}
-                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x mayor<span class="new badge blue left">PRE-VENTA</span>
+                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge blue left">PRE-VENTA</span>
                       {% else %}
-                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x mayor</label>
+                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón</label>
                       {% endif %}
                     </p>
                   </div>

@@ -110,7 +110,7 @@
                            <span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 30 ? pro.Pro_Nombre|title|slice(0, 30) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} <text style="font-weight:1000;">{{ pro.Pro_Nombre|title|length > 26 ? pro.Pro_Nombre|title|slice(0, 27) ~ '...' : pro.Pro_Nombre }} </text>{% endif %}</span>
                            <div class="row sinPadding rowsinpaddin">
                                 {# <div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6> </div> #}
-                                <div class="col s2 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X MAYOR</i></h6></div>
+                                <div class="col s2 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X CAJÓN</i></h6></div>
                                   <span class="col s12 m12 l12 new-label pormayorUnico center fontE">
                                     {% if pro.Pro_Estado != 4 %}  <text class="fontD2">{% set vent = 0.5 * pro.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}
                                     {% if pro.cantFav > 0  %} 
@@ -121,7 +121,7 @@
 
                            <div class="row sinPadding rowsinpaddin">
                                {#  <div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6> </div> #}
-                                <div class="col s2 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X MAYOR</i></h6></div>
+                                <div class="col s2 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X CAJÓN</i></h6></div>
                                   <span class="col s12 m12 l12 new-label pormayorUnico center fontE">
                                     {% if pro.Pro_Estado != 4 %}  <text class="fontD2">{% set vent = 0.5 * pro.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}
                                     {% if pro.cantFav > 0  %} 
@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="row sinPadding rowsinpaddin">
                                   {# <div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6></div> #}
-                                  <div class="col s12 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X MAYOR</i></h6></div> 
+                                  <div class="col s12 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X CAJÓN</i></h6></div> 
                                     <span class="col s12 m12 l12 new-label pormayorUnico center fontE">
                                       {% if pro.Pro_Estado != 4 %}  <text class="fontD2">{% set vent = 0.5 * pro.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}
                                       {% if pro.cantFav > 0  %} 
@@ -436,12 +436,12 @@
                             {% if pro.Pro_Saldo == 0 %}
                                <div class="row sinPadding rowsinpaddin">
                                 {# <div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6> </div> #}
-                                <div class="col s12 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X MAYOR</i></h6></div> 
+                                <div class="col s12 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X CAJÓN</i></h6></div> 
                               </div>
                             {% else %}
                               <div class="row sinPadding rowsinpaddin">
                                 <div class="col s12 m12 l12 green lighten-5"><h6><span class="fontE red-text negrita">S/ {{pro.Pro_PrecioMinimo}} </span></h6><label><s>S/ {{pro.Pro_PrecioMaximo}}</s></label></div>
-                                {# <div class="col s6 m6 l6 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X MAYOR</i></h6></div>  #}
+                                {# <div class="col s6 m6 l6 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X CAJÓN</i></h6></div>  #}
                               </div>
                             {%  endif %}
                             </div>
@@ -500,7 +500,7 @@
                                          <div class="row sinPadding rowsinpaddin">
                                 {% if pro.Pro_Saldo == 0 %}                               
                                 {# <div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6> </div> #}
-                                <div class="col s12 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X MAYOR</i></h6></div>
+                                <div class="col s12 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X CAJÓN</i></h6></div>
                                  {% else %}
                                    <div class="col s12 m12 l12 green lighten-5 center"><h6><span class="fontX red-text negrita">S/ {{pro.Pro_PrecioMinimo}} </span><label><s>S/ {{pro.Pro_PrecioMaximo}}</s></label></h6></div>
                                 {% endif %}

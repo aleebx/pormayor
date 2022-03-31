@@ -247,13 +247,15 @@
 	    				{% if cantVauche == veriV %}
 		    				{% if tocom == totalPagar %}
 								{% if vauche and (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) %}
-									<div class="col s4 m4 l4">
+									<div class="col s3">
 										<a class="btn negrita blue" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR ROTULADO {{venta.Per_Nombre}}</a>
 									</div>	    				
-									<div class="col s4 m4 l4">
+									<div class="col s3">
 										<a class="btn negrita green" onclick="printJS('printJS-form2', 'html')" style="width:100%;"><i class="material-icons left">list</i>IMPRIMIR VENTA {{venta.Per_Nombre}}</a>
-									</div>
-									<div class="col s4 l4 center">
+									</div>	    				
+									<div class="col s3">
+										<a data-target="rotulado" class="btn-flat modal-trigger"><i class="material-icons left">featured_play_list</i>Nuevo Rotulado</a>
+									<div class="col s3">
 										<a class="btn-large green modal-trigger" data-target="modalConfirma"><i class="material-icons left">check</i>ENTREGADA {{venta.Per_Nombre}}</a>
 									</div>
 				    			{% endif %}
@@ -511,6 +513,78 @@
             <div class="col s12">
             	<a class="btn green btn-lg btn-block addCambio" data-idv="{{idventa}}"><i class="material-icons left">add_box</i>AGREGAR AL PEDIDO</a>
             </div>
+        </div>
+    </div>
+    <div id="rotulado" class="modal" style="z-index:9999 !important;width: 70%!important;">
+        <div class="modal-content">
+        	<div class="" id="printJS-form3">   
+		    	<table style="border:1px solid black;font-variant: small-caps;">
+		    		<tr>
+		    			<td style="padding:10px;">
+		    				<img src="{{ruta_img}}logoPM.jpg"><br>
+		    				<b>WWW.PORMAYOR.PE</b><br>
+		    				PORMAYOR.PE S.A.<br>
+		    				RUC: 20603706804<br>
+		    				JIRÓN ANDAHUAYLAS 251, INTERIOR 208-209<br> CERDADO DE LIMA, LIMA.<br>
+		    			</td>
+		    			<td style="padding:5px;">
+		    				<table>
+		    					<tr>
+		    						<td style="font-size:25px;padding:5px;font-family: Arial, Helvetica, sans-serif;">Nombre Completo</td>
+		    						<td contenteditable="true" style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;border-bottom: 1px solid black;"></td>
+		    					</tr>
+		    					<tr>
+		    						<td style="font-size:25px;padding:5px;font-family: Arial, Helvetica, sans-serif;">DNI/CE/OTRO</td>
+		    						<td contenteditable="true" style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;border-bottom: 1px solid black;"></td>
+		    					</tr>
+		    					<tr>
+		    						<td style="font-size:25px;padding:5px;font-family: Arial, Helvetica, sans-serif;">Teléfono</td>
+		    						<td contenteditable="true" style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;border-bottom: 1px solid black;"></td>
+		    					</tr>
+		    					<tr>
+		    						<td style="font-size:25px;padding:5px;font-family: Arial, Helvetica, sans-serif;">Código</td>
+		    						<td style="font-size:25px;padding:5px;font-family: Arial, Helvetica, sans-serif;">{{venta.Pac_CodPago}}</td>
+		    					</tr>
+		    					<tr>
+		    						<td style="font-size:25px;padding:5px;font-family: Arial, Helvetica, sans-serif;">Vendedor</td>
+		    						<td style="font-size:25px;padding:5px;font-family: Arial, Helvetica, sans-serif;">{{venta.vendedor}}</td>
+		    					</tr>
+		    					<tr>
+		    						<td colspan="2">DIRECCIÓN ENTREGA</td>		    						
+		    					</tr>
+		    					<tr>
+		    						<td style="font-size:25px;padding:5px;font-family: Arial, Helvetica, sans-serif;">AGENCIA</td>
+		    						<td contenteditable="true" style="font-size:35px;padding:5px;font-family: Arial, Helvetica, sans-serif;border-bottom: 1px solid black;"></td>
+		    					</tr>
+		    					<tr>
+		    						<td style="font-size:25px;padding:5px;font-family: Arial, Helvetica, sans-serif;">DIRECCIÓN</td>
+		    						<td contenteditable="true" style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;border-bottom: 1px solid black;">{{compra_info.distrito}} - {{compra_info.Pci_Direccion}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}</td>
+		    					</tr>
+		    				</table>
+		    				{# <div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+		    					{{venta.Pac_FechaRegistro}}<br>
+						 		<b>DATOS CLIENTE</b><br>
+								<b>Nombre Completo:</b> {% if venta.Per_Nombre %}{{venta.Per_Nombre}}{% else %}{{venta.nombr}}{% endif %}<br>
+								<b>D.N.I:</b> {% if venta.Per_Dni %}{{venta.Per_Dni}}{% else %}{{venta.dni}}{% endif %} <br>
+								<b>Teléfono</b> {{compra_info.Pci_Telefono}} <br>
+								<b>Código:</b> <b>{{venta.Pac_CodPago}}</b>  <br>
+								<span style="font-size: 10px;">Vendedor: {{venta.vendedor}}</span>  <br>
+				    		</div><br>
+				 			<div style="font-size:30px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+						 		<b>DIRECCIÓN CLIENTE</b><br>
+						 		AGENCIA: {{compra_info.Pci_Lote}}<br>
+				 				<b style="font-size:35px"> {{compra_info.distrito}} </b><br> <b>Dirección:</b> {{compra_info.Pci_Direccion}} {{compra_info.Pci_DtoInt}} {{compra_info.Pci_Urbanizacion}} | <b>Referencia:</b> {{compra_info.Pci_Referencia}}
+				 			</div> #}
+				 		</td>
+		    		</tr>
+		    		<tr>
+		    			<td colspan="2" aling="center" style="font-size:30px;padding-left:270px;">¡GRACIAS POR COMPRAR CON NOSOTROS!</td>
+		    		</tr>
+		    	</table>
+		    </div>
+
+        <a class="btn green btn-lg" onclick="printJS('printJS-form3', 'html')" ><i class="material-icons left">print</i>IMPRIMIR</a>
+        </div>
         </div>
     </div>
     <div class="hide" id="printJS-form">   

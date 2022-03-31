@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('.select2').select2();
+});
     var i = 1;
     sut1 = 0;
     $(".add-row").click(function(){
@@ -19,11 +20,12 @@ $(document).ready(function(){
                 i = i + 1;
                 var dispo = stock - cantidad; 
                 sut1 = sut1 + subtotal; 
-                $("#selProducto").val(0);
+                // $("#selProducto").val(0);
+                $('#listProd').load(base_url+'venta/select_producto',{sut1:sut1});
                 $("#precioP").val(0);
                 $("#cantP").val(0);
                 $("#stockD").val(dispo);
-                $("#subT1").text(sut1);          
+                $("#subT1").text(sut1);         
             }
     }
 
@@ -69,7 +71,7 @@ $(document).ready(function(){
          }
       });
     });
-}); 
+// }); 
 $(document).on('click', '.delete-row', function(){
     var tdid = $(this).data('id');
     var subeli = $(this).data('pre');    

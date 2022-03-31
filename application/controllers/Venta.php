@@ -22,6 +22,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+		function select_producto()
+		{
+			if ($this->input->is_ajax_request()){				
+		    	$data['productos'] = $this->vendedorModel->get_productos_sku();
+		        $this->twig->parse('ventas/selectproducto.twig',$data);
+		    	}
+		}
+
 		function buscar_dni()
 		{
 			if ($this->input->is_ajax_request()){

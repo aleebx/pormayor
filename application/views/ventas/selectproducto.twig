@@ -1,0 +1,25 @@
+<select class="browser-default select2" id="selProducto">
+  <option value="0" selected>Seleccione el producto</option>
+  {% for pro in productos %}
+    <option value="{{pro.Pro_IdProducto}}" data-pre="{{pro.Pro_PrecioMinimo}}" data-ids="{{pro.SKU_IdSKU}}" data-var="{{pro.SKU_Color}}" data-dispo="{{pro.SKU_StockDisponible}}">COD: {{pro.Pro_IdProducto}} | {{pro.Pro_Nombre}} {{pro.SKU_Color}}</option>
+  {% endfor %}
+</select><br><br>
+<script>$('#selProducto').select2();
+  $('#selProducto').change(function(){
+        var precio = $(this).find(':selected').data('pre');
+        var stoc = $(this).find(':selected').data('dispo');
+        console.log(precio);
+
+        $('#precioP').val(precio);
+        $('#stockD').val(stoc);
+    });
+
+    $('#selProducto2').change(function(){
+        // var precio = $(this).find(':selected').data('pre');
+        var stoc = $(this).find(':selected').data('dispo');
+        // console.log(precio);
+
+        // $('#precioP2').val(precio);
+        $('#stockD2').val(stoc);
+    });
+</script>

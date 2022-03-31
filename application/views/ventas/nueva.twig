@@ -12,13 +12,13 @@
         <div class="row">
           <span class="card-title center black-text">Agregar Productos</span>
           <br>
-          <div class="col s12 l12">
-                  <select class="browser-default select2" id="selProducto">
-                    <option value="0" selected>Seleccione el producto</option>
-                    {% for pro in productos %}
-                      <option value="{{pro.Pro_IdProducto}}" data-pre="{{pro.Pro_PrecioMinimo}}" data-ids="{{pro.SKU_IdSKU}}" data-var="{{pro.SKU_Color}}" data-dispo="{{pro.SKU_StockDisponible}}">COD: {{pro.Pro_IdProducto}} | {{pro.Pro_Nombre}} {{pro.SKU_Color}}</option>
-                    {% endfor %}
-                  </select><br><br>
+            <div class="col s12 l12" id="listProd">
+              <select class="browser-default select2" id="selProducto">
+                <option value="0" selected>Seleccione el producto</option>
+                {% for pro in productos %}
+                  <option value="{{pro.Pro_IdProducto}}" data-pre="{{pro.Pro_PrecioMinimo}}" data-ids="{{pro.SKU_IdSKU}}" data-var="{{pro.SKU_Color}}" data-dispo="{{pro.SKU_StockDisponible}}">COD: {{pro.Pro_IdProducto}} | {{pro.Pro_Nombre}} {{pro.SKU_Color}}</option>
+                {% endfor %}
+              </select><br><br>
             </div>
             <div class="col s4">
               <div class="form-group">
@@ -93,7 +93,7 @@
                 <option value="TIENDA">RETIRO EN TIENDA</option>
                 <option value="NO">CONTRAENTREGA</option>
                 <option value="TDO">PROVINCIA</option>
-              </select>      <br>    
+              </select><br>    
           </div>
           <div class="input-field col s3">
             <input id="DNIcliente" placeholder="" type="number" class="validate" value="">
@@ -172,5 +172,5 @@
 {% endblock %}
 
 {% block script %}
-  <script src="{{base_url('public/')}}js/nuevav.js?v=3"></script>
+  <script src="{{base_url('public/')}}js/nuevav.js?v=5"></script>
 {% endblock %}

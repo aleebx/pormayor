@@ -38,7 +38,7 @@
                                       
                   <div class="row sinPadding rowsinpaddin">
                     <div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6> </div>
-                    <div class="col s6 m6 l6 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X MAYOR</i></h6></div> 
+                    <div class="col s6 m6 l6 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X CAJÓN</i></h6></div> 
                     <span class="col s12 m12 l12 new-label pormayorUnico center fontE">
                       {% if pro.Pro_Estado != 4 %}  <text class="fontD2">{% set vent = 0.04 * pro.Pro_Vista %}{% if vent > 1 %}{{vent|round}}</text> Ventas{% else %}&nbsp;{% endif %}
                       {% if pro.cantFav > 0  %} 

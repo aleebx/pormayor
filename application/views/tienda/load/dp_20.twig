@@ -197,7 +197,10 @@
       <div class="col m6 l6">
         <div class="card">          
           <div class="card-content center">
-            <a class="btn-large fontD pormayor black-text" >S/ {{producto.Pro_PrecioMinimo}} x mayor</a><br><br>
+            <a class="btn-large fontD pormayor black-text" >S/ {{producto.Pro_PrecioMinimo}} x cajón</a><br>
+                  <span class="">Compra a precio de cajón desde 1 unidad</span>
+
+            <br>
             <span class="card-title">Seleccione la variación de su producto</span>
             <div>
             {% if producto.Cat_IdCategoria != 12 and producto.Cat_IdCategoria != 2 and producto.Suc_IdSubCategoria != 41 %}
@@ -357,7 +360,8 @@
               <div class="card-content">
                 <div class="row">
                 <div class="col s12 center">
-                  <span class="fontD ">s/ {{producto.Pro_PrecioMinimo}} x mayor</span>
+                  <span class="fontD ">s/ {{producto.Pro_PrecioMinimo}} x cajón</span>
+                  <span class="">Compra a precio de cajón desde 1 unidad</span>
                 </div>                
                 <div class="col s12 center">
                   {% if producto.Pro_Preventa == 1 %} <br>
@@ -396,8 +400,9 @@
           <div class="card-content">     
                 <div class="row">
                   <div class="col s12 center"><br>
-                     <a class="btn-large fontD pormayor black-text" >S/ {{producto.Pro_PrecioMinimo}} x mayor</a><br>
-                    {# <span class="card-title">Seleccione la variación de su producto</span> #}
+                     <a class="btn-large fontD pormayor black-text" >S/ {{producto.Pro_PrecioMinimo}} x cajón</a><br>
+                                      <span class="">Compra a precio de cajón desde 1 unidad</span>
+
                   </div>
                 </div>             
               {% if producto.Cat_IdCategoria != 12 and producto.Cat_IdCategoria != 2 and producto.Suc_IdSubCategoria != 41 %}
