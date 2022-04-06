@@ -20,6 +20,7 @@ $this->load->library('cart');
 $sizePost = sizeof($_POST["product_id"]);
 if ($this->input->is_ajax_request())
 {
+	// print_r($_POST);exit();
 for ($i=0; $i < $sizePost; $i++) 
 {
 if ($_POST["flagVariaciones"] == true) {
@@ -55,10 +56,12 @@ $data = array(
 "Tie_Telefono" => '',
 "Tie_Direccion" => '');
 $this->cart->insert($data);
-$data['totalc'] = count($data['carrito']);
-}
+	// if (!empty($data['carrito'])) {
+	$data['totalc'] = count($data['carrito']);
+	// }
 }
 echo $this->view();
+}
 }
 
 //CARGAR VISTA DEL CARRRITO DE COTIZACION
@@ -728,7 +731,7 @@ $newdata = array (
 array_push($precios,$newdata);					
 }
 if ($data['envio']->costo == 1) {
-$data['costoReal']=20;					
+$data['costoReal']=30;					
 }else if ($data['envio']->costo == 2){
 $data['costoReal']=30;
 }else{

@@ -214,17 +214,43 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
-
 \t\t<div class=\"row\">
+\t\t\t<div class=\"col s12 center\">
+\t\t\t";
+        // line 118
+        echo "\t\t  \t";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["categorias"] ?? null));
+        foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
+            // line 119
+            echo "\t\t\t  \t<a itemprop=\"url\" href=\"";
+            echo base_url();
+            echo "categoria/";
+            echo $this->getAttribute($context["cat"], "url", array());
+            echo "\">
+\t\t\t       <div class=\"chip pormayor fontA\">
+\t\t\t       \t\t";
+            // line 121
+            echo twig_upper_filter($this->env, $this->getAttribute($context["cat"], "Cat_Nombre", array()));
+            echo "
+\t\t\t\t\t</div>
+\t\t    \t</a>
+\t\t  \t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 125
+        echo "\t\t\t</div>
 \t\t\t<div class=\"col s12 fontE\">
 \t\t\t\t<p>Últimos productos</p>
 \t\t\t</div>
 \t\t  \t";
-        // line 120
+        // line 129
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["pro10"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 121
+            // line 130
             echo "\t\t  \t<a itemprop=\"url\" href=\"";
             echo base_url();
             echo "productos/dp/";
@@ -235,14 +261,14 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "\">
 \t\t        <div class=\"col s6 m4 l3 black-text\" data-cd=\"";
-            // line 122
+            // line 131
             echo $this->getAttribute($context["pro"], "Pro_PM", array());
             echo "\">
 \t\t          <div class=\"card hoverable z-depth-1\">
 \t\t          \t<span class=\"badge red white-text\" style=\"position:absolute;\">Nuevo</span>
 \t\t            <div class=\"center\" style=\"height:190px;\">
 \t\t              <img alt=\"";
-            // line 126
+            // line 135
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -254,30 +280,30 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t            <div class=\"card-content center\" style=\"height:100px;\">
 \t\t              <p>
 \t\t              \t<span class=\"truncate\">";
-            // line 130
+            // line 139
             echo twig_upper_filter($this->env, $this->getAttribute($context["pro"], "Pro_Nombre", array()));
             echo "</span>
 \t\t              \t<small>COD: ";
-            // line 131
+            // line 140
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "</small><br>
 \t\t              \t<div class=\"divider\"></div>
 \t\t              \t";
-            // line 133
+            // line 142
             if (($this->getAttribute($context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 134
+                // line 143
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
-                echo "</span> x mayor<span class=\"new badge blue left\">PRE-VENTA</span>
+                echo "</span> x cajón<span class=\"new badge blue left\">PRE-VENTA</span>
 \t\t              \t";
             } else {
-                // line 136
+                // line 145
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
-                echo "</span> x mayor</label>
+                echo "</span> x cajón</label>
 \t\t              \t";
             }
-            // line 138
+            // line 147
             echo "\t\t              \t<br>
 \t\t              </p>
 \t\t            </div>
@@ -289,66 +315,41 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 145
+        // line 154
         echo "\t\t\t<div class=\"col s12 center\"><br>
-\t\t\t\t<a href=\"";
-        // line 146
+\t\t\t<a href=\"";
+        // line 155
         echo ($context["base_url"] ?? null);
         echo "pagina/productos\" class=\"btn btn-large\" style=\"font-size:2em;\"><b>VER TODOS LOS PRODUCTOS</b></a>
 \t\t\t</div>
-\t\t\t<div class=\"col s12 center\"><br><br>
-\t\t  \t";
-        // line 149
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["categorias"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
-            // line 150
-            echo "\t\t\t  \t<a itemprop=\"url\" href=\"";
-            echo base_url();
-            echo "categoria/";
-            echo $this->getAttribute($context["cat"], "url", array());
-            echo "\">
-\t\t\t       <div class=\"chip\">
-\t\t\t       \t\t";
-            // line 152
-            echo twig_upper_filter($this->env, $this->getAttribute($context["cat"], "Cat_Nombre", array()));
-            echo "
-\t\t\t\t\t</div>
-\t\t    \t</a>
-\t\t  \t";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 156
-        echo "\t\t\t</div>
+
 \t    </div>
 \t</main>\t
 ";
     }
 
-    // line 160
+    // line 161
     public function block_script($context, array $blocks = array())
     {
-        // line 161
+        // line 162
         echo "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 <script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
 <script>
 var base_url = \"";
-        // line 164
+        // line 165
         echo base_url();
         echo "\";
 var loading_screen = pleaseWait({
 logo: '',
 backgroundColor: \"#FEC00F\",
 loadingHtml: \"<img src='";
-        // line 168
+        // line 169
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
 });
 </script>
 <script src=\"";
-        // line 171
+        // line 172
         echo base_url("public/");
         echo "js/index.min.js?v=5\"></script>
 ";
@@ -366,7 +367,7 @@ loadingHtml: \"<img src='";
 
     public function getDebugInfo()
     {
-        return array (  352 => 171,  346 => 168,  339 => 164,  334 => 161,  331 => 160,  324 => 156,  314 => 152,  306 => 150,  302 => 149,  296 => 146,  293 => 145,  281 => 138,  275 => 136,  269 => 134,  267 => 133,  262 => 131,  258 => 130,  246 => 126,  239 => 122,  228 => 121,  224 => 120,  212 => 110,  206 => 108,  200 => 106,  198 => 105,  194 => 103,  188 => 101,  182 => 99,  180 => 98,  171 => 91,  162 => 85,  158 => 84,  152 => 80,  146 => 76,  136 => 70,  132 => 69,  129 => 68,  119 => 61,  115 => 60,  112 => 59,  110 => 58,  101 => 52,  97 => 51,  90 => 47,  84 => 46,  81 => 45,  79 => 44,  74 => 41,  72 => 40,  69 => 39,  66 => 38,  61 => 36,  56 => 18,  50 => 15,  48 => 14,  38 => 6,  35 => 4,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  353 => 172,  347 => 169,  340 => 165,  335 => 162,  332 => 161,  322 => 155,  319 => 154,  307 => 147,  301 => 145,  295 => 143,  293 => 142,  288 => 140,  284 => 139,  272 => 135,  265 => 131,  254 => 130,  250 => 129,  244 => 125,  234 => 121,  226 => 119,  221 => 118,  212 => 110,  206 => 108,  200 => 106,  198 => 105,  194 => 103,  188 => 101,  182 => 99,  180 => 98,  171 => 91,  162 => 85,  158 => 84,  152 => 80,  146 => 76,  136 => 70,  132 => 69,  129 => 68,  119 => 61,  115 => 60,  112 => 59,  110 => 58,  101 => 52,  97 => 51,  90 => 47,  84 => 46,  81 => 45,  79 => 44,  74 => 41,  72 => 40,  69 => 39,  66 => 38,  61 => 36,  56 => 18,  50 => 15,  48 => 14,  38 => 6,  35 => 4,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

@@ -32,14 +32,15 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
         // line 3
         echo "  <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css\"  media=\"screen\"/>
   <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/css/easyzoom.css\"  media=\"screen\"/>
+  <link type=\"text/css\" rel=\"stylesheet\" href=\"";
+        // line 5
+        echo base_url("public/intranet/css/inputnumber.css");
+        echo "\"  media=\"screen\"/>
   <style type=\"text/css\">
     .btn-flat-not:hover{background-color: #21478F ;color: white !important;}
     .materialbox-caption{text-transform: uppercase;font-size: 1.5rem;}
     .sliderMobile .slick-list {padding:0px !important;}
-    .sliderMobile .slick-dots li.slick-active button:before{font-size: 70px !important;opacity: 1;color: ";
-        // line 9
-        echo $this->getAttribute(($context["configuracion"] ?? null), "Con_ColorBtn", array());
-        echo ";}
+    .sliderMobile .slick-dots li.slick-active button:before{font-size: 70px !important;opacity: 1;}
     .sliderMobile img{max-width:100%;max-height: 250px;}
     .sliderMobile{height:250px;}
     .card .card-image img {
@@ -104,76 +105,15 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
     background: -o-linear-gradient(45deg, #fec00f, #f59e04) !important;
     background: linear-gradient(45deg,#fec00f, #f59e04) !important;
 }
-.input-number-group {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.input-number-group input[type=number]::-webkit-inner-spin-button,
-.input-number-group input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-          appearance: none;
-}
-
-.input-number-group .input-group-button {
-  line-height: calc(80px/2 - 5px);
-}
-
-.input-number-group .input-number {
-  width: 80px;
-  padding: 0 12px;
-  vertical-align: top;
-  text-align: center;
-  outline: none;
-  display: block;
-  margin: 0;
-}
-
-.input-number-group .input-number,
-.input-number-group .input-number-decrement,
-.input-number-group .input-number-increment {
-  border: 1px solid #cacaca;
-  height: 40px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  border-radius: 0;
-}
-
-.input-number-group .input-number-decrement,
-.input-number-group .input-number-increment {
-  display: inline-block;
-  width: 40px;
-  background: #e6e6e6;
-  color: #0a0a0a;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 2rem;
-  font-weight: 400;
-}
-
-.input-number-group .input-number-decrement {
-  margin-right: 0.3rem;
-}
-
-.input-number-group .input-number-increment {
-  margin-left: 0.3rem;
-}
-  </style>
+</style>
   
 ";
     }
 
-    // line 138
+    // line 78
     public function block_content($context, array $blocks = array())
     {
-        // line 139
+        // line 79
         echo "  <div id=\"main\">
   <div class=\"content-wrapper-before gradient-45deg-yellow\"></div>
   <main class=\"container fixContainer positionRelative\">
@@ -184,7 +124,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
         <div class=\"\">
           <div class=\"\">
             <h4 class=\"centrarForzado muayuscula\">";
-        // line 148
+        // line 88
         echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array()));
         echo " ";
         if (($this->getAttribute(($context["producto"] ?? null), "Pro_Preventa", array()) == 1)) {
@@ -197,24 +137,24 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
         </div>
       </div>
       ";
-        // line 152
+        // line 92
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 153
+            // line 93
             echo "      <div class=\"col m6 l6\">
         <div class=\"card\" style=\"height:508.5px;\">
           <div class=\"card-content row sinPadding\">
             <div class=\"col l12 center\" id=\"imagenesPro\" >
               ";
-            // line 157
+            // line 97
             if (twig_test_empty(($context["fotos"] ?? null))) {
-                // line 158
+                // line 98
                 echo "                <div class=\"easyzoom easyzoom--overlay easyzoom--with-thumbnails redondeo white\">
                   <a href=\"";
-                // line 159
+                // line 99
                 echo ($context["ruta_img"] ?? null);
                 echo "pronoimg.webp\">
                     <img alt=\"";
-                // line 160
+                // line 100
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                 echo " al pormayor\" src=\"";
                 echo ($context["ruta_img"] ?? null);
@@ -223,15 +163,15 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 </div>
               ";
             } else {
-                // line 164
+                // line 104
                 echo "                <div class=\"easyzoom easyzoom--overlay easyzoom--with-thumbnails redondeo white\">
                   <a href=\"";
-                // line 165
+                // line 105
                 echo ($context["ruta_img"] ?? null);
                 echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
                 echo "\">
                     <img alt=\"";
-                // line 166
+                // line 106
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                 echo " al pormayor\" src=\"";
                 echo ($context["ruta_img"] ?? null);
@@ -241,22 +181,22 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 </div>
               ";
             }
-            // line 170
+            // line 110
             echo "              <div class=\"center\">
                 <ul class=\"thumbnails\">
                   ";
-            // line 172
+            // line 112
             if (twig_test_empty(($context["fotos"] ?? null))) {
-                // line 173
+                // line 113
                 echo "                    <li class=\"col\">
                       <a href=\"";
-                // line 174
+                // line 114
                 echo ($context["ruta_img"] ?? null);
                 echo "pronoimg.webp\" data-standard=\"";
                 echo ($context["ruta_img"] ?? null);
                 echo "pronoimg.webp\">
                         <img alt=\"";
-                // line 175
+                // line 115
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                 echo " al pormayor\" src=\"";
                 echo ($context["ruta_img"] ?? null);
@@ -265,21 +205,21 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     </li>
                   ";
             } else {
-                // line 179
+                // line 119
                 echo "                      ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["fotos"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["fot"]) {
-                    // line 180
+                    // line 120
                     echo "                        ";
                     if (($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "producto_Pro_IdProducto", array()))) {
-                        // line 181
+                        // line 121
                         echo "                          ";
                         if ((twig_lower_filter($this->env, twig_slice($this->env, $this->getAttribute($context["fot"], "Prf_Img", array()), 0, 5)) != "nopic")) {
-                            // line 182
+                            // line 122
                             echo "                          <li class=\"col\">
                             <a href=\"";
-                            // line 183
+                            // line 123
                             echo ($context["ruta_img"] ?? null);
                             echo $this->getAttribute($context["fot"], "Prf_Img", array());
                             echo "\" data-standard=\"";
@@ -287,7 +227,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                             echo $this->getAttribute($context["fot"], "Prf_Img", array());
                             echo "\">
                               <img alt=\"";
-                            // line 184
+                            // line 124
                             echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                             echo " al pormayor\" src=\"";
                             echo ($context["ruta_img"] ?? null);
@@ -297,19 +237,19 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                           </li>
                           ";
                         }
-                        // line 188
+                        // line 128
                         echo "                        ";
                     }
-                    // line 189
+                    // line 129
                     echo "                      ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['fot'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 190
+                // line 130
                 echo "                  ";
             }
-            // line 191
+            // line 131
             echo "                </ul>
               </div>
             </div>
@@ -320,104 +260,106 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
         <div class=\"card\">          
           <div class=\"card-content center\">
             <a class=\"btn-large fontD pormayor black-text\" >S/ ";
-            // line 200
+            // line 140
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
-            echo " x mayor</a><br><br>
+            echo " x cajón</a><br>
+            <span class=\"\">Compra a precio de cajón desde 1 unidad</span>
+            <br>
             <span class=\"card-title\">Seleccione la variación de su producto</span>
             <div>
             ";
-            // line 203
+            // line 145
             if (((($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) != 12) && ($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) != 2)) && ($this->getAttribute(($context["producto"] ?? null), "Suc_IdSubCategoria", array()) != 41))) {
-                // line 204
+                // line 146
                 echo "            ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["SKU"] ?? null));
                 foreach ($context['_seq'] as $context["key"] => $context["sku"]) {
                     echo "  
                 ";
-                    // line 205
+                    // line 147
                     if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
-                        // line 206
+                        // line 148
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
-                        // line 207
+                        // line 149
                         echo "                    <div class=\"row centrarForzado\">
                       <div class=\"col l5 right-align\">
                         <div class=\"positionRelative\">
                         ";
-                        // line 215
+                        // line 157
                         echo "                          ";
                         if ((($context["colorActual"] ?? null) == "")) {
-                            // line 216
+                            // line 158
                             echo "                          <span class=\"fontA\">UNICO</span>  
                           ";
                         } else {
-                            // line 218
+                            // line 160
                             echo "                          <span class=\"fontA\">";
                             echo ($context["colorActual"] ?? null);
                             echo "</span>
                           ";
                         }
-                        // line 220
+                        // line 162
                         echo "                        ";
                         $context["colorUnico"] = "";
-                        // line 221
+                        // line 163
                         echo "                        ";
                         $context["colorHex"] = " ";
-                        // line 222
+                        // line 164
                         echo "                        ";
                         $context["break"] = false;
-                        // line 223
+                        // line 165
                         echo "                        ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(($context["colores"] ?? null));
                         foreach ($context['_seq'] as $context["_key"] => $context["col"]) {
                             if ( !($context["break"] ?? null)) {
-                                // line 224
+                                // line 166
                                 echo "                          ";
                                 if (($this->getAttribute($context["col"], "SKU_Color", array()) == ($context["colorActual"] ?? null))) {
-                                    // line 225
+                                    // line 167
                                     echo "                            ";
-                                    // line 226
+                                    // line 168
                                     echo "                            ";
                                     $context["colorUnico"] = $this->getAttribute($context["col"], "Col_Nombre", array());
-                                    // line 227
+                                    // line 169
                                     echo "                            ";
                                     $context["colorHex"] = $this->getAttribute($context["col"], "Col_Hex", array());
-                                    // line 228
+                                    // line 170
                                     echo "                            ";
                                     $context["break"] = true;
-                                    // line 229
+                                    // line 171
                                     echo "                          ";
                                 }
-                                // line 230
+                                // line 172
                                 echo "                        ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['col'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 231
+                        // line 173
                         echo "                        </div>
                         <br>
                       </div> 
                       <div class=\"col l7 valign-wrapper filaCant";
-                        // line 234
+                        // line 176
                         echo $context["key"];
                         echo "\">
                       ";
-                        // line 236
+                        // line 178
                         echo "                        <div class=\"input-group input-number-group\">
                           <div class=\"input-group-button\">
                             <span class=\"input-number-decrement\">-</span>
                           </div>
                           ";
-                        // line 240
+                        // line 182
                         $context["count"] = 0;
-                        // line 241
+                        // line 183
                         echo "                          ";
                         $context["break"] = false;
-                        // line 242
+                        // line 184
                         echo "                          ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(twig_sort_filter(($context["SKUB"] ?? null), "asc"));
@@ -425,9 +367,9 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                             if ( !($context["break"] ?? null)) {
                                 echo "                        
                               ";
-                                // line 243
+                                // line 185
                                 if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) >= 1))) {
-                                    // line 244
+                                    // line 186
                                     echo "                                  <input type=\"number\" min=\"";
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
                                     echo "\" name=\"cantidad\" value=\"0\" max=\"";
@@ -471,25 +413,25 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                                     echo "\" onkeydown=\"javascript: return event.keyCode == 69 ? false : true\" readonly>
                               ";
                                 } else {
-                                    // line 246
+                                    // line 188
                                     echo "                                ";
                                     $context["break"] = false;
                                     echo " 
                               ";
                                 }
-                                // line 247
+                                // line 189
                                 echo " 
                           ";
-                                // line 248
+                                // line 190
                                 $context["count"] = (($context["count"] ?? null) + 1);
-                                // line 249
+                                // line 191
                                 echo "                          ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['skub'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 250
+                        // line 192
                         echo "                          <div class=\"input-group-button\">
                             <span class=\"input-number-increment\">+</span>
                           </div>
@@ -498,11 +440,11 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     </div>
                     ";
                     } else {
-                        // line 257
+                        // line 199
                         echo "                    <div class=\"row centrarForzado\">
                       <div class=\"col s12 center grey\">
                         <b class=\"fontA\">";
-                        // line 259
+                        // line 201
                         echo $this->getAttribute($context["sku"], "SKU_Color", array());
                         echo " AGOTADO</b>
                       </div>
@@ -510,85 +452,85 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     </div>
                     ";
                     }
-                    // line 264
+                    // line 206
                     echo "              ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['key'], $context['sku'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 265
+                // line 207
                 echo "              ";
             } else {
-                // line 266
+                // line 208
                 echo "                ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["SKU"] ?? null));
                 foreach ($context['_seq'] as $context["key"] => $context["sku"]) {
                     echo "  
                 ";
-                    // line 267
+                    // line 209
                     if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
-                        // line 268
+                        // line 210
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
-                        // line 269
+                        // line 211
                         echo "                    <div class=\"row centrarForzado\">
                       <div class=\"col l5 right-align\">
                         <div class=\"positionRelative\">                          
                          ";
-                        // line 277
+                        // line 219
                         echo "                        ";
                         if ((($context["colorActual"] ?? null) == "")) {
-                            // line 278
+                            // line 220
                             echo "                          <span class=\"fontA\">UNICO</span>  
                           ";
                         } else {
-                            // line 280
+                            // line 222
                             echo "                          <span class=\"fontA\">";
                             echo ($context["colorActual"] ?? null);
                             echo "</span>
                           ";
                         }
-                        // line 282
+                        // line 224
                         echo "                        ";
                         $context["colorUnico"] = "";
-                        // line 283
+                        // line 225
                         echo "                        ";
                         $context["colorHex"] = "";
-                        // line 284
+                        // line 226
                         echo "                        ";
                         $context["break"] = false;
-                        // line 285
+                        // line 227
                         echo "                        ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(($context["colores"] ?? null));
                         foreach ($context['_seq'] as $context["_key"] => $context["col"]) {
                             if ( !($context["break"] ?? null)) {
-                                // line 286
+                                // line 228
                                 echo "                          ";
                                 if (($this->getAttribute($context["col"], "SKU_Color", array()) == ($context["colorActual"] ?? null))) {
-                                    // line 287
+                                    // line 229
                                     echo "                            ";
-                                    // line 288
+                                    // line 230
                                     echo "                            ";
                                     $context["colorUnico"] = $this->getAttribute($context["col"], "Col_Nombre", array());
-                                    // line 289
+                                    // line 231
                                     echo "                            ";
                                     $context["colorHex"] = $this->getAttribute($context["col"], "Col_Hex", array());
-                                    // line 290
+                                    // line 232
                                     echo "                            ";
                                     $context["break"] = true;
-                                    // line 291
+                                    // line 233
                                     echo "                          ";
                                 }
-                                // line 292
+                                // line 234
                                 echo "                        ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['col'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 293
+                        // line 235
                         echo "                        </div>
                         <br>
                       </div> 
@@ -597,22 +539,22 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                           <div class=\"col s12 l12 sinPadding \">
                           </div>
                             ";
-                        // line 300
+                        // line 242
                         $context["count"] = 0;
-                        // line 301
+                        // line 243
                         echo "                            ";
                         $context["break"] = false;
-                        // line 302
+                        // line 244
                         echo "                          <div class=\"col l12 sinPadding  centrarForzado row filaCant";
                         echo $context["key"];
                         echo "\">
                               ";
-                        // line 303
+                        // line 245
                         $context["count"] = 0;
-                        // line 304
+                        // line 246
                         echo "                              ";
                         $context["break"] = false;
-                        // line 305
+                        // line 247
                         echo "                              ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(twig_sort_filter(($context["SKUB"] ?? null), "asc"));
@@ -620,9 +562,9 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                             if ( !($context["break"] ?? null)) {
                                 echo "                        
                                   ";
-                                // line 306
+                                // line 248
                                 if ((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array()))) {
-                                    // line 307
+                                    // line 249
                                     echo "                                      <span class=\"fontB2\" for=\"";
                                     echo $this->getAttribute($context["skub"], "SKU_IdSku", array());
                                     echo "\">Talla ";
@@ -633,7 +575,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                                             <span class=\"input-number-decrement\">-</span>
                                           </div>
                                             <input type=\"number\" min=\"";
-                                    // line 312
+                                    // line 254
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
                                     echo "\" name=\"cantidad\" value=\"0\" max=\"5\" class=\"input-number browser-default cantSku cant";
                                     echo $this->getAttribute($context["skub"], "SKU_IdSku", array());
@@ -678,36 +620,36 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                                         </div>
                                   ";
                                 } else {
-                                    // line 318
+                                    // line 260
                                     echo "                                    ";
                                     $context["break"] = false;
                                     echo " 
                                   ";
                                 }
-                                // line 319
+                                // line 261
                                 echo " 
                               ";
-                                // line 320
+                                // line 262
                                 $context["count"] = (($context["count"] ?? null) + 1);
-                                // line 321
+                                // line 263
                                 echo "                              ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['skub'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 322
+                        // line 264
                         echo "                          </div>
                         </div>
                       </div>
                     </div>
                     ";
                     } else {
-                        // line 327
+                        // line 269
                         echo "                    <div class=\"row centrarForzado\">
                       <div class=\"col s12 center grey\">
                         <b class=\"fontA\">";
-                        // line 329
+                        // line 271
                         echo $this->getAttribute($context["sku"], "SKU_Color", array());
                         echo " AGOTADO</b>
                       </div>
@@ -715,21 +657,21 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     </div>
                     ";
                     }
-                    // line 334
+                    // line 276
                     echo "              ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['key'], $context['sku'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 335
+                // line 277
                 echo "              ";
             }
-            // line 336
+            // line 278
             echo "              </div>
                 <div class=\"row sinPadding bottom0\" style=\"margin-bottom: 0px;\">
                   <div class=\"col l6 sinPadding center\">
                     <a class=\"btn-large add_cart green\" data-totalc=\"";
-            // line 339
+            // line 281
             echo ($context["totalc"] ?? null);
             echo "\" data-pmin=\"";
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
@@ -740,15 +682,15 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     <p class=\"fontC\">S/<span class=\"totalPago negrita\">0</span></p>
                   </div>
                   ";
-            // line 345
+            // line 287
             if ((twig_length_filter($this->env, ($context["SKU"] ?? null)) >= 2)) {
-                // line 346
+                // line 288
                 echo "                    <div class=\"col l12 center\">
                       <b class=\"red-text\">Tenga presente que puede variar los colores según disponibilidad</b>
                     </div>
                   ";
             }
-            // line 350
+            // line 292
             echo "                </div>
               </div>
               
@@ -760,25 +702,26 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 <div class=\"row\">
                 <div class=\"col s12 center\">
                   <span class=\"fontD \">s/ ";
-            // line 360
+            // line 302
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
-            echo " x mayor</span>
+            echo " x cajón</span>
+                  <span class=\"\">Compra a precio de cajón desde 1 unidad</span>
                 </div>                
                 <div class=\"col s12 center\">
                   ";
-            // line 363
+            // line 306
             if (($this->getAttribute(($context["producto"] ?? null), "Pro_Preventa", array()) == 1)) {
                 echo " <br>
                     <p class=\"fontA\">FECHA DE LLEGADA DE LA MERCANCÍA ";
-                // line 364
+                // line 307
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_FechaPreventa", array());
                 echo " </p> <br>
                   ";
             }
-            // line 366
+            // line 309
             echo "                </div>
                   <div class=\"card-badge\"><a class=\"white-text\">";
-            // line 367
+            // line 310
             if (($this->getAttribute(($context["producto"] ?? null), "Pro_Preventa", array()) == 1)) {
                 echo "PRE-VENTA";
             } else {
@@ -786,10 +729,10 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
             }
             echo "</a></div>
 ";
-            // line 371
+            // line 314
             echo "                  <div class=\"col s12 \"><br>
                    <span class=\"grey-text\"><i class=\"material-icons green-text left\">shopping_bag</i>";
-            // line 372
+            // line 315
             $context["vent"] = (0.5 * $this->getAttribute(($context["producto"] ?? null), "Pro_Vista", array()));
             if ((($context["vent"] ?? null) > 1)) {
                 echo twig_round(($context["vent"] ?? null));
@@ -805,27 +748,27 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
       </div>
     ";
         } else {
-            // line 379
+            // line 322
             echo "      <div class=\"col s12\">
         <div class=\"card\">
           <div class=\"card-image\">
               <div class=\"wrapperSliderImgMobile transition\">
                 <div class=\"sliderMobile \">
                   ";
-            // line 384
+            // line 327
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["fotos"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["fot"]) {
-                // line 385
+                // line 328
                 echo "                    ";
                 if (($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "producto_Pro_IdProducto", array()))) {
-                    // line 386
+                    // line 329
                     echo "                      ";
                     if ((twig_lower_filter($this->env, twig_slice($this->env, $this->getAttribute($context["fot"], "Prf_Img", array()), 0, 5)) != "nopic")) {
-                        // line 387
+                        // line 330
                         echo "                        <div>
                           <img alt=\"";
-                        // line 388
+                        // line 331
                         echo $this->getAttribute(($context["producto"] ?? null), "Pro_Nombre", array());
                         echo " al pormayor\" class=\"redondeo centrarForzado\" src=\"";
                         echo ($context["ruta_img"] ?? null);
@@ -834,16 +777,16 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                         </div>
                       ";
                     }
-                    // line 391
+                    // line 334
                     echo "                    ";
                 }
-                // line 392
+                // line 335
                 echo "                  ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['fot'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 393
+            // line 336
             echo "                </div>
               </div>
           </div>
@@ -851,52 +794,52 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 <div class=\"row\">
                   <div class=\"col s12 center\"><br>
                      <a class=\"btn-large fontD pormayor black-text\" >S/ ";
-            // line 399
+            // line 342
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
-            echo " x mayor</a><br>
-                    ";
-            // line 401
-            echo "                  </div>
+            echo " x cajón</a><br>
+                                      <span class=\"\">Compra a precio de cajón desde 1 unidad</span>
+
+                  </div>
                 </div>             
               ";
-            // line 403
+            // line 347
             if (((($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) != 12) && ($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) != 2)) && ($this->getAttribute(($context["producto"] ?? null), "Suc_IdSubCategoria", array()) != 41))) {
-                // line 404
+                // line 348
                 echo "            ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["SKU"] ?? null));
                 foreach ($context['_seq'] as $context["key"] => $context["sku"]) {
                     echo "  
                 ";
-                    // line 405
+                    // line 349
                     if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
-                        // line 406
+                        // line 350
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
-                        // line 407
+                        // line 351
                         echo "                    <div class=\"row centrarForzado\">
                       <div class=\"col s5 right-align\">
                         <div class=\"positionRelative\">
                         ";
-                        // line 417
+                        // line 361
                         echo "                          ";
                         if ((($context["colorActual"] ?? null) == "")) {
-                            // line 418
+                            // line 362
                             echo "                          <span class=\"fontA\">UNICO</span>  
                           ";
                         } else {
-                            // line 420
+                            // line 364
                             echo "                          <span class=\"fontA\">";
                             echo ($context["colorActual"] ?? null);
                             echo "</span>
                           ";
                         }
-                        // line 422
+                        // line 366
                         echo "                        </div>
                         <br>
                       </div> 
                       <div class=\"col s7 valign-wrapper filaCant";
-                        // line 425
+                        // line 369
                         echo $context["key"];
                         echo "\">
                         <div class=\"input-group input-number-group\">
@@ -904,12 +847,12 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                             <span class=\"input-number-decrement\">-</span>
                           </div>
                           ";
-                        // line 430
+                        // line 374
                         $context["count"] = 0;
-                        // line 431
+                        // line 375
                         echo "                          ";
                         $context["break"] = false;
-                        // line 432
+                        // line 376
                         echo "                          ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(twig_sort_filter(($context["SKUB"] ?? null), "asc"));
@@ -917,9 +860,9 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                             if ( !($context["break"] ?? null)) {
                                 echo "                        
                               ";
-                                // line 433
+                                // line 377
                                 if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) >= 1))) {
-                                    // line 434
+                                    // line 378
                                     echo "                                  <input type=\"number\" min=\"";
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
                                     echo "\" name=\"cantidad\" value=\"0\" max=\"5\" class=\"input-number browser-default cantSku cant";
@@ -961,25 +904,25 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                                     echo "\" onkeydown=\"javascript: return event.keyCode == 69 ? false : true\" readonly>
                               ";
                                 } else {
-                                    // line 436
+                                    // line 380
                                     echo "                                ";
                                     $context["break"] = false;
                                     echo " 
                               ";
                                 }
-                                // line 437
+                                // line 381
                                 echo " 
                           ";
-                                // line 438
+                                // line 382
                                 $context["count"] = (($context["count"] ?? null) + 1);
-                                // line 439
+                                // line 383
                                 echo "                          ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['skub'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 440
+                        // line 384
                         echo "                          <div class=\"input-group-button\">
                             <span class=\"input-number-increment\">+</span>
                           </div>
@@ -988,11 +931,11 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     </div>
                     ";
                     } else {
-                        // line 447
+                        // line 391
                         echo "                    <div class=\"row centrarForzado\">
                       <div class=\"col s12 center grey\">
                         <b class=\"fontA\">";
-                        // line 449
+                        // line 393
                         echo $this->getAttribute($context["sku"], "SKU_Color", array());
                         echo " AGOTADO</b>
                       </div>
@@ -1000,85 +943,85 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     </div>
                     ";
                     }
-                    // line 454
+                    // line 398
                     echo "              ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['key'], $context['sku'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 455
+                // line 399
                 echo "            ";
             } else {
-                // line 456
+                // line 400
                 echo "              ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["SKU"] ?? null));
                 foreach ($context['_seq'] as $context["key"] => $context["sku"]) {
                     echo "  
                 ";
-                    // line 457
+                    // line 401
                     if ((($this->getAttribute(($context["producto"] ?? null), "Pro_IdProducto", array()) == $this->getAttribute($context["sku"], "Producto_Pro_IdProducto", array())) && ($this->getAttribute($context["sku"], "SKU_StockDisponible", array()) >= 1))) {
-                        // line 458
+                        // line 402
                         echo "                ";
                         $context["colorActual"] = $this->getAttribute($context["sku"], "SKU_Color", array());
-                        // line 459
+                        // line 403
                         echo "                    <div class=\"row centrarForzado\">
                       <div class=\"col S5 right-align\">
                         <div class=\"positionRelative\">
                          ";
-                        // line 469
+                        // line 413
                         echo "                          ";
                         if ((($context["colorActual"] ?? null) == "")) {
-                            // line 470
+                            // line 414
                             echo "                          <span class=\"fontA\">UNICO</span>  
                           ";
                         } else {
-                            // line 472
+                            // line 416
                             echo "                          <span class=\"fontA\">";
                             echo ($context["colorActual"] ?? null);
                             echo "</span>
                           ";
                         }
-                        // line 474
+                        // line 418
                         echo "                        ";
                         $context["colorUnico"] = "";
-                        // line 475
+                        // line 419
                         echo "                        ";
                         $context["colorHex"] = "";
-                        // line 476
+                        // line 420
                         echo "                        ";
                         $context["break"] = false;
-                        // line 477
+                        // line 421
                         echo "                        ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(($context["colores"] ?? null));
                         foreach ($context['_seq'] as $context["_key"] => $context["col"]) {
                             if ( !($context["break"] ?? null)) {
-                                // line 478
+                                // line 422
                                 echo "                          ";
                                 if (($this->getAttribute($context["col"], "SKU_Color", array()) == ($context["colorActual"] ?? null))) {
-                                    // line 479
+                                    // line 423
                                     echo "                            ";
-                                    // line 480
+                                    // line 424
                                     echo "                            ";
                                     $context["colorUnico"] = $this->getAttribute($context["col"], "Col_Nombre", array());
-                                    // line 481
+                                    // line 425
                                     echo "                            ";
                                     $context["colorHex"] = $this->getAttribute($context["col"], "Col_Hex", array());
-                                    // line 482
+                                    // line 426
                                     echo "                            ";
                                     $context["break"] = true;
-                                    // line 483
+                                    // line 427
                                     echo "                          ";
                                 }
-                                // line 484
+                                // line 428
                                 echo "                        ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['col'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 485
+                        // line 429
                         echo "                        </div>
                         <br>
                       </div> 
@@ -1087,22 +1030,22 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                           <div class=\"col s12 sinPadding\">
                           </div>
                             ";
-                        // line 492
+                        // line 436
                         $context["count"] = 0;
-                        // line 493
+                        // line 437
                         echo "                            ";
                         $context["break"] = false;
-                        // line 494
+                        // line 438
                         echo "                          <div class=\"col l12 sinPadding  centrarForzado row filaCant";
                         echo $context["key"];
                         echo "\">
                               ";
-                        // line 495
+                        // line 439
                         $context["count"] = 0;
-                        // line 496
+                        // line 440
                         echo "                              ";
                         $context["break"] = false;
-                        // line 497
+                        // line 441
                         echo "                              ";
                         $context['_parent'] = $context;
                         $context['_seq'] = twig_ensure_traversable(twig_sort_filter(($context["SKUB"] ?? null), "asc"));
@@ -1110,9 +1053,9 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                             if ( !($context["break"] ?? null)) {
                                 echo "                        
                                   ";
-                                // line 498
+                                // line 442
                                 if (((($context["colorActual"] ?? null) == $this->getAttribute($context["skub"], "SKU_Color", array())) && ($this->getAttribute($context["skub"], "SKU_StockDisponible", array()) >= 1))) {
-                                    // line 499
+                                    // line 443
                                     echo "                                      <span class=\"fontB2\" for=\"";
                                     echo $this->getAttribute($context["skub"], "SKU_IdSku", array());
                                     echo "\">Talla ";
@@ -1123,7 +1066,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                                             <span class=\"input-number-decrement\">-</span>
                                           </div>
                                             <input type=\"number\" min=\"";
-                                    // line 504
+                                    // line 448
                                     echo $this->getAttribute($this->getAttribute(($context["precios"] ?? null), 0, array(), "array"), "Prp_Desde", array());
                                     echo "\" name=\"cantidad\" value=\"0\" max=\"5\" class=\"input-number browser-default cantSku cant";
                                     echo $this->getAttribute($context["skub"], "SKU_IdSku", array());
@@ -1168,36 +1111,36 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                                         </div>
                                   ";
                                 } else {
-                                    // line 510
+                                    // line 454
                                     echo "                                    ";
                                     $context["break"] = false;
                                     echo " 
                                   ";
                                 }
-                                // line 511
+                                // line 455
                                 echo " 
                               ";
-                                // line 512
+                                // line 456
                                 $context["count"] = (($context["count"] ?? null) + 1);
-                                // line 513
+                                // line 457
                                 echo "                              ";
                             }
                         }
                         $_parent = $context['_parent'];
                         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['skub'], $context['_parent'], $context['loop']);
                         $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 514
+                        // line 458
                         echo "                          </div>
                         </div>
                       </div>
                     </div>
                                     ";
                     } else {
-                        // line 519
+                        // line 463
                         echo "                    <div class=\"row centrarForzado\">
                       <div class=\"col s12 center grey\">
                         <b class=\"fontA\">";
-                        // line 521
+                        // line 465
                         echo $this->getAttribute($context["sku"], "SKU_Color", array());
                         echo " AGOTADO</b>
                       </div>
@@ -1205,16 +1148,16 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     </div>
                     ";
                     }
-                    // line 526
+                    // line 470
                     echo "              ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['key'], $context['sku'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 527
+                // line 471
                 echo "            ";
             }
-            // line 528
+            // line 472
             echo "              <div class=\"row pormayorUnico\">
                   <div class=\"col s6 sinPadding center\">
                     <span class=\"totalPro fontC\">0</span> UNID
@@ -1224,7 +1167,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                   </div>
                   <div class=\"col s12 sinPadding\">
                     <a  class=\"btn-large green add_cart anchoTotal\"  data-totalc=\"";
-            // line 536
+            // line 480
             echo ($context["totalc"] ?? null);
             echo "\" data-pmin=\"";
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_PrecioMinimo", array());
@@ -1232,30 +1175,30 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                   </div>
                 <div class=\"col s12 center\">
                   ";
-            // line 539
+            // line 483
             if (($this->getAttribute(($context["producto"] ?? null), "Pro_Preventa", array()) == 1)) {
                 echo " <br>
                     <p class=\"fontA\">FECHA DE LLEGADA DE LA MERCANCÍA ";
-                // line 540
+                // line 484
                 echo $this->getAttribute(($context["producto"] ?? null), "Pro_FechaPreventa", array());
                 echo " </p> <br>
                   ";
             }
-            // line 542
+            // line 486
             echo "                </div>
 ";
-            // line 546
+            // line 490
             echo "              </div>         
           </div>
         </div>
       </div>
     ";
         }
-        // line 551
+        // line 495
         echo "    </div>
         <div class=\"row\">
           <div class=\"col s12 ";
-        // line 553
+        // line 497
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Video", array())) {
             echo "l6";
         } else {
@@ -1269,7 +1212,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
               </ul>
             </div>
             <div id=\"dPro\" class=\"col s12\">";
-        // line 560
+        // line 504
         echo $this->getAttribute(($context["producto"] ?? null), "Pro_Descripcion", array());
         echo " <br>Visualizaciones: ";
         echo $this->getAttribute(($context["producto"] ?? null), "Pro_Vista", array());
@@ -1284,135 +1227,135 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 </thead>
                 <tbody>
                   ";
-        // line 570
+        // line 514
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Marca", array())) {
-            // line 571
+            // line 515
             echo "                    <tr>
                       <td class=\"enfasisB\">Marca</td>
                       <td>";
-            // line 573
+            // line 517
             echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_Marca", array()));
             echo "</td>
                     </tr>
                   ";
         }
-        // line 576
+        // line 520
         echo "                  ";
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Garantia", array())) {
-            // line 577
+            // line 521
             echo "                    <tr>
                       <td class=\"enfasisB\">Garantía</td>
                       <td>";
-            // line 579
+            // line 523
             echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_Garantia", array()));
             echo "</td>
                     </tr>
                   ";
         }
-        // line 582
+        // line 526
         echo "                  ";
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_EdoGarantia", array())) {
-            // line 583
+            // line 527
             echo "                    <tr>
                       <td class=\"enfasisB\">Estado Producto</td>
                       <td>";
-            // line 585
+            // line 529
             echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_EdoGarantia", array()));
             echo "</td>
                     </tr>
                   ";
         }
-        // line 588
+        // line 532
         echo "                  <tr>
                     <td  class=\"enfasisB\">Colores</td>
                     <td >
                       ";
-        // line 591
+        // line 535
         $context["arrayColores"] = array();
-        // line 592
+        // line 536
         echo "                      ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["colores"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["col"]) {
-            // line 593
+            // line 537
             echo "                        ";
             if (($this->getAttribute($context["col"], "producto_Pro_IdProducto", array()) == $this->getAttribute(($context["pro"] ?? null), "Pro_IdProducto", array()))) {
-                // line 594
+                // line 538
                 echo "                         ";
                 if (!twig_in_filter($this->getAttribute($context["col"], "Col_Hex", array()), ($context["arrayColores"] ?? null))) {
-                    // line 595
+                    // line 539
                     echo "                         ";
                     $context["arrayColores"] = twig_array_merge(($context["arrayColores"] ?? null), array(0 => $this->getAttribute($context["col"], "Col_Hex", array())));
-                    // line 596
+                    // line 540
                     echo "                            ";
                     echo twig_title_string_filter($this->env, $this->getAttribute($context["col"], "Col_Nombre", array()));
                     echo ", 
                          ";
                 }
-                // line 598
+                // line 542
                 echo "                        ";
             }
-            // line 599
+            // line 543
             echo "                      ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['col'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 600
+        // line 544
         echo "                      ";
         if (twig_test_empty(($context["arrayColores"] ?? null))) {
-            // line 601
+            // line 545
             echo "                        <span class=\"flow-text notFlow enfasisB\"><i>Producto único</i></span>
                       ";
         }
-        // line 603
+        // line 547
         echo "                    </td>
                   </tr>
                   ";
-        // line 605
+        // line 549
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Documento", array())) {
-            // line 606
+            // line 550
             echo "                    <tr>
                       <td  class=\"enfasisB\">Documento pago</td>
                       <td >
                         ";
-            // line 609
+            // line 553
             if (($this->getAttribute(($context["producto"] ?? null), "Pro_Documento", array()) == 1)) {
-                // line 610
+                // line 554
                 echo "                          Boleta
                         ";
-            } elseif (($this->getAttribute(            // line 611
+            } elseif (($this->getAttribute(            // line 555
 ($context["producto"] ?? null), "Pro_Documento", array()) == 2)) {
                 echo " Boleta o Factura ";
             }
-            // line 612
+            // line 556
             echo "                      </td>
                     </tr>
                   ";
         }
-        // line 615
+        // line 559
         echo "                  ";
         if (($context["producto_ficha"] ?? null)) {
-            // line 616
+            // line 560
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo1", array())) {
-                // line 617
+                // line 561
                 echo "                      <tr>
                         <td class=\"enfasisB\">Dimensiones <br>(largo x ancho x alto)</td>
                         <td>";
-                // line 619
+                // line 563
                 echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo1", array()));
                 echo "</td>
                       </tr>
                     ";
             }
-            // line 622
+            // line 566
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo2", array())) {
-                // line 623
+                // line 567
                 echo "                      <tr>
                         <td class=\"enfasisB\">";
-                // line 624
+                // line 568
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo "¿Qué contiene la caja? ";
                 } else {
@@ -1420,7 +1363,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 }
                 echo "</td>
                         <td>";
-                // line 625
+                // line 569
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo2", array()));
                 } else {
@@ -1432,13 +1375,13 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                       </tr>
                     ";
             }
-            // line 628
+            // line 572
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array())) {
-                // line 629
+                // line 573
                 echo "                      <tr>
                         <td class=\"enfasisB\">";
-                // line 630
+                // line 574
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo "Peso ";
                 } else {
@@ -1446,7 +1389,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 }
                 echo "</td>
                         <td>";
-                // line 631
+                // line 575
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array()));
                     echo " Kg.";
@@ -1458,13 +1401,13 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                       </tr>
                     ";
             }
-            // line 634
+            // line 578
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo4", array())) {
-                // line 635
+                // line 579
                 echo "                      <tr>
                         <td class=\"enfasisB\">";
-                // line 636
+                // line 580
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo "Potencia ";
                 } else {
@@ -1472,7 +1415,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 }
                 echo "</td>
                         <td>";
-                // line 637
+                // line 581
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo4", array()));
                     echo " ws. ";
@@ -1484,13 +1427,13 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                       </tr>
                     ";
             }
-            // line 640
+            // line 584
             echo "                    ";
             if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo5", array())) {
-                // line 641
+                // line 585
                 echo "                      <tr>
                         <td class=\"enfasisB\">";
-                // line 642
+                // line 586
                 if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
                     echo "Material ";
                 } else {
@@ -1498,29 +1441,29 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                 }
                 echo "</td>
                         <td>";
-                // line 643
+                // line 587
                 echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo5", array()));
                 echo "</td>
                       </tr>
                     ";
             }
-            // line 646
+            // line 590
             echo "                  ";
         }
-        // line 647
+        // line 591
         echo "                </tbody>
               </table>
             </div>
           </div>
           ";
-        // line 651
+        // line 595
         if ($this->getAttribute(($context["producto"] ?? null), "Pro_Video", array())) {
-            // line 652
+            // line 596
             echo "          <div class=\"col s12 l6\">
              
                   <div class=\"video-container\">
                     <iframe width=\"853\" height=\"480\" src=\"";
-            // line 655
+            // line 599
             echo $this->getAttribute(($context["producto"] ?? null), "Pro_Video", array());
             echo "\" frameborder=\"0\" allowfullscreen></iframe>
                   </div>
@@ -1528,15 +1471,15 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
           </div>
           ";
         }
-        // line 660
+        // line 604
         echo "          <div class=\"col s12 l12\">
             <div class=\"row\">
               ";
-        // line 662
+        // line 606
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["producto_subcategoria"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 663
+            // line 607
             echo "              <a itemprop=\"url\" href=\"";
             echo base_url();
             echo "productos/dp/";
@@ -1550,7 +1493,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     <div class=\"card hoverable\">
                       <div class=\"center\" style=\"height:190px;\">
                         <img alt=\"";
-            // line 667
+            // line 611
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -1562,11 +1505,11 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                       <div class=\"card-content center\" style=\"height:100px;\">
                         <p>
                           <b class=\"truncate\">";
-            // line 671
+            // line 615
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "</b>
                             <span class=\"fontA\">S/ ";
-            // line 672
+            // line 616
             echo $this->getAttribute($context["pro"], "Pro_PrecioMaximo", array());
             echo "</span> <label>S/ ";
             echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
@@ -1581,7 +1524,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 679
+        // line 623
         echo "            </div>
           </div>
       </div>
@@ -1589,14 +1532,14 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
 </div>
 
   ";
-        // line 685
+        // line 629
         if ((($context["userAgent"] ?? null) != "PC")) {
-            // line 686
+            // line 630
             echo "   ";
-            // line 697
+            // line 641
             echo "  ";
         }
-        // line 698
+        // line 642
         echo "  <!-- Aviso de agregado -->
   <div id=\"modal_aviso\" class=\"modal\">
     <div class=\"modal-content validar sinPadding white\">
@@ -1607,14 +1550,14 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
           <br>
           <div class=\"center col s12 m12 l12\">
             <img class=\"redondeo\" height=\"200px\" src=\"";
-        // line 707
+        // line 651
         echo ($context["ruta_img"] ?? null);
         echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
         echo "\"> 
           </div>
           <div class=\"center col s12 m12 l12\">
             <a class=\"btn pormayorUnico center verCarrito\" href=\"";
-        // line 710
+        // line 654
         echo base_url();
         echo "productos/carrito\">Ir al carrito</a>
             <a class=\"btn-flat center modal-close \"><u>Seguir comprando</u></a>
@@ -1626,30 +1569,30 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
 ";
     }
 
-    // line 719
+    // line 663
     public function block_script($context, array $blocks = array())
     {
-        // line 720
+        // line 664
         echo "  <script>
   rando_precio = ";
-        // line 721
+        // line 665
         echo twig_jsonencode_filter(($context["precios"] ?? null));
         echo ";
   flagVariaciones = false;
   dim = ";
-        // line 723
+        // line 667
         echo twig_jsonencode_filter($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo1", array()));
         echo ";
   pes = ";
-        // line 724
+        // line 668
         echo twig_jsonencode_filter($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array()));
         echo "; 
   TiedaId = ";
-        // line 725
+        // line 669
         echo twig_jsonencode_filter($this->getAttribute(($context["producto"] ?? null), "Tie_IdTienda", array()));
         echo "; 
   Remate = ";
-        // line 726
+        // line 670
         echo twig_jsonencode_filter($this->getAttribute(($context["producto"] ?? null), "Pro_Saldo", array()));
         echo "; 
   </script>
@@ -1657,13 +1600,13 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
   <script src=\"https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/dist/easyzoom.min.js\"></script>
   <script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
   <script src=\"";
-        // line 731
+        // line 675
         echo base_url("public/");
         echo "js/tienda/dpro.js?v=";
         echo twig_date_format_filter($this->env, ($context["now"] ?? null), "i:s");
         echo "\"></script>
   <script src=\"";
-        // line 732
+        // line 676
         echo base_url("public/");
         echo "js/productos/favoritos.js?v=";
         echo twig_date_format_filter($this->env, ($context["now"] ?? null), "i:s");
@@ -1684,7 +1627,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
 
     public function getDebugInfo()
     {
-        return array (  1667 => 732,  1661 => 731,  1653 => 726,  1649 => 725,  1645 => 724,  1641 => 723,  1636 => 721,  1633 => 720,  1630 => 719,  1618 => 710,  1611 => 707,  1600 => 698,  1597 => 697,  1595 => 686,  1593 => 685,  1585 => 679,  1570 => 672,  1566 => 671,  1554 => 667,  1540 => 663,  1536 => 662,  1532 => 660,  1524 => 655,  1519 => 652,  1517 => 651,  1511 => 647,  1508 => 646,  1502 => 643,  1494 => 642,  1491 => 641,  1488 => 640,  1476 => 637,  1468 => 636,  1465 => 635,  1462 => 634,  1450 => 631,  1442 => 630,  1439 => 629,  1436 => 628,  1424 => 625,  1416 => 624,  1413 => 623,  1410 => 622,  1404 => 619,  1400 => 617,  1397 => 616,  1394 => 615,  1389 => 612,  1385 => 611,  1382 => 610,  1380 => 609,  1375 => 606,  1373 => 605,  1369 => 603,  1365 => 601,  1362 => 600,  1356 => 599,  1353 => 598,  1347 => 596,  1344 => 595,  1341 => 594,  1338 => 593,  1333 => 592,  1331 => 591,  1326 => 588,  1320 => 585,  1316 => 583,  1313 => 582,  1307 => 579,  1303 => 577,  1300 => 576,  1294 => 573,  1290 => 571,  1288 => 570,  1273 => 560,  1259 => 553,  1255 => 551,  1248 => 546,  1245 => 542,  1240 => 540,  1236 => 539,  1228 => 536,  1218 => 528,  1215 => 527,  1209 => 526,  1201 => 521,  1197 => 519,  1190 => 514,  1183 => 513,  1181 => 512,  1178 => 511,  1172 => 510,  1127 => 504,  1116 => 499,  1114 => 498,  1106 => 497,  1103 => 496,  1101 => 495,  1096 => 494,  1093 => 493,  1091 => 492,  1082 => 485,  1075 => 484,  1072 => 483,  1069 => 482,  1066 => 481,  1063 => 480,  1061 => 479,  1058 => 478,  1052 => 477,  1049 => 476,  1046 => 475,  1043 => 474,  1037 => 472,  1033 => 470,  1030 => 469,  1025 => 459,  1022 => 458,  1020 => 457,  1013 => 456,  1010 => 455,  1004 => 454,  996 => 449,  992 => 447,  983 => 440,  976 => 439,  974 => 438,  971 => 437,  965 => 436,  923 => 434,  921 => 433,  913 => 432,  910 => 431,  908 => 430,  900 => 425,  895 => 422,  889 => 420,  885 => 418,  882 => 417,  877 => 407,  874 => 406,  872 => 405,  865 => 404,  863 => 403,  859 => 401,  855 => 399,  847 => 393,  841 => 392,  838 => 391,  829 => 388,  826 => 387,  823 => 386,  820 => 385,  816 => 384,  809 => 379,  793 => 372,  790 => 371,  782 => 367,  779 => 366,  774 => 364,  770 => 363,  764 => 360,  752 => 350,  746 => 346,  744 => 345,  733 => 339,  728 => 336,  725 => 335,  719 => 334,  711 => 329,  707 => 327,  700 => 322,  693 => 321,  691 => 320,  688 => 319,  682 => 318,  637 => 312,  626 => 307,  624 => 306,  616 => 305,  613 => 304,  611 => 303,  606 => 302,  603 => 301,  601 => 300,  592 => 293,  585 => 292,  582 => 291,  579 => 290,  576 => 289,  573 => 288,  571 => 287,  568 => 286,  562 => 285,  559 => 284,  556 => 283,  553 => 282,  547 => 280,  543 => 278,  540 => 277,  535 => 269,  532 => 268,  530 => 267,  523 => 266,  520 => 265,  514 => 264,  506 => 259,  502 => 257,  493 => 250,  486 => 249,  484 => 248,  481 => 247,  475 => 246,  431 => 244,  429 => 243,  421 => 242,  418 => 241,  416 => 240,  410 => 236,  406 => 234,  401 => 231,  394 => 230,  391 => 229,  388 => 228,  385 => 227,  382 => 226,  380 => 225,  377 => 224,  371 => 223,  368 => 222,  365 => 221,  362 => 220,  356 => 218,  352 => 216,  349 => 215,  344 => 207,  341 => 206,  339 => 205,  332 => 204,  330 => 203,  324 => 200,  313 => 191,  310 => 190,  304 => 189,  301 => 188,  291 => 184,  283 => 183,  280 => 182,  277 => 181,  274 => 180,  269 => 179,  260 => 175,  254 => 174,  251 => 173,  249 => 172,  245 => 170,  235 => 166,  230 => 165,  227 => 164,  218 => 160,  214 => 159,  211 => 158,  209 => 157,  203 => 153,  201 => 152,  188 => 148,  177 => 139,  174 => 138,  41 => 9,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  1610 => 676,  1604 => 675,  1596 => 670,  1592 => 669,  1588 => 668,  1584 => 667,  1579 => 665,  1576 => 664,  1573 => 663,  1561 => 654,  1554 => 651,  1543 => 642,  1540 => 641,  1538 => 630,  1536 => 629,  1528 => 623,  1513 => 616,  1509 => 615,  1497 => 611,  1483 => 607,  1479 => 606,  1475 => 604,  1467 => 599,  1462 => 596,  1460 => 595,  1454 => 591,  1451 => 590,  1445 => 587,  1437 => 586,  1434 => 585,  1431 => 584,  1419 => 581,  1411 => 580,  1408 => 579,  1405 => 578,  1393 => 575,  1385 => 574,  1382 => 573,  1379 => 572,  1367 => 569,  1359 => 568,  1356 => 567,  1353 => 566,  1347 => 563,  1343 => 561,  1340 => 560,  1337 => 559,  1332 => 556,  1328 => 555,  1325 => 554,  1323 => 553,  1318 => 550,  1316 => 549,  1312 => 547,  1308 => 545,  1305 => 544,  1299 => 543,  1296 => 542,  1290 => 540,  1287 => 539,  1284 => 538,  1281 => 537,  1276 => 536,  1274 => 535,  1269 => 532,  1263 => 529,  1259 => 527,  1256 => 526,  1250 => 523,  1246 => 521,  1243 => 520,  1237 => 517,  1233 => 515,  1231 => 514,  1216 => 504,  1202 => 497,  1198 => 495,  1191 => 490,  1188 => 486,  1183 => 484,  1179 => 483,  1171 => 480,  1161 => 472,  1158 => 471,  1152 => 470,  1144 => 465,  1140 => 463,  1133 => 458,  1126 => 457,  1124 => 456,  1121 => 455,  1115 => 454,  1070 => 448,  1059 => 443,  1057 => 442,  1049 => 441,  1046 => 440,  1044 => 439,  1039 => 438,  1036 => 437,  1034 => 436,  1025 => 429,  1018 => 428,  1015 => 427,  1012 => 426,  1009 => 425,  1006 => 424,  1004 => 423,  1001 => 422,  995 => 421,  992 => 420,  989 => 419,  986 => 418,  980 => 416,  976 => 414,  973 => 413,  968 => 403,  965 => 402,  963 => 401,  956 => 400,  953 => 399,  947 => 398,  939 => 393,  935 => 391,  926 => 384,  919 => 383,  917 => 382,  914 => 381,  908 => 380,  866 => 378,  864 => 377,  856 => 376,  853 => 375,  851 => 374,  843 => 369,  838 => 366,  832 => 364,  828 => 362,  825 => 361,  820 => 351,  817 => 350,  815 => 349,  808 => 348,  806 => 347,  798 => 342,  790 => 336,  784 => 335,  781 => 334,  772 => 331,  769 => 330,  766 => 329,  763 => 328,  759 => 327,  752 => 322,  736 => 315,  733 => 314,  725 => 310,  722 => 309,  717 => 307,  713 => 306,  706 => 302,  694 => 292,  688 => 288,  686 => 287,  675 => 281,  670 => 278,  667 => 277,  661 => 276,  653 => 271,  649 => 269,  642 => 264,  635 => 263,  633 => 262,  630 => 261,  624 => 260,  579 => 254,  568 => 249,  566 => 248,  558 => 247,  555 => 246,  553 => 245,  548 => 244,  545 => 243,  543 => 242,  534 => 235,  527 => 234,  524 => 233,  521 => 232,  518 => 231,  515 => 230,  513 => 229,  510 => 228,  504 => 227,  501 => 226,  498 => 225,  495 => 224,  489 => 222,  485 => 220,  482 => 219,  477 => 211,  474 => 210,  472 => 209,  465 => 208,  462 => 207,  456 => 206,  448 => 201,  444 => 199,  435 => 192,  428 => 191,  426 => 190,  423 => 189,  417 => 188,  373 => 186,  371 => 185,  363 => 184,  360 => 183,  358 => 182,  352 => 178,  348 => 176,  343 => 173,  336 => 172,  333 => 171,  330 => 170,  327 => 169,  324 => 168,  322 => 167,  319 => 166,  313 => 165,  310 => 164,  307 => 163,  304 => 162,  298 => 160,  294 => 158,  291 => 157,  286 => 149,  283 => 148,  281 => 147,  274 => 146,  272 => 145,  264 => 140,  253 => 131,  250 => 130,  244 => 129,  241 => 128,  231 => 124,  223 => 123,  220 => 122,  217 => 121,  214 => 120,  209 => 119,  200 => 115,  194 => 114,  191 => 113,  189 => 112,  185 => 110,  175 => 106,  170 => 105,  167 => 104,  158 => 100,  154 => 99,  151 => 98,  149 => 97,  143 => 93,  141 => 92,  128 => 88,  117 => 79,  114 => 78,  37 => 5,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

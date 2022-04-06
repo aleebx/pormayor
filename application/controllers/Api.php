@@ -12,6 +12,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
             echo json_encode($this->apiModel->get_productos_api()); 
         }
+        public function get_productos_nov()
+        {
+            echo json_encode($this->apiModel->get_productos_nov()); 
+        }
         public function get_productos_10()
         {
             echo json_encode($this->apiModel->get_productos_10_api()); 

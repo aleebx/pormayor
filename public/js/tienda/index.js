@@ -232,15 +232,15 @@ $(document).ready(function() {
   	//TIENDAS
    
 	//Filtrado
-	if (busqueda_flag == true) {
-		var mixerT_simple = mixitup('.containerFiltroTiendas', {
-		  animation: {
-		      duration: 400,
-		      effects: 'fade translateZ(-100px)'
-		  }
-		});
-		var mixerT_vista;
-	}
+	// if (busqueda_flag == true) {
+	// 	var mixerT_simple = mixitup('.containerFiltroTiendas', {
+	// 	  animation: {
+	// 	      duration: 400,
+	// 	      effects: 'fade translateZ(-100px)'
+	// 	  }
+	// 	});
+	// 	var mixerT_vista;
+	// }
 
 	
 

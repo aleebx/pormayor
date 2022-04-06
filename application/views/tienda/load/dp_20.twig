@@ -2,11 +2,12 @@
 {% block head %}
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"  media="screen"/>
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/css/easyzoom.css"  media="screen"/>
+  <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/inputnumber.css')}}"  media="screen"/>
   <style type="text/css">
     .btn-flat-not:hover{background-color: #21478F ;color: white !important;}
     .materialbox-caption{text-transform: uppercase;font-size: 1.5rem;}
     .sliderMobile .slick-list {padding:0px !important;}
-    .sliderMobile .slick-dots li.slick-active button:before{font-size: 70px !important;opacity: 1;color: {{configuracion.Con_ColorBtn}};}
+    .sliderMobile .slick-dots li.slick-active button:before{font-size: 70px !important;opacity: 1;}
     .sliderMobile img{max-width:100%;max-height: 250px;}
     .sliderMobile{height:250px;}
     .card .card-image img {
@@ -71,68 +72,7 @@
     background: -o-linear-gradient(45deg, #fec00f, #f59e04) !important;
     background: linear-gradient(45deg,#fec00f, #f59e04) !important;
 }
-.input-number-group {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.input-number-group input[type=number]::-webkit-inner-spin-button,
-.input-number-group input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-          appearance: none;
-}
-
-.input-number-group .input-group-button {
-  line-height: calc(80px/2 - 5px);
-}
-
-.input-number-group .input-number {
-  width: 80px;
-  padding: 0 12px;
-  vertical-align: top;
-  text-align: center;
-  outline: none;
-  display: block;
-  margin: 0;
-}
-
-.input-number-group .input-number,
-.input-number-group .input-number-decrement,
-.input-number-group .input-number-increment {
-  border: 1px solid #cacaca;
-  height: 40px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  border-radius: 0;
-}
-
-.input-number-group .input-number-decrement,
-.input-number-group .input-number-increment {
-  display: inline-block;
-  width: 40px;
-  background: #e6e6e6;
-  color: #0a0a0a;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 2rem;
-  font-weight: 400;
-}
-
-.input-number-group .input-number-decrement {
-  margin-right: 0.3rem;
-}
-
-.input-number-group .input-number-increment {
-  margin-left: 0.3rem;
-}
-  </style>
+</style>
   
 {% endblock %}
 {% block content %}
@@ -198,8 +138,7 @@
         <div class="card">          
           <div class="card-content center">
             <a class="btn-large fontD pormayor black-text" >S/ {{producto.Pro_PrecioMinimo}} x cajón</a><br>
-                  <span class="">Compra a precio de cajón desde 1 unidad</span>
-
+            <span class="">Compra a precio de cajón desde 1 unidad</span>
             <br>
             <span class="card-title">Seleccione la variación de su producto</span>
             <div>

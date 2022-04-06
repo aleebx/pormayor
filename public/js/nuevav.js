@@ -85,7 +85,7 @@ $(document).on('click', '.delete-row', function(){
 $(document).on('change', '#tipoVenta', function(){
     var tipo = $(this).val();
     if (tipo == "NO") {
-        $('#delivery').val(20);
+        $('#delivery').val(30);
     }else if(tipo == "TIENDA"){
         $('#delivery').val(0);
     }else if(tipo == "TDO"){
