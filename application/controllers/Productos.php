@@ -100,7 +100,7 @@ $data = array(
 );
 
 $this->cart->update($data);
-echo $this->view();
+echo 1;
 }
 
 public function update_doc()
@@ -134,18 +134,15 @@ echo $this->view();
 public function view()
 {
 $this->load->library('cart');
-$data = $this->acl->load_datos("no", false);
+$data = $this->acl->load_datos();
 if ($data['userAgent'] == "PC") {
 $output = '';
 $output .= '
 <div>
 <div class="carroContent center">';
-
 $count = 0;
 foreach($this->cart->contents() as $items){
-$tiendaInfo = $this->tiendaModel->get_tienda_x_id($items["idtienda"]);			    	
-
-
+// $tiendaInfo = $this->tiendaModel->get_tienda_x_id($items["idtienda"]);
 $select = '<select class="browser-default fontD2 cantCarrito">';
 for ($i=1; $i <= $items["cantmin"]; $i++) { 
 $select.= '<option value="'.$i.'">'.$i.'</option>';
@@ -160,7 +157,7 @@ $ordenCampo = "valign-wrapper";
 $count++;
 $output .='
 <div class="row centrarForzado">
-<div class="col s2 m2 l2 valign-wrapper"><img class="redondeo centrarForzado fixImg2" src="'.$data['ruta_img'].$items["img"].'" ></div>
+<div class="col s2 m2 l2 valign-wrapper"><img class="redondeo centrarForzado fixImg2" src="htpps://pormayor.pe/img/'.$items["img"].'" ></div>
 <div class="col s4 m4 l3 '.$ordenCampo.' left-align muayuscula">'.ucfirst(strtolower($items["name"])).'&nbsp;<br><span class="fontB2 enfasisB">'.$items["tipovariacion"]." ".$items["variacion"]."  ".ucfirst(strtolower($items["color"])).'</span>
 </div>
 <div class="col s2 m2 l2 valign-wrapper" data-cantact="'.$items["qty"].'" data-cantmin="'.$items["cantmin"].'" data-idpro="'.$items["idpro"].'" data-preciounit="'.$items["precio_unit"].'" data-idrow="'.$items["rowid"].'" data-pvo="'.$items["pvo"].'" data-idsku="'.$items["id_sku"].'" data-pmin="'.$items["price_min"].'">'.$select.'<small class="enfasisB"> &nbsp;&nbsp;Unidades</small></div>
@@ -183,7 +180,7 @@ $output .= '
 
 $count = 0;
 foreach($this->cart->contents() as $items){
-$tiendaInfo = $this->tiendaModel->get_tienda_x_id($items["idtienda"]);		
+// $tiendaInfo = $this->tiendaModel->get_tienda_x_id($items["idtienda"]);		
 
 $select = '<select class="browser-default fontD2 cantCarrito">';
 for ($i=1; $i <= $items["cantmin"]; $i++) {  
@@ -197,16 +194,15 @@ $output .='
 <br>
 <div class="row centrarForzado">
 <div class="col s3 valign-wrapper"><img class="redondeo centrarForzado fixImg2" src="'.$data['ruta_img'].$items["img"].'" ></div>
-<div class="col s7  left-align sinPadding muayuscula">'.$items["name"].'<br><span class="fontB2 enfasisB">'.$items["tipovariacion"]." ".$items["variacion"]."  ".ucfirst(strtolower($items["color"])).'</span>
+<div class="col s7 left-align sinPadding muayuscula">'.$items["name"].'<br><span class="fontB2 enfasisB">'.$items["tipovariacion"]." ".$items["variacion"]."  ".ucfirst(strtolower($items["color"])).'</span>
 <div class="dividerMargin"></div>
 </div>
 <div class="col s2 valign-wrapper"><a class="sinPadding centrarForzado btn-flat remove_inventory" id="'.$items["rowid"].'"><i class="material-icons fontA transition">delete</i></a>
 </div>
-<div class="col s6 valign-wrapper" data-cantact="'.$items["qty"].'" data-cantmin="'.$items["cantmin"].'" data-idpro="'.$items["idpro"].'" data-preciounit="'.$items["precio_unit"].'" data-idrow="'.$items["rowid"].'" data-pvo="'.$items["pvo"].'" data-idsku="'.$items["id_sku"].'" data-pmin="'.$items["price_min"].'">'.$select.'<span class="enfasisB fontB2"> &nbsp;Unidades</span></div>
-<div class="col s6 totalN positionRelative"><span class="positionAbsolute right0 top0 enfasisB fontB2"><span class="precioN precioUnitCarrito'.$items["rowid"].'">'.$items["precio_unit"].'</span> c/u</span><br><br>
-<span class="positionAbsolute right0 bottom0"><small> S/. &nbsp;&nbsp;</small><b class="fontA subTotalCarrito subTotalCarrito'.$items["rowid"].'">'.$items["price"].'</b></span></div> 
+<div class="col s12 valign-wrapper" data-cantact="'.$items["qty"].'" data-cantmin="'.$items["cantmin"].'" data-idpro="'.$items["idpro"].'" data-preciounit="'.$items["precio_unit"].'" data-idrow="'.$items["rowid"].'" data-pvo="'.$items["pvo"].'" data-idsku="'.$items["id_sku"].'" data-pmin="'.$items["price_min"].'">'.$select.'<span class="enfasisB fontB2"> &nbsp;Unidades</span></div>
+<div class="col s12 totalN"><span class="  top0 enfasisB fontB2"><span class="precioN precioUnitCarrito'.$items["rowid"].'">'.$items["precio_unit"].'</span> c/u&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="  bottom0"><small> S/. &nbsp;&nbsp;</small><b class="fontA subTotalCarrito subTotalCarrito'.$items["rowid"].'">'.$items["price"].'</b></span></div> 
 <div class="col s12 colDivider sinPadding">
-<br>
 <div class="divider dividerMargin"></div>
 </div>
 </div>

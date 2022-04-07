@@ -157,7 +157,7 @@
 	    public function view()
 	    {
 		    $this->load->library('cart');
-	        $data = $this->acl->load_datos("no", false);
+	        $data = $this->acl->load_datos();
 	        if ($data['userAgent'] == "PC") {
 	        	$output = '';
 			    $output .= '

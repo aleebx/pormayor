@@ -763,6 +763,12 @@
         {% endif %}
       <div class="overlayBody hide"></div>      
       {% block content %} {% endblock %}
+       <div class="fixed-action-btn">
+        <a class="btn-floating btn-large pormayor" href="{{base_url()}}productos/carrito">
+          <i class="large material-icons black-text">shopping_cart</i>
+        </a>
+      </div>
+
         <footer class="page-footer grey darken-4 black-text {% if nofooter %}hide{% endif %}">
           <div class="container">
               <div class="row white-text">
@@ -820,7 +826,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js"></script>
-      <script src="{{base_url('public/js/template-lite.min.js?v=1512')}}" defer></script>
+      <script src="{{base_url('public/js/template-lite.min.js?v=0152')}}" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     {% block script %} {% endblock %}
    </body>

@@ -296,9 +296,12 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                     <div id=\"cart_details\">
                       
                     </div>
+                    <div class=\"col s12 right-align\">
+                      <button class=\"waves-effect waves-light btn-flat clear_cart\"><i class=\"material-icons left\">delete_sweep</i><u>Vaciar Carrito</u></button>
+                    </div>
                     <div class=\"col s12 center\">
                       <a class=\"waves-effect waves-light btn-flat btnFlatMobile transition pormayorUnico-text\" href=\"";
-                // line 206
+                // line 209
                 echo ($context["url_actual"] ?? null);
                 echo "\"><i class=\"material-icons left\">arrow_back</i>Seguir Comprando</a>
                       <br><br>
@@ -343,63 +346,63 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                     </div>
                      <div class=\"col s12 center sinPadding\">
                       ";
-                // line 248
+                // line 251
                 if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
-                    // line 249
+                    // line 252
                     echo "                        ";
                     if (($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 4)) {
-                        // line 250
+                        // line 253
                         echo "                          ";
                         if ((($context["unidPe"] ?? null) >= 100)) {
-                            // line 251
+                            // line 254
                             echo "                            <a href=\"";
                             echo base_url();
                             echo "productos/despacho\" class=\"btn-large anchoTotal pormayorUnico\">Comprar</a>
                           ";
                         } else {
-                            // line 253
+                            // line 256
                             echo "                            <span class=\"yellow red-text\">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
                           ";
                         }
-                        // line 255
+                        // line 258
                         echo "                        ";
                     } else {
-                        // line 256
+                        // line 259
                         echo "                            <span class=\"red-text\">NO PUEDES HACER COMPRA CON ESTE USUARIO</span>
                         ";
                     }
-                    // line 258
+                    // line 261
                     echo "                      ";
                 } else {
-                    // line 259
+                    // line 262
                     echo "                        ";
                     if ((($context["unidPe"] ?? null) >= 100)) {
-                        // line 260
+                        // line 263
                         echo "                          <a class=\"waves-effect waves-light btn anchoTotal pormayorUnico modal-trigger comprar_popup\" data-flag=\"";
                         echo ($context["flag_login"] ?? null);
                         echo "\" href=\"#sesion_popup\">Comprar</a> 
                         ";
                     } else {
-                        // line 262
+                        // line 265
                         echo "                          <span class=\"yellow red-text\">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
                         ";
                     }
-                    // line 264
+                    // line 267
                     echo "                      ";
                 }
-                // line 265
+                // line 268
                 echo "                      <br><br>
                     </div>
                     <div class=\"col s6 center\">
                       <img class=\"\" src=\"";
-                // line 268
+                // line 271
                 echo ($context["ruta_img"] ?? null);
                 echo "safety_pay.webp\" height=\"40\">
                     </div>       
                     <div class=\"col s6 positionRelative center-align valign-wrapper\">
                       <a class=\"centrarForzado\" href=\"https://pormayor.pe/legal/compra_segura\">
                         <img alt=\"Pormayor.pe - Rate\" class=\"linkCompraSegura transition comoBoton \" src=\"";
-                // line 272
+                // line 275
                 echo ($context["ruta_img"] ?? null);
                 echo "pagoA.png\" alt=\"compra segura pormayor.pe\" height=\"50\">
                       </a>
@@ -427,10 +430,10 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
           </div>
           ";
             } else {
-                // line 297
+                // line 300
                 echo "              <div class=\"center col s12 m12 l12\" style=\"margin-top: 20px;\">
                 <img src=\"";
-                // line 298
+                // line 301
                 echo ($context["ruta_img"] ?? null);
                 echo "emptyCart.webp\" height=\"150\"></img>
               </div>
@@ -440,32 +443,32 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
               </div>
               <div class=\"center col s12 m12 l12\">
                 <a class=\"btn pormayorUnico \" href=\"";
-                // line 305
+                // line 308
                 echo ($context["url_actual"] ?? null);
                 echo "\">Ir a comprar</a>
                 <br><br>
               </div>
           ";
             }
-            // line 309
+            // line 312
             echo "         </div>
         <br>
         <br>
       ";
         }
-        // line 313
+        // line 316
         echo "
       <div id=\"sesion_popup\" class=\"modal white\">
         <div class=\"modal-content positionRelative\" style=\"padding-top:0px\">
           <a href=\"#\" class=\"modal-action modal-close waves-effect waves-red btn-flat positionAbsolute\"><i class=\"material-icons sinUser\">close</i></a>
           <div class=\"row ";
-        // line 317
+        // line 320
         if ((($context["userAgent"] ?? null) != "PC")) {
             echo "centrarForzado";
         }
         echo "\">
             <div class=\"col s12 ";
-        // line 318
+        // line 321
         if ((($context["userAgent"] ?? null) != "PC")) {
             echo "sinPadding";
         }
@@ -477,20 +480,20 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
             </div>
             <div id=\"iniciar\" class=\"col s12\" >
               ";
-        // line 325
+        // line 328
         echo form_open("", array("role" => "form", "id" => "formulario_login", "class" => "form form-horizontal formValidate", "method" => "post", "novalidate" => "novalidate"));
         echo "
               <div class=\"row validarPersonales centrarForzado card-content sinPadding\">
                 ";
-        // line 327
+        // line 330
         if (($context["errors"] ?? null)) {
-            // line 328
+            // line 331
             echo "                  <div class=\"col s12 center hide\">
                     <input type=\"hidden\" class=\"validarCorreo2\" value=\"Error\">
                   </div> 
                 ";
         }
-        // line 332
+        // line 335
         echo "                <br>
                 <div class=\"input-field col s12 l12\">
                   <i class=\"material-icons prefix transitionB\">email</i>
@@ -504,7 +507,7 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                 </div>
                 <div class=\"col s12 right-align\">
                   <a class=\"fontB2 grey-text text-darken-1 btn-flat transitionB btn-flat-not waves-effect waves-light waves-blue\" href=\"";
-        // line 344
+        // line 347
         echo base_url();
         echo "usuario/olvido_contrasenia\">¿Olvidaste tu contraseña?</a>
                 </div>
@@ -514,55 +517,55 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                   <br>
                 </div>
                 ";
-        // line 351
+        // line 354
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 352
+            // line 355
             echo "                  <div class=\"col l12 center\">
                     <input type=\"submit\" name=\"btnIngresar\" value=\"INGRESAR A PORMAYOR\" class=\"btn anchoTotal pormayor btnCrear pormayorAccent-text negrita\">
                   </div>  ";
-            // line 359
+            // line 362
             echo "                ";
         } else {
-            // line 360
+            // line 363
             echo "                  <div class=\"col s12 l12 center\">
                     <input type=\"submit\" name=\"btnIngresar\" value=\"INGRESAR\" class=\"btn anchoTotal pormayor btnCrear pormayorAccent-text negrita\">
                   </div>  
              ";
-            // line 367
+            // line 370
             echo "                ";
         }
-        // line 368
+        // line 371
         echo "              </div>
               ";
-        // line 369
+        // line 372
         echo form_close();
         echo "
             </div>
             <div id=\"crear\" class=\"col s12\">
               ";
-        // line 372
+        // line 375
         echo form_open("", array("role" => "form", "id" => "formulario_registro", "class" => "form form-horizontal formValidate", "method" => "post", "novalidate" => "novalidate"));
         echo "
               <div class=\"row validarTienda centrarForzado card-content sinPadding\">
                 ";
-        // line 374
+        // line 377
         if (($context["success"] ?? null)) {
-            // line 375
+            // line 378
             echo "                  ";
             if (form_error("correo")) {
-                // line 376
+                // line 379
                 echo "                    <input type=\"hidden\" class=\"validarCorreo\" value=\"Error\">
                   ";
             }
-            // line 378
+            // line 381
             echo "                ";
         }
-        // line 379
+        // line 382
         echo "                <br>
                 <div class=\"input-field col s12 l6\">
                   <i class=\"material-icons prefix transitionB\">chrome_reader_mode</i>
                   <input name=\"dni\" id=\"dni\" type=\"text\"  class=\".form-group\" placeholder=\"Ingresa tu DNI\" required=\"\" ";
-        // line 382
+        // line 385
         if (($context["success"] ?? null)) {
             echo " value=\"";
             echo set_value("dni");
@@ -573,7 +576,7 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                 <div class=\"input-field col s12 l6\">
                   <i class=\"material-icons prefix transitionB\">person</i>
                   <input type=\"text\" name=\"nombre\" id=\"nombre\"  class=\".form-group\" required=\"required\" ";
-        // line 387
+        // line 390
         if (($context["success"] ?? null)) {
             echo " value=\"";
             echo set_value("nombre");
@@ -584,7 +587,7 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                 <div class=\"col s12 m12 l6 input-field positionRelative\">
                   <i class=\"material-icons prefix transitionB\">email</i>
                   <input name=\"correoA\" id=\"correoA\" type=\"email\" class=\"email .form-group\"  required=\"required\" placeholder=\"Ingresa tu correo de registro\" ";
-        // line 392
+        // line 395
         if (($context["success"] ?? null)) {
             echo " value=\"";
             echo set_value("correoA");
@@ -598,7 +601,7 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                 <div class=\"col s12 m12 l6 input-field positionRelative\">
                   <i class=\"material-icons prefix transitionB\">phone</i>
                   <input name=\"celular\" id=\"celular\" type=\"number\" class=\".form-group\"  required=\"required\" placeholder=\"Ingresa tu celular de contacto\" ";
-        // line 399
+        // line 402
         if (($context["success"] ?? null)) {
             echo " value=\"";
             echo set_value("celular");
@@ -610,7 +613,7 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                 <div class=\"input-field col s12 l12\">
                   <i class=\"material-icons prefix transitionB\">lock</i>
                   <input name=\"clave\" type=\"password\" id=\"contrasena\"  class=\".form-group\" required=\"\" autocomplete=\"new-password\" ";
-        // line 404
+        // line 407
         if (($context["success"] ?? null)) {
             echo " value=\"";
             echo set_value("clave");
@@ -622,7 +625,7 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                   <br>
                     <input type=\"checkbox\" class=\"filled-in terminosCheck\" id=\"filled-in-box\" />
                     <label style=\"font-size:1rem\" class=\"grey-text text-darken-3\" for=\"filled-in-box\">Acepto los <a class=\"pormayorUnico-text negrita\" href=\"";
-        // line 410
+        // line 413
         echo base_url();
         echo "Legal/ \">Términos y Condiciones</a> y las <a class=\"pormayorUnico-text negrita\" href=\"";
         echo base_url();
@@ -639,29 +642,29 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
                   <div class=\"divider dividerMargin\"></div>
                 </div>
                 ";
-        // line 422
+        // line 425
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 423
+            // line 426
             echo "                  <div class=\"col l12 center\">
                     <a class=\"btn pormayor anchoTotal btnRegistrarse disabled grey-text text-darken-4 negrita\">Registrarse</a>
                     <input type=\"submit\" id=\"btnRegistrarse\" name=\"btnRegistrarse\" class=\"hide anchoTotal btn pormayor  \">
                   </div> ";
-            // line 431
+            // line 434
             echo "                ";
         } else {
-            // line 432
+            // line 435
             echo "                  <div class=\"col s12 center\">
                     <input type=\"submit\" id=\"btnRegistrarse\" name=\"btnRegistrarse\" value=\"Registrarse\" class=\"anchoTotal disabled btnRegistrarse btn pormayor  btnCrear grey-text text-darken-4 negrita\">
                   </div>";
-            // line 438
+            // line 441
             echo " 
                 ";
         }
-        // line 440
+        // line 443
         echo "                
               </div>
               ";
-        // line 442
+        // line 445
         echo form_close();
         echo "
             </div>
@@ -676,33 +679,33 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
 ";
     }
 
-    // line 454
+    // line 457
     public function block_script($context, array $blocks = array())
     {
-        // line 455
+        // line 458
         echo "  <script>
     var flagVariaciones = ";
-        // line 456
+        // line 459
         echo ($context["flagVariaciones"] ?? null);
         echo ";
   </script>
   <script src=\"";
-        // line 458
+        // line 461
         echo base_url("public/intranet/js/jquery-confirm.min.js");
         echo "\"></script> 
   <script src=\"";
-        // line 459
+        // line 462
         echo base_url("public/");
         echo "js/jquery.validate.js\"></script>
   <script src=\"";
-        // line 460
+        // line 463
         echo base_url("public/intranet/js/");
         echo "autocomplete.min.js\"></script>
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js\"></script>
   <script src=\"";
-        // line 462
+        // line 465
         echo base_url("public/");
-        echo "js/tienda/cart_resumen.js?v=2607\"></script>
+        echo "js/tienda/cart_resumen.js?v=0704\"></script>
 ";
     }
 
@@ -718,7 +721,7 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
 
     public function getDebugInfo()
     {
-        return array (  704 => 462,  699 => 460,  695 => 459,  691 => 458,  686 => 456,  683 => 455,  680 => 454,  665 => 442,  661 => 440,  657 => 438,  653 => 432,  650 => 431,  645 => 423,  643 => 422,  626 => 410,  614 => 404,  602 => 399,  588 => 392,  577 => 387,  566 => 382,  561 => 379,  558 => 378,  554 => 376,  551 => 375,  549 => 374,  544 => 372,  538 => 369,  535 => 368,  532 => 367,  527 => 360,  524 => 359,  520 => 352,  518 => 351,  508 => 344,  494 => 332,  488 => 328,  486 => 327,  481 => 325,  469 => 318,  463 => 317,  457 => 313,  451 => 309,  444 => 305,  434 => 298,  431 => 297,  403 => 272,  396 => 268,  391 => 265,  388 => 264,  384 => 262,  378 => 260,  375 => 259,  372 => 258,  368 => 256,  365 => 255,  361 => 253,  355 => 251,  352 => 250,  349 => 249,  347 => 248,  302 => 206,  290 => 196,  288 => 195,  277 => 186,  273 => 184,  266 => 180,  256 => 173,  253 => 172,  226 => 148,  219 => 144,  211 => 138,  208 => 137,  204 => 135,  198 => 133,  195 => 132,  192 => 131,  188 => 129,  185 => 128,  181 => 126,  175 => 124,  172 => 123,  169 => 122,  167 => 121,  164 => 120,  117 => 73,  105 => 63,  103 => 62,  83 => 44,  80 => 43,  77 => 39,  74 => 38,  68 => 36,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  707 => 465,  702 => 463,  698 => 462,  694 => 461,  689 => 459,  686 => 458,  683 => 457,  668 => 445,  664 => 443,  660 => 441,  656 => 435,  653 => 434,  648 => 426,  646 => 425,  629 => 413,  617 => 407,  605 => 402,  591 => 395,  580 => 390,  569 => 385,  564 => 382,  561 => 381,  557 => 379,  554 => 378,  552 => 377,  547 => 375,  541 => 372,  538 => 371,  535 => 370,  530 => 363,  527 => 362,  523 => 355,  521 => 354,  511 => 347,  497 => 335,  491 => 331,  489 => 330,  484 => 328,  472 => 321,  466 => 320,  460 => 316,  454 => 312,  447 => 308,  437 => 301,  434 => 300,  406 => 275,  399 => 271,  394 => 268,  391 => 267,  387 => 265,  381 => 263,  378 => 262,  375 => 261,  371 => 259,  368 => 258,  364 => 256,  358 => 254,  355 => 253,  352 => 252,  350 => 251,  305 => 209,  290 => 196,  288 => 195,  277 => 186,  273 => 184,  266 => 180,  256 => 173,  253 => 172,  226 => 148,  219 => 144,  211 => 138,  208 => 137,  204 => 135,  198 => 133,  195 => 132,  192 => 131,  188 => 129,  185 => 128,  181 => 126,  175 => 124,  172 => 123,  169 => 122,  167 => 121,  164 => 120,  117 => 73,  105 => 63,  103 => 62,  83 => 44,  80 => 43,  77 => 39,  74 => 38,  68 => 36,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

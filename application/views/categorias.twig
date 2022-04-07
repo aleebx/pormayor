@@ -39,7 +39,7 @@
 
         <div class="col s12 ajax_filtro_productos containerProductos">
           {% for pro in producto %}
-              <div class="col s6 m6 l3 black-text  mix filtroProductoall filtroCatall filtroCat{{pro.Cat_IdCategoria}} filtroMarcaall filtroEdoall filtroEdo{{pro.Pro_EdoGarantia|title}} filtroMarca{{pro.Pro_Marca|title|replace({' ': '', '"' : "", "'" : ""})}}" data-idpro="{{pro.Pro_IdProducto}}" data-preciomin="{{pro.Pro_PrecioMinimo}}" data-fecha="{{pro.Pro_FechaCreacion}}" style="padding:5px" data-cd="{{pro.Pro_PM}}">
+              <div class="col s12 m6 l3 black-text  mix filtroProductoall filtroCatall filtroCat{{pro.Cat_IdCategoria}} filtroMarcaall filtroEdoall filtroEdo{{pro.Pro_EdoGarantia|title}} filtroMarca{{pro.Pro_Marca|title|replace({' ': '', '"' : "", "'" : ""})}}" data-idpro="{{pro.Pro_IdProducto}}" data-preciomin="{{pro.Pro_PrecioMinimo}}" data-fecha="{{pro.Pro_FechaCreacion}}" style="padding:5px" data-cd="{{pro.Pro_PM}}">
                 <div class="card hoverable">
             <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
 
@@ -59,6 +59,7 @@
                         <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón</label>
                       {% endif %}
                     </p>
+                    {% if pro.catvar == 1 %}
                     <div class="input-group input-number-group">
                         <div class="input-group-button">
                           <span class="input-number-decrement">-</span>
@@ -71,6 +72,9 @@
                           <a class="btn input-add-cart add_cart pormayor black-text" data-pmin="{{pro.Pro_PrecioMinimo}}" data-idp="{{pro.Pro_IdProducto}}">AGREGAR</a>
                         </div>
                       </div>
+                    {% else %}
+                          <a class="btn pormayor black-text" style="margin: 3px" href="{{base_url()}}productos/dp/{{pro.url}}" >VER MÁS</a>
+                    {% endif %}
                   </div>
                 </div>
               </div>

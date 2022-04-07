@@ -7,7 +7,7 @@ $(document).ready(function() {
         $(".addHomeScreen").addClass("hide"), $("body").css("overflow", "auto")
     })    
     //Funciones Carrito
-    $('#cart_details').load( base_url+'Productos/load');
+    // $('#cart_details').load( base_url+'productos/load');
     $('.verCarrito').click(function(){
       var url  = window.location.href.replace(/\//g, "_");
       var href_actual = $(this).attr('href'); 

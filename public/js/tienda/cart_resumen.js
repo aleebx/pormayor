@@ -41,7 +41,7 @@ $(window).on("load", function() {
 
 		$('.preloader-wrapper').parent().addClass('hide');
 		$('.cart_content').removeClass('hide');
-	}, 750);
+	}, 1000);
 	
 
 	if (!mediaqueryPC.matches) {
@@ -60,8 +60,9 @@ $(window).on("load", function() {
 });
 
 $(document).ready(function(){
+	// $('#cart_details').load( base_url+'productos/load');
 	//Popup inicio sesión - registro
-	$('.modal').modal();
+	// $('.modal').modal();
 
 	$('.comprar_popup').click(function(){
 		setTimeout(function(){ 
@@ -194,119 +195,93 @@ $(document).ready(function(){
 	  }
 	});
 	}
-
-
 	//Edicion de carrito
-	$(document).on( 'change', '.cantCarrito', function(){
-    	var Pro_IdProducto = $(this).parent().data('idpro');
-    	var valor = parseInt($(this).val()); 
-    	var idActual = $(this).parent().data('idrow');
-    	var precio_unit = $(this).parent().data('pmin');
-    	var precio = precio_unit*valor;
-    
-			$.ajax({
-              url: base_url+'productos/update',
-              method:"POST",
-              data:{
-              	row_id:idActual,
-              	qty: valor,
-              	precio_unit: precio_unit,
-              	price: precio
-              },
-              success:function(data){
-                location.reload(true);
-              }
-            });
+});
 
-			//Mostrando resultados
-			$('.preloader-wrapper').parent().addClass('hide');
-      $('.cart_content').removeClass('hide');
+$(document).on( 'change', '.cantCarrito', function(){
+	var Pro_IdProducto = $(this).parent().data('idpro');
+	var valor = parseInt($(this).val()); 
+	var idActual = $(this).parent().data('idrow');
+	var precio_unit = $(this).parent().data('pmin');
+	var precio = precio_unit*valor;    
+	$.ajax({
+    url: base_url+'productos/update',
+    method:"POST",
+    data:{
+    	row_id:idActual,
+    	qty: valor,
+    	precio_unit: precio_unit,
+    	price: precio
+    },
+    success:function(data){
+      location.reload(true);
+    }
+  });
+});
 
-      });
+$(document).on('click', '.remove_inventory', function(){
+	var cantTotal = 0, subTotal = 0;
+  var row_id = $(this).attr("id");
+  $.confirm({
+    icon: 'help',
+    theme: 'modern',
+    closeIcon: false,
+    animation: 'scale',
+    type: 'orange',
+    title: 'Eliminar de pedido',
+    columnClass: 'small',
+    content: 'Eliminar producto del pedido actual',
+    draggable: false,
+    buttons: {
+        Eliminar:    {   
+            btnClass: 'btn pormayorUnico',                 
+            action: function (){
+              $.ajax({
+                url: base_url+'productos/remove',
+                method:"POST",
+                data:{row_id:row_id},
+                success:function(data)
+                {
+                  location.reload(true);
+                }
+              });
+            }       
+        },
+        Cancelar: {
+            
+        }
+    }
+  });
+});
 
-   	$(document).on('click', '.remove_inventory', function(){
-  		var cantTotal = 0, subTotal = 0;
-	    var row_id = $(this).attr("id");
-	    $.confirm({
-	      icon: 'help',
-	      theme: 'modern',
-	      closeIcon: false,
-	      animation: 'scale',
-	      type: 'orange',
-	      title: 'Eliminar de pedido',
-	      columnClass: 'small',
-	      content: 'Eliminar producto del pedido actual',
-	      draggable: false,
-	      buttons: {
-	          Eliminar:    {   
-	              btnClass: 'btn pormayorUnico',                 
-	              action: function (){
-	                $.ajax({
-	                  url: base_url+'productos/remove',
-	                  method:"POST",
-	                  data:{row_id:row_id},
-	                  success:function(data)
-	                  {
-	                    Materialize.toast('<i class="material-icons left ">check_circle</i>Producto eliminado del pedido', 2000, 'rounded successToast');
-	                   $('#cart_details').html(data);
-	                   $.get( base_url+"productos/count_carrito", function(data ) {
-	                     $("span.counterCont > span").text(data);
-	                     if (data == 0) {
-	                     	location.reload(true);
-	                     }
-	                    });
-
-	                   	$('.cantCarrito').each(function(){
-					      cantTotal = cantTotal + parseFloat($(this).val());
-					    });
-
-					    $('.cantResumen').text(cantTotal);
-
-	                   	$('.subTotalCarrito').each(function(){
-					      	subTotal = subTotal + parseFloat($(this).text());
-					    });
-	    
-	    				$('.totalResumen').text(parseFloat(subTotal).toFixed(2));
-	                  }
-	                });
-	              }       
-	          },
-	          Cancelar: {
-	              
-	          }
-	      }
-	    });
-    });
-
-    $(document).on('click', '.clear_cart', function(){
-	    $.confirm({
-	      icon: 'help',
-	      theme: 'modern',
-	      closeIcon: false,
-	      animation: 'scale',
-	      type: 'red',
-	      title: 'Vaciar pedido',
-	      columnClass: 'small',
-	      content: 'Eliminar todos los productos del pedido actual',
-	      draggable: false,
-	      buttons: {
-	          Vaciar:    {   
-	              btnClass: 'btn pormayorUnico',                 
-	              action: function (){
-	                $.ajax({
-	                  url:base_url+'productos/clear',
-	                  success:function(data)
-	                  {
-	                   Materialize.toast('<i class="material-icons left ">check_circle</i>Pedido vaciado', 2000, 'rounded successToast');
-	                   location.reload(true);
-	                  }
-	                 });
-	              }       
-	          },
-	          Cancelar: {
-	              
-	          }
-	      }
-	    });
-	  });
- });
+$(document).on('click', '.clear_cart', function(){
+  $.confirm({
+    icon: 'help',
+    theme: 'modern',
+    closeIcon: false,
+    animation: 'scale',
+    type: 'red',
+    title: 'Vaciar pedido',
+    columnClass: 'small',
+    content: 'Eliminar todos los productos del pedido actual',
+    draggable: false,
+    buttons: {
+        Vaciar:    {   
+            btnClass: 'btn pormayorUnico',                 
+            action: function (){
+              $.ajax({
+                url:base_url+'productos/clear',
+                success:function(data)
+                {
+                 // Materialize.toast('<i class="material-icons left ">check_circle</i>Pedido vaciado', 2000, 'rounded successToast');
+                 location.reload(true);
+                }
+               });
+            }       
+        },
+        Cancelar: {
+            
+        }
+    }
+  });
+});

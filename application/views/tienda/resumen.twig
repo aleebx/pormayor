@@ -202,6 +202,9 @@
                     <div id="cart_details">
                       
                     </div>
+                    <div class="col s12 right-align">
+                      <button class="waves-effect waves-light btn-flat clear_cart"><i class="material-icons left">delete_sweep</i><u>Vaciar Carrito</u></button>
+                    </div>
                     <div class="col s12 center">
                       <a class="waves-effect waves-light btn-flat btnFlatMobile transition pormayorUnico-text" href="{{url_actual}}"><i class="material-icons left">arrow_back</i>Seguir Comprando</a>
                       <br><br>
@@ -459,5 +462,5 @@
   <script src="{{base_url('public/')}}js/jquery.validate.js"></script>
   <script src="{{base_url('public/intranet/js/')}}autocomplete.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
-  <script src="{{base_url('public/')}}js/tienda/cart_resumen.js?v=2607"></script>
+  <script src="{{base_url('public/')}}js/tienda/cart_resumen.js?v={{now|date('i')}}"></script>
 {% endblock %}
