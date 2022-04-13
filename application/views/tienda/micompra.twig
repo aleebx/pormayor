@@ -94,7 +94,7 @@
                   </div>
                 </div>
                 {% if direccion_usuario.Pag_idregion %}
-                  <div class="col s12 center">
+{#                   <div class="col s12 center">
                     <br><br><br>
                     <div class="centrarForzado preloader-wrapper big active preloaderDireccion">
                       <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
@@ -108,7 +108,7 @@
                       </div>
                     </div>
                     <br><br><br>
-                  </div>
+                  </div> #}
                 {% endif %}
                 <div class="input-field col s12 l4" id="toHide">
                   <input id="dintComprador" type="text" class="validate" value="{{direccion_usuario.Pag_DtoInt}}">
@@ -366,7 +366,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                   </div>
                 </div>
                 {% if direccion_usuario.Pag_idregion %}
-                  <div class="col s12 center">
+{#                   <div class="col s12 center">
                     <br><br><br>
                     <div class="centrarForzado preloader-wrapper big active preloaderDireccion">
                       <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
@@ -380,7 +380,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                       </div>
                     </div>
                     <br><br><br>
-                  </div>
+                  </div> #}
                 {% endif %}
                 <div class="input-field col s12 l4" id="toHide">
                   <input id="dintComprador" type="text" class="validate" value="{{direccion_usuario.Pag_DtoInt}}">
@@ -621,5 +621,5 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
     // var flagVariaciones = {{flagVariaciones}};
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
-  <script src="{{base_url('public/')}}js/tienda/cart_despacho.js?v=2607"></script>
+  <script src="{{base_url('public/')}}js/tienda/cart_despacho.js?v={{now|date('i')}}"></script>
 {% endblock %}

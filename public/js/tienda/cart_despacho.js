@@ -31,7 +31,7 @@ $(window).on("load", function() {
             
       $('.totalResumen').text(subTotal.toFixed(2));
 
-    $('.preloader-wrapper').not('.preloaderDireccion').parent().addClass('hide');
+    // $('.preloader-wrapper').not('.preloaderDireccion').parent().addClass('hide');
     $('.cart_content').removeClass('hide');
   }, 750);
 	
