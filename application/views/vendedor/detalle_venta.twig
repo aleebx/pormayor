@@ -216,10 +216,11 @@
 				      			</tbody>
 				      			<tfoot>
 				      				{% set totalEnvio = venta.Pac_Envio|round() %}
-				      				{% set totalPagar = total2 + totalEnvio %}
+				      				{% set totalPagar = tocom - venta.Pac_Devolucion %}
+				      				{% set totalP = total2 + venta.Pac_Envio %}
 				      				<tr>
 			                			<td colspan="4" class="right-align sinPadding">
-			                			 	TOTAL IMPORTE
+			                			 	TOTAL PRODUCTOS
 			                			</td>
 			                			<td class="center-align" colspan="2">
 			                				<span>{{total2|number_format(2, '.', ' ')}}</span>
@@ -227,7 +228,7 @@
 			                		</tr>
 			                		<tr>
 			                			<td colspan="4" class="right-align sinPadding">
-			                				TOTAL ENVÍO
+			                				DELIVERY
 			                			</td>
 			                			<td class="center-align envioV" colspan="2" contenteditable="true">
 			                				{{venta.Pac_Envio}}
@@ -235,7 +236,23 @@
 			                		</tr>
 			                		<tr>
 			                			<td colspan="4" class="right-align sinPadding">
-			                				TOTAL A PAGAR
+			                				TOTAL PEDIDO
+			                			</td>
+			                			<td class="center-align" colspan="2">
+			                				<b style="font-size:2em;">{{totalP|number_format(2, '.', ' ')}}</b>
+			                			</td>
+			                		</tr>
+			                		<tr>
+			                			<td colspan="4" class="right-align sinPadding">
+			                				DEVOLUCIÓN
+			                			</td>
+			                			<td class="center-align" colspan="2">
+			                				{{venta.Pac_Devolucion|number_format(2, '.', ' ')}}
+			                			</td>
+			                		</tr>
+			                		<tr>
+			                			<td colspan="4" class="right-align sinPadding">
+			                				TOTAL FINAL
 			                			</td>
 			                			<td class="center-align" colspan="2">
 			                				<b style="font-size:2em;">{{totalPagar|number_format(2, '.', ' ')}}</b>
@@ -245,7 +262,7 @@
 				      		</table>
 	    				</div>
 	    				{% if cantVauche == veriV %}
-		    				{% if tocom == totalPagar %}
+		    				{% if totalP == totalPagar %}
 								{% if vauche and (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) %}
 									<div class="col s3">
 										<a class="btn negrita blue" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR ROTULADO {{venta.Per_Nombre}}</a>
@@ -255,6 +272,7 @@
 									</div>	    				
 									<div class="col s3">
 										<a data-target="rotulado" class="btn-flat modal-trigger"><i class="material-icons left">featured_play_list</i>Nuevo Rotulado</a>
+									</div>
 									<div class="col s3">
 										<a class="btn-large green modal-trigger" data-target="modalConfirma"><i class="material-icons left">check</i>ENTREGADA {{venta.Per_Nombre}}</a>
 									</div>

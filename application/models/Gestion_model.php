@@ -11,7 +11,7 @@
 
         function get_compra_directa_q($Pac_IdPago_Compra)
         {
-            $this->db->select('Pac_Banco, Pac_CodPago, Pac_Estado, Pac_Envio, pac.Pac_Observacion,Pac_FechaRegistro, Pac_IdPago_Compra, Pac_Total, usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Dni,(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = pac.Ven_IdVendedor LIMIT 1) as vendedor');
+            $this->db->select('Pac_Banco, Pac_CodPago, Pac_Estado, Pac_Envio, pac.Pac_Observacion,Pac_FechaRegistro, Pac_IdPago_Compra, Pac_Total, usu.Usu_IdUsuario, Pac_Devolucion, per.Per_Nombre, per.Per_Dni,(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = pac.Ven_IdVendedor LIMIT 1) as vendedor');
             $this->db->from('pago_compra as pac');
             $this->db->join('usuario as usu','ON usu.Usu_IdUsuario = pac.Usu_IdUsuario', 'left');
             $this->db->join('persona as per','ON per.Per_IdPersona = usu.Per_IdPersona', 'left');
