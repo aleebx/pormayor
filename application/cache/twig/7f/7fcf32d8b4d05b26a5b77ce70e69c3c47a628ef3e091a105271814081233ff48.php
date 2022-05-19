@@ -439,7 +439,7 @@ class __TwigTemplate_9923be579f7c5dcc8e36ee348e8425d2a90d872be28aecb3d4a96d5bf47
                 // line 261
                 echo ($context["ruta_img"] ?? null);
                 echo "irTienda.png\" height=\"61\"><br>
-                      <span>Retiro en tienda - Lima</span>
+                      <span>Retiro en tienda <br> Jirón Andahuaylas 251 - Cercado de Lima</span>
                       <i class=\"material-icons green-text small positionAbsolute fontC white transition\">check_box</i>
                     </div>
                   </a>
@@ -452,7 +452,7 @@ class __TwigTemplate_9923be579f7c5dcc8e36ee348e8425d2a90d872be28aecb3d4a96d5bf47
                 // line 271
                 echo ($context["ruta_img"] ?? null);
                 echo "pagoce.png\" height=\"61\"><br>
-                      <span >Contraentrega - Lima y Callao</span>
+                      <span >Contraentrega <br> Lima y Callao</span>
                       <i class=\"material-icons green-text small positionAbsolute fontC white transition\">check_box</i>
                     </div>
                   </a>

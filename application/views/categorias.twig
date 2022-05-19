@@ -9,13 +9,13 @@
 
   <main class="container">
       <div class="row">
-        <div class="col s12 pormayor z-depth-1 unidadSticky"><br>
+        <div class="col s12 pormayor z-depth-1 unidadSticky hide-on-small-only">
           <div class="row">
             <div class="col s12 l4 center">
               <p class="fontA"> <a href="{{base_url()}}" class="black-text">Inicio</a> | Categoría: <b>{{pagina.titulo|title}}</b></p> 
             </div>
             <div class="col s12 l4 center">
-              <span class="negrita">CATEGORIAS</span>
+            <span class="negrita">CATEGORIAS</span>
              <select class="browser-default"  onchange="location = this.value;">
                 <option value="" disabled selected>Categorías</option>
                 {% for cat in categorias %}
@@ -23,7 +23,7 @@
                 {% endfor %}
               </select>
             </div>
-            <div class="col s12 l4 center">
+            <div class="col s12 l4 center ">
               <span class="negrita">FILTROS</span>
               <select class="browser-default filtroPreciosSelect" >
                 <option value="" disabled selected>Filtros</option>
@@ -35,6 +35,33 @@
               </select>
             </div>
           </div>
+        </div>
+
+        <div class="col s12 unidadSticky hide-on-med-and-up">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header pormayor"><i class="material-icons">filter_list</i>Filtros | {{pagina.titulo|title}}</div>
+              <div class="collapsible-body pormayor">
+
+                <span class="negrita">CATEGORIAS</span>
+                 <select class="browser-default"  onchange="location = this.value;">
+                    <option value="" disabled selected>Categorías</option>
+                    {% for cat in categorias %}
+                    <option value="{{base_url()}}categoria/{{cat.url}}">{{cat.Cat_Nombre}}</option>
+                    {% endfor %}
+                  </select>             
+
+                  <select class="browser-default filtroPreciosSelect" >
+                    <option value="" disabled selected>Filtros</option>
+                    <option value="ninguno">Ninguno</option>
+                    <option value="menor">Precio menor</option>
+                    <option value="mayor">Precio mayor</option>
+                    <option value="fechaMenos">Más nuevo</option>
+                    <option value="fechaMas">Más vendido</option>
+                  </select>            
+              </div>
+            </li>
+          </ul>
         </div>      
 
         <div class="col s12 ajax_filtro_productos containerProductos">

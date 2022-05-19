@@ -52,7 +52,17 @@
                 <span class="card-title center black-text">Datos de Envio</span>
                 <br>
                 <div class="col s12">
-                    <p class="text-red">Los campos DNI/CE/OTRO y Teléfono Celular son obligatorios.</p>
+                    <p class="center">
+                      <input name="group1" type="radio" id="tp1" value="tp1" />
+                      <label for="tp1">RETIRO DE TIENDA</label>
+                      <input name="group1" type="radio" id="tp2" value="tp2" />
+                      <label for="tp2">CONTRAENTREGA (LIMA Y CALLAO)</label>
+                      <input name="group1" type="radio" id="tp3" value="tp3" checked="checked" />
+                      <label for="tp3">ENVIO PROVINCIA</label>
+                    </p>  <br>                      
+                </div>
+                <div class="col s12">
+                    <p class="red-text">Los campos DNI/CE/OTRO y Teléfono Celular son obligatorios.</p>
                   </div>
                 <div class="input-field col s3">
                   <input placeholder=""  id="nombreComprador" type="text" class="validate" value="{{usuario_inf.Per_Nombre}}" readonly="">
@@ -60,7 +70,7 @@
                 </div>
                   <div class="input-field col s2">
                   <input id="DNIcliente" type="number" class="validate" value="{{usuario_inf.Per_Dni}}">
-                  <label for="DNIcliente">DNI/CE/OTRO (*)</label>
+                  <label for="DNIcliente">DNI/CE/OTRO</label>
                 </div>
 
                 <div class="input-field col s4">
@@ -68,12 +78,12 @@
                   <label for="correo">Correo Electrónico</label>
                 </div>
                 <div class="input-field col s3">
-                  <input id="tlf" type="number" class="validate" min="1" value="{{direccion_usuario.Pag_Telefono}}">
+                  <input id="tlf" type="number" class="validate" min="1" value="{{usuario_inf.Per_Telefono}}">
                   <label for="tlf">Teléfono Celular (*)</label>
                 </div>
                 <div id="direccionVista">
                   <div class="col s12">
-                    <p class="text-red">Los campos Departamento, Provincia, Distrito y Dirección son obligatorios para completar la compra.</p>
+                    <p class="red-text">Los campos Departamento, Provincia, Distrito y Dirección son obligatorios para completar la compra.</p>
                   </div>
                   <div class="col s4">
                     <select id="selecRegion" class="browser-default">
@@ -98,47 +108,49 @@
                     <input id="direccionComprador" type="text" class="validate">
                     <label for="direccionComprador">Dirección</label>
                   </div>
-                </div>{# 
-                <div id="direccionVista" class="{% if direccion_usuario.Pag_idregion %}hide{% endif %}">
-                  <div class="col s4">
-                    <select id="selecRegion" class="browser-default" data-valor="{{direccion_usuario.Pag_idregion}}">
-                      <option value="0" disabled selected>Departamento</option>
-                      {% for reg in region %}
-                        <option value="{{reg.id}}">{{reg.name}}</option>
-                      {% endfor %}
-                    </select>
+                  {# </div> #}
+                  {# 
+                  <div id="direccionVista" class="{% if direccion_usuario.Pag_idregion %}hide{% endif %}">
+                    <div class="col s4">
+                      <select id="selecRegion" class="browser-default" data-valor="{{direccion_usuario.Pag_idregion}}">
+                        <option value="0" disabled selected>Departamento</option>
+                        {% for reg in region %}
+                          <option value="{{reg.id}}">{{reg.name}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div id="provincia" class="col s4" data-valor="{{direccion_usuario.Pag_idprovincia}}">
+                      <select  disabled class="browser-default">
+                        <option value="0" disabled selected> Seleccione una provincia</option>
+                      </select>
+                    </div>
+                    <div id="distrito" class="col s4" data-valor="{{direccion_usuario.Pag_iddistrito}}">
+                      <select disabled class="browser-default">
+                        <option value="0" disabled selected> Seleccione un distrito</option>
+                      </select>
+                    </div>
+                    <div class="col l12"><br></div>
+                    <div class="input-field col s12 l12" id="toHide">
+                      <input id="direccionComprador" type="text" class="validate" value="{{direccion_usuario.Pag_Direccion}}">
+                      <label for="direccionComprador">Dirección</label>
+                    </div>
+                  </div> #}
+                  <div class="input-field col s12 l4" id="toHide">
+                    <input id="dintComprador" type="text" class="validate">
+                    <label for="dintComprador">Depto./Int</label>
                   </div>
-                  <div id="provincia" class="col s4" data-valor="{{direccion_usuario.Pag_idprovincia}}">
-                    <select  disabled class="browser-default">
-                      <option value="0" disabled selected> Seleccione una provincia</option>
-                    </select>
+                  <div class="input-field col s12 l4" id="toHide">
+                    <input id="urbComprador" type="text" class="validate">
+                    <label for="urbComprador">Urbanización</label>
                   </div>
-                  <div id="distrito" class="col s4" data-valor="{{direccion_usuario.Pag_iddistrito}}">
-                    <select disabled class="browser-default">
-                      <option value="0" disabled selected> Seleccione un distrito</option>
-                    </select>
+                  <div class="input-field col s12 l4" id="toHide">
+                    <input id="referenciaComprador" type="text" class="validate">
+                    <label for="referenciaComprador">Referencia</label>
                   </div>
-                  <div class="col l12"><br></div>
                   <div class="input-field col s12 l12" id="toHide">
-                    <input id="direccionComprador" type="text" class="validate" value="{{direccion_usuario.Pag_Direccion}}">
-                    <label for="direccionComprador">Dirección</label>
+                    <input id="nloteComprador" type="text" class="validate">
+                    <label for="nloteComprador">Agencia o Empresa de Transporte para enviar</label>
                   </div>
-                </div> #}
-                <div class="input-field col s12 l4" id="toHide">
-                  <input id="dintComprador" type="text" class="validate">
-                  <label for="dintComprador">Depto./Int</label>
-                </div>
-                <div class="input-field col s12 l4" id="toHide">
-                  <input id="urbComprador" type="text" class="validate">
-                  <label for="urbComprador">Urbanización</label>
-                </div>
-                <div class="input-field col s12 l4" id="toHide">
-                  <input id="referenciaComprador" type="text" class="validate">
-                  <label for="referenciaComprador">Referencia</label>
-                </div>
-                <div class="input-field col s12 l12" id="toHide">
-                  <input id="nloteComprador" type="text" class="validate">
-                  <label for="nloteComprador">Agencia o Empresa de Transporte para enviar</label>
                 </div>
               </div>
             </div>
@@ -299,7 +311,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                 </div>
                 <div class="col s12"><br></div>
               </div>
-              <div class="col s12 center">
+{#               <div class="col s12 center">
                 <br><br><br><br><br>
                 <div class="preloader-wrapper big active">
                   <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
@@ -312,7 +324,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> #}
             </div>
           </div>
         </div>
@@ -333,6 +345,16 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
             <div class="card-content sinPadding">
               <div class="row cardContentFix"> 
                 <span class="card-title center black-text">Datos de Envio</span>
+                 <div class="col s12">
+                    <p>
+                      <input name="group1" type="radio" id="tp1" value="tp1" />
+                      <label for="tp1">RETIRO DE TIENDA</label>
+                      <input name="group1" type="radio" id="tp2" value="tp2" />
+                      <label for="tp2">CONTRAENTREGA (LIMA Y CALLAO)</label>
+                      <input name="group1" type="radio" id="tp3" value="tp3" />
+                      <label for="tp3">ENVIO PROVINCIA</label>
+                    </p>  <br>                      
+                </div>
                 <div class="col s12">
                     <p class="text-red">Los campos DNI/CE/OTRO y Teléfono Celular son obligatorios.</p>
                   </div>
@@ -606,7 +628,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                   <br><br>
                 </div>
               </div>
-              <div class="col s12 center">
+{#               <div class="col s12 center">
                 <br><br><br>
                 <div class="centrarForzado preloader-wrapper big active">
                   <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
@@ -620,7 +642,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                   </div>
                 </div>
                 <br><br><br>
-              </div>
+              </div> #}
             </div>
           </div>
         </div>

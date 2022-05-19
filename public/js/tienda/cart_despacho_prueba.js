@@ -58,6 +58,17 @@ $(document).ready(function(){
       });
   }
 
+  $('input[type=radio][name=group1]').change(function() {
+    if (this.value == 'tp1') {
+        $('#direccionVista').addClass('hide');
+        console.log('entrar')
+    }
+    else {
+        $('#direccionVista').removeClass('hide');      
+        console.log('entrar222')
+    }
+});
+
 	//Select direccion
 	$("#selecRegion").change(function(){
       var idRegion = $(this).val();
@@ -102,6 +113,14 @@ $(document).ready(function(){
       var direccion = $("#direccionComprador").val();
       var tlf = $("#tlf").val();
       var DNIcliente=$('#DNIcliente').val();
+      var tipopedi=$('input[name="group1"]:checked').val();
+      
+      if (tipopedi == 'tp1') {
+        idRegion = '150000';
+        provincia = '150100';
+        distrito =  '150101';
+        direccion = 'Jirón Andahuaylas 251 - Cercado de Lima Interior 208';
+      }
 
       if (idRegion != null && provincia != null && distrito != null && $.trim(direccion) != "" && $.trim(tlf).length == 9  && DNIcliente!='') {
         //Actualizando sesion productos con factura
@@ -118,10 +137,6 @@ $(document).ready(function(){
         var nombre = $('#nombreComprador').val();
         var correo = $('#correo').val();
         var tlf = $('#tlf').val();
-        var region = $('#selecRegion').val();
-        var provincia = $('#selProvincia').val();
-        var distrito = $('#selDistrito').val();
-        var direccion =  $('#direccionComprador').val();
         var referencia =  $('#referenciaComprador').val();
         var lote =  $('#nloteComprador').val();
         var dpint =  $('#dintComprador').val();
@@ -131,7 +146,7 @@ $(document).ready(function(){
         var razonSocial =  $('#razonSocial').val();
         $.ajax({
           data:{
-            'region': region,
+            'region': idRegion,
             'provincia': provincia,
             'distrito': distrito,
             'direccion': direccion,
@@ -147,7 +162,7 @@ $(document).ready(function(){
           success: function(data){
             $.ajax({
               data:{
-                'region': region,
+                'region': idRegion,
                 'provincia': provincia,
                 'distrito': distrito,
                 'direccion': direccion,
@@ -179,7 +194,7 @@ $(document).ready(function(){
           type: 'red',
           title: 'Dirección no ingresada',
           columnClass: 'small',
-          content: "Selecciona tu departamento, provincia, distrito, D.N.I y especifica tu dirección y un número de telefono celular valido para poder pagar tu compra",
+          content: "Selecciona tu departamento, provincia, distrito, D.N.I y especifica tu dirección y un número de teléfono celular válido para poder pagar tu compra",
           draggable: false,
           buttons: {
             Entendido: {

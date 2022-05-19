@@ -17,23 +17,6 @@
 	  		.fontE{font-size: 0.8rem!important}
 		{% endif %}  
 	</style>
-	<!-- Facebook Pixel Code -->
-{# <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1031699667283458');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
-/></noscript> #}
-<!-- End Facebook Pixel Code -->
 {% endblock %}
 {% block content %}
 	<div class="inner">
@@ -113,6 +96,12 @@ src="https://www.facebook.com/tr?id=1031699667283458&ev=PageView&noscript=1"
 			</div>
 		</div>
 		<div class="row">
+			<div class="col s12 pormayorUnico center-align input-field" style="padding-top: 7px;margin-bottom: 10px;">
+			 <a href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="Instagram PorMayor.pe" title="Instagram PorMayor.pe" src="{{ruta_img}}instaW.png" height="35"></a>&nbsp;&nbsp;
+              <a href="https://www.facebook.com/pormayoroficial/"><img alt="Facebook PorMayor.pe" title="Facebook PorMayor.pe" src="{{ruta_img}}faceW.png" height="35"></a>&nbsp;&nbsp;
+              <a href="mailto:contacto@pormayor.pe"><img alt="Correo PorMayor.pe" title="Correo PorMayor.pe" src="{{ruta_img}}mailW.png" height="35"></a>&nbsp;&nbsp;
+              <a href="https://www.youtube.com/channel/UCgCUpeiwXV1-8BphKl6ut0Q?view_as=subscriber"><img alt="Youtube PorMayor.pe" title="Youtube PorMayor.pe" src="{{ruta_img}}youtubeW.png" height="35"></a>
+			</div>
 			<div class="col s12 center">
 			{# <span style="font-size:1.5em;">Categorías</span> #}
 		  	{% for cat in categorias %}

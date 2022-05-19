@@ -705,7 +705,9 @@ class __TwigTemplate_5869633a0a6dda7810a4cf32da6070becf3e1d6f83e713016de514d1b34
   <script src=\"";
         // line 465
         echo base_url("public/");
-        echo "js/tienda/cart_resumen.js?v=0704\"></script>
+        echo "js/tienda/cart_resumen.js?v=";
+        echo twig_date_format_filter($this->env, ($context["now"] ?? null), "i");
+        echo "\"></script>
 ";
     }
 

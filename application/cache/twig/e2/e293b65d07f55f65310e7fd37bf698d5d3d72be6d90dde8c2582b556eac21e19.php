@@ -92,53 +92,61 @@ class __TwigTemplate_7f2bd4e81054196b3407a39d73dd5148cc8e264d50870b6ba8f070357f8
               <div class=\"row cardContentFix\"> 
                 <span class=\"card-title center black-text\">Datos de Envio</span>
                 <br>
+                <div class=\"col s12\">
+                    <p class=\"center\">
+                      <input name=\"group1\" type=\"radio\" id=\"tp1\" value=\"tp1\" />
+                      <label for=\"tp1\">RETIRO DE TIENDA</label>
+                      <input name=\"group1\" type=\"radio\" id=\"tp2\" value=\"tp2\" />
+                      <label for=\"tp2\">CONTRAENTREGA (LIMA Y CALLAO)</label>
+                      <input name=\"group1\" type=\"radio\" id=\"tp3\" value=\"tp3\" checked=\"checked\" />
+                      <label for=\"tp3\">ENVIO PROVINCIA</label>
+                    </p>  <br>                      
+                </div>
+                <div class=\"col s12\">
+                    <p class=\"red-text\">Los campos DNI/CE/OTRO y Teléfono Celular son obligatorios.</p>
+                  </div>
                 <div class=\"input-field col s3\">
                   <input placeholder=\"\"  id=\"nombreComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 55
+            // line 68
             echo $this->getAttribute(($context["usuario_inf"] ?? null), "Per_Nombre", array());
             echo "\" readonly=\"\">
                   <label for=\"nombreComprador\">Nombre Completo</label>
                 </div>
                   <div class=\"input-field col s2\">
                   <input id=\"DNIcliente\" type=\"number\" class=\"validate\" value=\"";
-            // line 59
+            // line 72
             echo $this->getAttribute(($context["usuario_inf"] ?? null), "Per_Dni", array());
             echo "\">
-                  <label for=\"DNIcliente\">D.N.I</label>
+                  <label for=\"DNIcliente\">DNI/CE/OTRO</label>
                 </div>
 
                 <div class=\"input-field col s4\">
                   <input placeholder=\"\" id=\"correo\" type=\"email\" class=\"validate\" value=\"";
-            // line 64
+            // line 77
             echo $this->getAttribute(($context["usuario_inf"] ?? null), "Usu_Correo", array());
             echo "\" readonly=\"\">
                   <label for=\"correo\">Correo Electrónico</label>
                 </div>
                 <div class=\"input-field col s3\">
                   <input id=\"tlf\" type=\"number\" class=\"validate\" min=\"1\" value=\"";
-            // line 68
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_Telefono", array());
+            // line 81
+            echo $this->getAttribute(($context["usuario_inf"] ?? null), "Per_Telefono", array());
             echo "\">
-                  <label for=\"tlf\">Teléfono Celular</label>
+                  <label for=\"tlf\">Teléfono Celular (*)</label>
                 </div>
-                <div id=\"direccionVista\" class=\"";
-            // line 71
-            if ($this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_idregion", array())) {
-                echo "hide";
-            }
-            echo "\">
+                <div id=\"direccionVista\">
+                  <div class=\"col s12\">
+                    <p class=\"red-text\">Los campos Departamento, Provincia, Distrito y Dirección son obligatorios para completar la compra.</p>
+                  </div>
                   <div class=\"col s4\">
-                    <select id=\"selecRegion\" class=\"browser-default\" data-valor=\"";
-            // line 73
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_idregion", array());
-            echo "\">
+                    <select id=\"selecRegion\" class=\"browser-default\">
                       <option value=\"0\" disabled selected>Departamento</option>
                       ";
-            // line 75
+            // line 91
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["region"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["reg"]) {
-                // line 76
+                // line 92
                 echo "                        <option value=\"";
                 echo $this->getAttribute($context["reg"], "id", array());
                 echo "\">";
@@ -149,83 +157,44 @@ class __TwigTemplate_7f2bd4e81054196b3407a39d73dd5148cc8e264d50870b6ba8f070357f8
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reg'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 78
+            // line 94
             echo "                    </select>
                   </div>
-                  <div id=\"provincia\" class=\"col s4\" data-valor=\"";
-            // line 80
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_idprovincia", array());
-            echo "\">
+                  <div id=\"provincia\" class=\"col s4\">
                     <select  disabled class=\"browser-default\">
                       <option value=\"0\" disabled selected> Seleccione una provincia</option>
                     </select>
                   </div>
-                  <div id=\"distrito\" class=\"col s4\" data-valor=\"";
-            // line 85
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_iddistrito", array());
-            echo "\">
+                  <div id=\"distrito\" class=\"col s4\">
                     <select disabled class=\"browser-default\">
                       <option value=\"0\" disabled selected> Seleccione un distrito</option>
                     </select>
                   </div>
                   <div class=\"col l12\"><br></div>
                   <div class=\"input-field col s12 l12\" id=\"toHide\">
-                    <input id=\"direccionComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 92
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_Direccion", array());
-            echo "\">
+                    <input id=\"direccionComprador\" type=\"text\" class=\"validate\">
                     <label for=\"direccionComprador\">Dirección</label>
                   </div>
-                </div>
-                ";
-            // line 96
-            if ($this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_idregion", array())) {
-                // line 97
-                echo "                  <div class=\"col s12 center\">
-                    <br><br><br>
-                    <div class=\"centrarForzado preloader-wrapper big active preloaderDireccion\">
-                      <div class=\"spinner-layer spinner-blue-only\" style=\"border-color: #FEC00F\">
-                        <div class=\"circle-clipper left\">
-                          <div class=\"circle\"></div>
-                        </div><div class=\"gap-patch\">
-                          <div class=\"circle\"></div>
-                        </div><div class=\"circle-clipper right\">
-                          <div class=\"circle\"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <br><br><br>
+                  ";
+            // line 112
+            echo "                  ";
+            // line 138
+            echo "                  <div class=\"input-field col s12 l4\" id=\"toHide\">
+                    <input id=\"dintComprador\" type=\"text\" class=\"validate\">
+                    <label for=\"dintComprador\">Depto./Int</label>
                   </div>
-                ";
-            }
-            // line 113
-            echo "                <div class=\"input-field col s12 l4\" id=\"toHide\">
-                  <input id=\"dintComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 114
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_DtoInt", array());
-            echo "\">
-                  <label for=\"dintComprador\">Depto./Int</label>
-                </div>
-                <div class=\"input-field col s12 l4\" id=\"toHide\">
-                  <input id=\"urbComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 118
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_Urbanizacion", array());
-            echo "\">
-                  <label for=\"urbComprador\">Urbanización</label>
-                </div>
-                <div class=\"input-field col s12 l4\" id=\"toHide\">
-                  <input id=\"referenciaComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 122
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_Referencia", array());
-            echo "\">
-                  <label for=\"referenciaComprador\">Referencia</label>
-                </div>
-                <div class=\"input-field col s12 l12\" id=\"toHide\">
-                  <input id=\"nloteComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 126
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_Lote", array());
-            echo "\">
-                  <label for=\"nloteComprador\">Agencia o Empresa de Transporte para enviar</label>
+                  <div class=\"input-field col s12 l4\" id=\"toHide\">
+                    <input id=\"urbComprador\" type=\"text\" class=\"validate\">
+                    <label for=\"urbComprador\">Urbanización</label>
+                  </div>
+                  <div class=\"input-field col s12 l4\" id=\"toHide\">
+                    <input id=\"referenciaComprador\" type=\"text\" class=\"validate\">
+                    <label for=\"referenciaComprador\">Referencia</label>
+                  </div>
+                  <div class=\"input-field col s12 l12\" id=\"toHide\">
+                    <input id=\"nloteComprador\" type=\"text\" class=\"validate\">
+                    <label for=\"nloteComprador\">Agencia o Empresa de Transporte para enviar</label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -279,31 +248,31 @@ class __TwigTemplate_7f2bd4e81054196b3407a39d73dd5148cc8e264d50870b6ba8f070357f8
                   <br>
                 </div>
                 ";
-            // line 180
+            // line 206
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["id_tiendas"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["idt"]) {
-                // line 181
+                // line 207
                 echo "                  <br>
                   <p class=\"negrita center\">TIENDA ";
-                // line 182
+                // line 208
                 echo twig_upper_filter($this->env, $this->getAttribute($context["idt"], "Tie_Nombre", array()));
                 echo "</p> 
                   <br> 
                   ";
-                // line 184
+                // line 210
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["carrito"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["car"]) {
-                    // line 185
+                    // line 211
                     echo "                    ";
                     if (($this->getAttribute($context["idt"], "Tie_IdTienda", array()) == $this->getAttribute($context["car"], "idtienda", array()))) {
-                        // line 186
+                        // line 212
                         echo "                      <div class=\"col s12\">
                         <div class=\"row centrarForzado detallePedido2\">
                           <div class=\"col s2 center\">
                             <img class=\"centrarForzado redondeo fixImg2\" alt=\"";
-                        // line 189
+                        // line 215
                         echo $this->getAttribute($context["car"], "name", array());
                         echo " al pormayor\" src=\"";
                         echo ($context["ruta_img"] ?? null);
@@ -312,13 +281,13 @@ class __TwigTemplate_7f2bd4e81054196b3407a39d73dd5148cc8e264d50870b6ba8f070357f8
                           </div>
                           <div class=\"col s6 sinPadding\">
                             <span class=\"enfasisA fontB2 muayuscula\">";
-                        // line 192
+                        // line 218
                         echo (((twig_length_filter($this->env, twig_title_string_filter($this->env, $this->getAttribute($context["car"], "name", array()))) > 42)) ? ((twig_slice($this->env, twig_title_string_filter($this->env, $this->getAttribute($context["car"], "name", array())), 0, 42) . "...")) : (twig_title_string_filter($this->env, $this->getAttribute($context["car"], "name", array()))));
                         echo "</span><br>
                             ";
-                        // line 193
+                        // line 219
                         if (($this->getAttribute($context["car"], "tipovariacion", array()) != " ")) {
-                            // line 194
+                            // line 220
                             echo "                              <span class=\"fontB2 enfasisB\">";
                             echo $this->getAttribute($context["car"], "tipovariacion", array());
                             echo " ";
@@ -326,26 +295,26 @@ class __TwigTemplate_7f2bd4e81054196b3407a39d73dd5148cc8e264d50870b6ba8f070357f8
                             echo "&nbsp;</span>
                             ";
                         }
-                        // line 196
+                        // line 222
                         echo "                            ";
                         if (($this->getAttribute($context["car"], "color", array()) != "")) {
-                            // line 197
+                            // line 223
                             echo "                              <span class=\"enfasisB\">(";
                             echo twig_title_string_filter($this->env, $this->getAttribute($context["car"], "color", array()));
                             echo ")</span><br>
                             ";
                         }
-                        // line 199
+                        // line 225
                         echo "                            <span class=\"enfasisA\"><span class=\"cantCarrito negrita\">";
                         echo $this->getAttribute($context["car"], "qty", array());
                         echo "</span> unidades</span>
                           </div>
 ";
-                        // line 209
+                        // line 235
                         echo "                          <div class=\"col s4 positionRelative descT hide\">
                             <span class=\"positionAbsolute right0 top0 enfasisB fontB2\">
                               <span class=\"precioUnit2Carrito";
-                        // line 211
+                        // line 237
                         echo $this->getAttribute($context["car"], "rowid", array());
                         echo "\">";
                         echo $this->getAttribute($context["car"], "price_min", array());
@@ -353,9 +322,9 @@ class __TwigTemplate_7f2bd4e81054196b3407a39d73dd5148cc8e264d50870b6ba8f070357f8
                             </span><br> 
                               <span class=\"positionAbsolute right0 bottom0\"><small> S/. &nbsp;&nbsp;</small>
                                 ";
-                        // line 214
+                        // line 240
                         $context["almayor"] = ($this->getAttribute($context["car"], "price_min", array()) * $this->getAttribute($context["car"], "qty", array()));
-                        // line 215
+                        // line 241
                         echo "                                <span class=\"fontD2 subTotalCarrito2 subTotal2Carrito";
                         echo $this->getAttribute($context["car"], "rowid", array());
                         echo "\">";
@@ -370,7 +339,7 @@ class __TwigTemplate_7f2bd4e81054196b3407a39d73dd5148cc8e264d50870b6ba8f070357f8
                       </div>
                     ";
                     }
-                    // line 224
+                    // line 250
                     echo "                  ";
                 }
                 $_parent = $context['_parent'];
@@ -382,7 +351,7 @@ class __TwigTemplate_7f2bd4e81054196b3407a39d73dd5148cc8e264d50870b6ba8f070357f8
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['idt'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 226
+            // line 252
             echo "                <div class=\"col s3 center enfasisB left-align valign-wrapper\" style=\"height: 45px;\">
                   Cantidad
                 </div>
@@ -404,9 +373,9 @@ class __TwigTemplate_7f2bd4e81054196b3407a39d73dd5148cc8e264d50870b6ba8f070357f8
 Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamente por costos de traslado local desde la tienda hasta la agencia de transportes (el traslado lo hace un courier)</small> 
                 </div>
                 ";
-            // line 249
+            // line 275
             echo "                ";
-            // line 252
+            // line 278
             echo "                <div class=\"col s3 center enfasisB left-align valign-wrapper totalD1 hide\" style=\"height: 45px;\">
                   Total
                 </div>
@@ -422,7 +391,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                 <div class=\"col s12 center\">
                   <br>
                   <a class=\"waves-effect waves-light btn-flat btn-flat-not transition\" href=\"";
-            // line 266
+            // line 292
             echo base_url();
             echo "\"><i class=\"material-icons left\">arrow_back</i>Seguir Comprando</a>
                 </div> 
@@ -432,20 +401,20 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                 </div>
                 <div class=\"col s6 sinPadding center\">
                   <img class=\"\" src=\"";
-            // line 273
+            // line 299
             echo ($context["ruta_img"] ?? null);
             echo "safety_pay.webp\" >
                 </div>
                 <div class=\"col s3 sinPadding center\">
                   <img class=\"\" src=\"";
-            // line 276
+            // line 302
             echo ($context["ruta_img"] ?? null);
             echo "logoVisaB.png\" height=\"56\">
                 </div>
                 <div class=\"col s3 positionRelative center-align valign-wrapper\">
                   <a class=\"centrarForzado\" href=\"https://pormayor.pe/legal/compra_segura\">
                     <img alt=\"Pormayor.pe - Rate\" class=\"linkCompraSegura transition comoBoton \" src=\"";
-            // line 280
+            // line 306
             echo ($context["ruta_img"] ?? null);
             echo "pagoA.png\" alt=\"compra segura pormayor.pe\" height=\"65\">
                   </a>
@@ -455,27 +424,15 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                 </div>
                 <div class=\"col s12\"><br></div>
               </div>
-              <div class=\"col s12 center\">
-                <br><br><br><br><br>
-                <div class=\"preloader-wrapper big active\">
-                  <div class=\"spinner-layer spinner-blue-only\" style=\"border-color: #FEC00F\">
-                    <div class=\"circle-clipper left\">
-                      <div class=\"circle\"></div>
-                    </div><div class=\"gap-patch\">
-                      <div class=\"circle\"></div>
-                    </div><div class=\"circle-clipper right\">
-                      <div class=\"circle\"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+";
+            // line 328
+            echo "            </div>
           </div>
         </div>
       </div>
     ";
         } else {
-            // line 307
+            // line 333
             echo "      <div class=\"row centrarForzado\">
         <div class=\"col s12 sinPadding\">
           <br><br><br>
@@ -491,52 +448,63 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
             <div class=\"card-content sinPadding\">
               <div class=\"row cardContentFix\"> 
                 <span class=\"card-title center black-text\">Datos de Envio</span>
+                 <div class=\"col s12\">
+                    <p>
+                      <input name=\"group1\" type=\"radio\" id=\"tp1\" value=\"tp1\" />
+                      <label for=\"tp1\">RETIRO DE TIENDA</label>
+                      <input name=\"group1\" type=\"radio\" id=\"tp2\" value=\"tp2\" />
+                      <label for=\"tp2\">CONTRAENTREGA (LIMA Y CALLAO)</label>
+                      <input name=\"group1\" type=\"radio\" id=\"tp3\" value=\"tp3\" />
+                      <label for=\"tp3\">ENVIO PROVINCIA</label>
+                    </p>  <br>                      
+                </div>
+                <div class=\"col s12\">
+                    <p class=\"text-red\">Los campos DNI/CE/OTRO y Teléfono Celular son obligatorios.</p>
+                  </div>
                 <div class=\"input-field col s12\">
                   <input placeholder=\"\"  id=\"nombreComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 323
+            // line 362
             echo $this->getAttribute(($context["usuario_inf"] ?? null), "Per_Nombre", array());
             echo "\" readonly=\"\">
                   <label for=\"nombreComprador\">Nombre Completo</label>
                 </div>
                 <div class=\"input-field col s12\">
                   <input id=\"DNIcliente\" type=\"number\" class=\"validate\" value=\"";
-            // line 327
+            // line 366
             echo $this->getAttribute(($context["usuario_inf"] ?? null), "Per_Dni", array());
             echo "\">
-                  <label for=\"DNIcliente\">D.N.I</label>
+                  <label for=\"DNIcliente\">DNI/CE/OTRO (*)</label>
                 </div>
                 <div class=\"input-field col s12\">
                   <input placeholder=\"\" id=\"tlf\" type=\"number\" class=\"validate\" min=\"1\" value=\"";
-            // line 331
+            // line 370
             echo $this->getAttribute(($context["usuario_inf"] ?? null), "Per_Telefono", array());
             echo "\">
-                  <label for=\"tlf\">Teléfono Celular</label>
+                  <label for=\"tlf\">Teléfono Celular (*)</label>
                 </div>
                 <div class=\"input-field col s12\">
                   <input placeholder=\"\" id=\"correo\" type=\"email\" class=\"validate\" value=\"";
-            // line 335
+            // line 374
             echo $this->getAttribute(($context["usuario_inf"] ?? null), "Usu_Correo", array());
             echo "\" readonly=\"\">
                   <label for=\"correo\">Correo Electrónico</label>
                 </div>
-                <div id=\"direccionVista\" class=\"";
-            // line 338
-            if ($this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_idregion", array())) {
-                echo "hide";
-            }
-            echo "\">
+";
+            // line 406
+            echo "             
+                <div id=\"direccionVista\">
+                  <div class=\"col s12\">
+                    <p class=\"text-red\">Los campos Departamento, Provincia, Distrito y Dirección son obligatorios para completar la compra.</p>
+                  </div>
                   <div class=\"col s6\">
-                    <select id=\"selecRegion\" class=\"browser-default\" data-valor=\"";
-            // line 340
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_idregion", array());
-            echo "\">
+                    <select id=\"selecRegion\" class=\"browser-default\">
                       <option value=\"0\" disabled selected>Departamento</option>
                       ";
-            // line 342
+            // line 414
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["region"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["reg"]) {
-                // line 343
+                // line 415
                 echo "                        <option value=\"";
                 echo $this->getAttribute($context["reg"], "id", array());
                 echo "\">";
@@ -547,13 +515,10 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reg'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 345
+            // line 417
             echo "                    </select>
                   </div>
-                  <div id=\"provincia\" class=\"col s6\" data-valor=\"";
-            // line 347
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_idprovincia", array());
-            echo "\">
+                  <div id=\"provincia\" class=\"col s6\">
                     <select  disabled class=\"browser-default\">
                       <option value=\"0\" disabled selected> Seleccione una provincia</option>
                     </select>
@@ -561,10 +526,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                   <div class=\"col s12\">
                     <br>
                   </div>
-                  <div id=\"distrito\" class=\"col s12\" data-valor=\"";
-            // line 355
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_iddistrito", array());
-            echo "\">
+                  <div id=\"distrito\" class=\"col s12\">
                     <select disabled class=\"browser-default\">
                       <option value=\"0\" disabled selected> Seleccione un distrito</option>
                     </select>
@@ -573,61 +535,24 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                     <br>
                   </div>
                   <div class=\"input-field col s12 l12\" id=\"toHide\">
-                    <input id=\"direccionComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 364
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_Direccion", array());
-            echo "\">
-                    <label for=\"direccionComprador\">Dirección</label>
+                    <input id=\"direccionComprador\" type=\"text\" class=\"validate\" value=\"\">
+                    <label for=\"direccionComprador\">Dirección (*)</label>
                   </div>
                 </div>
-                ";
-            // line 368
-            if ($this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_idregion", array())) {
-                // line 369
-                echo "                  <div class=\"col s12 center\">
-                    <br><br><br>
-                    <div class=\"centrarForzado preloader-wrapper big active preloaderDireccion\">
-                      <div class=\"spinner-layer spinner-blue-only\" style=\"border-color: #FEC00F\">
-                        <div class=\"circle-clipper left\">
-                          <div class=\"circle\"></div>
-                        </div><div class=\"gap-patch\">
-                          <div class=\"circle\"></div>
-                        </div><div class=\"circle-clipper right\">
-                          <div class=\"circle\"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <br><br><br>
-                  </div>
-                ";
-            }
-            // line 385
-            echo "                <div class=\"input-field col s12 l4\" id=\"toHide\">
-                  <input id=\"dintComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 386
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_DtoInt", array());
-            echo "\">
+                <div class=\"input-field col s12 l4\" id=\"toHide\">
+                  <input id=\"dintComprador\" type=\"text\" class=\"validate\">
                   <label for=\"dintComprador\">Depto./Int</label>
                 </div>
                 <div class=\"input-field col s12 l12\" id=\"toHide\">
-                  <input id=\"urbComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 390
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_Urbanizacion", array());
-            echo "\">
+                  <input id=\"urbComprador\" type=\"text\" class=\"validate\">
                   <label for=\"urbComprador\">Urbanización</label>
                 </div>
                 <div class=\"input-field col s12 l4\" id=\"toHide\">
-                  <input id=\"referenciaComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 394
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_Referencia", array());
-            echo "\">
+                  <input id=\"referenciaComprador\" type=\"text\" class=\"validate\">
                   <label for=\"referenciaComprador\">Referencia</label>
                 </div>
                 <div class=\"input-field col s12 l6\" id=\"toHide\">
-                  <input id=\"nloteComprador\" type=\"text\" class=\"validate\" value=\"";
-            // line 398
-            echo $this->getAttribute(($context["direccion_usuario"] ?? null), "Pag_Lote", array());
-            echo "\">
+                  <input id=\"nloteComprador\" type=\"text\" class=\"validate\">
                   <label for=\"nloteComprador\">Agencia o Empresa de Transporte para enviar</label>
                 </div>
               </div>
@@ -686,31 +611,31 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                   <br>
                 </div>
                 ";
-            // line 456
+            // line 511
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["id_tiendas"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["idt"]) {
-                // line 457
+                // line 512
                 echo "                  <br>
                   <p class=\"negrita center fontD2\">TIENDA ";
-                // line 458
+                // line 513
                 echo twig_upper_filter($this->env, $this->getAttribute($context["idt"], "Tie_Nombre", array()));
                 echo "</p> 
                   <br>
                   ";
-                // line 460
+                // line 515
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["carrito"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["car"]) {
-                    // line 461
+                    // line 516
                     echo "                    ";
                     if (($this->getAttribute($context["idt"], "Tie_IdTienda", array()) == $this->getAttribute($context["car"], "idtienda", array()))) {
-                        // line 462
+                        // line 517
                         echo "                      <div class=\"col s12 sinPadding\">
                         <div class=\"row centrarForzado detallePedidoMobile\">
                           <div class=\"col s3\">
                             <img class=\"centrarForzado redondeo fixImg2B\" alt=\"";
-                        // line 465
+                        // line 520
                         echo $this->getAttribute($context["car"], "name", array());
                         echo " al pormayor\" src=\"";
                         echo ($context["ruta_img"] ?? null);
@@ -719,14 +644,14 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                           </div>
                           <div class=\"col s9\">
                             <span class=\"enfasisA muayuscula\">";
-                        // line 468
+                        // line 523
                         echo twig_title_string_filter($this->env, $this->getAttribute($context["car"], "name", array()));
                         echo "</span><br>
 
                             ";
-                        // line 470
+                        // line 525
                         if (($this->getAttribute($context["car"], "tipovariacion", array()) != " ")) {
-                            // line 471
+                            // line 526
                             echo "                              <span class=\"enfasisB\">";
                             echo $this->getAttribute($context["car"], "tipovariacion", array());
                             echo "&nbsp; ";
@@ -734,31 +659,31 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                             echo "&nbsp;</span>
                             ";
                         }
-                        // line 473
+                        // line 528
                         echo "
                             ";
-                        // line 474
+                        // line 529
                         if (($this->getAttribute($context["car"], "color", array()) != "")) {
-                            // line 475
+                            // line 530
                             echo "                              <span class=\"enfasisB\">(";
                             echo twig_title_string_filter($this->env, $this->getAttribute($context["car"], "color", array()));
                             echo ")</span>
                             ";
                         }
-                        // line 477
+                        // line 532
                         echo "                          </div>
                           <div class=\"col s4  enfasisB fontD2 valign-wrapper\">
                             <span class=\"cantCarrito negrita\">";
-                        // line 479
+                        // line 534
                         echo $this->getAttribute($context["car"], "qty", array());
                         echo "</span>&nbsp; Unid.
                           </div>
 ";
-                        // line 489
+                        // line 544
                         echo "                          <div class=\"col s8 positionRelative descT hide\">
                             <span class=\"positionAbsolute right0 top0 enfasisB fontB2\">
                               <span class=\"precioUnitCarrito";
-                        // line 491
+                        // line 546
                         echo $this->getAttribute($context["car"], "rowid", array());
                         echo "\">";
                         echo $this->getAttribute($context["car"], "price_min", array());
@@ -766,9 +691,9 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                             </span><br><br>
                               <span class=\"positionAbsolute right0 bottom0\">
                                 ";
-                        // line 494
+                        // line 549
                         $context["almayor"] = ($this->getAttribute($context["car"], "price_min", array()) * $this->getAttribute($context["car"], "qty", array()));
-                        // line 495
+                        // line 550
                         echo "                                <small> S/. &nbsp;&nbsp;</small><span class=\"fontA subTotalCarrito2 subTotalCarrito";
                         echo $this->getAttribute($context["car"], "rowid", array());
                         echo "\">";
@@ -787,19 +712,19 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                       </div>
                     ";
                     }
-                    // line 508
+                    // line 563
                     echo "                  ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['car'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 509
+                // line 564
                 echo "                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['idt'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 510
+            // line 565
             echo "                <div class=\"col s5 center enfasisB left-align valign-wrapper\" style=\"height: 45px;\">
                   Cantidad
                 </div>
@@ -825,9 +750,9 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                 </div>
 
               ";
-            // line 537
+            // line 592
             echo "     ";
-            // line 540
+            // line 595
             echo "
                 <div class=\"col s3 center enfasisB left-align valign-wrapper totalD1 hide\" style=\"height: 45px;\">
                   Total
@@ -840,7 +765,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                 </div>
                 <div class=\"col s12 center\">
                   <a class=\"waves-effect waves-light btn-flat btnFlatMobile transition pormayorUnico-text\" href=\"";
-            // line 551
+            // line 606
             echo base_url();
             echo "\"><i class=\"material-icons left\">arrow_back</i>Seguir Comprando</a>
                   <br>
@@ -852,20 +777,20 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                 </div>
                 <div class=\"col s6 center valign-wrapper\" style=\"height:55px\">
                   <img class=\"centrarForzado\" src=\"";
-            // line 560
+            // line 615
             echo ($context["ruta_img"] ?? null);
             echo "safety_pay.webp\" height=\"40\">
                 </div>
                 <div class=\"col s3 valign-wrapper\" style=\"height:55px\">
                   <img class=\"centrarForzado\" src=\"";
-            // line 563
+            // line 618
             echo ($context["ruta_img"] ?? null);
             echo "logoVisaB.png\" height=\"30\">
                 </div>
                 <div class=\"col s3 positionRelative center-align valign-wrapper\">
                   <a class=\"centrarForzado\" href=\"https://pormayor.pe/legal/compra_segura\">
                     <img alt=\"Pormayor.pe - Rate\" class=\"linkCompraSegura transition comoBoton \" src=\"";
-            // line 567
+            // line 622
             echo ($context["ruta_img"] ?? null);
             echo "pagoA.png\" alt=\"compra segura pormayor.pe\" height=\"50\">
                   </a>
@@ -876,22 +801,9 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
                   <br><br>
                 </div>
               </div>
-              <div class=\"col s12 center\">
-                <br><br><br>
-                <div class=\"centrarForzado preloader-wrapper big active\">
-                  <div class=\"spinner-layer spinner-blue-only\" style=\"border-color: #FEC00F\">
-                    <div class=\"circle-clipper left\">
-                      <div class=\"circle\"></div>
-                    </div><div class=\"gap-patch\">
-                      <div class=\"circle\"></div>
-                    </div><div class=\"circle-clipper right\">
-                      <div class=\"circle\"></div>
-                    </div>
-                  </div>
-                </div>
-                <br><br><br>
-              </div>
-            </div>
+";
+            // line 646
+            echo "            </div>
           </div>
         </div>
       </div>
@@ -902,7 +814,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
           &nbsp;&nbsp;&nbsp;<span class=\"fontA\"><b class=\"cantResumen\"></b></span>&nbsp;&nbsp;<span class=\"enfasisB\">Unidades</span>
         </div>
 ";
-            // line 604
+            // line 659
             echo "        <div class=\"totalB1 hide col s8 right-align\" style=\"height:45px\">
           <span >S/&nbsp; <span class=\"fontC pormayorUnico-text\"><b class=\"totalResumen2\"></b></span></span>
         </div>
@@ -915,27 +827,29 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
       </div>
     ";
         }
-        // line 615
+        // line 670
         echo "  </main>
 
 ";
     }
 
-    // line 619
+    // line 674
     public function block_script($context, array $blocks = array())
     {
-        // line 620
+        // line 675
         echo "  <script>
     // var flagVariaciones = ";
-        // line 621
+        // line 676
         echo ($context["flagVariaciones"] ?? null);
         echo ";
   </script>
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js\"></script>
   <script src=\"";
-        // line 624
+        // line 679
         echo base_url("public/");
-        echo "js/tienda/cart_despacho.js?v=2607\"></script>
+        echo "js/tienda/cart_despacho.js?v=";
+        echo twig_date_format_filter($this->env, ($context["now"] ?? null), "i");
+        echo "\"></script>
 ";
     }
 
@@ -951,7 +865,7 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
 
     public function getDebugInfo()
     {
-        return array (  937 => 624,  931 => 621,  928 => 620,  925 => 619,  919 => 615,  906 => 604,  869 => 567,  862 => 563,  856 => 560,  844 => 551,  831 => 540,  829 => 537,  803 => 510,  797 => 509,  791 => 508,  772 => 495,  770 => 494,  762 => 491,  758 => 489,  753 => 479,  749 => 477,  743 => 475,  741 => 474,  738 => 473,  730 => 471,  728 => 470,  723 => 468,  714 => 465,  709 => 462,  706 => 461,  702 => 460,  697 => 458,  694 => 457,  690 => 456,  629 => 398,  622 => 394,  615 => 390,  608 => 386,  605 => 385,  587 => 369,  585 => 368,  578 => 364,  566 => 355,  555 => 347,  551 => 345,  540 => 343,  536 => 342,  531 => 340,  524 => 338,  518 => 335,  511 => 331,  504 => 327,  497 => 323,  479 => 307,  449 => 280,  442 => 276,  436 => 273,  426 => 266,  410 => 252,  408 => 249,  386 => 226,  374 => 224,  359 => 215,  357 => 214,  349 => 211,  345 => 209,  339 => 199,  333 => 197,  330 => 196,  322 => 194,  320 => 193,  316 => 192,  307 => 189,  302 => 186,  299 => 185,  295 => 184,  290 => 182,  287 => 181,  283 => 180,  226 => 126,  219 => 122,  212 => 118,  205 => 114,  202 => 113,  184 => 97,  182 => 96,  175 => 92,  165 => 85,  157 => 80,  153 => 78,  142 => 76,  138 => 75,  133 => 73,  126 => 71,  120 => 68,  113 => 64,  105 => 59,  98 => 55,  75 => 35,  66 => 28,  64 => 27,  61 => 26,  58 => 25,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  849 => 679,  843 => 676,  840 => 675,  837 => 674,  831 => 670,  818 => 659,  806 => 646,  794 => 622,  787 => 618,  781 => 615,  769 => 606,  756 => 595,  754 => 592,  728 => 565,  722 => 564,  716 => 563,  697 => 550,  695 => 549,  687 => 546,  683 => 544,  678 => 534,  674 => 532,  668 => 530,  666 => 529,  663 => 528,  655 => 526,  653 => 525,  648 => 523,  639 => 520,  634 => 517,  631 => 516,  627 => 515,  622 => 513,  619 => 512,  615 => 511,  519 => 417,  508 => 415,  504 => 414,  494 => 406,  488 => 374,  481 => 370,  474 => 366,  467 => 362,  436 => 333,  429 => 328,  418 => 306,  411 => 302,  405 => 299,  395 => 292,  379 => 278,  377 => 275,  355 => 252,  343 => 250,  328 => 241,  326 => 240,  318 => 237,  314 => 235,  308 => 225,  302 => 223,  299 => 222,  291 => 220,  289 => 219,  285 => 218,  276 => 215,  271 => 212,  268 => 211,  264 => 210,  259 => 208,  256 => 207,  252 => 206,  182 => 138,  180 => 112,  161 => 94,  150 => 92,  146 => 91,  133 => 81,  126 => 77,  118 => 72,  111 => 68,  75 => 35,  66 => 28,  64 => 27,  61 => 26,  58 => 25,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -964,6 +878,6 @@ Tenga presente que aquÍ sólo le cobramos 8/10 soles (según paquete) únicamen
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "tienda/micompra.twig", "C:\\xampp\\htdocs\\pormayor2021\\application\\views\\tienda\\micompra.twig");
+        return new Twig_Source("", "tienda/micompra.twig", "C:\\xampp\\htdocs\\pormayor\\application\\views\\tienda\\micompra.twig");
     }
 }

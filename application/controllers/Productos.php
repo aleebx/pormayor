@@ -628,8 +628,6 @@ show_404();
 }
 
 public function despacho(){
-
-
 $data = $this->acl->load_datos("no", "comprador");
 $data['pagina']['titulo'] = 'Mi Compra';
 $data['pagina']['titulo'] = 'Compra - 2 | pormayor.pe';
@@ -649,7 +647,7 @@ $data['totalc'] = count($data['carrito']);
 $data['region'] = $this->localModel->region();
 
 //Datos dirección usuario
-$data['direccion_usuario'] = $this->usuarioModel->get_usuario_direccion($data['usuario']['id_usuario']);
+// $data['direccion_usuario'] = $this->usuarioModel->get_usuario_direccion($data['usuario']['id_usuario']);
 
 
 $carro = array_values($data['carrito']);
