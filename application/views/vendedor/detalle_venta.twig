@@ -262,7 +262,7 @@
 				      		</table>
 	    				</div>
 	    				{% if cantVauche == veriV %}
-		    				{% if totalP == totalPagar %}
+		    				{% if totalP|number_format(2, '.', ' ') == totalPagar|number_format(2, '.', ' ') %}
 								{% if vauche and (venta.Pac_Estado == 1 or venta.Pac_Estado == 2) %}
 									<div class="col s3">
 										<a class="btn negrita blue" onclick="printJS('printJS-form', 'html')" style="width:100%;"><i class="material-icons left">print</i>IMPRIMIR ROTULADO {{venta.Per_Nombre}}</a>
@@ -271,7 +271,7 @@
 										<a class="btn negrita green" onclick="printJS('printJS-form2', 'html')" style="width:100%;"><i class="material-icons left">list</i>IMPRIMIR VENTA {{venta.Per_Nombre}}</a>
 									</div>	    				
 									<div class="col s3">
-										<a data-target="rotulado" class="btn-flat modal-trigger"><i class="material-icons left">featured_play_list</i>Nuevo Rotulado</a>
+										<a data-target="rotulado" class="btn orange negrita modal-trigger"><i class="material-icons left">featured_play_list</i>Nuevo Rotulado</a>
 									</div>
 									<div class="col s3">
 										<a class="btn-large green modal-trigger" data-target="modalConfirma"><i class="material-icons left">check</i>ENTREGADA {{venta.Per_Nombre}}</a>
