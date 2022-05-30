@@ -53,7 +53,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   </style>
 </head>
-<body id="inicio" class="">
+<body id="inicio" class="grey lighten-4">
 <div class="inner">
     <ul id='dropdown1' class='dropdown-content'>
       {% if usuario.rol == 1 %}
@@ -94,8 +94,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       {% endif %}
     </ul>
 </div>
-    <div class="navbar-fixed inner">
-      <nav class="z-depth-2 pormayor nav-extended">
+    <div class="grey lighten-4">
+      <div class="right">
+        <a href=""><img src="{{ruta_img}}icons/facebook.png"></a>
+        <a href=""><img src="{{ruta_img}}icons/whatsapp.png"></a>
+        <a href=""><img src="{{ruta_img}}icons/tiktok.png"></a>
+        <a href=""><img src="{{ruta_img}}icons/youtube.png"></a>
+      </div>
+    </div>
+    <div class="black center">
+      <span class="white-text fontA">¡Por compras mínimas de <b class="amber-text">S/100</b>, llévate diferentes productos a precio por cajón!</span>
+    </div>
+    <div class="">
+      <nav class="z-depth-2 pormayor">
         <div  class="sinBordeBottom nav-wrapper row navRowMobile">
           {% if userAgent == 'movil' %}
             <div class="col s2 m2 l2 center hide-on-large-only colMenuButton ocultarSearch sinPadding" style="height:56px">
@@ -113,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </a>
           </div>      
           {% if not vista_carrito_compra %}
-            <div class="col {% if pagina.tipo == "principal" or pagina.tipo == "carrito" %} m6 s8 sinPadding {% else %} m8 s10 {% endif %} l2" style="padding-left:0px" >
+            <div class="col {% if pagina.tipo == "principal" or pagina.tipo == "carrito" %} m6 s8 sinPadding {% else %} m8 s10 {% endif %} l2" style="padding-left:0px">
               <div class="contentSearch contentSearchTienda positionRelative">
                 <i class="material-icons positionAbsolute sinUser grey-text text-lighten-1 lineHeight0 transitionB">search</i>
                 <input type="text" class="browser-default buscador autocomplete w100 redondeo white enfasisA" placeholder="Buscar productos" data-tienda="pormayor">

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>      
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="facebook-domain-verification" content="cle4kath1djfbrcx1wejg9hfcattr7" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{% if categoriaFlag == true %}{{categoria_seo.Cat_Nombre|title}} al Por Mayor en PorMayor.pe - Crece con nosotros{% elseif subcategoriaFlag == true %}{{subcategoria_seo.Suc_Nombre|title}} al Por Mayor en PorMayor.pe - Crece con nosotros{% elseif  detalleFlag == true %}{{detalle_seo.Suc_Nombre|title}} - {{detalle_seo.Des_Nombre}} al Por Mayor en PorMayor.pe - Crece con nosotros{% else %}{{pagina.titulo|title}}{% endif %}</title>
+<meta name="google-site-verification" content="MZNqZwO63SqZWJMD-S5PwzQhXBJoFBLp8BmwSgYAexM" />
+<meta property="fb:app_id" content="2623619600997776" />
+<meta property="og:title" content="{% if producto.Pro_Nombre %}{{producto.Pro_Nombre|upper}} - S/{{producto.Pro_PrecioMinimo}}{% else %} PorMayor.pe - Crece con nosotros{% endif %}" />
+<meta property="og:description" content="{% if producto.Pro_Nombre %}Precio por mayor: S/{{producto.Pro_PrecioMinimo}}{% else %}Ayudamos a crecer a todo los nuevos emprendedores en iniciar su negocio. Llévate todo surtido y a precio por mayor por una compra mínima de 100 soles{% endif %}"/>
+{% if producto.Pro_Nombre %}
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://pormayor.pe/img/{{fotos[0].Prf_Img}}" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="300" />
+{% else %}
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://pormayor.pe/img/logoPM2.jpg" />
+{% endif %}
+<meta name="description" content="Productos por cajón al mejor precio del mercado. Productos novedosos importados directamente desde China. Precio por mayor desde una unidad.">
+<meta name="keywords" content="Por mayor, cajón, productos novedosos, productos para el hogar, roperos de ropa, zapateras, compra por cajón">
+<link rel="icon" href="https://pormayor.pe/img/promo/lpm.ico">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen">
+<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/materialize.min.css')}}"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"  media="screen"/>
+<link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/templates.min.css')}}"  media="screen"/>
+{% block analytics %}{% endblock %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129372100-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129372100-1');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6LFJ9S');</script>
+<!-- End Google Tag Manager -->
+{% block head %} {% endblock %}
+  <style type="text/css">
+  .autocomplete-content{width: 40vw!important;}
+  .w100 {width:200% !important}
+  @media only screen and (max-width: 600px) {
+  .w100 {width:100% !important}
+  .autocomplete-content{width: 80vw!important;}
+  }
+  </style>
+</head>
+<body id="inicio" class="grey lighten-4">
+<div class="inner">
+    <ul id='dropdown1' class='dropdown-content'>
+      {% if usuario.rol == 1 %}
+        <li><a href="{{base_url()}}admin/tiendas"><i class="material-icons left">settings</i>Panel</a></li>
+      {% elseif usuario.rol == 5 %}
+        <li><a href="{{base_url()}}vnd/ventas"><i class="material-icons left">settings</i>Panel Gestor</a></li>
+      {% else %}
+        <li><a href="{{base_url()}}comprador/index/"><i class="material-icons left">account_circle</i>Perfil de Usuario</a></li>
+        {% if usuario.rol == 2 or usuario.rol == 3 %}
+          <li><a href="https://{{subdominio_tienda}}.{{dominio}}/usuario/inventario/lProductos"><i class="material-icons left">settings</i>Panel Tienda</a></li>
+        {% endif %}
+      {% endif %}
+      <li class="divider"></li>
+      <li><a class="cerrarSesionBtn"><i class="material-icons left">power_settings_new</i>Cerrar sesión</a></li>
+    </ul>
+    <ul id='dropdown2' class='dropdown-content'>
+      {% if not noticoments is empty or not noticotiza is empty %}
+        {% if not noticoments is empty  %}
+          <li style="width: 320px">
+            <a  href="{{base_url()}}comprador/index/respuesta_comentario">
+              <i class="material-icons left">comment</i>Tu comentario <b>fue respondido </b><span class="pormayorUnico-text">(Ver)</span>
+            </a>
+          </li>
+        {% endif %}
+        {% if not noticotiza is empty  %}
+          <li style="width: 320px">
+            <a  href="{{base_url()}}comprador/index/pedidos">
+              <i class="material-icons left">comment</i><b>Respondieron</b> tu cotización <span class="pormayorUnico-text">(Ver)</span>
+            </a>
+          </li>
+        {% endif %}
+      {% else %}
+          <li >
+            <a  href="#">
+              <span class="enfasisC">No tienes notificaciones</span>
+            </a>
+          </li>
+      {% endif %}
+    </ul>
+</div>
+    <div class="grey lighten-4">
+      <div class="right">
+        <a href=""><img src="{{ruta_img}}icons/facebook.png"></a>
+        <a href=""><img src="{{ruta_img}}icons/whatsapp.png"></a>
+        <a href=""><img src="{{ruta_img}}icons/tiktok.png"></a>
+        <a href=""><img src="{{ruta_img}}icons/youtube.png"></a>
+      </div>
+    </div>
+    <div class="black center">
+      <span class="white-text fontA">¡Por compras mínimas de <b class="amber-text">S/100</b>, llévate diferentes productos a precio por cajón!</span>
+    </div>
+    <div class="">
+      <nav class="z-depth-2 pormayor">
+        <div class="row container">
+          {% if userAgent == 'movil' %}
+            <div class="col s2 m2 l2 center hide-on-large-only colMenuButton ocultarSearch sinPadding" style="height:56px">
+              <a data-activates="mobile-pormayor" class="button-collapse centrarForzado">
+                <img alt="" src="{{ruta_img}}menuIcon.svg" width="35">
+              </a>
+            </div>
+          {% endif %}
+          <div class="col s3 m2 l2 colMenuLogo ocultarSearch valign-wrapper hide-on-small-only">
+            <a href="{{base_url()}}" class="valign-wrapper anchoTotal">
+              <img alt="Pomayor.pe - Vende facilito, Compra segurito" src="{{ruta_img}}icons/logoPrincipal.png" class="centrarForzado">
+            </a>
+          </div>
+          <div class="col s6 m6 l6">
+              <div class="contentSearch contentSearchTienda positionRelative">
+                <i class="material-icons positionAbsolute sinUser grey-text text-lighten-1 lineHeight0 transitionB">search</i>
+                <input type="text" class="browser-default buscador autocomplete redondeo white enfasisA" placeholder="Buscar productos" data-tienda="pormayor">
+              </div> 
+          </div>
+          <div class="col l2">
+             <a class="black-text" href="{{base_url()}}productos/carrito"><i class="material-icons left">shopping_cart</i>Mis compras</a>
+          </div>
+          <div class="col l2">
+             <a class="black-text" href="{{base_url()}}usuario/login"><i class="material-icons left">account_circle</i>Mi cuenta</a>            
+          </div>
+        </div>
+
+          {# {% if pagina.tipo == "carrito"  %}
+            {% if userAgent != "PC" %}
+              {% if not producto_detalle %}
+                <div class="colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only">
+                  <div class="cartAnimacion positionRelative">
+                    <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                    <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons">shopping_cart</i></a>
+                    <div class="pormayorUnico redondeo positionAbsolute center sinUser transition hide cartTotalPointer">
+                      <div class="positionAbsolute left0 right0"></div>
+                      En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                {% if usuario.id_tienda != producto.Tie_IdTienda %}
+                  <div class="colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only positionRelative">
+                    <div class="cartAnimacion positionRelative">
+                      <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                      <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons">shopping_cart</i></a>
+                    </div>
+                    <div class="pormayorUnico redondeo positionAbsolute center sinUser transition hide cartTotalPointer">
+                      <div class="positionAbsolute left0 right0"></div>
+                      En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="col center s2 m2 l2 sinPadding colMenuButton ocultarSearch" >
+                    <a class="waves-effect waves-black addHome anchoTotal"><i class="material-icons pormayorAccent-text">group_add</i></a>
+                  </div>  
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+         {% if pagina.tipo == "principal"  %}
+          {% if usuario.logueado %}
+            {% if userAgent == 'movil' %}
+              <div class="colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only positionRelative">
+                <div class="cartAnimacion positionRelative">
+                  <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                  <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons">shopping_cart</i></a>
+                </div>
+                <div class="pormayorUnico redondeo positionAbsolute center sinUser transition hide cartTotalPointer">
+                  <div class="positionAbsolute left0 right0"></div>
+                  En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                </div>
+              </div>
+            {% endif %}
+          {% else %}
+            {% if userAgent == 'movil' %}
+              <div class="col center s2 m2 l2 sinPadding colMenuButton ocultarSearch" >
+                  <a class="waves-effect waves-black addHome anchoTotal"><i class="material-icons pormayorAccent-text">group_add</i></a>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endif %}   
+          <div class="col s2 m3 l6 ocultarSearch colMenuPcII hide-on-med-and-down">
+            {% if usuario.logueado %}
+                <ul  class="right">
+              {% if pagina.extrabtn == "SI" and pagina.titulo != "Tiendas" and commentsNot == false and comments == true %}
+                  <li>
+                    <a class="comentsBtn waves-effect waves-light black-text " href="#comentsBlock">Comentarios</a>
+                  </li>
+              {% endif %}
+                {% if not producto_detalle %}
+                  <li class="hide-on-med-and-down cartAnimacion positionRelative">
+                    <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                    <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons left">shopping_cart</i>Mi compra</a>
+                    <div class="pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide">
+                      <div class="positionAbsolute left0 right0 centrarForzado"></div>
+                      En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                    </div>
+                  </li>
+                {% else %}
+                  {% if usuario.id_tienda != producto.Tie_IdTienda %}
+                    <li class="hide-on-med-and-down cartAnimacion positionRelative">
+                      <span class="pormayorUnico counterCont black-text positionAbsolute center" data-totalc="{{totalc}}" ><span class="cantidad white-text">0</span></span>
+                      <a class="black-text cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="black-text material-icons left">shopping_cart</i>Mi compra</a>
+                      <div class="pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide">
+                        <div class="positionAbsolute left0 right0 centrarForzado"></div>
+                        En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                      </div>
+                    </li>
+                  {% endif %}
+                {% endif %}
+              {% if reputacion_volver %}
+                <li class="positionRelative">
+                    <a class="black-text" href="{{url_actual}}"><i class="material-icons left">arrow_back</i> Regresar</a>
+                  </li> 
+              {% endif %}
+                  <li class="positionRelative">
+                    {% if not noticoments is empty or not noticotiza is empty %}
+                      <span class="pormayorUnico pulse" style="top: 15px;right: 0px;left: 28px;"></span>
+                    {% endif %}
+                    <a class="dropdown-trigger black-text" href="#!"  data-activates="dropdown2">
+                      <i class="material-icons">{% if not noticoments is empty or not noticotiza is empty %}notifications{% else %}notifications_none{% endif %}</i>
+                    </a>
+                  </li> 
+                  {% if not vista_carrito_compra %}
+                  <li>
+                    <a class="dropdown-trigger black-text" href="#!" data-activates="dropdown1">{{ usuario.nombre|title|length > 7 ? usuario.nombre|title|slice(0, 7) ~ '...' : usuario.nombre  }}<i class="material-icons right">account_circle</i></a>
+                  </li> 
+                  {% endif %}
+                </ul>      
+            {% else %}
+              <ul class="right">
+                {% if pagina.extrabtn == "SI" and pagina.titulo != "Tiendas" and commentsNot == false and comments == true  %}
+                  <li class="">
+                    <a class="comentsBtn waves-effect waves-light black-text " href="#comentsBlock">Comentarios</a>
+                  </li>
+                {% endif %} 
+                {% if vista_carrito_compra %}
+                  <li><a class="black-text" onclick="javascript:history.back()"><i class="material-icons left">arrow_back</i>Regresar</a></li>
+                {% endif %}
+                <li class="hide-on-med-and-down cartAnimacion positionRelative">
+                  <span class="pormayorUnico counterCont positionAbsolute center" data-totalc="{{totalc}}"><span class="cantidad">0</span></span>
+                  <a class="grey-text text-darken-4 cartTopPC verCarrito" href="{{base_url()}}productos/carrito"><i class="material-icons left" style="font-size:30px">shopping_cart</i>Mi compra</a>
+                  <div class="pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide">
+                    <div class="positionAbsolute left0 right0 centrarForzado"></div>
+                    En total llevas <br><span class="totalActualCart negrita fontD2"></span>
+                  </div>
+                </li>
+                <li>
+                  <a class="black-text hide-on-med-and-up" href="{{base_url()}}usuario/login"><i class="material-icons">account_circle</i></a>
+                  <a href="{{base_url()}}usuario/login" class="black-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Iniciar Sesión"><i class="material-icons green-text text-darken-4" style="font-size:30px">account_circle</i></a>
+                </li>
+              </ul>
+            {% endif %}
+          </div>
+          <a class="backSearch positionAbsolute lineHeight0 comoBoton "><i class="material-icons grey-text sinUser lineHeight0">arrow_back</i></a> #}
+        {# </div> #}
+        
+        {% if userAgent != "PC" %}
+          {% if vista_carrito %}
+            <div class="nav-content white">
+              <div class="row centrarForzado navCompra">
+                <div class="col s4 sinUser center fontB2 pormayorUnico white-text">
+                  <i class="material-icons left small" >looks_one</i> <span class="positionRelative">RESUMEN</span>
+                </div>
+                <div class="col s4 sinUser enfasisD center fontB2">
+                  <i class="material-icons left small" >looks_two</i> <span class="positionRelative">DESPACHO</span>
+                </div>
+                <div class="col s4 sinUser enfasisD center fontB2">
+                  <i class="material-icons left small" >looks_3</i> <span class="positionRelative">PAGO</span>
+                </div>
+              </div>
+            </div>
+          {% elseif vista_carrito2 %}
+            <div class="nav-content white">
+              <div class="row centrarForzado navCompra">
+                <a href="{{base_url()}}productos/carrito">
+                  <div class="col s4 sinUser center fontB2 enfasisD">
+                    <i class="material-icons left small" >looks_one</i> <span class="positionRelative">RESUMEN</span>
+                  </div>
+                </a>
+                <div class="col s4 sinUser pormayorUnico white-text center fontB2">
+                  <i class="material-icons left small" >looks_two</i> <span class="positionRelative">DESPACHO</span>
+                </div>
+                <div class="col s4 sinUser enfasisD center fontB2">
+                  <i class="material-icons left small" >looks_3</i> <span class="positionRelative">PAGO</span>
+                </div>
+              </div>
+            </div>
+          {% elseif vista_carrito3 %}
+            <div class="nav-content white">
+              <div class="row centrarForzado navCompra">
+                <a href="{{base_url()}}productos/carrito">
+                  <div class="col s4 sinUser center fontB2 enfasisD">
+                    <i class="material-icons left small" >looks_one</i> <span class="positionRelative">RESUMEN</span>
+                  </div>
+                </a>
+                <a href="{{base_url()}}productos/despacho">
+                  <div class="col s4 sinUser enfasisD center fontB2">
+                    <i class="material-icons left small" >looks_two</i> <span class="positionRelative">DESPACHO</span>
+                  </div>
+                </a>
+                <div class="col s4 sinUser pormayorUnico white-text center fontB2">
+                  <i class="material-icons left small" >looks_3</i> <span class="positionRelative">PAGO</span>
+                </div>
+              </div>
+            </div>
+          {% elseif vista_carrito4 %}
+            <div class="nav-content pormayorUnico">
+              <div class="row centrarForzado navCompra">
+                <div class="col s12 sinUser center fontB2 enfasisD white-text">
+                  <p>ÚNETE A LA FAMILIA <b>PORMAYOR</b></p>
+                </div>
+              </div>
+            </div>
+          {% elseif vista_carrito5 %}
+          {% endif %}
+        {% endif %}
+      </nav>
+    </div>
+    <!-- HEADER -->
+        {% if usuario.logueado %}
+            <ul class="side-nav grey darken-4 z-depth-3 menuTex" id="mobile-pormayor">
+              <li class="itemMenu">
+                <a class="white-text" href="{{base_url()}}"><i class="material-icons ">home</i>Ir a Inicio</a>      
+              </li>                     
+              <li class="headerMenu center valign-wrapper">
+                {% if usuario.rol == 2 or usuario.rol == 3 %}
+                  <a class="btn centrarForzado pormayor pormayorAccent-text" href="http://{{subdominio_tienda}}.{{dominio}}/usuario/inventario/lProductos" style="padding: 0 16px;">Perfil Tienda</a>
+                {% elseif usuario.rol == 5 %}
+                  <a class="btn centrarForzado pormayor pormayorAccent-text" href="{{base_url()}}vnd/ventas" style="padding: 0 16px;">GESTOR</a>
+                {% endif %}
+                <a href="{{base_url()}}comprador/index/pedidos" class="btn centrarForzado pormayorUnico white-text" style="padding: 0 16px;">Perfil Usuario</a>
+              </li>
+              <li class="sinUser itemMenu white-text" style="margin: 5px 20px 5px 20px;">Hola, <b>{{usuario.nombre|title|length > 15 ? usuario.nombre|title|slice(0, 15) ~ '...' : usuario.nombre}}</b><a class="cerrarSesionBtn sesionBtn right"><i class="material-icons red-text">power_settings_new</i></a> 
+              </li> 
+            </ul>         
+        {% else %}  
+            <ul class="side-nav grey darken-4 z-depth-3 menuTex" id="mobile-pormayor">
+              <li class="headerMenu center valign-wrapper">
+                <a class="btn centrarForzado" href="{{base_url()}}usuario/login" style="padding: 0 16px;">Iniciar sesión</a>
+              </li>     
+              <li class="itemMenu">
+                <a class="white-text" href="{{base_url()}}"><i class="material-icons ">home</i>Inicio</a>      
+              </li>
+              {% for cat in categorias %}
+              <li class="itemMenu"><a itemprop="url" href="{{base_url()}}categoria/{{cat.url}}">{{ cat.Cat_Nombre|upper }}</a></li>             
+              {% endfor %}
+            </ul>
+        {% endif %}
+      <div class="overlayBody hide"></div>      
+      {% block content %} {% endblock %}
+       <div class="fixed-action-btn">
+        <a class="btn-floating btn-large pormayor" href="{{base_url()}}productos/carrito">
+          <i class="large material-icons black-text">shopping_cart</i>
+        </a>
+      </div>
+
+        <footer class="page-footer grey darken-4 black-text {% if nofooter %}hide{% endif %}">
+          <div class="container">
+              <div class="row white-text">
+              <div class="col l3 s12">
+                <h5 class="amber-text">PorMayor.pe</h5>
+                <p>Somos el primer ecommerce mayorista del Perú, dónde encontras novedades al mejor precio y puedas emprender tu negocio con solo S/100</p>
+              </div>
+              <div class="col l3 s12">
+                <h5 class="amber-text">MI CUENTA</h5>
+                <ul>
+                  <li><a class="" href="{{base_url()}}usuario/login">Registrarte</a></li>
+                  <li><a class="" href="{{base_url()}}usuario/login">Iniciar Sesión</a></li>
+                  <li><a class="" href="{{base_url()}}usuario/olvido_contrasenia">Recuperar Contraseña</a></li>
+                  <li><a class="" href="{{base_url()}}contacto">Contacto</a></li>
+                </ul>
+              </div>
+              <div class="col l3 s12">
+                <h5 class="amber-text">SERVICIO AL CLIENTE</h5>
+                <ul>
+                  {# <li><a class="" href="{{base_url()}}legal/centro">Centro de Ayuda</a></li> #}
+                  <li><a class="" href="{{base_url()}}legal">Terminos y condiciones</a></li>
+                  <li><a class="" href="{{base_url()}}legal/devolucionesycambios">Politicas de Devoluciones y Cambios</a></li>
+                  {# <li><a class="" href="{{base_url()}}legal/compra_segura">Compra Segura</a></li> #}
+                  <li><a class="" href="{{base_url()}}reclamo">Libro de Reclamaciones <i class="material-icons">menu_book</i></a></li>
+                </ul>
+              </div>
+              <div class="col l3 s12">
+                <h5 class="amber-text">ESCRÍBENOS</h5>
+                <ul>
+                {% for v in vendedores %}
+                  <li><a href="tel:51{{ v.Per_Telefono }}">{{ v.Usu_Nombre }}: {{ v.Per_Telefono }}</a></li>
+                {% endfor %}
+                  <li><a href="mailto:contacto@pormayor.pe">contacto@pormayor.pe</a></li>
+                  <li>Horario de Atención:<br>
+                    Lunes a Viernes: 10:00 AM a 6:00 PM<br>
+                    Sábados: 10:00 AM a 6:00 PM</li>
+                  <li>Jirón Andahuaylas 251 - Tienda 208, 209 y 210 Cercado de Lima - Perú</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="row container">
+              <div class="col l6 center">
+                © 2018-2022 Derechos Reservados <a href="{{base_url()}}">PorMayor.pe S.A.</a>
+              </div>
+              <div class="col l2">
+                <a href="https://www.camaralima.org.pe/principal"><img src="{{ruta_img}}LOGO-CCL-2019.png" title="REGISTRADOS EN LA CAMARA DE COMERCIO DE LIMA"></a>
+              </div>
+          </div>
+        </footer>      
+    {% block modal %} {% endblock %}
+      <script> var base_url = "{{base_url()}}";</script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js"></script>
+      <script src="{{base_url('public/js/template-lite.min.js?v=0152')}}" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    {% block script %} {% endblock %}
+   </body>
+
+</html>

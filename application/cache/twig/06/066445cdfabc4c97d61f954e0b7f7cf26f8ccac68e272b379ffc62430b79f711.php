@@ -131,7 +131,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   </style>
 </head>
-<body id=\"inicio\" class=\"\">
+<body id=\"inicio\" class=\"grey lighten-4\">
 <div class=\"inner\">
     <ul id='dropdown1' class='dropdown-content'>
       ";
@@ -218,54 +218,77 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         // line 95
         echo "    </ul>
 </div>
-    <div class=\"navbar-fixed inner\">
-      <nav class=\"z-depth-2 pormayor nav-extended\">
+    <div class=\"grey lighten-4\">
+      <div class=\"right\">
+        <a href=\"\"><img src=\"";
+        // line 99
+        echo ($context["ruta_img"] ?? null);
+        echo "icons/facebook.png\"></a>
+        <a href=\"\"><img src=\"";
+        // line 100
+        echo ($context["ruta_img"] ?? null);
+        echo "icons/whatsapp.png\"></a>
+        <a href=\"\"><img src=\"";
+        // line 101
+        echo ($context["ruta_img"] ?? null);
+        echo "icons/tiktok.png\"></a>
+        <a href=\"\"><img src=\"";
+        // line 102
+        echo ($context["ruta_img"] ?? null);
+        echo "icons/youtube.png\"></a>
+      </div>
+    </div>
+    <div class=\"black center\">
+      <span class=\"white-text fontA\">¡Por compras mínimas de <b class=\"amber-text\">S/100</b>, llévate diferentes productos a precio por cajón!</span>
+    </div>
+    <div class=\"\">
+      <nav class=\"z-depth-2 pormayor\">
         <div  class=\"sinBordeBottom nav-wrapper row navRowMobile\">
           ";
-        // line 100
+        // line 111
         if ((($context["userAgent"] ?? null) == "movil")) {
-            // line 101
+            // line 112
             echo "            <div class=\"col s2 m2 l2 center hide-on-large-only colMenuButton ocultarSearch sinPadding\" style=\"height:56px\">
               <a data-activates=\"mobile-pormayor\" class=\"button-collapse centrarForzado\">
                 <img alt=\"\" src=\"";
-            // line 103
+            // line 114
             echo ($context["ruta_img"] ?? null);
             echo "menuIcon.svg\" width=\"35\">
                 ";
-            // line 104
+            // line 115
             if (( !twig_test_empty(($context["noticoments"] ?? null)) ||  !twig_test_empty(($context["noticotiza"] ?? null)))) {
-                // line 105
+                // line 116
                 echo "                  <span class=\"pormayorUnico pulse\"></span>
                 ";
             }
-            // line 107
+            // line 118
             echo "              </a>
             </div>
           ";
         }
-        // line 110
+        // line 121
         echo "          <div class=\"col s3 m2 l2 colMenuLogo ocultarSearch valign-wrapper hide-on-small-only\">
             <a href=\"";
-        // line 111
+        // line 122
         echo base_url();
         echo "\" class=\"valign-wrapper anchoTotal\">
               <img alt=\"Pomayor.pe - Vende facilito, Compra segurito\" src=\"";
-        // line 112
+        // line 123
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg\" class=\"centrarForzado\">
             </a>
           </div>      
           ";
-        // line 115
+        // line 126
         if ( !($context["vista_carrito_compra"] ?? null)) {
-            // line 116
+            // line 127
             echo "            <div class=\"col ";
             if ((($this->getAttribute(($context["pagina"] ?? null), "tipo", array()) == "principal") || ($this->getAttribute(($context["pagina"] ?? null), "tipo", array()) == "carrito"))) {
                 echo " m6 s8 sinPadding ";
             } else {
                 echo " m8 s10 ";
             }
-            echo " l2\" style=\"padding-left:0px\" >
+            echo " l2\" style=\"padding-left:0px\">
               <div class=\"contentSearch contentSearchTienda positionRelative\">
                 <i class=\"material-icons positionAbsolute sinUser grey-text text-lighten-1 lineHeight0 transitionB\">search</i>
                 <input type=\"text\" class=\"browser-default buscador autocomplete w100 redondeo white enfasisA\" placeholder=\"Buscar productos\" data-tienda=\"pormayor\">
@@ -273,44 +296,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           ";
         } else {
-            // line 123
+            // line 134
             echo "            ";
             if ((($context["userAgent"] ?? null) == "PC")) {
-                // line 124
+                // line 135
                 echo "              <div class=\"col l4 fontA center grey-text text-darken-3\" > 
                 ";
-                // line 126
+                // line 137
                 echo "               </div>
             ";
             } else {
-                // line 128
+                // line 139
                 echo "              <div class=\"col s7 fontD2 center grey-text text-darken-3\" > 
                 ";
-                // line 130
+                // line 141
                 echo "               </div> 
             ";
             }
-            // line 132
+            // line 143
             echo "          ";
         }
-        // line 133
+        // line 144
         echo "          ";
         if (($this->getAttribute(($context["pagina"] ?? null), "tipo", array()) == "carrito")) {
-            // line 134
+            // line 145
             echo "            ";
             if ((($context["userAgent"] ?? null) != "PC")) {
-                // line 135
+                // line 146
                 echo "              ";
                 if ( !($context["producto_detalle"] ?? null)) {
-                    // line 136
+                    // line 147
                     echo "                <div class=\"colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only\">
                   <div class=\"cartAnimacion positionRelative\">
                     <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                    // line 138
+                    // line 149
                     echo ($context["totalc"] ?? null);
                     echo "\" ><span class=\"cantidad white-text\">0</span></span>
                     <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                    // line 139
+                    // line 150
                     echo base_url();
                     echo "productos/carrito\"><i class=\"black-text material-icons\">shopping_cart</i></a>
                     <div class=\"pormayorUnico redondeo positionAbsolute center sinUser transition hide cartTotalPointer\">
@@ -321,18 +344,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
               ";
                 } else {
-                    // line 147
+                    // line 158
                     echo "                ";
                     if (($this->getAttribute(($context["usuario"] ?? null), "id_tienda", array()) != $this->getAttribute(($context["producto"] ?? null), "Tie_IdTienda", array()))) {
-                        // line 148
+                        // line 159
                         echo "                  <div class=\"colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only positionRelative\">
                     <div class=\"cartAnimacion positionRelative\">
                       <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                        // line 150
+                        // line 161
                         echo ($context["totalc"] ?? null);
                         echo "\" ><span class=\"cantidad white-text\">0</span></span>
                       <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                        // line 151
+                        // line 162
                         echo base_url();
                         echo "productos/carrito\"><i class=\"black-text material-icons\">shopping_cart</i></a>
                     </div>
@@ -343,39 +366,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </div>
                 ";
                     } else {
-                        // line 159
+                        // line 170
                         echo "                  <div class=\"col center s2 m2 l2 sinPadding colMenuButton ocultarSearch\" >
                     <a class=\"waves-effect waves-black addHome anchoTotal\"><i class=\"material-icons pormayorAccent-text\">group_add</i></a>
                   </div>  
                 ";
                     }
-                    // line 163
+                    // line 174
                     echo "              ";
                 }
-                // line 164
+                // line 175
                 echo "            ";
             }
-            // line 165
+            // line 176
             echo "          ";
         }
-        // line 166
+        // line 177
         echo "         ";
         if (($this->getAttribute(($context["pagina"] ?? null), "tipo", array()) == "principal")) {
-            // line 167
+            // line 178
             echo "          ";
             if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
-                // line 168
+                // line 179
                 echo "            ";
                 if ((($context["userAgent"] ?? null) == "movil")) {
-                    // line 169
+                    // line 180
                     echo "              <div class=\"colMenuButton ocultarSearch col center s2 m2 l2 sinPadding hide-on-large-only positionRelative\">
                 <div class=\"cartAnimacion positionRelative\">
                   <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                    // line 171
+                    // line 182
                     echo ($context["totalc"] ?? null);
                     echo "\" ><span class=\"cantidad white-text\">0</span></span>
                   <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                    // line 172
+                    // line 183
                     echo base_url();
                     echo "productos/carrito\"><i class=\"black-text material-icons\">shopping_cart</i></a>
                 </div>
@@ -386,51 +409,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             ";
                 }
-                // line 180
+                // line 191
                 echo "          ";
             } else {
-                // line 181
+                // line 192
                 echo "            ";
                 if ((($context["userAgent"] ?? null) == "movil")) {
-                    // line 182
+                    // line 193
                     echo "              <div class=\"col center s2 m2 l2 sinPadding colMenuButton ocultarSearch\" >
                   <a class=\"waves-effect waves-black addHome anchoTotal\"><i class=\"material-icons pormayorAccent-text\">group_add</i></a>
               </div>
             ";
                 }
-                // line 186
+                // line 197
                 echo "          ";
             }
-            // line 187
+            // line 198
             echo "        ";
         }
         echo "   
           <div class=\"col s2 m3 l6 ocultarSearch colMenuPcII hide-on-med-and-down\">
             ";
-        // line 189
+        // line 200
         if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
-            // line 190
+            // line 201
             echo "                <ul  class=\"right\">
               ";
-            // line 191
+            // line 202
             if ((((($this->getAttribute(($context["pagina"] ?? null), "extrabtn", array()) == "SI") && ($this->getAttribute(($context["pagina"] ?? null), "titulo", array()) != "Tiendas")) && (($context["commentsNot"] ?? null) == false)) && (($context["comments"] ?? null) == true))) {
-                // line 192
+                // line 203
                 echo "                  <li>
                     <a class=\"comentsBtn waves-effect waves-light black-text \" href=\"#comentsBlock\">Comentarios</a>
                   </li>
               ";
             }
-            // line 196
+            // line 207
             echo "                ";
             if ( !($context["producto_detalle"] ?? null)) {
-                // line 197
+                // line 208
                 echo "                  <li class=\"hide-on-med-and-down cartAnimacion positionRelative\">
                     <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                // line 198
+                // line 209
                 echo ($context["totalc"] ?? null);
                 echo "\" ><span class=\"cantidad white-text\">0</span></span>
                     <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                // line 199
+                // line 210
                 echo base_url();
                 echo "productos/carrito\"><i class=\"black-text material-icons left\">shopping_cart</i>Mi compra</a>
                     <div class=\"pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide\">
@@ -440,17 +463,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </li>
                 ";
             } else {
-                // line 206
+                // line 217
                 echo "                  ";
                 if (($this->getAttribute(($context["usuario"] ?? null), "id_tienda", array()) != $this->getAttribute(($context["producto"] ?? null), "Tie_IdTienda", array()))) {
-                    // line 207
+                    // line 218
                     echo "                    <li class=\"hide-on-med-and-down cartAnimacion positionRelative\">
                       <span class=\"pormayorUnico counterCont black-text positionAbsolute center\" data-totalc=\"";
-                    // line 208
+                    // line 219
                     echo ($context["totalc"] ?? null);
                     echo "\" ><span class=\"cantidad white-text\">0</span></span>
                       <a class=\"black-text cartTopPC verCarrito\" href=\"";
-                    // line 209
+                    // line 220
                     echo base_url();
                     echo "productos/carrito\"><i class=\"black-text material-icons left\">shopping_cart</i>Mi compra</a>
                       <div class=\"pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide\">
@@ -460,34 +483,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </li>
                   ";
                 }
-                // line 216
+                // line 227
                 echo "                ";
             }
-            // line 217
+            // line 228
             echo "              ";
             if (($context["reputacion_volver"] ?? null)) {
-                // line 218
+                // line 229
                 echo "                <li class=\"positionRelative\">
                     <a class=\"black-text\" href=\"";
-                // line 219
+                // line 230
                 echo ($context["url_actual"] ?? null);
                 echo "\"><i class=\"material-icons left\">arrow_back</i> Regresar</a>
                   </li> 
               ";
             }
-            // line 222
+            // line 233
             echo "                  <li class=\"positionRelative\">
                     ";
-            // line 223
+            // line 234
             if (( !twig_test_empty(($context["noticoments"] ?? null)) ||  !twig_test_empty(($context["noticotiza"] ?? null)))) {
-                // line 224
+                // line 235
                 echo "                      <span class=\"pormayorUnico pulse\" style=\"top: 15px;right: 0px;left: 28px;\"></span>
                     ";
             }
-            // line 226
+            // line 237
             echo "                    <a class=\"dropdown-trigger black-text\" href=\"#!\"  data-activates=\"dropdown2\">
                       <i class=\"material-icons\">";
-            // line 227
+            // line 238
             if (( !twig_test_empty(($context["noticoments"] ?? null)) ||  !twig_test_empty(($context["noticotiza"] ?? null)))) {
                 echo "notifications";
             } else {
@@ -497,49 +520,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </a>
                   </li> 
                   ";
-            // line 230
+            // line 241
             if ( !($context["vista_carrito_compra"] ?? null)) {
-                // line 231
+                // line 242
                 echo "                  <li>
                     <a class=\"dropdown-trigger black-text\" href=\"#!\" data-activates=\"dropdown1\">";
-                // line 232
+                // line 243
                 echo (((twig_length_filter($this->env, twig_title_string_filter($this->env, $this->getAttribute(($context["usuario"] ?? null), "nombre", array()))) > 7)) ? ((twig_slice($this->env, twig_title_string_filter($this->env, $this->getAttribute(($context["usuario"] ?? null), "nombre", array())), 0, 7) . "...")) : ($this->getAttribute(($context["usuario"] ?? null), "nombre", array())));
                 echo "<i class=\"material-icons right\">account_circle</i></a>
                   </li> 
                   ";
             }
-            // line 235
+            // line 246
             echo "                </ul>      
             ";
         } else {
-            // line 237
+            // line 248
             echo "              <ul class=\"right\">
                 ";
-            // line 238
+            // line 249
             if ((((($this->getAttribute(($context["pagina"] ?? null), "extrabtn", array()) == "SI") && ($this->getAttribute(($context["pagina"] ?? null), "titulo", array()) != "Tiendas")) && (($context["commentsNot"] ?? null) == false)) && (($context["comments"] ?? null) == true))) {
-                // line 239
+                // line 250
                 echo "                  <li class=\"\">
                     <a class=\"comentsBtn waves-effect waves-light black-text \" href=\"#comentsBlock\">Comentarios</a>
                   </li>
                 ";
             }
-            // line 242
+            // line 253
             echo " 
                 ";
-            // line 243
+            // line 254
             if (($context["vista_carrito_compra"] ?? null)) {
-                // line 244
+                // line 255
                 echo "                  <li><a class=\"black-text\" onclick=\"javascript:history.back()\"><i class=\"material-icons left\">arrow_back</i>Regresar</a></li>
                 ";
             }
-            // line 246
+            // line 257
             echo "                <li class=\"hide-on-med-and-down cartAnimacion positionRelative\">
                   <span class=\"pormayorUnico counterCont positionAbsolute center\" data-totalc=\"";
-            // line 247
+            // line 258
             echo ($context["totalc"] ?? null);
             echo "\"><span class=\"cantidad\">0</span></span>
                   <a class=\"grey-text text-darken-4 cartTopPC verCarrito\" href=\"";
-            // line 248
+            // line 259
             echo base_url();
             echo "productos/carrito\"><i class=\"material-icons left\" style=\"font-size:30px\">shopping_cart</i>Mi compra</a>
                   <div class=\"pormayorUnico redondeo positionAbsolute anchoTotal center sinUser transition cartTotalPointer hide\">
@@ -549,25 +572,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </li>
                 <li>
                   <a class=\"black-text hide-on-med-and-up\" href=\"";
-            // line 255
+            // line 266
             echo base_url();
             echo "usuario/login\"><i class=\"material-icons\">account_circle</i></a>
                   <a href=\"";
-            // line 256
+            // line 267
             echo base_url();
             echo "usuario/login\" class=\"black-text tooltipped\" data-position=\"bottom\" data-delay=\"50\" data-tooltip=\"Iniciar Sesión\"><i class=\"material-icons green-text text-darken-4\" style=\"font-size:30px\">account_circle</i></a>
                 </li>
               </ul>
             ";
         }
-        // line 260
+        // line 271
         echo "          </div>
           <a class=\"backSearch positionAbsolute lineHeight0 comoBoton \"><i class=\"material-icons grey-text sinUser lineHeight0\">arrow_back</i></a>
         </div>
         ";
-        // line 263
+        // line 274
         if (((($this->getAttribute(($context["pagina"] ?? null), "extrabtn", array()) == "SI") && ($context["producto_detalle"] ?? null)) && (($context["commentsNot"] ?? null) == false))) {
-            // line 264
+            // line 275
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\" >
               <div class=\"menuMobileSec2 hide col s3 center sinPadding\">
@@ -582,9 +605,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
         ";
-        } elseif (        // line 277
+        } elseif (        // line 288
 ($context["filtro_movil_tiendas"] ?? null)) {
-            // line 278
+            // line 289
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
               <div class=\"col s4 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -592,11 +615,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <option value=\"\" disabled selected>CATEGORÍA</option>
                   <option value=\"all\">Todos</option>
                   ";
-            // line 284
+            // line 295
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_cat"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["btc"]) {
-                // line 285
+                // line 296
                 echo "                    <option value=\"";
                 echo $this->getAttribute($context["btc"], "Cat_IdCategoria", array());
                 echo "\">";
@@ -609,7 +632,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btc'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 287
+            // line 298
             echo "                </select>
               </div>
               <div class=\"col s5 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -617,11 +640,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <option value=\"\" disabled selected>DEPARTAMENTO</option>
                   <option value=\"all\" >Ver todas</option>
                   ";
-            // line 293
+            // line 304
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_dep"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["btd"]) {
-                // line 294
+                // line 305
                 echo "                    <option value=\"";
                 echo $this->getAttribute($context["btd"], "id", array());
                 echo "\">";
@@ -634,7 +657,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btd'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 296
+            // line 307
             echo "                </select>
               </div>
               <div class=\"col s3 center sinPadding\"> 
@@ -648,16 +671,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
         ";
-        } elseif ((        // line 308
+        } elseif ((        // line 319
 ($context["filtro_movil"] ?? null) &&  !($context["solo_tienda"] ?? null))) {
-            // line 309
+            // line 320
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 310
+                // line 321
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosA ";
-                // line 312
+                // line 323
                 if (($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
@@ -667,7 +690,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </div>
                   <div class=\"col s7 center sinPadding\"> 
                     <select class=\"browser-default simpleSelect filtroProductoCat grey-text text-darken-3\" ";
-                // line 317
+                // line 328
                 if (($context["filtro_categorias"] ?? null)) {
                     echo "disabled";
                 }
@@ -675,11 +698,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>FILTRAR POR CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 320
+                // line 331
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_cat"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
-                    // line 321
+                    // line 332
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["cat"], "Cat_IdCategoria", array());
                     echo "\">";
@@ -690,18 +713,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 323
+                // line 334
                 echo "                    </select>
                   </div>
                 </div>
                 <div class=\"containerFiltrosB ";
-                // line 326
+                // line 337
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
                 echo "\">
                   <div class=\"col ";
-                // line 327
+                // line 338
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -712,11 +735,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>MARCA</option>
                       <option value=\"all\">Todas</option>
                       ";
-                // line 331
+                // line 342
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_marcas"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 332
+                    // line 343
                     echo "                          <option value=\"";
                     echo twig_replace_filter(twig_title_string_filter($this->env, $this->getAttribute($context["prm"], "Pro_Marca", array())), array(" " => "", "\"" => "", "'" => ""));
                     echo "\">";
@@ -727,11 +750,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 334
+                // line 345
                 echo "                    </select>
                   </div>
                   <div class=\"col ";
-                // line 336
+                // line 347
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -756,7 +779,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </select>
                   </div>
                   ";
-                // line 354
+                // line 365
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " 
                     <div class=\"col s2 sinPadding menosFiltros center \">
@@ -764,7 +787,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </div>
                   ";
                 }
-                // line 359
+                // line 370
                 echo "                </div>
                 <div class=\"containerFiltrosC hide\">
                   <div class=\"col s4 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -772,11 +795,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 365
+                // line 376
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_cat"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["btc"]) {
-                    // line 366
+                    // line 377
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["btc"], "Cat_IdCategoria", array());
                     echo "\">";
@@ -787,7 +810,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btc'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 368
+                // line 379
                 echo "                    </select>
                   </div>
                   <div class=\"col s5 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -795,11 +818,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>DEPARTAMENTOS</option>
                       <option value=\"all\" >Ver todas</option>
                       ";
-                // line 374
+                // line 385
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_dep"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["btd"]) {
-                    // line 375
+                    // line 386
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["btd"], "id", array());
                     echo "\">";
@@ -810,7 +833,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btd'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 377
+                // line 388
                 echo "                    </select>
                   </div>
                   <div class=\"col s3 center sinPadding\"> 
@@ -826,13 +849,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           ";
             }
-            // line 391
+            // line 402
             echo "        ";
         } elseif ((($context["filtro_movil"] ?? null) && ($context["solo_tienda"] ?? null))) {
-            // line 392
+            // line 403
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 393
+                // line 404
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosC\">
@@ -841,11 +864,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 400
+                // line 411
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_cat"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["btc"]) {
-                    // line 401
+                    // line 412
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["btc"], "Cat_IdCategoria", array());
                     echo "\">";
@@ -856,7 +879,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btc'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 403
+                // line 414
                 echo "                    </select>
                   </div>
                   <div class=\"col s5 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -864,11 +887,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>DEPARTAMENTOS</option>
                       <option value=\"all\" >Ver todas</option>
                       ";
-                // line 409
+                // line 420
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["busqueda_tiendas_dep"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["btd"]) {
-                    // line 410
+                    // line 421
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["btd"], "id", array());
                     echo "\">";
@@ -879,7 +902,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['btd'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 412
+                // line 423
                 echo "                    </select>
                   </div>
                   <div class=\"col s3 center sinPadding\"> 
@@ -895,13 +918,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           ";
             }
-            // line 426
+            // line 437
             echo "        ";
         } elseif (($context["filtro_movil_especial"] ?? null)) {
-            // line 427
+            // line 438
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 428
+                // line 439
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltros\">
@@ -910,11 +933,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>MARCA</option>
                       <option value=\"all\">Todas</option>
                       ";
-                // line 435
+                // line 446
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_marcas"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 436
+                    // line 447
                     echo "                          <option value=\"";
                     echo twig_replace_filter(twig_title_string_filter($this->env, $this->getAttribute($context["prm"], "Pro_Marca", array())), array(" " => "", "\"" => "", "'" => ""));
                     echo "\">";
@@ -925,7 +948,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 438
+                // line 449
                 echo "                    </select>
                   </div>
                   <div class=\"col s4 center sinPadding\" style=\"border-right:1px solid rgba(0,0,0,0.2)\"> 
@@ -951,17 +974,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           ";
             }
-            // line 462
+            // line 473
             echo "        ";
         } elseif (($context["filtro_movil_ultimos"] ?? null)) {
-            // line 463
+            // line 474
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 464
+                // line 475
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosA ";
-                // line 466
+                // line 477
                 if (($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
@@ -971,7 +994,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </div>
                   <div class=\"col s7 center sinPadding\"> 
                     <select class=\"browser-default simpleSelect filtroProductoCat grey-text text-darken-3\" ";
-                // line 471
+                // line 482
                 if (($context["filtro_categorias"] ?? null)) {
                     echo "disabled";
                 }
@@ -979,11 +1002,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>FILTRAR POR CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 474
+                // line 485
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_cat"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
-                    // line 475
+                    // line 486
                     echo "                        <option value=\"";
                     echo $this->getAttribute($context["cat"], "Cat_IdCategoria", array());
                     echo "\">";
@@ -994,18 +1017,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 477
+                // line 488
                 echo "                    </select>
                   </div>
                 </div>
                 <div class=\"containerFiltrosB ";
-                // line 480
+                // line 491
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
                 echo "\">
                   <div class=\"col ";
-                // line 481
+                // line 492
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -1016,11 +1039,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>MARCA</option>
                       <option value=\"all\">Todas</option>
                       ";
-                // line 485
+                // line 496
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_marcas"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 486
+                    // line 497
                     echo "                          <option value=\"";
                     echo twig_replace_filter(twig_title_string_filter($this->env, $context["prm"]), array(" " => "", "\"" => "", "'" => ""));
                     echo "\">";
@@ -1031,11 +1054,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 488
+                // line 499
                 echo "                    </select>
                   </div>
                   <div class=\"col ";
-                // line 490
+                // line 501
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -1060,7 +1083,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </select>
                   </div>
                   ";
-                // line 508
+                // line 519
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " 
                     <div class=\"col s2 sinPadding menosFiltros center \">
@@ -1068,23 +1091,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </div>
                   ";
                 }
-                // line 513
+                // line 524
                 echo "                </div>
               </div>
             </div>
           ";
             }
-            // line 517
+            // line 528
             echo "        ";
         } elseif (($context["filtro_movil_popular"] ?? null)) {
-            // line 518
+            // line 529
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 519
+                // line 530
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosA ";
-                // line 521
+                // line 532
                 if (($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
@@ -1094,7 +1117,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </div>
                   <div class=\"col s7 center sinPadding\"> 
                     <select class=\"browser-default simpleSelect filtroProductoCat grey-text text-darken-3\" ";
-                // line 526
+                // line 537
                 if (($context["filtro_categorias"] ?? null)) {
                     echo "disabled";
                 }
@@ -1102,46 +1125,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>FILTRAR POR CATEGORÍAS</option>
                       <option value=\"all\">Todos</option>
                       ";
-                // line 529
+                // line 540
                 $context["array_cat"] = array();
-                // line 530
+                // line 541
                 echo "                      ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_popular"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
-                    // line 531
+                    // line 542
                     echo "                        ";
                     if (!twig_in_filter(twig_title_string_filter($this->env, $this->getAttribute($context["cat"], "Cat_Nombre", array())), ($context["array_cat"] ?? null))) {
-                        // line 532
+                        // line 543
                         echo "                           <option value=\"";
                         echo $this->getAttribute($context["cat"], "Cat_IdCategoria", array());
                         echo "\">";
                         echo $this->getAttribute($context["cat"], "Cat_Nombre", array());
                         echo "</option>
                            ";
-                        // line 533
+                        // line 544
                         $context["array_cat"] = twig_array_merge(($context["array_cat"] ?? null), array(0 => twig_title_string_filter($this->env, $this->getAttribute($context["cat"], "Cat_Nombre", array()))));
-                        // line 534
+                        // line 545
                         echo "                        ";
                     }
-                    // line 535
+                    // line 546
                     echo "                      ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 536
+                // line 547
                 echo "                    </select>
                   </div>
                 </div>
                 <div class=\"containerFiltrosB ";
-                // line 539
+                // line 550
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " hide ";
                 }
                 echo "\">
                   <div class=\"col ";
-                // line 540
+                // line 551
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -1152,37 +1175,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                       <option value=\"\" disabled selected>MARCA</option>
                       <option value=\"all\">Todas</option>
                       ";
-                // line 544
+                // line 555
                 $context["array_marcas"] = array();
-                // line 545
+                // line 556
                 echo "                      ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["producto_popular"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 546
+                    // line 557
                     echo "                        ";
                     if (!twig_in_filter(twig_title_string_filter($this->env, $this->getAttribute($context["prm"], "Pro_Marca", array())), ($context["array_marcas"] ?? null))) {
-                        // line 547
+                        // line 558
                         echo "                          ";
                         $context["array_marcas"] = twig_array_merge(($context["array_marcas"] ?? null), array(0 => twig_title_string_filter($this->env, $this->getAttribute($context["prm"], "Pro_Marca", array()))));
-                        // line 548
+                        // line 559
                         echo "                        ";
                     }
-                    // line 549
+                    // line 560
                     echo "                      ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 550
+                // line 561
                 echo "                      ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["array_marcas"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["prm"]) {
-                    // line 551
+                    // line 562
                     echo "                        ";
                     if ($context["prm"]) {
-                        // line 552
+                        // line 563
                         echo "                          <option value=\"";
                         echo twig_replace_filter($context["prm"], array(" " => "", "\"" => "", "'" => ""));
                         echo "\">";
@@ -1190,17 +1213,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         echo "</option>
                         ";
                     }
-                    // line 554
+                    // line 565
                     echo "                      ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prm'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 555
+                // line 566
                 echo "                    </select>
                   </div>
                   <div class=\"col ";
-                // line 557
+                // line 568
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " s3 ";
                 } else {
@@ -1225,7 +1248,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </select>
                   </div>
                   ";
-                // line 575
+                // line 586
                 if ( !($context["filtro_categorias"] ?? null)) {
                     echo " 
                     <div class=\"col s2 sinPadding menosFiltros center \">
@@ -1233,19 +1256,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </div>
                   ";
                 }
-                // line 580
+                // line 591
                 echo "                </div>
               </div>
             </div>
           ";
             }
-            // line 584
+            // line 595
             echo "        ";
         } elseif (($context["crear_tienda"] ?? null)) {
-            // line 585
+            // line 596
             echo "          ";
             if ((($context["userMovil"] ?? null) != "PC")) {
-                // line 586
+                // line 597
                 echo "            <div class=\"nav-content hide-on-large-only pormayor\">
               <div class=\"row sinBordeBottom\">
                 <div class=\"containerFiltrosB \">
@@ -1263,10 +1286,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           ";
             }
-            // line 602
+            // line 613
             echo "        ";
         } elseif ((($this->getAttribute(($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["legales"] ?? null) == true))) {
-            // line 603
+            // line 614
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
                 <div class=\"col s12 center\"> 
@@ -1296,9 +1319,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
           </div>
         ";
-        } elseif ((($this->getAttribute(        // line 631
+        } elseif ((($this->getAttribute(        // line 642
 ($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["privacidad"] ?? null) == true))) {
-            // line 632
+            // line 643
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
                 <div class=\"col s12 center\"> 
@@ -1320,9 +1343,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
           </div>
         ";
-        } elseif ((($this->getAttribute(        // line 652
+        } elseif ((($this->getAttribute(        // line 663
 ($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["compra_segura"] ?? null) == true))) {
-            // line 653
+            // line 664
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
                 <div class=\"col s12 center\"> 
@@ -1342,9 +1365,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
           </div>
         ";
-        } elseif ((($this->getAttribute(        // line 671
+        } elseif ((($this->getAttribute(        // line 682
 ($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["centro_general"] ?? null) == true))) {
-            // line 672
+            // line 683
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
               <div class=\"col s12 center\" style=\"margin-bottom:5px\"> 
@@ -1353,9 +1376,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
         ";
-        } elseif ((($this->getAttribute(        // line 679
+        } elseif ((($this->getAttribute(        // line 690
 ($context["pagina"] ?? null), "extrabtn", array()) == "SI") && (($context["reputacion_volver"] ?? null) == true))) {
-            // line 680
+            // line 691
             echo "          <div class=\"nav-content hide-on-large-only pormayor\">
             <div class=\"row sinBordeBottom\">
               <div class=\"col s12 center\" style=\"margin-bottom:5px\"> 
@@ -1365,13 +1388,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
         ";
         }
-        // line 688
+        // line 699
         echo "        ";
         if ((($context["userAgent"] ?? null) != "PC")) {
-            // line 689
+            // line 700
             echo "          ";
             if (($context["vista_carrito"] ?? null)) {
-                // line 690
+                // line 701
                 echo "            <div class=\"nav-content white\">
               <div class=\"row centrarForzado navCompra\">
                 <div class=\"col s4 sinUser center fontB2 pormayorUnico white-text\">
@@ -1386,13 +1409,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             </div>
           ";
-            } elseif (            // line 703
+            } elseif (            // line 714
 ($context["vista_carrito2"] ?? null)) {
-                // line 704
+                // line 715
                 echo "            <div class=\"nav-content white\">
               <div class=\"row centrarForzado navCompra\">
                 <a href=\"";
-                // line 706
+                // line 717
                 echo base_url();
                 echo "productos/carrito\">
                   <div class=\"col s4 sinUser center fontB2 enfasisD\">
@@ -1408,13 +1431,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             </div>
           ";
-            } elseif (            // line 719
+            } elseif (            // line 730
 ($context["vista_carrito3"] ?? null)) {
-                // line 720
+                // line 731
                 echo "            <div class=\"nav-content white\">
               <div class=\"row centrarForzado navCompra\">
                 <a href=\"";
-                // line 722
+                // line 733
                 echo base_url();
                 echo "productos/carrito\">
                   <div class=\"col s4 sinUser center fontB2 enfasisD\">
@@ -1422,7 +1445,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </div>
                 </a>
                 <a href=\"";
-                // line 727
+                // line 738
                 echo base_url();
                 echo "productos/despacho\">
                   <div class=\"col s4 sinUser enfasisD center fontB2\">
@@ -1435,9 +1458,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             </div>
           ";
-            } elseif (            // line 737
+            } elseif (            // line 748
 ($context["vista_carrito4"] ?? null)) {
-                // line 738
+                // line 749
                 echo "            <div class=\"nav-content pormayorUnico\">
               <div class=\"row centrarForzado navCompra\">
                 <div class=\"col s12 sinUser center fontB2 enfasisD white-text\">
@@ -1446,82 +1469,82 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
             </div>
           ";
-            } elseif (            // line 745
+            } elseif (            // line 756
 ($context["vista_carrito5"] ?? null)) {
-                // line 746
+                // line 757
                 echo "          ";
             }
-            // line 747
+            // line 758
             echo "        ";
         }
-        // line 748
+        // line 759
         echo "      </nav>
     </div>
     <!-- HEADER -->
         ";
-        // line 751
+        // line 762
         if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
-            // line 752
+            // line 763
             echo "            <ul class=\"side-nav grey darken-4 z-depth-3 menuTex\" id=\"mobile-pormayor\">
               <li class=\"itemMenu\">
                 <a class=\"white-text\" href=\"";
-            // line 754
+            // line 765
             echo base_url();
             echo "\"><i class=\"material-icons \">home</i>Ir a Inicio</a>      
               </li>                     
               <li class=\"headerMenu center valign-wrapper\">
                 ";
-            // line 757
+            // line 768
             if ((($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 2) || ($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 3))) {
-                // line 758
+                // line 769
                 echo "                  <a class=\"btn centrarForzado pormayor pormayorAccent-text\" href=\"http://";
                 echo ($context["subdominio_tienda"] ?? null);
                 echo ".";
                 echo ($context["dominio"] ?? null);
                 echo "/usuario/inventario/lProductos\" style=\"padding: 0 16px;\">Perfil Tienda</a>
                 ";
-            } elseif (($this->getAttribute(            // line 759
+            } elseif (($this->getAttribute(            // line 770
 ($context["usuario"] ?? null), "rol", array()) == 5)) {
-                // line 760
+                // line 771
                 echo "                  <a class=\"btn centrarForzado pormayor pormayorAccent-text\" href=\"";
                 echo base_url();
                 echo "vnd/ventas\" style=\"padding: 0 16px;\">GESTOR</a>
                 ";
             }
-            // line 762
+            // line 773
             echo "                <a href=\"";
             echo base_url();
             echo "comprador/index/pedidos\" class=\"btn centrarForzado pormayorUnico white-text\" style=\"padding: 0 16px;\">Perfil Usuario</a>
               </li>
               <li class=\"sinUser itemMenu white-text\" style=\"margin: 5px 20px 5px 20px;\">Hola, <b>";
-            // line 764
+            // line 775
             echo (((twig_length_filter($this->env, twig_title_string_filter($this->env, $this->getAttribute(($context["usuario"] ?? null), "nombre", array()))) > 15)) ? ((twig_slice($this->env, twig_title_string_filter($this->env, $this->getAttribute(($context["usuario"] ?? null), "nombre", array())), 0, 15) . "...")) : ($this->getAttribute(($context["usuario"] ?? null), "nombre", array())));
             echo "</b><a class=\"cerrarSesionBtn sesionBtn right\"><i class=\"material-icons red-text\">power_settings_new</i></a> 
               </li> 
             </ul>         
         ";
         } else {
-            // line 767
+            // line 778
             echo "  
             <ul class=\"side-nav grey darken-4 z-depth-3 menuTex\" id=\"mobile-pormayor\">
               <li class=\"headerMenu center valign-wrapper\">
                 <a class=\"btn centrarForzado\" href=\"";
-            // line 770
+            // line 781
             echo base_url();
             echo "usuario/login\" style=\"padding: 0 16px;\">Iniciar sesión</a>
               </li>     
               <li class=\"itemMenu\">
                 <a class=\"white-text\" href=\"";
-            // line 773
+            // line 784
             echo base_url();
             echo "\"><i class=\"material-icons \">home</i>Inicio</a>      
               </li>
               ";
-            // line 775
+            // line 786
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["categorias"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
-                // line 776
+                // line 787
                 echo "              <li class=\"itemMenu\"><a itemprop=\"url\" href=\"";
                 echo base_url();
                 echo "categoria/";
@@ -1534,19 +1557,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 778
+            // line 789
             echo "            </ul>
         ";
         }
-        // line 780
+        // line 791
         echo "      <div class=\"overlayBody hide\"></div>      
       ";
-        // line 781
+        // line 792
         $this->displayBlock('content', $context, $blocks);
-        // line 782
+        // line 793
         echo "       <div class=\"fixed-action-btn\">
         <a class=\"btn-floating btn-large pormayor\" href=\"";
-        // line 783
+        // line 794
         echo base_url();
         echo "productos/carrito\">
           <i class=\"large material-icons black-text\">shopping_cart</i>
@@ -1554,7 +1577,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
 
         <footer class=\"page-footer grey darken-4 black-text ";
-        // line 788
+        // line 799
         if (($context["nofooter"] ?? null)) {
             echo "hide";
         }
@@ -1569,19 +1592,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <h5 class=\"amber-text\">MI CUENTA</h5>
                 <ul>
                   <li><a class=\"\" href=\"";
-        // line 798
+        // line 809
         echo base_url();
         echo "usuario/login\">Registrarte</a></li>
                   <li><a class=\"\" href=\"";
-        // line 799
+        // line 810
         echo base_url();
         echo "usuario/login\">Iniciar Sesión</a></li>
                   <li><a class=\"\" href=\"";
-        // line 800
+        // line 811
         echo base_url();
         echo "usuario/olvido_contrasenia\">Recuperar Contraseña</a></li>
                   <li><a class=\"\" href=\"";
-        // line 801
+        // line 812
         echo base_url();
         echo "contacto\">Contacto</a></li>
                 </ul>
@@ -1590,16 +1613,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <h5 class=\"amber-text\">SERVICIO AL CLIENTE</h5>
                 <ul>
                   ";
-        // line 808
+        // line 819
         echo "                  <li><a class=\"\" href=\"";
         echo base_url();
         echo "legal\">Terminos y condiciones</a></li>
                   <li><a class=\"\" href=\"";
-        // line 809
+        // line 820
         echo base_url();
         echo "legal/devolucionesycambios\">Politicas de Devoluciones y Cambios</a></li>
                   ";
-        // line 811
+        // line 822
         echo "                  <li><a class=\"\" href=\"";
         echo base_url();
         echo "reclamo\">Libro de Reclamaciones <i class=\"material-icons\">menu_book</i></a></li>
@@ -1609,11 +1632,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <h5 class=\"amber-text\">ESCRÍBENOS</h5>
                 <ul>
                 ";
-        // line 817
+        // line 828
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["vendedores"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["v"]) {
-            // line 818
+            // line 829
             echo "                  <li><a href=\"tel:51";
             echo $this->getAttribute($context["v"], "Per_Telefono", array());
             echo "\">";
@@ -1626,7 +1649,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['v'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 820
+        // line 831
         echo "                  <li><a href=\"mailto:contacto@pormayor.pe\">contacto@pormayor.pe</a></li>
                   <li>Horario de Atención:<br>
                     Lunes a Viernes: 10:00 AM a 6:00 PM<br>
@@ -1640,22 +1663,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class=\"row container\">
               <div class=\"col l6 center\">
                 © 2018-2022 Derechos Reservados <a href=\"";
-        // line 832
+        // line 843
         echo base_url();
         echo "\">PorMayor.pe S.A.</a>
               </div>
               <div class=\"col l2\">
                 <a href=\"https://www.camaralima.org.pe/principal\"><img src=\"";
-        // line 835
+        // line 846
         echo ($context["ruta_img"] ?? null);
         echo "LOGO-CCL-2019.png\" title=\"REGISTRADOS EN LA CAMARA DE COMERCIO DE LIMA\"></a>
               </div>
           </div>
         </footer>      
     ";
-        // line 839
+        // line 850
         $this->displayBlock('modal', $context, $blocks);
-        // line 840
+        // line 851
         echo "      <script> var base_url = \"";
         echo base_url();
         echo "\";</script>
@@ -1664,14 +1687,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\"></script>
       <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js\"></script>
       <script src=\"";
-        // line 845
+        // line 856
         echo base_url("public/js/template-lite.min.js?v=0152");
         echo "\" defer></script>
       <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js\"></script>
     ";
-        // line 847
+        // line 858
         $this->displayBlock('script', $context, $blocks);
-        // line 848
+        // line 859
         echo "   </body>
 
 </html>";
@@ -1688,19 +1711,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         echo " ";
     }
 
-    // line 781
+    // line 792
     public function block_content($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 839
+    // line 850
     public function block_modal($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 847
+    // line 858
     public function block_script($context, array $blocks = array())
     {
         echo " ";
@@ -1718,7 +1741,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     public function getDebugInfo()
     {
-        return array (  1704 => 847,  1698 => 839,  1692 => 781,  1686 => 46,  1681 => 29,  1675 => 848,  1673 => 847,  1668 => 845,  1659 => 840,  1657 => 839,  1650 => 835,  1644 => 832,  1630 => 820,  1617 => 818,  1613 => 817,  1603 => 811,  1599 => 809,  1594 => 808,  1585 => 801,  1581 => 800,  1577 => 799,  1573 => 798,  1558 => 788,  1550 => 783,  1547 => 782,  1545 => 781,  1542 => 780,  1538 => 778,  1525 => 776,  1521 => 775,  1516 => 773,  1510 => 770,  1505 => 767,  1498 => 764,  1492 => 762,  1486 => 760,  1484 => 759,  1477 => 758,  1475 => 757,  1469 => 754,  1465 => 752,  1463 => 751,  1458 => 748,  1455 => 747,  1452 => 746,  1450 => 745,  1441 => 738,  1439 => 737,  1426 => 727,  1418 => 722,  1414 => 720,  1412 => 719,  1396 => 706,  1392 => 704,  1390 => 703,  1375 => 690,  1372 => 689,  1369 => 688,  1359 => 680,  1357 => 679,  1348 => 672,  1346 => 671,  1326 => 653,  1324 => 652,  1302 => 632,  1300 => 631,  1270 => 603,  1267 => 602,  1249 => 586,  1246 => 585,  1243 => 584,  1237 => 580,  1229 => 575,  1204 => 557,  1200 => 555,  1194 => 554,  1186 => 552,  1183 => 551,  1178 => 550,  1172 => 549,  1169 => 548,  1166 => 547,  1163 => 546,  1158 => 545,  1156 => 544,  1145 => 540,  1139 => 539,  1134 => 536,  1128 => 535,  1125 => 534,  1123 => 533,  1116 => 532,  1113 => 531,  1108 => 530,  1106 => 529,  1098 => 526,  1088 => 521,  1084 => 519,  1081 => 518,  1078 => 517,  1072 => 513,  1064 => 508,  1039 => 490,  1035 => 488,  1024 => 486,  1020 => 485,  1009 => 481,  1003 => 480,  998 => 477,  987 => 475,  983 => 474,  975 => 471,  965 => 466,  961 => 464,  958 => 463,  955 => 462,  929 => 438,  918 => 436,  914 => 435,  905 => 428,  902 => 427,  899 => 426,  883 => 412,  872 => 410,  868 => 409,  860 => 403,  849 => 401,  845 => 400,  836 => 393,  833 => 392,  830 => 391,  814 => 377,  803 => 375,  799 => 374,  791 => 368,  780 => 366,  776 => 365,  768 => 359,  760 => 354,  735 => 336,  731 => 334,  720 => 332,  716 => 331,  705 => 327,  699 => 326,  694 => 323,  683 => 321,  679 => 320,  671 => 317,  661 => 312,  657 => 310,  654 => 309,  652 => 308,  638 => 296,  625 => 294,  621 => 293,  613 => 287,  600 => 285,  596 => 284,  588 => 278,  586 => 277,  571 => 264,  569 => 263,  564 => 260,  557 => 256,  553 => 255,  543 => 248,  539 => 247,  536 => 246,  532 => 244,  530 => 243,  527 => 242,  521 => 239,  519 => 238,  516 => 237,  512 => 235,  506 => 232,  503 => 231,  501 => 230,  491 => 227,  488 => 226,  484 => 224,  482 => 223,  479 => 222,  473 => 219,  470 => 218,  467 => 217,  464 => 216,  454 => 209,  450 => 208,  447 => 207,  444 => 206,  434 => 199,  430 => 198,  427 => 197,  424 => 196,  418 => 192,  416 => 191,  413 => 190,  411 => 189,  405 => 187,  402 => 186,  396 => 182,  393 => 181,  390 => 180,  379 => 172,  375 => 171,  371 => 169,  368 => 168,  365 => 167,  362 => 166,  359 => 165,  356 => 164,  353 => 163,  347 => 159,  336 => 151,  332 => 150,  328 => 148,  325 => 147,  314 => 139,  310 => 138,  306 => 136,  303 => 135,  300 => 134,  297 => 133,  294 => 132,  290 => 130,  287 => 128,  283 => 126,  280 => 124,  277 => 123,  262 => 116,  260 => 115,  254 => 112,  250 => 111,  247 => 110,  242 => 107,  238 => 105,  236 => 104,  232 => 103,  228 => 101,  226 => 100,  219 => 95,  211 => 89,  208 => 88,  200 => 83,  197 => 82,  194 => 81,  186 => 76,  183 => 75,  180 => 74,  178 => 73,  172 => 69,  169 => 68,  161 => 66,  159 => 65,  154 => 64,  148 => 62,  146 => 61,  141 => 60,  139 => 59,  125 => 47,  123 => 46,  105 => 30,  103 => 29,  99 => 28,  94 => 26,  88 => 22,  83 => 19,  76 => 15,  73 => 14,  71 => 13,  62 => 12,  52 => 11,  33 => 8,  24 => 1,);
+        return array (  1727 => 858,  1721 => 850,  1715 => 792,  1709 => 46,  1704 => 29,  1698 => 859,  1696 => 858,  1691 => 856,  1682 => 851,  1680 => 850,  1673 => 846,  1667 => 843,  1653 => 831,  1640 => 829,  1636 => 828,  1626 => 822,  1622 => 820,  1617 => 819,  1608 => 812,  1604 => 811,  1600 => 810,  1596 => 809,  1581 => 799,  1573 => 794,  1570 => 793,  1568 => 792,  1565 => 791,  1561 => 789,  1548 => 787,  1544 => 786,  1539 => 784,  1533 => 781,  1528 => 778,  1521 => 775,  1515 => 773,  1509 => 771,  1507 => 770,  1500 => 769,  1498 => 768,  1492 => 765,  1488 => 763,  1486 => 762,  1481 => 759,  1478 => 758,  1475 => 757,  1473 => 756,  1464 => 749,  1462 => 748,  1449 => 738,  1441 => 733,  1437 => 731,  1435 => 730,  1419 => 717,  1415 => 715,  1413 => 714,  1398 => 701,  1395 => 700,  1392 => 699,  1382 => 691,  1380 => 690,  1371 => 683,  1369 => 682,  1349 => 664,  1347 => 663,  1325 => 643,  1323 => 642,  1293 => 614,  1290 => 613,  1272 => 597,  1269 => 596,  1266 => 595,  1260 => 591,  1252 => 586,  1227 => 568,  1223 => 566,  1217 => 565,  1209 => 563,  1206 => 562,  1201 => 561,  1195 => 560,  1192 => 559,  1189 => 558,  1186 => 557,  1181 => 556,  1179 => 555,  1168 => 551,  1162 => 550,  1157 => 547,  1151 => 546,  1148 => 545,  1146 => 544,  1139 => 543,  1136 => 542,  1131 => 541,  1129 => 540,  1121 => 537,  1111 => 532,  1107 => 530,  1104 => 529,  1101 => 528,  1095 => 524,  1087 => 519,  1062 => 501,  1058 => 499,  1047 => 497,  1043 => 496,  1032 => 492,  1026 => 491,  1021 => 488,  1010 => 486,  1006 => 485,  998 => 482,  988 => 477,  984 => 475,  981 => 474,  978 => 473,  952 => 449,  941 => 447,  937 => 446,  928 => 439,  925 => 438,  922 => 437,  906 => 423,  895 => 421,  891 => 420,  883 => 414,  872 => 412,  868 => 411,  859 => 404,  856 => 403,  853 => 402,  837 => 388,  826 => 386,  822 => 385,  814 => 379,  803 => 377,  799 => 376,  791 => 370,  783 => 365,  758 => 347,  754 => 345,  743 => 343,  739 => 342,  728 => 338,  722 => 337,  717 => 334,  706 => 332,  702 => 331,  694 => 328,  684 => 323,  680 => 321,  677 => 320,  675 => 319,  661 => 307,  648 => 305,  644 => 304,  636 => 298,  623 => 296,  619 => 295,  611 => 289,  609 => 288,  594 => 275,  592 => 274,  587 => 271,  580 => 267,  576 => 266,  566 => 259,  562 => 258,  559 => 257,  555 => 255,  553 => 254,  550 => 253,  544 => 250,  542 => 249,  539 => 248,  535 => 246,  529 => 243,  526 => 242,  524 => 241,  514 => 238,  511 => 237,  507 => 235,  505 => 234,  502 => 233,  496 => 230,  493 => 229,  490 => 228,  487 => 227,  477 => 220,  473 => 219,  470 => 218,  467 => 217,  457 => 210,  453 => 209,  450 => 208,  447 => 207,  441 => 203,  439 => 202,  436 => 201,  434 => 200,  428 => 198,  425 => 197,  419 => 193,  416 => 192,  413 => 191,  402 => 183,  398 => 182,  394 => 180,  391 => 179,  388 => 178,  385 => 177,  382 => 176,  379 => 175,  376 => 174,  370 => 170,  359 => 162,  355 => 161,  351 => 159,  348 => 158,  337 => 150,  333 => 149,  329 => 147,  326 => 146,  323 => 145,  320 => 144,  317 => 143,  313 => 141,  310 => 139,  306 => 137,  303 => 135,  300 => 134,  285 => 127,  283 => 126,  277 => 123,  273 => 122,  270 => 121,  265 => 118,  261 => 116,  259 => 115,  255 => 114,  251 => 112,  249 => 111,  237 => 102,  233 => 101,  229 => 100,  225 => 99,  219 => 95,  211 => 89,  208 => 88,  200 => 83,  197 => 82,  194 => 81,  186 => 76,  183 => 75,  180 => 74,  178 => 73,  172 => 69,  169 => 68,  161 => 66,  159 => 65,  154 => 64,  148 => 62,  146 => 61,  141 => 60,  139 => 59,  125 => 47,  123 => 46,  105 => 30,  103 => 29,  99 => 28,  94 => 26,  88 => 22,  83 => 19,  76 => 15,  73 => 14,  71 => 13,  62 => 12,  52 => 11,  33 => 8,  24 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

@@ -1,4 +1,4 @@
-{% extends "layout/intranet/template_lite.twig" %}
+{% extends "layout/intranet/template_lite_nuevo.twig" %}
 {% block head %}
 	{# <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> #}
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
@@ -17,6 +17,7 @@
 	  		.fontE{font-size: 0.8rem!important}
 	  		.slider{height:170px !important;}
 	  		.slides{height:200px !important;}
+	  		.slider .slides{background-color: #9e9e9e00 !important}
 		{% endif %}  
 	</style>
 {% endblock %}
@@ -78,28 +79,28 @@
 		<div class="row">
 			<div class="col s12">
 				 <div class="slider">
-				    <ul class="slides">
+				    <ul class="slides" style="background-color: #ffffff00 !important;">
 				      <li> <a href="{{base_url()}}pagina/productos">
 				    {% if userAgent == 'PC' %}
-				        <img src="{{ruta_img}}banner/c_01_web.webp" style="background-color: white !important;">
+				        <img src="{{ruta_img}}banner/c_01_web.webp" style="background-color: #ffffff00 !important;">
 				    {% else %}
-				        <img src="{{ruta_img}}banner/c_01_movil.webp" style="background-color: white !important;">
+				        <img src="{{ruta_img}}banner/c_01_movil.webp" style="background-color: #ffffff00 !important;">
 				    {% endif %}
 				    	</a>
 				      </li>
 				      <li><a href="{{base_url()}}pagina/productos">
 				    {% if userAgent == 'PC' %}
-				        <img src="{{ruta_img}}banner/c_02_web.webp" style="background-color: white !important;">
+				        <img src="{{ruta_img}}banner/c_02_web.webp" style="background-color: #ffffff00 !important;">
 				    {% else %}
-				        <img src="{{ruta_img}}banner/c_02_movil.webp" style="background-color: white !important;">
+				        <img src="{{ruta_img}}banner/c_02_movil.webp" style="background-color: #ffffff00 !important;">
 				    {% endif %}
 						</a>
 				      </li>     
 				      <li>
 				    {% if userAgent == 'PC' %}
-				        <img src="{{ruta_img}}banner/c_03_web.webp" style="background-color: white !important;">
+				        <img src="{{ruta_img}}banner/c_03_web.webp" style="background-color: #ffffff00 !important;">
 				    {% else %}
-				        <img src="{{ruta_img}}banner/c_03_movil.webp" style="background-color: white !important;">
+				        <img src="{{ruta_img}}banner/c_03_movil.webp" style="background-color: #ffffff00 !important;">
 				    {% endif %}
 				      </li>
 				    </ul>
@@ -107,24 +108,35 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col s12 pormayorUnico center-align input-field" style="padding-top: 7px;margin-bottom: 10px;">
-			 <a href="https://www.instagram.com/pormayor.pe/?hl=es-la"><img alt="Instagram PorMayor.pe" title="Instagram PorMayor.pe" src="{{ruta_img}}instaW.png" height="35"></a>&nbsp;&nbsp;
-              <a href="https://www.facebook.com/pormayoroficial/"><img alt="Facebook PorMayor.pe" title="Facebook PorMayor.pe" src="{{ruta_img}}faceW.png" height="35"></a>&nbsp;&nbsp;
-              <a href="mailto:contacto@pormayor.pe"><img alt="Correo PorMayor.pe" title="Correo PorMayor.pe" src="{{ruta_img}}mailW.png" height="35"></a>&nbsp;&nbsp;
-              <a href="https://www.youtube.com/channel/UCte8tqCKUnni_J0VV-TDQQQ"><img alt="Youtube PorMayor.pe" title="Youtube PorMayor.pe" src="{{ruta_img}}youtubeW.png" height="35"></a>
-			</div>
 			<div class="col s12 center">
-			{# <span style="font-size:1.5em;">Categorías</span> #}
-		  	{% for cat in categorias %}
-			  	<a itemprop="url" href="{{base_url()}}categoria/{{cat.url}}">
-			       <div class="chip pormayor fontA">
-			       		{{ cat.Cat_Nombre|upper }}
+				{% if userAgent == 'PC' %}
+					<div class="row">
+						<div class="col l3">
+				<img src="{{ruta_img}}icons/Info_web-02.png" height="70px">
+							
+						</div>
+						<div class="col l3">
+				<img src="{{ruta_img}}icons/Info_web-04.png" height="70px">
+							
+						</div>
+						<div class="col l3">
+				<img src="{{ruta_img}}icons/Info_web-05.png" height="70px">
+							
+						</div>
+						<div class="col l3">
+				<img src="{{ruta_img}}icons/Info_web-06.png" height="70px">
+							
+						</div>
 					</div>
-		    	</a>
-		  	{% endfor %}
+				{% else %}
+				<img src="{{ruta_img}}icons/Info_cel-22.png" height="60px">
+				<img src="{{ruta_img}}icons/Info_cel-23.png" height="60px">
+				<img src="{{ruta_img}}icons/Info_cel-24.png" height="60px">
+				<img src="{{ruta_img}}icons/Info_cel-25.png" height="60px">
+				{% endif %}
 			</div>
-			<div class="col s12 fontE">
-				<p>Últimos productos</p>
+			<div class="col s12 pormayorUnico fontE center">
+				<span class="white-text">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
 			</div>
 		  	{% for pro in pro10 %}
 		  	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
@@ -152,7 +164,16 @@
 	    	</a>
 		  	{% endfor %}
 			<div class="col s12 center"><br>
-			<a href="{{base_url}}pagina/productos" class="btn btn-large" style="font-size:2em;"><b>VER TODOS LOS PRODUCTOS</b></a>
+			{# <a href="{{base_url}}pagina/productos" class="btn btn-large" style="font-size:2em;"><b>VER TODOS LOS PRODUCTOS</b></a> #}
+			 <ul class="pagination">
+			    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+			    <li class="active"><a href="{{base_url}}pagina/productos">1</a></li>
+			    <li class="waves-effect"><a href="{{base_url}}pagina/productos/2">2</a></li>
+			    <li class="waves-effect"><a href="{{base_url}}pagina/productos/3">3</a></li>
+			    <li class="waves-effect"><a href="{{base_url}}pagina/productos/4">4</a></li>
+			    <li class="waves-effect"><a href="{{base_url}}pagina/productos/5">5</a></li>
+			    <li class="waves-effect"><a href="{{base_url}}pagina/productos"><i class="material-icons">chevron_right</i></a></li>
+			  </ul>
 			</div>
 
 	    </div>
