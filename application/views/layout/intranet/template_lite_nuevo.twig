@@ -45,7 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 {% block head %} {% endblock %}
   <style type="text/css">
-  .autocomplete-content{width: 40vw!important;}
+  .autocomplete-content{width: 40vw !important; z-index: 9999 !important;position: relative;}
   .w100 {width:200% !important}
   @media only screen and (max-width: 600px) {
   .w100 {width:100% !important}
@@ -105,8 +105,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="black center">
       <span class="white-text fontA">¡Por compras mínimas de <b class="amber-text">S/100</b>, llévate diferentes productos a precio por cajón!</span>
     </div>
-    <div class="">
-      <nav class="z-depth-2 pormayor">
+    <nav class="pormayor">
+      <div class="nav-wrapper container">
+        <a class="brand-logo" href="{{base_url()}}" >
+          <img alt="Pomayor.pe - Crece con nosotros" src="{{ruta_img}}icons/logoPrincipal.png" height="55px" style="padding-top: 5px;">
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+            <a class='dropdown-button black-text' href='#' data-activates='categoriasList'><i class="material-icons left">apps</i> Categorias</a>
+          </li>
+          <li>
+            <div class="contentSearch contentSearchTienda positionRelative">
+                <i class="material-icons positionAbsolute sinUser grey-text text-lighten-1 lineHeight0 transitionB">search</i>
+                <input type="text" class="browser-default buscador autocomplete redondeo white enfasisA" placeholder="Buscar productos" data-tienda="pormayor">
+            </div>
+          </li>
+          <li>
+            <a class="black-text" href="{{base_url()}}productos/carrito"><i class="material-icons left">shopping_cart</i>Mis compras</a>
+          </li>
+          <li>
+            <a class="black-text" href="{{base_url()}}usuario/login"><i class="material-icons left">account_circle</i>Mi cuenta</a>        
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <ul id='categoriasList' class='dropdown-content'>
+    {% for cat in categorias %}
+      <li><a itemprop="url" href="{{base_url()}}categoria/{{cat.url}}">{{cat.Cat_Nombre|upper}}</a></li>
+    {% endfor %}            
+    </ul>
+    {# <div class=""> #}
+{#       <nav class="z-depth-2 pormayor">
         <div class="row container">
           {% if userAgent == 'movil' %}
             <div class="col s2 m2 l2 center hide-on-large-only colMenuButton ocultarSearch sinPadding" style="height:56px">
@@ -120,19 +149,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <img alt="Pomayor.pe - Vende facilito, Compra segurito" src="{{ruta_img}}icons/logoPrincipal.png" class="centrarForzado">
             </a>
           </div>
-          <div class="col s6 m6 l6">
-              <div class="contentSearch contentSearchTienda positionRelative">
+          <div class="col l1">
+            <a class='dropdown-button black-text btn-flat' href='#' data-activates='categoriasList'><i class="material-icons left">apps</i> Categorias</a>
+          </div>
+          <div class="col s6 m6 l7">
+              <div class="z contentSearchTienda positionRelative">
                 <i class="material-icons positionAbsolute sinUser grey-text text-lighten-1 lineHeight0 transitionB">search</i>
                 <input type="text" class="browser-default buscador autocomplete redondeo white enfasisA" placeholder="Buscar productos" data-tienda="pormayor">
               </div> 
           </div>
-          <div class="col l2">
-             <a class="black-text" href="{{base_url()}}productos/carrito"><i class="material-icons left">shopping_cart</i>Mis compras</a>
+          <div class="col l1" style="cursor: pointer;">
+             <a class="black-text" href="{{base_url()}}productos/carrito"><i class="material-icons" style="display: block;font-size: 30px;height: 13px;margin-left: 17px;line-height: 50px; cursor: pointer;">shopping_cart</i>Mis compras</a>
           </div>
-          <div class="col l2">
-             <a class="black-text" href="{{base_url()}}usuario/login"><i class="material-icons left">account_circle</i>Mi cuenta</a>            
+          <div class="col l1" style="cursor: pointer;">
+             <a class="black-text" href="{{base_url()}}usuario/login"><i class="material-icons" style="display: block;font-size: 30px;height: 13px;margin-left: 17px;line-height: 50px; cursor: pointer;">account_circle</i>Mi cuenta</a>            
           </div>
         </div>
+         <ul id='categoriasList' class='dropdown-content'>
+          {% for cat in categorias %}
+            <li><a itemprop="url" href="{{base_url()}}categoria/{{cat.url}}">{{cat.Cat_Nombre|upper}}</a></li>
+          {% endfor %}            
+          </ul> #}
 
           {# {% if pagina.tipo == "carrito"  %}
             {% if userAgent != "PC" %}
@@ -264,7 +301,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <a class="backSearch positionAbsolute lineHeight0 comoBoton "><i class="material-icons grey-text sinUser lineHeight0">arrow_back</i></a> #}
         {# </div> #}
-        
+     {#    
         {% if userAgent != "PC" %}
           {% if vista_carrito %}
             <div class="nav-content white">
@@ -326,7 +363,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           {% endif %}
         {% endif %}
       </nav>
-    </div>
+    </div> #}
     <!-- HEADER -->
         {% if usuario.logueado %}
             <ul class="side-nav grey darken-4 z-depth-3 menuTex" id="mobile-pormayor">

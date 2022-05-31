@@ -771,6 +771,19 @@
                 WHERE pro.Pro_PM = 1 AND pro.Pro_Nombre LIKE '%$nombre_producto%' GROUP BY pro.Pro_IdProducto HAVING SKU_StockDisponible >= 3";
             $query = $this->db->query($sql);
             return $query->result();
+        }        
+        function filtro_producto_id($Pro_IdProducto)
+        {
+            $sql = "SELECT pro.Pro_IdProducto,pro.Pro_Nombre, pro.Pro_Estado, pro.Pro_Oferta, pro.Pro_Valoracion, pro.Pro_PrecioRango,pro.Pro_Marca, pro.Pro_MostrarPrecio,cat.Cat_Nombre, prc.Cat_IdCategoria, suc.Suc_Nombre,prc.Suc_IdSubCategoria, des.Des_Nombre, des.Des_IdDetalle_SubCategoria, pro.Pro_PrecioMinimo, prf.Prf_Thumb, prf.Prf_Img, pro.Pro_Caracteristicas,pro.Pro_Garantia,pro.Pro_EdoGarantia,pro.Pro_Documento,pro.Pro_FechaCreacion,pro.Pro_Descripcion,pro.Pro_PrecioMaximo,pro.Pro_Vista,(SELECT SUM(SKU_StockDisponible) FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as SKU_StockDisponible 
+                FROM producto as pro 
+                INNER JOIN producto_foto AS prf ON prf.producto_Pro_IdProducto = pro.Pro_IdProducto 
+                INNER JOIN producto_categoria as prc on prc.producto_Pro_IdProducto = pro.Pro_IdProducto
+                INNER JOIN categoriap as cat on cat.Cat_IdCategoria = prc.Cat_IdCategoria
+                INNER JOIN subcategoriap as suc on suc.Suc_IdSubCategoria = prc.Suc_IdSubCategoria
+                INNER JOIN detalle_subcategoriap as des on des.subcategoria_Suc_IdSubCategoria = prc.Suc_IdSubCategoria 
+                WHERE pro.Pro_PM = 1 AND pro.Pro_IdProducto LIKE '%$Pro_IdProducto%' GROUP BY pro.Pro_IdProducto HAVING SKU_StockDisponible >= 3";
+            $query = $this->db->query($sql);
+            return $query->result();
         }
 
         function filtro_producto_nombre_cat($nombre_producto)
@@ -1971,17 +1984,12 @@
 
         function nombre_productos()
         {
-            $sql = "SELECT pro.Pro_Nombre
-                    FROM `producto` as pro 
-                    INNER JOIN producto_unidad AS pun ON pun.producto_Pro_IdProducto = pro.Pro_IdProducto 
-                    INNER JOIN unidadmedida AS unm ON unm.Unm_IdUnidadMedida = pun.Unm_IdUnidadMedidad
-                    INNER JOIN producto_tienda AS prt ON prt.Pro_IdProducto = pro.Pro_IdProducto
-                    INNER JOIN tienda AS tie ON tie.Tie_IdTienda = prt.Tie_IdTienda
-                    WHERE tie.Tie_Estado = 2";
-            $query = $this->db->query($sql);
-
-            return $query->result();
-        }
+            $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, (SELECT SUM(SKU_StockDisponible) FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as SKU_StockDisponible ,pro.Pro_Saldo,pro.Pro_Preventa');
+            $this->db->from('producto as pro');
+            $this->db->where('pro.Pro_PM',1);
+            $this->db->having('SKU_StockDisponible >=', 3);
+            $query = $this->db->get();
+            return $query->result();        }
 
         function get_costo_envio($id_districts)
         {

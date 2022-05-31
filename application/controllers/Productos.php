@@ -517,22 +517,21 @@ show_404();
 }
 }
 
-public function search($nombre_busqueda = false)
+public function search($nombre_busqueda2 = false)
 {
 $data = $this->acl->load_datos();
-$nombre_busqueda = urldecode(str_replace("%20", " ", $nombre_busqueda));
-$data['pagina']['tipo'] = "carrito";
-$data['pagina']['extrabtn'] = 'SI';
-$data['pagina']['titulo'] = "Compra al por mayor online a los mejores precios | pormayor.pe";
-// if (empty($data['usuario']['id_usuario'])) {
-// $Usu_IdUsuario = 0;
-// }else{
-// $Usu_IdUsuario = $data['usuario']['id_usuario'];
-// }        	
-// $rB = $this->productoModel->registroBusqueda($nombre_busqueda,$Usu_IdUsuario);
+$nombre_busqueda3 = urldecode(str_replace("%20", " ", $nombre_busqueda2));
+$Producto = explode("-", $nombre_busqueda3);
+if (count($Producto) == 1) {
+$nombre_busqueda = $Producto[0];
+$data['producto'] = $this->productoModel->filtro_producto_id($nombre_busqueda);
+}else{
+$nombre_busqueda = $Producto[1];
+$data['producto'] = $this->productoModel->filtro_producto_nombre($nombre_busqueda);
+
+}
 $data['filtro_movil'] = true;
 //PRODUCTO
-$data['producto'] = $this->productoModel->filtro_producto_nombre($nombre_busqueda);
 $data['busqueda_termino'] = $nombre_busqueda;
 //URL categoria
 foreach ($data['producto'] as $valor) {

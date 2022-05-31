@@ -163,7 +163,7 @@ $(window).on("load", function() {
     var nombresArray = JSON.parse(nombres);
     $('input.autocomplete').autocomplete({
       data: nombresArray,
-      limit: 5,
+      limit: 10,
       minLength: 2,
       onAutocomplete: function(val) {
         $('input.autocomplete').trigger($.Event( "keypress", { which: 13 } ));

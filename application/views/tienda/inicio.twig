@@ -1,44 +1,9 @@
 {% extends "layout/intranet/template_lite.twig" %}
 
 {% block head %}
-
-  <style type="text/css">
-    .select-dropdown{
-      text-align: center;
-    }
-    .truncate{
-      text-transform: none !important;
-    }
-    h6 i{
-      font-size: 0.8rem;
-    }
-    .tituloTienda  img{
-      height: 34px;
-    }
-    .tabs .indicator {
-      height: 2.5px !important;
-      background-color: #21478F;
-    }
-    .tabs .tab a:hover, .tabs .tab a.active {
-      color: #21478F;
-    }
-    .btn, .btn:active, .btn:focus{
-      background-color: #21478F;
-    }
-.container .row {margin-left: -.70rem;margin-right: -.70rem;}
-
-/*Movile*/
-.fontE{font-size: 1.4rem!important}
-{% if userAgent != 'PC' %}
-  .alturaDIV{height:183px;}
-  .fontD2{font-size: 0.8rem!important;font-weight:1000;}
-  .fontE{font-size: 0.8rem!important}
-{% endif %}    
-</style>
 {% endblock %} 
 
 {% block content %}
-
   <main class="container fixContainer">
     {% if Suc_IdSubCategoria %}
       <input type="hidden" id="Suc_IdSubCategoria" value="{{Suc_IdSubCategoria}}">
@@ -107,7 +72,7 @@
                           <span itemprop="highPrice">{{pro.Pro_PrecioMaximo}}</span>
                           <meta itemprop="priceCurrency" content="PEN" />
                           </div>
-                           <span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 30 ? pro.Pro_Nombre|title|slice(0, 30) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} <text style="font-weight:1000;">{{ pro.Pro_Nombre|title|length > 26 ? pro.Pro_Nombre|title|slice(0, 27) ~ '...' : pro.Pro_Nombre }} </text>{% endif %}</span>
+                           <span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 30 ? pro.Pro_Nombre|title|slice(0, 30) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} <text style="font-weight:1000;">COD: {{ pro.Pro_IdProducto }}|{{ pro.Pro_Nombre|title|length > 26 ? pro.Pro_Nombre|title|slice(0, 27) ~ '...' : pro.Pro_Nombre }} </text>{% endif %}</span>
                            <div class="row sinPadding rowsinpaddin">
                                 {# <div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6> </div> #}
                                 <div class="col s2 m12 l12 green"><h6 style="color:#fff"><span class="fontE negrita">S/ {{pro.Pro_PrecioMinimo}}</span><br><i>X CAJÓN</i></h6></div>
@@ -165,7 +130,7 @@
                             </div>
                             <div class="col s8 positionRelative" style="height:160px">
                               <br>
-                              <span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 30 ? pro.Pro_Nombre|title|slice(0, 30) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} <text style="font-weight:1000;"> {{ pro.Pro_Nombre|title|length > 26 ? pro.Pro_Nombre|title|slice(0, 27) ~ '...' : pro.Pro_Nombre }}</text> {% endif %}</span>
+                              <span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 30 ? pro.Pro_Nombre|title|slice(0, 30) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} <text style="font-weight:1000;">COD: {{ pro.Pro_IdProducto }}| {{ pro.Pro_Nombre|title|length > 26 ? pro.Pro_Nombre|title|slice(0, 27) ~ '...' : pro.Pro_Nombre }}</text> {% endif %}</span>
                               <br>
                               <div class="enfasisD divider " style="margin: 5px 0px"></div>
                                 <div class="fontB2 enfasisB truncateDesc" itemprop="description">{{pro.Pro_Descripcion|replace({'<p>': "", '</p>':"",'<strong>': "", '</strong>':"",'<br>': "", '</br>':"",'&nbsp;':" ",'<ul>':" ",'</ul>':" ",'</li>':" ",'<li>':" ",'<table>':" ",'</table>':" ",'</tr>':" ",'<tr>':" ",'</td>':" ",'<td>':" ",'<tbody>':" ",'</tbody>':" ",'<figure class="table">':" ",'</figure>':" ",'<div>':" ",'</div>':" "})|slice(0, 90)|title}}...</div>
@@ -432,7 +397,7 @@
                               <span itemprop="highPrice">{{pro.Pro_PrecioMaximo}}</span>
                               <meta itemprop="priceCurrency" content="PEN" />
                               </div>
-                               <span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 30 ? pro.Pro_Nombre|title|slice(0, 30) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} <text style="font-weight:1000;">{{ pro.Pro_Nombre|title|length > 26 ? pro.Pro_Nombre|title|slice(0, 27) ~ '...' : pro.Pro_Nombre }} </text>{% endif %}</span>
+                               <span itemprop="name" class="truncateNew fontD2 muayuscula" title="{{pro.Pro_Nombre}}">{% if userAgent == 'PC' %} {{pro.Pro_Nombre|title|length < 30 ? pro.Pro_Nombre|title|slice(0, 30) ~ '<br><br>' : pro.Pro_Nombre}} {% else %} <text style="font-weight:1000;">COD: {{ pro.Pro_IdProducto }}|{{ pro.Pro_Nombre|title|length > 26 ? pro.Pro_Nombre|title|slice(0, 27) ~ '...' : pro.Pro_Nombre }} </text>{% endif %}</span>
                             {% if pro.Pro_Saldo == 0 %}
                                <div class="row sinPadding rowsinpaddin">
                                 {# <div class="col s6 m6 l6 green lighten-5"><h6><span class="fontE">S/ {{pro.Pro_PrecioMaximo}}</span><br><i>Normal</i></h6> </div> #}

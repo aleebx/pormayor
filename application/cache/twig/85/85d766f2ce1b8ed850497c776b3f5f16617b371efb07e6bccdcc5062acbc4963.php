@@ -280,19 +280,19 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
             // line 132
             echo "\t\t\t\t<img src=\"";
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_cel-22.png\" height=\"60px\">
+            echo "icons/Info_cel-22.png\">
 \t\t\t\t<img src=\"";
             // line 133
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_cel-23.png\" height=\"60px\">
+            echo "icons/Info_cel-23.png\">
 \t\t\t\t<img src=\"";
             // line 134
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_cel-24.png\" height=\"60px\">
+            echo "icons/Info_cel-24.png\">
 \t\t\t\t<img src=\"";
             // line 135
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_cel-25.png\" height=\"60px\">
+            echo "icons/Info_cel-25.png\">
 \t\t\t\t";
         }
         // line 137

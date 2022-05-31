@@ -151,13 +151,11 @@
       $datos_nombres=$this->productoModel->nombre_productos();
 
       foreach($datos_nombres as $key => $nom) {
-        $valor=mb_convert_case($nom->Pro_Nombre,MB_CASE_TITLE,'UTF-8');
+        $nomb = mb_convert_case($nom->Pro_Nombre,MB_CASE_TITLE,'UTF-8');
+        $cod = 'COD: '. $nom->Pro_IdProducto;
+        $valor = $cod . ' -' . $nomb;
         $dataNombres->$valor=null;
       }
-
-      $obj=(object)null; // create empty object, this syntax is the key
-      $obj->arg1='hello';
-      $obj->arg2='world';
       print_r(json_encode($dataNombres));
     }
 
