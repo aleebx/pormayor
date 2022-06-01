@@ -8,7 +8,7 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("layout/intranet/template_lite_nuevo.twig", "index3.twig", 1);
+        $this->parent = $this->loadTemplate("layout/intranet/template_lite.twig", "index3.twig", 1);
         $this->blocks = array(
             'head' => array($this, 'block_head'),
             'content' => array($this, 'block_content'),
@@ -18,7 +18,7 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 
     protected function doGetParent(array $context)
     {
-        return "layout/intranet/template_lite_nuevo.twig";
+        return "layout/intranet/template_lite.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())

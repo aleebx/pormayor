@@ -5,26 +5,25 @@
 {% endblock %}
 {% block content %}
   <main class="">
-    <div class="card">
-      <div class="card-content">
-      {# <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> #}
-        <h4>MIS CLIENTES</h4>
+    <div class="">
+      <div class="">
+        {% if userAgent == 'PC' %}
+          <div class="container">
+            
         <table id="listado">
           <thead>
             <tr>
                 <th>Fecha Creado</th>
                 <th>Cliente</th>
                 <th>ENTREGADOS</th>
-                <th>RECHAZADOS</th>
                 <th>VALOR TOTAL (ENTREGADO)</th>
                 <th>ESTADO ULTIMO PEDIDO</th>
                 <th>FECHA ULTIMO PEDIDO</th>
                 <th>ESTADO CLIENTE</th>
                 <th>FECHA INGRESADA</th>
-                <th>MOTIVO</th>
                 <th>DETALLE</th>
                 <th>ULTIMA ACCIÓN</th>
-                <th>FECHA PROGRAMADA</th>
+                {# <th>FECHA PROGRAMADA</th> #}
                 <th></th>
                 <th></th>
             </tr>
@@ -35,68 +34,93 @@
                   <td>{{c.Usu_Created|date("Y/m/d")}}</td>
                   <td>{{c.Per_Nombre}} -{{c.Per_Telefono}} <small></small></td>
                   <td>{{c.entregado}}</td>
-                  <td>{{c.rechazado}}</td>
                   <td>{{c.monto_entregado}}</td>
                   <td>{% if c.ultimo_estado == 1 %}NUEVA{% elseif c.ultimo_estado == 2 %}CONFIRMADA{% elseif c.ultimo_estado == 5 %}ENTREGADA{% elseif c.ultimo_estado == 6 %}RECHAZADA{% endif %}
                   <td>{{c.ultimo_pedido}}</td>
                   <td>
-                   {% set startDate = c.ultimo_pedido|date("Y-m-d") %}
-                    {% set endDate = "now"|date("Y-m-d") %}
+                  {% set startDate = c.ultimo_pedido|date("Y-m-d") %}
+                  {% set endDate = "now"|date("Y-m-d") %}
                   {% set difference = date(endDate).diff(date(startDate)) %}
                   {% set leftDays = difference.days %}
                   {% if leftDays%}
                    {% if leftDays <= 10 or leftDays == 0 %}
-                    <a class="btn-flat green" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+tu+familia+de+PorMayor.Pe+te+env%C3%ADa+un++saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0AAprovechamos+para+informarle+que+hemos+incorporado+novedades+a+nuestra+pagina+web+y+puedes+conocerlas+ingresando+a+https%3A%2F%2Fpormayor.pe%2F+%0D%0ARecuerda+que+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0ANos+gustar%C3%ADa+conocer+tu+opini%C3%B3n+sobre+nuestros+nuevos+productos%F0%9F%98%8A">{% set tipo = 'VIGENTE' %}{{tipo}}</a>
+                    <a class="btn green" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+tu+familia+de+PorMayor.Pe+te+env%C3%ADa+un++saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0AAprovechamos+para+informarle+que+hemos+incorporado+novedades+a+nuestra+pagina+web+y+puedes+conocerlas+ingresando+a+https%3A%2F%2Fpormayor.pe%2F+%0D%0ARecuerda+que+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0ANos+gustar%C3%ADa+conocer+tu+opini%C3%B3n+sobre+nuestros+nuevos+productos%F0%9F%98%8A">{% set tipo = 'VIGENTE' %}{{tipo}}</a>
                   {% elseif leftDays >= 11 and leftDays <= 20 %}
-                    <a class="btn-flat yellow" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla">{% set tipo = 'INACTIVO +10' %}{{tipo}}</a>
+                    <a class="btn yellow" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla">{% set tipo = 'INACTIVO+10' %}{{tipo}}</a>
                   {% elseif leftDays >= 21 and leftDays <= 30 %}
-                    <a class="btn-flat orange" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla">{% set tipo = 'INACTIVO +20' %}{{tipo}}</a>
+                    <a class="btn orange" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla">{% set tipo = 'INACTIVO+20' %}{{tipo}}</a>
                   {% elseif leftDays >= 31 and leftDays <= 40 %}
-                    <a class="btn-flat red" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+tu+familia+de+PORMAYOR+te+env%C3%ADa+un+cordial+saludo.+%F0%9F%A4%97%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+PREFERIRNOS%0D%0ATe+informo+que+han+llegado+variedad+de+productos+novedosos+que+puedes+conocer+ingresando+a+nuestra+web+https%3A%2F%2Fpormayor.pe%2F%0D%0ARecuerda+que+ahora+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0ACrece+con+Nosotros+%F0%9F%A5%B3%F0%9F%A5%B3%F0%9F%A5%B3">{% set tipo = 'INACTIVO +30' %}{{tipo}}</a>
+                    <a class="btn red" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+tu+familia+de+PORMAYOR+te+env%C3%ADa+un+cordial+saludo.+%F0%9F%A4%97%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+PREFERIRNOS%0D%0ATe+informo+que+han+llegado+variedad+de+productos+novedosos+que+puedes+conocer+ingresando+a+nuestra+web+https%3A%2F%2Fpormayor.pe%2F%0D%0ARecuerda+que+ahora+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0ACrece+con+Nosotros+%F0%9F%A5%B3%F0%9F%A5%B3%F0%9F%A5%B3">{% set tipo = 'INACTIVO+30' %}{{tipo}}</a>
                   {% elseif leftDays >= 41  %}
-                    <a class="btn-flat black" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla">{% set tipo = 'INACTIVO +40' %}{{tipo}}</a>
+                    <a class="btn grey" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0A%0D%0ATe+escribe+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+FORMAR+PARTE+NUESTRO+NEGOCIO%0D%0ASeguimos+aqu%C3%AD+para+apoyarte+a+emprender+y+hacer+crecer+tu+negocio%2C+actualmente+hemos+renovado+nuestra+modalidad+de+ventas+ahora+puedes+adquirir+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles+%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFY+tu+sigues+ah%C3%AD%3F%F0%9F%A7%90%0D%0APara+nosotros+tu+opini%C3%B3n+es+muy+importante+y+queremos+conocerla">{% set tipo = 'INACTIVO+40' %}{{tipo}}</a>
                   {% endif %}
                   {% else %}
                     {% if c.entregado > 1 %}
-                    <a class="btn-flat blue" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo">{% set tipo = 'VIGENTE' %}{{tipo}}</a>
+                    <a class="btn blue" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo">{% set tipo = 'VIGENTE' %}{{tipo}}</a>
                     {% else %}
-                       <a class="btn-flat blue" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0ATe+saluda+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+TU+INTERES%0D%0AAprovechamos+para+informarle+sobre+nuestra+MODALIDAD+DE+VENTA+en+la+que+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFTe+gustar%C3%ADa+obtener+mayor+informaci%C3%B3n%3F%0D%0AHazme+saber+y+podemos+agendar+una+Reuni%C3%B3n+y+para+brindarte+una+Asesor%C3%ADa+Completa+%F0%9F%91%A9%F0%9F%92%BB">{% set tipo = 'REGISTRADO' %}{{tipo}}</a>
+                       <a class="btn blue" href="https://wa.me/51{{c.Per_Telefono}}?text=Hola%2C+{{c.Per_Nombre}}+queremos+enviarte+un+cordial+saludo.+%F0%9F%A4%97%0D%0ATe+saluda+{{usuario.nombre}}%2C+Asesor+Comercial+de+la+empresa+PorMayor.Pe+%0D%0ADesde+ya+queremos+decirte+GRACIAS+POR+TU+INTERES%0D%0AAprovechamos+para+informarle+sobre+nuestra+MODALIDAD+DE+VENTA+en+la+que+puedes+llevarte+Todos+los+Productos+a+Precio+de+Caj%C3%B3n+por+compras+mayores+a+100soles%2C+y+as%C3%AD+emprender+tu+propio+negocio%F0%9F%92%AA%F0%9F%92%AA%0D%0A%0D%0A%C2%BFTe+gustar%C3%ADa+obtener+mayor+informaci%C3%B3n%3F%0D%0AHazme+saber+y+podemos+agendar+una+Reuni%C3%B3n+y+para+brindarte+una+Asesor%C3%ADa+Completa+%F0%9F%91%A9%F0%9F%92%BB">{% set tipo = 'REGISTRADO' %}{{tipo}}</a>
                     {% endif %}
                   {% endif %}
                   </td>
-                  {% set break = false %}
-                    {% set tt = 0 %}
-                  {% for ges in gestionc if not break%}
-                    {% if c.Usu_IdUsuario == ges.Usu_IdUsuario %}
-                      <td class="gFe{{c.Usu_IdUsuario}}">{{ges.Ges_FechaRegistro}}</td>
-                      <td class="gMo{{c.Usu_IdUsuario}}">{{ges.Ges_Motivo}}</td>
-                      <td class="gDe{{c.Usu_IdUsuario}}">{{ges.Ges_Detalle}}</td>
-                      <td class="gAc{{c.Usu_IdUsuario}}">{{ges.Ges_Accion}}</td>
-                      <td class="gFp{{c.Usu_IdUsuario}}">{{ges.Ges_FechaProgramar}}</td>
-                    {% set tt = 1 %}
-                      {% set break = true %}
-{#                       {% else %}
-                      <td class="gFe{{c.Usu_IdUsuario}}"></td>
-                      <td class="gMo{{c.Usu_IdUsuario}}"></td>
-                      <td class="gDe{{c.Usu_IdUsuario}}"></td>
-                      <td class="gAc{{c.Usu_IdUsuario}}"></td>
-                      <td class="gFp{{c.Usu_IdUsuario}}"></td> #}
-                      {% endif %}
-                  {% endfor %}
-                  {% if tt == 0 %}
-                      <td class="gFe{{c.Usu_IdUsuario}}"></td>
-                      <td class="gMo{{c.Usu_IdUsuario}}"></td>
-                      <td class="gDe{{c.Usu_IdUsuario}}"></td>
-                      <td class="gAc{{c.Usu_IdUsuario}}"></td>
-                      <td class="gFp{{c.Usu_IdUsuario}}"></td> 
-                  {% endif %}                 
-                  {# <td><a class="btn green" href="{{base_url()}}vnd/cliente/{{c.Usu_IdUsuario}}">VER</a></td> #}
+                  <td class="gFec{{c.Usu_IdUsuario}}">{{c.Ges_FechaRegistro}}</td>
+                  <td class="gDe{{c.Usu_IdUsuario}}">{{c.Ges_Detalle}}</td>
+                  <td class="gAc{{c.Usu_IdUsuario}}">{{c.Ges_Accion}}</td>              
                   <td><a class="btn blue modal-trigger" id="{{c.Usu_IdUsuario}}" accessKey="{{c.Per_Nombre}}" xs="{{tipo}}" href="#modalGes"><i class="material-icons">update</i></a></td>
                   <td><a class="btn red quitar" data-idu="{{c.Usu_IdUsuario}}"><i class="material-icons">delete</i></a></td>
                 </tr>
               {% endfor %}
           </tbody>
         </table>
+          </div>
+
+      {% else %}
+          <div class="container">
+            <div class="input-field">
+              <input type="text" id="searchbar" onkeyup="search_pedido()" placeholder="BUSCAR CLIENTE">
+            </div>        
+        {% for c in clientes %}
+          <div class="card listadoCl sinPadding">
+            <div class="card-content">              
+              {% set startDate = c.ultimo_pedido|date("Y-m-d") %}
+                {% set endDate = "now"|date("Y-m-d") %}
+                {% set difference = date(endDate).diff(date(startDate)) %}
+                {% set leftDays = difference.days %}
+                {% if leftDays%}
+                 {% if leftDays <= 10 or leftDays == 0 %}
+                  <span class="badge black-text green" >{% set tipo = 'VIGENTE' %}{{tipo}}</span>
+                {% elseif leftDays >= 11 and leftDays <= 20 %}
+                  <span class="badge black-text yellow">{% set tipo = 'INACTIVO+10' %}{{tipo}}</span>
+                {% elseif leftDays >= 21 and leftDays <= 30 %}
+                  <span class="badge black-text orange">{% set tipo = 'INACTIVO+20' %}{{tipo}}</span>
+                {% elseif leftDays >= 31 and leftDays <= 40 %}
+                  <span class="badge black-text red">{% set tipo = 'INACTIVO+30' %}{{tipo}}</span>
+                {% elseif leftDays >= 41  %}
+                  <span class="badge black-text grey">{% set tipo = 'INACTIVO+40' %}{{tipo}}</span>
+                {% endif %}
+                {% else %}
+                  {% if c.entregado > 1 %}
+                  <span class="badge black-text blue">{% set tipo = 'VIGENTE' %}{{tipo}}</span>
+                  {% else %}
+                     <span class="badge black-text blue">{% set tipo = 'REGISTRADO' %}{{tipo}}</span>
+                  {% endif %}
+                {% endif %}
+              <span class="card-title">{{c.Per_Nombre}} <b>{{c.Per_Telefono}}</b></span>
+              <a class="btn-floating btn indigo right" href="tel:+51{{c.Per_Telefono}}">
+                <i class="large material-icons black-text">local_phone</i>
+              </a>
+              <a class="btn-floating btn light-green accent-4 right" href="https://wa.me/51{{c.Per_Telefono}}">
+                <i class="large material-icons black-text">textsms</i>
+              </a>
+              <ul>
+                <li><b>Fecha Registro: </b>{{c.Usu_Created|date("Y/m/d")}}</li>
+                <li><b>Ventas/Monto: </b>{{c.entregado}} / S/{{c.monto_entregado}}</li>
+                <li><b>Último pedido: </b>{{c.ultimo_pedido}}</li>
+              </ul>
+            </div>
+            </div>
+        {% endfor %}
+          </div>
+      {% endif %} 
       </div>
     </div>
   </main>
@@ -109,6 +133,20 @@
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
   <script>
+    function search_pedido() {
+  let input = document.getElementById('searchbar').value;
+  input = input.toLowerCase();
+  let x = document.getElementsByClassName('listadoCl');
+  // console.log(input);      
+  for (i = 0; i < x.length; i++) { 
+      if (!x[i].innerHTML.toLowerCase().includes(input)) {
+          x[i].style.display="none";
+      }
+      else {
+          x[i].style.display="block";                 
+      }
+  }
+}
   $(document).ready( function () {
     $('#listado').DataTable({
       "responsive": true,

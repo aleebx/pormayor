@@ -1,23 +1,40 @@
 <h5 class="center"><span class="negrita idVenta">{{eActual}}</span><br>{{xd}}</h5>
 <div class="row">
+  <div class="col s12">
+    <label>Resultado de comunicación</label>
+    <select  id="resultado" class="browser-default">
+      <option value="Interesado">Interesado</option>
+      <option value="No tiene negocio">No tiene negocio</option>
+      <option value="Telefono no existe / bloqueado para llamadas">Telefono no existe / bloqueado para llamadas</option>
+      <option value="Tiene otro giro de negocio">Tiene otro giro de negocio</option>
+      <option value="Registrado por error">Registrado por error</option>
+      <option value="No le interesa">No le interesa</option>
+      <option value="Tiene otra cuenta">Tiene otra cuenta</option>
+      <option value="Cliente de consumo">Cliente de consumo</option>
+      <option value="Telefono apagado / no contesta">Telefono apagado / no contesta</option>
+      <option value="Lo pensara / revisará / esta de viaje">Lo pensara / revisará / esta de viaje</option>
+    </select>
+  </div>
+  <div class="col s12">
+    <label>Acción según resultado</label>
+    <select  id="accion" class="browser-default">
+      <option value="Volver a llamar">Volver a llamar</option>
+      <option value="Hacer seguimiento">Hacer seguimiento</option>
+      <option value="Eliminar">Eliminar</option>
+    </select>
+  </div>
   <div class="input-field col s12">
     <input id="motivo" type="text" class="validate">
-    <label for="motivo">Motivo de comunicación</label>
-  </div>
-  <div class="input-field col s12">
-    <input id="resultado" type="text" class="validate">
-    <label for="resultado">Resultado de comunicación</label>
-  </div>
-  <div class="input-field col s12">
-    <input id="accion" type="text" class="validate">
-    <label for="accion">Acción según resultado</label>
+    <label for="motivo">Observación</label>
   </div>
   <div class="input-field col s12">
     {# <label for="fechaaccion">Fecha de Acción</label> #}
-    <input id="fechaaccion" type="date" class="validate" value="{{ yourDate|date_modify("+1 day")|date("Y-m-d") }}">
+    <input id="fechaaccion" type="date" class="validate">
   </div>
 </div>
 <div class="row">
+  <div class="col l12 red-text" id="errorGest">
+  </div>
 	<div class="col l6 center">
   		<a class="modal-action waves-effect waves-green btn-flat negrita blue lighten-1 actEstado" data-idv="{{id}}" data-tipo="{{xd}}"><i class="material-icons left">update</i>GUARDAR</a>
 	</div>
@@ -29,9 +46,9 @@
 <tr>
   <th>FE. REGISTRO</th>
   <th>TIPO</th>
-  <th>MOTIVO</th>
   <th>RESULTADO</th>
   <th>ACCIÓN</th>
+  <th>OBSERVACIÓN</th>
   <th>FECHA</th>
 </tr>
 <tbody id="tableGes">  
@@ -39,9 +56,9 @@
   <tr>
   	<td>{{g.Ges_FechaRegistro}}</td>
     <td>{{g.Ges_TipoCliente}}</td>
-    <td>{{g.Ges_Motivo}}</td>
   	<td>{{g.Ges_Detalle}}</td>
   	<td>{{g.Ges_Accion}}</td>
+    <td>{{g.Ges_Motivo}}</td>
   	<td>{{g.Ges_FechaProgramar}}</td>
   </tr>
   {% endfor %}
@@ -55,6 +72,7 @@
     var resultado = $('#resultado').val();
     var accion = $('#accion').val();
     var fechaaccion = $('#fechaaccion').val();
+    if(resultado && accion){ 
 		$.ajax({
          data:{
          'tipo' : tipo,
@@ -67,21 +85,24 @@
          type: "POST",
          url: base_url+'vnd/addgestion',
          success: function(data){
-        var markup = "<td>"+ tipo +"</td><td>" + motivo +"</td><td>" + resultado +"</td><td>" + accion +"</td><td>" + fechaaccion +"</td><td></tr>";
+        var markup = "<td>"+ tipo +"</td><td>" + resultado +"</td><td>" + accion +"</td><td>" + motivo +"</td><td>" + fechaaccion +"</td><td></tr>";
           $("#tableGes").append(markup);
           $(".gMo"+Usu_IdUsuario).text(motivo);
           $(".gDe"+Usu_IdUsuario).text(resultado);
           $(".gAc"+Usu_IdUsuario).text(accion);
           $(".gFp"+Usu_IdUsuario).text(fechaaccion);
+          $(".gFec"+Usu_IdUsuario).text('HOY');
 			    $('#motivo').val('');
           $('#resultado').val('');
           $('#accion').val('');
           $('#fechaaccion').val('');
-         	// $('.modal').modal('close');
          },
          error: function(data) {
            alert('error');
          }
       });
+    }else{
+      $('#errorGest').text('DEBE SELECCIONAR DETALLE Y ACCION SON OBLIGATORIOS');
+    }
 	});
 </script>

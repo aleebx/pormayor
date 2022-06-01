@@ -70,7 +70,7 @@ retrieve: true,
 dom: 'Blfrtip',
 createdRow: function( row, data, dataIndex ) {
 	var estado = $(row).find('td:eq(4)').text();
-	console.log(estado);
+	// console.log(estado);
 	if(estado == "NUEVA"){
 		$(row).find('td:eq(4)').addClass('yellow btn black-text');
 	}else if(estado == "CONFIRMADA"){

@@ -157,7 +157,7 @@ $ordenCampo = "valign-wrapper";
 $count++;
 $output .='
 <div class="row centrarForzado">
-<div class="col s2 m2 l2 valign-wrapper"><img class="redondeo centrarForzado fixImg2" src="htpps://pormayor.pe/img/'.$items["img"].'" ></div>
+<div class="col s2 m2 l2 valign-wrapper"><img class="redondeo centrarForzado fixImg2" src="'.$data['ruta_img'].$items["img"].'" ></div>
 <div class="col s4 m4 l3 '.$ordenCampo.' left-align muayuscula">'.ucfirst(strtolower($items["name"])).'&nbsp;<br><span class="fontB2 enfasisB">'.$items["tipovariacion"]." ".$items["variacion"]."  ".ucfirst(strtolower($items["color"])).'</span>
 </div>
 <div class="col s2 m2 l2 valign-wrapper" data-cantact="'.$items["qty"].'" data-cantmin="'.$items["cantmin"].'" data-idpro="'.$items["idpro"].'" data-preciounit="'.$items["precio_unit"].'" data-idrow="'.$items["rowid"].'" data-pvo="'.$items["pvo"].'" data-idsku="'.$items["id_sku"].'" data-pmin="'.$items["price_min"].'">'.$select.'<small class="enfasisB"> &nbsp;&nbsp;Unidades</small></div>

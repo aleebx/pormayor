@@ -82,7 +82,7 @@ class Vendedor_model extends CI_Model
     }
 
     function get_clientes($id_vendedor){
-        $this->db->select('(SELECT count(Pac_IdPago_Compra) FROM pago_compra WHERE Pac_Estado = 5 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario) AS entregado, (SELECT count(Pac_IdPago_Compra) FROM pago_compra WHERE Pac_Estado = 6 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario) AS rechazado, usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Telefono, (SELECT Pac_FechaRegistro FROM pago_compra WHERE pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario  order by Pac_FechaRegistro DESC limit 1) AS ultimo_pedido, (SELECT Pac_Estado FROM pago_compra WHERE pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario order by Pac_FechaRegistro DESC limit 1) AS ultimo_estado,usu.Usu_Created,(SELECT sum(Pac_Total) FROM pago_compra WHERE Pac_Estado = 5 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario) AS monto_entregado');
+        $this->db->select('(SELECT count(Pac_IdPago_Compra) FROM pago_compra WHERE Pac_Estado = 5 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario) AS entregado, (SELECT count(Pac_IdPago_Compra) FROM pago_compra WHERE Pac_Estado = 6 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario) AS rechazado, usu.Usu_IdUsuario, per.Per_Nombre, per.Per_Telefono, (SELECT Pac_FechaRegistro FROM pago_compra WHERE pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario  order by Pac_FechaRegistro DESC limit 1) AS ultimo_pedido, (SELECT Pac_Estado FROM pago_compra WHERE pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario order by Pac_FechaRegistro DESC limit 1) AS ultimo_estado,usu.Usu_Created,(SELECT sum(Pac_Total) FROM pago_compra WHERE Pac_Estado = 5 and pago_compra.Usu_IdUsuario = usu.Usu_IdUsuario) AS monto_entregado,(SELECT Ges_Detalle FROM gestion_cliente WHERE gestion_cliente.Usu_IdUsuario = usu.Usu_IdUsuario order by Ges_FechaRegistro DESC limit 1) AS Ges_Detalle,(SELECT Ges_Accion FROM gestion_cliente WHERE gestion_cliente.Usu_IdUsuario = usu.Usu_IdUsuario order by Ges_FechaRegistro DESC limit 1) AS Ges_Accion,(SELECT Ges_FechaRegistro FROM gestion_cliente WHERE gestion_cliente.Usu_IdUsuario = usu.Usu_IdUsuario order by Ges_FechaRegistro DESC limit 1) AS Ges_FechaRegistro');
         $this->db->from('usuario as usu');
         $this->db->join('persona as per','per.Per_IdPersona = usu.Per_IdPersona');
         $this->db->where('usu.Usu_IdUsuario_Ven', $id_vendedor);
@@ -274,7 +274,7 @@ class Vendedor_model extends CI_Model
         $this->db->from('gestion_cliente as ges');
         $this->db->join('usuario as usu','usu.Usu_IdUsuario = ges.Usu_IdUsuario');
         $this->db->where('usu.Usu_IdUsuario_Ven',$id_vendedor);
-        $this->db->group_by('ges.Usu_IdUsuario');
+        $this->db->group_by('usu.Usu_IdUsuario');
         $this->db->order_by('ges.Ges_FechaRegistro','DESC');
         $query = $this->db->get();
         return $query->result();
@@ -343,6 +343,7 @@ class Vendedor_model extends CI_Model
     } 
        
     function cambiar_estado_usu($Usu_IdUsuario){
+        $this->db->set('Usu_IdUsuario_Ven', '');
         $this->db->set('Usu_Activated', 2);
         $this->db->where('Usu_IdUsuario', $Usu_IdUsuario);
         $this->db->update('usuario');
