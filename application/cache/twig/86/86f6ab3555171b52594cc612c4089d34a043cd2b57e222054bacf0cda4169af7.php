@@ -106,7 +106,7 @@ retrieve: true,
 dom: 'Blfrtip',
 createdRow: function( row, data, dataIndex ) {
 \tvar estado = \$(row).find('td:eq(4)').text();
-\tconsole.log(estado);
+\t// console.log(estado);
 \tif(estado == \"NUEVA\"){
 \t\t\$(row).find('td:eq(4)').addClass('yellow btn black-text');
 \t}else if(estado == \"CONFIRMADA\"){

@@ -72,7 +72,6 @@
           </tbody>
         </table>
           </div>
-
       {% else %}
           <div class="container">
             <div class="input-field">
@@ -105,16 +104,35 @@
                   {% endif %}
                 {% endif %}
               <span class="card-title">{{c.Per_Nombre}} <b>{{c.Per_Telefono}}</b></span>
-              <a class="btn-floating btn indigo right" href="tel:+51{{c.Per_Telefono}}">
+              <a class="btn-floating btn blue right"  href="tel:+51{{c.Per_Telefono}}">
                 <i class="large material-icons black-text">local_phone</i>
               </a>
-              <a class="btn-floating btn light-green accent-4 right" href="https://wa.me/51{{c.Per_Telefono}}">
+              <a class="btn-floating btn green right" style="margin-right: 10px;" href="https://wa.me/51{{c.Per_Telefono}}">
                 <i class="large material-icons black-text">textsms</i>
               </a>
               <ul>
                 <li><b>Fecha Registro: </b>{{c.Usu_Created|date("Y/m/d")}}</li>
                 <li><b>Ventas/Monto: </b>{{c.entregado}} / S/{{c.monto_entregado}}</li>
                 <li><b>Último pedido: </b>{{c.ultimo_pedido}}</li>
+                <li class="center">
+                  <a class="btn purple modal-trigger" id="{{c.Usu_IdUsuario}}" accessKey="{{c.Per_Nombre}}" xs="{{tipo}}" href="#modalGes"><i class="material-icons left">update</i>GESTIONAR</a>
+                  <a class="btn red quitar" data-idu="{{c.Usu_IdUsuario}}"><i class="material-icons left">delete</i>SACAR DE CARTERA</a>
+                </li>
+                <li>
+                  <b>ÚLTIMA GESTIÓN</b>
+                  <table class="bordered">
+                    <tr>
+                      <th>FECHA</th>
+                      <th>DETALLE</th>
+                      <th>ACCIÓN</th>
+                    </tr>
+                    <tr>
+                      <td class="gFec{{c.Usu_IdUsuario}}">{{c.Ges_FechaRegistro}}</td>
+                      <td class="gDe{{c.Usu_IdUsuario}}">{{c.Ges_Detalle}}</td>
+                      <td class="gAc{{c.Usu_IdUsuario}}">{{c.Ges_Accion}}</td>
+                    </tr>
+                  </table>
+                </li>
               </ul>
             </div>
             </div>
@@ -124,9 +142,15 @@
       </div>
     </div>
   </main>
-  <div id="modalGes" class="modal" style="z-index:9999 !important;width: 50%!important;">
+  {% if userAgent == 'PC' %}
+  <div id="modalGes" class="modal" style="width: 60%;">
+      <div class="modal-content" id="loadEdit"></div>
+  </div>  
+{% else %}
+  <div id="modalGes" class="modal">
       <div class="modal-content" id="loadEdit"></div>
   </div>
+{% endif %}
 {% endblock %}
 
 {% block script %}

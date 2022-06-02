@@ -273,135 +273,178 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
             echo "          </tbody>
         </table>
           </div>
-
       ";
         } else {
-            // line 77
+            // line 76
             echo "          <div class=\"container\">
             <div class=\"input-field\">
               <input type=\"text\" id=\"searchbar\" onkeyup=\"search_pedido()\" placeholder=\"BUSCAR CLIENTE\">
             </div>        
         ";
-            // line 81
+            // line 80
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["clientes"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["c"]) {
-                // line 82
+                // line 81
                 echo "          <div class=\"card listadoCl sinPadding\">
             <div class=\"card-content\">              
               ";
-                // line 84
+                // line 83
                 $context["startDate"] = twig_date_format_filter($this->env, $this->getAttribute($context["c"], "ultimo_pedido", array()), "Y-m-d");
-                // line 85
+                // line 84
                 echo "                ";
                 $context["endDate"] = twig_date_format_filter($this->env, "now", "Y-m-d");
-                // line 86
+                // line 85
                 echo "                ";
                 $context["difference"] = $this->getAttribute(twig_date_converter($this->env, ($context["endDate"] ?? null)), "diff", array(0 => twig_date_converter($this->env, ($context["startDate"] ?? null))), "method");
-                // line 87
+                // line 86
                 echo "                ";
                 $context["leftDays"] = $this->getAttribute(($context["difference"] ?? null), "days", array());
-                // line 88
+                // line 87
                 echo "                ";
                 if (($context["leftDays"] ?? null)) {
-                    // line 89
+                    // line 88
                     echo "                 ";
                     if (((($context["leftDays"] ?? null) <= 10) || (($context["leftDays"] ?? null) == 0))) {
-                        // line 90
+                        // line 89
                         echo "                  <span class=\"badge black-text green\" >";
                         $context["tipo"] = "VIGENTE";
                         echo ($context["tipo"] ?? null);
                         echo "</span>
                 ";
-                    } elseif (((                    // line 91
+                    } elseif (((                    // line 90
 ($context["leftDays"] ?? null) >= 11) && (($context["leftDays"] ?? null) <= 20))) {
-                        // line 92
+                        // line 91
                         echo "                  <span class=\"badge black-text yellow\">";
                         $context["tipo"] = "INACTIVO+10";
                         echo ($context["tipo"] ?? null);
                         echo "</span>
                 ";
-                    } elseif (((                    // line 93
+                    } elseif (((                    // line 92
 ($context["leftDays"] ?? null) >= 21) && (($context["leftDays"] ?? null) <= 30))) {
-                        // line 94
+                        // line 93
                         echo "                  <span class=\"badge black-text orange\">";
                         $context["tipo"] = "INACTIVO+20";
                         echo ($context["tipo"] ?? null);
                         echo "</span>
                 ";
-                    } elseif (((                    // line 95
+                    } elseif (((                    // line 94
 ($context["leftDays"] ?? null) >= 31) && (($context["leftDays"] ?? null) <= 40))) {
-                        // line 96
+                        // line 95
                         echo "                  <span class=\"badge black-text red\">";
                         $context["tipo"] = "INACTIVO+30";
                         echo ($context["tipo"] ?? null);
                         echo "</span>
                 ";
-                    } elseif ((                    // line 97
+                    } elseif ((                    // line 96
 ($context["leftDays"] ?? null) >= 41)) {
-                        // line 98
+                        // line 97
                         echo "                  <span class=\"badge black-text grey\">";
                         $context["tipo"] = "INACTIVO+40";
                         echo ($context["tipo"] ?? null);
                         echo "</span>
                 ";
                     }
-                    // line 100
+                    // line 99
                     echo "                ";
                 } else {
-                    // line 101
+                    // line 100
                     echo "                  ";
                     if (($this->getAttribute($context["c"], "entregado", array()) > 1)) {
-                        // line 102
+                        // line 101
                         echo "                  <span class=\"badge black-text blue\">";
                         $context["tipo"] = "VIGENTE";
                         echo ($context["tipo"] ?? null);
                         echo "</span>
                   ";
                     } else {
-                        // line 104
+                        // line 103
                         echo "                     <span class=\"badge black-text blue\">";
                         $context["tipo"] = "REGISTRADO";
                         echo ($context["tipo"] ?? null);
                         echo "</span>
                   ";
                     }
-                    // line 106
+                    // line 105
                     echo "                ";
                 }
-                // line 107
+                // line 106
                 echo "              <span class=\"card-title\">";
                 echo $this->getAttribute($context["c"], "Per_Nombre", array());
                 echo " <b>";
                 echo $this->getAttribute($context["c"], "Per_Telefono", array());
                 echo "</b></span>
-              <a class=\"btn-floating btn indigo right\" href=\"tel:+51";
-                // line 108
+              <a class=\"btn-floating btn blue right\"  href=\"tel:+51";
+                // line 107
                 echo $this->getAttribute($context["c"], "Per_Telefono", array());
                 echo "\">
                 <i class=\"large material-icons black-text\">local_phone</i>
               </a>
-              <a class=\"btn-floating btn light-green accent-4 right\" href=\"tel:+51";
-                // line 111
+              <a class=\"btn-floating btn green right\" style=\"margin-right: 10px;\" href=\"https://wa.me/51";
+                // line 110
                 echo $this->getAttribute($context["c"], "Per_Telefono", array());
                 echo "\">
                 <i class=\"large material-icons black-text\">textsms</i>
               </a>
               <ul>
                 <li><b>Fecha Registro: </b>";
-                // line 115
+                // line 114
                 echo twig_date_format_filter($this->env, $this->getAttribute($context["c"], "Usu_Created", array()), "Y/m/d");
                 echo "</li>
                 <li><b>Ventas/Monto: </b>";
-                // line 116
+                // line 115
                 echo $this->getAttribute($context["c"], "entregado", array());
                 echo " / S/";
                 echo $this->getAttribute($context["c"], "monto_entregado", array());
                 echo "</li>
                 <li><b>Último pedido: </b>";
-                // line 117
+                // line 116
                 echo $this->getAttribute($context["c"], "ultimo_pedido", array());
                 echo "</li>
+                <li class=\"center\">
+                  <a class=\"btn purple modal-trigger\" id=\"";
+                // line 118
+                echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
+                echo "\" accessKey=\"";
+                echo $this->getAttribute($context["c"], "Per_Nombre", array());
+                echo "\" xs=\"";
+                echo ($context["tipo"] ?? null);
+                echo "\" href=\"#modalGes\"><i class=\"material-icons left\">update</i>GESTIONAR</a>
+                  <a class=\"btn red quitar\" data-idu=\"";
+                // line 119
+                echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
+                echo "\"><i class=\"material-icons left\">delete</i>SACAR DE CARTERA</a>
+                </li>
+                <li>
+                  <b>ÚLTIMA GESTIÓN</b>
+                  <table class=\"bordered\">
+                    <tr>
+                      <th>FECHA</th>
+                      <th>DETALLE</th>
+                      <th>ACCIÓN</th>
+                    </tr>
+                    <tr>
+                      <td class=\"gFec";
+                // line 130
+                echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
+                echo "\">";
+                echo $this->getAttribute($context["c"], "Ges_FechaRegistro", array());
+                echo "</td>
+                      <td class=\"gDe";
+                // line 131
+                echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
+                echo "\">";
+                echo $this->getAttribute($context["c"], "Ges_Detalle", array());
+                echo "</td>
+                      <td class=\"gAc";
+                // line 132
+                echo $this->getAttribute($context["c"], "Usu_IdUsuario", array());
+                echo "\">";
+                echo $this->getAttribute($context["c"], "Ges_Accion", array());
+                echo "</td>
+                    </tr>
+                  </table>
+                </li>
               </ul>
             </div>
             </div>
@@ -410,25 +453,36 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['c'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 122
+            // line 140
             echo "          </div>
       ";
         }
-        // line 123
+        // line 141
         echo " 
       </div>
     </div>
   </main>
-  <div id=\"modalGes\" class=\"modal\" style=\"z-index:9999 !important;width: 50%!important;\">
+  ";
+        // line 145
+        if ((($context["userAgent"] ?? null) == "PC")) {
+            // line 146
+            echo "  <div id=\"modalGes\" class=\"modal\" style=\"width: 60%;\">
+      <div class=\"modal-content\" id=\"loadEdit\"></div>
+  </div>  
+";
+        } else {
+            // line 150
+            echo "  <div id=\"modalGes\" class=\"modal\">
       <div class=\"modal-content\" id=\"loadEdit\"></div>
   </div>
 ";
+        }
     }
 
-    // line 132
+    // line 156
     public function block_script($context, array $blocks = array())
     {
-        // line 133
+        // line 157
         echo "  <script type=\"text/javascript\" charset=\"utf8\" src=\"https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js\"></script>
   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
   <script>
@@ -503,7 +557,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
             logo:\"\",
             backgroundColor: '#fff',
             loadingHtml: \"<img src='";
-        // line 206
+        // line 230
         echo ($context["ruta_img"] ?? null);
         echo "logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
             });
@@ -534,7 +588,7 @@ class __TwigTemplate_0accfc47e1958e1553db9c0e3d41d4038a2bbf7452febe42a27eea8413f
 
     public function getDebugInfo()
     {
-        return array (  507 => 206,  432 => 133,  429 => 132,  418 => 123,  414 => 122,  403 => 117,  397 => 116,  393 => 115,  386 => 111,  380 => 108,  373 => 107,  370 => 106,  363 => 104,  356 => 102,  353 => 101,  350 => 100,  343 => 98,  341 => 97,  335 => 96,  333 => 95,  327 => 94,  325 => 93,  319 => 92,  317 => 91,  311 => 90,  308 => 89,  305 => 88,  302 => 87,  299 => 86,  296 => 85,  294 => 84,  290 => 82,  286 => 81,  280 => 77,  273 => 72,  264 => 69,  256 => 68,  250 => 67,  244 => 66,  238 => 65,  235 => 64,  232 => 63,  219 => 61,  208 => 59,  205 => 58,  202 => 57,  189 => 55,  187 => 54,  175 => 53,  173 => 52,  161 => 51,  159 => 50,  147 => 49,  145 => 48,  133 => 47,  130 => 46,  127 => 45,  124 => 44,  121 => 43,  118 => 42,  116 => 41,  110 => 39,  100 => 38,  96 => 37,  92 => 36,  86 => 35,  82 => 34,  77 => 33,  73 => 32,  66 => 27,  49 => 11,  47 => 10,  42 => 7,  39 => 6,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  561 => 230,  486 => 157,  483 => 156,  475 => 150,  469 => 146,  467 => 145,  461 => 141,  457 => 140,  441 => 132,  435 => 131,  429 => 130,  415 => 119,  407 => 118,  402 => 116,  396 => 115,  392 => 114,  385 => 110,  379 => 107,  372 => 106,  369 => 105,  362 => 103,  355 => 101,  352 => 100,  349 => 99,  342 => 97,  340 => 96,  334 => 95,  332 => 94,  326 => 93,  324 => 92,  318 => 91,  316 => 90,  310 => 89,  307 => 88,  304 => 87,  301 => 86,  298 => 85,  295 => 84,  293 => 83,  289 => 81,  285 => 80,  279 => 76,  273 => 72,  264 => 69,  256 => 68,  250 => 67,  244 => 66,  238 => 65,  235 => 64,  232 => 63,  219 => 61,  208 => 59,  205 => 58,  202 => 57,  189 => 55,  187 => 54,  175 => 53,  173 => 52,  161 => 51,  159 => 50,  147 => 49,  145 => 48,  133 => 47,  130 => 46,  127 => 45,  124 => 44,  121 => 43,  118 => 42,  116 => 41,  110 => 39,  100 => 38,  96 => 37,  92 => 36,  86 => 35,  82 => 34,  77 => 33,  73 => 32,  66 => 27,  49 => 11,  47 => 10,  42 => 7,  39 => 6,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
