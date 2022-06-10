@@ -14,15 +14,10 @@
       $data['pagina']['tipo']='principal';
       $data['pagina']['titulo']='PorMayor.pe - Crece con nosotros';
       $data['vendedores']=$this->productoModel->vendedores();
-      // $data['productos']=$this->productoModel->productos_principal2();
       $data['pro10']=$this->productoModel->productos10();
       foreach ($data['pro10'] as $valor) {
         $valor->url="pormayor-".$valor->Pro_IdProducto."-".$this->buildSlugValue($valor->Pro_Nombre);
       }
-      // $data['categorias'] = $this->productoModel->categorias_act();
-      // foreach($data['categorias'] as $valor) {
-      // $valor->url=$this->buildSlugValue($valor->Cat_Nombre)."-".$valor->Cat_IdCategoria;
-      // }
       $this->twig->parse('index3.twig',$data);
     }
     public function lista()
