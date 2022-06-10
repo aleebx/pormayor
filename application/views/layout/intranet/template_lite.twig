@@ -286,10 +286,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class="row white-text">
               <div class="col l3 s12">
                 <h5 class="amber-text">PorMayor.pe</h5>
-                <p>Somos el primer ecommerce mayorista del Perú, dónde encontras novedades al mejor precio y puedas emprender tu negocio con solo S/100</p>
+                <p>Somos un ecommerce peruano, dedicados a la venta por cajón para emprendedores y pymes.</p>
               </div>
               <div class="col l3 s12">
-                <h5 class="amber-text">MI CUENTA</h5>
+                <h5 class="amber-text">Mi cuenta</h5>
                 <ul>
                   <li><a class="" href="{{base_url()}}usuario/login">Registrarte</a></li>
                   <li><a class="" href="{{base_url()}}usuario/login">Iniciar Sesión</a></li>
@@ -298,21 +298,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </ul>
               </div>
               <div class="col l3 s12">
-                <h5 class="amber-text">SERVICIO AL CLIENTE</h5>
+                <h5 class="amber-text">Te ayudamos</h5>
                 <ul>
                   {# <li><a class="" href="{{base_url()}}legal/centro">Centro de Ayuda</a></li> #}
                   <li><a class="" href="{{base_url()}}legal">Terminos y condiciones</a></li>
                   <li><a class="" href="{{base_url()}}legal/devolucionesycambios">Politicas de Devoluciones y Cambios</a></li>
                   {# <li><a class="" href="{{base_url()}}legal/compra_segura">Compra Segura</a></li> #}
-                  <li><a class="" href="{{base_url()}}reclamo">Libro de Reclamaciones <i class="material-icons">menu_book</i></a></li>
+                  <li><a class="" href="{{base_url()}}reclamo">Libro de Reclamaciones</a></li>
                 </ul>
               </div>
               <div class="col l3 s12">
-                <h5 class="amber-text">ESCRÍBENOS</h5>
+                <h5 class="amber-text">Contacto</h5>
                 <ul>
-                {% for v in vendedores %}
+                {# {% for v in vendedores %}
                   <li><a href="tel:51{{ v.Per_Telefono }}">{{ v.Usu_Nombre }}: {{ v.Per_Telefono }}</a></li>
-                {% endfor %}
+                {% endfor %} #}
                   <li><a href="mailto:contacto@pormayor.pe">contacto@pormayor.pe</a></li>
                   <li>Horario de Atención:<br>
                     Lunes a Viernes: 10:00 AM a 6:00 PM<br>
@@ -324,11 +324,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <div class="footer-copyright">
             <div class="row container">
-              <div class="col l6 center">
+              <div class="col l6 left">
                 © 2018-2022 Derechos Reservados <a href="{{base_url()}}">PorMayor.pe S.A.</a>
               </div>
-              <div class="col l2">
-                <a href="https://www.camaralima.org.pe/principal"><img src="{{ruta_img}}LOGO-CCL-2019.png" title="REGISTRADOS EN LA CAMARA DE COMERCIO DE LIMA"></a>
+              <div class="col l2 right">
+                <a href="https://www.camaralima.org.pe/principal"><img src="{{ruta_img}}LOGO-CCL-2019.png" title="REGISTRADOS EN LA CAMARA DE COMERCIO DE LIMA" height="27px"></a>
               </div>
           </div>
         </footer>      

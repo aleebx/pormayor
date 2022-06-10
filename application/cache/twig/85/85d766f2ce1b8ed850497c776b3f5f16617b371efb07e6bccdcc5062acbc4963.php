@@ -298,14 +298,37 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         // line 137
         echo "\t\t\t</div>
 \t\t\t<div class=\"col s12 pormayorUnico fontE center\">
-\t\t\t\t<span class=\"white-text\">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
+\t\t\t\t<p class=\"amber-text\" style=\"font-size:25px;margin: 30px;\">¡LOS PRODUCTOS MÁS VENDIDOS POR NUESTROS CLIENTES!</p>
+\t\t\t\t <a href=\"https://pormayor.pe/productos/dp/pormayor-3070-ropero-grande-de-tres-cuerpos-cod-88130-x-cajon\"><img alt=\"Pormayor.pe\" title=\"PROMOCION1\" class=\"redondeo\" src=\"";
+        // line 140
+        echo ($context["ruta_img"] ?? null);
+        echo "promo/promoPro1.png\" height=\"260px\"></a>
+\t\t\t\t <a href=\"https://pormayor.pe/productos/dp/pormayor-3863-tetera-flambera-3lt\"><img alt=\"Pormayor.pe\" title=\"PROMOCION2\" class=\"redondeo\" src=\"";
+        // line 141
+        echo ($context["ruta_img"] ?? null);
+        echo "promo/promoPro2.png\" height=\"260px\"></a>
+\t\t\t\t <a href=\"https://pormayor.pe/productos/dp/pormayor-3862-zapatera-organizadora-ancho-80cm-de-4-niveles-con-percheros-\"><img alt=\"Pormayor.pe\" title=\"PROMOCION3\" class=\"redondeo\" src=\"";
+        // line 142
+        echo ($context["ruta_img"] ?? null);
+        echo "promo/promoPro3.png\" height=\"260px\"></a>
+\t\t\t\t <a href=\"https://pormayor.pe/productos/dp/pormayor-1704-bano-para-mascota\"><img alt=\"Pormayor.pe\" title=\"PROMOCION4\" class=\"redondeo\" src=\"";
+        // line 143
+        echo ($context["ruta_img"] ?? null);
+        echo "promo/promoPro4.png\" height=\"260px\"></a>
+\t\t\t</div>
+\t\t\t<div class=\"col s12\">
+\t\t\t\t<br>
+\t\t\t</div>
+
+\t\t\t<div class=\"col s12 pormayor center\">
+\t\t\t\t<span class=\"black-text\" style=\"font-size:25px\">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
 \t\t\t</div>
 \t\t  \t";
-        // line 141
+        // line 152
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["pro10"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 142
+            // line 153
             echo "\t\t  \t<a itemprop=\"url\" href=\"";
             echo base_url();
             echo "productos/dp/";
@@ -316,14 +339,14 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "\">
 \t\t        <div class=\"col s6 m4 l3 black-text\" data-cd=\"";
-            // line 143
+            // line 154
             echo $this->getAttribute($context["pro"], "Pro_PM", array());
             echo "\">
 \t\t          <div class=\"card hoverable z-depth-1\">
 \t\t          \t<span class=\"badge red white-text\" style=\"position:absolute;\">Nuevo</span>
 \t\t            <div class=\"center\" style=\"height:190px;\">
 \t\t              <img alt=\"";
-            // line 147
+            // line 158
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -332,33 +355,33 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
             echo $this->getAttribute($context["pro"], "Prf_Thumb", array());
             echo "\">
 \t\t            </div>
-\t\t            <div class=\"card-content center\" style=\"height:100px;\">
+\t\t            <div class=\"card-content\" style=\"height:100px;\">
 \t\t              <p>
 \t\t              \t<span class=\"truncate\">";
-            // line 151
+            // line 162
             echo twig_upper_filter($this->env, $this->getAttribute($context["pro"], "Pro_Nombre", array()));
             echo "</span>
 \t\t              \t<small>COD: ";
-            // line 152
+            // line 163
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "</small><br>
 \t\t              \t<div class=\"divider\"></div>
 \t\t              \t";
-            // line 154
+            // line 165
             if (($this->getAttribute($context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 155
+                // line 166
                 echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
-                echo "</span> x cajón<span class=\"new badge blue left\">PRE-VENTA</span>
+                echo "</span> <small>x cajón</small><span class=\"new badge blue left\">PRE-VENTA</span>
 \t\t              \t";
             } else {
-                // line 157
-                echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
+                // line 168
+                echo "\t\t              \t<span class=\"fontA negrita red-text\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
-                echo "</span> x cajón</label>
+                echo "</span> <small>x cajón</small>
 \t\t              \t";
             }
-            // line 159
+            // line 170
             echo "\t\t              \t<br>
 \t\t              </p>
 \t\t            </div>
@@ -370,34 +393,34 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 166
+        // line 177
         echo "\t\t\t<div class=\"col s12 center\"><br>
 \t\t\t";
-        // line 168
+        // line 179
         echo "\t\t\t <ul class=\"pagination\">
 \t\t\t    <li class=\"disabled\"><a href=\"#!\"><i class=\"material-icons\">chevron_left</i></a></li>
-\t\t\t    <li class=\"active\"><a href=\"";
-        // line 170
+\t\t\t    <li class=\"active pormayorUnico\"><a href=\"";
+        // line 181
         echo ($context["base_url"] ?? null);
         echo "pagina/productos\">1</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 171
+        // line 182
         echo ($context["base_url"] ?? null);
         echo "pagina/productos/2\">2</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 172
+        // line 183
         echo ($context["base_url"] ?? null);
         echo "pagina/productos/3\">3</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 173
+        // line 184
         echo ($context["base_url"] ?? null);
         echo "pagina/productos/4\">4</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 174
+        // line 185
         echo ($context["base_url"] ?? null);
         echo "pagina/productos/5\">5</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 175
+        // line 186
         echo ($context["base_url"] ?? null);
         echo "pagina/productos\"><i class=\"material-icons\">chevron_right</i></a></li>
 \t\t\t  </ul>
@@ -408,28 +431,28 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 ";
     }
 
-    // line 182
+    // line 193
     public function block_script($context, array $blocks = array())
     {
-        // line 183
+        // line 194
         echo "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 <script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
 <script>
 var base_url = \"";
-        // line 186
+        // line 197
         echo base_url();
         echo "\";
 var loading_screen = pleaseWait({
 logo: '',
 backgroundColor: \"#FEC00F\",
 loadingHtml: \"<img src='";
-        // line 190
+        // line 201
         echo ($context["ruta_img"] ?? null);
-        echo "logoNegativo.svg' type='image/svg+xml' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
+        echo "icons/logoPrincipal.png' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
 });
 </script>
 <script src=\"";
-        // line 193
+        // line 204
         echo base_url("public/");
         echo "js/index.min.js?v=5\"></script>
 ";
@@ -447,7 +470,7 @@ loadingHtml: \"<img src='";
 
     public function getDebugInfo()
     {
-        return array (  433 => 193,  427 => 190,  420 => 186,  415 => 183,  412 => 182,  401 => 175,  397 => 174,  393 => 173,  389 => 172,  385 => 171,  381 => 170,  377 => 168,  374 => 166,  362 => 159,  356 => 157,  350 => 155,  348 => 154,  343 => 152,  339 => 151,  327 => 147,  320 => 143,  309 => 142,  305 => 141,  299 => 137,  294 => 135,  290 => 134,  286 => 133,  281 => 132,  273 => 127,  266 => 123,  259 => 119,  252 => 115,  248 => 113,  246 => 112,  237 => 105,  231 => 103,  225 => 101,  223 => 100,  218 => 97,  212 => 95,  206 => 93,  204 => 92,  200 => 91,  196 => 89,  190 => 87,  184 => 85,  182 => 84,  178 => 83,  170 => 77,  161 => 71,  157 => 70,  151 => 66,  145 => 62,  135 => 56,  131 => 55,  128 => 54,  118 => 47,  114 => 46,  111 => 45,  109 => 44,  100 => 38,  96 => 37,  89 => 33,  83 => 32,  80 => 31,  78 => 30,  73 => 27,  71 => 26,  68 => 25,  65 => 24,  59 => 21,  50 => 15,  48 => 14,  38 => 6,  35 => 4,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  456 => 204,  450 => 201,  443 => 197,  438 => 194,  435 => 193,  424 => 186,  420 => 185,  416 => 184,  412 => 183,  408 => 182,  404 => 181,  400 => 179,  397 => 177,  385 => 170,  379 => 168,  373 => 166,  371 => 165,  366 => 163,  362 => 162,  350 => 158,  343 => 154,  332 => 153,  328 => 152,  316 => 143,  312 => 142,  308 => 141,  304 => 140,  299 => 137,  294 => 135,  290 => 134,  286 => 133,  281 => 132,  273 => 127,  266 => 123,  259 => 119,  252 => 115,  248 => 113,  246 => 112,  237 => 105,  231 => 103,  225 => 101,  223 => 100,  218 => 97,  212 => 95,  206 => 93,  204 => 92,  200 => 91,  196 => 89,  190 => 87,  184 => 85,  182 => 84,  178 => 83,  170 => 77,  161 => 71,  157 => 70,  151 => 66,  145 => 62,  135 => 56,  131 => 55,  128 => 54,  118 => 47,  114 => 46,  111 => 45,  109 => 44,  100 => 38,  96 => 37,  89 => 33,  83 => 32,  80 => 31,  78 => 30,  73 => 27,  71 => 26,  68 => 25,  65 => 24,  59 => 21,  50 => 15,  48 => 14,  38 => 6,  35 => 4,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

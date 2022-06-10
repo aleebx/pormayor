@@ -595,10 +595,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class=\"row white-text\">
               <div class=\"col l3 s12\">
                 <h5 class=\"amber-text\">PorMayor.pe</h5>
-                <p>Somos el primer ecommerce mayorista del Perú, dónde encontras novedades al mejor precio y puedas emprender tu negocio con solo S/100</p>
+                <p>Somos un ecommerce peruano, dedicados a la venta por cajón para emprendedores y pymes.</p>
               </div>
               <div class=\"col l3 s12\">
-                <h5 class=\"amber-text\">MI CUENTA</h5>
+                <h5 class=\"amber-text\">Mi cuenta</h5>
                 <ul>
                   <li><a class=\"\" href=\"";
         // line 294
@@ -619,7 +619,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </ul>
               </div>
               <div class=\"col l3 s12\">
-                <h5 class=\"amber-text\">SERVICIO AL CLIENTE</h5>
+                <h5 class=\"amber-text\">Te ayudamos</h5>
                 <ul>
                   ";
         // line 304
@@ -634,30 +634,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         // line 307
         echo "                  <li><a class=\"\" href=\"";
         echo base_url();
-        echo "reclamo\">Libro de Reclamaciones <i class=\"material-icons\">menu_book</i></a></li>
+        echo "reclamo\">Libro de Reclamaciones</a></li>
                 </ul>
               </div>
               <div class=\"col l3 s12\">
-                <h5 class=\"amber-text\">ESCRÍBENOS</h5>
+                <h5 class=\"amber-text\">Contacto</h5>
                 <ul>
                 ";
-        // line 313
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["vendedores"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["v"]) {
-            // line 314
-            echo "                  <li><a href=\"tel:51";
-            echo $this->getAttribute($context["v"], "Per_Telefono", array());
-            echo "\">";
-            echo $this->getAttribute($context["v"], "Usu_Nombre", array());
-            echo ": ";
-            echo $this->getAttribute($context["v"], "Per_Telefono", array());
-            echo "</a></li>
-                ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['v'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 316
         echo "                  <li><a href=\"mailto:contacto@pormayor.pe\">contacto@pormayor.pe</a></li>
                   <li>Horario de Atención:<br>
@@ -670,17 +653,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <div class=\"footer-copyright\">
             <div class=\"row container\">
-              <div class=\"col l6 center\">
+              <div class=\"col l6 left\">
                 © 2018-2022 Derechos Reservados <a href=\"";
         // line 328
         echo base_url();
         echo "\">PorMayor.pe S.A.</a>
               </div>
-              <div class=\"col l2\">
+              <div class=\"col l2 right\">
                 <a href=\"https://www.camaralima.org.pe/principal\"><img src=\"";
         // line 331
         echo ($context["ruta_img"] ?? null);
-        echo "LOGO-CCL-2019.png\" title=\"REGISTRADOS EN LA CAMARA DE COMERCIO DE LIMA\"></a>
+        echo "LOGO-CCL-2019.png\" title=\"REGISTRADOS EN LA CAMARA DE COMERCIO DE LIMA\" height=\"27px\"></a>
               </div>
           </div>
         </footer>      
@@ -750,7 +733,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     public function getDebugInfo()
     {
-        return array (  736 => 343,  730 => 335,  724 => 277,  718 => 46,  713 => 29,  707 => 344,  705 => 343,  700 => 341,  691 => 336,  689 => 335,  682 => 331,  676 => 328,  662 => 316,  649 => 314,  645 => 313,  635 => 307,  631 => 305,  626 => 304,  617 => 297,  613 => 296,  609 => 295,  605 => 294,  590 => 284,  582 => 279,  579 => 278,  577 => 277,  574 => 276,  570 => 274,  557 => 272,  553 => 271,  548 => 269,  542 => 266,  536 => 263,  530 => 260,  524 => 257,  519 => 254,  512 => 251,  509 => 250,  496 => 249,  492 => 248,  487 => 246,  481 => 243,  478 => 242,  472 => 239,  467 => 237,  464 => 236,  461 => 235,  454 => 232,  452 => 231,  448 => 229,  446 => 228,  441 => 226,  437 => 224,  435 => 223,  432 => 222,  430 => 220,  427 => 219,  424 => 218,  422 => 217,  413 => 210,  411 => 209,  398 => 199,  390 => 194,  386 => 192,  384 => 191,  368 => 178,  364 => 176,  362 => 175,  347 => 162,  344 => 161,  342 => 160,  337 => 157,  334 => 156,  326 => 154,  324 => 153,  319 => 152,  313 => 150,  311 => 149,  306 => 148,  304 => 147,  299 => 144,  286 => 143,  282 => 142,  279 => 141,  272 => 136,  266 => 134,  260 => 132,  258 => 131,  252 => 128,  236 => 115,  232 => 114,  228 => 112,  214 => 101,  207 => 96,  205 => 95,  195 => 88,  190 => 87,  186 => 85,  180 => 81,  172 => 75,  169 => 74,  161 => 69,  158 => 68,  155 => 67,  147 => 62,  144 => 61,  141 => 60,  139 => 59,  125 => 47,  123 => 46,  105 => 30,  103 => 29,  99 => 28,  94 => 26,  88 => 22,  83 => 19,  76 => 15,  73 => 14,  71 => 13,  62 => 12,  52 => 11,  33 => 8,  24 => 1,);
+        return array (  719 => 343,  713 => 335,  707 => 277,  701 => 46,  696 => 29,  690 => 344,  688 => 343,  683 => 341,  674 => 336,  672 => 335,  665 => 331,  659 => 328,  645 => 316,  635 => 307,  631 => 305,  626 => 304,  617 => 297,  613 => 296,  609 => 295,  605 => 294,  590 => 284,  582 => 279,  579 => 278,  577 => 277,  574 => 276,  570 => 274,  557 => 272,  553 => 271,  548 => 269,  542 => 266,  536 => 263,  530 => 260,  524 => 257,  519 => 254,  512 => 251,  509 => 250,  496 => 249,  492 => 248,  487 => 246,  481 => 243,  478 => 242,  472 => 239,  467 => 237,  464 => 236,  461 => 235,  454 => 232,  452 => 231,  448 => 229,  446 => 228,  441 => 226,  437 => 224,  435 => 223,  432 => 222,  430 => 220,  427 => 219,  424 => 218,  422 => 217,  413 => 210,  411 => 209,  398 => 199,  390 => 194,  386 => 192,  384 => 191,  368 => 178,  364 => 176,  362 => 175,  347 => 162,  344 => 161,  342 => 160,  337 => 157,  334 => 156,  326 => 154,  324 => 153,  319 => 152,  313 => 150,  311 => 149,  306 => 148,  304 => 147,  299 => 144,  286 => 143,  282 => 142,  279 => 141,  272 => 136,  266 => 134,  260 => 132,  258 => 131,  252 => 128,  236 => 115,  232 => 114,  228 => 112,  214 => 101,  207 => 96,  205 => 95,  195 => 88,  190 => 87,  186 => 85,  180 => 81,  172 => 75,  169 => 74,  161 => 69,  158 => 68,  155 => 67,  147 => 62,  144 => 61,  141 => 60,  139 => 59,  125 => 47,  123 => 46,  105 => 30,  103 => 29,  99 => 28,  94 => 26,  88 => 22,  83 => 19,  76 => 15,  73 => 14,  71 => 13,  62 => 12,  52 => 11,  33 => 8,  24 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
