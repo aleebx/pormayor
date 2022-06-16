@@ -1,3 +1,4 @@
+application/x-httpd-php Users.php ( C++ source, ASCII text, with CRLF line terminators )
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**

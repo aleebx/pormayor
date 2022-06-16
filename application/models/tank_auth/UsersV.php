@@ -199,64 +199,6 @@ class Users extends CI_Model
         return NULL;
     }
 
-	function crear_comprador($Per_IdPersona, $Tid_IdTipoDocumento, $Per_Dni, $Per_Nombre, $Per_Correo, $Per_Telefono, $Usu_Clave, $Usu_NewEmailKey, $Usu_LastIp, $Usu_Activated = TRUE, $publicidad, $Usu_Flag_Publicidad)
-    {
-    	$Usu_Activated = $Usu_Activated ? 1 : 0;
-
-        $this->db->trans_start();
-
-        if(is_null($Per_IdPersona))
-        {
-            //registro tabla persona
-            $this->db->set('Per_Dni', $Per_Dni);
-            $this->db->set('Tid_IdTipoDocumento', $Tid_IdTipoDocumento);
-            $this->db->set('Per_Nombre', $Per_Nombre);
-            $this->db->set('Per_Correo', $Per_Correo);
-            $this->db->set('Per_Telefono', $Per_Telefono);
-            $this->db->set('Per_Celular', $Per_Telefono);
-
-            $this->db->insert('persona');
-
-            $Per_IdPersona = $this->db->insert_id();
-        }
-        else
-        {
-            $Per_IdPersona = $Per_IdPersona->Per_IdPersona;
-        }
-
-        //registro tabla usuario
-        $this->db->set('Per_IdPersona', $Per_IdPersona);
-        $this->db->set('Usu_Correo', $Per_Correo);
-        $this->db->set('Usu_Clave', $Usu_Clave);
-        $this->db->set('Usu_Promocion', $publicidad);
-        $this->db->set('Rol_IdRol', 4);
-        
-        if ($this->db->insert($this->table_name))
-        {
-			$Usu_IdUsuario = $this->db->insert_id();
-
-			if ($Usu_Activated)	$this->create_profile($Usu_IdUsuario);
-		}
-
-		//registro tabla publicidad
-        $this->db->set('Usu_Correo', $Per_Correo);
-        $this->db->set('Usu_Flag', $Usu_Flag_Publicidad);
-
-        $this->db->insert('usuario_publicidad');
-		
-
-		$this->bitacoraModel->registrar_bitacora('tienda', 'crear_usuario', 'Usu_IdUsuario', $Usu_IdUsuario, '', '', $Usu_IdUsuario);
-
-		$this->db->trans_complete();
-
-        if($this->db->trans_status())
-        {
-            return $Usu_IdUsuario;
-        }
-
-        return NULL;
-    }
-
     function get_cantidad_tiendas()
     {
         $sql = "SELECT COUNT(*) as Cantidad

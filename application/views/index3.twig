@@ -190,8 +190,8 @@
 	</main>	
 {% endblock %}
 {% block script %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
 <script>
 var base_url = "{{base_url()}}";
 var loading_screen = pleaseWait({
@@ -200,5 +200,5 @@ backgroundColor: "#FEC00F",
 loadingHtml: "<img src='{{ruta_img}}icons/logoPrincipal.png' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
 });
 </script>
-<script src="{{base_url('public/')}}js/index.min.js?v=5"></script>
+<script defer src="{{base_url('public/')}}js/index.min.js?v=5"></script>
 {% endblock %}

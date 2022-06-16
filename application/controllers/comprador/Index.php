@@ -49,8 +49,8 @@
 
 	       	$this->load->model("Preferencia_model", "preferenciaModel");
 	       	$verificar_preferencia = $this->preferenciaModel->verificar_preferencia_x_usuario($data['usuario']['id_usuario']);
-			$data['vista_carrito2'] = true;
-	      	$data['vista_carrito_compra'] = true;
+			$data['vista_carrito2'] = false;
+	      	$data['vista_carrito_compra'] = false;
 			$data['usu']= $this->preferenciaModel->data_usuario($data['usuario']['id_usuario']);
             if($verificar_preferencia->a)
             {

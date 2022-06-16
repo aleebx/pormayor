@@ -1,0 +1,87 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+{% endblock %}
+{% block content %}
+  <main class="container fixContainer">
+    <div class="row">
+      <div class="col s12 m12 l8 offset-l2"><br><br>     
+        <div class="card centrarForzado">
+          <div class="row">
+            <div id="crear" class="col s12">
+            <p class="card-title center pormayor negrita">Registrarse</p>          
+              {{ form_open("", {role: 'form', id: 'formulario_registro', class:'form form-horizontal formValidate', method:'post', novalidate:'novalidate'}) }}
+              <div class="row validarTienda centrarForzado card-content">
+                <div class="input-field col s12 l6">
+                  <i class="material-icons prefix transitionB">person</i>
+                  <input type="text" name="nombre" id="nombre" placeholder=""  class=".form-group" required="required" {% if (success) %} value="{{set_value('nombre')}}{% endif %}">
+                  <label for="nombre">Nombre Completo</label>
+                </div>
+                <div class="input-field col s12 l6">
+                  <i class="material-icons prefix transitionB">chrome_reader_mode</i>
+                  <input name="dni" id="dni" type="text"  class=".form-group" placeholder="" required="" {% if (success) %} value="{{set_value('dni')}}{% endif %}">
+                  <label for="dni">DNI/CE/OTRO</label>
+                </div>
+                <div class="col s12 m12 l6 input-field positionRelative">
+                  <i class="material-icons prefix transitionB">email</i>
+                  <input name="correoA" id="correoA" type="email" class="email .form-group"  required="required" placeholder="" {% if (success) %} value="{{set_value('correoA')}}"{% endif %}>
+                  <label for="icon_prefix">Correo Electrónico</label>
+                  <ul class="autosuffix centrarForzado"></ul>
+                  <input type="hidden" name="correo" id="correo2">
+                </div>
+                <div class="col s12 m12 l6 input-field positionRelative">
+                  <i class="material-icons prefix transitionB">phone</i>
+                  <input name="celular" id="celular" type="number" class=".form-group"  required="required" placeholder="" {% if (success) %} value="{{set_value('celular')}}"{% endif %}>
+                  <label for="icon_prefix">Celular</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix transitionB">lock</i>
+                  <input name="clave" type="password" id="contrasena"  class=".form-group" placeholder="" required="" autocomplete="new-password" {% if (success) %} value="{{set_value('clave')}}{% endif %}">
+                  <label for="contrasena">Contraseña para <b>pormayor.pe</b></label>
+                </div>
+                <div class="col s12">
+                  <br>
+                    <input type="checkbox" class="filled-in terminosCheck" id="filled-in-box" />
+                    <label style="font-size:1rem" class="grey-text text-darken-3" for="filled-in-box">Acepto los <a class="pormayorUnico-text negrita" href="{{base_url()}}Legal/ ">Términos y Condiciones</a> y las <a class="pormayorUnico-text negrita" href="{{base_url()}}legal/privacidad">Políticas de Privacidad y Confidencialidad de la información</a></label>
+                </div>
+                <div class="col s12">
+                    <br>
+                    <input type="checkbox" class="filled-in" id="publicidad_mat" checked="checked" />
+                    <label style="font-size:1rem" class="grey-text text-darken-3" for="publicidad_mat">Acepto recibir material promocional en mi correo</label>
+                    <input type="hidden" name="publicidad_valor" id="publicidad_valor">
+                </div>
+                <div class="col s12">
+                  <br>
+                  <div class="divider dividerMargin"></div>
+                </div>
+                {% if userAgent == "PC" %}
+                  <div class="col l12 center">
+                    <a class="btn pormayor anchoTotal btnRegistrarse disabled grey-text text-darken-4 negrita">Registrarse</a>
+                    <input type="submit" id="btnRegistrarse" name="btnRegistrarse" class="hide anchoTotal btn pormayor">
+                  </div>
+                {% else %}
+                  <div class="col s12 center">
+                    <a class="btn pormayor anchoTotal btnRegistrarse disabled grey-text text-darken-4 negrita">Registrarse</a>
+                    <input type="submit" id="btnRegistrarse" name="btnRegistrarse" class="hide anchoTotal btn pormayor">
+                  </div>
+                {% endif %}
+                <div class="col s12">                  
+                  <div class="divider dividerMargin"></div>
+                  <br>                  
+                </div>
+                <div class="col s12 l12 center">                  
+                  <a class="btn-flat anchoTotal negrita" style="border: 1px solid #d6d6d6;" href="{{base_url()}}usuario/login">Ya estoy registrado</a>
+                </div> 
+              </div>
+              {{ form_close() }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block script %}
+  <script src="{{base_url('public/')}}js/jquery.validate.js"></script>
+  <script src="{{base_url('public/js/usuario/')}}login.js?v={{now|date('i:s')}}"></script>
+{% endblock %}

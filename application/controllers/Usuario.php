@@ -24,7 +24,7 @@
             $this->twig->parse('usuario/index.twig', $data);
         }
 
-        public function registro()
+        public function registro1()
         {
             $data = $this->acl->load_datos();
 
@@ -410,9 +410,102 @@
 
                 $data['facebook']['id'] = $this->config->item('facebook_app_id');
                 $data['facebook']['permisos'] = $this->config->item('facebook_permissions');
-                $this->twig->parse('usuario/login.twig', $data);
+                $this->twig->parse('usuario/loginNew.twig', $data);
             }
 		}
+
+        function registro($url='', $publicidad='')
+        {
+            $data = $this->acl->load_datos();
+
+            if ($this->tank_auth->is_logged_in())
+            {
+                redirect('/');
+            }
+            elseif ($this->tank_auth->is_logged_in(FALSE))
+            {
+                redirect('/usuario/send_again/');
+            }
+            else
+            {
+                $data['success'] = FALSE;
+                $data['errors'] = array();
+                $data['pagina']['titulo'] = 'Registro de usuario | pormayor.pe';
+                $data['pagina']['extrabtn'] = 'NO';
+
+                if($this->input->post('btnRegistrarse'))
+                {
+                    $use_username = false;
+                    if ($use_username)
+                    {
+                        $this->form_validation->set_rules('usuario', 'USUARIO', 'trim|required|min_length[4]|max_length[10]|alpha_dash');
+                    }
+                    $this->form_validation->set_rules('nombre', 'NOMBRE', 'trim|required');
+                    $this->form_validation->set_rules('correo', 'CORREO', 'trim|required|valid_email|is_unique[usuario.Usu_Correo]');
+                    $this->form_validation->set_rules('clave', 'CLAVE', 'trim|required|min_length[3]|max_length[20]|alpha_dash');
+                    $this->form_validation->set_rules('dni', 'DNI', 'trim|required');
+                    $this->form_validation->set_rules('celular', 'CELULAR', 'trim|required');
+                    $this->form_validation->set_rules('publicidad_valor', 'PUBLI', 'trim');
+                    $this->form_validation->set_message("is_unique", "Error");
+                    $data['errors'] = array();
+                    $email_activation = $this->config->item('email_activation', 'tank_auth');
+                    if($this->form_validation->run())
+                    {
+                        $this->load->model("Persona_model", "personaModel");
+                        $Per_Dni = $this->form_validation->set_value('dni');
+                        $Per_Nombre = $this->form_validation->set_value('nombre');
+                        $Usu_Correo = $this->form_validation->set_value('correo');
+                        $Per_Telefono = $this->form_validation->set_value('celular');
+                        $Usu_Clave = $this->form_validation->set_value('clave');
+                        $Usu_Flag_Publicidad = $this->form_validation->set_value('publicidad_valor');
+                        $Per_IdPersona = $this->personaModel->get_id_persona_x_dni($Per_Dni);
+                        if (!is_null($data = $this->tank_auth->create_comprador('', $Per_IdPersona, $Per_Dni, $Per_Nombre, $Usu_Correo, $Per_Telefono,$Usu_Clave, $email_activation, $publicidad, $Usu_Flag_Publicidad)))
+                        {
+                            $data['site_name'] = $this->config->item('website_name', 'tank_auth');
+                            if($email_activation)
+                            {
+                                $data['activation_period'] = $this->config->item('email_activation_expire', 'tank_auth') / 3600;
+                                $this->_send_email('activate', $Usu_Correo, $data);
+                                unset($data['Usu_Clave']); 
+                                $data['estado_registrado'] = TRUE;
+                                $data['mensaje'] = $this->lang->line('auth_message_registration_completed_1');
+                            }
+                            else
+                            {
+                                $data['login_redes'] = TRUE;
+                                $data['email'] = $Usu_Correo;
+                                
+                                if ($this->config->item('email_account_details', 'tank_auth')) 
+                                {
+                                    $this->load->library('correo');
+
+                                    $datos['nombre_usuario'] = $Per_Nombre;
+                                    $datos['nombre_sitio'] = $this->config->item('website_name', 'tank_auth');
+                                    $datos['correo'] = $Usu_Correo;
+                                    $datos['clave'] = $Usu_Clave;
+                                    $idencry = $this->encrypt($data['Usu_IdUsuario'],"pormayor");
+                                    $datos['id'] = $idencry;
+                                    $contenido_correo = $this->twig->parse('correo/bienvenida_comprador.twig', $datos, true);
+                                    $this->correo->enviar($Usu_Correo, "Bienvenido(a) a ".$datos['nombre_sitio'], $contenido_correo);
+                                }
+                                unset($data['Usu_Clave']);
+                            }
+                            $this->_login($Usu_Correo, $Usu_Clave, 0, 1, "comprador/index/preferencias");
+                        }
+                        else
+                        {
+                            $errors = $this->tank_auth->get_error_message();
+                            foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
+                        }
+                    }
+                    else
+                    {
+                        $data["success"] = TRUE;
+                    }
+                }
+                $this->twig->parse('usuario/registroNew.twig', $data);
+            }
+        }
 
         function test_correo()
         {

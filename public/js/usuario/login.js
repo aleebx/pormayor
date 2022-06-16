@@ -1,9 +1,3 @@
-$(window).on("load", function() {
-  $('.preloader-wrapper').parent().addClass('hide');
-  $('.loginContainer').removeClass('hide');
-  $('ul.tabs').tabs('select_tab', 'crear');
-});
-
 $(document).ready(function(){
   $(".correo2").val('');
   

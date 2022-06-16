@@ -425,34 +425,33 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         echo "pagina/productos\"><i class=\"material-icons\">chevron_right</i></a></li>
 \t\t\t  </ul>
 \t\t\t</div>
-
 \t    </div>
 \t</main>\t
 ";
     }
 
-    // line 193
+    // line 192
     public function block_script($context, array $blocks = array())
     {
-        // line 194
+        // line 193
         echo "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 <script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
 <script>
 var base_url = \"";
-        // line 197
+        // line 196
         echo base_url();
         echo "\";
 var loading_screen = pleaseWait({
 logo: '',
 backgroundColor: \"#FEC00F\",
 loadingHtml: \"<img src='";
-        // line 201
+        // line 200
         echo ($context["ruta_img"] ?? null);
         echo "icons/logoPrincipal.png' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
 });
 </script>
 <script src=\"";
-        // line 204
+        // line 203
         echo base_url("public/");
         echo "js/index.min.js?v=5\"></script>
 ";
@@ -470,7 +469,7 @@ loadingHtml: \"<img src='";
 
     public function getDebugInfo()
     {
-        return array (  456 => 204,  450 => 201,  443 => 197,  438 => 194,  435 => 193,  424 => 186,  420 => 185,  416 => 184,  412 => 183,  408 => 182,  404 => 181,  400 => 179,  397 => 177,  385 => 170,  379 => 168,  373 => 166,  371 => 165,  366 => 163,  362 => 162,  350 => 158,  343 => 154,  332 => 153,  328 => 152,  316 => 143,  312 => 142,  308 => 141,  304 => 140,  299 => 137,  294 => 135,  290 => 134,  286 => 133,  281 => 132,  273 => 127,  266 => 123,  259 => 119,  252 => 115,  248 => 113,  246 => 112,  237 => 105,  231 => 103,  225 => 101,  223 => 100,  218 => 97,  212 => 95,  206 => 93,  204 => 92,  200 => 91,  196 => 89,  190 => 87,  184 => 85,  182 => 84,  178 => 83,  170 => 77,  161 => 71,  157 => 70,  151 => 66,  145 => 62,  135 => 56,  131 => 55,  128 => 54,  118 => 47,  114 => 46,  111 => 45,  109 => 44,  100 => 38,  96 => 37,  89 => 33,  83 => 32,  80 => 31,  78 => 30,  73 => 27,  71 => 26,  68 => 25,  65 => 24,  59 => 21,  50 => 15,  48 => 14,  38 => 6,  35 => 4,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  455 => 203,  449 => 200,  442 => 196,  437 => 193,  434 => 192,  424 => 186,  420 => 185,  416 => 184,  412 => 183,  408 => 182,  404 => 181,  400 => 179,  397 => 177,  385 => 170,  379 => 168,  373 => 166,  371 => 165,  366 => 163,  362 => 162,  350 => 158,  343 => 154,  332 => 153,  328 => 152,  316 => 143,  312 => 142,  308 => 141,  304 => 140,  299 => 137,  294 => 135,  290 => 134,  286 => 133,  281 => 132,  273 => 127,  266 => 123,  259 => 119,  252 => 115,  248 => 113,  246 => 112,  237 => 105,  231 => 103,  225 => 101,  223 => 100,  218 => 97,  212 => 95,  206 => 93,  204 => 92,  200 => 91,  196 => 89,  190 => 87,  184 => 85,  182 => 84,  178 => 83,  170 => 77,  161 => 71,  157 => 70,  151 => 66,  145 => 62,  135 => 56,  131 => 55,  128 => 54,  118 => 47,  114 => 46,  111 => 45,  109 => 44,  100 => 38,  96 => 37,  89 => 33,  83 => 32,  80 => 31,  78 => 30,  73 => 27,  71 => 26,  68 => 25,  65 => 24,  59 => 21,  50 => 15,  48 => 14,  38 => 6,  35 => 4,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

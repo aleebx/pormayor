@@ -1,0 +1,50 @@
+{% extends "layout/intranet/template_lite.twig" %}
+{% block head %}
+{% endblock %}
+{% block content %}
+  <main class="container fixContainer">
+    <div class="row">
+      <div class="col s12 m12 l8 offset-l2"><br><br>     
+        <div class="card centrarForzado">
+          <div class="row">
+            <div id="iniciar" class="col s12" >
+              {{ form_open("", {role: 'form', id: 'formulario_login', class:'form form-horizontal formValidate', method:'post', novalidate:'novalidate'}) }}
+              <p class="card-title center pormayor negrita">Iniciar sesión</p>
+              <div class="row validarPersonales centrarForzado card-content">
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix transitionB">email</i>
+                  <input name="correo" type="email" id="correo"  class=".form-group" required="" placeholder="Ingresa tu correo de registro">
+                  <label for="icon_prefix">Correo Electrónico</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <i class="material-icons prefix transitionB">lock</i>
+                  <input name="clave" type="password" id="clave" class=".form-group" required="" autocomplete="new-password" placeholder="Ingresa tu contraseña pormayor.pe">
+                  <label for="icon_prefix">Contraseña</label>
+                </div>
+                <div class="col s12 right-align">
+                  <a class="fontB2 grey-text text-darken-1 btn-flat transitionB btn-flat-not waves-effect waves-light waves-blue" href="{{base_url()}}usuario/olvido_contrasenia">¿Olvidaste tu contraseña?</a>
+                </div>               
+                <div class="col s12 l12 center">
+                  <input type="submit" name="btnIngresar" value="INGRESAR A PORMAYOR" class="btn anchoTotal pormayor btnCrear pormayorAccent-text negrita">
+                </div>
+                <div class="col s12">                  
+                  <div class="divider dividerMargin"></div>
+                  <br>                  
+                </div>
+                <div class="col s12 l12 center">                  
+                  <a class="btn-flat anchoTotal negrita" style="border: 1px solid #d6d6d6;" href="{{base_url()}}usuario/registro">Registrarse</a>
+                </div>                            
+              </div>
+              {{ form_close() }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block script %}
+  <script src="{{base_url('public/')}}js/jquery.validate.js"></script>
+  <script src="{{base_url('public/js/usuario/')}}login.js?v={{now|date('i:s')}}"></script>
+{% endblock %}
