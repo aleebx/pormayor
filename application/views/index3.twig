@@ -1,8 +1,7 @@
 {% extends "layout/intranet/template_lite.twig" %}
 {% block head %}
-	{# <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> #}
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
-	{# <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spinkit/1.2.5/spinkit.min.css"  media="screen"/> #}
+    <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/inputnumber.css')}}"  media="screen"/>
 	<style>
 		body > .inner {display: none;}
 		body.pg-loaded > .inner {display: block;}
@@ -112,44 +111,81 @@
 				{% if userAgent == 'PC' %}
 					<div class="row">
 						<div class="col l3">
-				<img src="{{ruta_img}}icons/Info_web-02.png" height="70px">
-							
+				<img src="{{ruta_img}}icons/Info_web-02.png" height="70px">							
 						</div>
 						<div class="col l3">
-				<img src="{{ruta_img}}icons/Info_web-04.png" height="70px">
-							
+				<img src="{{ruta_img}}icons/Info_web-04.png" height="70px">							
 						</div>
 						<div class="col l3">
-				<img src="{{ruta_img}}icons/Info_web-05.png" height="70px">
-							
+				<img src="{{ruta_img}}icons/Info_web-05.png" height="70px">							
 						</div>
 						<div class="col l3">
-				<img src="{{ruta_img}}icons/Info_web-06.png" height="70px">
-							
+				<img src="{{ruta_img}}icons/Info_web-06.png" height="70px">							
 						</div>
 					</div>
 				{% else %}
-				<img src="{{ruta_img}}icons/Info_cel-22.png">
-				<img src="{{ruta_img}}icons/Info_cel-23.png">
-				<img src="{{ruta_img}}icons/Info_cel-24.png">
-				<img src="{{ruta_img}}icons/Info_cel-25.png">
+				<img src="{{ruta_img}}icons/Info_cel-22.png" style="height:100px;">
+				<img src="{{ruta_img}}icons/Info_cel-23.png" style="height:100px;">
+				<img src="{{ruta_img}}icons/Info_cel-24.png" style="height:100px;">
+				<img src="{{ruta_img}}icons/Info_cel-25.png" style="height:100px;">
 				{% endif %}
 			</div>
-			<div class="col s12 pormayorUnico fontE center">
+			{# <div class="col s12 pormayorUnico fontE center">
 				<p class="amber-text" style="font-size:25px;margin: 30px;">¡LOS PRODUCTOS MÁS VENDIDOS POR NUESTROS CLIENTES!</p>
 				 <a href="https://pormayor.pe/productos/dp/pormayor-3070-ropero-grande-de-tres-cuerpos-cod-88130-x-cajon"><img alt="Pormayor.pe" title="PROMOCION1" class="redondeo" src="{{ruta_img}}promo/promoPro1.png" height="260px"></a>
 				 <a href="https://pormayor.pe/productos/dp/pormayor-3863-tetera-flambera-3lt"><img alt="Pormayor.pe" title="PROMOCION2" class="redondeo" src="{{ruta_img}}promo/promoPro2.png" height="260px"></a>
 				 <a href="https://pormayor.pe/productos/dp/pormayor-3862-zapatera-organizadora-ancho-80cm-de-4-niveles-con-percheros-"><img alt="Pormayor.pe" title="PROMOCION3" class="redondeo" src="{{ruta_img}}promo/promoPro3.png" height="260px"></a>
 				 <a href="https://pormayor.pe/productos/dp/pormayor-1704-bano-para-mascota"><img alt="Pormayor.pe" title="PROMOCION4" class="redondeo" src="{{ruta_img}}promo/promoPro4.png" height="260px"></a>
-			</div>
+			</div> #}
 			<div class="col s12">
 				<br>
 			</div>
-
 			<div class="col s12 pormayor center">
 				<span class="black-text" style="font-size:25px">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
 			</div>
-		  	{% for pro in pro10 %}
+			{% for pro in pro10 %}
+              <div class="col s12 m6 l3 black-text">
+                <div class="card hoverable">
+            <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+
+                  <div class="center" style="height:190px;">
+                    <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo"  data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+                  </div>
+                </a>
+                  <div class="card-content center">
+                    <div class="divider"></div>
+                    <p>
+                      <span class="truncate">{{pro.Pro_Nombre|title}}</span>
+                      {% if pro.Pro_Saldo == 1 %}
+                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge red">Remate</span>
+                      {% elseif pro.Pro_Preventa == 1 %}
+                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge blue left">PRE-VENTA</span>
+                      {% else %}
+                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón</label>
+                      {% endif %}
+                    </p>
+                    {% if pro.catvar == 1 %}
+                    <div class="input-group input-number-group">
+                        <div class="input-group-button">
+                          <span class="input-number-decrement">-</span>
+                        </div>
+                          <input type="number" min="1" name="cantidad" value="0" max="{{pro.SKU_StockDisponible}}" class="input-number browser-default cantSku{{pro.Pro_IdProducto}} cant{{pro.SKU_IdSKU}}" id="{{pro.SKU_IdSKU}}" data-idpro="{{pro.Pro_IdProducto}}" data-colresumen=" " data-foto="{{pro.Prf_Thumb}}" data-productname="{{pro.Pro_Nombre}}" data-productid="{{pro.SKU_IdSKU}}" data-price="" xd="{{pro.Pro_PrecioMinimo}}" data-tipovariacion=" " data-color="" data-variacion=" " data-img="{{pro.Prf_Thumb}}" data-unidad="" data-dispo="{{pro.SKU_StockDisponible}}" data-idtienda="" data-minventa="{{pro.SKU_StockDisponible}}" data-preciounit="" data-documento="2" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                        <div class="input-group-button">
+                          <span class="input-number-increment">+</span>
+                        </div>
+                        <div>
+                          <a class="btn input-add-cart add_cart pormayor black-text" data-pmin="{{pro.Pro_PrecioMinimo}}" data-idp="{{pro.Pro_IdProducto}}">AGREGAR</a>
+                        </div>
+                      </div>
+                    {% else %}
+                          <a class="btn pormayor black-text" style="margin: 3px" href="{{base_url()}}productos/dp/{{pro.url}}" >VER MÁS</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+          {# </a> #}
+          {% endfor %}
+{# 		  	{% for pro in pro10 %}
 		  	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
 		        <div class="col s6 m4 l3 black-text" data-cd="{{pro.Pro_PM}}">
 		          <div class="card hoverable z-depth-1">
@@ -173,7 +209,7 @@
 		          </div>
 		        </div>
 	    	</a>
-		  	{% endfor %}
+		  	{% endfor %} #}
 			<div class="col s12 center"><br>
 			{# <a href="{{base_url}}pagina/productos" class="btn btn-large" style="font-size:2em;"><b>VER TODOS LOS PRODUCTOS</b></a> #}
 			 <ul class="pagination">
@@ -192,13 +228,14 @@
 {% block script %}
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
-<script>
+<script defer src="{{base_url('public/')}}js/index.js"></script>
+<script defer src="{{base_url('public/')}}js/tienda/dproLis.js"></script>
+{# <script>
 var base_url = "{{base_url()}}";
 var loading_screen = pleaseWait({
 logo: '',
 backgroundColor: "#FEC00F",
 loadingHtml: "<img src='{{ruta_img}}icons/logoPrincipal.png' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>"
 });
-</script>
-<script defer src="{{base_url('public/')}}js/index.min.js?v=5"></script>
+</script> #}
 {% endblock %}

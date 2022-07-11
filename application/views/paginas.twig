@@ -1,45 +1,71 @@
 {% extends "layout/intranet/template_lite.twig" %}
+
 {% block head %}
-{% endblock %}
+  <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/inputnumber.css')}}"  media="screen"/>
+
+{% endblock %} 
+
 {% block content %}
-<main id="main" class="container">
-     <div class="row">
-     <div class="col s12 center fontE">
-        Descubre los mejores productos al mejor precio para que hagas crecer tu negocio
-     </div>
-       {% for pro in producto %}
+
+  <main class="container">
+      <div class="row">  
+
+        <div class="col s12 ajax_filtro_productos containerProductos">
+          {% for pro in producto %}
+              <div class="col s12 m6 l3 black-text  mix filtroProductoall filtroCatall filtroCat{{pro.Cat_IdCategoria}} filtroMarcaall filtroEdoall filtroEdo{{pro.Pro_EdoGarantia|title}} filtroMarca{{pro.Pro_Marca|title|replace({' ': '', '"' : "", "'" : ""})}}" data-idpro="{{pro.Pro_IdProducto}}" data-preciomin="{{pro.Pro_PrecioMinimo}}" data-fecha="{{pro.Pro_FechaCreacion}}" style="padding:5px" data-cd="{{pro.Pro_PM}}">
+                <div class="card hoverable">
             <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
-                <div class="col s6 m4 l3 black-text" data-cd="{{pro.Pro_PM}}">
-                  <div class="card hoverable z-depth-1">
-                    {# <span class="badge red white-text" style="position:absolute;">Nuevo</span> #}
-                    <div class="center" style="height:190px;">
-                      <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo" data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
-                    </div>
-                    <div class="card-content" style="height:100px;">
-                      <p>
-                        <span class="truncate">{{pro.Pro_Nombre|upper}}</span>
-                        <small>COD: {{pro.Pro_IdProducto}}</small><br>
-                        <div class="divider"></div>
-                        {% if pro.Pro_Preventa == 1 %}
-                        <span class="fontA negrita red-text">S/ {{pro.Pro_PrecioMinimo}}</span> <small>x cajón</small><span class="new badge blue left">PRE-VENTA</span>
-                        {% else %}
-                        <span class="fontA negrita red-text">S/ {{pro.Pro_PrecioMinimo}}</span> <small>x cajón</small>
-                        {% endif %}
-                        <br>
-                      </p>
-                    </div>
+                  <div class="center" style="height:190px;">
+                    <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo"  data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+                  </div>
+                </a>
+                  <div class="card-content center">
+                    <div class="divider"></div>
+                    <p>
+                      <span class="truncate">{{pro.Pro_Nombre|title}}</span>
+                      {% if pro.Pro_Saldo == 1 %}
+                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge red">Remate</span>
+                      {% elseif pro.Pro_Preventa == 1 %}
+                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge blue left">PRE-VENTA</span>
+                      {% else %}
+                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón</label>
+                      {% endif %}
+                    </p>
+                    {% if pro.catvar == 1 %}
+                    <div class="input-group input-number-group">
+                        <div class="input-group-button">
+                          <span class="input-number-decrement">-</span>
+                        </div>
+                          <input type="number" min="1" name="cantidad" value="0" max="{{pro.SKU_StockDisponible}}" class="input-number browser-default cantSku{{pro.Pro_IdProducto}} cant{{pro.SKU_IdSKU}}" id="{{pro.SKU_IdSKU}}" data-idpro="{{pro.Pro_IdProducto}}" data-colresumen=" " data-foto="{{pro.Prf_Thumb}}" data-productname="{{pro.Pro_Nombre}}" data-productid="{{pro.SKU_IdSKU}}" data-price="" xd="{{pro.Pro_PrecioMinimo}}" data-tipovariacion=" " data-color="" data-variacion=" " data-img="{{pro.Prf_Thumb}}" data-unidad="" data-dispo="{{pro.SKU_StockDisponible}}" data-idtienda="" data-minventa="{{pro.SKU_StockDisponible}}" data-preciounit="" data-documento="2" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                        <div class="input-group-button">
+                          <span class="input-number-increment">+</span>
+                        </div>
+                        <div>
+                          <a class="btn input-add-cart add_cart pormayor black-text" data-pmin="{{pro.Pro_PrecioMinimo}}" data-idp="{{pro.Pro_IdProducto}}">AGREGAR</a>
+                        </div>
+                      </div>
+                    {% else %}
+                          <a class="btn pormayor black-text" style="margin: 3px" href="{{base_url()}}productos/dp/{{pro.url}}" >VER MÁS</a>
+                    {% endif %}
                   </div>
                 </div>
-            </a>
-            {% endfor %}
-          <div class="col s12 center">              
-            {{ links }}
-          </div>
+              </div>
+          {# </a> #}
+          {% endfor %}
+        </div>
+        <div class="col s12 center">
+          {{ links }}
+        </div>
     </div>
-</main>
+  </main>
 {% endblock %}
 
 {% block script %}
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
-<script src="{{base_url('public/')}}js/index.min.js?v=5"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js"></script>
+  <script src="{{base_url('public/')}}js/tienda/index.js?v={{now|date('i:s')}}"></script>
+  <script src="{{base_url('public/')}}js/tienda/dproLis.js?v={{now|date('i:s')}}"></script>
+
 {% endblock %}
+

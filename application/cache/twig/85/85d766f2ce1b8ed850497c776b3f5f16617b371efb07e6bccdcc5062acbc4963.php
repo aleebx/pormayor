@@ -30,12 +30,12 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
     public function block_head($context, array $blocks = array())
     {
         // line 3
-        echo "\t";
-        // line 4
         echo "\t<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css\"  media=\"screen\"/>
-\t";
-        // line 6
-        echo "\t<style>
+    <link type=\"text/css\" rel=\"stylesheet\" href=\"";
+        // line 4
+        echo base_url("public/intranet/css/inputnumber.css");
+        echo "\"  media=\"screen\"/>
+\t<style>
 \t\tbody > .inner {display: none;}
 \t\tbody.pg-loaded > .inner {display: block;}
 \t\t.fontX{font-size: 18px!important}
@@ -44,9 +44,9 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t      height: 100%;
 \t    }
 \t\t";
-        // line 14
+        // line 13
         if ((($context["userAgent"] ?? null) != "PC")) {
-            // line 15
+            // line 14
             echo "\t  \t\t.alturaDIV{height:289px;}
 \t  \t\t.fontD2{font-size: 0.8rem!important;font-weight:1000;}
 \t  \t\t.fontE{font-size: 0.8rem!important}
@@ -55,48 +55,48 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t  \t\t.slider .slides{background-color: #9e9e9e00 !important}
 \t\t";
         }
-        // line 21
+        // line 20
         echo "  
 \t</style>
 ";
     }
 
-    // line 24
+    // line 23
     public function block_content($context, array $blocks = array())
     {
-        // line 25
+        // line 24
         echo "\t<div class=\"inner\">
 \t\t";
-        // line 26
+        // line 25
         if ($this->getAttribute(($context["usuario"] ?? null), "logueado", array())) {
-            // line 27
+            // line 26
             echo "\t\t\t<div class=\"hide addHomeScreen valign-wrapper\">
 \t\t\t\t<button class=\"btn-flat white-text cerrarHomeScreen\"><i class=\"fontA material-icons\">close</i></button>
 \t\t\t\t<div class=\"row\">
 \t\t\t\t\t";
-            // line 30
+            // line 29
             if ((($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 2) || ($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 3))) {
-                // line 31
+                // line 30
                 echo "\t\t\t\t\t\t<div class=\"col s6 m6 sinPadding center\">
 \t\t\t\t\t\t\t<a href=\"http://";
-                // line 32
+                // line 31
                 echo ($context["subdominio_tienda"] ?? null);
                 echo ".";
                 echo ($context["dominio"] ?? null);
                 echo "/usuario/inventario/lProductos\">
 \t\t\t\t\t\t\t\t<img class=\"b-lazy\" alt=\"Pormayor.pe - Crear tienda\" data-src=\"";
-                // line 33
+                // line 32
                 echo ($context["ruta_img"] ?? null);
                 echo "movilOpcionTiendaB.webp\">
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"col s6 m6 sinPadding center\" style=\"margin-bottom:20px\">
 \t\t\t\t\t\t\t<a href=\"";
-                // line 37
+                // line 36
                 echo base_url();
                 echo "comprador/index/pedidos\">
 \t\t\t\t\t\t\t\t<img class=\"b-lazy\" alt=\"Pormayor.pe - Iniciar sesion\" data-src=\"";
-                // line 38
+                // line 37
                 echo ($context["ruta_img"] ?? null);
                 echo "movilOpcionCompradorB.webp\">
 \t\t\t\t\t\t\t</a>
@@ -105,16 +105,16 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t\t\t\t\t\t<a class=\"cerrarSesionBtn btn pormayorUnico white-text\"><i class=\"material-icons left\">power_settings_new</i>Cerrar Sesión</a>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t";
-            } elseif (($this->getAttribute(            // line 44
+            } elseif (($this->getAttribute(            // line 43
 ($context["usuario"] ?? null), "rol", array()) == 5)) {
-                // line 45
+                // line 44
                 echo "\t\t\t\t\t\t<div class=\"col s6 m6 sinPadding center\" style=\"margin-bottom:20px\">
 \t\t\t\t\t\t\t<a href=\"";
-                // line 46
+                // line 45
                 echo base_url();
                 echo "gestor/gestion\">
 \t\t\t\t\t\t\t\t<img class=\"b-lazy\" alt=\"Pormayor.pe - Iniciar sesion\" data-src=\"";
-                // line 47
+                // line 46
                 echo ($context["ruta_img"] ?? null);
                 echo "movilOpcionCompradorB.webp\">
 \t\t\t\t\t\t\t</a>
@@ -124,14 +124,14 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t\t\t\t\t</div>
 \t\t\t\t\t";
             } else {
-                // line 54
+                // line 53
                 echo "\t\t\t\t\t\t<div class=\"col s12 m12 sinPadding center\" style=\"margin-bottom:20px\">
 \t\t\t\t\t\t\t<a href=\"";
-                // line 55
+                // line 54
                 echo base_url();
                 echo "comprador/index/pedidos\">
 \t\t\t\t\t\t\t\t<img class=\"b-lazy\" alt=\"Pormayor.pe - Perfil de usuario\" data-src=\"";
-                // line 56
+                // line 55
                 echo ($context["ruta_img"] ?? null);
                 echo "movilOpcionCompradorB.webp\">
 \t\t\t\t\t\t\t</a>
@@ -141,23 +141,23 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t\t\t\t\t</div>
 \t\t\t\t\t";
             }
-            // line 62
+            // line 61
             echo "   
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t";
         } else {
-            // line 66
+            // line 65
             echo "\t\t\t<div class=\"hide addHomeScreen container valign-wrapper\">
 \t\t\t\t<button class=\"btn-flat white-text cerrarHomeScreen\"><i class=\"fontA material-icons\">close</i></button>
 \t\t\t\t<div class=\"row\">
 \t\t\t\t\t<div class=\"col s12 m12 center sinPadding\" style=\"margin-bottom:20px\">
 \t\t\t\t\t\t<a href=\"";
-            // line 70
+            // line 69
             echo base_url();
             echo "usuario/login\">
 \t\t\t\t\t\t\t<img class=\"b-lazy\" alt=\"Pormayor.pe - registrarse como comprador\"  data-src=\"";
-            // line 71
+            // line 70
             echo ($context["ruta_img"] ?? null);
             echo "movilOpcionCompradorA.webp\">
 \t\t\t\t\t\t</a>
@@ -166,7 +166,7 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t\t</div>
 \t\t";
         }
-        // line 77
+        // line 76
         echo "\t</div>
 \t<main class=\"container\">
 \t\t<div class=\"row\">
@@ -174,66 +174,66 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t\t\t <div class=\"slider\">
 \t\t\t\t    <ul class=\"slides\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t      <li> <a href=\"";
-        // line 83
+        // line 82
         echo base_url();
         echo "pagina/productos\">
 \t\t\t\t    ";
-        // line 84
+        // line 83
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 85
+            // line 84
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_01_web.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         } else {
-            // line 87
+            // line 86
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_01_movil.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         }
-        // line 89
+        // line 88
         echo "\t\t\t\t    \t</a>
 \t\t\t\t      </li>
 \t\t\t\t      <li><a href=\"";
-        // line 91
+        // line 90
         echo base_url();
         echo "pagina/productos\">
 \t\t\t\t    ";
-        // line 92
+        // line 91
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 93
+            // line 92
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_02_web.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         } else {
-            // line 95
+            // line 94
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_02_movil.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         }
-        // line 97
+        // line 96
         echo "\t\t\t\t\t\t</a>
 \t\t\t\t      </li>     
 \t\t\t\t      <li>
 \t\t\t\t    ";
-        // line 100
+        // line 99
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 101
+            // line 100
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_03_web.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         } else {
-            // line 103
+            // line 102
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_03_movil.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         }
-        // line 105
+        // line 104
         echo "\t\t\t\t      </li>
 \t\t\t\t    </ul>
 \t\t\t\t</div>
@@ -242,94 +242,75 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t<div class=\"row\">
 \t\t\t<div class=\"col s12 center\">
 \t\t\t\t";
-        // line 112
+        // line 111
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 113
+            // line 112
             echo "\t\t\t\t\t<div class=\"row\">
 \t\t\t\t\t\t<div class=\"col l3\">
 \t\t\t\t<img src=\"";
-            // line 115
+            // line 114
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_web-02.png\" height=\"70px\">
-\t\t\t\t\t\t\t
+            echo "icons/Info_web-02.png\" height=\"70px\">\t\t\t\t\t\t\t
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"col l3\">
 \t\t\t\t<img src=\"";
-            // line 119
+            // line 117
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_web-04.png\" height=\"70px\">
-\t\t\t\t\t\t\t
+            echo "icons/Info_web-04.png\" height=\"70px\">\t\t\t\t\t\t\t
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"col l3\">
+\t\t\t\t<img src=\"";
+            // line 120
+            echo ($context["ruta_img"] ?? null);
+            echo "icons/Info_web-05.png\" height=\"70px\">\t\t\t\t\t\t\t
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"col l3\">
 \t\t\t\t<img src=\"";
             // line 123
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_web-05.png\" height=\"70px\">
-\t\t\t\t\t\t\t
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<div class=\"col l3\">
-\t\t\t\t<img src=\"";
-            // line 127
-            echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_web-06.png\" height=\"70px\">
-\t\t\t\t\t\t\t
+            echo "icons/Info_web-06.png\" height=\"70px\">\t\t\t\t\t\t\t
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t";
         } else {
-            // line 132
+            // line 127
             echo "\t\t\t\t<img src=\"";
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_cel-22.png\">
+            echo "icons/Info_cel-22.png\" style=\"height:100px;\">
 \t\t\t\t<img src=\"";
-            // line 133
+            // line 128
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_cel-23.png\">
+            echo "icons/Info_cel-23.png\" style=\"height:100px;\">
 \t\t\t\t<img src=\"";
-            // line 134
+            // line 129
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_cel-24.png\">
+            echo "icons/Info_cel-24.png\" style=\"height:100px;\">
 \t\t\t\t<img src=\"";
-            // line 135
+            // line 130
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_cel-25.png\">
+            echo "icons/Info_cel-25.png\" style=\"height:100px;\">
 \t\t\t\t";
         }
-        // line 137
+        // line 132
         echo "\t\t\t</div>
-\t\t\t<div class=\"col s12 pormayorUnico fontE center\">
-\t\t\t\t<p class=\"amber-text\" style=\"font-size:25px;margin: 30px;\">¡LOS PRODUCTOS MÁS VENDIDOS POR NUESTROS CLIENTES!</p>
-\t\t\t\t <a href=\"https://pormayor.pe/productos/dp/pormayor-3070-ropero-grande-de-tres-cuerpos-cod-88130-x-cajon\"><img alt=\"Pormayor.pe\" title=\"PROMOCION1\" class=\"redondeo\" src=\"";
+\t\t\t";
         // line 140
-        echo ($context["ruta_img"] ?? null);
-        echo "promo/promoPro1.png\" height=\"260px\"></a>
-\t\t\t\t <a href=\"https://pormayor.pe/productos/dp/pormayor-3863-tetera-flambera-3lt\"><img alt=\"Pormayor.pe\" title=\"PROMOCION2\" class=\"redondeo\" src=\"";
-        // line 141
-        echo ($context["ruta_img"] ?? null);
-        echo "promo/promoPro2.png\" height=\"260px\"></a>
-\t\t\t\t <a href=\"https://pormayor.pe/productos/dp/pormayor-3862-zapatera-organizadora-ancho-80cm-de-4-niveles-con-percheros-\"><img alt=\"Pormayor.pe\" title=\"PROMOCION3\" class=\"redondeo\" src=\"";
-        // line 142
-        echo ($context["ruta_img"] ?? null);
-        echo "promo/promoPro3.png\" height=\"260px\"></a>
-\t\t\t\t <a href=\"https://pormayor.pe/productos/dp/pormayor-1704-bano-para-mascota\"><img alt=\"Pormayor.pe\" title=\"PROMOCION4\" class=\"redondeo\" src=\"";
-        // line 143
-        echo ($context["ruta_img"] ?? null);
-        echo "promo/promoPro4.png\" height=\"260px\"></a>
-\t\t\t</div>
-\t\t\t<div class=\"col s12\">
+        echo "\t\t\t<div class=\"col s12\">
 \t\t\t\t<br>
 \t\t\t</div>
-
 \t\t\t<div class=\"col s12 pormayor center\">
 \t\t\t\t<span class=\"black-text\" style=\"font-size:25px\">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
 \t\t\t</div>
-\t\t  \t";
-        // line 152
+\t\t\t";
+        // line 146
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["pro10"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 153
-            echo "\t\t  \t<a itemprop=\"url\" href=\"";
+            // line 147
+            echo "              <div class=\"col s12 m6 l3 black-text\">
+                <div class=\"card hoverable\">
+            <a itemprop=\"url\" href=\"";
+            // line 149
             echo base_url();
             echo "productos/dp/";
             echo $this->getAttribute($context["pro"], "url", array());
@@ -338,89 +319,145 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
             echo "\" data-nombre=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "\">
-\t\t        <div class=\"col s6 m4 l3 black-text\" data-cd=\"";
-            // line 154
-            echo $this->getAttribute($context["pro"], "Pro_PM", array());
-            echo "\">
-\t\t          <div class=\"card hoverable z-depth-1\">
-\t\t          \t<span class=\"badge red white-text\" style=\"position:absolute;\">Nuevo</span>
-\t\t            <div class=\"center\" style=\"height:190px;\">
-\t\t              <img alt=\"";
-            // line 158
+
+                  <div class=\"center\" style=\"height:190px;\">
+                    <img alt=\"";
+            // line 152
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
-            echo "\" class=\"lazy responsive-img fixImg3 redondeo\" data-src=\"";
+            echo "\" class=\"lazy responsive-img fixImg3 redondeo\"  data-src=\"";
             echo ($context["ruta_img"] ?? null);
             echo $this->getAttribute($context["pro"], "Prf_Thumb", array());
             echo "\">
-\t\t            </div>
-\t\t            <div class=\"card-content\" style=\"height:100px;\">
-\t\t              <p>
-\t\t              \t<span class=\"truncate\">";
-            // line 162
-            echo twig_upper_filter($this->env, $this->getAttribute($context["pro"], "Pro_Nombre", array()));
+                  </div>
+                </a>
+                  <div class=\"card-content center\">
+                    <div class=\"divider\"></div>
+                    <p>
+                      <span class=\"truncate\">";
+            // line 158
+            echo twig_title_string_filter($this->env, $this->getAttribute($context["pro"], "Pro_Nombre", array()));
             echo "</span>
-\t\t              \t<small>COD: ";
-            // line 163
-            echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
-            echo "</small><br>
-\t\t              \t<div class=\"divider\"></div>
-\t\t              \t";
-            // line 165
-            if (($this->getAttribute($context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 166
-                echo "\t\t              \t<span class=\"fontA negrita\">S/ ";
+                      ";
+            // line 159
+            if (($this->getAttribute($context["pro"], "Pro_Saldo", array()) == 1)) {
+                // line 160
+                echo "                        <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
-                echo "</span> <small>x cajón</small><span class=\"new badge blue left\">PRE-VENTA</span>
-\t\t              \t";
+                echo "</span> x cajón<span class=\"new badge red\">Remate</span>
+                      ";
+            } elseif (($this->getAttribute(            // line 161
+$context["pro"], "Pro_Preventa", array()) == 1)) {
+                // line 162
+                echo "                        <span class=\"fontA negrita\">S/ ";
+                echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
+                echo "</span> x cajón<span class=\"new badge blue left\">PRE-VENTA</span>
+                      ";
             } else {
-                // line 168
-                echo "\t\t              \t<span class=\"fontA negrita red-text\">S/ ";
+                // line 164
+                echo "                        <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
-                echo "</span> <small>x cajón</small>
-\t\t              \t";
+                echo "</span> x cajón</label>
+                      ";
             }
-            // line 170
-            echo "\t\t              \t<br>
-\t\t              </p>
-\t\t            </div>
-\t\t          </div>
-\t\t        </div>
-\t    \t</a>
-\t\t  \t";
+            // line 166
+            echo "                    </p>
+                    ";
+            // line 167
+            if (($this->getAttribute($context["pro"], "catvar", array()) == 1)) {
+                // line 168
+                echo "                    <div class=\"input-group input-number-group\">
+                        <div class=\"input-group-button\">
+                          <span class=\"input-number-decrement\">-</span>
+                        </div>
+                          <input type=\"number\" min=\"1\" name=\"cantidad\" value=\"0\" max=\"";
+                // line 172
+                echo $this->getAttribute($context["pro"], "SKU_StockDisponible", array());
+                echo "\" class=\"input-number browser-default cantSku";
+                echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
+                echo " cant";
+                echo $this->getAttribute($context["pro"], "SKU_IdSKU", array());
+                echo "\" id=\"";
+                echo $this->getAttribute($context["pro"], "SKU_IdSKU", array());
+                echo "\" data-idpro=\"";
+                echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
+                echo "\" data-colresumen=\" \" data-foto=\"";
+                echo $this->getAttribute($context["pro"], "Prf_Thumb", array());
+                echo "\" data-productname=\"";
+                echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
+                echo "\" data-productid=\"";
+                echo $this->getAttribute($context["pro"], "SKU_IdSKU", array());
+                echo "\" data-price=\"\" xd=\"";
+                echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
+                echo "\" data-tipovariacion=\" \" data-color=\"\" data-variacion=\" \" data-img=\"";
+                echo $this->getAttribute($context["pro"], "Prf_Thumb", array());
+                echo "\" data-unidad=\"\" data-dispo=\"";
+                echo $this->getAttribute($context["pro"], "SKU_StockDisponible", array());
+                echo "\" data-idtienda=\"\" data-minventa=\"";
+                echo $this->getAttribute($context["pro"], "SKU_StockDisponible", array());
+                echo "\" data-preciounit=\"\" data-documento=\"2\" onkeydown=\"javascript: return event.keyCode == 69 ? false : true\" readonly>
+                        <div class=\"input-group-button\">
+                          <span class=\"input-number-increment\">+</span>
+                        </div>
+                        <div>
+                          <a class=\"btn input-add-cart add_cart pormayor black-text\" data-pmin=\"";
+                // line 177
+                echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
+                echo "\" data-idp=\"";
+                echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
+                echo "\">AGREGAR</a>
+                        </div>
+                      </div>
+                    ";
+            } else {
+                // line 181
+                echo "                          <a class=\"btn pormayor black-text\" style=\"margin: 3px\" href=\"";
+                echo base_url();
+                echo "productos/dp/";
+                echo $this->getAttribute($context["pro"], "url", array());
+                echo "\" >VER MÁS</a>
+                    ";
+            }
+            // line 183
+            echo "                  </div>
+                </div>
+              </div>
+          ";
+            // line 187
+            echo "          ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 177
+        // line 213
         echo "\t\t\t<div class=\"col s12 center\"><br>
 \t\t\t";
-        // line 179
+        // line 215
         echo "\t\t\t <ul class=\"pagination\">
 \t\t\t    <li class=\"disabled\"><a href=\"#!\"><i class=\"material-icons\">chevron_left</i></a></li>
 \t\t\t    <li class=\"active pormayorUnico\"><a href=\"";
-        // line 181
+        // line 217
         echo ($context["base_url"] ?? null);
         echo "pagina/productos\">1</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 182
+        // line 218
         echo ($context["base_url"] ?? null);
         echo "pagina/productos/2\">2</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 183
+        // line 219
         echo ($context["base_url"] ?? null);
         echo "pagina/productos/3\">3</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 184
+        // line 220
         echo ($context["base_url"] ?? null);
         echo "pagina/productos/4\">4</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 185
+        // line 221
         echo ($context["base_url"] ?? null);
         echo "pagina/productos/5\">5</a></li>
 \t\t\t    <li class=\"waves-effect\"><a href=\"";
-        // line 186
+        // line 222
         echo ($context["base_url"] ?? null);
         echo "pagina/productos\"><i class=\"material-icons\">chevron_right</i></a></li>
 \t\t\t  </ul>
@@ -430,30 +467,20 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 ";
     }
 
-    // line 192
+    // line 228
     public function block_script($context, array $blocks = array())
     {
-        // line 193
-        echo "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
-<script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
-<script>
-var base_url = \"";
-        // line 196
-        echo base_url();
-        echo "\";
-var loading_screen = pleaseWait({
-logo: '',
-backgroundColor: \"#FEC00F\",
-loadingHtml: \"<img src='";
-        // line 200
-        echo ($context["ruta_img"] ?? null);
-        echo "icons/logoPrincipal.png' class='fixImg5' /><div class='sk-folding-cube'><div class='sk-cube1 sk-cube'></div><div class='sk-cube2 sk-cube'></div><div class='sk-cube4 sk-cube'></div><div class='sk-cube3 sk-cube'></div></div>\"
-});
-</script>
-<script src=\"";
-        // line 203
+        // line 229
+        echo "<script defer src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
+<script defer src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
+<script defer src=\"";
+        // line 231
         echo base_url("public/");
-        echo "js/index.min.js?v=5\"></script>
+        echo "js/index.js\"></script>
+<script defer src=\"";
+        // line 232
+        echo base_url("public/");
+        echo "js/tienda/dproLis.js\"></script>
 ";
     }
 
@@ -469,7 +496,7 @@ loadingHtml: \"<img src='";
 
     public function getDebugInfo()
     {
-        return array (  455 => 203,  449 => 200,  442 => 196,  437 => 193,  434 => 192,  424 => 186,  420 => 185,  416 => 184,  412 => 183,  408 => 182,  404 => 181,  400 => 179,  397 => 177,  385 => 170,  379 => 168,  373 => 166,  371 => 165,  366 => 163,  362 => 162,  350 => 158,  343 => 154,  332 => 153,  328 => 152,  316 => 143,  312 => 142,  308 => 141,  304 => 140,  299 => 137,  294 => 135,  290 => 134,  286 => 133,  281 => 132,  273 => 127,  266 => 123,  259 => 119,  252 => 115,  248 => 113,  246 => 112,  237 => 105,  231 => 103,  225 => 101,  223 => 100,  218 => 97,  212 => 95,  206 => 93,  204 => 92,  200 => 91,  196 => 89,  190 => 87,  184 => 85,  182 => 84,  178 => 83,  170 => 77,  161 => 71,  157 => 70,  151 => 66,  145 => 62,  135 => 56,  131 => 55,  128 => 54,  118 => 47,  114 => 46,  111 => 45,  109 => 44,  100 => 38,  96 => 37,  89 => 33,  83 => 32,  80 => 31,  78 => 30,  73 => 27,  71 => 26,  68 => 25,  65 => 24,  59 => 21,  50 => 15,  48 => 14,  38 => 6,  35 => 4,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  482 => 232,  478 => 231,  474 => 229,  471 => 228,  461 => 222,  457 => 221,  453 => 220,  449 => 219,  445 => 218,  441 => 217,  437 => 215,  434 => 213,  428 => 187,  423 => 183,  415 => 181,  406 => 177,  376 => 172,  370 => 168,  368 => 167,  365 => 166,  359 => 164,  353 => 162,  351 => 161,  346 => 160,  344 => 159,  340 => 158,  326 => 152,  314 => 149,  310 => 147,  306 => 146,  298 => 140,  295 => 132,  290 => 130,  286 => 129,  282 => 128,  277 => 127,  270 => 123,  264 => 120,  258 => 117,  252 => 114,  248 => 112,  246 => 111,  237 => 104,  231 => 102,  225 => 100,  223 => 99,  218 => 96,  212 => 94,  206 => 92,  204 => 91,  200 => 90,  196 => 88,  190 => 86,  184 => 84,  182 => 83,  178 => 82,  170 => 76,  161 => 70,  157 => 69,  151 => 65,  145 => 61,  135 => 55,  131 => 54,  128 => 53,  118 => 46,  114 => 45,  111 => 44,  109 => 43,  100 => 37,  96 => 36,  89 => 32,  83 => 31,  80 => 30,  78 => 29,  73 => 26,  71 => 25,  68 => 24,  65 => 23,  59 => 20,  50 => 14,  48 => 13,  36 => 4,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

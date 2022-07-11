@@ -16,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$data = $this->acl->load_datos();
 			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 				$data['pag'] = "crear";
+				$data['ventd'] = 1;
 				$this->twig->parse('vendedor/login.twig', $data);
 			}else{
 				redirect ('');
@@ -951,7 +952,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $contenido_correo = $this->twig->parse('correo/correo_comprador.twig', $datos, true);
 
                 $this->correo->enviar($correoA, "Bienvenido(a) a PorMayor.pe" .$nombre, $contenido_correo);
-	        	redirect ('vnd/listado');
+	        	redirect ('venta/nueva');
 			}
 		}
 		function registrar2(){

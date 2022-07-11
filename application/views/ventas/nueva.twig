@@ -1,5 +1,8 @@
-{% extends "layout/intranet/template_ven.twig" %}
+{% extends ventd == 1 ? "layout/intranet/template_ven.twig" : "layout/intranet/template_lite.twig" %}
 {% block head %}
+  {% if ventd == 1 %}{% else %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  {% endif %}
 {% endblock %}
 {% block content %}
   <main class=" row">
@@ -172,5 +175,8 @@
 {% endblock %}
 
 {% block script %}
+   {% if ventd == 1 %}{% else %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  {% endif %}
   <script src="{{base_url('public/')}}js/nuevav.js?v=6"></script>
 {% endblock %}

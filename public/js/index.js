@@ -1,7 +1,7 @@
-$(window).on("load", function() {
-	$('.inner').css('display', 'block');
-  loading_screen.finish();    
-});
+// $(window).on("load", function() {
+// 	$('.inner').css('display', 'block');
+//   loading_screen.finish();    
+// });
 
 (function () {
 function logElementEvent(eventName, element) {

@@ -14,8 +14,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$this->load->model("Local_model", "localModel");
 			$data['pag'] = "NUEVA VENTA";
-		    $data['productos'] = $this->vendedorModel->get_productos_sku();
-		    $data['region'] = $this->localModel->region();
+			$data['ventd'] = 1;
+		    	$data['productos'] = $this->vendedorModel->get_productos_sku();
+		    	$data['region'] = $this->localModel->region();
 			$this->twig->parse('ventas/nueva.twig', $data);
 			}else{
 				redirect ('');
