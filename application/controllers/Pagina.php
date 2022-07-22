@@ -45,15 +45,15 @@ class pagina extends CI_Controller {
             $config['last_tag_open'] = '<li class=" waves-effect">';
             $config['last_tag_close'] = '</li>';
              
-            $config['next_link'] = 'Siguiente';
+            $config['next_link'] = '<i class="material-icons">chevron_right</i>';
             $config['next_tag_open'] = '<li class=" waves-effect">';
             $config['next_tag_close'] = '</li>';
  
-            $config['prev_link'] = 'Anterior';
+            $config['prev_link'] = '<i class="material-icons">chevron_left</i>';
             $config['prev_tag_open'] = '<li class=" waves-effect">';
             $config['prev_tag_close'] = '</li>';
  
-            $config['cur_tag_open'] = '<li class=" btn pormayor black-text waves-effect">';
+            $config['cur_tag_open'] = '<li class=" active pormayorUnico waves-effect" style="width: 30px;color: white;font-size: 1.2rem;">';
             $config['cur_tag_close'] = '</li>';
  
             $config['num_tag_open'] = '<li class=" waves-effect">';
