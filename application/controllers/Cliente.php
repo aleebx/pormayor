@@ -31,6 +31,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}else{
 				redirect ('');
 			}
+		}
+
+		function listado()
+		{
+			$data = $this->acl->load_datos();
+			$data['pag'] = "LISTADO DE PRODUCTOS";
+		    $data['producto'] = $this->vendedorModel->listado_pagina();
+			$this->twig->parse('paginas2.twig', $data);
 		}		
 	}
 ?>

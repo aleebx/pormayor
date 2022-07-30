@@ -1025,13 +1025,11 @@
                 foreach ($query->result() as $row)
                 {
                     $data[] = $row;
-                }
-                 
+                }                 
                 return $data;
-            }
-          
+            }          
             return false;
-        }      
+        }
 
         public function get_total()
         {
