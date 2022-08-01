@@ -645,6 +645,16 @@
     		<tr>
     			<td align="center">
     				<b>DETALLE DE VENTA {{venta.Pac_CodPago}}</b> 
+		 		</td>    			
+		 		<td align="center" style="font-size:2REM;font-family: Arial, Helvetica, sans-serif;">
+    				{% if venta.Pac_Banco == 'NO' %}
+    					<b>CONTRA-ENTREGA</b>
+    				{% elseif venta.Pac_Banco == 'TIENDA' %}
+    					<b>RETIRO EN TIENDA</b>
+    				{% elseif venta.Pac_Banco == 'Visanet' %}
+    				{% else %}   
+    					<b>ENVIA A PROVINCIA</b>
+    				{% endif %}
 		 		</td>
     	</table> 
         <table>
