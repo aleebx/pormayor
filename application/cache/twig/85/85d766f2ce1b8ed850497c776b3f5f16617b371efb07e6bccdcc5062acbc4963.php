@@ -250,25 +250,25 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t\t\t<img src=\"";
             // line 114
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_web-02.png\" height=\"70px\">\t\t\t\t\t\t\t
+            echo "icons/Info_web-02.png\" height=\"70px\">
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"col l3\">
 \t\t\t\t<img src=\"";
             // line 117
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_web-04.png\" height=\"70px\">\t\t\t\t\t\t\t
+            echo "icons/Info_web-04.png\" height=\"70px\">
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"col l3\">
 \t\t\t\t<img src=\"";
             // line 120
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_web-05.png\" height=\"70px\">\t\t\t\t\t\t\t
+            echo "icons/Info_web-05.png\" height=\"70px\">\t
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"col l3\">
 \t\t\t\t<img src=\"";
             // line 123
             echo ($context["ruta_img"] ?? null);
-            echo "icons/Info_web-06.png\" height=\"70px\">\t\t\t\t\t\t\t
+            echo "icons/Info_web-06.png\" height=\"70px\">\t\t
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t";

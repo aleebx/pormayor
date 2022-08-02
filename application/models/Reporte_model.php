@@ -56,11 +56,146 @@
             $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
             $this->db->join('sku as sku','sku.SKU_IdSKU = pcd.Pcd_IdSKU');
             $this->db->join('producto as pro','pro.Pro_IdProducto = sku.producto_Pro_IdProducto');
+            $this->db->join('producto_foto as prf','prf.Pro_IdProducto = pro.Pro_IdProducto');
             $this->db->where('pac.Pac_FechaRegistro >=', $siete);
             $this->db->where('pac.Pac_FechaRegistro <=', $hoy);
             $this->db->where('pac.Pac_Estado', 5);
             $this->db->group_by('pro.Pro_IdProducto');
             $this->db->order_by('total','DESC');
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        function productostop()
+        {
+            $hoy = date('Y-m-d');
+            $siete = date("Y-m-d",strtotime($hoy."- 1 week")); 
+            $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, sum(pcd.Pcd_Cantidad) as total, count(pac.Pac_IdPago_Compra) as cantidadV, pro.Pro_PrecioMinimo, (SELECT Prf_Thumb FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as img_producto');
+            $this->db->from('pago_compra as pac');
+            $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
+            $this->db->join('sku as sku','sku.SKU_IdSKU = pcd.Pcd_IdSKU');
+            $this->db->join('producto as pro','pro.Pro_IdProducto = sku.producto_Pro_IdProducto');
+            $this->db->where('pac.Pac_FechaRegistro >=', $siete);
+            $this->db->where('pac.Pac_FechaRegistro <=', $hoy);
+            $this->db->where('pac.Pac_Estado', 5);
+            $this->db->group_by('pro.Pro_IdProducto');
+            $this->db->order_by('total','DESC');
+            $this->db->limit(10);
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        function ventasRegion()
+        {
+            $hoy = date('Y-m-d');
+            $mes = date("Y-m-d",strtotime($hoy."- 4 week")); 
+            $this->db->select('count(pac.Pac_IdPago_Compra) as cantidadV, reg.name');
+            $this->db->from('pago_compra as pac');
+            $this->db->join('pago_direccion_usu as pdu','pdu.Usu_IdUsuario = pac.Usu_IdUsuario');
+            $this->db->join('regions as reg','reg.id = pdu.Pag_idregion');
+            $this->db->where('pac.Pac_FechaRegistro >=', $mes);
+            $this->db->where('pac.Pac_FechaRegistro <=', $hoy);
+            $this->db->where('pac.Pac_Estado', 5);
+            $this->db->group_by('reg.name');
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        function montoRegion()
+        {
+            $hoy = date('Y-m-d');
+            $mes = date("Y-m-d",strtotime($hoy."- 4 week")); 
+            $this->db->select('sum(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as montoV, reg.name');
+            $this->db->from('pago_compra as pac');
+            $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
+            $this->db->join('pago_direccion_usu as pdu','pdu.Usu_IdUsuario = pac.Usu_IdUsuario');
+            $this->db->join('regions as reg','reg.id = pdu.Pag_idregion');
+            $this->db->where('pac.Pac_FechaRegistro >=', $mes);
+            $this->db->where('pac.Pac_FechaRegistro <=', $hoy);
+            $this->db->where('pac.Pac_Estado', 5);
+            $this->db->group_by('reg.name');
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        function registroHoy()
+        {
+            $hoy = date('Y-m-d');
+            $this->db->like('Usu_Created', $hoy);
+            $this->db->from('usuario');
+            return $this->db->count_all_results();
+        }
+        function registroAyer()
+        {
+            $hoy = date('Y-m-d');
+            $ayer = date("Y-m-d",strtotime($hoy."- 1 day")); 
+            $this->db->like('Usu_Created', $ayer);
+            $this->db->from('usuario');
+            return $this->db->count_all_results();
+        }
+
+        function montoHoy()
+        {
+            $hoy = date('Y-m-d');
+
+            $this->db->select('sum(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as montoT');
+            $this->db->from('pago_compra as pac');
+             $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
+            $this->db->where('pac.Pac_Estado', 5);
+            $this->db->like('pac.Pac_FechaModificado', $hoy);
+            $query = $this->db->get();
+            return $query->row();
+
+        }
+        function montoAyer()
+        {
+            $hoy = date('Y-m-d');
+            $ayer = date("Y-m-d",strtotime($hoy."- 1 day")); 
+
+            $this->db->select('sum(pcd.Pcd_Precio * pcd.Pcd_Cantidad) as montoT');
+            $this->db->from('pago_compra as pac');
+             $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
+            $this->db->where('pac.Pac_Estado', 5);
+            $this->db->like('pac.Pac_FechaModificado', $ayer);
+            $query = $this->db->get();
+            return $query->row();
+
+        }
+        function ventascantidadhoy()
+        {
+            $hoy = date('Y-m-d');
+            $this->db->where('Pac_Estado', 5);
+            $this->db->like('Pac_FechaModificado', $hoy);
+            $this->db->from('pago_compra');
+            return $this->db->count_all_results();
+
+        }
+
+        function ventascantidadayer()
+        {
+            $hoy = date('Y-m-d');
+            $ayer = date("Y-m-d",strtotime($hoy."- 1 day")); 
+            $this->db->where('Pac_Estado', 5);
+            $this->db->like('Pac_FechaModificado', $ayer);
+            $this->db->from('pago_compra');
+            return $this->db->count_all_results();
+        }
+
+        function productosfail()
+        {
+            $hoy = date('Y-m-d');
+            $siete = date("Y-m-d",strtotime($hoy."- 4 week")); 
+            $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, sum(pcd.Pcd_Cantidad) as total, count(pac.Pac_IdPago_Compra) as cantidadV, pro.Pro_PrecioMinimo, (SELECT Prf_Thumb FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as img_producto');
+            $this->db->from('pago_compra as pac');
+            $this->db->join('pago_compra_detalle as pcd','pcd.Pac_IdPago_Compra = pac.Pac_IdPago_Compra');
+            $this->db->join('sku as sku','sku.SKU_IdSKU = pcd.Pcd_IdSKU');
+            $this->db->join('producto as pro','pro.Pro_IdProducto = sku.producto_Pro_IdProducto');
+            $this->db->where('pac.Pac_FechaRegistro >=', $siete);
+            $this->db->where('pac.Pac_FechaRegistro <=', $hoy);
+            $this->db->where('pac.Pac_Estado', 5);
+            $this->db->group_by('pro.Pro_IdProducto');
+            $this->db->order_by('total','ASC');
+            $this->db->limit(10);
             $query = $this->db->get();
             return $query->result();
         }
