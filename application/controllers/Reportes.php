@@ -13,7 +13,24 @@
     {
 		  $data=$this->acl->load_datos();
       $data['top']=$this->reporteModel->productostop();      
-      // $data['fail']=$this->reporteModel->productosfail();
+      $data['fail']=$this->reporteModel->productosfail();
+      $tiempo = date('Y-m-d');
+      $data['ventashoy']=$this->reporteModel->ventascantidadhoy();
+      $data['ventasayer']=$this->reporteModel->ventascantidadayer();
+      $data['montoHoy']=$this->reporteModel->montoHoy();
+      $data['montoAyer']=$this->reporteModel->montoAyer();
+      $data['registroHoy']=$this->reporteModel->registroHoy();
+      $data['registroAyer']=$this->reporteModel->registroAyer();
+      $data['ventasRegion']=$this->reporteModel->ventasRegion();
+      // $data['montoRegion']=$this->reporteModel->montoRegion();
+      // print_r($data['ventasRegion']);
+      $this->twig->parse('panel/index.twig', $data);
+    }
+    public function videos()
+    {
+      $data=$this->acl->load_datos();
+      $data['top']=$this->reporteModel->productostop();      
+      $data['fail']=$this->reporteModel->productosfail();
       $tiempo = date('Y-m-d');
       $data['ventashoy']=$this->reporteModel->ventascantidadhoy();
       $data['ventasayer']=$this->reporteModel->ventascantidadayer();

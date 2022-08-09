@@ -22,15 +22,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		function pedido()
 		{
 			$data = $this->acl->load_datos();
-			if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
+			// if (isset($data['usuario']['rol']) and $data['usuario']['rol'] == 5) {
 			$this->load->model("Local_model", "localModel");
 			$data['pag'] = "NUEVA VENTA";
 		    $data['productos'] = $this->vendedorModel->get_productos_sku();
 		    $data['region'] = $this->localModel->region();
 			$this->twig->parse('ventas/nueva.twig', $data);
-			}else{
-				redirect ('');
-			}
+			// }else{
+			// 	redirect ('');
+			// }
 		}
 
 		function listado()
@@ -39,6 +39,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$data['pag'] = "LISTADO DE PRODUCTOS";
 		    $data['producto'] = $this->vendedorModel->listado_pagina();
 			$this->twig->parse('paginas2.twig', $data);
+		}
+
+		function vista_producto()
+		{
+ 			$data = $this->acl->load_datos();
+ 			if($this->input->is_ajax_request()) {
+				$id = $this->input->post('id');
+				$data['info'] = $this->productoModel->productos_d($id);		
+				$data['fotos'] = $this->productoModel->fotos_productos($id);		
+	      		$this->twig->parse('datosproducto.twig',$data);
+			}
 		}		
 	}
 ?>

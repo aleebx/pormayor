@@ -46,9 +46,7 @@ $('.input-number-decrement').click(function() {
 
 
     var cantIn = $('.cantSku'+idpro).val();
-    // $('.cantSku'+idpro).each(function(){
-    //   if ($(this).val() > 0) {
-        if (cantIn > 0) {
+    if (cantIn > 0) {
     $(this).text('AGREGADO');
     $(this).addClass('green');
         quantity.push($('.cantSku'+idpro).val());
@@ -67,26 +65,6 @@ $('.input-number-decrement').click(function() {
         product_name.push($('.cantSku'+idpro).data("productname"));
         tipovariacion.push($('.cantSku'+idpro).data("tipovariacion"));
         cantVenta=Number(cantVenta) + Number($('.cantSku'+idpro).val());
-        console.log(img,
-              color, 
-              unidad,
-              cantmin,
-              idtienda, 
-              quantity, 
-              variacion,
-              documento,
-              product_id, 
-              id_producto,
-              precio_unit,
-              product_name, 
-              product_price, 
-              tipovariacion,
-              price_min,
-              flagVariaciones);
-
-    //     }
-    // });
-      // if (Number(cantVenta) > 1 || Number(cantVenta) == 1){
           $.ajax({
             url:base_url+'productos/add',
             method:"POST",

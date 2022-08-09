@@ -1,0 +1,19 @@
+<h3 class="center">{{ info.Pro_Nombre }}</h3>
+<h5 class="center">COD:{{ info.Pro_IdProducto }}</h5>
+<div class="row">
+  <div class="col l12">
+      {{ info.Pro_Descripcion }}
+  </div>
+  <div class="col l12 center">
+    {% for fot in fotos %}
+      {% if fot.Prf_Img|slice(0, 5)|lower != "nopic" %}
+        <img alt="{{info.Pro_Nombre}} al pormayor" src="{{ruta_img}}{{fot.Prf_Img}}" class="redondeo">
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<div class="row">
+	<div class="col l12 center">
+  		<a class="modal-action modal-close waves-effect waves-red btn-flat red lighten-4"><i class="material-icons left">close</i>SALIR</a>
+	</div>
+</div>

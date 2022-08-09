@@ -130,17 +130,15 @@
             return $query->result();
         }  
 
-        function productos_oferta($where="", $limit="")
+        function productos_oferta()
         {
-            $sql = "SELECT pro.Pro_IdProducto, pro.Pro_Descripcion, pro.Pro_Nombre, pro.Pro_Estado, pro.Pro_Oferta, pro.Pro_Valoracion, 
-                    pro.Pro_PrecioRango, pro.Pro_MostrarPrecio, unm.Unm_Nombre, pun.Pru_Valor, pro.Pro_FechaCreacion, prf.Prf_Img, pro.Pro_PrecioMinimo, pro.Pro_PrecioMaximo,pro.Pro_Vista
-                    FROM `producto` as pro 
-                    INNER JOIN producto_unidad AS pun ON pun.producto_Pro_IdProducto = pro.Pro_IdProducto 
-                    INNER JOIN unidadmedida AS unm ON unm.Unm_IdUnidadMedida = pun.Unm_IdUnidadMedidad 
-                    INNER JOIN producto_foto AS prf on prf.producto_Pro_IdProducto = pro.Pro_IdProducto 
-                    $where ";
-            $query = $this->db->query($sql);
-
+             $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, pro.Pro_Descripcion, pro.Pro_FechaModificacion, pro.Pro_FechaCreacion, pro.Pro_PrecioMaximo, pro.Pro_PrecioMinimo, pro.Pro_PM,(SELECT Prf_Thumb FROM producto_foto as prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Thumb, (SELECT SUM(SKU_StockDisponible) FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as SKU_StockDisponible,(SELECT SKU_IdSKU FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as SKU_IdSKU,(SELECT COUNT(sku.producto_Pro_IdProducto) FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as catvar, pro.Pro_Saldo, pro.Pro_Preventa');
+            $this->db->from('producto as pro');
+            $this->db->where('pro.Pro_PM',1);
+            $this->db->where('pro.Pro_Saldo',1);
+            $this->db->order_by('pro.Pro_FechaModificacion','DESC');
+            $this->db->having('SKU_StockDisponible >=', 3);
+            $query = $this->db->get();
             return $query->result();
         }
 
@@ -1050,6 +1048,17 @@
             $this->db->order_by('pro.Pro_FechaModificacion','DESC');
             $this->db->having('SKU_StockDisponible >=', 3);
             $this->db->limit(20);
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        function indexproducto()
+        {
+           $this->db->select('pro.Pro_IdProducto, pro.Pro_Nombre, pro.Pro_Descripcion, pro.Pro_FechaModificacion, pro.Pro_FechaCreacion, pro.Pro_PrecioMaximo, pro.Pro_PrecioMinimo, pro.Pro_PM,(SELECT Prf_Thumb FROM producto_foto as prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Thumb, (SELECT SUM(SKU_StockDisponible) FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as SKU_StockDisponible,(SELECT SKU_IdSKU FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as SKU_IdSKU,(SELECT COUNT(sku.producto_Pro_IdProducto) FROM sku as sku WHERE sku.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as catvar, pro.Pro_Saldo, pro.Pro_Preventa');
+            $this->db->from('producto as pro');
+            $this->db->where('pro.Pro_PM',1);
+            $this->db->order_by('pro.Pro_FechaModificacion','DESC');
+            $this->db->having('SKU_StockDisponible >=', 3);
             $query = $this->db->get();
             return $query->result();
         }

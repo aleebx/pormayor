@@ -20,10 +20,10 @@
     {% endif %}  
   </style>
 {% endblock %}
-{% block content %}
-  <div class="row">
-      <div class="col s12 red accent-3 center z-depth-2">
-        <span class="white-text" style="font-size:4em;">¡APROVECHA ESTOS MEGA PRECIOS SOLO POR 24 HORAS!</span>
+{% block content %}EWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+  <div class="inner">
+      <div class="col s12 pormayor center">
+        <span class="black-text" style="font-size:25px">¡APROVECHA ESTOS MEGA PRECIOS SOLO POR 24 HORAS!</span>
       </div>
       {% for pro in productos_oferta %}
               <div class="col s12 m6 l3 black-text">
@@ -39,7 +39,6 @@
                     <div class="divider"></div>
                     <p>
                       <span class="truncate">{{pro.Pro_Nombre|title}}</span>
-                      <small class="">COD:{{pro.Pro_IdProducto}}</small><br>
                       {% if pro.Pro_Saldo == 1 %}
                         <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge red">OFERTA</span>
                       {% elseif pro.Pro_Preventa == 1 %}
@@ -76,5 +75,4 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
 <script defer src="{{base_url('public/')}}js/tienda/dproLis.js"></script>
-<script defer src="{{base_url('public/')}}js/index.js"></script>
 {% endblock %}

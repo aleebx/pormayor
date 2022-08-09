@@ -1197,19 +1197,13 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
         // line 495
         echo "    </div>
         <div class=\"row\">
-          <div class=\"col s12 ";
-        // line 497
-        if ($this->getAttribute(($context["producto"] ?? null), "Pro_Video", array())) {
-            echo "l6";
-        } else {
-            echo "l12";
-        }
-        echo " white\">
+          <div class=\"col s12 white\">
             <div class=\"col s12\">
               <ul class=\"tabs\">
                 <li class=\"tab col s3\"><a class=\"active\" href=\"#dPro\">Detalle del producto</a></li>
-                <li class=\"tab col s3\"><a href=\"#cPro\">Caracteristicas</a></li>
-              </ul>
+                ";
+        // line 502
+        echo "              </ul>
             </div>
             <div id=\"dPro\" class=\"col s12\">";
         // line 504
@@ -1217,260 +1211,10 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
         echo " <br>Visualizaciones: ";
         echo $this->getAttribute(($context["producto"] ?? null), "Pro_Vista", array());
         echo "</div>
-            <div id=\"cPro\" class=\"col s12\">
-              <table class=\"striped\" style=\"table-layout: fixed\">
-                <thead class=\"\">
-                  <tr>
-                    <th width=\"40\"></th>
-                    <th width=\"60\"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ";
-        // line 514
-        if ($this->getAttribute(($context["producto"] ?? null), "Pro_Marca", array())) {
-            // line 515
-            echo "                    <tr>
-                      <td class=\"enfasisB\">Marca</td>
-                      <td>";
-            // line 517
-            echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_Marca", array()));
-            echo "</td>
-                    </tr>
-                  ";
-        }
-        // line 520
-        echo "                  ";
-        if ($this->getAttribute(($context["producto"] ?? null), "Pro_Garantia", array())) {
-            // line 521
-            echo "                    <tr>
-                      <td class=\"enfasisB\">Garantía</td>
-                      <td>";
-            // line 523
-            echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_Garantia", array()));
-            echo "</td>
-                    </tr>
-                  ";
-        }
-        // line 526
-        echo "                  ";
-        if ($this->getAttribute(($context["producto"] ?? null), "Pro_EdoGarantia", array())) {
-            // line 527
-            echo "                    <tr>
-                      <td class=\"enfasisB\">Estado Producto</td>
-                      <td>";
-            // line 529
-            echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto"] ?? null), "Pro_EdoGarantia", array()));
-            echo "</td>
-                    </tr>
-                  ";
-        }
-        // line 532
-        echo "                  <tr>
-                    <td  class=\"enfasisB\">Colores</td>
-                    <td >
-                      ";
-        // line 535
-        $context["arrayColores"] = array();
-        // line 536
-        echo "                      ";
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["colores"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["col"]) {
-            // line 537
-            echo "                        ";
-            if (($this->getAttribute($context["col"], "producto_Pro_IdProducto", array()) == $this->getAttribute(($context["pro"] ?? null), "Pro_IdProducto", array()))) {
-                // line 538
-                echo "                         ";
-                if (!twig_in_filter($this->getAttribute($context["col"], "Col_Hex", array()), ($context["arrayColores"] ?? null))) {
-                    // line 539
-                    echo "                         ";
-                    $context["arrayColores"] = twig_array_merge(($context["arrayColores"] ?? null), array(0 => $this->getAttribute($context["col"], "Col_Hex", array())));
-                    // line 540
-                    echo "                            ";
-                    echo twig_title_string_filter($this->env, $this->getAttribute($context["col"], "Col_Nombre", array()));
-                    echo ", 
-                         ";
-                }
-                // line 542
-                echo "                        ";
-            }
-            // line 543
-            echo "                      ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['col'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 544
-        echo "                      ";
-        if (twig_test_empty(($context["arrayColores"] ?? null))) {
-            // line 545
-            echo "                        <span class=\"flow-text notFlow enfasisB\"><i>Producto único</i></span>
-                      ";
-        }
-        // line 547
-        echo "                    </td>
-                  </tr>
-                  ";
-        // line 549
-        if ($this->getAttribute(($context["producto"] ?? null), "Pro_Documento", array())) {
-            // line 550
-            echo "                    <tr>
-                      <td  class=\"enfasisB\">Documento pago</td>
-                      <td >
-                        ";
-            // line 553
-            if (($this->getAttribute(($context["producto"] ?? null), "Pro_Documento", array()) == 1)) {
-                // line 554
-                echo "                          Boleta
-                        ";
-            } elseif (($this->getAttribute(            // line 555
-($context["producto"] ?? null), "Pro_Documento", array()) == 2)) {
-                echo " Boleta o Factura ";
-            }
-            // line 556
-            echo "                      </td>
-                    </tr>
-                  ";
-        }
-        // line 559
-        echo "                  ";
-        if (($context["producto_ficha"] ?? null)) {
-            // line 560
-            echo "                    ";
-            if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo1", array())) {
-                // line 561
-                echo "                      <tr>
-                        <td class=\"enfasisB\">Dimensiones <br>(largo x ancho x alto)</td>
-                        <td>";
-                // line 563
-                echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo1", array()));
-                echo "</td>
-                      </tr>
-                    ";
-            }
-            // line 566
-            echo "                    ";
-            if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo2", array())) {
-                // line 567
-                echo "                      <tr>
-                        <td class=\"enfasisB\">";
-                // line 568
-                if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
-                    echo "¿Qué contiene la caja? ";
-                } else {
-                    echo " Peso ";
-                }
-                echo "</td>
-                        <td>";
-                // line 569
-                if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
-                    echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo2", array()));
-                } else {
-                    echo " ";
-                    echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo2", array()));
-                    echo " Kg. ";
-                }
-                echo "</td>
-                      </tr>
-                    ";
-            }
-            // line 572
-            echo "                    ";
-            if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array())) {
-                // line 573
-                echo "                      <tr>
-                        <td class=\"enfasisB\">";
-                // line 574
-                if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
-                    echo "Peso ";
-                } else {
-                    echo " Material ";
-                }
-                echo "</td>
-                        <td>";
-                // line 575
-                if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
-                    echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array()));
-                    echo " Kg.";
-                } else {
-                    echo " ";
-                    echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array()));
-                }
-                echo "</td>
-                      </tr>
-                    ";
-            }
-            // line 578
-            echo "                    ";
-            if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo4", array())) {
-                // line 579
-                echo "                      <tr>
-                        <td class=\"enfasisB\">";
-                // line 580
-                if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
-                    echo "Potencia ";
-                } else {
-                    echo " Uso ";
-                }
-                echo "</td>
-                        <td>";
-                // line 581
-                if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
-                    echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo4", array()));
-                    echo " ws. ";
-                } else {
-                    echo " ";
-                    echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo4", array()));
-                }
-                echo "</td>
-                      </tr>
-                    ";
-            }
-            // line 584
-            echo "                    ";
-            if ($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo5", array())) {
-                // line 585
-                echo "                      <tr>
-                        <td class=\"enfasisB\">";
-                // line 586
-                if (($this->getAttribute(($context["producto"] ?? null), "Cat_IdCategoria", array()) == 6)) {
-                    echo "Material ";
-                } else {
-                    echo " Observaciones ";
-                }
-                echo "</td>
-                        <td>";
-                // line 587
-                echo twig_title_string_filter($this->env, $this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo5", array()));
-                echo "</td>
-                      </tr>
-                    ";
-            }
-            // line 590
-            echo "                  ";
-        }
-        // line 591
-        echo "                </tbody>
-              </table>
-            </div>
-          </div>
-          ";
-        // line 595
-        if ($this->getAttribute(($context["producto"] ?? null), "Pro_Video", array())) {
-            // line 596
-            echo "          <div class=\"col s12 l6\">
-             
-                  <div class=\"video-container\">
-                    <iframe width=\"853\" height=\"480\" src=\"";
-            // line 599
-            echo $this->getAttribute(($context["producto"] ?? null), "Pro_Video", array());
-            echo "\" frameborder=\"0\" allowfullscreen></iframe>
-                  </div>
-                
-          </div>
-          ";
-        }
+";
+        // line 594
+        echo "          </div>
+";
         // line 604
         echo "          <div class=\"col s12 l12\">
             <div class=\"row\">
@@ -1627,7 +1371,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
 
     public function getDebugInfo()
     {
-        return array (  1610 => 676,  1604 => 675,  1596 => 670,  1592 => 669,  1588 => 668,  1584 => 667,  1579 => 665,  1576 => 664,  1573 => 663,  1561 => 654,  1554 => 651,  1543 => 642,  1540 => 641,  1538 => 630,  1536 => 629,  1528 => 623,  1513 => 616,  1509 => 615,  1497 => 611,  1483 => 607,  1479 => 606,  1475 => 604,  1467 => 599,  1462 => 596,  1460 => 595,  1454 => 591,  1451 => 590,  1445 => 587,  1437 => 586,  1434 => 585,  1431 => 584,  1419 => 581,  1411 => 580,  1408 => 579,  1405 => 578,  1393 => 575,  1385 => 574,  1382 => 573,  1379 => 572,  1367 => 569,  1359 => 568,  1356 => 567,  1353 => 566,  1347 => 563,  1343 => 561,  1340 => 560,  1337 => 559,  1332 => 556,  1328 => 555,  1325 => 554,  1323 => 553,  1318 => 550,  1316 => 549,  1312 => 547,  1308 => 545,  1305 => 544,  1299 => 543,  1296 => 542,  1290 => 540,  1287 => 539,  1284 => 538,  1281 => 537,  1276 => 536,  1274 => 535,  1269 => 532,  1263 => 529,  1259 => 527,  1256 => 526,  1250 => 523,  1246 => 521,  1243 => 520,  1237 => 517,  1233 => 515,  1231 => 514,  1216 => 504,  1202 => 497,  1198 => 495,  1191 => 490,  1188 => 486,  1183 => 484,  1179 => 483,  1171 => 480,  1161 => 472,  1158 => 471,  1152 => 470,  1144 => 465,  1140 => 463,  1133 => 458,  1126 => 457,  1124 => 456,  1121 => 455,  1115 => 454,  1070 => 448,  1059 => 443,  1057 => 442,  1049 => 441,  1046 => 440,  1044 => 439,  1039 => 438,  1036 => 437,  1034 => 436,  1025 => 429,  1018 => 428,  1015 => 427,  1012 => 426,  1009 => 425,  1006 => 424,  1004 => 423,  1001 => 422,  995 => 421,  992 => 420,  989 => 419,  986 => 418,  980 => 416,  976 => 414,  973 => 413,  968 => 403,  965 => 402,  963 => 401,  956 => 400,  953 => 399,  947 => 398,  939 => 393,  935 => 391,  926 => 384,  919 => 383,  917 => 382,  914 => 381,  908 => 380,  866 => 378,  864 => 377,  856 => 376,  853 => 375,  851 => 374,  843 => 369,  838 => 366,  832 => 364,  828 => 362,  825 => 361,  820 => 351,  817 => 350,  815 => 349,  808 => 348,  806 => 347,  798 => 342,  790 => 336,  784 => 335,  781 => 334,  772 => 331,  769 => 330,  766 => 329,  763 => 328,  759 => 327,  752 => 322,  736 => 315,  733 => 314,  725 => 310,  722 => 309,  717 => 307,  713 => 306,  706 => 302,  694 => 292,  688 => 288,  686 => 287,  675 => 281,  670 => 278,  667 => 277,  661 => 276,  653 => 271,  649 => 269,  642 => 264,  635 => 263,  633 => 262,  630 => 261,  624 => 260,  579 => 254,  568 => 249,  566 => 248,  558 => 247,  555 => 246,  553 => 245,  548 => 244,  545 => 243,  543 => 242,  534 => 235,  527 => 234,  524 => 233,  521 => 232,  518 => 231,  515 => 230,  513 => 229,  510 => 228,  504 => 227,  501 => 226,  498 => 225,  495 => 224,  489 => 222,  485 => 220,  482 => 219,  477 => 211,  474 => 210,  472 => 209,  465 => 208,  462 => 207,  456 => 206,  448 => 201,  444 => 199,  435 => 192,  428 => 191,  426 => 190,  423 => 189,  417 => 188,  373 => 186,  371 => 185,  363 => 184,  360 => 183,  358 => 182,  352 => 178,  348 => 176,  343 => 173,  336 => 172,  333 => 171,  330 => 170,  327 => 169,  324 => 168,  322 => 167,  319 => 166,  313 => 165,  310 => 164,  307 => 163,  304 => 162,  298 => 160,  294 => 158,  291 => 157,  286 => 149,  283 => 148,  281 => 147,  274 => 146,  272 => 145,  264 => 140,  253 => 131,  250 => 130,  244 => 129,  241 => 128,  231 => 124,  223 => 123,  220 => 122,  217 => 121,  214 => 120,  209 => 119,  200 => 115,  194 => 114,  191 => 113,  189 => 112,  185 => 110,  175 => 106,  170 => 105,  167 => 104,  158 => 100,  154 => 99,  151 => 98,  149 => 97,  143 => 93,  141 => 92,  128 => 88,  117 => 79,  114 => 78,  37 => 5,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  1354 => 676,  1348 => 675,  1340 => 670,  1336 => 669,  1332 => 668,  1328 => 667,  1323 => 665,  1320 => 664,  1317 => 663,  1305 => 654,  1298 => 651,  1287 => 642,  1284 => 641,  1282 => 630,  1280 => 629,  1272 => 623,  1257 => 616,  1253 => 615,  1241 => 611,  1227 => 607,  1223 => 606,  1219 => 604,  1216 => 594,  1210 => 504,  1206 => 502,  1198 => 495,  1191 => 490,  1188 => 486,  1183 => 484,  1179 => 483,  1171 => 480,  1161 => 472,  1158 => 471,  1152 => 470,  1144 => 465,  1140 => 463,  1133 => 458,  1126 => 457,  1124 => 456,  1121 => 455,  1115 => 454,  1070 => 448,  1059 => 443,  1057 => 442,  1049 => 441,  1046 => 440,  1044 => 439,  1039 => 438,  1036 => 437,  1034 => 436,  1025 => 429,  1018 => 428,  1015 => 427,  1012 => 426,  1009 => 425,  1006 => 424,  1004 => 423,  1001 => 422,  995 => 421,  992 => 420,  989 => 419,  986 => 418,  980 => 416,  976 => 414,  973 => 413,  968 => 403,  965 => 402,  963 => 401,  956 => 400,  953 => 399,  947 => 398,  939 => 393,  935 => 391,  926 => 384,  919 => 383,  917 => 382,  914 => 381,  908 => 380,  866 => 378,  864 => 377,  856 => 376,  853 => 375,  851 => 374,  843 => 369,  838 => 366,  832 => 364,  828 => 362,  825 => 361,  820 => 351,  817 => 350,  815 => 349,  808 => 348,  806 => 347,  798 => 342,  790 => 336,  784 => 335,  781 => 334,  772 => 331,  769 => 330,  766 => 329,  763 => 328,  759 => 327,  752 => 322,  736 => 315,  733 => 314,  725 => 310,  722 => 309,  717 => 307,  713 => 306,  706 => 302,  694 => 292,  688 => 288,  686 => 287,  675 => 281,  670 => 278,  667 => 277,  661 => 276,  653 => 271,  649 => 269,  642 => 264,  635 => 263,  633 => 262,  630 => 261,  624 => 260,  579 => 254,  568 => 249,  566 => 248,  558 => 247,  555 => 246,  553 => 245,  548 => 244,  545 => 243,  543 => 242,  534 => 235,  527 => 234,  524 => 233,  521 => 232,  518 => 231,  515 => 230,  513 => 229,  510 => 228,  504 => 227,  501 => 226,  498 => 225,  495 => 224,  489 => 222,  485 => 220,  482 => 219,  477 => 211,  474 => 210,  472 => 209,  465 => 208,  462 => 207,  456 => 206,  448 => 201,  444 => 199,  435 => 192,  428 => 191,  426 => 190,  423 => 189,  417 => 188,  373 => 186,  371 => 185,  363 => 184,  360 => 183,  358 => 182,  352 => 178,  348 => 176,  343 => 173,  336 => 172,  333 => 171,  330 => 170,  327 => 169,  324 => 168,  322 => 167,  319 => 166,  313 => 165,  310 => 164,  307 => 163,  304 => 162,  298 => 160,  294 => 158,  291 => 157,  286 => 149,  283 => 148,  281 => 147,  274 => 146,  272 => 145,  264 => 140,  253 => 131,  250 => 130,  244 => 129,  241 => 128,  231 => 124,  223 => 123,  220 => 122,  217 => 121,  214 => 120,  209 => 119,  200 => 115,  194 => 114,  191 => 113,  189 => 112,  185 => 110,  175 => 106,  170 => 105,  167 => 104,  158 => 100,  154 => 99,  151 => 98,  149 => 97,  143 => 93,  141 => 92,  128 => 88,  117 => 79,  114 => 78,  37 => 5,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

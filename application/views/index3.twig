@@ -17,11 +17,31 @@
 	  		.slider{height:170px !important;}
 	  		.slides{height:200px !important;}
 	  		.slider .slides{background-color: #9e9e9e00 !important}
-		{% endif %}  
+		{% endif %}
+		/* Style the navbar */
+		#navbar {
+		  overflow: hidden;
+		  background-color: #fff;
+		}
+		/* Page content */
+		.content {
+		  padding: 16px;
+		}
+		/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+		.sticky {
+		  position: fixed;
+		  top: 0;
+		  width: 100%;
+		  z-index: 9999;
+		}
+		/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+		.sticky + .content {
+		  padding-top: 100px;
+		}
 	</style>
 {% endblock %}
 {% block content %}
-	<div class="inner">
+{# 	<div class="inner">
 		{% if usuario.logueado %}
 			<div class="hide addHomeScreen valign-wrapper">
 				<button class="btn-flat white-text cerrarHomeScreen"><i class="fontA material-icons">close</i></button>
@@ -73,8 +93,8 @@
 				</div>
 			</div>
 		{% endif %}
-	</div>
-	<main class="container">
+	</div> #}
+	<main class="">
 		<div class="row">
 			<div class="col s12">
 				 <div class="slider">
@@ -106,8 +126,22 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col s12 center">
+		<div class="row">	<br>
+			<div id="navbar" class="s12 z-depth-2">
+				<div class="input-field">						
+			  	<label for="searchbar">¿Qué estas buscando?</label>         
+		    	<input type="text" class="form-control" id="searchbar" onkeyup="search_pedido()">
+				</div>
+			</div>
+		</div>
+		<div class="row content">
+			{# <div class="col s12">
+        <div class="card-panel"> 
+            <label>INGRESE EL NOMBRE DEL PRODUCTO / CODIGO / PRECIO</label>         
+            <input type="text" class="form-control" id="searchbar" onkeyup="search_pedido()">
+        </div>
+      </div> #}
+{# 			<div class="col s12 center">
 				{% if userAgent == 'PC' %}
 					<div class="row">
 						<div class="col l3">
@@ -129,89 +163,58 @@
 				<img src="{{ruta_img}}icons/Info_cel-24.png" style="height:100px;">
 				<img src="{{ruta_img}}icons/Info_cel-25.png" style="height:100px;">
 				{% endif %}
-			</div>
-			{# <div class="col s12 pormayorUnico fontE center">
-				<p class="amber-text" style="font-size:25px;margin: 30px;">¡LOS PRODUCTOS MÁS VENDIDOS POR NUESTROS CLIENTES!</p>
-				 <a href="https://pormayor.pe/productos/dp/pormayor-3070-ropero-grande-de-tres-cuerpos-cod-88130-x-cajon"><img alt="Pormayor.pe" title="PROMOCION1" class="redondeo" src="{{ruta_img}}promo/promoPro1.png" height="260px"></a>
-				 <a href="https://pormayor.pe/productos/dp/pormayor-3863-tetera-flambera-3lt"><img alt="Pormayor.pe" title="PROMOCION2" class="redondeo" src="{{ruta_img}}promo/promoPro2.png" height="260px"></a>
-				 <a href="https://pormayor.pe/productos/dp/pormayor-3862-zapatera-organizadora-ancho-80cm-de-4-niveles-con-percheros-"><img alt="Pormayor.pe" title="PROMOCION3" class="redondeo" src="{{ruta_img}}promo/promoPro3.png" height="260px"></a>
-				 <a href="https://pormayor.pe/productos/dp/pormayor-1704-bano-para-mascota"><img alt="Pormayor.pe" title="PROMOCION4" class="redondeo" src="{{ruta_img}}promo/promoPro4.png" height="260px"></a>
 			</div> #}
-			<div class="col s12">
+{# 			<div class="col s12">
 				<br>
-			</div>
+			</div> #}
 			<div class="col s12 pormayor center">
 				<span class="black-text" style="font-size:25px">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
 			</div>
 			{% for pro in pro10 %}
-              <div class="col s12 m6 l3 black-text">
-                <div class="card hoverable">
-            <a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
-
-                  <div class="center" style="height:190px;">
-                    <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo"  data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
-                  </div>
-                </a>
-                  <div class="card-content center">
-                    <div class="divider"></div>
-                    <p>
-                      <span class="truncate">{{pro.Pro_Nombre|title}}</span>
-                      {% if pro.Pro_Saldo == 1 %}
-                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge red">Remate</span>
-                      {% elseif pro.Pro_Preventa == 1 %}
-                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge blue left">PRE-VENTA</span>
-                      {% else %}
-                        <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón</label>
-                      {% endif %}
-                    </p>
-                    {% if pro.catvar == 1 %}
-                    <div class="input-group input-number-group">
-                        <div class="input-group-button">
-                          <span class="input-number-decrement">-</span>
-                        </div>
-                          <input type="number" min="1" name="cantidad" value="0" max="{{pro.SKU_StockDisponible}}" class="input-number browser-default cantSku{{pro.Pro_IdProducto}} cant{{pro.SKU_IdSKU}}" id="{{pro.SKU_IdSKU}}" data-idpro="{{pro.Pro_IdProducto}}" data-colresumen=" " data-foto="{{pro.Prf_Thumb}}" data-productname="{{pro.Pro_Nombre}}" data-productid="{{pro.SKU_IdSKU}}" data-price="" xd="{{pro.Pro_PrecioMinimo}}" data-tipovariacion=" " data-color="" data-variacion=" " data-img="{{pro.Prf_Thumb}}" data-unidad="" data-dispo="{{pro.SKU_StockDisponible}}" data-idtienda="" data-minventa="{{pro.SKU_StockDisponible}}" data-preciounit="" data-documento="2" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
-                        <div class="input-group-button">
-                          <span class="input-number-increment">+</span>
-                        </div>
-                        <div>
-                          <a class="btn input-add-cart add_cart pormayor black-text" data-pmin="{{pro.Pro_PrecioMinimo}}" data-idp="{{pro.Pro_IdProducto}}">AGREGAR</a>
-                        </div>
-                      </div>
-                    {% else %}
-                          <a class="btn pormayor black-text" style="margin: 3px" href="{{base_url()}}productos/dp/{{pro.url}}" >VER MÁS</a>
-                    {% endif %}
-                  </div>
+        <div class="col s12 m6 l3 black-text filtroProductoall">
+      	{% set urlp = pro.Pro_Nombre|replace({' ':"-"}) %}
+      	{% set urlp2 = urlp|lower %}
+          <div class="card hoverable ">
+            <a itemprop="url" href="{{base_url()}}productos/dp/pormayor-{{pro.Pro_IdProducto}}-{{urlp2}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+              <div class="center" style="height:190px;">
+                <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo"  data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
+              </div>
+            </a>
+            <div class="card-content center">
+              <div class="divider"></div>
+              <p>
+                <span class="truncate">{{pro.Pro_Nombre|title}}</span>
+                <span class="negrita">COD:{{pro.Pro_IdProducto}}</span><br>
+                {% if pro.Pro_Saldo == 1 %}
+                  <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge red">OFERTA</span>
+                {% elseif pro.Pro_Preventa == 1 %}
+                  <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge blue left">PRE-VENTA</span>
+                {% else %}
+                  <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón</label>
+                {% endif %}
+              </p>
+              {% if pro.catvar == 1 %}
+              <div class="input-group input-number-group">
+                <div class="input-group-button">
+                  <span class="input-number-decrement">-</span>
+                </div>
+                  <input type="number" min="1" name="cantidad" value="0" max="{{pro.SKU_StockDisponible}}" class="input-number browser-default cantSku{{pro.Pro_IdProducto}} cant{{pro.SKU_IdSKU}}" id="{{pro.SKU_IdSKU}}" data-idpro="{{pro.Pro_IdProducto}}" data-colresumen=" " data-foto="{{pro.Prf_Thumb}}" data-productname="{{pro.Pro_Nombre}}" data-productid="{{pro.SKU_IdSKU}}" data-price="" xd="{{pro.Pro_PrecioMinimo}}" data-tipovariacion=" " data-color="" data-variacion=" " data-img="{{pro.Prf_Thumb}}" data-unidad="" data-dispo="{{pro.SKU_StockDisponible}}" data-idtienda="" data-minventa="{{pro.SKU_StockDisponible}}" data-preciounit="" data-documento="2" onkeydown="javascript: return event.keyCode == 69 ? false : true" readonly>
+                <div class="input-group-button">
+                  <span class="input-number-increment">+</span>
+                </div>
+                <div>
+                  <a class="btn input-add-cart add_cart pormayor black-text" data-pmin="{{pro.Pro_PrecioMinimo}}" data-idp="{{pro.Pro_IdProducto}}">AGREGAR</a>
                 </div>
               </div>
-          {# </a> #}
-          {% endfor %}
-{# 		  	{% for pro in pro10 %}
-		  	<a itemprop="url" href="{{base_url()}}productos/dp/{{pro.url}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
-		        <div class="col s6 m4 l3 black-text" data-cd="{{pro.Pro_PM}}">
-		          <div class="card hoverable z-depth-1">
-		          	<span class="badge red white-text" style="position:absolute;">Nuevo</span>
-		            <div class="center" style="height:190px;">
-		              <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo" data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
-		            </div>
-		            <div class="card-content" style="height:100px;">
-		              <p>
-		              	<span class="truncate">{{pro.Pro_Nombre|upper}}</span>
-		              	<small>COD: {{pro.Pro_IdProducto}}</small><br>
-		              	<div class="divider"></div>
-		              	{% if pro.Pro_Preventa == 1 %}
-		              	<span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> <small>x cajón</small><span class="new badge blue left">PRE-VENTA</span>
-		              	{% else %}
-		              	<span class="fontA negrita red-text">S/ {{pro.Pro_PrecioMinimo}}</span> <small>x cajón</small>
-		              	{% endif %}
-		              	<br>
-		              </p>
-		            </div>
-		          </div>
-		        </div>
-	    	</a>
-		  	{% endfor %} #}
-			<div class="col s12 center"><br>
-			{# <a href="{{base_url}}pagina/productos" class="btn btn-large" style="font-size:2em;"><b>VER TODOS LOS PRODUCTOS</b></a> #}
+              {% else %}
+                <a class="btn pormayor black-text" style="margin: 3px" href="{{base_url()}}productos/dp/{{base_url()}}productos/dp/pormayor-{{pro.Pro_IdProducto}}-{{urlp2}}" >VER MÁS</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+{# 			<div class="col s12 center"><br>
+			<a href="{{base_url}}pagina/productos" class="btn btn-large" style="font-size:2em;"><b>VER TODOS LOS PRODUCTOS</b></a>
 			 <ul class="pagination">
 			    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
 			    <li class="active pormayorUnico"><a href="{{base_url}}pagina/productos">1</a></li>
@@ -221,13 +224,45 @@
 			    <li class="waves-effect"><a href="{{base_url}}pagina/productos/5">5</a></li>
 			    <li class="waves-effect"><a href="{{base_url}}pagina/productos"><i class="material-icons">chevron_right</i></a></li>
 			  </ul>
-			</div>
-	    </div>
+			</div> #}
+	  </div>
 	</main>	
 {% endblock %}
 {% block script %}
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
-<script defer src="{{base_url('public/')}}js/index.js"></script>
-<script defer src="{{base_url('public/')}}js/tienda/dproLis.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script src="{{base_url('public/')}}js/index.js"></script>
+<script src="{{base_url('public/')}}js/tienda/dproLis.min.js"></script>
+<script>
+	// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}     
+function search_pedido() {
+  let input = document.getElementById('searchbar').value;
+  input = input.toLowerCase();
+  let x = document.getElementsByClassName('filtroProductoall');
+  // console.log(input);      
+  for (i = 0; i < x.length; i++) { 
+      if (!x[i].innerHTML.toLowerCase().includes(input)) {
+          x[i].style.display="none";
+      }
+      else {
+          x[i].style.display="block";                 
+      }
+  }
+}
+</script>
 {% endblock %}

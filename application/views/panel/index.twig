@@ -156,7 +156,11 @@
                     </div>
                     <div class="ps-3">
                       <h6>{{ventashoy}} <span style="font-size: 12px;color: grey;">| {{ventasayer}}</span></h6>
+                      {% if ventasayer %}
                       {% set difVenta = (( ventashoy * 100 ) / ventasayer) - 100 %}
+                      {% else %}
+                      {% set difVenta = 0 %}
+                      {% endif %}
                         {% if difVenta > 0 %}
                       <span class="text-success small pt-1 fw-bold">{{difVenta|round}}%</span> <span class="text-muted small pt-2 ps-1">incremento</span>
                         {% else %}
@@ -198,7 +202,11 @@
                     </div>
                     <div class="ps-3">
                       <h6>S/ {{montoHoy.montoT}} <span style="font-size: 12px;color: grey;">| {{montoAyer.montoT}}</span></h6>
+                      {% if montoAyer.montoT %}
                       {% set difMonto = (( montoHoy.montoT * 100 ) / montoAyer.montoT) - 100 %}
+                      {% else %}
+                      {% set difMonto = 0 %}
+                      {% endif %}
                         {% if difMonto > 0 %}
                       <span class="text-success small pt-1 fw-bold">{{difMonto|round}}%</span> <span class="text-muted small pt-2 ps-1">incremento</span>
                         {% else %}
@@ -240,7 +248,11 @@
                     </div>
                     <div class="ps-3">
                       <h6>{{registroHoy}} <span style="font-size: 12px;color: grey;">| {{registroAyer}}</span></h6>
+                      {% if registroAyer %}
                       {% set difReg = (( registroHoy * 100 ) / registroAyer) - 100 %}
+                      {% else %}
+                      {% set difReg = 0 %}
+                      {% endif %}
                         {% if difReg > 0 %}
                       <span class="text-success small pt-1 fw-bold">{{difReg|round}}%</span> <span class="text-muted small pt-2 ps-1">incremento</span>
                         {% else %}

@@ -340,11 +340,7 @@ src=\"https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1\"
             // line 170
             if ((($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 2) || ($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 3))) {
                 // line 171
-                echo "              <li><a href=\"https://";
-                echo ($context["subdominio_tienda"] ?? null);
-                echo ".";
-                echo ($context["dominio"] ?? null);
-                echo "/usuario/inventario/lProductos\"><i class=\"material-icons left\">settings</i>Panel Tienda</a></li>
+                echo "              <li><a href=\"https://tienda-oficial.pormayor.pe/usuario/venta\"><i class=\"material-icons left\">settings</i>Panel Tienda</a></li>
             ";
             }
             // line 173
@@ -463,7 +459,7 @@ src=\"https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1\"
             if ((($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 2) || ($this->getAttribute(($context["usuario"] ?? null), "rol", array()) == 3))) {
                 // line 246
                 echo "              <li class=\"headerMenu center valign-wrapper\">
-                  <a class=\"btn centrarForzado pormayor pormayorAccent-text\" href=\"https://tiendaoficial.pormayor.pe/usuario/inventario/lProductos\" style=\"padding: 0 16px;\">Perfil Tienda</a>
+                  <a class=\"btn centrarForzado pormayor pormayorAccent-text\" href=\"https://tienda-oficial.pormayor.pe/usuario/venta\" style=\"padding: 0 16px;\">Perfil Tienda</a>
                 ";
             } elseif (($this->getAttribute(            // line 248
 ($context["usuario"] ?? null), "rol", array()) == 5)) {
@@ -691,15 +687,15 @@ src=\"https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1\"
         echo "      <script> var base_url = \"";
         echo base_url();
         echo "\";</script>
-      <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
-      <script src=\"https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js\"></script>
-      <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\"></script>
-      <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js\"></script>
+      <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\" async></script>
+      <script src=\"https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js\" async></script>
+      <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js\" async></script>
+      <script src=\"https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js\" async></script>
+      <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js\" async></script>
       <script src=\"";
-        // line 358
+        // line 359
         echo base_url("public/js/template-lite.min.js?v=0152");
         echo "\" defer></script>
-      <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js\"></script>
     ";
         // line 360
         $this->displayBlock('script', $context, $blocks);
@@ -750,7 +746,7 @@ src=\"https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1\"
 
     public function getDebugInfo()
     {
-        return array (  736 => 360,  730 => 352,  724 => 294,  718 => 46,  713 => 29,  707 => 361,  705 => 360,  700 => 358,  691 => 353,  689 => 352,  682 => 348,  676 => 345,  662 => 333,  652 => 324,  648 => 322,  643 => 321,  634 => 314,  630 => 313,  626 => 312,  622 => 311,  607 => 301,  599 => 296,  596 => 295,  594 => 294,  591 => 293,  587 => 291,  574 => 289,  570 => 288,  565 => 286,  559 => 283,  553 => 280,  547 => 277,  541 => 274,  536 => 271,  529 => 268,  526 => 267,  513 => 266,  509 => 265,  504 => 263,  498 => 260,  495 => 259,  489 => 256,  484 => 254,  481 => 253,  478 => 252,  471 => 249,  469 => 248,  465 => 246,  463 => 245,  458 => 243,  454 => 241,  452 => 240,  449 => 239,  447 => 237,  444 => 236,  441 => 235,  439 => 234,  430 => 227,  428 => 226,  415 => 216,  407 => 211,  403 => 209,  401 => 208,  385 => 195,  381 => 193,  379 => 192,  364 => 179,  361 => 178,  359 => 177,  354 => 174,  351 => 173,  343 => 171,  341 => 170,  336 => 169,  330 => 167,  328 => 166,  323 => 165,  321 => 164,  316 => 161,  303 => 160,  299 => 159,  296 => 158,  289 => 153,  283 => 151,  277 => 149,  275 => 148,  269 => 145,  253 => 132,  249 => 131,  245 => 129,  231 => 118,  224 => 113,  222 => 112,  212 => 105,  207 => 104,  203 => 102,  197 => 98,  189 => 92,  186 => 91,  178 => 86,  175 => 85,  172 => 84,  164 => 79,  161 => 78,  158 => 77,  156 => 76,  125 => 47,  123 => 46,  105 => 30,  103 => 29,  99 => 28,  94 => 26,  88 => 22,  83 => 19,  76 => 15,  73 => 14,  71 => 13,  62 => 12,  52 => 11,  33 => 8,  24 => 1,);
+        return array (  732 => 360,  726 => 352,  720 => 294,  714 => 46,  709 => 29,  703 => 361,  701 => 360,  697 => 359,  687 => 353,  685 => 352,  678 => 348,  672 => 345,  658 => 333,  648 => 324,  644 => 322,  639 => 321,  630 => 314,  626 => 313,  622 => 312,  618 => 311,  603 => 301,  595 => 296,  592 => 295,  590 => 294,  587 => 293,  583 => 291,  570 => 289,  566 => 288,  561 => 286,  555 => 283,  549 => 280,  543 => 277,  537 => 274,  532 => 271,  525 => 268,  522 => 267,  509 => 266,  505 => 265,  500 => 263,  494 => 260,  491 => 259,  485 => 256,  480 => 254,  477 => 253,  474 => 252,  467 => 249,  465 => 248,  461 => 246,  459 => 245,  454 => 243,  450 => 241,  448 => 240,  445 => 239,  443 => 237,  440 => 236,  437 => 235,  435 => 234,  426 => 227,  424 => 226,  411 => 216,  403 => 211,  399 => 209,  397 => 208,  381 => 195,  377 => 193,  375 => 192,  360 => 179,  357 => 178,  355 => 177,  350 => 174,  347 => 173,  343 => 171,  341 => 170,  336 => 169,  330 => 167,  328 => 166,  323 => 165,  321 => 164,  316 => 161,  303 => 160,  299 => 159,  296 => 158,  289 => 153,  283 => 151,  277 => 149,  275 => 148,  269 => 145,  253 => 132,  249 => 131,  245 => 129,  231 => 118,  224 => 113,  222 => 112,  212 => 105,  207 => 104,  203 => 102,  197 => 98,  189 => 92,  186 => 91,  178 => 86,  175 => 85,  172 => 84,  164 => 79,  161 => 78,  158 => 77,  156 => 76,  125 => 47,  123 => 46,  105 => 30,  103 => 29,  99 => 28,  94 => 26,  88 => 22,  83 => 19,  76 => 15,  73 => 14,  71 => 13,  62 => 12,  52 => 11,  33 => 8,  24 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

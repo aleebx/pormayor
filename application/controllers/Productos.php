@@ -340,28 +340,25 @@ $data["success"] = TRUE;
 }
 }
 
-$data['facebook']['id'] = $this->config->item('facebook_app_id');
-$data['facebook']['permisos'] = $this->config->item('facebook_permissions');
 }
-
 
 $data['url_actual'] = str_replace('_', '/', $url_actual);
 $data['pagina']['titulo'] = 'Compra - 1 | pormayor.pe';
 $data['vista_carrito'] = true;
 $data['vista_carrito_compra'] = true;
 
-
 foreach ($data['carrito'] as $inner_array){
 $data['flagVariaciones'] =  $inner_array['flagVariaciones'];
 break;
 };
+$data['carritoLi'] = $this->cart->contents();
 $data['unidPe'] = 0;
 foreach($this->cart->contents() as $items){
-$data['unidPe'] = $data['unidPe'] + $items['price'];
+$data['unidPe'] = $data['unidPe'] + ($items['qty'] * $items['precio_unit']);
 }
 
 $data['totalc'] = count($data['carrito']);
-$this->twig->parse('tienda/resumen.twig', $data);
+$this->twig->parse('tienda/resumenNew.twig', $data);
 }
 
 public function agotado()

@@ -37,38 +37,54 @@
 {% endblock %}
 {% block content %}
     <main class="container fixContainer"><br><br>
-   {#  <div class="card-panel center blue white-text fontD2">
-      Emprende con nosotros, puedes llevarte cualquier producto a precio por mayor con una compra mínima de <b class="fontA">S/100</b>
-    </div> #}
-      {% if userAgent == "PC" %}
-        <div class="row centrarForzado">
-          <div class="col s12 sinPadding">
-            <br>
-            <div class="row breadPago">
-              <div class="col l4 valign-wrapper">
-                <h1 class="fixH1Seo enfasisA center centrarForzado">Carrito de compras</h1>
-              </div>
-              <div class="col l3 sinUser valign-wrapper fontD2 pormayorUnico-text">
-                <i class="material-icons left small">looks_one</i> RESUMEN<span class=" anchoTotal grey lighten-2 right"></span>
-              </div>
-              <div class="col l3 sinUser enfasisD valign-wrapper fontD2 sinPadding">
-                <i class="material-icons left small">looks_two</i> DESPACHO<span class=" anchoTotal grey lighten-2 right"></span>
-              </div>
-              <div class="col l2 sinUser enfasisD valign-wrapper fontD2">
-                <i class="material-icons left small">looks_3</i> PAGO
+        <div class="row">
+            <div class="col s12 m12 l12 sinPadding hide-on-small-only">
+              <br>
+              <div class="row breadPago">
+                <div class="col s12 l4 valign-wrapper">
+                  <h1 class="fixH1Seo enfasisA center centrarForzado">Carrito de compras</h1>
+                </div>
+                <div class="col s4 l3 sinUser valign-wrapper fontD2 pormayorUnico-text">
+                  <i class="material-icons left small">looks_one</i> RESUMEN<span class=" anchoTotal grey lighten-2 right"></span>
+                </div>
+                <div class="col s4 l3 sinUser enfasisD valign-wrapper fontD2 sinPadding">
+                  <i class="material-icons left small">looks_two</i> DESPACHO<span class=" anchoTotal grey lighten-2 right"></span>
+                </div>
+                <div class="col s4 l2 sinUser enfasisD valign-wrapper fontD2">
+                  <i class="material-icons left small">looks_3</i> PAGO
+                </div>
               </div>
             </div>
-          </div>
-          {% if not carrito is empty %}
-          <div class="cart_content hide">
-            <div class="col l9">
+            <div class="cart_content hide">
+            <div class="col s12 m12 l9">
               <div class="card">
                 <div class="card-content sinPadding">
-                  <div class="row cardContentFix"> 
-                    
-                    <div id="cart_details">
-                      
+                  <div class="row cardContentFix">                     
+                    <div class="carroContent center">
+                      {% for item in carritoLi %}
+                      <div class="row centrarForzado">
+                        <div class="col s3 m3 l2 valign-wrapper"><img class="redondeo centrarForzado fixImg2" src="{{ruta_img}}{{item.img}}" ></div>
+                        <div class="col s7 m7 l3 left-align muayuscula">{{item.name }} &nbsp;<br><span class="fontB2 enfasisB">{{ item.tipovariacion }} {{ item.variacion }} {{ item.color }}</span>
+                        </div>
+                        <div class="col s2 hide-on-med-and-up valign-wrapper"><a class="sinPadding centrarForzado btn-flat remove_inventory" id="{{ item.rowid}}"><i class="material-icons small transition">delete</i></a></div>
+                        <div class="col s7 m8 l2 valign-wrapper" data-cantact="{{ item.qty}}" data-cantmin="{{ item.cantmin}}" data-idpro="{{ item.idpro}}" data-preciounit="{{ item.precio_unit}}" data-idrow="{{ item.rowid}}" data-pvo="{{ item.pvo}}" data-idsku="{{ item.id_sku}}" data-pmin="{{ item.price_min}}">
+                          <select class="browser-default fontD2 cantCarrito">
+                            {% for i in 1..item.cantmin %}
+                          <option value="{{i}}">{{i}}</option>
+                            {% endfor %}
+                        </select>
+                        <small class="enfasisB"> &nbsp;&nbsp;Unidades</small></div>
+                        <div class="col s3 m3 l4 positionRelative totalN"><span class="positionAbsolute right0 top0 enfasisB fontB2"><span class="precioN precioUnitCarrito{{ item.rowid}}">{{ item.precio_unit}}</span> c/u</span><br>
+                          {% set subtP = item.precio_unit * item.qty %}
+                        <span class="positionAbsolute right0 bottom0"><small> S/. &nbsp;&nbsp;</small><b class="fontA subTotalCarrito subTotalCarrito{{ item.rowid}}">{{subtP}}</b></span></div>
+                        <div class="col s2 m1 l1 valign-wrapper hide-on-small-only"><a class="btn-flat remove_inventory" id="{{ item.rowid}}"><i class="material-icons small transition">delete</i></a></div>
+                        <div class="col s12 m12 l12 colDivider">
+                        <br>
+                        <div class="divider dividerMargin"></div>
+                        <br>
+                        </div>
                     </div>
+                        {% endfor %}
                     <div class="col s6 left-align">
                       <a class="waves-effect waves-light btn-flat btn-flat-not transition" onclick="history.back()"><i class="material-icons left">arrow_back</i>Seguir Comprando</a>
                     </div>  
@@ -82,7 +98,8 @@
                 </div>
               </div>
             </div>
-            <div class="col l3 sinPadding">
+            </div>
+            <div class="col s12 m12 l3 sinPadding">
               <div class="card">
                 <div class="card-content sinPadding">
                   <div class="row cardContentFix centrarForzado detallesPedidoCont">
@@ -114,9 +131,6 @@
                     <div class="col s12">
                       <div class="divider dividerMargin"></div>
                     </div>
-{#                     <div class="col s4 m4 l4 sinPadding">
-                      <a href="{{base_url()}}productos/pedido" class="btn-flat">Cotizar</a>
-                    </div> #}
                     <div class="col s12 m12 l12 center sinPadding">
                       {% if usuario.logueado %}
                         {% if usuario.rol == 4 %}
@@ -140,18 +154,14 @@
                       <div class="divider dividerMargin"></div>
                       <br>
                     </div>
-                    <div class="col s6 sinPadding center valign-wrapper" style="">
-                      <img class="centrarForzado" src="{{ruta_img}}safety_pay.webp" height="45" >
-                    </div>
-                    <div class="col s6 positionRelative center-align valign-wrapper">
-                      <a class="centrarForzado" href="https://pormayor.pe/legal/compra_segura">
-                        <img alt="Pormayor.pe - Rate" class="linkCompraSegura transition comoBoton positionRelative" src="{{ruta_img}}pagoA.png" alt="compra segura pormayor.pe" height="55">
-                      </a>
-                    </div>
+                     <div class="col s12">
+                      <a class="waves-effect waves-light btn-flat btn-flat-not transition" href="{{base_url()}}cliente/listado"><i class="material-icons left">list</i>Ver mas productos</a>
+                    </div>  
                     <div class="col s12"><br></div>
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
           <div class="col s12 center">
@@ -168,151 +178,7 @@
               </div>
             </div>
           </div>
-          {% else %}
-              <div class="center col s12 m12 l12" style="margin-top: 20px;">
-                <img src="{{ruta_img}}emptyCart.webp" height="150"></img>
-              </div>
-              <div class="center col s12 m12 l12">
-                <h5>Sin productos agregados</h5>
-                <p class="enfasisB">No haz agregado productos para comprar</p>
-              </div>
-              <div class="center col s12 m12 l12">
-                <a class="btn pormayorUnico" onclick="history.back()">Ir a comprar</a>
-                <br><br>
-              </div>
-          {% endif %}
         </div>
-      {% else %}
-        <div class="row centrarForzado">
-          <div class="col s12 sinPadding">
-            <div class="row centrarForzado ">
-              <div class="col s12 center">
-                <h1 class="fontA enfasisA centrarForzado">Carrito de compras</h1>
-              </div>
-            </div>
-            <br>
-          </div>
-        {% if not carrito is empty %}
-          <div class="cart_content hide">
-            <div class="col s12 sinPadding">
-              <div class="card">
-                <div class="card-content sinPadding">
-                  <div class="row cardContentFix"> 
-                    
-                    <div id="cart_details">
-                      
-                    </div>
-                    <div class="col s12 right-align">
-                      <button class="waves-effect waves-light btn-flat clear_cart"><i class="material-icons left">delete_sweep</i><u>Vaciar Carrito</u></button>
-                    </div>
-                    <div class="col s12 center">
-                      <a class="waves-effect waves-light btn-flat btnFlatMobile transition pormayorUnico-text" onclick="history.back()"><i class="material-icons left">arrow_back</i>Seguir Comprando</a>
-                      <br><br>
-                    </div>     
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 sinPadding">
-              <div class="card">
-                <div class="card-content sinPadding">
-                  <div class="row cardContentFix centrarForzado detallesPedidoCont">
-                    <div class="col s12 center">
-                      <span class="fontA enfasisA">Detalles de tu Pedido</span>
-                      <div class="divider dividerLista"></div>
-                    </div>
-                    <div class="col s3 center enfasisB left-align valign-wrapper">
-                      Cantidad
-                    </div>
-                    <div class="col s9 center enfasisA valign-wrapper">
-                      <span class="centrarForzado"><span class="fontD2"><b class="cantResumen"></b></span>&nbsp; <span class="enfasisB">Unidades</span></span>
-                    </div>
-                    <div class="col s12">
-                      <div class="divider dividerMargin"></div>
-                    </div>
-                    <div class="col s3 center enfasisB left-align valign-wrapper">
-                      Total
-                    </div>
-                    <div class="col s9 center enfasisA valign-wrapper">
-                      <span class="centrarForzado">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen"></b></span></span>
-                    </div> 
-                    <div class="col s3 center enfasisB totalD1 hide left-align valign-wrapper">
-                      Total Desc
-                    </div>
-                    <div class="col s9 center enfasisA totalD2 hide valign-wrapper">
-                      <span class="centrarForzado">S/&nbsp; <span class="fontC pormayorUnico-text"><b class="totalResumen2"></b></span></span>
-                    </div>             
-                    <div class="col s12 sinPadding center">
-                      <br>
-                      <div class="divider"></div>
-                      <br>
-                    </div>
-                     <div class="col s12 center sinPadding">
-                      {% if usuario.logueado %}
-                        {% if usuario.rol == 4 %}
-                          {% if unidPe >= 100 %}
-                            <a href="{{base_url()}}productos/despacho" class="btn-large anchoTotal pormayorUnico">Comprar</a>
-                          {% else %}
-                            <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
-                          {% endif %}
-                        {% else %}
-                            <span class="red-text">NO PUEDES HACER COMPRA CON ESTE USUARIO</span>
-                        {% endif %}
-                      {% else %}
-                        {% if unidPe >= 100 %}
-                          <a class="waves-effect waves-light btn anchoTotal pormayorUnico modal-trigger comprar_popup" data-flag="{{flag_login}}" href="#sesion_popup">Comprar</a> 
-                        {% else %}
-                          <span class="yellow red-text">DEBES AGREGAR ALGO MAS PARA CONTINUAR, COMPRA MÍNIMA DE 100 SOLES</span>
-                        {% endif %}
-                      {% endif %}
-                      <br><br>
-                    </div>
-                    <div class="col s6 center">
-                      <img class="" src="{{ruta_img}}safety_pay.webp" height="40">
-                    </div>       
-                    <div class="col s6 positionRelative center-align valign-wrapper">
-                      <a class="centrarForzado" href="https://pormayor.pe/legal/compra_segura">
-                        <img alt="Pormayor.pe - Rate" class="linkCompraSegura transition comoBoton " src="{{ruta_img}}pagoA.png" alt="compra segura pormayor.pe" height="50">
-                      </a>
-                    </div>
-                    <div class="col s12"><br><br></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 center">
-            <br><br><br>
-            <div class="preloader-wrapper big active">
-              <div class="spinner-layer spinner-blue-only" style="border-color: #FEC00F">
-                <div class="circle-clipper left">
-                  <div class="circle"></div>
-                </div><div class="gap-patch">
-                  <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                  <div class="circle"></div>
-                </div>
-              </div>
-            </div>
-            <br><br><br>
-          </div>
-          {% else %}
-              <div class="center col s12 m12 l12" style="margin-top: 20px;">
-                <img src="{{ruta_img}}emptyCart.webp" height="150"></img>
-              </div>
-              <div class="center col s12 m12 l12">
-                <h5 class="movilNoProduct">Sin productos agregados</h5>
-                <p class="enfasisB">No haz agregado productos para comprar</p>
-              </div>
-              <div class="center col s12 m12 l12">
-                <a class="btn pormayorUnico" onclick="history.back()">Ir a comprar</a>
-                <br><br>
-              </div>
-          {% endif %}
-         </div>
-        <br>
-        <br>
-      {% endif %}
 
       <div id="sesion_popup" class="modal white">
         <div class="modal-content positionRelative" style="padding-top:0px">

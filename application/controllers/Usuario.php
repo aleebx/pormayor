@@ -341,9 +341,6 @@
                     $this->form_validation->set_rules('celular', 'CELULAR', 'trim|required');
                     $this->form_validation->set_rules('publicidad_valor', 'PUBLI', 'trim');
 
-                    // $this->form_validation->set_message("required", "El campo %s es requerido");
-                    // $this->form_validation->set_message("is_unique", "El campo %s ya está en uso");
-
                     $this->form_validation->set_message("is_unique", "Error");
 
                     $data['errors'] = array();
@@ -407,9 +404,6 @@
                         $data["success"] = TRUE;
                     }
                 }
-
-                $data['facebook']['id'] = $this->config->item('facebook_app_id');
-                $data['facebook']['permisos'] = $this->config->item('facebook_permissions');
                 $this->twig->parse('usuario/loginNew.twig', $data);
             }
 		}
