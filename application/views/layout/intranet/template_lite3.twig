@@ -71,44 +71,9 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-<div class="inner">    
-    <ul id='dropdown2' class='dropdown-content'>
-      {% if not noticoments is empty or not noticotiza is empty %}
-        {% if not noticoments is empty  %}
-          <li style="width: 320px">
-            <a  href="{{base_url()}}comprador/index/respuesta_comentario">
-              <i class="material-icons left">comment</i>Tu comentario <b>fue respondido </b><span class="pormayorUnico-text">(Ver)</span>
-            </a>
-          </li>
-        {% endif %}
-        {% if not noticotiza is empty  %}
-          <li style="width: 320px">
-            <a  href="{{base_url()}}comprador/index/pedidos">
-              <i class="material-icons left">comment</i><b>Respondieron</b> tu cotización <span class="pormayorUnico-text">(Ver)</span>
-            </a>
-          </li>
-        {% endif %}
-      {% else %}
-          <li >
-            <a  href="#">
-              <span class="enfasisC">No tienes notificaciones</span>
-            </a>
-          </li>
-      {% endif %}
-    </ul>
-</div>
-    <div class="grey lighten-4">
-      <div class="right">
-        <a href="https://www.facebook.com/pormayoroficial"><img src="{{ruta_img}}icons/facebook.png"></a>
-        {# <a href=""><img src="{{ruta_img}}icons/whatsapp.png"></a> #}
-        <a href="https://www.tiktok.com/@pormayor.pe"><img src="{{ruta_img}}icons/tiktok.png"></a>
-        <a href="https://www.youtube.com/channel/UCte8tqCKUnni_J0VV-TDQQQ"><img src="{{ruta_img}}icons/youtube.png"></a>
-      </div>
-    </div>
     <div class="black center">
       <span class="white-text fontA">¡Por compras mínimas de <b class="amber-text">S/100</b>, llévate diferentes productos a precio por cajón!</span>
-    </div>
-    
+    </div>    
         {% if userAgent == 'movil' %}
           <nav class="pormayor">
             <div class="nav-wrapper">
@@ -119,8 +84,10 @@ src="https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1"
                   
                 </div>
                 <div class="col s10">
-              <input type="text" class="browser-default buscador autocomplete redondeo white enfasisA" placeholder="Buscar productos" data-tienda="pormayor">
-                  
+              {# <input type="text" class="browser-default buscador autocomplete redondeo white enfasisA" placeholder="Buscar productos" data-tienda="pormayor"> #}
+                  <a class="brand-logo" href="{{base_url()}}" >
+              <img alt="Pomayor.pe - Crece con nosotros" src="{{ruta_img}}icons/logoPrincipal.png" height="55px" style="padding-top: 5px;">
+            </a>
                 </div>
               </div>
             </div>
@@ -132,15 +99,9 @@ src="https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1"
               <img alt="Pomayor.pe - Crece con nosotros" src="{{ruta_img}}icons/logoPrincipal.png" height="55px" style="padding-top: 5px;">
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-{#               <li>
+              <li>
                 <a class='dropdown-button black-text' href='#' data-activates='categoriasList'><i class="material-icons right">keyboard_arrow_down</i> Categorias</a>
-              </li> #}
-{#               <li>
-                <div class="contentSearch contentSearchTienda positionRelative">
-                    <i class="material-icons positionAbsolute sinUser grey-text text-lighten-1 lineHeight0 transitionB">search</i>
-                    <input type="text" class="browser-default buscador autocomplete redondeo white enfasisA" placeholder="Buscar productos" data-tienda="pormayor">
-                </div>
-              </li> #}
+              </li>
               <li>
                 <a class="black-text" href="{{base_url()}}productos/carrito"><i class="material-icons left">shopping_cart</i>Mis compras</a>
               </li>
@@ -350,7 +311,7 @@ src="https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1"
           </div>
         </footer>      
     {% block modal %} {% endblock %}
-      <script> var base_url = "{{base_url()}}";</script>
+      <script>base_url = "{{base_url()}}";</script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

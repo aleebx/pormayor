@@ -8,7 +8,7 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("layout/intranet/template_lite.twig", "index3.twig", 1);
+        $this->parent = $this->loadTemplate("layout/intranet/template_lite3.twig", "index3.twig", 1);
         $this->blocks = array(
             'head' => array($this, 'block_head'),
             'content' => array($this, 'block_content'),
@@ -18,7 +18,7 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 
     protected function doGetParent(array $context)
     {
-        return "layout/intranet/template_lite.twig";
+        return "layout/intranet/template_lite3.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -36,8 +36,8 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         echo base_url("public/intranet/css/inputnumber.css");
         echo "\"  media=\"screen\"/>
 \t<style>
-\t\tbody > .inner {display: none;}
-\t\tbody.pg-loaded > .inner {display: block;}
+/*\t\tbody > .inner {display: none;}
+\t\tbody.pg-loaded > .inner {display: block;}*/
 \t\t.fontX{font-size: 18px!important}
 \t\t.swiper-container {
 \t      width: 100%;
@@ -56,149 +56,126 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t";
         }
         // line 21
-        echo "\t\t/* Style the navbar */
-\t\t#navbar {
-\t\t  overflow: hidden;
-\t\t  background-color: #fff;
-\t\t}
-\t\t/* Page content */
-\t\t.content {
-\t\t  padding: 16px;
-\t\t}
-\t\t/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-\t\t.sticky {
-\t\t  position: fixed;
-\t\t  top: 0;
-\t\t  width: 100%;
-\t\t  z-index: 9999;
-\t\t}
-\t\t/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-\t\t.sticky + .content {
-\t\t  padding-top: 100px;
-\t\t}
+        echo "\t\t#navbar{overflow:hidden;background-color:#fff}.content{padding:15px}.sticky{position:fixed;top:0;width:inherit;z-index:999}.sticky+.content{padding-top:90px}
 \t</style>
 ";
     }
 
-    // line 43
+    // line 24
     public function block_content($context, array $blocks = array())
     {
-        // line 97
-        echo "\t<main class=\"\">
+        // line 25
+        echo "\t<main class=\"inner\">
 \t\t<div class=\"row\">
 \t\t\t<div class=\"col s12\">
 \t\t\t\t <div class=\"slider\">
 \t\t\t\t    <ul class=\"slides\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t      <li> <a href=\"";
-        // line 102
+        // line 30
         echo base_url();
         echo "pagina/productos\">
 \t\t\t\t    ";
-        // line 103
+        // line 31
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 104
+            // line 32
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_01_web.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         } else {
-            // line 106
+            // line 34
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_01_movil.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         }
-        // line 108
+        // line 36
         echo "\t\t\t\t    \t</a>
 \t\t\t\t      </li>
 \t\t\t\t      <li><a href=\"";
-        // line 110
+        // line 38
         echo base_url();
         echo "pagina/productos\">
 \t\t\t\t    ";
-        // line 111
+        // line 39
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 112
+            // line 40
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_02_web.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         } else {
-            // line 114
+            // line 42
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_02_movil.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         }
-        // line 116
+        // line 44
         echo "\t\t\t\t\t\t</a>
 \t\t\t\t      </li>     
 \t\t\t\t      <li>
 \t\t\t\t    ";
-        // line 119
+        // line 47
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 120
+            // line 48
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_03_web.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         } else {
-            // line 122
+            // line 50
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_03_movil.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         }
-        // line 124
+        // line 52
         echo "\t\t\t\t      </li>
 \t\t\t\t    </ul>
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
-\t\t<div class=\"row\">\t<br>
-\t\t\t<div id=\"navbar\" class=\"s12 z-depth-2\">
-\t\t\t\t<div class=\"input-field\">\t\t\t\t\t\t
-\t\t\t  \t<label for=\"searchbar\">¿Qué estas buscando?</label>         
-\t\t    \t<input type=\"text\" class=\"form-control\" id=\"searchbar\" onkeyup=\"search_pedido()\">
-\t\t\t\t</div>
+\t\t<div class=\"row\">
+\t\t\t<div class=\"col s1 m1 l3\"></div>
+\t\t\t<div class=\"col s10 m10 l6\">
+\t\t\t\t<div id=\"navbar\" class=\"card-panel pormayor center\" style=\"border-radius:10px;border:3px solid #00000024;\">
+\t\t\t\t  \t<span class=\"black-text\">¿Qué estas <b>buscando</b>?</span>         
+\t\t\t\t\t<div class=\"input-field\">
+\t\t\t    \t<input type=\"text\" class=\"form-control\" id=\"searchbar\" onkeyup=\"search_pedido()\" placeholder=\"\">
+\t\t\t\t\t</div>
+\t\t\t\t</div>\t\t\t\t
 \t\t\t</div>
+\t\t\t<div class=\"col s1 m1 l3\"></div>
 \t\t</div>
 \t\t<div class=\"row content\">
-\t\t\t";
-        // line 170
-        echo "\t\t\t<div class=\"col s12 pormayor center\">
+\t\t\t<div class=\"col s12 pormayor center\">
 \t\t\t\t<span class=\"black-text\" style=\"font-size:25px\">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
 \t\t\t</div>
 \t\t\t";
-        // line 173
+        // line 73
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["pro10"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 174
+            // line 74
             echo "        <div class=\"col s12 m6 l3 black-text filtroProductoall\">
       \t";
-            // line 175
+            // line 75
             $context["urlp"] = twig_replace_filter($this->getAttribute($context["pro"], "Pro_Nombre", array()), array(" " => "-"));
-            // line 176
+            // line 76
             echo "      \t";
             $context["urlp2"] = twig_lower_filter($this->env, ($context["urlp"] ?? null));
-            // line 177
+            // line 77
             echo "          <div class=\"card hoverable \">
-            <a itemprop=\"url\" href=\"";
-            // line 178
-            echo base_url();
-            echo "productos/dp/pormayor-";
+            <a class=\"modal-trigger dprod\" href=\"#modalProd\" data-id=\"";
+            // line 78
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
-            echo "-";
-            echo ($context["urlp2"] ?? null);
-            echo "\" data-idproducto=\"";
-            echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
-            echo "\" data-nombre=\"";
+            echo "\" accessKey=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "\">
               <div class=\"center\" style=\"height:190px;\">
                 <img alt=\"";
-            // line 180
+            // line 80
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -212,47 +189,47 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
               <div class=\"divider\"></div>
               <p>
                 <span class=\"truncate\">";
-            // line 186
+            // line 86
             echo twig_title_string_filter($this->env, $this->getAttribute($context["pro"], "Pro_Nombre", array()));
             echo "</span>
-                <span class=\"negrita\">COD:";
-            // line 187
+                <span class=\"negrita\">COD: ";
+            // line 87
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "</span><br>
                 ";
-            // line 188
+            // line 88
             if (($this->getAttribute($context["pro"], "Pro_Saldo", array()) == 1)) {
-                // line 189
+                // line 89
                 echo "                  <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x cajón<span class=\"new badge red\">OFERTA</span>
                 ";
-            } elseif (($this->getAttribute(            // line 190
+            } elseif (($this->getAttribute(            // line 90
 $context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 191
+                // line 91
                 echo "                  <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x cajón<span class=\"new badge blue left\">PRE-VENTA</span>
                 ";
             } else {
-                // line 193
+                // line 93
                 echo "                  <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x cajón</label>
                 ";
             }
-            // line 195
+            // line 95
             echo "              </p>
               ";
-            // line 196
+            // line 96
             if (($this->getAttribute($context["pro"], "catvar", array()) == 1)) {
-                // line 197
+                // line 97
                 echo "              <div class=\"input-group input-number-group\">
                 <div class=\"input-group-button\">
                   <span class=\"input-number-decrement\">-</span>
                 </div>
                   <input type=\"number\" min=\"1\" name=\"cantidad\" value=\"0\" max=\"";
-                // line 201
+                // line 101
                 echo $this->getAttribute($context["pro"], "SKU_StockDisponible", array());
                 echo "\" class=\"input-number browser-default cantSku";
                 echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
@@ -282,7 +259,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
                 </div>
                 <div>
                   <a class=\"btn input-add-cart add_cart pormayor black-text\" data-pmin=\"";
-                // line 206
+                // line 106
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "\" data-idp=\"";
                 echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
@@ -291,7 +268,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
               </div>
               ";
             } else {
-                // line 210
+                // line 110
                 echo "                <a class=\"btn pormayor black-text\" style=\"margin: 3px\" href=\"";
                 echo base_url();
                 echo "productos/dp/";
@@ -303,7 +280,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
                 echo "\" >VER MÁS</a>
               ";
             }
-            // line 212
+            // line 112
             echo "            </div>
           </div>
         </div>
@@ -312,57 +289,44 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 228
+        // line 116
         echo "\t  </div>
-\t</main>\t
+\t</main>
+\t<div id=\"modalProd\" class=\"modal\" style=\"z-index:9999 !important;\" >
+    <div class=\"modal-content\" id=\"loadEdit\">
+      <h5 class=\"center\">CARGANDO INFORMACIÓN DEL PRODUCTO...</h5>
+    </div>
+  </div>
 ";
     }
 
-    // line 231
+    // line 124
     public function block_script($context, array $blocks = array())
     {
-        // line 232
-        echo "<script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
-<script src=\"";
-        // line 233
+        // line 125
+        echo "<script language=\"JavaScript\" type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
+<script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
+<script type=\"text/javascript\">\t
+var loading_screen = pleaseWait({
+      logo: 'https://pormayor.pe/img/icons/logoPrincipal.png',
+      backgroundColor: \"#FEC00F\",
+      loadingHtml: \"<h3><b>Cargando catálogo de productos...</b></h3>\"
+    });
+</script>
+<script language=\"JavaScript\" type=\"text/javascript\" src=\"";
+        // line 134
         echo base_url("public/");
-        echo "js/index.js\"></script>
-<script src=\"";
-        // line 234
+        echo "js/index.min.js\"></script>
+";
+        // line 136
+        echo "<script language=\"JavaScript\" type=\"text/javascript\" src=\"";
         echo base_url("public/");
         echo "js/tienda/dproLis.min.js\"></script>
-<script>
-\t// When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
-
-// Get the navbar
-var navbar = document.getElementById(\"navbar\");
-
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove \"sticky\" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add(\"sticky\")
-  } else {
-    navbar.classList.remove(\"sticky\");
-  }
-}     
-function search_pedido() {
-  let input = document.getElementById('searchbar').value;
-  input = input.toLowerCase();
-  let x = document.getElementsByClassName('filtroProductoall');
-  // console.log(input);      
-  for (i = 0; i < x.length; i++) { 
-      if (!x[i].innerHTML.toLowerCase().includes(input)) {
-          x[i].style.display=\"none\";
-      }
-      else {
-          x[i].style.display=\"block\";                 
-      }
-  }
-}
+<script>window.onscroll=function(){mySearchfixed()};var navbar=document.getElementById(\"navbar\"),sticky=navbar.offsetTop;function mySearchfixed(){window.pageYOffset>=sticky?navbar.classList.add(\"sticky\"):navbar.classList.remove(\"sticky\")}function search_pedido(){let b=document.getElementById(\"searchbar\").value;b=b.toLowerCase();let a=document.getElementsByClassName(\"filtroProductoall\");for(i=0;i<a.length;i++)a[i].innerHTML.toLowerCase().includes(b)?a[i].style.display=\"block\":a[i].style.display=\"none\"}\$(\".dprod\").click(function(){var a=\$(this).data(\"id\");\$(\"#loadEdit\").load(base_url+\"cliente/vista_producto\",{id:a})}) </script>
+<script type=\"text/javascript\">
+\t\$(window).on(\"load\", function() {
+  \t\tloading_screen.finish();
+  \t});
 </script>
 ";
     }
@@ -379,7 +343,7 @@ function search_pedido() {
 
     public function getDebugInfo()
     {
-        return array (  332 => 234,  328 => 233,  325 => 232,  322 => 231,  316 => 228,  307 => 212,  295 => 210,  286 => 206,  256 => 201,  250 => 197,  248 => 196,  245 => 195,  239 => 193,  233 => 191,  231 => 190,  226 => 189,  224 => 188,  220 => 187,  216 => 186,  202 => 180,  189 => 178,  186 => 177,  183 => 176,  181 => 175,  178 => 174,  174 => 173,  169 => 170,  153 => 124,  147 => 122,  141 => 120,  139 => 119,  134 => 116,  128 => 114,  122 => 112,  120 => 111,  116 => 110,  112 => 108,  106 => 106,  100 => 104,  98 => 103,  94 => 102,  87 => 97,  84 => 43,  59 => 21,  50 => 14,  48 => 13,  36 => 4,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  322 => 136,  318 => 134,  307 => 125,  304 => 124,  293 => 116,  284 => 112,  272 => 110,  263 => 106,  233 => 101,  227 => 97,  225 => 96,  222 => 95,  216 => 93,  210 => 91,  208 => 90,  203 => 89,  201 => 88,  197 => 87,  193 => 86,  179 => 80,  172 => 78,  169 => 77,  166 => 76,  164 => 75,  161 => 74,  157 => 73,  134 => 52,  128 => 50,  122 => 48,  120 => 47,  115 => 44,  109 => 42,  103 => 40,  101 => 39,  97 => 38,  93 => 36,  87 => 34,  81 => 32,  79 => 31,  75 => 30,  68 => 25,  65 => 24,  59 => 21,  50 => 14,  48 => 13,  36 => 4,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

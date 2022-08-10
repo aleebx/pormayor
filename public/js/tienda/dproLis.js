@@ -90,7 +90,8 @@ $('.input-number-decrement').click(function() {
               // console.log(data);
             },
             success:function(data) {
-              Materialize.toast('<i class="material-icons left">add</i>Agregado correctamente', 2000, 'rounded successToast');
+                var $toastContent = $('<span>Agregado correctamente</span>').add($('<a class="btn-flat toast-action" href="https://pormayor.pe/productos/carrito">Ir a carrito</a>'));
+                Materialize.toast($toastContent, 10000,'rounded successToast');
               $('.cantSku'+idpro).val(0);
             }
           });

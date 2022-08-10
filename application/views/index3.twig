@@ -1,10 +1,8 @@
-{% extends "layout/intranet/template_lite.twig" %}
+{% extends "layout/intranet/template_lite3.twig" %}
 {% block head %}
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css"  media="screen"/>
     <link type="text/css" rel="stylesheet" href="{{base_url('public/intranet/css/inputnumber.css')}}"  media="screen"/>
 	<style>
-		body > .inner {display: none;}
-		body.pg-loaded > .inner {display: block;}
 		.fontX{font-size: 18px!important}
 		.swiper-container {
 	      width: 100%;
@@ -18,83 +16,11 @@
 	  		.slides{height:200px !important;}
 	  		.slider .slides{background-color: #9e9e9e00 !important}
 		{% endif %}
-		/* Style the navbar */
-		#navbar {
-		  overflow: hidden;
-		  background-color: #fff;
-		}
-		/* Page content */
-		.content {
-		  padding: 16px;
-		}
-		/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-		.sticky {
-		  position: fixed;
-		  top: 0;
-		  width: 100%;
-		  z-index: 9999;
-		}
-		/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-		.sticky + .content {
-		  padding-top: 100px;
-		}
+		#navbar{overflow:hidden;background-color:#fff}.content{padding:15px}.sticky{position:fixed;top:0;width:inherit;z-index:999}.sticky+.content{padding-top:90px}
 	</style>
 {% endblock %}
 {% block content %}
-{# 	<div class="inner">
-		{% if usuario.logueado %}
-			<div class="hide addHomeScreen valign-wrapper">
-				<button class="btn-flat white-text cerrarHomeScreen"><i class="fontA material-icons">close</i></button>
-				<div class="row">
-					{% if usuario.rol == 2 or usuario.rol == 3 %}
-						<div class="col s6 m6 sinPadding center">
-							<a href="http://{{subdominio_tienda}}.{{dominio}}/usuario/inventario/lProductos">
-								<img class="b-lazy" alt="Pormayor.pe - Crear tienda" data-src="{{ruta_img}}movilOpcionTiendaB.webp">
-							</a>
-						</div>
-						<div class="col s6 m6 sinPadding center" style="margin-bottom:20px">
-							<a href="{{base_url()}}comprador/index/pedidos">
-								<img class="b-lazy" alt="Pormayor.pe - Iniciar sesion" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
-							</a>
-						</div>
-						<div class="col s12 m12 center" style="margin-bottom:20px">
-							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
-						</div>
-					{% elseif usuario.rol == 5 %}
-						<div class="col s6 m6 sinPadding center" style="margin-bottom:20px">
-							<a href="{{base_url()}}gestor/gestion">
-								<img class="b-lazy" alt="Pormayor.pe - Iniciar sesion" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
-							</a>
-						</div>
-						<div class="col s12 m12 center" style="margin-bottom:20px">
-							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
-						</div>
-					{% else %}
-						<div class="col s12 m12 sinPadding center" style="margin-bottom:20px">
-							<a href="{{base_url()}}comprador/index/pedidos">
-								<img class="b-lazy" alt="Pormayor.pe - Perfil de usuario" data-src="{{ruta_img}}movilOpcionCompradorB.webp">
-							</a>
-						</div>
-						<div class="col s12 m12 center">
-							<a class="cerrarSesionBtn btn pormayorUnico white-text"><i class="material-icons left">power_settings_new</i>Cerrar Sesión</a>
-						</div>
-					{% endif %}   
-				</div>
-			</div>
-		{% else %}
-			<div class="hide addHomeScreen container valign-wrapper">
-				<button class="btn-flat white-text cerrarHomeScreen"><i class="fontA material-icons">close</i></button>
-				<div class="row">
-					<div class="col s12 m12 center sinPadding" style="margin-bottom:20px">
-						<a href="{{base_url()}}usuario/login">
-							<img class="b-lazy" alt="Pormayor.pe - registrarse como comprador"  data-src="{{ruta_img}}movilOpcionCompradorA.webp">
-						</a>
-					</div>
-				</div>
-			</div>
-		{% endif %}
-	</div> #}
-	<main class="">
+	<main class="inner">
 		<div class="row">
 			<div class="col s12">
 				 <div class="slider">
@@ -126,47 +52,19 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">	<br>
-			<div id="navbar" class="s12 z-depth-2">
-				<div class="input-field">						
-			  	<label for="searchbar">¿Qué estas buscando?</label>         
-		    	<input type="text" class="form-control" id="searchbar" onkeyup="search_pedido()">
-				</div>
+		<div class="row">
+			<div class="col s1 m1 l3"></div>
+			<div class="col s10 m10 l6">
+				<div id="navbar" class="card-panel pormayor center" style="border-radius:10px;border:3px solid #00000024;">
+				  	<span class="black-text">¿Qué estas <b>buscando</b>?</span>         
+					<div class="input-field">
+			    	<input type="text" class="form-control" id="searchbar" onkeyup="search_pedido()" placeholder="">
+					</div>
+				</div>				
 			</div>
+			<div class="col s1 m1 l3"></div>
 		</div>
 		<div class="row content">
-			{# <div class="col s12">
-        <div class="card-panel"> 
-            <label>INGRESE EL NOMBRE DEL PRODUCTO / CODIGO / PRECIO</label>         
-            <input type="text" class="form-control" id="searchbar" onkeyup="search_pedido()">
-        </div>
-      </div> #}
-{# 			<div class="col s12 center">
-				{% if userAgent == 'PC' %}
-					<div class="row">
-						<div class="col l3">
-				<img src="{{ruta_img}}icons/Info_web-02.png" height="70px">
-						</div>
-						<div class="col l3">
-				<img src="{{ruta_img}}icons/Info_web-04.png" height="70px">
-						</div>
-						<div class="col l3">
-				<img src="{{ruta_img}}icons/Info_web-05.png" height="70px">	
-						</div>
-						<div class="col l3">
-				<img src="{{ruta_img}}icons/Info_web-06.png" height="70px">		
-						</div>
-					</div>
-				{% else %}
-				<img src="{{ruta_img}}icons/Info_cel-22.png" style="height:100px;">
-				<img src="{{ruta_img}}icons/Info_cel-23.png" style="height:100px;">
-				<img src="{{ruta_img}}icons/Info_cel-24.png" style="height:100px;">
-				<img src="{{ruta_img}}icons/Info_cel-25.png" style="height:100px;">
-				{% endif %}
-			</div> #}
-{# 			<div class="col s12">
-				<br>
-			</div> #}
 			<div class="col s12 pormayor center">
 				<span class="black-text" style="font-size:25px">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
 			</div>
@@ -175,7 +73,7 @@
       	{% set urlp = pro.Pro_Nombre|replace({' ':"-"}) %}
       	{% set urlp2 = urlp|lower %}
           <div class="card hoverable ">
-            <a itemprop="url" href="{{base_url()}}productos/dp/pormayor-{{pro.Pro_IdProducto}}-{{urlp2}}" data-idproducto="{{pro.Pro_IdProducto}}" data-nombre="{{pro.Pro_Nombre}}">
+            <a class="modal-trigger dprod" href="#modalProd" data-id="{{pro.Pro_IdProducto}}" accessKey="{{pro.Pro_Nombre}}">
               <div class="center" style="height:190px;">
                 <img alt="{{pro.Pro_Nombre}}-Pormayor.pe" title="{{pro.Pro_Nombre}}" class="lazy responsive-img fixImg3 redondeo"  data-src="{{ruta_img}}{{pro.Prf_Thumb}}">
               </div>
@@ -184,7 +82,7 @@
               <div class="divider"></div>
               <p>
                 <span class="truncate">{{pro.Pro_Nombre|title}}</span>
-                <span class="negrita">COD:{{pro.Pro_IdProducto}}</span><br>
+                <span class="negrita">COD: {{pro.Pro_IdProducto}}</span><br>
                 {% if pro.Pro_Saldo == 1 %}
                   <span class="fontA negrita">S/ {{pro.Pro_PrecioMinimo}}</span> x cajón<span class="new badge red">OFERTA</span>
                 {% elseif pro.Pro_Preventa == 1 %}
@@ -213,56 +111,31 @@
           </div>
         </div>
       {% endfor %}
-{# 			<div class="col s12 center"><br>
-			<a href="{{base_url}}pagina/productos" class="btn btn-large" style="font-size:2em;"><b>VER TODOS LOS PRODUCTOS</b></a>
-			 <ul class="pagination">
-			    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-			    <li class="active pormayorUnico"><a href="{{base_url}}pagina/productos">1</a></li>
-			    <li class="waves-effect"><a href="{{base_url}}pagina/productos/2">2</a></li>
-			    <li class="waves-effect"><a href="{{base_url}}pagina/productos/3">3</a></li>
-			    <li class="waves-effect"><a href="{{base_url}}pagina/productos/4">4</a></li>
-			    <li class="waves-effect"><a href="{{base_url}}pagina/productos/5">5</a></li>
-			    <li class="waves-effect"><a href="{{base_url}}pagina/productos"><i class="material-icons">chevron_right</i></a></li>
-			  </ul>
-			</div> #}
 	  </div>
-	</main>	
+	</main>
+	<div id="modalProd" class="modal" style="z-index:9999 !important;" >
+    <div class="modal-content" id="loadEdit">
+      <h5 class="center">CARGANDO INFORMACIÓN DEL PRODUCTO...</h5>
+    </div>
+  </div>
 {% endblock %}
 {% block script %}
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
-<script src="{{base_url('public/')}}js/index.js"></script>
-<script src="{{base_url('public/')}}js/tienda/dproLis.min.js"></script>
-<script>
-	// When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
-
-// Get the navbar
-var navbar = document.getElementById("navbar");
-
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}     
-function search_pedido() {
-  let input = document.getElementById('searchbar').value;
-  input = input.toLowerCase();
-  let x = document.getElementsByClassName('filtroProductoall');
-  // console.log(input);      
-  for (i = 0; i < x.length; i++) { 
-      if (!x[i].innerHTML.toLowerCase().includes(input)) {
-          x[i].style.display="none";
-      }
-      else {
-          x[i].style.display="block";                 
-      }
-  }
-}
+<script language="JavaScript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+<script type="text/javascript">	
+var loading_screen = pleaseWait({
+      logo: 'https://pormayor.pe/img/icons/logoPrincipal.png',
+      backgroundColor: "#FEC00F",
+      loadingHtml: "<h3><b>Cargando catálogo de productos...</b></h3>"
+    });
+</script>
+<script language="JavaScript" type="text/javascript" src="{{base_url('public/')}}js/index.min.js"></script>
+{# <script language="JavaScript" type="text/javascript" src="{{base_url('public/')}}js/tienda/dproLis.js"></script> #}
+<script language="JavaScript" type="text/javascript" src="{{base_url('public/')}}js/tienda/dproLis.min.js"></script>
+<script>window.onscroll=function(){mySearchfixed()};var navbar=document.getElementById("navbar"),sticky=navbar.offsetTop;function mySearchfixed(){window.pageYOffset>=sticky?navbar.classList.add("sticky"):navbar.classList.remove("sticky")}function search_pedido(){let b=document.getElementById("searchbar").value;b=b.toLowerCase();let a=document.getElementsByClassName("filtroProductoall");for(i=0;i<a.length;i++)a[i].innerHTML.toLowerCase().includes(b)?a[i].style.display="block":a[i].style.display="none"}$(".dprod").click(function(){var a=$(this).data("id");$("#loadEdit").load(base_url+"cliente/vista_producto",{id:a})}) </script>
+<script type="text/javascript">
+	$(window).on("load", function() {
+  		loading_screen.finish();
+  	});
 </script>
 {% endblock %}
