@@ -29,19 +29,8 @@
     public function videos()
     {
       $data=$this->acl->load_datos();
-      $data['top']=$this->reporteModel->productostop();      
-      $data['fail']=$this->reporteModel->productosfail();
-      $tiempo = date('Y-m-d');
-      $data['ventashoy']=$this->reporteModel->ventascantidadhoy();
-      $data['ventasayer']=$this->reporteModel->ventascantidadayer();
-      $data['montoHoy']=$this->reporteModel->montoHoy();
-      $data['montoAyer']=$this->reporteModel->montoAyer();
-      $data['registroHoy']=$this->reporteModel->registroHoy();
-      $data['registroAyer']=$this->reporteModel->registroAyer();
-      $data['ventasRegion']=$this->reporteModel->ventasRegion();
-      // $data['montoRegion']=$this->reporteModel->montoRegion();
-      // print_r($data['ventasRegion']);
-      $this->twig->parse('panel/index.twig', $data);
+      $data['productos']=$this->productoModel->productos_videos();
+      $this->twig->parse('panel/videos.twig', $data);
     }
     // public function index()
     // {
@@ -72,6 +61,21 @@
       $this->twig->parse('preventa.twig', $data);
     }
 
+    function update_video()
+    {
+      
+      $data = $this->acl->load_datos();
+      if ($this->input->is_ajax_request()) {
+          $Pro_Video = $this->input->post('link');
+          $Pro_IdProducto = $this->input->post('id_producto');
+          $registro = $this->productoModel->getProductoVideo($Pro_Video,$Pro_IdProducto);
+          if ($registro) {
+            echo 1;
+          }else{
+            echo "error";
+          }
+      }
+    }
     function reporte_mes()
     {
       

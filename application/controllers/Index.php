@@ -8,7 +8,8 @@
     }
     public function index()
     {
-      $data=$this->acl->load_datos(); 
+      // header('Access-Control-Allow-Origin: *');
+      $data=$this->acl->load_datos();
       $data['index'] = true;
       $data['pagina']['extrabtn']='NO';
       $data['pagina']['tipo']='principal';

@@ -36,17 +36,15 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         echo base_url("public/intranet/css/inputnumber.css");
         echo "\"  media=\"screen\"/>
 \t<style>
-/*\t\tbody > .inner {display: none;}
-\t\tbody.pg-loaded > .inner {display: block;}*/
 \t\t.fontX{font-size: 18px!important}
 \t\t.swiper-container {
 \t      width: 100%;
 \t      height: 100%;
 \t    }
 \t\t";
-        // line 13
+        // line 11
         if ((($context["userAgent"] ?? null) != "PC")) {
-            // line 14
+            // line 12
             echo "\t  \t\t.alturaDIV{height:289px;}
 \t  \t\t.fontD2{font-size: 0.8rem!important;font-weight:1000;}
 \t  \t\t.fontE{font-size: 0.8rem!important}
@@ -55,82 +53,82 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t  \t\t.slider .slides{background-color: #9e9e9e00 !important}
 \t\t";
         }
-        // line 21
+        // line 19
         echo "\t\t#navbar{overflow:hidden;background-color:#fff}.content{padding:15px}.sticky{position:fixed;top:0;width:inherit;z-index:999}.sticky+.content{padding-top:90px}
 \t</style>
 ";
     }
 
-    // line 24
+    // line 22
     public function block_content($context, array $blocks = array())
     {
-        // line 25
+        // line 23
         echo "\t<main class=\"inner\">
 \t\t<div class=\"row\">
 \t\t\t<div class=\"col s12\">
 \t\t\t\t <div class=\"slider\">
 \t\t\t\t    <ul class=\"slides\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t      <li> <a href=\"";
-        // line 30
+        // line 28
         echo base_url();
         echo "pagina/productos\">
 \t\t\t\t    ";
-        // line 31
+        // line 29
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 32
+            // line 30
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_01_web.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         } else {
-            // line 34
+            // line 32
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_01_movil.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         }
-        // line 36
+        // line 34
         echo "\t\t\t\t    \t</a>
 \t\t\t\t      </li>
 \t\t\t\t      <li><a href=\"";
-        // line 38
+        // line 36
         echo base_url();
         echo "pagina/productos\">
 \t\t\t\t    ";
-        // line 39
+        // line 37
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 40
+            // line 38
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_02_web.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         } else {
-            // line 42
+            // line 40
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_02_movil.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         }
-        // line 44
+        // line 42
         echo "\t\t\t\t\t\t</a>
 \t\t\t\t      </li>     
 \t\t\t\t      <li>
 \t\t\t\t    ";
-        // line 47
+        // line 45
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 48
+            // line 46
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_03_web.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         } else {
-            // line 50
+            // line 48
             echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_03_movil.webp\" style=\"background-color: #ffffff00 !important;\">
 \t\t\t\t    ";
         }
-        // line 52
+        // line 50
         echo "\t\t\t\t      </li>
 \t\t\t\t    </ul>
 \t\t\t\t</div>
@@ -153,29 +151,29 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t\t\t<span class=\"black-text\" style=\"font-size:25px\">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
 \t\t\t</div>
 \t\t\t";
-        // line 73
+        // line 71
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["pro10"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 74
+            // line 72
             echo "        <div class=\"col s12 m6 l3 black-text filtroProductoall\">
       \t";
-            // line 75
+            // line 73
             $context["urlp"] = twig_replace_filter($this->getAttribute($context["pro"], "Pro_Nombre", array()), array(" " => "-"));
-            // line 76
+            // line 74
             echo "      \t";
             $context["urlp2"] = twig_lower_filter($this->env, ($context["urlp"] ?? null));
-            // line 77
+            // line 75
             echo "          <div class=\"card hoverable \">
             <a class=\"modal-trigger dprod\" href=\"#modalProd\" data-id=\"";
-            // line 78
+            // line 76
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "\" accessKey=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "\">
               <div class=\"center\" style=\"height:190px;\">
                 <img alt=\"";
-            // line 80
+            // line 78
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -189,47 +187,47 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
               <div class=\"divider\"></div>
               <p>
                 <span class=\"truncate\">";
-            // line 86
+            // line 84
             echo twig_title_string_filter($this->env, $this->getAttribute($context["pro"], "Pro_Nombre", array()));
             echo "</span>
                 <span class=\"negrita\">COD: ";
-            // line 87
+            // line 85
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "</span><br>
                 ";
-            // line 88
+            // line 86
             if (($this->getAttribute($context["pro"], "Pro_Saldo", array()) == 1)) {
-                // line 89
+                // line 87
                 echo "                  <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x cajón<span class=\"new badge red\">OFERTA</span>
                 ";
-            } elseif (($this->getAttribute(            // line 90
+            } elseif (($this->getAttribute(            // line 88
 $context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 91
+                // line 89
                 echo "                  <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x cajón<span class=\"new badge blue left\">PRE-VENTA</span>
                 ";
             } else {
-                // line 93
+                // line 91
                 echo "                  <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x cajón</label>
                 ";
             }
-            // line 95
+            // line 93
             echo "              </p>
               ";
-            // line 96
+            // line 94
             if (($this->getAttribute($context["pro"], "catvar", array()) == 1)) {
-                // line 97
+                // line 95
                 echo "              <div class=\"input-group input-number-group\">
                 <div class=\"input-group-button\">
                   <span class=\"input-number-decrement\">-</span>
                 </div>
                   <input type=\"number\" min=\"1\" name=\"cantidad\" value=\"0\" max=\"";
-                // line 101
+                // line 99
                 echo $this->getAttribute($context["pro"], "SKU_StockDisponible", array());
                 echo "\" class=\"input-number browser-default cantSku";
                 echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
@@ -259,7 +257,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
                 </div>
                 <div>
                   <a class=\"btn input-add-cart add_cart pormayor black-text\" data-pmin=\"";
-                // line 106
+                // line 104
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "\" data-idp=\"";
                 echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
@@ -268,7 +266,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
               </div>
               ";
             } else {
-                // line 110
+                // line 108
                 echo "                <a class=\"btn pormayor black-text\" style=\"margin: 3px\" href=\"";
                 echo base_url();
                 echo "productos/dp/";
@@ -280,7 +278,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
                 echo "\" >VER MÁS</a>
               ";
             }
-            // line 112
+            // line 110
             echo "            </div>
           </div>
         </div>
@@ -289,7 +287,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 116
+        // line 114
         echo "\t  </div>
 \t</main>
 \t<div id=\"modalProd\" class=\"modal\" style=\"z-index:9999 !important;\" >
@@ -300,10 +298,10 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
 ";
     }
 
-    // line 124
+    // line 122
     public function block_script($context, array $blocks = array())
     {
-        // line 125
+        // line 123
         echo "<script language=\"JavaScript\" type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
 <script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 <script type=\"text/javascript\">\t
@@ -314,11 +312,11 @@ var loading_screen = pleaseWait({
     });
 </script>
 <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 134
+        // line 132
         echo base_url("public/");
         echo "js/index.min.js\"></script>
 ";
-        // line 136
+        // line 134
         echo "<script language=\"JavaScript\" type=\"text/javascript\" src=\"";
         echo base_url("public/");
         echo "js/tienda/dproLis.min.js\"></script>
@@ -343,7 +341,7 @@ var loading_screen = pleaseWait({
 
     public function getDebugInfo()
     {
-        return array (  322 => 136,  318 => 134,  307 => 125,  304 => 124,  293 => 116,  284 => 112,  272 => 110,  263 => 106,  233 => 101,  227 => 97,  225 => 96,  222 => 95,  216 => 93,  210 => 91,  208 => 90,  203 => 89,  201 => 88,  197 => 87,  193 => 86,  179 => 80,  172 => 78,  169 => 77,  166 => 76,  164 => 75,  161 => 74,  157 => 73,  134 => 52,  128 => 50,  122 => 48,  120 => 47,  115 => 44,  109 => 42,  103 => 40,  101 => 39,  97 => 38,  93 => 36,  87 => 34,  81 => 32,  79 => 31,  75 => 30,  68 => 25,  65 => 24,  59 => 21,  50 => 14,  48 => 13,  36 => 4,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  320 => 134,  316 => 132,  305 => 123,  302 => 122,  291 => 114,  282 => 110,  270 => 108,  261 => 104,  231 => 99,  225 => 95,  223 => 94,  220 => 93,  214 => 91,  208 => 89,  206 => 88,  201 => 87,  199 => 86,  195 => 85,  191 => 84,  177 => 78,  170 => 76,  167 => 75,  164 => 74,  162 => 73,  159 => 72,  155 => 71,  132 => 50,  126 => 48,  120 => 46,  118 => 45,  113 => 42,  107 => 40,  101 => 38,  99 => 37,  95 => 36,  91 => 34,  85 => 32,  79 => 30,  77 => 29,  73 => 28,  66 => 23,  63 => 22,  57 => 19,  48 => 12,  46 => 11,  36 => 4,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
