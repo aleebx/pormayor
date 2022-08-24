@@ -4,6 +4,11 @@
 {% block content %}
   <main class="container fixContainer">
     <div class="row">
+      {% if (success) %}
+      {% if form_error('correo') %}
+        <input type="hidden" class="validarCorreo" value="Error">
+      {% endif %}
+    {% endif %}
       <div class="col s12 m12 l8 offset-l2"><br><br>     
         <div class="card centrarForzado">
           <div class="row">
@@ -11,6 +16,11 @@
               {{ form_open("", {role: 'form', id: 'formulario_login', class:'form form-horizontal formValidate', method:'post', novalidate:'novalidate'}) }}
               <p class="card-title center pormayor negrita">Iniciar sesión</p>
               <div class="row validarPersonales centrarForzado card-content">
+                {% if errors %}
+                  <div class="col s12 center hide">
+                    <input type="hidden" class="validarCorreo2" value="Error">
+                  </div> 
+                {% endif %}
                 <div class="input-field col s12 l12">
                   <i class="material-icons prefix transitionB">email</i>
                   <input name="correo" type="email" id="correo"  class=".form-group" required="" autocomplete="off" placeholder="Ingresa tu correo de registro">
@@ -46,5 +56,6 @@
 
 {% block script %}
   <script src="{{base_url('public/')}}js/jquery.validate.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
   <script src="{{base_url('public/js/usuario/')}}login.js?v={{now|date('i:s')}}"></script>
 {% endblock %}

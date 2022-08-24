@@ -1,23 +1,11 @@
 $(document).ready(function(){
   $(".correo2").val('');
-  
-  // $('ul.tabs').tabs('select_tab', 'crear');
-  //Iniciar
-  $('#iniciar .row .col input').focus(function(){
-      $(this).parent().find('.transitionB').css("color", "rgba(0,0,0,0.6)");
-  });
-
-  $('#iniciar .row .col input').blur(function(){
-      $(this).parent().find('.transitionB').css("color", "rgba(0,0,0,0.3)");
-  });
-
-  //Registro
-  $('#crear .row .col input').focus(function(){
-      $(this).parent().find('.transitionB').css("color", "rgba(0,0,0,0.6)");
-  });
-
-  $('#crear .row .col input').blur(function(){
-      $(this).parent().find('.transitionB').css("color", "rgba(0,0,0,0.3)");
+  $('.btnCrear').click(function(){
+    loading_screen = pleaseWait({
+      logo: 'https://pormayor.pe/img/icons/logoPrincipal.png',
+      backgroundColor: "#FEC00F",
+      loadingHtml: "<h3><b>Iniciando sesión...</b></h3>"
+    });
   });
 });
 
@@ -70,7 +58,7 @@ $(document).ready(function(){
     }else{
        Materialize.toast('<i class="material-icons left ">error</i>Debes estar de acuerdo con los Términos y condicions de pormayor.pe', 1500, 'rounded errorToast');
     }
-  });
+  });  
 
   //Errores de Sesión
   if($('.validarCorreo2').val() == 'Error') {
@@ -88,6 +76,7 @@ $(document).ready(function(){
           Entendido: {
             btnClass: 'btn pormayorUnico',
             action: function (){
+              // loading_screen.finish();
               $('#correo').focus();
             }
           },
@@ -112,13 +101,10 @@ $(document).ready(function(){
         Entendido: {
           btnClass: 'btn pormayorUnico',
           action: function (){
-            $('ul.tabs').tabs('select_tab', 'crear');
+                // loading_screen.finish();
             $('#correoA').focus();
           }
         },
       }
     });
   }
-
-  
-

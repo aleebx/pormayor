@@ -11,6 +11,7 @@
 
         function get_compra_directa_q($Pac_IdPago_Compra)
         {
+            $this->db->cache_off();
             $this->db->select('Pac_Banco, Pac_CodPago, Pac_Estado, Pac_Envio, pac.Pac_Observacion,Pac_FechaRegistro, Pac_IdPago_Compra, Pac_Total, usu.Usu_IdUsuario, Pac_Devolucion, per.Per_Nombre, per.Per_Dni,(SELECT us2.Usu_Nombre FROM usuario as us2 WHERE us2.Usu_IdUsuario = pac.Ven_IdVendedor LIMIT 1) as vendedor');
             $this->db->from('pago_compra as pac');
             $this->db->join('usuario as usu','ON usu.Usu_IdUsuario = pac.Usu_IdUsuario', 'left');
@@ -21,6 +22,7 @@
         } 
         function get_vauche_compra($Pac_IdPago_Compra)
         {
+            $this->db->cache_off();
             $this->db->select('*');
             $this->db->from('pago_voucher');
             $this->db->where('Pac_IdPago_Compra',$Pac_IdPago_Compra);    
@@ -37,6 +39,7 @@
         
         function get_compra_info($Pac_IdPago_Compra)
         {
+            $this->db->cache_off();
             $this->db->select('pci.Pci_Direccion, reg.name as region, pro.name as provincia, dis.name as distrito, pci.Pci_Referencia, pci.Pci_Lote, pci.Pci_DtoInt, pci.Pci_Urbanizacion, pci.Pci_Ruc, pci.Pci_RazonSocial, pci.Pci_Telefono, pci.Pci_nroTarjeta, pci.Pci_codAccion,pci.iddistrito');
             $this->db->from('pago_compra_info as pci');
             $this->db->join('regions as reg','reg.id = pci.idregion');
@@ -49,6 +52,7 @@
         }
          function get_detalle_venta_q($Pac_IdPago_Compra)
         {
+            $this->db->cache_off();
             $sql = "SELECT pcd.Pcd_IdPago_Compra_Detalle, pro.Pro_IdProducto, pro.Pro_Nombre, pcd.Pcd_Precio, pcd.Pcd_Cantidad,pcd.Pcd_Importe,pcd.Pcd_Cambio, pcd.Pcd_Documento, (SELECT Prf_Img FROM producto_foto prf WHERE prf.producto_Pro_IdProducto = pro.Pro_IdProducto LIMIT 1) as Prf_Img, sku.Sku_Img,sku.SKU_Color, sku.SKU_IdSKU
                 from pago_compra_detalle as pcd 
                 INNER JOIN sku as sku ON sku.SKU_IdSKU = pcd.Pcd_IdSku

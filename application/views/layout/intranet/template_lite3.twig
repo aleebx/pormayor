@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+
+  ttq.load('CBVVPCRC77UFTR6U72H0');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
 <head>      
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -128,7 +136,7 @@ src="https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1"
           {% else %}
             <li><a href="{{base_url()}}comprador/index/"><i class="material-icons left">account_circle</i>Perfil de Usuario</a></li>
             {% if usuario.rol == 2 or usuario.rol == 3 %}
-              <li><a href="https://{{subdominio_tienda}}.{{dominio}}/usuario/inventario/lProductos"><i class="material-icons left">settings</i>Panel Tienda</a></li>
+              <li><a href="https://tienda-oficial.pormayor.pe/usuario/venta"><i class="material-icons left">settings</i>Panel Tienda</a></li>
             {% endif %}
           {% endif %}
           <li class="divider"></li>
@@ -204,7 +212,7 @@ src="https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1"
               </li>
                 {% if usuario.rol == 2 or usuario.rol == 3 %}
               <li class="headerMenu center valign-wrapper">
-                  <a class="btn centrarForzado pormayor pormayorAccent-text" href="https://tiendaoficial.pormayor.pe/usuario/inventario/lProductos" style="padding: 0 16px;">Perfil Tienda</a>
+                  <a class="btn centrarForzado pormayor pormayorAccent-text" href="https://tienda-oficial.pormayor.pe/usuario/venta" style="padding: 0 16px;">Perfil Tienda</a>
                 {% elseif usuario.rol == 5 %}
                   <a class="btn centrarForzado pormayor pormayorAccent-text" href="{{base_url()}}vnd/ventas" style="padding: 0 16px;">ASESOR</a>
               </li>
@@ -315,8 +323,13 @@ src="https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1"
       <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js"></script>
-      <script src="{{base_url('public/js/template-lite.min.js?v=0152')}}" defer></script>
+      {# <script src="{{base_url('public/js/template-lite.js')}}" defer></script> #}
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('.modal').modal();
+        });
+      </script>
     {% block script %} {% endblock %}
    </body>
 

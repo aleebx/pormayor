@@ -69,7 +69,7 @@
       }
     }
 
-    function cerrar_sesion()
+    public function cerrar_sesion()
     {
       // $this->session->sess_destroy();
       $array_items = array('logueado', 'nombre','id_tienda','id_usuario','rol');
@@ -103,7 +103,7 @@
       }
     }
 
-    function ajax_filtro_productos()
+    public function ajax_filtro_productos()
     {
       if($this->input->is_ajax_request()) {
         $data=$this->acl->load_datos();
@@ -137,7 +137,7 @@
       }
     }
 
-    function buscar_autocomplete()
+    public function buscar_autocomplete()
     {
       $dataNombres=(object)null;
       $datos_nombres=$this->productoModel->nombre_productos();
@@ -151,7 +151,7 @@
       print_r(json_encode($dataNombres));
     }
 
-    function _send_email($type, $email, &$data)
+    public function _send_email($type, $email, &$data)
     {
       $this->load->library('email');
       $this->lang->load('tank_auth');

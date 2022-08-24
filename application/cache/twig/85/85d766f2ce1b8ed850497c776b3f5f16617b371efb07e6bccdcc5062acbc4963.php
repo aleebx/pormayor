@@ -66,73 +66,33 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
         echo "\t<main class=\"inner\">
 \t\t<div class=\"row\">
 \t\t\t<div class=\"col s12\">
-\t\t\t\t <div class=\"slider\">
-\t\t\t\t    <ul class=\"slides\" style=\"background-color: #ffffff00 !important;\">
-\t\t\t\t      <li> <a href=\"";
-        // line 28
-        echo base_url();
-        echo "pagina/productos\">
-\t\t\t\t    ";
-        // line 29
+\t\t    ";
+        // line 26
         if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 30
-            echo "\t\t\t\t        <img src=\"";
+            // line 27
+            echo "\t\t    \t<a href=\"";
+            echo base_url();
+            echo "\">\t\t    \t\t
+\t\t        <img src=\"";
+            // line 28
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_01_web.webp\" style=\"background-color: #ffffff00 !important;\">
-\t\t\t\t    ";
+\t\t    \t</a>
+\t\t    ";
         } else {
+            // line 31
+            echo "\t\t    \t<a href=\"";
+            echo base_url();
+            echo "\">\t\t    \t\t
+\t\t        <img src=\"";
             // line 32
-            echo "\t\t\t\t        <img src=\"";
             echo ($context["ruta_img"] ?? null);
             echo "banner/c_01_movil.webp\" style=\"background-color: #ffffff00 !important;\">
-\t\t\t\t    ";
+\t\t    \t</a>
+\t\t    ";
         }
-        // line 34
-        echo "\t\t\t\t    \t</a>
-\t\t\t\t      </li>
-\t\t\t\t      <li><a href=\"";
-        // line 36
-        echo base_url();
-        echo "pagina/productos\">
-\t\t\t\t    ";
-        // line 37
-        if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 38
-            echo "\t\t\t\t        <img src=\"";
-            echo ($context["ruta_img"] ?? null);
-            echo "banner/c_02_web.webp\" style=\"background-color: #ffffff00 !important;\">
-\t\t\t\t    ";
-        } else {
-            // line 40
-            echo "\t\t\t\t        <img src=\"";
-            echo ($context["ruta_img"] ?? null);
-            echo "banner/c_02_movil.webp\" style=\"background-color: #ffffff00 !important;\">
-\t\t\t\t    ";
-        }
-        // line 42
-        echo "\t\t\t\t\t\t</a>
-\t\t\t\t      </li>     
-\t\t\t\t      <li>
-\t\t\t\t    ";
-        // line 45
-        if ((($context["userAgent"] ?? null) == "PC")) {
-            // line 46
-            echo "\t\t\t\t        <img src=\"";
-            echo ($context["ruta_img"] ?? null);
-            echo "banner/c_03_web.webp\" style=\"background-color: #ffffff00 !important;\">
-\t\t\t\t    ";
-        } else {
-            // line 48
-            echo "\t\t\t\t        <img src=\"";
-            echo ($context["ruta_img"] ?? null);
-            echo "banner/c_03_movil.webp\" style=\"background-color: #ffffff00 !important;\">
-\t\t\t\t    ";
-        }
-        // line 50
-        echo "\t\t\t\t      </li>
-\t\t\t\t    </ul>
-\t\t\t\t</div>
-\t\t\t</div>
+        // line 35
+        echo "\t\t\t</div>
 \t\t</div>
 \t\t<div class=\"row\">
 \t\t\t<div class=\"col s1 m1 l3\"></div>
@@ -151,29 +111,29 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
 \t\t\t\t<span class=\"black-text\" style=\"font-size:25px\">Tenemos <b>más de 400 productos</b> para que surtas tu negocio</span>
 \t\t\t</div>
 \t\t\t";
-        // line 71
+        // line 53
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["pro10"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 72
+            // line 54
             echo "        <div class=\"col s12 m6 l3 black-text filtroProductoall\">
       \t";
-            // line 73
+            // line 55
             $context["urlp"] = twig_replace_filter($this->getAttribute($context["pro"], "Pro_Nombre", array()), array(" " => "-"));
-            // line 74
+            // line 56
             echo "      \t";
             $context["urlp2"] = twig_lower_filter($this->env, ($context["urlp"] ?? null));
-            // line 75
+            // line 57
             echo "          <div class=\"card hoverable \">
             <a class=\"modal-trigger dprod\" href=\"#modalProd\" data-id=\"";
-            // line 76
+            // line 58
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "\" accessKey=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "\">
               <div class=\"center\" style=\"height:190px;\">
                 <img alt=\"";
-            // line 78
+            // line 60
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -187,47 +147,47 @@ class __TwigTemplate_2d3054e962efdb861decbed5ad5d79f9888f0f5e5e54cd8d0bac7f237ce
               <div class=\"divider\"></div>
               <p>
                 <span class=\"truncate\">";
-            // line 84
+            // line 66
             echo twig_title_string_filter($this->env, $this->getAttribute($context["pro"], "Pro_Nombre", array()));
             echo "</span>
                 <span class=\"negrita\">COD: ";
-            // line 85
+            // line 67
             echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
             echo "</span><br>
                 ";
-            // line 86
+            // line 68
             if (($this->getAttribute($context["pro"], "Pro_Saldo", array()) == 1)) {
-                // line 87
+                // line 69
                 echo "                  <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x cajón<span class=\"new badge red\">OFERTA</span>
                 ";
-            } elseif (($this->getAttribute(            // line 88
+            } elseif (($this->getAttribute(            // line 70
 $context["pro"], "Pro_Preventa", array()) == 1)) {
-                // line 89
+                // line 71
                 echo "                  <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x cajón<span class=\"new badge blue left\">PRE-VENTA</span>
                 ";
             } else {
-                // line 91
+                // line 73
                 echo "                  <span class=\"fontA negrita\">S/ ";
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "</span> x cajón</label>
                 ";
             }
-            // line 93
+            // line 75
             echo "              </p>
               ";
-            // line 94
+            // line 76
             if (($this->getAttribute($context["pro"], "catvar", array()) == 1)) {
-                // line 95
+                // line 77
                 echo "              <div class=\"input-group input-number-group\">
                 <div class=\"input-group-button\">
                   <span class=\"input-number-decrement\">-</span>
                 </div>
                   <input type=\"number\" min=\"1\" name=\"cantidad\" value=\"0\" max=\"";
-                // line 99
+                // line 81
                 echo $this->getAttribute($context["pro"], "SKU_StockDisponible", array());
                 echo "\" class=\"input-number browser-default cantSku";
                 echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
@@ -257,7 +217,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
                 </div>
                 <div>
                   <a class=\"btn input-add-cart add_cart pormayor black-text\" data-pmin=\"";
-                // line 104
+                // line 86
                 echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
                 echo "\" data-idp=\"";
                 echo $this->getAttribute($context["pro"], "Pro_IdProducto", array());
@@ -266,7 +226,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
               </div>
               ";
             } else {
-                // line 108
+                // line 90
                 echo "                <a class=\"btn pormayor black-text\" style=\"margin: 3px\" href=\"";
                 echo base_url();
                 echo "productos/dp/";
@@ -278,7 +238,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
                 echo "\" >VER MÁS</a>
               ";
             }
-            // line 110
+            // line 92
             echo "            </div>
           </div>
         </div>
@@ -287,7 +247,7 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 114
+        // line 96
         echo "\t  </div>
 \t</main>
 \t<div id=\"modalProd\" class=\"modal\" style=\"z-index:9999 !important;\" >
@@ -298,10 +258,10 @@ $context["pro"], "Pro_Preventa", array()) == 1)) {
 ";
     }
 
-    // line 122
+    // line 104
     public function block_script($context, array $blocks = array())
     {
-        // line 123
+        // line 105
         echo "<script language=\"JavaScript\" type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
 <script src=\"https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js\"></script>
 <script type=\"text/javascript\">\t
@@ -312,11 +272,11 @@ var loading_screen = pleaseWait({
     });
 </script>
 <script language=\"JavaScript\" type=\"text/javascript\" src=\"";
-        // line 132
+        // line 114
         echo base_url("public/");
         echo "js/index.min.js\"></script>
 ";
-        // line 134
+        // line 116
         echo "<script language=\"JavaScript\" type=\"text/javascript\" src=\"";
         echo base_url("public/");
         echo "js/tienda/dproLis.min.js\"></script>
@@ -341,7 +301,7 @@ var loading_screen = pleaseWait({
 
     public function getDebugInfo()
     {
-        return array (  320 => 134,  316 => 132,  305 => 123,  302 => 122,  291 => 114,  282 => 110,  270 => 108,  261 => 104,  231 => 99,  225 => 95,  223 => 94,  220 => 93,  214 => 91,  208 => 89,  206 => 88,  201 => 87,  199 => 86,  195 => 85,  191 => 84,  177 => 78,  170 => 76,  167 => 75,  164 => 74,  162 => 73,  159 => 72,  155 => 71,  132 => 50,  126 => 48,  120 => 46,  118 => 45,  113 => 42,  107 => 40,  101 => 38,  99 => 37,  95 => 36,  91 => 34,  85 => 32,  79 => 30,  77 => 29,  73 => 28,  66 => 23,  63 => 22,  57 => 19,  48 => 12,  46 => 11,  36 => 4,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  280 => 116,  276 => 114,  265 => 105,  262 => 104,  251 => 96,  242 => 92,  230 => 90,  221 => 86,  191 => 81,  185 => 77,  183 => 76,  180 => 75,  174 => 73,  168 => 71,  166 => 70,  161 => 69,  159 => 68,  155 => 67,  151 => 66,  137 => 60,  130 => 58,  127 => 57,  124 => 56,  122 => 55,  119 => 54,  115 => 53,  95 => 35,  89 => 32,  84 => 31,  78 => 28,  73 => 27,  71 => 26,  66 => 23,  63 => 22,  57 => 19,  48 => 12,  46 => 11,  36 => 4,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

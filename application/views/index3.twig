@@ -23,33 +23,15 @@
 	<main class="inner">
 		<div class="row">
 			<div class="col s12">
-				 <div class="slider">
-				    <ul class="slides" style="background-color: #ffffff00 !important;">
-				      <li> <a href="{{base_url()}}pagina/productos">
-				    {% if userAgent == 'PC' %}
-				        <img src="{{ruta_img}}banner/c_01_web.webp" style="background-color: #ffffff00 !important;">
-				    {% else %}
-				        <img src="{{ruta_img}}banner/c_01_movil.webp" style="background-color: #ffffff00 !important;">
-				    {% endif %}
-				    	</a>
-				      </li>
-				      <li><a href="{{base_url()}}pagina/productos">
-				    {% if userAgent == 'PC' %}
-				        <img src="{{ruta_img}}banner/c_02_web.webp" style="background-color: #ffffff00 !important;">
-				    {% else %}
-				        <img src="{{ruta_img}}banner/c_02_movil.webp" style="background-color: #ffffff00 !important;">
-				    {% endif %}
-						</a>
-				      </li>     
-				      <li>
-				    {% if userAgent == 'PC' %}
-				        <img src="{{ruta_img}}banner/c_03_web.webp" style="background-color: #ffffff00 !important;">
-				    {% else %}
-				        <img src="{{ruta_img}}banner/c_03_movil.webp" style="background-color: #ffffff00 !important;">
-				    {% endif %}
-				      </li>
-				    </ul>
-				</div>
+		    {% if userAgent == 'PC' %}
+		    	<a href="{{base_url()}}">		    		
+		        <img src="{{ruta_img}}banner/c_01_web.webp" class="responsive-img">
+		    	</a>
+		    {% else %}
+		    	<a href="{{base_url()}}">		    		
+		        <img src="{{ruta_img}}banner/c_01_movil.webp" class="responsive-img">
+		    	</a>
+		    {% endif %}
 			</div>
 		</div>
 		<div class="row">

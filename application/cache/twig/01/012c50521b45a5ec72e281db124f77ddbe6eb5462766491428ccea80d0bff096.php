@@ -1214,16 +1214,28 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
 ";
         // line 594
         echo "          </div>
-";
-        // line 604
+          ";
+        // line 595
+        if ($this->getAttribute(($context["producto"] ?? null), "Pro_Video", array())) {
+            // line 596
+            echo "          <div class=\"col s12 l6\">             
+            <div class=\"video-container\">
+              <blockquote class=\"tiktok-embed\" cite=\"https://www.tiktok.com/@pormayor.pe/video/7133319483250265350\" data-video-id=\"7133319483250265350\" style=\"max-width: 605px;min-width: 325px;\" > <section> <a target=\"_blank\" title=\"@pormayor.pe\" href=\"https://www.tiktok.com/@pormayor.pe?refer=embed\">@pormayor.pe</a> Espejo y organizador a la vez y como extra viene con LED. Perfecto para decorar tu dormitorio. 😍. <a title=\"espejo\" target=\"_blank\" href=\"https://www.tiktok.com/tag/espejo?refer=embed\">#espejo</a> <a title=\"organizador\" target=\"_blank\" href=\"https://www.tiktok.com/tag/organizador?refer=embed\">#organizador</a> <a title=\"led\" target=\"_blank\" href=\"https://www.tiktok.com/tag/led?refer=embed\">#led</a> <a title=\"pormayor\" target=\"_blank\" href=\"https://www.tiktok.com/tag/pormayor?refer=embed\">#pormayor</a> <a title=\"pormayorpe\" target=\"_blank\" href=\"https://www.tiktok.com/tag/pormayorpe?refer=embed\">#pormayorpe</a> <a title=\"pormayorperu\" target=\"_blank\" href=\"https://www.tiktok.com/tag/pormayorperu?refer=embed\">#pormayorperu</a> <a title=\"ecommerce\" target=\"_blank\" href=\"https://www.tiktok.com/tag/ecommerce?refer=embed\">#ecommerce</a> <a title=\"ecommerceperuano\" target=\"_blank\" href=\"https://www.tiktok.com/tag/ecommerceperuano?refer=embed\">#ecommerceperuano</a> <a title=\"ecommercemayorista\" target=\"_blank\" href=\"https://www.tiktok.com/tag/ecommercemayorista?refer=embed\">#ecommercemayorista</a> <a title=\"novedades\" target=\"_blank\" href=\"https://www.tiktok.com/tag/novedades?refer=embed\">#novedades</a> <a title=\"novedadeschinas\" target=\"_blank\" href=\"https://www.tiktok.com/tag/novedadeschinas?refer=embed\">#novedadeschinas</a> <a title=\"kawai\" target=\"_blank\" href=\"https://www.tiktok.com/tag/kawai?refer=embed\">#kawai</a> <a title=\"emprendimiento\" target=\"_blank\" href=\"https://www.tiktok.com/tag/emprendimiento?refer=embed\">#emprendimiento</a> <a title=\"alpormayor\" target=\"_blank\" href=\"https://www.tiktok.com/tag/alpormayor?refer=embed\">#alpormayor</a> <a target=\"_blank\" title=\"♬ sonido original - Alan Muñoz\" href=\"https://www.tiktok.com/music/sonido-original-7107032119439887109?refer=embed\">♬ sonido original - Alan Muñoz</a> </section> </blockquote> <script async src=\"https://www.tiktok.com/embed.js\"></script>
+              ";
+            // line 600
+            echo "            </div>                
+          </div>
+          ";
+        }
+        // line 603
         echo "          <div class=\"col s12 l12\">
             <div class=\"row\">
               ";
-        // line 606
+        // line 605
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["producto_subcategoria"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["pro"]) {
-            // line 607
+            // line 606
             echo "              <a itemprop=\"url\" href=\"";
             echo base_url();
             echo "productos/dp/";
@@ -1237,7 +1249,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                     <div class=\"card hoverable\">
                       <div class=\"center\" style=\"height:190px;\">
                         <img alt=\"";
-            // line 611
+            // line 610
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "-Pormayor.pe\" title=\"";
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
@@ -1249,11 +1261,11 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
                       <div class=\"card-content center\" style=\"height:100px;\">
                         <p>
                           <b class=\"truncate\">";
-            // line 615
+            // line 614
             echo $this->getAttribute($context["pro"], "Pro_Nombre", array());
             echo "</b>
                             <span class=\"fontA\">S/ ";
-            // line 616
+            // line 615
             echo $this->getAttribute($context["pro"], "Pro_PrecioMaximo", array());
             echo "</span> <label>S/ ";
             echo $this->getAttribute($context["pro"], "Pro_PrecioMinimo", array());
@@ -1268,7 +1280,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pro'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 623
+        // line 622
         echo "            </div>
           </div>
       </div>
@@ -1276,14 +1288,14 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
 </div>
 
   ";
-        // line 629
+        // line 628
         if ((($context["userAgent"] ?? null) != "PC")) {
-            // line 630
+            // line 629
             echo "   ";
-            // line 641
+            // line 640
             echo "  ";
         }
-        // line 642
+        // line 641
         echo "  <!-- Aviso de agregado -->
   <div id=\"modal_aviso\" class=\"modal\">
     <div class=\"modal-content validar sinPadding white\">
@@ -1294,14 +1306,14 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
           <br>
           <div class=\"center col s12 m12 l12\">
             <img class=\"redondeo\" height=\"200px\" src=\"";
-        // line 651
+        // line 650
         echo ($context["ruta_img"] ?? null);
         echo $this->getAttribute($this->getAttribute(($context["fotos"] ?? null), 0, array(), "array"), "Prf_Img", array());
         echo "\"> 
           </div>
           <div class=\"center col s12 m12 l12\">
             <a class=\"btn pormayorUnico center verCarrito\" href=\"";
-        // line 654
+        // line 653
         echo base_url();
         echo "productos/carrito\">Ir al carrito</a>
             <a class=\"btn-flat center modal-close \"><u>Seguir comprando</u></a>
@@ -1313,30 +1325,30 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
 ";
     }
 
-    // line 663
+    // line 662
     public function block_script($context, array $blocks = array())
     {
-        // line 664
+        // line 663
         echo "  <script>
   rando_precio = ";
-        // line 665
+        // line 664
         echo twig_jsonencode_filter(($context["precios"] ?? null));
         echo ";
   flagVariaciones = false;
   dim = ";
-        // line 667
+        // line 666
         echo twig_jsonencode_filter($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo1", array()));
         echo ";
   pes = ";
-        // line 668
+        // line 667
         echo twig_jsonencode_filter($this->getAttribute(($context["producto_ficha"] ?? null), "Prf_Campo3", array()));
         echo "; 
   TiedaId = ";
-        // line 669
+        // line 668
         echo twig_jsonencode_filter($this->getAttribute(($context["producto"] ?? null), "Tie_IdTienda", array()));
         echo "; 
   Remate = ";
-        // line 670
+        // line 669
         echo twig_jsonencode_filter($this->getAttribute(($context["producto"] ?? null), "Pro_Saldo", array()));
         echo "; 
   </script>
@@ -1344,13 +1356,13 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
   <script src=\"https://cdn.jsdelivr.net/npm/easyzoom-mp@2.2.2/dist/easyzoom.min.js\"></script>
   <script src=\"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js\"></script>
   <script src=\"";
-        // line 675
+        // line 674
         echo base_url("public/");
         echo "js/tienda/dpro.js?v=";
         echo twig_date_format_filter($this->env, ($context["now"] ?? null), "i:s");
         echo "\"></script>
   <script src=\"";
-        // line 676
+        // line 675
         echo base_url("public/");
         echo "js/productos/favoritos.js?v=";
         echo twig_date_format_filter($this->env, ($context["now"] ?? null), "i:s");
@@ -1371,7 +1383,7 @@ class __TwigTemplate_970ba26deb704f99b85be43834e9a55fe31317790a548b2e6fd9062ad12
 
     public function getDebugInfo()
     {
-        return array (  1354 => 676,  1348 => 675,  1340 => 670,  1336 => 669,  1332 => 668,  1328 => 667,  1323 => 665,  1320 => 664,  1317 => 663,  1305 => 654,  1298 => 651,  1287 => 642,  1284 => 641,  1282 => 630,  1280 => 629,  1272 => 623,  1257 => 616,  1253 => 615,  1241 => 611,  1227 => 607,  1223 => 606,  1219 => 604,  1216 => 594,  1210 => 504,  1206 => 502,  1198 => 495,  1191 => 490,  1188 => 486,  1183 => 484,  1179 => 483,  1171 => 480,  1161 => 472,  1158 => 471,  1152 => 470,  1144 => 465,  1140 => 463,  1133 => 458,  1126 => 457,  1124 => 456,  1121 => 455,  1115 => 454,  1070 => 448,  1059 => 443,  1057 => 442,  1049 => 441,  1046 => 440,  1044 => 439,  1039 => 438,  1036 => 437,  1034 => 436,  1025 => 429,  1018 => 428,  1015 => 427,  1012 => 426,  1009 => 425,  1006 => 424,  1004 => 423,  1001 => 422,  995 => 421,  992 => 420,  989 => 419,  986 => 418,  980 => 416,  976 => 414,  973 => 413,  968 => 403,  965 => 402,  963 => 401,  956 => 400,  953 => 399,  947 => 398,  939 => 393,  935 => 391,  926 => 384,  919 => 383,  917 => 382,  914 => 381,  908 => 380,  866 => 378,  864 => 377,  856 => 376,  853 => 375,  851 => 374,  843 => 369,  838 => 366,  832 => 364,  828 => 362,  825 => 361,  820 => 351,  817 => 350,  815 => 349,  808 => 348,  806 => 347,  798 => 342,  790 => 336,  784 => 335,  781 => 334,  772 => 331,  769 => 330,  766 => 329,  763 => 328,  759 => 327,  752 => 322,  736 => 315,  733 => 314,  725 => 310,  722 => 309,  717 => 307,  713 => 306,  706 => 302,  694 => 292,  688 => 288,  686 => 287,  675 => 281,  670 => 278,  667 => 277,  661 => 276,  653 => 271,  649 => 269,  642 => 264,  635 => 263,  633 => 262,  630 => 261,  624 => 260,  579 => 254,  568 => 249,  566 => 248,  558 => 247,  555 => 246,  553 => 245,  548 => 244,  545 => 243,  543 => 242,  534 => 235,  527 => 234,  524 => 233,  521 => 232,  518 => 231,  515 => 230,  513 => 229,  510 => 228,  504 => 227,  501 => 226,  498 => 225,  495 => 224,  489 => 222,  485 => 220,  482 => 219,  477 => 211,  474 => 210,  472 => 209,  465 => 208,  462 => 207,  456 => 206,  448 => 201,  444 => 199,  435 => 192,  428 => 191,  426 => 190,  423 => 189,  417 => 188,  373 => 186,  371 => 185,  363 => 184,  360 => 183,  358 => 182,  352 => 178,  348 => 176,  343 => 173,  336 => 172,  333 => 171,  330 => 170,  327 => 169,  324 => 168,  322 => 167,  319 => 166,  313 => 165,  310 => 164,  307 => 163,  304 => 162,  298 => 160,  294 => 158,  291 => 157,  286 => 149,  283 => 148,  281 => 147,  274 => 146,  272 => 145,  264 => 140,  253 => 131,  250 => 130,  244 => 129,  241 => 128,  231 => 124,  223 => 123,  220 => 122,  217 => 121,  214 => 120,  209 => 119,  200 => 115,  194 => 114,  191 => 113,  189 => 112,  185 => 110,  175 => 106,  170 => 105,  167 => 104,  158 => 100,  154 => 99,  151 => 98,  149 => 97,  143 => 93,  141 => 92,  128 => 88,  117 => 79,  114 => 78,  37 => 5,  33 => 3,  30 => 2,  11 => 1,);
+        return array (  1366 => 675,  1360 => 674,  1352 => 669,  1348 => 668,  1344 => 667,  1340 => 666,  1335 => 664,  1332 => 663,  1329 => 662,  1317 => 653,  1310 => 650,  1299 => 641,  1296 => 640,  1294 => 629,  1292 => 628,  1284 => 622,  1269 => 615,  1265 => 614,  1253 => 610,  1239 => 606,  1235 => 605,  1231 => 603,  1226 => 600,  1221 => 596,  1219 => 595,  1216 => 594,  1210 => 504,  1206 => 502,  1198 => 495,  1191 => 490,  1188 => 486,  1183 => 484,  1179 => 483,  1171 => 480,  1161 => 472,  1158 => 471,  1152 => 470,  1144 => 465,  1140 => 463,  1133 => 458,  1126 => 457,  1124 => 456,  1121 => 455,  1115 => 454,  1070 => 448,  1059 => 443,  1057 => 442,  1049 => 441,  1046 => 440,  1044 => 439,  1039 => 438,  1036 => 437,  1034 => 436,  1025 => 429,  1018 => 428,  1015 => 427,  1012 => 426,  1009 => 425,  1006 => 424,  1004 => 423,  1001 => 422,  995 => 421,  992 => 420,  989 => 419,  986 => 418,  980 => 416,  976 => 414,  973 => 413,  968 => 403,  965 => 402,  963 => 401,  956 => 400,  953 => 399,  947 => 398,  939 => 393,  935 => 391,  926 => 384,  919 => 383,  917 => 382,  914 => 381,  908 => 380,  866 => 378,  864 => 377,  856 => 376,  853 => 375,  851 => 374,  843 => 369,  838 => 366,  832 => 364,  828 => 362,  825 => 361,  820 => 351,  817 => 350,  815 => 349,  808 => 348,  806 => 347,  798 => 342,  790 => 336,  784 => 335,  781 => 334,  772 => 331,  769 => 330,  766 => 329,  763 => 328,  759 => 327,  752 => 322,  736 => 315,  733 => 314,  725 => 310,  722 => 309,  717 => 307,  713 => 306,  706 => 302,  694 => 292,  688 => 288,  686 => 287,  675 => 281,  670 => 278,  667 => 277,  661 => 276,  653 => 271,  649 => 269,  642 => 264,  635 => 263,  633 => 262,  630 => 261,  624 => 260,  579 => 254,  568 => 249,  566 => 248,  558 => 247,  555 => 246,  553 => 245,  548 => 244,  545 => 243,  543 => 242,  534 => 235,  527 => 234,  524 => 233,  521 => 232,  518 => 231,  515 => 230,  513 => 229,  510 => 228,  504 => 227,  501 => 226,  498 => 225,  495 => 224,  489 => 222,  485 => 220,  482 => 219,  477 => 211,  474 => 210,  472 => 209,  465 => 208,  462 => 207,  456 => 206,  448 => 201,  444 => 199,  435 => 192,  428 => 191,  426 => 190,  423 => 189,  417 => 188,  373 => 186,  371 => 185,  363 => 184,  360 => 183,  358 => 182,  352 => 178,  348 => 176,  343 => 173,  336 => 172,  333 => 171,  330 => 170,  327 => 169,  324 => 168,  322 => 167,  319 => 166,  313 => 165,  310 => 164,  307 => 163,  304 => 162,  298 => 160,  294 => 158,  291 => 157,  286 => 149,  283 => 148,  281 => 147,  274 => 146,  272 => 145,  264 => 140,  253 => 131,  250 => 130,  244 => 129,  241 => 128,  231 => 124,  223 => 123,  220 => 122,  217 => 121,  214 => 120,  209 => 119,  200 => 115,  194 => 114,  191 => 113,  189 => 112,  185 => 110,  175 => 106,  170 => 105,  167 => 104,  158 => 100,  154 => 99,  151 => 98,  149 => 97,  143 => 93,  141 => 92,  128 => 88,  117 => 79,  114 => 78,  37 => 5,  33 => 3,  30 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

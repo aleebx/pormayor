@@ -592,15 +592,14 @@
               </table>
             </div> #}
           </div>
-{#           {% if producto.Pro_Video %}
-          <div class="col s12 l6">
-             
-                  <div class="video-container">
-                    <iframe width="853" height="480" src="{{producto.Pro_Video}}" frameborder="0" allowfullscreen></iframe>
-                  </div>
-                
+          {% if producto.Pro_Video %}
+          <div class="col s12 l6">             
+            <div class="video-container">
+              <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@pormayor.pe/video/7133319483250265350" data-video-id="7133319483250265350" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@pormayor.pe" href="https://www.tiktok.com/@pormayor.pe?refer=embed">@pormayor.pe</a> Espejo y organizador a la vez y como extra viene con LED. Perfecto para decorar tu dormitorio. 😍. <a title="espejo" target="_blank" href="https://www.tiktok.com/tag/espejo?refer=embed">#espejo</a> <a title="organizador" target="_blank" href="https://www.tiktok.com/tag/organizador?refer=embed">#organizador</a> <a title="led" target="_blank" href="https://www.tiktok.com/tag/led?refer=embed">#led</a> <a title="pormayor" target="_blank" href="https://www.tiktok.com/tag/pormayor?refer=embed">#pormayor</a> <a title="pormayorpe" target="_blank" href="https://www.tiktok.com/tag/pormayorpe?refer=embed">#pormayorpe</a> <a title="pormayorperu" target="_blank" href="https://www.tiktok.com/tag/pormayorperu?refer=embed">#pormayorperu</a> <a title="ecommerce" target="_blank" href="https://www.tiktok.com/tag/ecommerce?refer=embed">#ecommerce</a> <a title="ecommerceperuano" target="_blank" href="https://www.tiktok.com/tag/ecommerceperuano?refer=embed">#ecommerceperuano</a> <a title="ecommercemayorista" target="_blank" href="https://www.tiktok.com/tag/ecommercemayorista?refer=embed">#ecommercemayorista</a> <a title="novedades" target="_blank" href="https://www.tiktok.com/tag/novedades?refer=embed">#novedades</a> <a title="novedadeschinas" target="_blank" href="https://www.tiktok.com/tag/novedadeschinas?refer=embed">#novedadeschinas</a> <a title="kawai" target="_blank" href="https://www.tiktok.com/tag/kawai?refer=embed">#kawai</a> <a title="emprendimiento" target="_blank" href="https://www.tiktok.com/tag/emprendimiento?refer=embed">#emprendimiento</a> <a title="alpormayor" target="_blank" href="https://www.tiktok.com/tag/alpormayor?refer=embed">#alpormayor</a> <a target="_blank" title="♬ sonido original - Alan Muñoz" href="https://www.tiktok.com/music/sonido-original-7107032119439887109?refer=embed">♬ sonido original - Alan Muñoz</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+              {# <iframe width="853" height="480" src="{{producto.Pro_Video}}" frameborder="0" allowfullscreen></iframe> #}
+            </div>                
           </div>
-          {% endif %} #}
+          {% endif %}
           <div class="col s12 l12">
             <div class="row">
               {% for pro in producto_subcategoria %}

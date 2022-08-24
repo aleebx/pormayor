@@ -823,9 +823,7 @@
                 }
                 else if ($this->tank_auth->get_rol() == 2 or $this->tank_auth->get_rol() == 3)
                 {
-                    $tienda = $this->tiendaModel->get_tienda($this->tank_auth->get_tienda());
-                    //redirect('http://'.$tienda->Tie_Subdominio.'.pormayor.pe');
-                    redirect('https://'.$tienda->Tie_Subdominio.'.pormayor.pe/usuario/venta');
+                    redirect('https://tienda-oficial.pormayor.pe/usuario/venta');
                 }
                 else if ($this->tank_auth->get_rol() == 5) 
                 {
