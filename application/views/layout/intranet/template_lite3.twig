@@ -130,17 +130,17 @@ src="https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1"
         </ul>
         <ul id='ddUsuario' class='dropdown-content'>
           {% if usuario.rol == 1 %}
-            <li><a href="{{base_url()}}admin/tiendas"><i class="material-icons left">settings</i>Panel</a></li>
+            <li><a href="{{base_url()}}admin/tiendas">Panel</a></li>
           {% elseif usuario.rol == 5 %}
-            <li><a href="{{base_url()}}vnd/ventas"><i class="material-icons left">settings</i>Panel Gestor</a></li>
+            <li><a href="{{base_url()}}vnd/ventas">Panel Gestor</a></li>
           {% else %}
-            <li><a href="{{base_url()}}comprador/index/"><i class="material-icons left">account_circle</i>Perfil de Usuario</a></li>
+            <li><a href="{{base_url()}}comprador/index/">Perfil de Usuario</a></li>
             {% if usuario.rol == 2 or usuario.rol == 3 %}
-              <li><a href="https://tienda-oficial.pormayor.pe/usuario/venta"><i class="material-icons left">settings</i>Panel Tienda</a></li>
+              <li><a href="https://tienda-oficial.pormayor.pe/usuario/venta">Panel Tienda</a></li>
             {% endif %}
           {% endif %}
           <li class="divider"></li>
-          <li><a class="cerrarSesionBtn"><i class="material-icons left">power_settings_new</i>Cerrar sesión</a></li>
+          <li><a class="cerrarSesionBtn">Cerrar sesión</a></li>
         </ul>        
         {% if userAgent != "PC" %}
           {% if vista_carrito %}
@@ -323,7 +323,7 @@ src="https://www.facebook.com/tr?id=1437377980109766&ev=PageView&noscript=1"
       <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.12/ouibounce.min.js"></script>
-      {# <script src="{{base_url('public/js/template-lite.js')}}" defer></script> #}
+      <script src="{{base_url('public/js/template-lite.min.js')}}" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
       <script>
         $(document).ready(function() {
